@@ -1,0 +1,41 @@
+{
+ "comments": {
+  "A": {
+   "issue": 363,
+   "id": 6800152890,
+   "what": "Aria's 8-locale copy for #363 (old iOS claims): 6 keys per locale, as JSON under '## 8 語全文'; en and zh-Hant approved by the owner",
+   "created_at": "2026-11-11T15:38:36Z",
+   "updated_at": "2026-11-11T15:38:36Z",
+   "sha256": "b3a6dd06c7a8555794d6ae2f16b642fd853a4904d8f2901e22631dbd1c3ad8c7",
+   "chars": 11189
+  },
+  "decision": {
+   "issue": 363,
+   "id": 6801523231,
+   "what": "decision comment recording the owner's 2026-11-12 reply '文案ok' (en and zh-Hant final; the other six locales are Aria's)",
+   "created_at": "2026-11-11T16:37:40Z",
+   "updated_at": "2026-11-11T16:37:40Z",
+   "sha256": "d54b239f7961f3900f360592bd6287a4e895771c683c62834df71b559fea837b",
+   "chars": 165
+  },
+  "sentence": {
+   "issue": 371,
+   "kind": "pull",
+   "id": 6835867929,
+   "what": "Aria's one new sentence for limits_ios, one row per locale in the table under '## 加的那一句'; the comment is on PR #371, not on #363",
+   "created_at": "2026-11-12T21:03:01Z",
+   "updated_at": "2026-11-12T21:03:01Z",
+   "sha256": "3618b69c786786ae371808df5916e2b6e0c71646b6a01649ee33717c3971bf48",
+   "chars": 2237
+  },
+  "date": {
+   "issue": 363,
+   "id": 6908362373,
+   "what": "roadmap_updated for 8 locales with the date 2026-11-16 (the 2026-11-24 of A, only the date changed), as JSON under '## 決定（資料）'; the owner's 2026-11-16 go-ahead is #363 6908334791",
+   "created_at": "2026-11-16T05:39:09Z",
+   "updated_at": "2026-11-16T05:39:09Z",
+   "sha256": "86208cf5dc9df572403e4a6d9d4c2bd511bb09c83e24044671551a3e58d1ffaa",
+   "chars": 812
+  }
+ }
+}

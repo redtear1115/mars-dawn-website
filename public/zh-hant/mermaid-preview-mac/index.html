@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -126,7 +128,7 @@ try {
 </section>
 <h2 id="write-the-diagram-as-text">用文字寫出圖</h2>
 <p>把圖放進標記為 <code>mermaid</code> 的程式碼區塊：</p>
-<pre><code>```mermaid
+<pre tabindex="0" role="region" aria-labelledby="write-the-diagram-as-text"><code>```mermaid
 flowchart LR
     Write[寫 Markdown] --&gt; Preview[即時預覽]
     Preview --&gt; Export{要分享嗎？}
@@ -154,12 +156,12 @@ flowchart LR
 <h2 id="next">接下來</h2>
 <ul>
   <li>從一張已經能畫出來的圖開始：<a href="/zh-hant/templates/flowchart/">流程圖範本</a>。</li>
-  <li>輸出：<a href="/zh-hant/pdf/">輸出 PDF</a>；從腳本輸出，請看<a href="/zh-hant/cli/">命令列工具</a>。</li>
+  <li>輸出：<a href="/zh-hant/pdf/">列印與 PDF</a>；從腳本輸出，請看<a href="/zh-hant/cli/">命令列工具</a>。</li>
   <li>不確定怎麼打開檔案？請看<a href="/zh-hant/view-markdown-on-mac/">Mac 怎麼開 md 檔</a>。</li>
 </ul>
 <h2 id="try-it-on-your-mac">在你的 Mac 上試試</h2>
-<p>MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 2.49 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。</p>
-<p><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mermaid-preview-mac&amp;mt=8">立刻下載試用</a></p>
+<p>MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。</p>
+<p><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mermaid-preview-mac&amp;mt=8"><img src="/assets/badges/app-store-zh-hant.svg" width="109" height="40" alt="在 App Store 下載"></a></p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="網站導覽">
@@ -170,11 +172,12 @@ flowchart LR
         <li><a href="/zh-hant/features/">功能一覽</a></li>
         <li><a href="/zh-hant/quicklook/">Markdown 快速查看</a></li>
         <li><a href="/zh-hant/native/">為 Mac 而做</a></li>
-        <li><a href="/zh-hant/pdf/">輸出 PDF</a></li>
+        <li><a href="/zh-hant/pdf/">列印與 PDF</a></li>
         <li><a href="/zh-hant/limits/">MarsDawn 做不到的事</a></li>
         <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a></li>
         <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a></li>
         <li><a href="/zh-hant/changelog/">更新紀錄</a></li>
+        <li><a href="/zh-hant/roadmap/">路線圖</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -211,7 +214,7 @@ flowchart LR
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">主題</h3>
       <ul>
-        <li><a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a></li>
+        <li><a href="/zh-hant/themes/">主題</a></li>
         <li><a href="/zh-hant/themes/gallery/">主題庫</a></li>
         <li><a href="/zh-hant/themes/new/">打造一個主題</a></li>
         <li><a href="/zh-hant/themes/agents/">和 agent 一起做主題</a></li>
@@ -228,6 +231,7 @@ flowchart LR
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mermaid-preview-mac&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 標誌、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美國及其他國家和地區註冊的商標。App Store 和 Mac App Store 是 Apple Inc. 的服務標誌。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>

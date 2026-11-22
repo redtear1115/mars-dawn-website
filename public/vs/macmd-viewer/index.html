@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -144,7 +146,7 @@ try {
   <tr><th scope="row">Command line</th><td data-label="MacMD Viewer">No standalone command-line tool is described. It has a <code>markdownviewer://</code> URL scheme and a Claude Code plugin and hooks that open files in the viewer [<a href="#s6">S6</a>]</td><td data-label="MarsDawn">The free <code>marsdawn</code> tool: <code>marsdawn export</code> renders a PDF without the app, <code>marsdawn open</code> opens a file at a line</td></tr>
   <tr><th scope="row">Interface languages</th><td data-label="MacMD Viewer">Not stated in its own materials [<a href="#s1">S1</a>, <a href="#s3">S3</a>, <a href="#s7">S7</a>]</td><td data-label="MarsDawn">English, Traditional Chinese, Simplified Chinese, Japanese, German, French, Spanish and Korean</td></tr>
   <tr><th scope="row">Requires</th><td data-label="MacMD Viewer">macOS 14 (Sonoma) or later; Apple Silicon and Intel [<a href="#s1">S1</a>, <a href="#s7">S7</a>]</td><td data-label="MarsDawn">macOS 26 (Tahoe) or later</td></tr>
-  <tr><th scope="row">Other platforms</th><td data-label="MacMD Viewer">Mac only [<a href="#s1">S1</a>]</td><td data-label="MarsDawn">Mac only. No iPhone or iPad app</td></tr>
+  <tr><th scope="row">Other platforms</th><td data-label="MacMD Viewer">Mac only [<a href="#s1">S1</a>]</td><td data-label="MarsDawn">Mac, plus iPhone and iPad for reading only</td></tr>
 </tbody>
 </table></div>
 <h2 id="price-and-how-you-buy-it">Price and how you buy it</h2>
@@ -191,14 +193,14 @@ try {
 <h3>Is MacMD Viewer on the Mac App Store?</h3>
 <p>Its own pages list its site, Homebrew and Setapp, and don't mention the Mac App Store [<a href="#s2">S2</a>, <a href="#s7">S7</a>]. MarsDawn is on the Mac App Store only.</p>
 <h3>Can MarsDawn open the same files?</h3>
-<p>Yes. It opens <code>.md</code> files, and also plain text files and PDFs: text opens ready to edit as UTF-8, and PDFs open in a viewer.</p>
+<p>Yes. It opens <code>.md</code> files, and also plain text files and PDFs: text opens ready to edit as UTF-8, and PDFs open in a viewer. On the Mac it also opens JSON and YAML as editable documents with a tree preview.</p>
 <h3>What if I'm on macOS 14 or 15?</h3>
 <p>MacMD Viewer runs on macOS 14 or later [<a href="#s1">S1</a>]. MarsDawn needs macOS 26 or later, and the free <code>marsdawn</code> command-line tool can still export a PDF.</p>
 <h3>Why is one USD 19.99 and the other USD 2.49?</h3>
 <p>They differ in what you get and how you pay. MacMD Viewer is a one-time purchase with a 14-day refund and no trial [<a href="#s2">S2</a>]. MarsDawn is a free download with a 14-day trial, then a one-time unlock. Neither is a subscription.</p>
 <h2 id="try-it-today-free">Try it today, free</h2>
 <p>MarsDawn is on the Mac App Store. The free <code>marsdawn</code> command-line tool also renders any Markdown file to a PDF, with Mermaid diagrams and highlighted code, and needs nothing else installed:</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre tabindex="0" role="region" aria-labelledby="try-it-today-free"><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <h2 id="next">Next</h2>
@@ -219,11 +221,12 @@ open notes.pdf</code></pre>
         <li><a href="/features/">Features</a></li>
         <li><a href="/quicklook/">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/">PDF export</a></li>
+        <li><a href="/pdf/">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>
         <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/roadmap/">Roadmap</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -260,7 +263,7 @@ open notes.pdf</code></pre>
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Themes</h3>
       <ul>
-        <li><a href="/themes/">Preview themes and PDF export</a></li>
+        <li><a href="/themes/">Themes</a></li>
         <li><a href="/themes/gallery/">Theme gallery</a></li>
         <li><a href="/themes/new/">Build a theme</a></li>
         <li><a href="/themes/agents/">Make a theme with your agent</a></li>
@@ -277,6 +280,7 @@ open notes.pdf</code></pre>
     </section>
   </nav>
   <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-vs&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, the Apple logo, Mac, iPhone, iPad and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store and Mac App Store are service marks of Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>

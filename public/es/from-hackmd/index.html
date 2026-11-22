@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pasar de HackMD a tu Mac: notas, imágenes y GitHub · MarsDawn</title>
+<meta name="description" content="Descarga tus notas de HackMD como .md y léelas en MarsDawn en tu Mac. Cómo descargar todas las notas, partir de un repositorio de GitHub y conservar tus imágenes.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/from-hackmd/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/from-hackmd/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/from-hackmd/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/from-hackmd/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/from-hackmd/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/from-hackmd/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/from-hackmd/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/from-hackmd/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/from-hackmd/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/es/from-hackmd/">
+<link rel="alternate" type="text/markdown" href="/es/from-hackmd/index.md">
+<meta property="og:title" content="Pasar de HackMD a tu Mac: notas, imágenes y GitHub · MarsDawn">
+<meta property="og:description" content="Descarga tus notas de HackMD como .md y léelas en MarsDawn en tu Mac. Cómo descargar todas las notas, partir de un repositorio de GitHub y conservar tus imágenes.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/es/from-hackmd/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/es/"}, {"@type": "ListItem", "position": 2, "name": "Pasar de HackMD a tu Mac", "item": "https://marsdawn.southern-light.dev/es/from-hackmd/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Puedo descargar todas mis notas de HackMD de una vez?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Download all notes te da un .zip de archivos .md. No conserva las carpetas ni incluye las imágenes."}}, {"@type": "Question", "name": "¿Por qué faltan mis imágenes en MarsDawn?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn retiene las imágenes de la web hasta que haces clic en Cargar imágenes. Si la nota es privada, la imagen no puede cargarse, así que guárdala junto a tu archivo."}}, {"@type": "Question", "name": "¿Tengo que dejar HackMD?", "acceptedAnswer": {"@type": "Answer", "text": "No. Para escribir en equipo, HackMD sigue siendo la mejor opción. MarsDawn sirve para leer y revisar en tu Mac."}}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/es/" aria-label="Inicio de MarsDawn">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="site-nav" aria-label="Navegación principal">
+    <ul class="site-nav-wide">
+      <li><a href="/es/features/">Funciones</a></li>
+      <li><a href="/es/cli/">Agentes</a></li>
+      <li><a href="/es/themes/">Temas</a></li>
+      <li><a href="/es/vs/">Comparar</a></li>
+      <li><a href="/es/support/">Soporte</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>Menú</summary>
+      <ul>
+        <li><a href="/es/features/">Funciones</a></li>
+        <li><a href="/es/cli/">Agentes</a></li>
+        <li><a href="/es/themes/">Temas</a></li>
+        <li><a href="/es/vs/">Comparar</a></li>
+        <li><a href="/es/support/">Soporte</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="Idioma">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/from-hackmd/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/from-hackmd/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/from-hackmd/" hreflang="ja" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/from-hackmd/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary lang="es">Español</summary>
+      <ul>
+        <li><a href="/de/from-hackmd/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/from-hackmd/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/from-hackmd/" hreflang="es" aria-current="true" lang="es">Español</a></li>
+        <li><a href="/ko/from-hackmd/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>ES</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/from-hackmd/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/from-hackmd/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/from-hackmd/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/from-hackmd/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/from-hackmd/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/from-hackmd/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/from-hackmd/" hreflang="es" aria-current="true" lang="es">Español</a></li>
+        <li><a href="/ko/from-hackmd/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Pasar de HackMD a tu Mac</h1>
+  <p>Tus notas ya son Markdown, así que no hay nada que convertir. Elige una vía según lo que vayas a mover. Las imágenes necesitan un paso aparte, así que lee esa sección antes de eliminar nada en HackMD.</p>
+</section>
+<p>Lo comprobamos con una cuenta gratuita de HackMD en noviembre de 2026. HackMD puede cambiar, y no probamos los planes de pago ni los espacios de equipo.</p>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">Quieres</th><th scope="col">Tu vía</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Mover todas tus notas</th><td>Descargar todas las notas</td></tr>
+  <tr><th scope="row">Mover notas que ya están en GitHub</th><td>Clonar el repositorio</td></tr>
+  <tr><th scope="row">Mover una o dos notas</th><td>Descargar una nota</td></tr>
+</tbody>
+</table></div>
+<h2 id="download-all-notes">Descargar todas las notas</h2>
+<p>Los ajustes de notas de HackMD tienen Download all notes, para espacios personales y de equipo. Obtienes un .zip con un archivo .md por nota, con el título de la nota como nombre.</p>
+<ul>
+  <li>Las carpetas no se conservan. Todas las notas quedan en el nivel superior.</li>
+  <li>Las imágenes no se incluyen. Los archivos .md siguen apuntando a ellas por URL.</li>
+  <li>La opción de incluir el título y las etiquetas está activada por defecto y añade un bloque de front matter a cada nota. Desactívala para obtener cada nota tal como se escribió.</li>
+</ul>
+<p>Descomprime el archivo y elige Archivo ▸ Abrir carpeta… en MarsDawn para abrir esa carpeta.</p>
+<h2 id="clone-the-repo">Clonar el repositorio</h2>
+<p>La sincronización con GitHub de HackMD vincula una nota con un archivo, así que una nota que ya enviaste está en el repositorio. Clónalo y abre la carpeta con Archivo ▸ Abrir carpeta…. La barra lateral muestra el repositorio y su rama.</p>
+<p>Si tus notas aún no están en GitHub, no hace falta empezar ahora para esta mudanza. Cada nota se vincula por separado, y el plan gratuito permite 20 envíos al mes. En una cuenta personal gratuita no encontramos forma de enviar todo un espacio de trabajo de una vez.</p>
+<p>Después de la mudanza, trata el repositorio como el original. Un envío desde HackMD reemplaza lo que hay en GitHub, aunque GitHub tenga contenido más reciente, y no te avisa.</p>
+<h2 id="download-one-note">Descargar una nota</h2>
+<p>El menú de la nota la descarga como .md o .html. Elige .md y abre el archivo en MarsDawn.</p>
+<h2 id="images">Imágenes</h2>
+<p>Las imágenes que subiste a HackMD están en <code>https://hackmd.io/_uploads/...</code>. Quién puede verlas depende del permiso de la nota.</p>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">Tu nota es</th><th scope="col">Qué pasa en tu Mac</th><th scope="col">Qué hacer</th></tr></thead>
+<tbody>
+  <tr><th scope="row">Pública</th><td>La imagen se carga desde HackMD</td><td>Haz clic en Cargar imágenes en la vista previa, o activa Ajustes ▸ Imágenes ▸ Cargar imágenes remotas automáticamente</td></tr>
+  <tr><th scope="row">Privada</th><td>La imagen devuelve un error, porque MarsDawn no ha iniciado sesión en HackMD</td><td>Guarda la imagen desde un navegador con sesión iniciada, ponla junto al archivo .md y cambia la ruta. O haz pública la nota, si todo el mundo puede leerla</td></tr>
+</tbody>
+</table></div>
+<ul>
+  <li><strong>Las notas antiguas</strong> pueden usar direcciones <code>i.imgur.com</code>.</li>
+  <li><strong>Eliminar una nota elimina sus imágenes.</strong> Sus direcciones dejan de funcionar, así que mueve antes las imágenes.</li>
+</ul>
+<p>Si MarsDawn no puede leer una imagen que está junto a tu archivo, usa el botón de la vista previa para darle acceso a la carpeta.</p>
+<h2 id="how-your-notes-will-look">Cómo se verán tus notas</h2>
+<p>La mayor parte de la sintaxis de HackMD se lee igual: <code>==resaltado==</code>, <code>^superíndice^</code>, <code>~subíndice~</code>, <code>[TOC]</code>, tamaños de imagen como <code>=300x200</code>, Mermaid y KaTeX. <code>{%youtube %}</code> se muestra como un enlace. Para conservar cada salto de línea como en HackMD, activa Ajustes ▸ Aspecto ▸ Mantener saltos de línea simples.</p>
+<p>Los bloques <code>:::</code> también funcionan. <code>:::info</code>, <code>:::success</code>, <code>:::warning</code> y <code>:::danger</code> se muestran como bloques con una barra de color y un título (Nota, Consejo, Advertencia o Peligro), o con tu propio título si lo escribes después del nombre. <code>:::spoiler</code> se muestra como un bloque plegable que se abre al hacer clic. Un bloque <code>:::</code> con otro nombre, o sin su <code>:::</code> de cierre, se muestra tal como lo escribiste.</p>
+<p>Algunas cosas cambian:</p>
+<ul>
+  <li><code>++insertado++</code> y los códigos de emoji como <code>:sparkles:</code> se muestran tal como los escribiste.</li>
+  <li><code>{%hackmd id %}</code> no se expande.</li>
+  <li>Los iconos <code>&lt;i class="fa ..."&gt;</code> no aparecen.</li>
+</ul>
+<h2 id="for-scripts-hackmd-cli">Para scripts: hackmd-cli</h2>
+<p><code>hackmd-cli</code> no tiene un comando que exporte todo de una vez. Exporta una nota y la imprime, así que primero listas tus notas y luego las recorres en un bucle. Necesitas Node.js, <code>jq</code> y un token de API creado en los ajustes de HackMD. Si no necesitas un script, Download all notes es más sencillo.</p>
+<pre tabindex="0" role="region" aria-labelledby="for-scripts-hackmd-cli"><code>npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=&lt;tu token&gt;
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" &gt; "$id.md"
+done</code></pre>
+<ul>
+  <li><strong>Las carpetas no se trasladan.</strong> La lista de notas no indica en qué carpeta está cada una, así que todos los archivos quedan en el mismo lugar.</li>
+  <li><strong>Las imágenes siguen siendo enlaces de <code>hackmd.io</code>.</strong> Trátalas como en la sección Imágenes de arriba.</li>
+  <li><strong>Los nombres de archivo son los ID de las notas,</strong> no sus títulos.</li>
+  <li><strong>El plan gratuito permite 400 llamadas a la API cada 30 días.</strong> La lista usa una llamada, y cada nota una más.</li>
+</ul>
+<p>Solo lo probamos en una cuenta con pocas notas, así que no sabemos qué pasa con una lista muy larga. Elimina el token en los ajustes de HackMD cuando termines.</p>
+<h2 id="writing-together">Escribir en equipo</h2>
+<p>MarsDawn no tiene edición compartida. Si necesitas escribir con otras personas en directo, sigue usando HackMD. Si tu equipo guarda sus documentos en git, cada persona puede abrir el mismo repositorio en su propio MarsDawn y terminar el documento entre todos. Consulta Revisar documentos en equipo con git.</p>
+<section class="faq">
+<h2 id="questions">Preguntas</h2>
+<h3>¿Puedo descargar todas mis notas de HackMD de una vez?</h3>
+<p>Sí. Download all notes te da un .zip de archivos .md. No conserva las carpetas ni incluye las imágenes.</p>
+<h3>¿Por qué faltan mis imágenes en MarsDawn?</h3>
+<p>MarsDawn retiene las imágenes de la web hasta que haces clic en Cargar imágenes. Si la nota es privada, la imagen no puede cargarse, así que guárdala junto a tu archivo.</p>
+<h3>¿Tengo que dejar HackMD?</h3>
+<p>No. Para escribir en equipo, HackMD sigue siendo la mejor opción. MarsDawn sirve para leer y revisar en tu Mac.</p>
+</section>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Navegación del sitio">
+    <h2 class="footer-nav-title">Navegación del sitio</h2>
+    <section aria-labelledby="footer-product">
+      <h3 id="footer-product">Producto</h3>
+      <ul>
+        <li><a href="/es/features/">Funciones</a></li>
+        <li><a href="/es/quicklook/">Vista Rápida para Markdown</a></li>
+        <li><a href="/es/native/">Una app para Mac</a></li>
+        <li><a href="/es/pdf/">Imprimir y PDF</a></li>
+        <li><a href="/es/limits/">Lo que MarsDawn no hace</a></li>
+        <li><a href="/es/pay-once/">Pruébalo gratis, paga una vez</a></li>
+        <li><a href="/es/yours/">Lo que escribes se queda en tu Mac</a></li>
+        <li><a href="/es/changelog/">Historial de cambios</a></li>
+        <li><a href="/es/roadmap/">Hoja de ruta</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h3 id="footer-agents">Para agentes y la CLI</h3>
+      <ul>
+        <li><a href="/es/cli/">Línea de comandos</a></li>
+        <li><a href="/es/cli/agents/">marsdawn para agentes</a></li>
+        <li><a href="/es/cli/mcp/">Servidor MCP</a></li>
+        <li><a href="/es/cli/skill/">Skill para agentes</a></li>
+        <li><a href="/es/agent-transparency/">Transparencia de los agentes</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h3 id="footer-guides">Guías</h3>
+      <ul>
+        <li><a href="/es/view-markdown-on-mac/">Cómo abrir archivos .md en Mac</a></li>
+        <li><a href="/es/markdown-to-pdf/">De Markdown a PDF</a></li>
+        <li><a href="/es/mermaid-preview-mac/">Vista previa de Mermaid en Mac</a></li>
+        <li><a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a></li>
+        <li><a href="/es/reviewing-ai-output/">Por qué lo que produce la IA todavía necesita un lector humano</a></li>
+        <li><a href="/es/reviewing-agent-plans/">Revisar el plan de un agente</a></li>
+        <li><a href="/es/token-efficient-review/">Revisión que ahorra tokens</a></li>
+        <li><a href="/es/sharing-exported-pdfs/">Compartir los PDF exportados</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h3 id="footer-compare">Comparar</h3>
+      <ul>
+        <li><a href="/es/vs/">MarsDawn comparado: vista previa de VS Code, Obsidian, QLMarkdown, LynxOffice</a></li>
+        <li><a href="/es/vs/macmd-viewer/">MacMD Viewer frente a MarsDawn</a></li>
+        <li><a href="/es/vs/markdown-preview-tools/">Ver Markdown en otras herramientas frente a MarsDawn</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h3 id="footer-themes">Temas</h3>
+      <ul>
+        <li><a href="/es/themes/">Temas</a></li>
+        <li><a href="/es/themes/gallery/">Galería de temas</a></li>
+        <li><a href="/es/themes/new/">Crear un tema</a></li>
+        <li><a href="/es/themes/agents/">Crea un tema con tu agente</a></li>
+        <li><a href="/es/templates/">Plantillas</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h3 id="footer-support">Soporte e información legal</h3>
+      <ul>
+        <li><a href="/es/support/">Soporte</a></li>
+        <li><a href="/es/privacy/">Política de privacidad</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">Ajustes de cookies</button></li>
+      </ul>
+    </section>
+  </nav>
+  <p class="footer-meta"><span>Un nuevo amanecer para Markdown.</span> <span>MarsDawn está en el <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-from-hackmd&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, el logotipo de Apple, Mac, iPhone, iPad e iCloud son marcas comerciales de Apple Inc., registradas en EE. UU. y en otros países y regiones. App Store y Mac App Store son marcas de servicio de Apple Inc.</p>
+</footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>
+  <p>Usamos cookies de analítica, desactivadas hasta que las aceptes.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Rechazar</button>
+    <button type="button" id="consent-accept" class="consent-btn">Aceptar</button>
+  </div>
+</div>
+</body>
+</html>

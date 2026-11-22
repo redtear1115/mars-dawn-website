@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -123,7 +125,7 @@ try {
 <main id="main">
 <section class="intro">
   <h1>用 Mac 原生的元件做的。</h1>
-  <p class="definition">MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、Mermaid 圖表、KaTeX 數學式、快速查看與 PDF 輸出；可免費試用 14 天，一次付 USD 2.49 解鎖。</p>
+  <p class="definition">MarsDawn 是讀、檢查 Markdown 的 Mac 原生 app，有分割即時預覽、Mermaid 圖表、KaTeX 數學式、快速查看與 PDF 輸出；可免費試用 14 天，一次付 USD 4.99 解鎖。在 Mac 上也能打開 JSON 和 YAML，附樹狀預覽。</p>
   <p>視窗、分頁、選單和文字編輯器都是 Mac 原生的。排版後的頁面由 Safari 使用的 WebKit 引擎繪製。</p>
 </section>
 <figure class="shot">
@@ -151,12 +153,18 @@ try {
   <li>Siri 和捷徑：用範本新增文件、在筆記收件匣加上一行，或重新打開最近的文件。</li>
   <li>支援英文、繁體中文、簡體中文、日文、德文、法文、西班牙文和韓文。</li>
 </ul>
+<h3>小而安靜</h3>
+<ul>
+  <li>從 Mac App Store 下載只要 11.4 MB。</li>
+  <li>文件開著、沒有變動時，CPU 用量 0%。</li>
+</ul>
+<p>以 1.2.1 版實測，2026 年 11 月。</p>
 <nav class="traits" aria-label="MarsDawn 是什麼樣的 app">
 <h2>MarsDawn 是什麼樣的 app</h2>
 <ul>
   <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a><span>不需要帳號，沒有同步，也沒有雲端。</span></li>
-  <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a><span>免費試用 14 天，之後 USD 2.49 買一次，沒有訂閱。</span></li>
-  <li><a href="/zh-hant/pdf/">輸出 PDF</a><span>圖表、程式碼上色、經過安排的分頁。</span></li>
+  <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a><span>免費試用 14 天，之後 USD 4.99 買一次，沒有訂閱。</span></li>
+  <li><a href="/zh-hant/pdf/">列印與 PDF</a><span>先預覽、選版面，再列印或儲存。</span></li>
   <li><a href="/zh-hant/limits/">MarsDawn 做不到的事</a><span>購買前先知道。</span></li>
 </ul>
 </nav>
@@ -170,11 +178,12 @@ try {
         <li><a href="/zh-hant/features/">功能一覽</a></li>
         <li><a href="/zh-hant/quicklook/">Markdown 快速查看</a></li>
         <li><a href="/zh-hant/native/" aria-current="page">為 Mac 而做</a></li>
-        <li><a href="/zh-hant/pdf/">輸出 PDF</a></li>
+        <li><a href="/zh-hant/pdf/">列印與 PDF</a></li>
         <li><a href="/zh-hant/limits/">MarsDawn 做不到的事</a></li>
         <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a></li>
         <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a></li>
         <li><a href="/zh-hant/changelog/">更新紀錄</a></li>
+        <li><a href="/zh-hant/roadmap/">路線圖</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -211,7 +220,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">主題</h3>
       <ul>
-        <li><a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a></li>
+        <li><a href="/zh-hant/themes/">主題</a></li>
         <li><a href="/zh-hant/themes/gallery/">主題庫</a></li>
         <li><a href="/zh-hant/themes/new/">打造一個主題</a></li>
         <li><a href="/zh-hant/themes/agents/">和 agent 一起做主題</a></li>
@@ -228,6 +237,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-native&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 標誌、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美國及其他國家和地區註冊的商標。App Store 和 Mac App Store 是 Apple Inc. 的服務標誌。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>

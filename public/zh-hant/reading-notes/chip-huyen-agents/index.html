@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -52,7 +54,7 @@ try {
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hant/"}, {"@type": "ListItem", "position": 2, "name": "編者的閱讀筆記", "item": "https://marsdawn.southern-light.dev/zh-hant/reading-notes/"}, {"@type": "ListItem", "position": 3, "name": "閱讀筆記：Chip Huyen", "item": "https://marsdawn.southern-light.dev/zh-hant/reading-notes/chip-huyen-agents/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Chip Huyen 的 read-only／write action 分類，核準前為什麼要看它", "description": "Chip Huyen 在 2025 年 1 月的文章裡，把 agent 的動作分成 read-only 和 write action 兩種。這個分法為什麼是核準計畫前，快速拓出該多看一眼的那一行的好方法。", "datePublished": "2026-10-08", "dateModified": "2026-10-08", "inLanguage": "zh-Hant", "mainEntityOfPage": "https://marsdawn.southern-light.dev/zh-hant/reading-notes/chip-huyen-agents/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Chip Huyen 的 read-only／write action 分類，核準前為什麼要看它", "description": "Chip Huyen 在 2025 年 1 月的文章裡，把 agent 的動作分成 read-only 和 write action 兩種。這個分法為什麼是核準計畫前，快速拓出該多看一眼的那一行的好方法。", "datePublished": "2026-10-08", "dateModified": "2026-10-21", "inLanguage": "zh-Hant", "mainEntityOfPage": "https://marsdawn.southern-light.dev/zh-hant/reading-notes/chip-huyen-agents/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -147,7 +149,7 @@ try {
 
 <h2 id="try-it">試試看</h2>
 <p>MarsDawn 已在 Mac App Store 上架。免費的 <code>marsdawn</code> 命令列工具現在就能用：</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="try-it"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>它不需要 app 就能把 Markdown 輸出成 PDF。</p>
 <p><a href="/zh-hant/cli/">命令列工具</a> &#183; 買之前先看：<a href="/zh-hant/limits/">MarsDawn 做不到的事</a></p>
 
@@ -172,11 +174,12 @@ try {
         <li><a href="/zh-hant/features/">功能一覽</a></li>
         <li><a href="/zh-hant/quicklook/">Markdown 快速查看</a></li>
         <li><a href="/zh-hant/native/">為 Mac 而做</a></li>
-        <li><a href="/zh-hant/pdf/">輸出 PDF</a></li>
+        <li><a href="/zh-hant/pdf/">列印與 PDF</a></li>
         <li><a href="/zh-hant/limits/">MarsDawn 做不到的事</a></li>
         <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a></li>
         <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a></li>
         <li><a href="/zh-hant/changelog/">更新紀錄</a></li>
+        <li><a href="/zh-hant/roadmap/">路線圖</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -213,7 +216,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">主題</h3>
       <ul>
-        <li><a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a></li>
+        <li><a href="/zh-hant/themes/">主題</a></li>
         <li><a href="/zh-hant/themes/gallery/">主題庫</a></li>
         <li><a href="/zh-hant/themes/new/">打造一個主題</a></li>
         <li><a href="/zh-hant/themes/agents/">和 agent 一起做主題</a></li>
@@ -230,6 +233,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reading-notes&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 標誌、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美國及其他國家和地區註冊的商標。App Store 和 Mac App Store 是 Apple Inc. 的服務標誌。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>

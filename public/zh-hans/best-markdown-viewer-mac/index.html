@@ -2,6 +2,7 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -52,7 +54,7 @@ try {
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hans/"}, {"@type": "ListItem", "position": 2, "name": "2026 Mac Markdown 查看器推荐", "item": "https://marsdawn.southern-light.dev/zh-hans/best-markdown-viewer-mac/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "哪些免费的 Mac Markdown 查看器支持 Mermaid？", "acceptedAnswer": {"@type": "Answer", "text": "MacDown 3000、Obsidian 与 VS Code（1.121 起）内置。QLMarkdown 可选择开启，MarkEdit 要通过扩展。"}}, {"@type": "Question", "name": "哪些能导出带页码的 PDF？", "acceptedAnswer": {"@type": "Answer", "text": "Typora 与 Marked 3。MarsDawn 导出的 PDF 没有页码。"}}, {"@type": "Question", "name": "哪些能从命令行打开到指定行？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn（marsdawn open notes.md:120）与 VS Code（code -g file:line）。其他几款无文档说明。"}}, {"@type": "Question", "name": "哪些是原生 Mac App，而不是 Electron？", "acceptedAnswer": {"@type": "Answer", "text": "除了 Obsidian 与 VS Code 都是。MarkEdit 是原生 App，编辑区使用 web view。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "哪些免费的 Mac Markdown 查看器支持 Mermaid？", "acceptedAnswer": {"@type": "Answer", "text": "MacDown 3000、Obsidian 与 VS Code（1.121 起）内置。QLMarkdown 可选择开启，MarkEdit 要通过扩展。"}}, {"@type": "Question", "name": "哪些能导出带页码的 PDF？", "acceptedAnswer": {"@type": "Answer", "text": "Typora、Marked 3 与 MarsDawn。在 MarsDawn 中选择手册或讲义布局；默认的文稿布局没有页码。"}}, {"@type": "Question", "name": "哪些能从命令行打开到指定行？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn（marsdawn open notes.md:120）与 VS Code（code -g file:line）。其他几款无文档说明。"}}, {"@type": "Question", "name": "哪些是原生 Mac App，而不是 Electron？", "acceptedAnswer": {"@type": "Answer", "text": "除了 Obsidian 与 VS Code 都是。MarkEdit 是原生 App，编辑区使用 web view。"}}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -150,8 +152,8 @@ try {
 <p>原生 Mac App，源文本与实时预览左右并排，内置 Mermaid 与 KaTeX。AI 代理保存文件时，打开的窗口会把更改收成一步可撤销的“从磁盘更新”。<code>marsdawn open notes.md:120</code> 可打开到指定行，另有给代理用的代理技能与 MCP 服务器。无论是否在试用期，快速查看都能用。“拷贝给 AI”与“拷贝引用”能把文字交给代理。除非你选择，数据不会离开你的 Mac。</p>
 <ul>
   <li>适合：审阅 AI 代理所写 Markdown 的人。</li>
-  <li>缺点：导出的 PDF 没有页码。</li>
-  <li>价格：免费下载，试用 14 天，之后一次性 USD 2.49。无需账户。仅在 Mac App Store 提供。</li>
+  <li>缺点：PDF 要用手册或讲义布局才有页码，默认的文稿布局没有。</li>
+  <li>价格：免费下载，试用 14 天，之后一次性 USD 4.99。无需账户。仅在 Mac App Store 提供。</li>
 </ul>
 <h2 id="obsidian">Obsidian</h2>
 <p>以链接 Markdown 文件的 vault 为核心的笔记 App，支持 Mermaid、MathJax、PDF 导出与自动重新载入。</p>
@@ -189,7 +191,7 @@ try {
 <tr id="cmp-macdown-3000"><th scope="row">MacDown 3000</th><td data-col="price">免费</td><td data-col="mermaid">有</td><td data-col="math">MathJax</td><td data-col="pdf">有</td><td data-col="live-reload">有</td><td data-col="cli-line">无文档</td><td data-col="quick-look">有</td><td data-col="build">原生</td></tr>
 <tr id="cmp-marked"><th scope="row">Marked 3</th><td data-col="price">每月 USD 2.99 起</td><td data-col="mermaid">有</td><td data-col="math">MathJax、KaTeX</td><td data-col="pdf">有，带页码</td><td data-col="live-reload">有</td><td data-col="cli-line">无文档</td><td data-col="quick-look">Marked QL，USD 9.99</td><td data-col="build">原生</td></tr>
 <tr id="cmp-markedit"><th scope="row">MarkEdit</th><td data-col="price">免费</td><td data-col="mermaid">扩展</td><td data-col="math">KaTeX（扩展）</td><td data-col="pdf">Pandoc</td><td data-col="live-reload">无文档</td><td data-col="cli-line">无文档</td><td data-col="quick-look">有</td><td data-col="build">原生（web view）</td></tr>
-<tr id="cmp-marsdawn"><th scope="row">MarsDawn</th><td data-col="price">一次性 USD 2.49</td><td data-col="mermaid">有</td><td data-col="math">KaTeX</td><td data-col="pdf">有，无页码</td><td data-col="live-reload">有，可撤销</td><td data-col="cli-line">有</td><td data-col="quick-look">有</td><td data-col="build">原生</td></tr>
+<tr id="cmp-marsdawn"><th scope="row">MarsDawn</th><td data-col="price">一次性 USD 4.99</td><td data-col="mermaid">有</td><td data-col="math">KaTeX</td><td data-col="pdf">有，手册与讲义布局带页码</td><td data-col="live-reload">有，可撤销</td><td data-col="cli-line">有</td><td data-col="quick-look">有</td><td data-col="build">原生</td></tr>
 <tr id="cmp-obsidian"><th scope="row">Obsidian</th><td data-col="price">免费</td><td data-col="mermaid">有</td><td data-col="math">MathJax</td><td data-col="pdf">有</td><td data-col="live-reload">有</td><td data-col="cli-line">无文档</td><td data-col="quick-look">无文档</td><td data-col="build">Electron</td></tr>
 <tr id="cmp-qlmarkdown"><th scope="row">QLMarkdown</th><td data-col="price">免费</td><td data-col="mermaid">需开启</td><td data-col="math">MathJax（需开启）</td><td data-col="pdf">无文档</td><td data-col="live-reload">不适用</td><td data-col="cli-line">不适用</td><td data-col="quick-look">本身就是</td><td data-col="build">原生</td></tr>
 <tr id="cmp-typora"><th scope="row">Typora</th><td data-col="price">一次性 USD 14.99</td><td data-col="mermaid">有</td><td data-col="math">MathJax</td><td data-col="pdf">有，带页码</td><td data-col="live-reload">无文档</td><td data-col="cli-line">无文档</td><td data-col="quick-look">无文档</td><td data-col="build">原生</td></tr>
@@ -199,7 +201,6 @@ try {
 </div>
 <h2 id="not-for">MarsDawn 不适合谁</h2>
 <ul>
-  <li>PDF 一定要有页码。Typora 与 Marked 3 能加，MarsDawn 不能。</li>
   <li>你在维护互相链接的个人笔记库。Obsidian 就是为此打造的。</li>
   <li>你从不离开 VS Code。内置预览免费，VS Code 也正在 Agents 窗口加入实验性的 Markdown 查看。</li>
   <li>你只想在访达里预览。QLMarkdown 免费。</li>
@@ -209,13 +210,13 @@ try {
 <h3>哪些免费的 Mac Markdown 查看器支持 Mermaid？</h3>
 <p>MacDown 3000、Obsidian 与 VS Code（1.121 起）内置。QLMarkdown 可选择开启，MarkEdit 要通过扩展。</p>
 <h3>哪些能导出带页码的 PDF？</h3>
-<p>Typora 与 Marked 3。MarsDawn 导出的 PDF 没有页码。</p>
+<p>Typora、Marked 3 与 MarsDawn。在 MarsDawn 中选择手册或讲义布局；默认的文稿布局没有页码。</p>
 <h3>哪些能从命令行打开到指定行？</h3>
 <p>MarsDawn（<code>marsdawn open notes.md:120</code>）与 VS Code（<code>code -g file:line</code>）。其他几款无文档说明。</p>
 <h3>哪些是原生 Mac App，而不是 Electron？</h3>
 <p>除了 Obsidian 与 VS Code 都是。MarkEdit 是原生 App，编辑区使用 web view。</p>
 </section>
-<p><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-best-markdown-viewer-mac&amp;mt=8">立即下载试用</a></p>
+<p><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-best-markdown-viewer-mac&amp;mt=8"><img src="/assets/badges/app-store-zh-hans.svg" width="109" height="40" alt="在 App Store 下载"></a></p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="网站导航">
@@ -226,11 +227,12 @@ try {
         <li><a href="/zh-hans/features/">功能一览</a></li>
         <li><a href="/zh-hans/quicklook/">Markdown 快速查看</a></li>
         <li><a href="/zh-hans/native/">为 Mac 而做</a></li>
-        <li><a href="/zh-hans/pdf/">导出 PDF</a></li>
+        <li><a href="/zh-hans/pdf/">打印与 PDF</a></li>
         <li><a href="/zh-hans/limits/">MarsDawn 做不到的事</a></li>
         <li><a href="/zh-hans/pay-once/">免费试用，买一次就好</a></li>
         <li><a href="/zh-hans/yours/">你写的内容留在你的 Mac 上</a></li>
         <li><a href="/zh-hans/changelog/">更新记录</a></li>
+        <li><a href="/zh-hans/roadmap/">路线图</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -267,7 +269,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">主题</h3>
       <ul>
-        <li><a href="/zh-hans/themes/">预览主题与 PDF 导出</a></li>
+        <li><a href="/zh-hans/themes/">主题</a></li>
         <li><a href="/zh-hans/themes/gallery/">主题图库</a></li>
         <li><a href="/zh-hans/themes/new/">打造一个主题</a></li>
         <li><a href="/zh-hans/themes/agents/">和代理一起做主题</a></li>
@@ -284,6 +286,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-best-markdown-viewer-mac&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 标志、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美国和其他国家和地区注册的商标。App Store 和 Mac App Store 是 Apple Inc. 的服务商标。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>

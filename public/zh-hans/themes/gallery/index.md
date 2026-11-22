@@ -1,8 +1,6 @@
 # 主题图库
 
-黑色星期五特价：一次解锁只要半价 USD 2.49（原价 USD 4.99），优惠到 11 月 30 日，12 月 1 日起恢复 USD 4.99。 <!-- sale-line -->
-
-社区投稿的预览主题，每一个都经过开发者审核、合并后才会出现在这里。按场景筛选，或是[在浏览器里打造一个自己的主题](/zh-hans/themes/new/)——不用安装，也不用 git。
+MarsDawn 的预览主题，每一个都经过开发者审核、合并后才会出现在这里。目前这些主题都由 Southern Light 制作，其中有些改编自知名配色。可以按场景筛选，或是[在浏览器里打造一个自己的主题](/zh-hans/themes/new/)：提交后会开一则 GitHub issue 等待审核，不用安装，也不用 git。
 
 全部
 
@@ -14,13 +12,14 @@
 
 笔记分享
 
+- [![Christmas — light preview](/themes/v1/christmas/1.0.0/preview-light.png)](/themes/v1/christmas/1.0.0/preview-light.png)[![Christmas — dark preview](/themes/v1/christmas/1.0.0/preview-dark.png)](/themes/v1/christmas/1.0.0/preview-dark.png) **Christmas** v1.0.0 圣诞风格的阅读调色盘，莓红标题搭配暖奶油色书页，深色版本为酒红黑底 笔记分享 作者： Southern Light 举报 用电子邮件举报
 - [![Dracula — light preview](/themes/v1/dracula/1.0.1/preview-light.png)](/themes/v1/dracula/1.0.1/preview-light.png)[![Dracula — dark preview](/themes/v1/dracula/1.0.1/preview-dark.png)](/themes/v1/dracula/1.0.1/preview-dark.png) **Dracula** v1.0.1 经典吸血鬼深色调色盘，白日则用 Alucard 版本 — 改编自 Dracula Theme，为可读性调整 技术文档 审阅代理产出 作者： Southern Light [版权与授权](/themes/third-party-notices.html#dracula) 举报 用电子邮件举报
 - [![Gruvbox — light preview](/themes/v1/gruvbox/1.0.1/preview-light.png)](/themes/v1/gruvbox/1.0.1/preview-light.png)[![Gruvbox — dark preview](/themes/v1/gruvbox/1.0.1/preview-dark.png)](/themes/v1/gruvbox/1.0.1/preview-dark.png) **Gruvbox** v1.0.1 温暖复古的米色、棕色与橘色调色盘 — 改编自 Gruvbox，为可读性调整 技术文档 笔记分享 作者： Southern Light [版权与授权](/themes/third-party-notices.html#gruvbox) 举报 用电子邮件举报
 - [![Guide — light preview](/themes/v1/guide/1.0.1/preview-light.png)](/themes/v1/guide/1.0.1/preview-light.png)[![Guide — dark preview](/themes/v1/guide/1.0.1/preview-dark.png)](/themes/v1/guide/1.0.1/preview-dark.png) **Guide** v1.0.1 冷白背景搭配海军蓝标题与清亮蓝色链接，字级加大，适合用户指南、教程与 README 技术文档 作者： Southern Light 举报 用电子邮件举报
 - [![Inkwell Ivory — light preview](/themes/v1/inkwell-ivory/1.0.0/preview-light.png)](/themes/v1/inkwell-ivory/1.0.0/preview-light.png)[![Inkwell Ivory — dark preview](/themes/v1/inkwell-ivory/1.0.0/preview-dark.png)](/themes/v1/inkwell-ivory/1.0.0/preview-dark.png) **Inkwell Ivory** v1.0.0 淡象牙色书页搭配衬线字、墨蓝色标题与斜体引言面板，适合文章与报告 审阅代理产出 正式输出 作者： Southern Light 举报 用电子邮件举报
 - [![Ledger — light preview](/themes/v1/ledger/1.0.1/preview-light.png)](/themes/v1/ledger/1.0.1/preview-light.png)[![Ledger — dark preview](/themes/v1/ledger/1.0.1/preview-dark.png)](/themes/v1/ledger/1.0.1/preview-dark.png) **Ledger** v1.0.1 米白纸面、深绿分隔线与实心表头，适合预算、对账单与估价单 正式输出 作者： Southern Light 举报 用电子邮件举报
 - [![Nord — light preview](/themes/v1/nord/1.0.1/preview-light.png)](/themes/v1/nord/1.0.1/preview-light.png)[![Nord — dark preview](/themes/v1/nord/1.0.1/preview-dark.png)](/themes/v1/nord/1.0.1/preview-dark.png) **Nord** v1.0.1 北欧冰蓝色调，并原创搭配一款浅色版本 — 改编自 Nord，为可读性调整 技术文档 审阅代理产出 作者： Southern Light [版权与授权](/themes/third-party-notices.html#nord) 举报 用电子邮件举报
-- [![Solarized — light preview](/themes/v1/solarized/1.0.1/preview-light.png)](/themes/v1/solarized/1.0.1/preview-light.png)[![Solarized — dark preview](/themes/v1/solarized/1.0.1/preview-dark.png)](/themes/v1/solarized/1.0.1/preview-dark.png) **Solarized** v1.0.1 Ethan Schoonover 设计的蓝绿与金色精准色盘 — 改编自 Solarized，为可读性调整 技术文档 审阅代理产出 作者： Southern Light [版权与授权](/themes/third-party-notices.html#solarized) 举报 用电子邮件举报
+- [![Solarized — light preview](/themes/v1/solarized/1.0.2/preview-light.png)](/themes/v1/solarized/1.0.2/preview-light.png)[![Solarized — dark preview](/themes/v1/solarized/1.0.2/preview-dark.png)](/themes/v1/solarized/1.0.2/preview-dark.png) **Solarized** v1.0.2 Ethan Schoonover 设计的蓝绿与金色精准色盘 — 改编自 Solarized，为可读性调整 技术文档 审阅代理产出 作者： Southern Light [版权与授权](/themes/third-party-notices.html#solarized) 举报 用电子邮件举报
 - [![Spec — light preview](/themes/v1/spec/1.0.1/preview-light.png)](/themes/v1/spec/1.0.1/preview-light.png)[![Spec — dark preview](/themes/v1/spec/1.0.1/preview-dark.png)](/themes/v1/spec/1.0.1/preview-dark.png) **Spec** v1.0.1 白底正文搭配单一砖红强调色，决策与风险以陶土色面板呈现，适合 PRD 与 RFC 审阅代理产出 正式输出 作者： Southern Light 举报 用电子邮件举报
 - [![Spring — light preview](/themes/v1/spring/1.0.0/preview-light.png)](/themes/v1/spring/1.0.0/preview-light.png)[![Spring — dark preview](/themes/v1/spring/1.0.0/preview-dark.png)](/themes/v1/spring/1.0.0/preview-dark.png) **Spring** v1.0.0 淡淡的春绿底色，配上樱花粉与喷泉的青绿，边角圆润，分隔线像层层落下的水流 笔记分享 审阅代理产出 作者： Southern Light 举报 用电子邮件举报
 - [![Story — light preview](/themes/v1/story/1.0.1/preview-light.png)](/themes/v1/story/1.0.1/preview-light.png)[![Story — dark preview](/themes/v1/story/1.0.1/preview-dark.png)](/themes/v1/story/1.0.1/preview-dark.png) **Story** v1.0.1 亮色便利贴、圆角外观与鲜明任务勾选框，适合用户故事与冲刺笔记 笔记分享 审阅代理产出 作者： Southern Light 举报 用电子邮件举报
@@ -35,21 +34,23 @@ Dracula、Nord、Gruvbox 与 Solarized 改编自开源配色项目；每个项�
 
 ## 其他页面
 
-- [MarsDawn](https://marsdawn.southern-light.dev/zh-hans/index.md): 读懂、检查代理写的 Markdown 的 Mac 原生 app：分栏实时预览、Mermaid、KaTeX、快速查看、PDF 导出。可免费试用，之后一次 USD 2.49。
-- [功能一览](https://marsdawn.southern-light.dev/zh-hans/features/index.md): Mac 原生的 Markdown 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可以拿去开会、用笔批注，或当纸质存档。
+- [MarsDawn](https://marsdawn.southern-light.dev/zh-hans/index.md): 检查代理写的 Markdown、JSON、YAML：Mac 原生 app，实时预览、Mermaid、KaTeX、快速查看、PDF。免费试用，之后一次 USD 4.99。
+- [功能一览](https://marsdawn.southern-light.dev/zh-hans/features/index.md): Mac 原生的 Markdown、JSON、YAML 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可拿去开会或存档。
 - [你写的内容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hans/yours/index.md): MarsDawn 不需要账户，没有同步，也没有云端。你的 Markdown 文稿留在你的 Mac 上，就在你选的文件和文件夹里。
-- [免费试用，买一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免费下载。先免费试用 14 天，之后花 USD 2.49 解锁一次就好。没有订阅，也不需要账户。
-- [导出 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上把 Markdown 导出成 PDF 或打印，Mermaid 图表和代码高亮都会保留；分页会尽量不切开短的代码，超过一页的会接到下一页。
+- [免费试用，买一次就好](https://marsdawn.southern-light.dev/zh-hans/pay-once/index.md): MarsDawn 免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。
+- [打印与 PDF](https://marsdawn.southern-light.dev/zh-hans/pdf/index.md): 在 Mac 上先预览，再把 Markdown 打印或存储为 PDF；有文稿、手册、讲义三种布局，Mermaid 图表和代码高亮都会保留。
 - [为 Mac 而做](https://marsdawn.southern-light.dev/zh-hans/native/index.md): 真正的 Mac app：原生窗口与标签页、自动保存、版本记录、在访达用快速查看预览 Markdown，文本编辑器的操作和 Mac 上其他 app 一致。
-- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、没有 iPhone 或 iPad 版、没有插件、不需要账户。内置四种主题，主题图库还有更多。购买前先知道。
+- [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hans/limits/index.md): 没有同步、iPhone 和 iPad 上不能编辑、没有插件、不需要账户；可以换主题，但不能自定义 CSS。购买前先知道。
 - [支持](https://marsdawn.southern-light.dev/zh-hans/support/index.md): MarsDawn（macOS Markdown 编辑器）的使用说明与联系方式。
 - [隐私政策](https://marsdawn.southern-light.dev/zh-hans/privacy/index.md): MarsDawn 不收集任何个人数据，你的文稿与设置都留在你的 Mac 上。
 - [Mac 上怎么打开 md 文件](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI 代理写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。
 - [在 Mac 上预览 Mermaid](https://marsdawn.southern-light.dev/zh-hans/mermaid-preview-mac/index.md): 在 Mac 上预览 Mermaid 图表：源代码旁边实时画出来，快速查看和导出 PDF 也看得到。图表写错时，会显示错误信息和出错的那一行。
 - [Markdown 快速查看](https://marsdawn.southern-light.dev/zh-hans/quicklook/index.md): MarsDawn 的快速查看让你在访达按空格键就能看到排版后的 Markdown，Mermaid 图表、KaTeX 数学公式和代码高亮都在。试用期结束后，快速查看照常可用。
+- [拷贝给 AI](https://marsdawn.southern-light.dev/zh-hans/copy-for-ai/index.md): 选中文本，连同文件路径和行号一起拷贝，粘贴到 Claude Code 或任何代理。在 Mac 上就能做，不用打开 IDE，也不用装插件。
+- [从 HackMD 搬到 Mac](https://marsdawn.southern-light.dev/zh-hans/from-hackmd/index.md): 把 HackMD 笔记下载成 .md，在 Mac 上用 MarsDawn 阅读。下载所有笔记、从 GitHub 仓库搬，以及图片怎么处理。
 - [Markdown 转 PDF](https://marsdawn.southern-light.dev/zh-hans/markdown-to-pdf/index.md): 免费的 Markdown 转 PDF 工具：在 Mac 上用 marsdawn 命令行，一个命令就把 Markdown 转成 PDF，表格、数学公式、Mermaid 图表和代码高亮都在。
-- [MarsDawn 对比：VS Code 预览、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hans/vs/index.md): 写给正在挑选工具、要在 Mac 上读 Markdown（常常是代理写的）的人。下表每一格都出自厂商自己的页面或我们实际的检查，日期都是 2026 年 10 月 16 日；产品会变，格子也可能过时。发现错误，请写信到支持页上的地址。
-- [MacMD Viewer 对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读的 Markdown 查看器，USD 19.99。MarsDawn 边编辑边预览，免费试用 14 天，之后 USD 2.49 解锁一次。逐项比较，附来源。
+- [MarsDawn 对比：VS Code 预览、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hans/vs/index.md): 写给正在挑选工具、要在 Mac 上读 Markdown（常常是代理写的）的人。下表每一格都出自厂商自己的页面或我们实际的检查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新于 2026 年 11 月 7 日）；产品会变，格子也可能过时。发现错误，请写信到支持页上的地址。
+- [MacMD Viewer 对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/macmd-viewer/index.md): MacMD Viewer 是只读的 Markdown 查看器，USD 19.99。MarsDawn 边编辑边预览，免费试用 14 天，之后 USD 4.99 解锁一次。逐项比较，附来源。
 - [2026 Mac Markdown 查看器推荐](https://marsdawn.southern-light.dev/zh-hans/best-markdown-viewer-mac/index.md): 比较 8 款 Mac Markdown 查看器的价格、Mermaid、数学公式、PDF、自动重新载入、快速查看与原生／Electron，并说明各自适合谁。
 - [命令行工具](https://marsdawn.southern-light.dev/zh-hans/cli/index.md): 免费的 marsdawn 命令行工具：在 Mac 上从终端、脚本或 LLM 代理把 Markdown 导出成 PDF，并提供 JSON 输出。用 Homebrew 安装。
 - [给 AI 代理的 marsdawn 参考](https://marsdawn.southern-light.dev/zh-hans/cli/agents/index.md): 给调用 marsdawn 把 Markdown 转成 PDF 的 AI 代理与脚本的参考：命令、JSON 输出、Schema、退出代码与系统需求。
@@ -57,7 +58,7 @@ Dracula、Nord、Gruvbox 与 Solarized 改编自开源配色项目；每个项�
 - [MCP 服务器](https://marsdawn.southern-light.dev/zh-hans/cli/mcp/index.md): marsdawn 没有自己的 AI 模型，是哪个代理写出 Markdown 都无所谓。可以从 CLI、skill 文件，或 marsdawn-mcp 这个 MCP 服务器调用，三者最后都运行同一个 export。
 - [节省 token 的审阅方式](https://marsdawn.southern-light.dev/zh-hans/token-efficient-review/index.md): 人在 MarsDawn 里读排版后的页面，不会被读回代理的 context。工具调用本身返回的也只是精简的 JSON，不是排版内容，调用本身就很便宜。
 - [在别处看 Markdown，对比 MarsDawn](https://marsdawn.southern-light.dev/zh-hans/vs/markdown-preview-tools/index.md): MarsDawn 对比在 VS Code 内置预览、浏览器扩展，或 Claude Desktop 文件预览里看 Markdown：各自能排版出什么，打开一个文件要花多少功夫。
-- [预览主题与 PDF 导出](https://marsdawn.southern-light.dev/zh-hans/themes/index.md): 四种主题，各有浅色与深色，一套导出对应你正在看的主题。在浏览器里打造自己的主题，也可以逛逛社区主题图库。
+- [主题](https://marsdawn.southern-light.dev/zh-hans/themes/index.md): 内置四种预览主题，各有浅色与深色；在 Mac 版 MarsDawn 的设置里打开主题图库，还能安装更多。快速查看也会用你选的主题。
 - [打造一个主题](https://marsdawn.southern-light.dev/zh-hans/themes/new/index.md): 挑选颜色和几个样式选项，实时看它们套用在范例文档上，再把主题送出成一个 GitHub issue。不用安装，也不用 git。
 - [和代理一起做主题](https://marsdawn.southern-light.dev/zh-hans/themes/agents/index.md): 给 AI 代理的 MarsDawn 主题制作参考：theme.json 每个字段的类型与范围、检查并渲染的 CLI 流程、交给人的链接，以及怎么投稿。
 - [分享导出的 PDF](https://marsdawn.southern-light.dev/zh-hans/sharing-exported-pdfs/index.md): 把代理写的 Markdown 导出成 PDF，交给不写 Markdown、也不会安装任何东西的同事。不用懂语法，不用装 app，也不需要账号就能打开。
@@ -67,6 +68,7 @@ Dracula、Nord、Gruvbox 与 Solarized 改编自开源配色项目；每个项�
 - [审代理计划](https://marsdawn.southern-light.dev/zh-hans/reviewing-agent-plans/index.md): 代理交出计划、还没开始执行之前，用六个步骤、大约五分钟把它审完。什么编辑器都能用，附一份实际的例子。
 - [代理设计模式](https://marsdawn.southern-light.dev/zh-hans/agent-design-patterns/index.md): Andrew Ng 提出的四种代理设计模式：reflection、tool use、planning、multi-agent collaboration，以及每一种通常会交回什么要你读的文件。
 - [更新记录](https://marsdawn.southern-light.dev/zh-hans/changelog/index.md): MarsDawn App 与免费的 marsdawn 命令行工具，每个版本改了什么。
+- [路线图](https://marsdawn.southern-light.dev/zh-hans/roadmap/index.md): MarsDawn 在 Mac、iPhone 与 iPad 上正在做和接下来要做的功能，按版本列出。不写日期，未排期的项目另行标明。
 - [编者的阅读笔记](https://marsdawn.southern-light.dev/zh-hans/reading-notes/index.md): 六篇短笔记，谈打造 AI 代理的人实际主张了什么——Anthropic、Chip Huyen、Lilian Weng、Harrison Chase、LangChain 与 Andrew Ng——以及这些主张对“要读代理交回来的东西”的人分别意味着什么。
 - [阅读笔记：Anthropic](https://marsdawn.southern-light.dev/zh-hans/reading-notes/anthropic-building-effective-agents/index.md): Anthropic 在 2024 年 12 月发表的指南把 workflow 和代理分开来看，并描述了五种 workflow 模式，其中一种让另一次 LLM 调用来审查。这对落进你文件夹的东西来说，意味着什么。
 - [阅读笔记：Chip Huyen](https://marsdawn.southern-light.dev/zh-hans/reading-notes/chip-huyen-agents/index.md): Chip Huyen 在 2025 年 1 月的文章里，把代理的动作分成 read-only 和 write action 两种。这个分法为什么是核准计划前，快速抓出该多看一眼的那一行的好方法。
@@ -78,10 +80,10 @@ Dracula、Nord、Gruvbox 与 Solarized 改编自开源配色项目；每个项�
 - [规格文档模板](https://marsdawn.southern-light.dev/zh-hans/templates/spec/index.md): Markdown 规格文档模板，包含需求、Mermaid 流程图和验收标准。代理来填，你在 MarsDawn 里审阅。
 - [流程图模板](https://marsdawn.southern-light.dev/zh-hans/templates/flowchart/index.md): Markdown 的 Mermaid 流程图模板，图的下方把步骤写出来。在 Mac 上预览，也能导出成 PDF。
 - [会议记录模板](https://marsdawn.southern-light.dev/zh-hans/templates/meeting-notes/index.md): Markdown 会议记录模板，列出决议和行动项，每项都有负责人。代理来写，你在 MarsDawn 里确认。
-- [English](https://marsdawn.southern-light.dev/themes/gallery/index.md): Browse preview themes the community submitted for MarsDawn, filter them by scenario, and report a problem with one. Build your own in the browser, no install, no git.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/themes/gallery/index.md): 瀏覽社群投稿的 MarsDawn 預覽主題，依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造一個自己的主題，不用安裝，也不用 git。
-- [日本語](https://marsdawn.southern-light.dev/ja/themes/gallery/index.md): コミュニティが投稿した MarsDawn のプレビューテーマを閲覧し、シナリオで絞り込み、問題があれば通報できます。ブラウザで自分のテーマを作れます。インストールも git も不要です。
-- [Deutsch](https://marsdawn.southern-light.dev/de/themes/gallery/index.md): Durchsuche Vorschau-Themen, die die Community für MarsDawn eingereicht hat, filtere nach Szenario und melde ein Problem. Bau dein eigenes im Browser, ohne Installation und ohne git.
-- [Français](https://marsdawn.southern-light.dev/fr/themes/gallery/index.md): Parcourez les thèmes d’aperçu proposés par la communauté pour MarsDawn, filtrez par scénario et signalez un problème. Créez le vôtre dans le navigateur, sans installation ni git.
-- [Español](https://marsdawn.southern-light.dev/es/themes/gallery/index.md): Explora temas de vista previa que la comunidad envió para MarsDawn, fíltralos por escenario y denuncia un problema. Crea el tuyo en el navegador, sin instalación y sin git.
-- [한국어](https://marsdawn.southern-light.dev/ko/themes/gallery/index.md): 커뮤니티가 MarsDawn에 제출한 미리보기 테마를 둘러보고, 용도로 걸러 보고, 문제가 있으면 신고하세요. 브라우저에서 직접 만드세요. 설치도 git도 필요 없습니다.
+- [English](https://marsdawn.southern-light.dev/themes/gallery/index.md): Browse preview themes for MarsDawn, each reviewed by the developer, filter them by scenario, and report a problem with one. Build your own in the browser.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/themes/gallery/index.md): 瀏覽 MarsDawn 的預覽主題，每一個都經過開發者審核；可以依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造自己的主題，不用安裝，也不用 git。
+- [日本語](https://marsdawn.southern-light.dev/ja/themes/gallery/index.md): 開発者がレビューした MarsDawn のプレビューテーマを閲覧し、シナリオで絞り込み、問題があれば通報できます。ブラウザで自分のテーマを作れます。インストールも git も不要です。
+- [Deutsch](https://marsdawn.southern-light.dev/de/themes/gallery/index.md): Geprüfte Vorschauthemen für MarsDawn durchsuchen, nach Szenario filtern oder ein Problem melden. Eigenes Thema im Browser erstellen, ohne git.
+- [Français](https://marsdawn.southern-light.dev/fr/themes/gallery/index.md): Parcourez les thèmes d’aperçu pour MarsDawn, chacun relu par le développeur, filtrez par scénario et signalez un problème. Créez le vôtre dans le navigateur.
+- [Español](https://marsdawn.southern-light.dev/es/themes/gallery/index.md): Explora temas de vista previa para MarsDawn revisados por el desarrollador, fíltralos por escenario y denuncia un problema. Crea el tuyo en el navegador.
+- [한국어](https://marsdawn.southern-light.dev/ko/themes/gallery/index.md): 개발자가 검토한 MarsDawn 미리보기 테마를 둘러보고, 용도로 걸러 보고, 문제가 있으면 신고하세요. 브라우저에서 직접 만들 수 있습니다. 설치도 git도 필요 없습니다.

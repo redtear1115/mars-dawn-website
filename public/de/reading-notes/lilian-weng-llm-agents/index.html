@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -52,7 +54,7 @@ try {
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/de/"}, {"@type": "ListItem", "position": 2, "name": "Lektürenotizen der Redaktion", "item": "https://marsdawn.southern-light.dev/de/reading-notes/"}, {"@type": "ListItem", "position": 3, "name": "Lektürenotizen: Lilian Weng", "item": "https://marsdawn.southern-light.dev/de/reading-notes/lilian-weng-llm-agents/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Lilian Wengs Agenten-Bauplan von 2023 und die Datei, die jeder Teil hinterlässt", "description": "Lilian Wengs viel zitierte Umfrage von 2023 beschreibt einen LLM-Agenten als Gehirn plus Planung, Gedächtnis und Werkzeugnutzung. Was jeder Teil dir typischerweise zum Lesen hinterlässt, und die Grenze, die sie bei Plänen nennt, die sich Überraschungen nicht anpassen.", "datePublished": "2026-10-08", "dateModified": "2026-10-08", "inLanguage": "de", "mainEntityOfPage": "https://marsdawn.southern-light.dev/de/reading-notes/lilian-weng-llm-agents/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Lilian Wengs Agenten-Bauplan von 2023 und die Datei, die jeder Teil hinterlässt", "description": "Lilian Wengs viel zitierte Umfrage von 2023 beschreibt einen LLM-Agenten als Gehirn plus Planung, Gedächtnis und Werkzeugnutzung. Was jeder Teil dir typischerweise zum Lesen hinterlässt, und die Grenze, die sie bei Plänen nennt, die sich Überraschungen nicht anpassen.", "datePublished": "2026-10-08", "dateModified": "2026-10-21", "inLanguage": "de", "mainEntityOfPage": "https://marsdawn.southern-light.dev/de/reading-notes/lilian-weng-llm-agents/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -145,7 +147,7 @@ try {
 
 <h2 id="try-it">Ausprobieren</h2>
 <p>MarsDawn ist im Mac App Store erhältlich. Das kostenlose Befehlszeilenwerkzeug <code>marsdawn</code> funktioniert schon heute:</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="try-it"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>Es exportiert Markdown ohne die App als PDF.</p>
 <p><a href="/de/cli/">Befehlszeile</a> &#183; Vor dem Kauf wissen: <a href="/de/limits/">Was MarsDawn nicht kann</a></p>
 
@@ -170,11 +172,12 @@ try {
         <li><a href="/de/features/">Funktionen</a></li>
         <li><a href="/de/quicklook/">Übersicht für Markdown</a></li>
         <li><a href="/de/native/">Eine Mac-App</a></li>
-        <li><a href="/de/pdf/">PDF-Export</a></li>
+        <li><a href="/de/pdf/">Drucken und PDF</a></li>
         <li><a href="/de/limits/">Was MarsDawn nicht kann</a></li>
         <li><a href="/de/pay-once/">Kostenlos testen, einmal bezahlen</a></li>
         <li><a href="/de/yours/">Deine Texte bleiben auf deinem Mac</a></li>
         <li><a href="/de/changelog/">Änderungsprotokoll</a></li>
+        <li><a href="/de/roadmap/">Roadmap</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -211,7 +214,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Themen</h3>
       <ul>
-        <li><a href="/de/themes/">Vorschau-Themen und PDF-Export</a></li>
+        <li><a href="/de/themes/">Themen</a></li>
         <li><a href="/de/themes/gallery/">Themen-Galerie</a></li>
         <li><a href="/de/themes/new/">Ein Thema erstellen</a></li>
         <li><a href="/de/themes/agents/">Mit deinem Agenten ein Thema erstellen</a></li>
@@ -228,6 +231,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reading-notes&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, das Apple Logo, Mac, iPhone, iPad und iCloud sind Marken der Apple Inc., die in den USA und weiteren Ländern und Regionen eingetragen sind. App Store und Mac App Store sind Dienstleistungsmarken der Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>

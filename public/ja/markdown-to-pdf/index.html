@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -125,12 +127,12 @@ try {
   <p>無料の <code>marsdawn</code> ツールは、コマンド1つで Markdown ファイルを PDF に変換します。表、数式、Mermaid 図、ハイライトされたコードはソースの見た目そのままに仕上がり、MarsDawn アプリすら含め、他に何もインストールする必要はありません。</p>
 </section>
 <h2 id="install-it">インストール</h2>
-<pre><code>brew install redtear1115/tap/marsdawn
+<pre tabindex="0" role="region" aria-labelledby="install-it"><code>brew install redtear1115/tap/marsdawn
 marsdawn --version</code></pre>
 <p>Apple シリコンの Mac では、Homebrew がビルド済みのコピーを数秒でインストールします。Intel Mac ではソースからビルドするため数分かかり、Xcode 26 以降が必要です。macOS 15 以降で動作し、<code>marsdawn --version</code> がインストールされたバージョンを表示します。</p>
 <h2 id="save-a-document">文書を保存する</h2>
 <p><code>plan.md</code> という名前のファイルに、次の内容を貼り付けてください。</p>
-<pre><code># 計画：書き出しを高速化
+<pre tabindex="0" role="region" aria-labelledby="save-a-document"><code># 計画：書き出しを高速化
 
 この計画はエージェントが書きました。内容を確認してから、PDF にします。
 
@@ -159,14 +161,15 @@ let pdf = try export("plan.md")
 <h2 id="export-it">書き出す</h2>
 <pre><code>marsdawn export plan.md</code></pre>
 <p>ソースの隣に <code>plan.pdf</code> を書き出し、保存先を表示します。</p>
-<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="export-it"><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>これはそのページを、<code>marsdawn</code> 0.5.0 の実行結果から実際にキャプチャしたものです。</p>
 <p><img class="pdf-page" src="/assets/cli/plan-ja.png" alt="書き出された PDF：見出し、ステップの表、インラインと独立した数式、ドラフト・レビュー・公開の図、ハイライトされた Swift のコード1行。" width="989" height="930"></p>
 <h2 id="choose-a-theme-paper-size-and-file-name">テーマ、用紙サイズ、ファイル名を選ぶ</h2>
-<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="choose-a-theme-paper-size-and-file-name"><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
 <ul>
   <li><code>--theme</code>：dawn、classic、modern、vivid のいずれかで、テーマのライトカラーを使います。指定しない場合、<code>export</code> は <code>$MARSDAWN_THEME</code>、それもなければ dawn を使います。</li>
   <li><code>--paper</code>：a4 または letter。デフォルトは a4 です。</li>
+  <li><code>--layout</code>：document（デフォルト）、handbook、handout のいずれか。handbook はフロントマターから表紙を作り、目次と PDF のブックマークを付けます。</li>
   <li><code>-o</code>：PDF をソースの隣ではなく、どこに書き出すか。</li>
   <li><code>--allow-remote-images</code>：レンダリング時にウェブから画像を読み込みます。指定しない限りオフのままです。</li>
 </ul>
@@ -179,6 +182,7 @@ let pdf = try export("plan.md")
 </ul>
 <h2 id="next">次に</h2>
 <ul>
+  <li>MarsDawn アプリでは、「ファイル ▸ プリント…」で同じレイアウトをプレビューしてから、プリントまたは保存できます：<a href="/ja/pdf/">プリントと PDF</a>。</li>
   <li>すべてのオプションと出力される JSON：<a href="/ja/cli/">コマンドライン</a>。</li>
   <li>コーディングエージェントにこれをやらせるには、<code>marsdawn skill --install</code> を実行して<a href="/ja/cli/skill/">marsdawn のエージェントスキル</a>を追加してください。</li>
 </ul>
@@ -192,11 +196,12 @@ let pdf = try export("plan.md")
         <li><a href="/ja/features/">機能一覧</a></li>
         <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
         <li><a href="/ja/native/">Mac アプリ</a></li>
-        <li><a href="/ja/pdf/">PDF 書き出し</a></li>
+        <li><a href="/ja/pdf/">プリントと PDF</a></li>
         <li><a href="/ja/limits/">MarsDawn ができないこと</a></li>
         <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
         <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>
         <li><a href="/ja/changelog/">更新履歴</a></li>
+        <li><a href="/ja/roadmap/">ロードマップ</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -233,7 +238,7 @@ let pdf = try export("plan.md")
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">テーマ</h3>
       <ul>
-        <li><a href="/ja/themes/">プレビューテーマと PDF 書き出し</a></li>
+        <li><a href="/ja/themes/">テーマ</a></li>
         <li><a href="/ja/themes/gallery/">テーマギャラリー</a></li>
         <li><a href="/ja/themes/new/">テーマを作る</a></li>
         <li><a href="/ja/themes/agents/">エージェントとテーマを作る</a></li>
@@ -250,6 +255,7 @@ let pdf = try export("plan.md")
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-markdown-to-pdf&amp;mt=8">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple のロゴ、Mac、iPhone、iPad、iCloud は、米国およびその他の国や地域で登録された Apple Inc. の商標です。App Store および Mac App Store は Apple Inc. のサービスマークです。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>

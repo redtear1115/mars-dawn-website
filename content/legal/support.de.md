@@ -16,6 +16,10 @@ Gib bitte deine macOS-Version und deine MarsDawn-Version an („MarsDawn“ › 
 
 Einen Mac mit macOS 26 Tahoe oder neuer, mit Apple Chip oder Intel-Prozessor.
 
+### Kann ich MarsDawn mit Homebrew installieren?
+
+Ja, über den Mac App Store: Führe `brew install mas` aus und dann `sudo mas get 6812925073`. `brew install marsdawn` ist etwas anderes: Es installiert das Befehlszeilenprogramm, nicht die App.
+
 ### Wie wechsle ich zwischen Editor und Vorschau?
 
 Drücke <kbd>⌘1</kbd> für nur den Quelltext, <kbd>⌘2</kbd> für beides nebeneinander und <kbd>⌘3</kbd> für nur die Vorschau. Dieselben Optionen findest du im Menü „Darstellung“ und in der Symbolleiste.

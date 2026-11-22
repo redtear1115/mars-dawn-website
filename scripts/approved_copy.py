@@ -64,7 +64,7 @@ OPEN_MD = {'en': {'title': 'How to open .md files on Mac · MarsDawn',
                  'Yes. In MarsDawn, choose File ▸ Export as PDF… (⌥⌘E) or File ▸ Print…; the pages are '
                  "paginated, with diagrams drawn in and code highlighted, in the theme's light colors. "
                  'Without the app, the free `marsdawn export` command-line tool makes the same PDF: '
-                 '`marsdawn export notes.md`. See [PDF export](/pdf/) and [Markdown to '
+                 '`marsdawn export notes.md`. See [Print & PDF](/pdf/) and [Markdown to '
                  'PDF](/markdown-to-pdf/).'],
                 ['Can I open the .md files my AI agent wrote?',
                  'Yes, that is what MarsDawn is built for. Open the file and read the rendered page next to '
@@ -101,7 +101,7 @@ OPEN_MD = {'en': {'title': 'How to open .md files on Mac · MarsDawn',
                       'UTF-8 副本。'],
                      ['md 檔可以轉成 PDF 嗎？',
                       '可以。在 MarsDawn 選「檔案 ▸ 輸出為 PDF⋯」（⌥⌘E）或「檔案 ▸ 列印⋯」，頁面會自動分頁，圖表畫進去，程式碼保留上色，使用主題的淺色配色。不裝 app '
-                      '的話，免費的 `marsdawn export` 命令列工具能輸出同樣的 PDF：`marsdawn export notes.md`。請看[輸出 '
+                      '的話，免費的 `marsdawn export` 命令列工具能輸出同樣的 PDF：`marsdawn export notes.md`。請看[列印與 '
                       'PDF](/zh-hant/pdf/)和[Markdown 轉 PDF](/zh-hant/markdown-to-pdf/)。'],
                      ['AI agent 寫的 md 檔也能這樣打開嗎？',
                       '可以，MarsDawn 就是為這個做的。打開檔案，排好的頁面就在原始碼旁邊；agent 改好之後，再打開來讀一次。agent 也可以執行 `marsdawn open '
@@ -155,7 +155,7 @@ MERMAID = {'en': {'title': 'Mermaid preview on Mac, next to your Markdown · Mar
         'next_h2': 'Next',
         'next': '- Start from a diagram that already works: the [flowchart '
                 'template](/templates/flowchart/).\n'
-                '- Export it: [PDF export](/pdf/), or from a script, [Command Line](/cli/).\n'
+                '- Export it: [Print & PDF](/pdf/), or from a script, [Command Line](/cli/).\n'
                 '- Not sure how to open the file? [How to open .md files on Mac](/view-markdown-on-mac/).',
         'try_h2': 'Try it on your Mac',
         'try': 'MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. '
@@ -194,7 +194,7 @@ MERMAID = {'en': {'title': 'Mermaid preview on Mac, next to your Markdown · Mar
                      'agent。',
              'next_h2': '接下來',
              'next': '- 從一張已經能畫出來的圖開始：[流程圖範本](/zh-hant/templates/flowchart/)。\n'
-                     '- 輸出：[輸出 PDF](/zh-hant/pdf/)；從腳本輸出，請看[命令列工具](/zh-hant/cli/)。\n'
+                     '- 輸出：[列印與 PDF](/zh-hant/pdf/)；從腳本輸出，請看[命令列工具](/zh-hant/cli/)。\n'
                      '- 不確定怎麼打開檔案？請看[Mac 怎麼開 md 檔](/zh-hant/view-markdown-on-mac/)。',
              'try_h2': '在你的 Mac 上試試',
              'try': 'MarsDawn 可以免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。需要 macOS 26 以上。\n'
@@ -258,7 +258,7 @@ VS_MACMD = {'en': {'title': 'MacMD Viewer vs. MarsDawn: a Markdown viewer or an 
                              ['Requires',
                               'macOS 14 (Sonoma) or later; Apple Silicon and Intel [S1, S7]',
                               'macOS 26 (Tahoe) or later'],
-                             ['Other platforms', 'Mac only [S1]', 'Mac only. No iPhone or iPad app']],
+                             ['Other platforms', 'Mac only [S1]', 'Mac, plus iPhone and iPad for reading only']],
                     'head': ['', 'MacMD Viewer', 'MarsDawn']},
                    {'h2': 'Price and how you buy it',
                     'rows': [['Where you buy it',
@@ -311,8 +311,7 @@ VS_MACMD = {'en': {'title': 'MacMD Viewer vs. MarsDawn: a Markdown viewer or an 
                  "Its own pages list its site, Homebrew and Setapp, and don't mention the Mac App Store [S2, "
                  'S7]. MarsDawn is on the Mac App Store only.'],
                 ['Can MarsDawn open the same files?',
-                 'Yes. It opens `.md` files, and also plain text files and PDFs: text opens ready to edit as '
-                 'UTF-8, and PDFs open in a viewer.'],
+                 'Yes. It opens `.md` files, and also plain text files and PDFs: text opens ready to edit as UTF-8, and PDFs open in a viewer. On the Mac it also opens JSON and YAML as editable documents with a tree preview.'],
                 ["What if I'm on macOS 14 or 15?",
                  'MacMD Viewer runs on macOS 14 or later [S1]. MarsDawn needs macOS 26 or later, and the '
                  'free `marsdawn` command-line tool can still export a PDF.'],
@@ -354,7 +353,7 @@ VS_MACMD = {'en': {'title': 'MacMD Viewer vs. MarsDawn: a Markdown viewer or an 
                                   ['系統需求',
                                    'macOS 14（Sonoma）以上；Apple 晶片與 Intel [S1, S7]',
                                    'macOS 26（Tahoe）以上'],
-                                  ['其他平台', '只有 Mac [S1]', '只有 Mac，沒有 iPhone 或 iPad 版']],
+                                  ['其他平台', '只有 Mac [S1]', 'Mac；iPhone 和 iPad 上只能閱讀']],
                          'head': ['', 'MacMD Viewer', 'MarsDawn']},
                         {'h2': '價格與購買方式',
                          'rows': [['從哪裡買',
@@ -390,7 +389,7 @@ VS_MACMD = {'en': {'title': 'MacMD Viewer vs. MarsDawn: a Markdown viewer or an 
                      ['MacMD Viewer 在 Mac App Store 上嗎？',
                       '它自己的頁面列出的是官網、Homebrew 和 Setapp，沒有提到 Mac App Store [S2, S7]。MarsDawn 只在 Mac App '
                       'Store。'],
-                     ['MarsDawn 能打開同樣的檔案嗎？', '可以。它打開 `.md` 檔案，也能打開純文字檔和 PDF：UTF-8 的文字檔可直接編輯，PDF 以檢視器開啟。'],
+                     ['MarsDawn 能打開同樣的檔案嗎？', '可以。它打開 `.md` 檔案，也能打開純文字檔和 PDF：UTF-8 的文字檔可直接編輯，PDF 以檢視器開啟。在 Mac 上也能把 JSON 和 YAML 當成文件打開來編輯，並有樹狀預覽。'],
                      ['我的 Mac 是 macOS 14 或 15 呢？',
                       'MacMD Viewer 在 macOS 14 以上都能跑 [S1]。MarsDawn 需要 macOS 26 以上，不過免費的 `marsdawn` '
                       '命令列工具仍然可以輸出 PDF。'],

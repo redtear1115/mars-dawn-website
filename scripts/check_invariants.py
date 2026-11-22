@@ -24,8 +24,7 @@ moved on. Either half-flip fails here.
 
 The home page's calls to action follow the same phase. Before launch the hero's one primary
 button installs the free CLI (it jumps to the `#install` block) and nothing store-shaped is a
-button; after launch the primary goes to the Mac App Store listing and the CLI is second. In
-neither phase is the hero's call to action an image, so it can't pass for a store badge.
+button; after launch the primary goes to the Mac App Store listing and the CLI is second. After launch the listing uses the official localized App Store badge.
 
 Structured data on inner pages (every locale): each page except a home page carries a
 BreadcrumbList whose first item is that locale's home, whose last is the page itself, with
@@ -44,10 +43,17 @@ The header and the footer (website #247), on every `index.html` page (the 404 pa
 notices page have no `index.html`; scripts/check_hreflang.py scans the same set; an independent audit
 covers those): the main navigation, which is in the markup twice (a wide and a narrow copy), has the
 five main pages in order under the page's own language prefix in each copy; the footer has six groups
-and 31 links plus one Cookie settings button last, and the same links, group for group, in every
+and 32 links plus one Cookie settings button last, and the same links, group for group, in every
 locale; every page the footer leaves out (the reading notes, the pattern hub, the template pages) is
 linked from another page's `<main>` in every locale, so none is an orphan; and no page carries a store
 chip. The language switch's own rules are check_hreflang.py's.
+
+No-break spaces survive into the agent outputs (website #361): the fr and de copy uses U+00A0 (before
+`: ; ! ?` and `»`, after `«`, between a number and its unit), and the Markdown twin next to a page
+(`index.md`) and `llms-full.txt` are built from the same text, so they keep it. A twin with fewer
+U+00A0 than its page's visible text (`<main>`, scripts and tags dropped, entities decoded) fails, and
+so does a `llms-full.txt` with none at all while pages have them. A twin with more is fine; only
+fewer is a problem.
 
 Two things this deliberately does not catch, so nobody reads a green run as more than it is:
 
@@ -115,6 +121,10 @@ PRE_LAUNCH_WORDING = {
     "zh-hant": ["即將在 Mac App Store 上架", "還沒開賣"],
     "zh-hans": ["即将在 Mac App Store 上架", "还没开卖"],
     "ja": ["Mac App Store で近日公開", "近日公開：", "まだ販売されていません", "近日 Mac App Store に登場予定"],
+    "de": ["kommt bald"],
+    "fr": ["arrive bientôt"],
+    "es": ["llegará pronto"],
+    "ko": ["곧 Mac App Store에 올라갑니다"],
 }
 
 LISTING_HOST = "apps.apple.com"
@@ -122,7 +132,7 @@ LISTING_HOST = "apps.apple.com"
 # The header's five main pages, in order (website #247). Written out again on purpose.
 MAIN_NAV = ("features", "cli", "themes", "vs", "support")
 FOOTER_GROUPS = 6
-FOOTER_LINKS = 31
+FOOTER_LINKS = 32
 
 # The hero's calls to action, as (class, href) pairs in order, per phase.
 CTA = re.compile(r'<a class="cta ([\w-]+)" href="([^"]*)"')
@@ -216,7 +226,7 @@ def check_structured_data(relative, text, articles, llms_full, problems):
         problems.append(f"{relative}: a TechArticle on a page that isn't an essay or note")
 
 
-FAQ_SLUGS = {"", "pay-once", "quicklook", "best-markdown-viewer-mac"}  # the home page's slug is empty
+FAQ_SLUGS = {"", "pay-once", "quicklook", "best-markdown-viewer-mac", "from-hackmd"}  # the home page's slug is empty
 LEGACY_FAQ_SLUGS = {"view-markdown-on-mac"}  # a FAQPage block written before the faq section; no section to compare
 FAQ_SECTION = re.compile(r'<section class="faq">\n.*?\n</section>', re.S)
 HOWTO_SECTION = re.compile(r'<section class="howto">\n.*?\n</section>', re.S)
@@ -354,6 +364,30 @@ def check_no_orphans(chromes, problems):
                 problems.append(f"{locale}: {target} is in no footer and no other page's main links to it")
 
 
+NBSP = "\u00a0"
+MAIN_ELEMENT = re.compile(r"<main[\s>].*?</main>", re.S)
+SCRIPT_BLOCK = re.compile(r"<script[\s>].*?</script>", re.S)
+
+
+def nbsp_in_page_text(text):
+    """U+00A0 in the page's visible text: its <main> (or the whole file), scripts dropped, tags stripped."""
+    main = MAIN_ELEMENT.search(text)
+    return plain(SCRIPT_BLOCK.sub("", main.group(0) if main else text)).count(NBSP)
+
+
+def check_nbsp_twin(relative, page, in_page, problems):
+    """The Markdown twin keeps every no-break space the page's text has (#361)."""
+    twin = page.with_name("index.md")
+    if not twin.is_file():
+        return  # no twin, as on the synthetic sites scripts/selftest_locales.py builds
+    kept = twin.read_text().count(NBSP)
+    if kept < in_page:
+        problems.append(
+            f"{relative}: the Markdown twin has {kept} U+00A0 but the page's text has {in_page}; "
+            f"the twin must keep no-break spaces (#361)"
+        )
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=str(ROOT / "public"))
@@ -386,9 +420,13 @@ def main():
         for extra in sorted(slugs - by_locale["en"]):
             problems.append(f"{locale} has {extra}, which en doesn't")
 
+    pages_with_nbsp = 0
     for relative, page in pages.items():
         locale = locale_of(relative)
         text = page.read_text()
+        in_page = nbsp_in_page_text(text)
+        pages_with_nbsp += bool(in_page)
+        check_nbsp_twin(relative, page, in_page, problems)
         check_structured_data(relative, text, articles, llms_full, problems)
         chrome = check_chrome(relative, text, problems)
         chromes[relative] = chrome
@@ -424,6 +462,9 @@ def main():
         if where == "launched" and not links_out:
             problems.append(f"{relative}: doesn't link to {LISTING_HOST} after launch")
 
+    if pages_with_nbsp and llms_full and NBSP not in llms_full:
+        problems.append("llms-full.txt has no U+00A0 although pages do; it must keep no-break spaces (#361)")
+
     check_footer_across_locales(chromes, problems)
     check_no_orphans(chromes, problems)
 
@@ -438,13 +479,13 @@ def main():
         if where == "pre-launch" and ctas != [("cta-primary", "#install")]:
             problems.append(f"{home}: before launch the hero's calls to action should be just the CLI install, got {ctas}")
         if where == "launched" and not (
-            len(ctas) == 2 and ctas[0][0] == "cta-primary" and ctas[0][1].startswith(f"https://{LISTING_HOST}/")
-            and ctas[1] == ("cta-secondary", "#install")
+            ctas == [("cta-secondary", "#install")]
+            and re.search(r'<p class="hero-cta"><a class="store-badge" href="https://apps\.apple\.com/[^\"]+"><img src="/assets/badges/app-store-' + locale_of(home) + r'\.svg"', text)
         ):
             problems.append(f"{home}: after launch the hero's calls to action should be the listing, then the CLI, got {ctas}")
         hero_cta = HERO_CTA.search(text)
-        if not hero_cta or "<img" in hero_cta.group(1):
-            problems.append(f"{home}: the hero's call to action is missing, or is an image")
+        if not hero_cta or (where == "pre-launch" and "<img" in hero_cta.group(1)):
+            problems.append(f"{home}: the hero's call to action is missing, or uses an image before launch")
         if 'id="install"' not in text or "brew install" not in text.split('id="install"', 1)[-1].split("</section>", 1)[0]:
             problems.append(f"{home}: no #install block with the Homebrew command for the CTA to land on")
         has = '"downloadUrl"' in text

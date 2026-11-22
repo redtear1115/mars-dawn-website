@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -52,7 +54,7 @@ try {
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/ja/"}, {"@type": "ListItem", "position": 2, "name": "エージェントが返してくるものを読む", "item": "https://marsdawn.southern-light.dev/ja/reading-agent-output/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "エージェントが返してくるものを読む", "description": "AI エージェントは仕事の成果を Markdown で返します：計画、仕様書、進捗報告。エージェントを作る人たちがチェックポイントや失敗について何を言うか、その出力がなぜ読みづらいのか、そして計画を 5 分でレビューするチェックリスト。", "datePublished": "2026-10-06", "dateModified": "2026-10-08", "inLanguage": "ja", "mainEntityOfPage": "https://marsdawn.southern-light.dev/ja/reading-agent-output/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "エージェントが返してくるものを読む", "description": "AI エージェントは仕事の成果を Markdown で返します：計画、仕様書、進捗報告。エージェントを作る人たちがチェックポイントや失敗について何を言うか、その出力がなぜ読みづらいのか、そして計画を 5 分でレビューするチェックリスト。", "datePublished": "2026-10-06", "dateModified": "2026-10-21", "inLanguage": "ja", "mainEntityOfPage": "https://marsdawn.southern-light.dev/ja/reading-agent-output/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -147,7 +149,7 @@ try {
   <li><strong>図と数式：</strong>Mermaid と KaTeX はソースの隣のプレビューに描画され（&#8984;2）、両方のペインが一緒にスクロールする。</li>
   <li><strong>読んでいる途中の書き換え：</strong>エージェントがファイルを書き換えると、MarsDawn は再読み込みしつつ、あなた自身に未保存の編集がなければ、読んでいた位置を保つ。</li>
   <li><strong>複数のファイル：</strong>「ファイル &#9656; フォルダを開く&#8943;」（&#8679;&#8984;O）でエージェントの作業フォルダを開く。新しいファイルは 1 秒ほどでファイルタブに現れ、git のチェックアウトならヘッダーにブランチや worktree の名前が出る。</li>
-  <li><strong>正確なフィードバック：</strong>「編集 &#9656; 参照をコピー」（&#8997;&#8984;C）で、いまいる場所を <code>docs/plan.md:42</code> の形でコピーできる。「AI 用にコピー」（&#8963;&#8997;&#8984;C）は、その下に選択したテキストを付け加える。どちらもエージェントのチャットに貼り付ければいい。</li>
+  <li><strong>正確なフィードバック：</strong>「編集 &#9656; 参照をコピー」（&#8997;&#8984;C）で、いまいる場所を <code>docs/plan.md:42</code> の形でコピーできる。「<a href="/ja/copy-for-ai/">AI 用にコピー</a>」（&#8963;&#8997;&#8984;C）は、その下に選択したテキストを付け加える。どちらもエージェントのチャットに貼り付ければいい。</li>
 </ul>
 <p>このループにはもう 2 つ関係がある。エージェントは <code>marsdawn open plan.md:42</code> を実行して、MarsDawn でファイルを 42 行目、つまりまず見てほしい行で開かせることができる。そしてレビューが終わったファイルは、アプリから、あるいは無料の <code>marsdawn export</code> コマンドで PDF に書き出せる。</p>
 <p>MarsDawn の中に AI モデルはない。計画を要約したり、採点したり、何が間違っているか教えたりはしない。読むのはあなたで、MarsDawn は長く変わり続けるファイルを読みやすく保ち、正確な行を指し示せるようにするだけだ。</p>
@@ -166,7 +168,7 @@ try {
 
 <h2 id="try-it">試してみる</h2>
 <p>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reading-agent-output&amp;mt=8">Mac App Store</a> で配信中です。無料の <code>marsdawn</code> コマンドラインツールもあります：</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="try-it"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>アプリなしで Markdown を PDF に書き出せます。<code>marsdawn open</code> でエージェントにファイルを MarsDawn で開かせることもできます。</p>
 <p><a href="/ja/cli/">コマンドライン</a> &#183; AI エージェント向けの参照：<a href="/ja/cli/agents/">marsdawn for agents</a> &#183; 購入前に：<a href="/ja/limits/">MarsDawn ができないこと</a></p>
 
@@ -196,11 +198,12 @@ try {
         <li><a href="/ja/features/">機能一覧</a></li>
         <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
         <li><a href="/ja/native/">Mac アプリ</a></li>
-        <li><a href="/ja/pdf/">PDF 書き出し</a></li>
+        <li><a href="/ja/pdf/">プリントと PDF</a></li>
         <li><a href="/ja/limits/">MarsDawn ができないこと</a></li>
         <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
         <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>
         <li><a href="/ja/changelog/">更新履歴</a></li>
+        <li><a href="/ja/roadmap/">ロードマップ</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -237,7 +240,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">テーマ</h3>
       <ul>
-        <li><a href="/ja/themes/">プレビューテーマと PDF 書き出し</a></li>
+        <li><a href="/ja/themes/">テーマ</a></li>
         <li><a href="/ja/themes/gallery/">テーマギャラリー</a></li>
         <li><a href="/ja/themes/new/">テーマを作る</a></li>
         <li><a href="/ja/themes/agents/">エージェントとテーマを作る</a></li>
@@ -254,6 +257,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reading-agent-output&amp;mt=8">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple のロゴ、Mac、iPhone、iPad、iCloud は、米国およびその他の国や地域で登録された Apple Inc. の商標です。App Store および Mac App Store は Apple Inc. のサービスマークです。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>

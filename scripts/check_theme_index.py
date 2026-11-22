@@ -28,8 +28,10 @@ What lives where:
 - `public/themes/v1/index.json` -- the index the app fetches (§5.1).
 - `public/themes/v1/<id>/<version>/{theme.json,preview-light.png,preview-dark.png}` -- versioned,
   immutable files.
-- `public/themes/v1/published.json` -- the append-only record, {path: sha256}, of every file ever
-  published under public/themes/v1/ (paths relative to it, like the index's).
+- `public/themes/v1/published.json` -- the record, {path: sha256}, of the published files still in
+  public/themes/v1/ (paths relative to it, like the index's).
+- `public/themes/v1/retired.json` -- an optional, append-only list of ids whose published files
+  were removed. These ids stay reserved even after their last file is gone.
 
 public/, public/themes/, public/themes/v1/ and themes/ must be real directories (no symlink on the
 way), and nothing under themes/ or public/themes/v1/ may be a symlink or a committed .DS_Store.
@@ -49,24 +51,26 @@ that rule's own words):
   name, matches the id grammar and isn't a built-in's, whose version is MAJOR.MINOR.PATCH (ASCII,
   0-9999, no leading zeros), with name{en}, summary{en}, author{name} (author.github, when present,
   an ASCII GitHub login) and scenarios as above.
-- public/themes/v1/ holds only index.json, published.json and files published.json lists; every
-  listed file exists and its sha256 matches.
+- public/themes/v1/ holds only index.json, published.json, optional retired.json and files
+  published.json lists; every listed file exists and its sha256 matches.
 - index <-> themes/ is a bijection by id; each entry's version/name/summary/scenarios/author equal
   its theme.json's; its paths are the canonical `<id>/<version>/...`; its theme.json sha256 equals
   both themes/<id>/theme.json's and published.json's; both previews are listed and are whole,
   well-formed PNGs (every chunk's CRC, a 13-byte IHDR first, an allowed bit depth/colour type, an
   allowlisted chunk set, IEND last with nothing after it), PREVIEW_WIDTH wide, 1-8000 tall, at most
   500 KB.
-- index.revoked equals themes/revoked.json (sorted by id), and no revoked id is still in themes/ or
-  the index.
+- index.revoked equals themes/revoked.json (sorted by id). Revoked and retired ids can't appear in
+  themes/ or index.themes.
 
 Rules against the base branch (`--ci` takes the first parent of the merge commit it checked out,
 fetches it by SHA, and **fails closed** if it can't be read):
 
-- published.json only gains entries. A base without published.json is read as "nothing published"
-  only for the first publication: when the base has neither themes/ nor public/themes/v1/, or its
-  v1/ holds nothing but the exact empty index #141 published (blob BOOTSTRAP_INDEX_BLOB). Any
-  other base lacking published.json, index.json or revoked.json fails closed.
+- published.json entries keep their original digests. An entry can be removed only if its id is
+  absent from index.themes and recorded in retired.json. Already retired ids can't gain files or
+  leave retired.json. A base without published.json is read as "nothing published" only for the
+  first publication: when the base has neither themes/ nor public/themes/v1/, or its v1/ holds
+  nothing but the exact empty index #141 published (blob BOOTSTRAP_INDEX_BLOB). Any other base
+  lacking published.json, index.json or revoked.json fails closed.
 - Ids are never reused: an id with files in the base published.json that the base index doesn't
   list was delisted or revoked; seeing it in themes/ again fails.
 - On pull_request events only (a push runs after the PR's gate, without its labels):
@@ -123,6 +127,7 @@ V1_REL = "public/themes/v1"
 REVOKED_REL = "themes/revoked.json"
 INDEX_REL = V1_REL + "/index.json"
 PUBLISHED_REL = V1_REL + "/published.json"
+RETIRED_REL = V1_REL + "/retired.json"
 # Every directory on the way to the checked trees; each must be a real directory.
 DIRS = ("public", "public/themes", V1_REL, THEMES_REL)
 CODE_PREFIXES = ("scripts/", ".github/")
@@ -760,7 +765,7 @@ def parse_published(data):
 def check_published_source(problems, snap):
     kind = snap.entries.get(PUBLISHED_REL, (None,))[0]
     if kind is None:
-        problems.append(f"{PUBLISHED_REL}: missing; it is the append-only record of every published file")
+        problems.append(f"{PUBLISHED_REL}: missing; it records the published files")
         return None
     if kind != "file":
         problems.append(f"{PUBLISHED_REL}: is a symlink or not a regular file")
@@ -770,12 +775,38 @@ def check_published_source(problems, snap):
     return published
 
 
+def retired_ids(value) -> set:
+    if not isinstance(value, list) or not all(is_theme_id(tid) for tid in value):
+        raise ValueError("must be a list of theme ids")
+    ids = set(value)
+    if len(ids) != len(value):
+        raise ValueError("theme ids must be unique")
+    return ids
+
+
+def check_retired_source(problems, snap):
+    """The retired ids, empty for a tree without retired.json, or None if it is unusable."""
+    if RETIRED_REL not in snap.entries:
+        return set()
+    data = snap.read(RETIRED_REL)
+    if data is None:
+        problems.append(f"{RETIRED_REL}: must be a regular file")
+        return None
+    try:
+        return retired_ids(strict_json(data))
+    except ValueError as error:
+        problems.append(f"{RETIRED_REL}: {error}")
+        return None
+
+
 def check_v1_files(problems, snap, published):
     """Every file under public/themes/v1/ is index.json, published.json or listed; every listed
     file exists, unchanged."""
     for path in snap.paths_under(V1_REL):
         kind = snap.entries[path][0]
         rel = path[len(V1_REL) + 1:]
+        if path == RETIRED_REL:
+            continue  # checked by check_retired_source
         if rel.split("/")[-1] == ".DS_Store":
             problems.append(ds_store_problem(path))
         elif kind == "symlink":
@@ -887,10 +918,11 @@ def load_index(snap):
 # --- rules against the base branch and the PR's author ----------------------------------------------
 
 class BaseState:
-    def __init__(self, published, themes, revoked_ids):
+    def __init__(self, published, themes, revoked_ids, retired):
         self.published = published  # {path: sha256}
         self.themes = themes        # {id: index entry}
         self.revoked_ids = revoked_ids
+        self.retired = retired
 
 
 def base_state(base) -> BaseState:
@@ -906,7 +938,7 @@ def base_state(base) -> BaseState:
         first = not themes_paths and (
             not v1_paths or (v1_paths == [INDEX_REL] and base.entries[INDEX_REL] == ("file", BOOTSTRAP_INDEX_BLOB)))
         if first:
-            return BaseState({}, {}, set())
+            return BaseState({}, {}, set(), set())
         raise BaseUnavailable(f"the base has themes/ or public/themes/v1/ but no {PUBLISHED_REL}")
     if base.entries[PUBLISHED_REL][0] == "file":
         published, found = parse_published(base.read(PUBLISHED_REL))
@@ -928,15 +960,33 @@ def base_state(base) -> BaseState:
     revoked, found = parse_revoked(base.read(REVOKED_REL))
     if revoked is None:
         raise BaseUnavailable(f"the base's {REVOKED_REL} is unusable ({'; '.join(found)})")
+    found = []
+    retired = check_retired_source(found, base)
+    if retired is None:
+        raise BaseUnavailable(f"the base's {RETIRED_REL} is unusable ({'; '.join(found)})")
     by_id = {t["id"]: t for t in themes if isinstance(t, dict) and isinstance(t.get("id"), str)}
-    return BaseState(published, by_id, {r["id"] for r in revoked})
+    return BaseState(published, by_id, {r["id"] for r in revoked}, retired)
 
 
-def check_against_base(problems, old, published, sources, index, pr):
+def check_against_base(problems, old, published, sources, index, retired, pr):
+    listed = {entry["id"] for entry in index["themes"]} if index is not None else set()
+    removable = retired - listed if retired is not None and index is not None else set()
     if published is not None:
-        lost = sorted(k for k, v in old.published.items() if published.get(k) != v)
+        lost = sorted(k for k, v in old.published.items() if published.get(k) != v
+                      and (k in published or k.split("/", 1)[0] not in removable))
         if lost:
-            problems.append(f"{PUBLISHED_REL}: only gains entries, but these base entries are gone or changed: {', '.join(lost)}")
+            problems.append(f"{PUBLISHED_REL}: entries are immutable and can only be removed for retired ids absent from "
+                            f"the index; these base entries are gone or changed: {', '.join(lost)}")
+        # A release may see an id's retirement for the first time without ever listing it.
+        # A partial removal may retain other files, but a retired id can never gain files.
+        reserved = (old.retired | (retired or set())) - set(sources)
+        republished = sorted(k for k in published.keys() - old.published if k.split("/", 1)[0] in reserved)
+        if republished:
+            problems.append(f"{PUBLISHED_REL}: retired ids can't gain files: {', '.join(republished)}")
+    if retired is not None:
+        forgotten = old.retired - retired
+        if forgotten:
+            problems.append(f"{RETIRED_REL}: retired ids can't be removed: {', '.join(sorted(forgotten))}")
     ever_published = {k.split("/", 1)[0] for k in old.published}
     for tid in sorted(sources):
         if tid in ever_published and tid not in old.themes:
@@ -1033,6 +1083,12 @@ def check_snapshot(head, base=None, pr=None, changed=None) -> list:
         check_v1_files(published_problems, head, published)
     problems += published_problems
 
+    retired = check_retired_source(problems, head)
+    if retired:
+        listed = {entry["id"] for entry in index["themes"]} if not index_problems else set()
+        for tid in sorted(retired & (listed | sources.keys())):
+            problems.append(f"{RETIRED_REL}: id {tid!r} is retired; ids are never reused")
+
     if not index_problems and not source_problems and not published_problems:
         check_cross(problems, head, index, sources, published, revoked)
 
@@ -1042,7 +1098,7 @@ def check_snapshot(head, base=None, pr=None, changed=None) -> list:
         except BaseUnavailable as error:
             problems.append(f"base branch: {error}; failing closed")
             return problems
-        check_against_base(problems, old, published, sources, None if index_problems else index, pr)
+        check_against_base(problems, old, published, sources, None if index_problems else index, retired, pr)
         if pr is not None:
             check_authorship(problems, pr, changed if changed is not None else changed_paths(head, base),
                              old.revoked_ids, revoked)
@@ -1259,13 +1315,13 @@ def plant_published_byte_edited_and_rehashed(head, base):
     rewrite_preview(head, make_png(height=4))
 
 
-def plant_published_entry_dropped(head, base):
-    # A delisted theme's published file and its entry both removed: this tree is consistent on
-    # its own; only the base shows that a published file went away.
-    (head / V1_REL / "second-theme" / "1.0.0" / "preview-dark.png").unlink()
-    published = read_json(head, PUBLISHED_REL)
-    del published["second-theme/1.0.0/preview-dark.png"]
-    write_json(head, PUBLISHED_REL, published)
+def remove_published_file(rel):
+    def plant(head, base):
+        (head / V1_REL / rel).unlink()
+        published = read_json(head, PUBLISHED_REL)
+        del published[rel]
+        write_json(head, PUBLISHED_REL, published)
+    return plant
 
 
 def plant_v1_symlink(head, base):
@@ -1276,8 +1332,8 @@ def plant_index_duplicate_id(head, base):
     edit_index(lambda d: d["themes"].append(json.loads(json.dumps(d["themes"][0]))))(head, base)
 
 
-def rewrite_preview(repo, png):
-    rel = "olympus-dusk/1.0.0/preview-light.png"
+def rewrite_preview(repo, png, tid="olympus-dusk"):
+    rel = f"{tid}/1.0.0/preview-light.png"
     write_file(repo, f"{V1_REL}/{rel}", png)
     published = read_json(repo, PUBLISHED_REL)
     published[rel] = sha256(png)
@@ -1285,8 +1341,7 @@ def rewrite_preview(repo, png):
 
 
 def bad_preview(png):
-    # The same bad file goes in the base too, so the base rule (published.json only gains
-    # entries) stays quiet and the single problem is the PNG rule's own.
+    # The same bad file goes in the base too, so the single problem is the PNG rule's own.
     def plant(head, base):
         for repo in (head, base):
             rewrite_preview(repo, png)
@@ -1374,6 +1429,16 @@ def empty_tree(repo):
 
 def delisted_tree(repo):
     write_tree(repo, listed=("olympus-dusk",), delisted=("second-theme",))
+
+
+def retired_with_files_tree(repo):
+    delisted_tree(repo)
+    write_json(repo, RETIRED_REL, ["second-theme"])
+
+
+def retired_tree(repo):
+    write_tree(repo)
+    write_json(repo, RETIRED_REL, ["second-theme"])
 
 
 def revoked_tree(repo):
@@ -1555,8 +1620,24 @@ RULES = [
      ["revoked doesn't equal themes/revoked.json"]),
     ("cross: revoked id present", plant_revoked_id_present, ["revoked id 'olympus-dusk' is still published"]),
     # Against the base branch.
-    ("base: edited published byte, published.json rehashed", plant_published_byte_edited_and_rehashed, ["only gains entries", "preview-light.png"]),
-    ("base: published entry dropped", plant_published_entry_dropped, ["only gains entries", "second-theme/1.0.0/preview-dark.png"], MAINTAINER, delisted_tree),
+    ("base: edited published byte, published.json rehashed", plant_published_byte_edited_and_rehashed,
+     ["entries are immutable", "preview-light.png"]),
+    ("base: edited retired theme's published byte, published.json rehashed",
+     lambda head, base: rewrite_preview(head, make_png(height=4), "second-theme"),
+     ["entries are immutable", "second-theme/1.0.0/preview-light.png"], MAINTAINER, retired_with_files_tree),
+    ("base: removed an older file for a still-listed id", remove_published_file("olympus-dusk/1.0.0/preview-dark.png"),
+     ["can only be removed for retired ids absent from the index", "olympus-dusk/1.0.0/preview-dark.png"],
+     MAINTAINER, new_version_head),
+    ("base: removed a file without recording retirement", remove_published_file("second-theme/1.0.0/preview-dark.png"),
+     ["can only be removed for retired ids", "second-theme/1.0.0/preview-dark.png"], MAINTAINER, delisted_tree),
+    ("base: removed a retirement record", no_plant,
+     ["retired ids can't be removed", "second-theme"], MAINTAINER, write_tree, retired_tree),
+    ("base: restored files for a retired id", no_plant,
+     ["retired ids can't gain files", "second-theme"], MAINTAINER, retired_with_files_tree, retired_tree),
+    ("base: listed a retired id after all its files were removed", add_file(RETIRED_REL, '["second-theme"]\n'),
+     ["id 'second-theme' is retired; ids are never reused"], MAINTAINER, two_themes, retired_tree),
+    ("v1: malformed retirement record", add_file(RETIRED_REL, '["second-theme", "second-theme"]\n'),
+     ["retired.json", "theme ids must be unique"]),
     ("base: reused id", plant_reused_id, ["delisted or revoked; ids are never reused"]),
     ("base: v1 files but no index.json (fail closed)", plant_base_no_index,
      ["base branch: the base has public/themes/v1/published.json but no readable public/themes/v1/index.json; failing closed"]),
@@ -1572,6 +1653,8 @@ RULES = [
      ["version 1.0.0 is lower than the base's 1.0.1"], PR(BOT_ID, [ROLLBACK_LABEL]), rolled_back_head, new_version_head),
     # PR authorship classes.
     ("authorship: non-maintainer edits public/themes/v1", base_bytes_differ(INDEX_REL), ["isn't a maintainer and may not change public/themes/v1/"], OTHER),
+    ("authorship: non-maintainer removes a delisted theme's files", no_plant,
+     ["isn't a maintainer and may not change public/themes/v1/"], OTHER, retired_tree, delisted_tree),
     ("authorship: non-maintainer edits revoked.json", base_bytes_differ(REVOKED_REL), ["isn't a maintainer and may not change themes/revoked.json"], OTHER),
     ("authorship: non-maintainer un-revokes", plant_unrevoke, ["may not un-revoke old-theme; only a maintainer PR"], OTHER),
     ("authorship: non-maintainer changes two themes", base_without_themes("olympus-dusk", "second-theme"), ["isn't a maintainer and may change at most one themes/<id>/"], OTHER, two_themes),
@@ -1605,6 +1688,11 @@ def passes():
         ("non-maintainer PR outside theme data", add_file("public/_headers", "/*\n"), OTHER, None, None),
         ("maintainer PR editing scripts/", add_file("scripts/check_theme_index.py", "# edited\n"), MAINTAINER, None, None),
         ("delisting PR (maintainer)", no_plant, MAINTAINER, delisted_tree, two_themes),
+        ("remove one published file after delisting", remove_published_file("second-theme/1.0.0/preview-dark.png"),
+         MAINTAINER, retired_with_files_tree, delisted_tree),
+        ("remove all published files after delisting", no_plant, MAINTAINER, retired_tree, delisted_tree),
+        ("delist and remove all published files together", no_plant, MAINTAINER, retired_tree, two_themes),
+        ("push retirement to a branch that never listed the theme", no_plant, PUSH, retired_tree, write_tree),
         ("revocation PR (maintainer)", no_plant, MAINTAINER, revoked_tree, two_themes),
         ("un-revocation PR (maintainer)", plant_unrevoke, MAINTAINER, None, None),
         ("author change: push event A->B", author_change, PUSH, None, None),

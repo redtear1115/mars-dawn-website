@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -125,12 +127,12 @@ try {
   <p>The free <code>marsdawn</code> tool turns a Markdown file into a PDF with one command. Tables, math, Mermaid diagrams and highlighted code come out the way they read in the source, and it needs nothing else installed, not even the MarsDawn app.</p>
 </section>
 <h2 id="install-it">Install it</h2>
-<pre><code>brew install redtear1115/tap/marsdawn
+<pre tabindex="0" role="region" aria-labelledby="install-it"><code>brew install redtear1115/tap/marsdawn
 marsdawn --version</code></pre>
 <p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds. On an Intel Mac it builds from source instead, which takes a few minutes and needs Xcode 26 or later. It runs on macOS 15 or later, and <code>marsdawn --version</code> prints the version you got.</p>
 <h2 id="save-a-document">Save a document</h2>
 <p>Paste this into a file named <code>plan.md</code>:</p>
-<pre><code># Plan: faster exports
+<pre tabindex="0" role="region" aria-labelledby="save-a-document"><code># Plan: faster exports
 
 An agent wrote this plan. You review it, then turn it into a PDF.
 
@@ -159,14 +161,15 @@ let pdf = try export("plan.md")
 <h2 id="export-it">Export it</h2>
 <pre><code>marsdawn export plan.md</code></pre>
 <p>It writes <code>plan.pdf</code> next to the source and prints where it went:</p>
-<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="export-it"><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>This is that page, captured from a real run of <code>marsdawn</code> 0.5.0:</p>
 <p><img class="pdf-page" src="/assets/cli/plan-en.png" alt="The exported PDF: the heading, a table of steps, an inline and a displayed formula, a Draft, Review, Ship diagram, and a highlighted line of Swift." width="989" height="930"></p>
 <h2 id="choose-a-theme-paper-size-and-file-name">Choose a theme, paper size and file name</h2>
-<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="choose-a-theme-paper-size-and-file-name"><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
 <ul>
   <li><code>--theme</code>: dawn, classic, modern or vivid, in the theme's light colors. Without it, <code>export</code> uses <code>$MARSDAWN_THEME</code>, then dawn.</li>
   <li><code>--paper</code>: a4 or letter. The default is a4.</li>
+  <li><code>--layout</code>: document (the default), handbook or handout. Handbook adds a cover from the front matter, a table of contents and PDF bookmarks.</li>
   <li><code>-o</code>: where to write the PDF, instead of next to the source.</li>
   <li><code>--allow-remote-images</code>: load images from the web while rendering. They stay off unless you pass it.</li>
 </ul>
@@ -179,6 +182,7 @@ let pdf = try export("plan.md")
 </ul>
 <h2 id="next">Next</h2>
 <ul>
+  <li>In the MarsDawn app, File ▸ Print… previews the same layouts before you print or save: <a href="/pdf/">Print &amp; PDF</a>.</li>
   <li>Every option and the JSON it prints: <a href="/cli/">Command Line</a>.</li>
   <li>To have a coding agent do this for you, run <code>marsdawn skill --install</code> to add <a href="/cli/skill/">the marsdawn agent skill</a>.</li>
   <li>All four preview themes, and where PDF export is headed: <a href="/themes/">preview themes and PDF export</a>.</li>
@@ -194,11 +198,12 @@ let pdf = try export("plan.md")
         <li><a href="/features/">Features</a></li>
         <li><a href="/quicklook/">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/">PDF export</a></li>
+        <li><a href="/pdf/">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>
         <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/roadmap/">Roadmap</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -235,7 +240,7 @@ let pdf = try export("plan.md")
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Themes</h3>
       <ul>
-        <li><a href="/themes/">Preview themes and PDF export</a></li>
+        <li><a href="/themes/">Themes</a></li>
         <li><a href="/themes/gallery/">Theme gallery</a></li>
         <li><a href="/themes/new/">Build a theme</a></li>
         <li><a href="/themes/agents/">Make a theme with your agent</a></li>
@@ -252,6 +257,7 @@ let pdf = try export("plan.md")
     </section>
   </nav>
   <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-markdown-to-pdf&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, the Apple logo, Mac, iPhone, iPad and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store and Mac App Store are service marks of Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>

@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -51,7 +53,7 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/es/"}, {"@type": "ListItem", "position": 2, "name": "Temas de la vista previa y exportación a PDF", "item": "https://marsdawn.southern-light.dev/es/themes/"}, {"@type": "ListItem", "position": 3, "name": "Crea un tema con tu agente", "item": "https://marsdawn.southern-light.dev/es/themes/agents/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/es/"}, {"@type": "ListItem", "position": 2, "name": "Temas", "item": "https://marsdawn.southern-light.dev/es/themes/"}, {"@type": "ListItem", "position": 3, "name": "Crea un tema con tu agente", "item": "https://marsdawn.southern-light.dev/es/themes/agents/"}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -138,7 +140,7 @@ try {
 
 <h2 id="check-and-render">Comprobar y renderizar</h2>
 <p>Ejecuta estos comandos en la carpeta que contiene <code>theme.json</code>. Necesitan la herramienta <code>marsdawn</code>: consulta <a href="/es/cli/agents/">marsdawn para agentes</a>.</p>
-<pre><code>marsdawn theme validate theme.json --require-complete --json
+<pre tabindex="0" role="region" aria-labelledby="check-and-render"><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
@@ -160,7 +162,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 <h3 id="example-dawn">Ejemplo: Dawn</h3>
 <p>Este es <code>dawn.json</code>, byte por byte. Su única opción de estilo es una línea fina del color de acento para <code>hr</code>.</p>
-<pre><code>{
+<pre tabindex="0" role="region" aria-labelledby="example-dawn"><code>{
   "schemaVersion": 1,
   "id": "dawn",
   "version": "1.0.0",
@@ -389,7 +391,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 
 <h2 id="hand-it-over-as-a-link">Entrégalo como un enlace</h2>
 <p>La página <a href="/es/themes/new/">Crear un tema</a> abre un tema desde un enlace, para que la persona pueda afinarlo a ojo. El enlace es la dirección de esa página, luego <code>#theme=</code> y luego los bytes del archivo en base64url sin relleno. El archivo puede pesar como máximo 16 384 bytes. Esta única línea construye el enlace en zsh y en bash, en macOS y en Linux:</p>
-<pre><code>printf 'https://marsdawn.southern-light.dev/es/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="hand-it-over-as-a-link"><code>printf 'https://marsdawn.southern-light.dev/es/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>El tema viaja detrás de un <code>#</code>, que el navegador no envía al sitio, y el sitio no lo envía a ninguna parte. Eso sí, el enlace queda en el historial de tu shell y en el del navegador, y cualquiera a quien se lo pegues puede leer el tema.</p>
 
 <h2 id="submit-it">Envíalo</h2>
@@ -410,13 +412,14 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
       <h3 id="footer-product">Producto</h3>
       <ul>
         <li><a href="/es/features/">Funciones</a></li>
-        <li><a href="/es/quicklook/">Vista rápida para Markdown</a></li>
+        <li><a href="/es/quicklook/">Vista Rápida para Markdown</a></li>
         <li><a href="/es/native/">Una app para Mac</a></li>
-        <li><a href="/es/pdf/">Exportación a PDF</a></li>
+        <li><a href="/es/pdf/">Imprimir y PDF</a></li>
         <li><a href="/es/limits/">Lo que MarsDawn no hace</a></li>
         <li><a href="/es/pay-once/">Pruébalo gratis, paga una vez</a></li>
         <li><a href="/es/yours/">Lo que escribes se queda en tu Mac</a></li>
         <li><a href="/es/changelog/">Historial de cambios</a></li>
+        <li><a href="/es/roadmap/">Hoja de ruta</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -453,7 +456,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Temas</h3>
       <ul>
-        <li><a href="/es/themes/">Temas de la vista previa y exportación a PDF</a></li>
+        <li><a href="/es/themes/">Temas</a></li>
         <li><a href="/es/themes/gallery/">Galería de temas</a></li>
         <li><a href="/es/themes/new/">Crear un tema</a></li>
         <li><a href="/es/themes/agents/" aria-current="page">Crea un tema con tu agente</a></li>
@@ -470,6 +473,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
     </section>
   </nav>
   <p class="footer-meta"><span>Un nuevo amanecer para Markdown.</span> <span>MarsDawn está en el <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-themes&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, el logotipo de Apple, Mac, iPhone, iPad e iCloud son marcas comerciales de Apple Inc., registradas en EE. UU. y en otros países y regiones. App Store y Mac App Store son marcas de servicio de Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>

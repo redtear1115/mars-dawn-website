@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -26,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MarsDawn：エージェントの Markdown をライブプレビューで確認</title>
-<meta name="description" content="エージェントが書いた Markdown を読んで確かめる Mac ネイティブアプリ。分割ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF 書き出し。無料で試せて、解除は一度だけ USD 2.49。">
+<meta name="description" content="エージェントが書いた Markdown・JSON・YAML を確かめる Mac ネイティブアプリ。ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF。無料で試せて、一度だけ USD 4.99。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -45,7 +47,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ja/">
 <link rel="alternate" type="text/markdown" href="/ja/index.md">
 <meta property="og:title" content="MarsDawn：エージェントの Markdown をライブプレビューで確認">
-<meta property="og:description" content="エージェントが書いた Markdown を読んで確かめる Mac ネイティブアプリ。分割ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF 書き出し。無料で試せて、解除は一度だけ USD 2.49。">
+<meta property="og:description" content="エージェントが書いた Markdown・JSON・YAML を確かめる Mac ネイティブアプリ。ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF。無料で試せて、一度だけ USD 4.99。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -54,8 +56,9 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "エージェントが書いた Markdown を読んで確かめる Mac ネイティブアプリ。分割ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF 書き出し。無料で試せて、解除は一度だけ USD 2.49。", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "softwareVersion": "1.1.1", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "0", "highPrice": "2.49", "offerCount": 2, "offers": [{"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "One-time unlock after the trial, no subscription", "price": "2.49", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-11-30"}]}, "screenshot": "https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}, "sameAs": ["https://apps.apple.com/app/id6812925073", "https://github.com/redtear1115/mars-dawn-kit", "https://github.com/redtear1115/homebrew-tap", "https://github.com/redtear1115/marsdawn-mcp"], "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/ja/"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "MarsDawn とは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn は、エージェントが書いた Markdown を読んで確かめるための Mac ネイティブアプリです。ソースの横にライブプレビューを並べ、Mermaid と KaTeX を描画し、クイックルックで .md をプレビューし、PDF に書き出せます。ソースの編集もできます。"}}, {"@type": "Question", "name": "MarsDawn はサブスクリプションですか？", "acceptedAnswer": {"@type": "Answer", "text": "いいえ。MarsDawn は無料でダウンロードでき、14日間はすべての機能を試せます。そのあとは USD 2.49 のApp 内課金を一度行うだけで、ずっとロック解除されます。更新はなく、アカウントも不要です。"}}, {"@type": "Question", "name": "MarsDawn は iPhone や iPad で使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "いいえ。MarsDawn は Mac アプリで、macOS 26 以降が必要です。iPhone 版や iPad 版はありません。"}}, {"@type": "Question", "name": "Claude Code から MarsDawn でファイルを開けますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。無料の marsdawn コマンドラインツールには open コマンドがあり、Markdown ファイルを MarsDawn で開けるので、Claude Code やシェルコマンドを実行できるエージェントから呼び出せます。Claude が Markdown ファイルを書いたり編集したりするたびに開く、任意で有効にする Claude Code フックもあります。"}}, {"@type": "Question", "name": "MarsDawn は文書をアップロードしますか？", "acceptedAnswer": {"@type": "Answer", "text": "いいえ。アプリが文書をアップロードすることはなく、あなたに関するデータも集めず、アカウントもありません。文書と設定は Mac に残ります。文書が Web を参照していて、それを読み込むと選んだときだけ、Mac がその内容をホストしているサーバから直接取得します。MarsDawn の開発者はその情報を一切受け取りません。"}}, {"@type": "Question", "name": "MCP または skill を使うと、ファイルを見られるのは誰ですか？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn 自体は何も送りません。skill は指示を書いたテキストファイルで、marsdawn CLI と MCP サーバーは Mac の上で動き、MCP サーバーはあなたが許可したフォルダの中だけで動作します。ファイルを読むのはあなたのエージェントで、そのエージェントとモデル提供元がファイルをどう扱うかは、そのエージェントのポリシーによります。MarsDawn はそれを管理せず、説明もしません。"}}, {"@type": "Question", "name": "送られてきた HTML を開いても安全ですか？", "acceptedAnswer": {"@type": "Answer", "text": "初期状態では静的に開き、コードは実行されず、Web からも何も読み込まれません。「表示 › この書類を実行」を選ぶと、その文書が実行され、ネットワーク経由でデータを送ったり、同じフォルダの画像、スタイルシート、フォント、メディアを読んだりできるようになります。この選択は記憶されないので、次に開くときはまた静的です。"}}, {"@type": "Question", "name": "サイトの分析用クッキーはアプリと関係がありますか？", "acceptedAnswer": {"@type": "Answer", "text": "関係ありません。アプリとこのウェブサイトは別のものです。アプリはデータを収集せず、訪問が記録され得るのは marsdawn.southern-light.dev だけです。サイトの Google Analytics は最初は拒否の状態で、バナーで「同意する」を選んだあとにだけクッキーを設定し、フッターの「Cookie 設定」でいつでも変えられます。アプリが /themes/ のテーマファイルを取りに行くリクエストは記録されません。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "エージェントが書いた Markdown・JSON・YAML を確かめる Mac ネイティブアプリ。ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF。無料で試せて、一度だけ USD 4.99。", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later, iOS 26 or later, iPadOS 26 or later", "softwareVersion": "1.2.2", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "0", "highPrice": "4.99", "offerCount": 2, "offers": [{"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "One-time unlock after the trial, no subscription", "price": "4.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}]}, "screenshot": "https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}, "sameAs": ["https://apps.apple.com/app/id6812925073", "https://github.com/redtear1115/mars-dawn-kit", "https://github.com/redtear1115/homebrew-tap", "https://github.com/redtear1115/marsdawn-mcp"], "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/ja/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "MarsDawn とは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn は、エージェントが書いた Markdown を読んで確かめるための Mac ネイティブアプリです。ソースの横にライブプレビューを並べ、Mermaid と KaTeX を描画し、クイックルックで .md をプレビューし、PDF に書き出せます。ソースの編集もできます。Mac では JSON と YAML もツリープレビュー付きで開けます。"}}, {"@type": "Question", "name": "MarsDawn はサブスクリプションですか？", "acceptedAnswer": {"@type": "Answer", "text": "いいえ。MarsDawn は無料でダウンロードでき、14日間はすべての機能を試せます。そのあとは USD 4.99 のApp 内課金を一度行うだけで、ずっとロック解除されます。更新はなく、アカウントも不要です。"}}, {"@type": "Question", "name": "MarsDawn は iPhone や iPad で使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい、閲覧用です。iPhone と iPad の MarsDawn は Markdown、テキスト、PDF、JSON、YAML を開き、Mermaid 図、数式、コード、表を整えて表示します。ファイルの共有、プリント、PDF としての保存はできますが、編集はできません。iOS 26 または iPadOS 26 以降が必要です。同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad をすべて利用できます。"}}, {"@type": "Question", "name": "Claude Code から MarsDawn でファイルを開けますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。無料の marsdawn コマンドラインツールには open コマンドがあり、Markdown ファイルを MarsDawn で開けるので、Claude Code やシェルコマンドを実行できるエージェントから呼び出せます。Claude が Markdown ファイルを書いたり編集したりするたびに開く、任意で有効にする Claude Code フックもあります。"}}, {"@type": "Question", "name": "MarsDawn は文書をアップロードしますか？", "acceptedAnswer": {"@type": "Answer", "text": "いいえ。アプリが文書をアップロードすることはなく、あなたに関するデータも集めず、アカウントもありません。文書と設定は Mac に残ります。文書が Web を参照していて、それを読み込むと選んだときだけ、Mac がその内容をホストしているサーバから直接取得します。MarsDawn の開発者はその情報を一切受け取りません。"}}, {"@type": "Question", "name": "MCP または skill を使うと、ファイルを見られるのは誰ですか？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn 自体は何も送りません。skill は指示を書いたテキストファイルで、marsdawn CLI と MCP サーバーは Mac の上で動き、MCP サーバーはあなたが許可したフォルダの中だけで動作します。ファイルを読むのはあなたのエージェントで、そのエージェントとモデル提供元がファイルをどう扱うかは、そのエージェントのポリシーによります。MarsDawn はそれを管理せず、説明もしません。"}}, {"@type": "Question", "name": "送られてきた HTML を開いても安全ですか？", "acceptedAnswer": {"@type": "Answer", "text": "初期状態では静的に開き、コードは実行されず、Web からも何も読み込まれません。「表示 › この書類を実行」を選ぶと、その文書が実行され、ネットワーク経由でデータを送ったり、同じフォルダの画像、スタイルシート、フォント、メディアを読んだりできるようになります。この選択は記憶されないので、次に開くときはまた静的です。"}}, {"@type": "Question", "name": "サイトの分析用クッキーはアプリと関係がありますか？", "acceptedAnswer": {"@type": "Answer", "text": "関係ありません。アプリとこのウェブサイトは別のものです。アプリはデータを収集せず、訪問が記録され得るのは marsdawn.southern-light.dev だけです。サイトの Google Analytics は最初は拒否の状態で、バナーで「同意する」を選んだあとにだけクッキーを設定し、フッターの「Cookie 設定」でいつでも変えられます。アプリが /themes/ のテーマファイルを取りに行くリクエストは記録されません。"}}, {"@type": "Question", "name": "ほかのアプリではなく MarsDawn を使う理由は？", "acceptedAnswer": {"@type": "Answer", "text": "必要ないかもしれません。自分のメモを書くのが中心なら、Obsidian のようなノートアプリのほうが向いています。VS Code でずっと作業しているなら、標準のプレビューが無料で使えます。Finder でファイルをさっと見たいだけなら、無料のクイックルック拡張機能で十分です。MarsDawn は、エージェントが書いた Markdown を読んでレビューするためのアプリです。ソースの横にライブプレビューがあり、エージェントの変更は一度で取り消せ、ファイルを指定の行で開けます。合わないと感じたら、その理由をメールで教えてください。"}}, {"@type": "Question", "name": "MarsDawn はこれからもメンテナンスされますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。MarsDawn が Mac App Store に登場してからのアップデートはすべて更新履歴に載っています。2026 年 10 月 28 日からは、iPhone と iPad でも MarsDawn で書類を読めます。MarsDawn のレンダリングの中核と無料の marsdawn コマンドラインツールは、すでに Apache-2.0 ライセンスで mars-dawn-kit としてオープンソースになっています。そして、MarsDawn の開発者がアプリのメンテナンスをやめるときは、アプリ自体のソースコードをオープンソースライセンスで公開し、ほかの人が引き継げるようにします。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoObject", "name": "MarsDawn: work with any agent, anywhere", "description": "In this 30-second film, you brief your agent from your phone and it writes on your Mac. MarsDawn for Mac opens its Markdown and HTML; on iPhone or iPad you read the same plan, and editing stays on the Mac.", "inLanguage": "en", "duration": "PT30S", "uploadDate": "2026-11-02T10:00:00+08:00", "width": 1920, "height": 1080, "contentUrl": "https://marsdawn.southern-light.dev/assets/film/mars-dawn-agents-16x9-en.mp4", "thumbnailUrl": ["https://marsdawn.southern-light.dev/assets/film/mars-dawn-agents-16x9-poster-en.jpg", "https://marsdawn.southern-light.dev/assets/film/mars-dawn-agents-poster-en.jpg"]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -177,12 +180,14 @@ try {
   <p class="kicker">ビルダーのためのフロンティアツール</p>
   <h1><span>地図を手に。</span><span>夜明けを読む。</span></h1>
   <p>エージェント開発の舵を取る人のための Markdown。</p>
-  <p class="definition">MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ USD 2.49 で解除できます。</p>
+  <p class="hero-cta"><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8"><img src="/assets/badges/app-store-ja.svg" width="109" height="40" alt="App Storeからダウンロード"></a> <a class="cta cta-secondary" href="#install">無料の CLI をインストール</a></p>
+<p class="hero-devices">Mac で書いて、iPhone と iPad で読む</p>
+<p class="hero-req"><span aria-hidden="true">macOS 26 · iOS 26 · iPadOS 26</span><span class="visually-hidden">macOS 26、iOS 26、iPadOS 26 以降が必要です</span></p>
+  <p class="definition">MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ USD 4.99 で解除できます。Mac では JSON と YAML もツリープレビュー付きで開けます。</p>
 </section>
-<p class="sale-line" data-sale-line>ブラックフライデーセール：一度きりのロック解除が半額の USD 2.49（通常 USD 4.99）。11月30日まで。12月1日から USD 4.99 に戻ります。</p>
-<p class="hero-cta"><a class="cta cta-primary" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">Mac App Store で見る</a> <a class="cta cta-secondary" href="#install">無料の CLI をインストール</a></p>
 </div>
 <div class="hero-shot">
+<div class="hero-stage">
 <div class="mdw" role="group" aria-label="操作できる MarsDawn のウインドウ：テーマとレイアウトを選べます">
   <div class="mdw-bar">
     <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -277,16 +282,40 @@ try {
     </div>
   </div>
 </div>
+<picture class="hero-phone">
+  <source media="(prefers-color-scheme: dark)" type="image/webp" srcset="/assets/hero/iphone-dark-420.webp 420w, /assets/hero/iphone-dark-840.webp 840w" sizes="(min-width: 1100px) 230px, (min-width: 640px) 190px, 35vw">
+  <img src="/assets/hero/iphone-light-840.webp" srcset="/assets/hero/iphone-light-420.webp 420w, /assets/hero/iphone-light-840.webp 840w" sizes="(min-width: 1100px) 230px, (min-width: 640px) 190px, 35vw" width="840" height="1826" alt="iPhone の MarsDawn に、エージェントが書いたチェックアウトの計画書と Mermaid のフローチャートを表示（夜明けテーマ、ライト）" decoding="async">
+</picture>
+</div>
 </div>
 </div>
 </section>
+<section class="iphone-steps" id="iphone-steps" aria-labelledby="iphone-steps-title">
+<h2 id="iphone-steps-title">席を離れても、エージェントが書いたものを読める</h2>
+<ol>
+  <li>Mac で、エージェントにファイルを iCloud Drive のフォルダへ保存させます。</li>
+  <li>iPhone や iPad で、MarsDawn から開くか、ほかの App から開きます。</li>
+  <li>共有、プリント、PDF として保存ができます。編集は Mac で行います。</li>
+</ol>
+<p class="iphone-steps-limit">iPhone と iPad では閲覧専用で、Markdown、テキスト、PDF、JSON、YAML を開けます。</p>
+<p><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home-iphone&amp;mt=8"><img src="/assets/badges/app-store-ja.svg" width="109" height="40" alt="App Storeからダウンロード"></a></p>
+<p><a href="/ja/features/#iphone-ipad">iPhone と iPad 版について詳しく</a></p>
+</section>
 <section class="film" aria-labelledby="film-h">
 <h2 id="film-h">動画を見る</h2>
-<video controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/marsdawn-film-en-poster.jpg" aria-label="MarsDawn の動画（54 秒）">
-<source src="/assets/film/marsdawn-film-en-1080p30.mp4" type="video/mp4">
-<track kind="subtitles" src="/assets/film/marsdawn-film-ja.vtt" srclang="ja" label="日本語" default>
+<figure class="film-figure">
+<video class="film-wide" controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/mars-dawn-agents-16x9-poster-en.jpg" aria-label="動画：Mac と iPhone の MarsDawn、30 秒、英語字幕">
+<source src="/assets/film/mars-dawn-agents-16x9-en.mp4" type="video/mp4">
+<track kind="captions" src="/assets/film/mars-dawn-agents-en.vtt" srclang="en" label="English">
 <p>お使いのブラウザではこの動画を再生できません。</p>
 </video>
+<video class="film-tall" controls preload="none" playsinline width="1080" height="1920" poster="/assets/film/mars-dawn-agents-poster-en.jpg" aria-label="動画：Mac と iPhone の MarsDawn、30 秒、英語字幕">
+<source src="/assets/film/mars-dawn-agents-en.mp4" type="video/mp4">
+<track kind="captions" src="/assets/film/mars-dawn-agents-en.vtt" srclang="en" label="English">
+<p>お使いのブラウザではこの動画を再生できません。</p>
+</video>
+<figcaption>30 秒：エージェントが Mac で書き、あなたは iPhone で読む。（英語字幕）</figcaption>
+</figure>
 </section>
 <h2 class="loop-title">エージェントが書いた Markdown を読む。</h2>
 <ol class="loop-steps">
@@ -295,6 +324,27 @@ try {
   <li><strong>エージェントが修正する。</strong>変更を依頼します。修正されたファイルを開き、同じように読みます。</li>
 </ol>
 <p><a href="/ja/reading-agent-output/">エージェントが返してくるものをどう確認するか</a> · <a href="/ja/view-markdown-on-mac/">Mac で .md ファイルを開く方法</a></p>
+<section class="feature-cards" aria-labelledby="feature-cards-title">
+<h2 class="visually-hidden" id="feature-cards-title">機能</h2>
+<div class="feature-cards-grid">
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-mermaid-624.png" width="624" height="468" alt="確認と再送のループがあるフローチャートと、その下のコードブロック。" loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/ja/mermaid-preview-mac/">Mermaid 図とコード</a><span>プレビューが図を描き、コードをハイライトします。ソースのすぐ隣で。</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-pdf-665.png" width="665" height="499" alt="ページの上部：タイトル、短い段落、フローチャート。" loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/ja/pdf/">プリントと PDF</a><span>Mermaid 図は PDF に描き込まれます。</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-vivid-624.png" width="624" height="468" alt="描画されたページを表示するプレビューウインドウ：タイトル、短い段落、フローチャート。" loading="lazy" decoding="async"><span class="feature-card-os feature-card-os-end" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/ja/quicklook/">Markdown のクイックルック</a><span>Finder で Markdown ファイルを選んでスペースキーを押します。</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-iphone-944.webp" srcset="/assets/screens/card-iphone-472.webp 472w, /assets/screens/card-iphone-944.webp 944w" sizes="(min-width: 992px) 472px, min(100vw - 32px, 560px)" width="944" height="708" alt="チェックアウトのフローチャートと、その下のコードブロックの冒頭。" loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">iPhone</span></div>
+  <figcaption><a href="/ja/features/#iphone-ipad">iPhone と iPad で読む</a><span>iPhone と iPad の MarsDawn は閲覧専用で、編集はできません。編集は Mac で行います。</span></figcaption>
+</figure>
+</div>
+</section>
 <h2>エージェントの計画を、実行する前に読む。</h2>
 <p>順番のおかしい手順を見つけ、その行を示して、エージェントに戻します。</p>
 <div class="loop-anim loop-ja loop-plan">
@@ -345,6 +395,7 @@ try {
   <li><code>marsdawn open</code> はファイルを MarsDawn アプリで開き、確認できるようにします。</li>
   <li><code>--json</code> は、スクリプトやエージェントが解析できる結果を返します。</li>
 </ul>
+<p>ここでインストールされるのはコマンドラインツールです。Homebrew で Mac アプリを入手する方法は、<a href="/ja/cli/#mac-app">こちら</a>をご覧ください。</p>
 <p class="install-links"><a href="/ja/cli/">コマンドライン</a> · <a href="/ja/cli/agents/">AI エージェント向け marsdawn</a> · <a href="/ja/cli/skill/">エージェント用スキル</a> · <a href="/ja/cli/mcp/">MCP サーバー</a></p>
 </section>
 <nav class="traits" aria-label="MarsDawn に期待できること">
@@ -352,14 +403,15 @@ try {
 <ul>
   <li><a href="/ja/native/">Mac アプリ</a><span>ネイティブのウインドウとタブ、自動保存、<a href="/ja/quicklook/">クイックルック</a>。</span></li>
   <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a><span>アカウント不要、同期なし、クラウドなし。</span></li>
-  <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a><span>14日間無料、その後は一度だけ USD 2.49。サブスクリプションはありません。</span></li>
+  <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a><span>14日間無料、その後は一度だけ USD 4.99。サブスクリプションはありません。</span></li>
   <li><a href="/ja/features/">機能一覧</a><span>MarsDawn でできることを、1ページで。</span></li>
+  <li><a href="/ja/themes/">テーマ</a><span>4種類を内蔵、ギャラリーにはさらに多く。</span></li>
 </ul>
 </nav>
 <p class="know">購入前に知っておくこと。 <a href="/ja/limits/">MarsDawn ができないこと</a></p>
 <section class="pieces">
 <h2 id="pieces">それぞれの役割</h2>
-<p>MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 の時点で、それぞれができること。</p>
+<p>MarsDawn 1.2.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 の時点で、それぞれができること。</p>
 <div class="table-scroll" tabindex="0" role="region" aria-labelledby="pieces"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">機能</th><th scope="col">アプリ</th><th scope="col">CLI</th><th scope="col">MCP／skill</th><th scope="col">状態</th></tr></thead>
 <tbody>
@@ -397,14 +449,29 @@ try {
 <p>外に出るのは、あなたが選んだときだけ。「AI 用にコピー」はテキストをクリップボードに置くだけで、貼るのはあなたです。テーマのダウンロード、「表示 › この書類を実行」で実行した文書、エージェントに読ませたファイルも、あなたが選んだときだけ外に出ます。</p>
 <p class="more">詳しくは：<a href="/ja/privacy/#when-marsdawn-uses-the-internet">プライバシーポリシー</a></p>
 </section>
+<section class="price-card" aria-labelledby="price-title">
+  <div class="price-card__bar" aria-hidden="true"><span class="price-card__dots"></span>pricing.md</div>
+  <div class="price-card__body">
+    <div class="price-card__head"><h2 id="price-title">MarsDawn</h2><p class="price-card__badge">サブスクなし</p></div>
+    <p class="price-card__price">USD 4.99 の買い切り</p>
+    <blockquote>無料でダウンロード。14日間はすべての機能を無料で試せます。</blockquote>
+    <ul>
+      <li>同じ Apple Account なら、1 回の購入で Mac、iPhone、iPad のすべてで使えます。</li>
+      <li>アカウント不要、自動更新もありません。</li>
+      <li>Finder のクイックルックは試用期間に関係なく使えます。</li>
+    </ul>
+    <p class="price-card__action"><a class="price-card__cta" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">Mac App Store で MarsDawn を入手</a></p>
+  </div>
+</section>
 <section class="faq">
 <h2>よくある質問</h2>
 <h3>MarsDawn とは何ですか？</h3>
-<p>MarsDawn は、エージェントが書いた Markdown を読んで確かめるための Mac ネイティブアプリです。ソースの横にライブプレビューを並べ、Mermaid と KaTeX を描画し、クイックルックで .md をプレビューし、PDF に書き出せます。ソースの編集もできます。</p>
+<p>MarsDawn は、エージェントが書いた Markdown を読んで確かめるための Mac ネイティブアプリです。ソースの横にライブプレビューを並べ、Mermaid と KaTeX を描画し、クイックルックで .md をプレビューし、PDF に書き出せます。ソースの編集もできます。Mac では JSON と YAML もツリープレビュー付きで開けます。</p>
 <h3>MarsDawn はサブスクリプションですか？</h3>
-<p>いいえ。MarsDawn は無料でダウンロードでき、14日間はすべての機能を試せます。そのあとは USD 2.49 のApp 内課金を一度行うだけで、ずっとロック解除されます。更新はなく、アカウントも不要です。</p>
+<p>いいえ。MarsDawn は無料でダウンロードでき、14日間はすべての機能を試せます。そのあとは USD 4.99 のApp 内課金を一度行うだけで、ずっとロック解除されます。更新はなく、アカウントも不要です。</p>
 <h3>MarsDawn は iPhone や iPad で使えますか？</h3>
-<p>いいえ。MarsDawn は Mac アプリで、macOS 26 以降が必要です。iPhone 版や iPad 版はありません。</p>
+<p>はい、閲覧用です。iPhone と iPad の MarsDawn は Markdown、テキスト、PDF、JSON、YAML を開き、Mermaid 図、数式、コード、表を整えて表示します。ファイルの共有、プリント、PDF としての保存はできますが、編集はできません。iOS 26 または iPadOS 26 以降が必要です。同じ Apple Account なら、1回のトライアルと1回のロック解除で、Mac、iPhone、iPad をすべて利用できます。</p>
+<p class="more">詳しくは：<a href="/ja/roadmap/">ロードマップ</a></p>
 <h3>Claude Code から MarsDawn でファイルを開けますか？</h3>
 <p>はい。無料の marsdawn コマンドラインツールには open コマンドがあり、Markdown ファイルを MarsDawn で開けるので、Claude Code やシェルコマンドを実行できるエージェントから呼び出せます。Claude が Markdown ファイルを書いたり編集したりするたびに開く、任意で有効にする Claude Code フックもあります。</p>
 <h3>MarsDawn は文書をアップロードしますか？</h3>
@@ -419,37 +486,16 @@ try {
 <h3>サイトの分析用クッキーはアプリと関係がありますか？</h3>
 <p>関係ありません。アプリとこのウェブサイトは別のものです。アプリはデータを収集せず、訪問が記録され得るのは marsdawn.southern-light.dev だけです。サイトの Google Analytics は最初は拒否の状態で、バナーで「同意する」を選んだあとにだけクッキーを設定し、フッターの「Cookie 設定」でいつでも変えられます。アプリが /themes/ のテーマファイルを取りに行くリクエストは記録されません。</p>
 <p class="more">詳しくは：<a href="/ja/privacy/#the-website">プライバシーポリシー</a></p>
-</section>
-<section class="proof">
-<h2>実際のアプリ画面</h2>
-<h3><a href="/ja/native/">Mac アプリ</a></h3>
-<figure class="shot">
-  <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="1180" height="844" alt="MarsDawn の分割ビュー：左が Markdown のソース、右がレンダリングされたページ。">
-    <span class="marker l tb co-native-1" aria-hidden="true">1</span><span class="marker l co-native-2" aria-hidden="true">2</span><span class="marker r tb co-native-3" aria-hidden="true">3</span><span class="marker r co-native-4" aria-hidden="true">4</span>
-    <span class="leader l up co-native-1" aria-hidden="true"><span>ネイティブの Mac ウインドウ。</span></span><span class="leader l down co-native-2" aria-hidden="true"><span>Mac のテキストエディタに、Markdown ハイライトを追加したもの。</span></span><span class="leader r up co-native-3" aria-hidden="true"><span>⌘1 でソース、⌘2 で分割、⌘3 でプレビュー。</span></span><span class="leader r down co-native-4" aria-hidden="true"><span>入力するとページが更新されます。</span></span>
-  </div></div>
-  <figcaption>
-    <span class="figure-label">このスクリーンショットの内容</span>
-    <ol><li>ネイティブの Mac ウインドウ。</li><li>Mac のテキストエディタに、Markdown ハイライトを追加したもの。</li><li>⌘1 でソース、⌘2 で分割、⌘3 でプレビュー。</li><li>入力するとページが更新されます。</li></ol>
-  </figcaption>
-</figure>
-<h3><a href="/ja/pdf/">PDF 書き出し</a></h3>
-<figure class="shot">
-  <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。">
-    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
-    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid 図は PDF に描き込まれます。</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>コードはハイライトを保ちます。</span></span>
-  </div></div>
-  <figcaption>
-    <span class="figure-label">このスクリーンショットの内容</span>
-    <ol><li>Mermaid 図は PDF に描き込まれます。</li><li>コードはハイライトを保ちます。</li></ol>
-  </figcaption>
-</figure>
+<h3>ほかのアプリではなく MarsDawn を使う理由は？</h3>
+<p>必要ないかもしれません。自分のメモを書くのが中心なら、Obsidian のようなノートアプリのほうが向いています。VS Code でずっと作業しているなら、標準のプレビューが無料で使えます。Finder でファイルをさっと見たいだけなら、無料のクイックルック拡張機能で十分です。MarsDawn は、エージェントが書いた Markdown を読んでレビューするためのアプリです。ソースの横にライブプレビューがあり、エージェントの変更は一度で取り消せ、ファイルを指定の行で開けます。合わないと感じたら、その理由をメールで教えてください。</p>
+<p class="more">詳しくは：<a href="/ja/vs/">MarsDawn とほかのツールの比較</a> · <a href="/ja/best-markdown-viewer-mac/">Mac 向け Markdown ビューアのおすすめ</a></p>
+<h3>MarsDawn はこれからもメンテナンスされますか？</h3>
+<p>はい。MarsDawn が Mac App Store に登場してからのアップデートはすべて更新履歴に載っています。2026 年 10 月 28 日からは、iPhone と iPad でも MarsDawn で書類を読めます。MarsDawn のレンダリングの中核と無料の marsdawn コマンドラインツールは、すでに Apache-2.0 ライセンスで mars-dawn-kit としてオープンソースになっています。そして、MarsDawn の開発者がアプリのメンテナンスをやめるときは、アプリ自体のソースコードをオープンソースライセンスで公開し、ほかの人が引き継げるようにします。</p>
+<p class="more">詳しくは：<a href="/ja/changelog/">更新履歴</a> · <a href="/ja/roadmap/">ロードマップ</a> · <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a></p>
 </section>
 <section class="dawn-close">
-<p><strong>Markdown の新しい夜明け。</strong> MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">Mac App Store</a> で配信中です。</p>
-<p class="close-next"><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">今すぐダウンロードして試す</a></p>
+<p><strong>Markdown の新しい夜明け。</strong> MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-close&amp;mt=8">Mac App Store</a> で配信中です。</p>
+<p class="close-next"><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-close&amp;mt=8"><img src="/assets/badges/app-store-ja.svg" width="109" height="40" alt="App Storeからダウンロード"></a></p>
 </section>
 </main>
 <footer class="footer footer-home">
@@ -461,11 +507,12 @@ try {
         <li><a href="/ja/features/">機能一覧</a></li>
         <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
         <li><a href="/ja/native/">Mac アプリ</a></li>
-        <li><a href="/ja/pdf/">PDF 書き出し</a></li>
+        <li><a href="/ja/pdf/">プリントと PDF</a></li>
         <li><a href="/ja/limits/">MarsDawn ができないこと</a></li>
         <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
         <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>
         <li><a href="/ja/changelog/">更新履歴</a></li>
+        <li><a href="/ja/roadmap/">ロードマップ</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -502,7 +549,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">テーマ</h3>
       <ul>
-        <li><a href="/ja/themes/">プレビューテーマと PDF 書き出し</a></li>
+        <li><a href="/ja/themes/">テーマ</a></li>
         <li><a href="/ja/themes/gallery/">テーマギャラリー</a></li>
         <li><a href="/ja/themes/new/">テーマを作る</a></li>
         <li><a href="/ja/themes/agents/">エージェントとテーマを作る</a></li>
@@ -519,6 +566,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple のロゴ、Mac、iPhone、iPad、iCloud は、米国およびその他の国や地域で登録された Apple Inc. の商標です。App Store および Mac App Store は Apple Inc. のサービスマークです。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>

@@ -6,7 +6,8 @@ name: Theme from pull request
 # changed path), checks author.github against the PR author and every commit's Signed-off-by, then
 # builds and opens a new PR from the target branch with the designer as co-author, and closes the
 # original with credit (#143; plan-website-104 W2, F2). No step checks out, runs or pushes to the
-# PR's code or fork. No secrets.
+# PR's code or fork. The gate refuses a PR author on .github/theme-submission-blocklist.json (read
+# from this checkout, the default branch's commit). No secrets.
 
 on:
   workflow_dispatch:

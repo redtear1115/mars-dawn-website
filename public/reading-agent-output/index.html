@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -52,7 +54,7 @@ try {
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/"}, {"@type": "ListItem", "position": 2, "name": "Reading what your agent hands back", "item": "https://marsdawn.southern-light.dev/reading-agent-output/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Reading what your agent hands back", "description": "AI agents hand back their work as Markdown: plans, specs, progress reports. What people who build agents say about checkpoints and failures, why that output is hard to read, and a five-minute checklist for reviewing a plan.", "datePublished": "2026-10-06", "dateModified": "2026-10-08", "inLanguage": "en", "mainEntityOfPage": "https://marsdawn.southern-light.dev/reading-agent-output/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Reading what your agent hands back", "description": "AI agents hand back their work as Markdown: plans, specs, progress reports. What people who build agents say about checkpoints and failures, why that output is hard to read, and a five-minute checklist for reviewing a plan.", "datePublished": "2026-10-06", "dateModified": "2026-10-21", "inLanguage": "en", "mainEntityOfPage": "https://marsdawn.southern-light.dev/reading-agent-output/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -147,7 +149,7 @@ try {
   <li><strong>Diagrams and math:</strong> Mermaid and KaTeX are drawn in the preview beside the source (&#8984;2), and the two panes scroll together.</li>
   <li><strong>Rewritten while you read:</strong> when the agent rewrites the file, MarsDawn reloads it and keeps your place, as long as you have no unsaved edits of your own.</li>
   <li><strong>Several files:</strong> open the agent's folder with File &#9656; Open Folder&#8230; (&#8679;&#8984;O). New files show up in the Files tab within about a second, and for a git checkout the header names the branch or worktree.</li>
-  <li><strong>Exact feedback:</strong> Edit &#9656; Copy Reference (&#8997;&#8984;C) copies your place as <code>docs/plan.md:42</code>. Copy for AI (&#8963;&#8997;&#8984;C) adds the selected text under it. Paste either into the agent's chat.</li>
+  <li><strong>Exact feedback:</strong> Edit &#9656; Copy Reference (&#8997;&#8984;C) copies your place as <code>docs/plan.md:42</code>. <a href="/copy-for-ai/">Copy for AI</a> (&#8963;&#8997;&#8984;C) adds the selected text under it. Paste either into the agent's chat.</li>
 </ul>
 <p>Two more for the loop: an agent can run <code>marsdawn open plan.md:42</code> to open the file in MarsDawn at line 42, the line it wants you to see first, and a reviewed file exports to PDF from the app or with the free <code>marsdawn export</code> command.</p>
 <p>MarsDawn has no AI model inside. It won't summarize the plan, grade it or tell you what's wrong. You do the reading; it keeps a long, changing file readable and lets you point at the exact line.</p>
@@ -166,7 +168,7 @@ try {
 
 <h2 id="try-it">Try it</h2>
 <p>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reading-agent-output&amp;mt=8">Mac App Store</a>. There's also the free <code>marsdawn</code> command-line tool:</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="try-it"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>It exports Markdown to PDF without the app, and <code>marsdawn open</code> lets your agent open files in MarsDawn for you.</p>
 <p><a href="/cli/">Command Line</a> &#183; <a href="/cli/agents/">marsdawn for agents</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
 
@@ -196,11 +198,12 @@ try {
         <li><a href="/features/">Features</a></li>
         <li><a href="/quicklook/">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/">PDF export</a></li>
+        <li><a href="/pdf/">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>
         <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/roadmap/">Roadmap</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -237,7 +240,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Themes</h3>
       <ul>
-        <li><a href="/themes/">Preview themes and PDF export</a></li>
+        <li><a href="/themes/">Themes</a></li>
         <li><a href="/themes/gallery/">Theme gallery</a></li>
         <li><a href="/themes/new/">Build a theme</a></li>
         <li><a href="/themes/agents/">Make a theme with your agent</a></li>
@@ -254,6 +257,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reading-agent-output&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, the Apple logo, Mac, iPhone, iPad and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store and Mac App Store are service marks of Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>

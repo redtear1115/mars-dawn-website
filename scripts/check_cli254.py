@@ -8,7 +8,7 @@ locale's page holds each piece in full and in its place:
 - /cli/: each `open` and `export` bullet as its own <li> in that command's list, the two version sentences
   as paragraphs, and the `marsdawn theme` section (heading, commands, bullets) between export and the
   next h2;
-- /cli/agents/: the folder `status` bullet right after the `folder` item, and each schema note beside
+- /cli/agents/: the approved `folder` item, the `status` bullet right after it, and each schema note beside
   its schema file's link;
 - /changelog/: every CLI entry with its heading, date line and bullets, newest first, among the others.
 
@@ -36,8 +36,8 @@ from cli254 import data  # noqa: E402
 SITE = HERE.parent / "public"
 ROOTS = {"en": "", "zh-hant": "zh-hant/", "zh-hans": "zh-hans/", "ja": "ja/", "de": "de/", "fr": "fr/",
          "es": "es/", "ko": "ko/"}
-SCHEMA_FILES = {"open_v4": "open.v4.json", "open": "open.v3.json", "error_v3": "error.v3.json", "error": "error.v2.json"}
-ORDER = ["0.7.2", "0.7.1", "0.7.0", "0.6.4", "0.6.3", "0.6.1", "0.5.4"]
+SCHEMA_FILES = {"error_v4": "error.v4.json", "open_v4": "open.v4.json", "open": "open.v3.json", "error_v3": "error.v3.json", "error": "error.v2.json"}
+ORDER = ["0.7.7", "0.7.6", "0.7.5", "0.7.4", "0.7.3", "0.7.2", "0.7.1", "0.7.0", "0.6.4", "0.6.3", "0.6.1", "0.5.4"]
 
 
 def li(md: str) -> str:
@@ -116,6 +116,8 @@ def problems_for(locale: str, pages: dict) -> list:
     if rich_pages.escape(data.SHARED["theme_example"]) not in theme_sec:
         out.append(f"{locale}/cli: the theme section's commands differ")
     folder = re.search(r"<li><code>folder</code>.*?</li>\n  ", agents)
+    if li(d["agents_folder_line"]) not in agents:
+        out.append(f"{locale}/cli/agents: the folder item is not the approved line")
     for item in d["agents_folder_items"]:
         if not folder or not agents[folder.end():].startswith(li(item)):
             out.append(f"{locale}/cli/agents: the folder status item is not right after the folder item")
@@ -158,7 +160,9 @@ def self_test() -> int:
         plants = [("cli", li(d["open_items"][0])), ("cli", li(d["export_items"][-1])),
                   ("cli", li(d["theme_section"].split("\n- ", 1)[1].split("\n")[0])),  # validate: only in theme
                   ("cli/agents", li(d["agents_folder_items"][0])),
+                  ("cli/agents", li(d["agents_folder_line"])),
                   ("cli/agents", d["schema_notes"]["open_v4"]),
+                  ("cli/agents", d["schema_notes"]["error_v4"]),
                   ("changelog", f'<p>{rich_pages.md_inline(d["changelog"]["0.7.2"].split(chr(10) * 2)[1])}</p>')]
         for slug, piece in plants:
             text = pages[slug]

@@ -1,7 +1,5 @@
 # marsdawn para agentes
 
-Oferta de Black Friday: la compra única que desbloquea la app está a mitad de precio, 2,49 USD en lugar de 4,99 USD, hasta el 30 de noviembre. Vuelve a 4,99 USD el 1 de diciembre. <!-- sale-line -->
-
 Una referencia para agentes de IA y scripts que llaman a la herramienta de línea de comandos `marsdawn`. Cada ejemplo de esta página se ejecutó con la herramienta compilada desde el código fuente actual.
 
 **Para convertir un archivo Markdown en PDF, ejecuta `marsdawn export notes.md --json` y lee un objeto JSON de stdout.** Los diagramas Mermaid y el código resaltado se renderizan igual que en la app MarsDawn. `export` no necesita la app; `open`, sí.
@@ -84,8 +82,8 @@ Con una carpeta (marsdawn 0.5.1 y posterior), código de salida 0:
 {"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}
 ```
 
-- `folder`: solo aparece cuando se dio una carpeta. `path` es su ruta absoluta. `requested` siempre es `true`: marsdawn le pidió a MarsDawn que mostrara la carpeta y no puede saber si la barra lateral la muestra, porque la app puede pedirle acceso a la persona primero. Infórmalo como solicitado, no como hecho.
-- Con un `--wait` mayor que 0 y MarsDawn 1.0.2 o posterior, `folder` también incluye `status` cuando termina la espera: `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable` o `unknown`. Solo junto con `needsUser` incluye `waitingFor`: `confirmation` o `folderChoice`. Sin `--wait`, o con una app que no informa del resultado, `folder` sigue siendo `{"path": …, "requested": true}`. Un `--wait` fuera de 0 a 30 termina con el código 64 y `error: "wait_out_of_range"`. (marsdawn 0.5.3 y posterior.)
+- `folder`: solo aparece cuando se dio una carpeta. `path` es su ruta absoluta. `requested` siempre es `true`: marsdawn le pidió a MarsDawn que mostrara la carpeta. Si la barra lateral la muestra lo decide la app, que puede pedirle acceso a la persona primero. Con MarsDawn 1.0.2 o posterior, `status`, en el punto siguiente, indica qué pasó, salvo con `--wait 0`. Sin `status`, marsdawn no puede saberlo, así que infórmalo como solicitado, no como hecho.
+- Con MarsDawn 1.0.2 o posterior, `folder` también incluye `status` cuando termina la espera (`--wait`, 2 segundos de forma predeterminada): `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable` o `unknown`. Solo junto con `needsUser` incluye `waitingFor`: `confirmation` o `folderChoice`. Con `--wait 0`, o con una app que no informa del resultado, `folder` sigue siendo `{"path": …, "requested": true}`. Un `--wait` fuera de 0 a 30 termina con el código 64 y `error: "wait_out_of_range"`. (marsdawn 0.5.3 y posterior.)
 - `opened` está vacío cuando solo se dio una carpeta.
 
 marsdawn 0.2.x imprimía `opened` como una lista de rutas en texto. Revisa `marsdawn --version` si necesitas manejar ambos casos.
@@ -161,8 +159,13 @@ Con `--json`, un error imprime un objeto JSON en stdout y termina con su código
 - `3`, `app_not_installed`: MarsDawn no está instalado. Solo `open` devuelve este código.
 - `4`, `output_exists`: el archivo de salida existe. Pasa `--force`.
 - `5`, `export_failed`: la exportación en sí falló.
+- `5`, `input_too_large`: la entrada supera los 16 MiB, así que no se escribió nada. Solo `export` devuelve este código.
 - `6`, `app_cannot_open_folders`: esta versión de MarsDawn no puede mostrar una carpeta, así que no se abrió nada. Solo `open` devuelve este código.
-- `64`: error de uso, como una opción desconocida, un valor no válido, una línea fuera de rango, `--line` con más de un archivo o con una carpeta, más de una carpeta o `-a`. Este se imprime como texto en stderr, incluso con `--json`.
+- `7`, `skill_install_failed`: `skill --install` no pudo crear la carpeta ni escribir el archivo. Un SKILL.md existente se deja como estaba.
+- `64`: error de uso. La mayoría, como una opción desconocida, un valor no válido, una línea fuera de rango, `--line` con más de un archivo o con una carpeta, más de una carpeta o `-a`, se imprimen como texto en stderr, incluso con `--json`. Estos tienen su propio `error` e imprimen JSON en stdout, como cualquier otro error:
+  - `wait_out_of_range`: `open --wait` fuera de 0 a 30.
+  - `skill_differs`, `skill_unsafe_symlink`, `skill_target_not_a_file`, `skill_unreadable`: `skill --install` se negó a escribir.
+  - `output_folder_missing`, `output_symlink`, `output_not_a_file`: `theme preview` rechazó la ruta de `-o`.
 
 ## Esquemas JSON
 
@@ -171,7 +174,8 @@ JSON Schema (draft 2020-12) para cada resultado de `--json`:
 - [export.v1.json](/schemas/cli/export.v1.json): éxito de export
 - [open.v4.json](/schemas/cli/open.v4.json): éxito de open, marsdawn 0.5.3 y posterior, con `status` y `waitingFor` de la carpeta
 - [open.v3.json](/schemas/cli/open.v3.json): éxito de open, marsdawn 0.5.1 y 0.5.2, incluida una carpeta mostrada en la barra lateral
-- [error.v3.json](/schemas/cli/error.v3.json): error, todos los comandos, marsdawn 0.7.1 y posterior, con `input_too_large` (código 5) y `skill_install_failed` (código 7)
+- [error.v4.json](/schemas/cli/error.v4.json): error, todos los comandos, marsdawn 0.7.1 y posterior, incluidos los errores de uso que imprimen JSON con el código 64
+- [error.v3.json](/schemas/cli/error.v3.json): error, todos los comandos, marsdawn 0.7.1 y posterior, sin los tipos del código 64; lo reemplaza error.v4.json
 - [error.v2.json](/schemas/cli/error.v2.json): error, ambos comandos, marsdawn 0.5.2 a 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): éxito de open, marsdawn 0.3.0 a 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): éxito de open, marsdawn 0.2.x, donde `opened` era una lista de rutas
@@ -215,31 +219,33 @@ swift build -c release --product marsdawn
 
 ## Más
 
-- [MarsDawn](https://marsdawn.southern-light.dev/es/index.md): Lee y revisa el Markdown de tu agente en tu Mac: vista previa dividida en vivo, Mermaid, KaTeX, Vista rápida y PDF. Pruébalo gratis y luego 2,49 USD una vez.
-- [Funciones](https://marsdawn.southern-light.dev/es/features/index.md): Editor de Markdown nativo para Mac: vista previa, Mermaid, fórmulas, temas y páginas en PDF o impresas para reuniones, notas al margen y registros en papel.
+- [MarsDawn](https://marsdawn.southern-light.dev/es/index.md): Revisa el Markdown, JSON y YAML de tu agente en tu Mac: vista previa en vivo, Mermaid, KaTeX, Vista Rápida y PDF. Pruébalo gratis y luego 4,99 USD una vez.
+- [Funciones](https://marsdawn.southern-light.dev/es/features/index.md): Editor nativo para Mac de Markdown, JSON y YAML: vista previa, Mermaid, fórmulas, temas y páginas en PDF o impresas para reuniones y registros en papel.
 - [Lo que escribes se queda en tu Mac](https://marsdawn.southern-light.dev/es/yours/index.md): MarsDawn no tiene cuenta, ni sincronización, ni nube. Tus documentos Markdown se quedan en tu Mac, en los archivos y carpetas que elijas.
-- [Pruébalo gratis, paga una vez](https://marsdawn.southern-light.dev/es/pay-once/index.md): MarsDawn se descarga gratis. Prueba todo durante 14 días y desbloquéalo una sola vez por 2,49 USD. Sin suscripción y sin cuenta.
-- [Exportación a PDF](https://marsdawn.southern-light.dev/es/pdf/index.md): Exporta Markdown como PDF o imprímelo en tu Mac, con diagramas Mermaid y código resaltado. Los saltos de página evitan partir bloques de código cortos.
-- [Una app para Mac](https://marsdawn.southern-light.dev/es/native/index.md): Un editor de Markdown que es una app de Mac de verdad: ventanas y pestañas nativas, guardado automático, historial de versiones, Vista rápida en el Finder y un editor de texto que se comporta como en la Mac.
-- [Lo que MarsDawn no hace](https://marsdawn.southern-light.dev/es/limits/index.md): Sin sincronización, sin app para iPhone o iPad, sin plugins, sin cuentas. Cuatro temas integrados y más en la galería. Lo que conviene saber antes de comprar.
+- [Pruébalo gratis, paga una vez](https://marsdawn.southern-light.dev/es/pay-once/index.md): MarsDawn se descarga gratis. Prueba todo durante 14 días y desbloquéalo una sola vez por 4,99 USD. Sin suscripción y sin cuenta.
+- [Imprimir y PDF](https://marsdawn.southern-light.dev/es/pdf/index.md): Previsualiza tu Markdown y luego imprímelo o guárdalo como PDF en tu Mac, con la disposición Documento, Guía o Folleto, con diagramas y código resaltado.
+- [Una app para Mac](https://marsdawn.southern-light.dev/es/native/index.md): Un editor de Markdown que es una app de Mac de verdad: ventanas y pestañas nativas, guardado automático, historial de versiones, Vista Rápida en el Finder y un editor de texto que se comporta como en la Mac.
+- [Lo que MarsDawn no hace](https://marsdawn.southern-light.dev/es/limits/index.md): Sin sincronización, sin edición en iPhone o iPad, sin plugins, sin cuentas. Temas, pero sin CSS personalizado. Lo que conviene saber antes de comprar.
 - [Soporte](https://marsdawn.southern-light.dev/es/support/index.md): Ayuda con MarsDawn, el editor de Markdown para macOS.
 - [Política de privacidad](https://marsdawn.southern-light.dev/es/privacy/index.md): MarsDawn no recopila datos personales. Tus documentos y tus ajustes se quedan en tu Mac.
-- [Cómo abrir archivos .md en Mac](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Cómo abrir un archivo .md en una Mac: doble clic, app predeterminada, Vista rápida en el Finder. Lee en MarsDawn, ya renderizados, los .md de un agente de IA.
-- [Vista previa de Mermaid en Mac](https://marsdawn.southern-light.dev/es/mermaid-preview-mac/index.md): Diagramas Mermaid junto a tu Markdown en una Mac: vista previa en vivo, Vista rápida y exportación a PDF. Un diagrama con errores muestra el error y la línea.
-- [Vista rápida para Markdown](https://marsdawn.southern-light.dev/es/quicklook/index.md): Con MarsDawn, Vista rápida renderiza Markdown en el Finder con la barra espaciadora: Mermaid, KaTeX y código resaltado. Sigue funcionando tras la prueba.
+- [Cómo abrir archivos .md en Mac](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Cómo abrir un archivo .md en una Mac: doble clic, app predeterminada, Vista Rápida en el Finder. Lee en MarsDawn, ya renderizados, los .md de un agente de IA.
+- [Vista previa de Mermaid en Mac](https://marsdawn.southern-light.dev/es/mermaid-preview-mac/index.md): Diagramas Mermaid junto a tu Markdown en una Mac: vista previa en vivo, Vista Rápida y exportación a PDF. Un diagrama con errores muestra el error y la línea.
+- [Vista Rápida para Markdown](https://marsdawn.southern-light.dev/es/quicklook/index.md): Con MarsDawn, Vista Rápida renderiza Markdown en el Finder con la barra espaciadora: Mermaid, KaTeX y código resaltado. Sigue funcionando tras la prueba.
+- [Copiar para IA](https://marsdawn.southern-light.dev/es/copy-for-ai/index.md): Copia el texto seleccionado con su ruta de archivo y números de línea, y pégalo en Claude Code o en cualquier agente. En tu Mac, sin IDE ni plugins.
+- [Pasar de HackMD a tu Mac](https://marsdawn.southern-light.dev/es/from-hackmd/index.md): Descarga tus notas de HackMD como .md y léelas en MarsDawn en tu Mac. Cómo descargar todas las notas, partir de un repositorio de GitHub y conservar tus imágenes.
 - [De Markdown a PDF](https://marsdawn.southern-light.dev/es/markdown-to-pdf/index.md): Convierte Markdown a PDF en Mac con la herramienta de línea de comandos gratuita marsdawn. Instálala con Homebrew y ejecuta un solo comando: tablas, matemáticas, Mermaid y código.
-- [MarsDawn comparado: vista previa de VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/es/vs/index.md): Para quien elige cómo leer y revisar Markdown en un Mac, a menudo lo que escribió un agente. Cada celda viene de las páginas del propio fabricante o de nuestra propia comprobación, todas del 16 de octubre de 2026; los productos cambian, así que una celda puede quedar desfasada. Si ves un error, escribe a la dirección que aparece en Soporte.
-- [MacMD Viewer frente a MarsDawn](https://marsdawn.southern-light.dev/es/vs/macmd-viewer/index.md): MacMD Viewer es un visor de Markdown de solo lectura por 19,99 USD. MarsDawn edita con la vista previa al lado: 14 días gratis y luego 2,49 USD una sola vez.
-- [El mejor visor de Markdown para Mac (2026)](https://marsdawn.southern-light.dev/es/best-markdown-viewer-mac/index.md): Ocho visores de Markdown para Mac comparados por precio, Mermaid, fórmulas, PDF, recarga en vivo, Vista rápida y nativo o Electron, y para quién es cada uno.
+- [MarsDawn comparado: vista previa de VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/es/vs/index.md): Para quien elige cómo leer y revisar Markdown en un Mac, a menudo lo que escribió un agente. Cada celda viene de las páginas del propio fabricante o de nuestra propia comprobación, todas del 16 de octubre de 2026, salvo la celda de PDF de MarsDawn, actualizada el 7 de noviembre de 2026; los productos cambian, así que una celda puede quedar desfasada. Si ves un error, escribe a la dirección que aparece en Soporte.
+- [MacMD Viewer frente a MarsDawn](https://marsdawn.southern-light.dev/es/vs/macmd-viewer/index.md): MacMD Viewer es un visor de Markdown de solo lectura por 19,99 USD. MarsDawn edita con la vista previa al lado: 14 días gratis y luego 4,99 USD una sola vez.
+- [El mejor visor de Markdown para Mac (2026)](https://marsdawn.southern-light.dev/es/best-markdown-viewer-mac/index.md): Ocho visores de Markdown para Mac comparados por precio, Mermaid, fórmulas, PDF, recarga en vivo, Vista Rápida y nativo o Electron, y para quién es cada uno.
 - [Línea de comandos](https://marsdawn.southern-light.dev/es/cli/index.md): La herramienta de línea de comandos gratuita marsdawn para Mac: exporta Markdown a PDF desde una shell, un script o un agente LLM, con salida JSON. Se instala con Homebrew.
 - [Skill para agentes](https://marsdawn.southern-light.dev/es/cli/skill/index.md): Un archivo que tu agente de programación carga para abrir en MarsDawn el Markdown que escribió, para que lo revises, y para instalar marsdawn, exportar Markdown a PDF y leer el resultado JSON.
 - [Servidor MCP](https://marsdawn.southern-light.dev/es/cli/mcp/index.md): marsdawn no tiene un modelo de IA propio, así que no importa qué agente escribió el Markdown. Llámalo desde la CLI, un archivo de skill o el servidor MCP marsdawn-mcp: los tres ejecutan la misma exportación.
 - [Revisión que ahorra tokens](https://marsdawn.southern-light.dev/es/token-efficient-review/index.md): Una persona revisa la página renderizada en MarsDawn, y nunca se vuelve a leer en el contexto del agente. La llamada a la herramienta devuelve un resultado JSON compacto, no el contenido renderizado, así que llamarla también sale barato.
 - [Ver Markdown en otras herramientas frente a MarsDawn](https://marsdawn.southern-light.dev/es/vs/markdown-preview-tools/index.md): Cómo se compara MarsDawn con leer Markdown en la vista previa integrada de VS Code, una extensión del navegador o la vista previa de archivos de Claude Desktop: qué renderiza cada uno y qué hace falta para abrir un archivo.
-- [Temas de la vista previa y exportación a PDF](https://marsdawn.southern-light.dev/es/themes/index.md): Cuatro temas de vista previa, cada uno con una paleta clara y una oscura, y una sola exportación a PDF e impresión que respeta el que estés usando. Crea tu propio tema en el navegador y explora la galería de la comunidad.
+- [Temas](https://marsdawn.southern-light.dev/es/themes/index.md): Cuatro temas de vista previa integrados, en claro y oscuro, y una galería revisada que abres desde Ajustes en MarsDawn para Mac. Vista Rápida usa tu tema.
 - [Crear un tema](https://marsdawn.southern-light.dev/es/themes/new/index.md): Elige colores y unas pocas opciones de estilo, míralos aplicados en vivo a un documento de ejemplo y envía tu tema como un issue de GitHub. Sin instalación, sin git.
 - [Crea un tema con tu agente](https://marsdawn.southern-light.dev/es/themes/agents/index.md): Referencia de temas de MarsDawn para agentes de IA: cada campo de theme.json con tipo y rango, comprobación y renderizado por CLI, enlace de entrega y envío.
-- [Galería de temas](https://marsdawn.southern-light.dev/es/themes/gallery/index.md): Explora temas de vista previa que la comunidad envió para MarsDawn, fíltralos por escenario y denuncia un problema. Crea el tuyo en el navegador, sin instalación y sin git.
+- [Galería de temas](https://marsdawn.southern-light.dev/es/themes/gallery/index.md): Explora temas de vista previa para MarsDawn revisados por el desarrollador, fíltralos por escenario y denuncia un problema. Crea el tuyo en el navegador.
 - [Compartir los PDF exportados](https://marsdawn.southern-light.dev/es/sharing-exported-pdfs/index.md): Exporta a PDF el Markdown de un agente y entrégaselo a un colega que no lee Markdown y no va a instalar nada. Para abrirlo no hace falta sintaxis, ni app, ni cuenta.
 - [Por qué lo que produce la IA todavía necesita un lector humano](https://marsdawn.southern-light.dev/es/reviewing-ai-output/index.md): El Markdown escrito por una IA tiene que entenderlo una persona, no creerlo a simple vista. MarsDawn pone la página renderizada junto al código fuente y dibuja diagramas Mermaid y fórmulas KaTeX, para que la estructura se lea de un vistazo.
 - [Leer lo que te devuelve tu agente](https://marsdawn.southern-light.dev/es/reading-agent-output/index.md): Los agentes de IA entregan su trabajo en Markdown: planes, especificaciones, informes de avance. Qué dicen quienes construyen agentes sobre los puntos de control y los fallos, por qué ese resultado cuesta leerlo y una lista para revisar un plan en cinco minutos.
@@ -247,6 +253,7 @@ swift build -c release --product marsdawn
 - [Revisar el plan de un agente](https://marsdawn.southern-light.dev/es/reviewing-agent-plans/index.md): Un método de seis pasos para revisar el plan que te entrega un agente de IA antes de que se ejecute, en unos cinco minutos y en cualquier editor, con un ejemplo detallado.
 - [Patrones de diseño de agentes](https://marsdawn.southern-light.dev/es/agent-design-patterns/index.md): Reflexión, uso de herramientas, planificación y colaboración multiagente, tal como los describió Andrew Ng, y lo que cada uno suele entregarte para leer.
 - [Historial de cambios](https://marsdawn.southern-light.dev/es/changelog/index.md): Qué cambió en cada versión de la app MarsDawn y de la herramienta de línea de comandos gratuita marsdawn.
+- [Hoja de ruta](https://marsdawn.southern-light.dev/es/roadmap/index.md): Lo que está en marcha y lo que viene para MarsDawn en Mac, iPhone y iPad, por versión. Sin fechas; las ideas sin planificar están marcadas.
 - [Notas de lectura de la redacción](https://marsdawn.southern-light.dev/es/reading-notes/index.md): Seis notas breves sobre lo que argumentan de verdad las personas que construyen agentes de IA — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain y Andrew Ng — y qué significa cada una para quien tiene que leer lo que ese agente devuelve.
 - [Notas de lectura: Anthropic](https://marsdawn.southern-light.dev/es/reading-notes/anthropic-building-effective-agents/index.md): La guía de Anthropic de diciembre de 2024 para quien construye agentes separa workflows de agentes y describe cinco patrones de workflow, incluido uno en el que una segunda llamada a un LLM revisa la primera. Qué significa eso para lo que aterriza en tu carpeta.
 - [Notas de lectura: Chip Huyen](https://marsdawn.southern-light.dev/es/reading-notes/chip-huyen-agents/index.md): El ensayo «Agents» de Chip Huyen de enero de 2025 reparte las acciones de un agente en read-only y write. Por qué esa división es una forma rápida de ver, en un plan, la línea que merece una mirada más atenta antes de aprobar.

@@ -1,7 +1,5 @@
 # MarsDawn이 하는 모든 일을 한 페이지에.
 
-블랙 프라이데이 할인: 한 번만 구입하는 잠금 해제가 11월 30일까지 반값인 USD 2.49입니다(정가 USD 4.99). 12월 1일부터는 다시 USD 4.99입니다. <!-- sale-line -->
-
 MarsDawn은 Mac용 Markdown 편집기입니다. 한쪽에서 쓰고 다른 쪽에서 렌더링된 페이지를 읽으며, 다이어그램과 수식, 코드가 그대로 그려집니다. 자체 AI 모델은 없습니다. 에이전트가 쓴 글을 읽고 내 글을 쓰기 위해 만든 앱입니다. 그리고 작업이 책상이나 회의, 서류 보관함으로 옮겨 가면 깔끔한 페이지를 프린트하고 내보냅니다.
 
 아래 각 절은 앱이 하는 일을 설명하고, 더 자세히 다루는 페이지로 연결합니다.
@@ -29,9 +27,13 @@ Markdown 파일을 열면 렌더링된 페이지가 소스 옆에 나타납니�
 
 [에이전트가 돌려준 결과 읽기](/ko/reading-agent-output/)
 
+### 긴 문서 접기
+
+미리보기에서 보기 ▸ 모두 제목 2까지 접기를 선택하면 긴 계획이나 사양서가 2단계 제목까지 접히고, 보기 ▸ 모두 펼치기로 다시 펼칩니다. 포맷 ▸ 접을 수 있는 블록으로 접히는 블록을 넣을 수 있습니다.
+
 ### 정확한 줄 가리키기
 
-편집 ▸ 참조 복사는 현재 위치를 `docs/plan.md:42`처럼 경로와 줄 번호로 복사합니다. AI용으로 복사는 그 아래에 선택한 텍스트를 덧붙입니다. 어느 쪽이든 에이전트의 채팅에 붙여넣으면 됩니다.
+편집 ▸ 참조 복사는 현재 위치를 `docs/plan.md:42`처럼 경로와 줄 번호로 복사합니다. [AI용으로 복사](/ko/copy-for-ai/)는 그 아래에 선택한 텍스트를 덧붙입니다. 어느 쪽이든 에이전트의 채팅에 붙여넣으면 됩니다.
 
 [에이전트가 돌려준 결과 읽기](/ko/reading-agent-output/)
 
@@ -47,19 +49,19 @@ Markdown 파일을 열면 렌더링된 페이지가 소스 옆에 나타납니�
 
 페이지를 프린트하거나 모두에게 같은 PDF를 보내면, 한 화면을 함께 보는 대신 테이블 전체가 같은 문서로 작업할 수 있습니다. 같은 파일을 가진 사람은 페이지 나눔도 같으므로 ‘3쪽의 표’가 모두에게 같은 것을 가리킵니다. 그다음 사람들이 결정 사항을 프린트한 종이나 메모에 적습니다. 회의 메모 템플릿은 결정 사항으로 시작하고 각 실행 항목에 담당자를 둡니다.
 
-[PDF 내보내기](/ko/pdf/) · [회의록 템플릿](/ko/templates/meeting-notes/)
+[프린트 및 PDF](/ko/pdf/) · [회의록 템플릿](/ko/templates/meeting-notes/)
 
 ### 펜으로 읽기
 
 펜으로 밑줄을 긋고 여백에 적어 가며 읽어야 머리에 잘 남는 사람도 있습니다. 문서를 프린트해서 종이 위에서 그렇게 하세요. MarsDawn에는 자체 주석 도구가 없으니, PDF에 표시하고 싶다면 이미 쓰고 있는 PDF 앱을 사용하세요.
 
-[PDF 내보내기](/ko/pdf/)
+[프린트 및 PDF](/ko/pdf/)
 
 ### 종이 기록
 
 아직도 종이로 보관하는 분야가 있으며, 회계가 그 예입니다. MarsDawn은 보관이나 규정 준수에 대해 아무것도 주장하지 않습니다. 하는 일은 깔끔하게 페이지가 나뉜 페이지를 프린트하고 내보내는 것입니다. 다이어그램이 그려지고, 짧은 코드 블록은 잘리지 않으며, 테마의 라이트 색상이 쓰입니다. 종이가 여전히 기록인 곳에서 사용하세요.
 
-[PDF 내보내기](/ko/pdf/)
+[프린트 및 PDF](/ko/pdf/)
 
 ### Markdown을 쓰지 않는 사람에게 전달하기
 
@@ -119,7 +121,7 @@ KaTeX 구문으로 쓴 수식은 미리보기와 훑어보기에 그려지고, �
 
 새벽, 클래식, 모던, 비비드에는 각각 라이트와 다크 버전이 있으며, 설정에서 따로 고르지 않으면 MarsDawn은 Mac의 화면 모드를 따릅니다. 보기 ▸ 미리보기 테마 또는 도구 막대의 팔레트 버튼에서 선택하세요.
 
-[미리보기 테마와 PDF 내보내기](/ko/themes/)
+[테마](/ko/themes/)
 
 ### 더 많은 테마
 
@@ -129,9 +131,9 @@ KaTeX 구문으로 쓴 수식은 미리보기와 훑어보기에 그려지고, �
 
 ### PDF로 내보내기, 또는 프린트
 
-파일 ▸ PDF로 내보내기…는 페이지가 나뉜 PDF를 저장하고, 파일 ▸ 프린트…는 같은 페이지를 프린트합니다. Mermaid 다이어그램이 그려지고, 코드는 구문 강조를 유지하며, 페이지 나눔은 제목을 해당 절에서 떼어 놓거나 짧은 코드 블록이나 다이어그램을 반으로 자르지 않도록 피합니다. 다크 모드로 읽고 있었더라도 PDF에는 항상 테마의 라이트 색상이 쓰입니다.
+파일 ▸ 프린트… 또는 파일 ▸ PDF로 내보내기… 메뉴를 선택하면 ‘프린트 및 내보내기’가 열려 페이지를 미리 볼 수 있습니다. 레이아웃은 ‘문서’, 표지·목차·PDF 책갈피가 있는 ‘설명서’, 메모 칸이 있는 ‘프린트물’ 중에서 고른 뒤 프린트하거나 저장합니다. Mermaid 다이어그램이 그려지고, 코드는 구문 강조를 유지하며, 페이지 나눔은 제목을 해당 절에서 떼어 놓거나 짧은 코드 블록이나 다이어그램을 반으로 자르지 않도록 피합니다. PDF에는 항상 테마의 라이트 색상이 쓰입니다.
 
-[PDF 내보내기](/ko/pdf/)
+[프린트 및 PDF](/ko/pdf/)
 
 ![MarsDawn에서 내보낸 PDF를 페이지 축소판과 함께 PDF 뷰어로 연 모습.](https://marsdawn.southern-light.dev/assets/screens/05-pdf-980.png)
 
@@ -140,23 +142,35 @@ KaTeX 구문으로 쓴 수식은 미리보기와 훑어보기에 그려지고, �
 1. Mermaid 다이어그램이 PDF 안에 그려집니다.
 2. 코드는 하이라이트를 유지합니다.
 
+## Mac에서 쓰고, 이동 중에 읽기
+
+에이전트는 Mac에서 일합니다. 에이전트가 쓴 계획과 보고서는 iPhone이나 iPad에서도 읽을 수 있습니다.
+
+1. **Mac에서:** 에이전트의 계획과 보고서를 iCloud Drive의 폴더에 저장합니다.
+2. **iPhone이나 iPad에서:** MarsDawn에서 '열기'를 탭하고 같은 파일을 고르거나, 다른 앱에서 엽니다. Mermaid 다이어그램, 수식, 코드, 표가 제대로 표시되고, 개요와 내가 고른 테마도 쓸 수 있습니다.
+3. **전달하기:** 공유하거나 프린트하거나 PDF로 저장합니다.
+
+같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.
+
+iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown, 텍스트, PDF, JSON, YAML을 열 수 있지만 편집은 할 수 없습니다. 여기서 저장한 PDF의 링크는 작동하지 않습니다. MarsDawn 자체에는 클라우드 서비스가 없습니다.
+
 ## 파일, 탭, 훑어보기
 
 ### 윈도우와 탭
 
-각 문서는 별도의 윈도우에서 열립니다. 윈도우 ▸ 모든 윈도우 통합을 선택하면 열려 있는 윈도우가 한 윈도우의 탭으로 모입니다. 자동 저장은 입력하는 동안 작동합니다.
+문서는 기본적으로 맨 앞 윈도우의 탭으로 열립니다. Mac의 탭 설정을 따르려면 설정 ▸ 화면 모드에서 시스템 설정 따르기를 선택하십시오. 자동 저장은 입력하는 동안 작동합니다.
 
 [Mac 앱](/ko/native/)
 
 ### Finder의 훑어보기
 
-Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 있습니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.
+Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 있습니다. JSON과 YAML 파일은 트리 보기로 표시됩니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.
 
 [Mac 앱](/ko/native/) · [Markdown 훑어보기](/ko/quicklook/)
 
 ### 기타 파일
 
-MarsDawn은 일반 텍스트 파일(`.txt`, `.log`, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다.
+MarsDawn은 일반 텍스트 파일(`.txt`, `.log`, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다. Mac에서 JSON 및 YAML 파일을 편집 가능한 문서로 열 수 있으며, 입력할 때마다 업데이트되는 트리 미리보기가 옆에 표시됩니다. Finder의 훑어보기에서도 같은 트리 보기가 표시됩니다. iPhone과 iPad에서는 JSON과 YAML을 읽기 전용으로 열 수 있으며, 트리 미리보기가 표시됩니다.
 
 ### 내 파일은 내 것
 
@@ -196,6 +210,10 @@ MarsDawn에는 자체 AI 모델이 없습니다. 에이전트가 쓴 글을 요�
 
 [Mac 앱](/ko/native/)
 
+## 영상 보기
+
+[MarsDawn 영상(영어), 54초](https://marsdawn.southern-light.dev/assets/film/marsdawn-film-en-1080p30.mp4)
+
 ## 페이지를 프린트한 뒤
 
 프린트한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.
@@ -204,7 +222,7 @@ MarsDawn에는 자체 AI 모델이 없습니다. 에이전트가 쓴 글을 요�
 
 ## Mac에서 사용해 보세요
 
-MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 2.49에 한 번만 잠금 해제하면 됩니다. 구독도, 계정도 필요 없습니다. macOS 26 이상이 필요합니다.
+MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하면 됩니다. 구독도, 계정도 필요 없습니다. macOS 26 이상이 필요합니다.
 
 [지금 다운로드하고 체험하기](https://apps.apple.com/app/id6812925073)
 
@@ -212,20 +230,22 @@ MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기�
 
 ## 더 보기
 
-- [MarsDawn](https://marsdawn.southern-light.dev/ko/index.md): 에이전트가 쓴 Markdown을 읽고 검토하는 Mac 네이티브 앱. 분할 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료로 체험하고, 잠금 해제는 한 번 USD 2.49.
+- [MarsDawn](https://marsdawn.southern-light.dev/ko/index.md): 에이전트가 쓴 Markdown, JSON, YAML을 검토하는 Mac 네이티브 앱. 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료 체험 후 한 번만 USD 4.99.
 - [내 글은 내 Mac에](https://marsdawn.southern-light.dev/ko/yours/index.md): MarsDawn에는 계정도, 동기화도, 클라우드도 없습니다. Markdown 문서는 직접 고른 파일과 폴더에 담겨 Mac에 남습니다.
-- [무료로 체험하고, 한 번만 구입](https://marsdawn.southern-light.dev/ko/pay-once/index.md): MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 2.49에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다.
-- [PDF 내보내기](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 Markdown을 PDF로 내보내거나 프린트하세요. Mermaid 다이어그램과 하이라이트된 코드도 그대로입니다. 페이지 나눔은 짧은 코드 블록을 가르지 않도록 합니다.
+- [무료로 체험하고, 한 번만 구입](https://marsdawn.southern-light.dev/ko/pay-once/index.md): MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다.
+- [프린트 및 PDF](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 미리 본 뒤 Markdown을 프린트하거나 PDF로 저장하세요. 문서·설명서·프린트물 레이아웃을 지원하고 다이어그램과 코드 색도 그대로 남습니다.
 - [Mac 앱](https://marsdawn.southern-light.dev/ko/native/index.md): 진짜 Mac 앱인 Markdown 편집기. 네이티브 윈도우와 탭, 자동 저장, 버전 기록, Finder의 훑어보기, 그리고 Mac답게 동작하는 텍스트 편집기를 갖췄습니다.
-- [MarsDawn이 하지 않는 일](https://marsdawn.southern-light.dev/ko/limits/index.md): 동기화도, iPhone이나 iPad 앱도, 플러그인도, 계정도 없습니다. 기본 테마는 네 가지이고, 갤러리에 더 있습니다. 구입 전에 알아 두세요.
+- [MarsDawn이 하지 않는 일](https://marsdawn.southern-light.dev/ko/limits/index.md): 동기화도, iPhone·iPad에서의 편집도, 플러그인도, 계정도 없습니다. 테마는 바꿀 수 있지만 사용자 지정 CSS는 없습니다. 구입 전에 알아 두세요.
 - [지원](https://marsdawn.southern-light.dev/ko/support/index.md): macOS용 Markdown 편집기 MarsDawn에 관한 도움말입니다.
 - [개인정보 처리방침](https://marsdawn.southern-light.dev/ko/privacy/index.md): MarsDawn은 개인정보를 수집하지 않습니다. 문서와 설정은 사용자의 Mac에 남습니다.
 - [Mac에서 .md 파일 여는 방법](https://marsdawn.southern-light.dev/ko/view-markdown-on-mac/index.md): Mac에서 .md 파일을 여는 방법: 더블 클릭, 기본 앱 지정, Finder 훑어보기. AI 에이전트가 쓴 .md 파일은 MarsDawn에서 렌더링된 모습으로 읽으세요.
 - [Mac에서 Mermaid 미리보기](https://marsdawn.southern-light.dev/ko/mermaid-preview-mac/index.md): Mac에서 Mermaid 다이어그램을 Markdown 옆에 그려서 보세요: 실시간 미리보기, 훑어보기, PDF 내보내기. 다이어그램에 오류가 있으면 오류와 해당 줄이 표시됩니다.
 - [Markdown 훑어보기](https://marsdawn.southern-light.dev/ko/quicklook/index.md): MarsDawn의 훑어보기로 Finder에서 스페이스 바를 누르면 Markdown이 렌더링되어 보입니다. Mermaid, KaTeX, 강조된 코드도 표시됩니다. 체험이 끝난 뒤에도 계속 작동합니다.
+- [AI용으로 복사](https://marsdawn.southern-light.dev/ko/copy-for-ai/index.md): 선택한 텍스트를 파일 경로, 줄 번호와 함께 복사해 Claude Code나 다른 에이전트에 붙여 넣습니다. Mac에서 바로 되며, IDE도 플러그인도 필요 없습니다.
+- [HackMD에서 Mac으로](https://marsdawn.southern-light.dev/ko/from-hackmd/index.md): HackMD 노트를 .md로 내려받아 Mac의 MarsDawn에서 읽는 방법입니다. 모든 노트 다운로드, GitHub 저장소에서 옮기기, 이미지 처리 방법을 정리했습니다.
 - [Markdown을 PDF로](https://marsdawn.southern-light.dev/ko/markdown-to-pdf/index.md): 무료 marsdawn 명령줄 도구로 Mac에서 Markdown을 PDF로 변환하세요. Homebrew로 설치하고 명령 하나만 실행하면 됩니다. 표, 수식, Mermaid, 코드까지 지원합니다.
-- [MarsDawn 비교: VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/ko/vs/index.md): Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방법을 고르는 분을 위한 페이지입니다. 아래 표의 각 칸은 각 회사의 공식 페이지나 저희가 직접 확인한 내용이며, 모두 2026년 10월 16일 기준입니다. 제품은 바뀌므로 내용이 오래될 수 있습니다. 틀린 내용을 발견하면 지원 페이지의 주소로 알려 주세요.
-- [MacMD Viewer와 MarsDawn 비교](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 읽기 전용 Markdown 뷰어로 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 14일 무료 체험 후 USD 2.49를 한 번만 내면 됩니다. 항목별 비교, 출처 포함.
+- [MarsDawn 비교: VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/ko/vs/index.md): Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방법을 고르는 분을 위한 페이지입니다. 아래 표의 각 칸은 각 회사의 공식 페이지나 저희가 직접 확인한 내용이며, 모두 2026년 10월 16일 기준입니다(MarsDawn의 PDF 칸은 2026년 11월 7일에 업데이트). 제품은 바뀌므로 내용이 오래될 수 있습니다. 틀린 내용을 발견하면 지원 페이지의 주소로 알려 주세요.
+- [MacMD Viewer와 MarsDawn 비교](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 읽기 전용 Markdown 뷰어로 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 14일 무료 체험 후 USD 4.99를 한 번만 내면 됩니다. 항목별 비교, 출처 포함.
 - [Mac용 Markdown 뷰어 추천 (2026)](https://marsdawn.southern-light.dev/ko/best-markdown-viewer-mac/index.md): Mac용 Markdown 뷰어 8종을 가격, Mermaid, 수식, PDF, 자동 새로 고침, 훑어보기, 네이티브/Electron으로 비교하고 각각 누구에게 맞는지 정리했습니다.
 - [명령줄](https://marsdawn.southern-light.dev/ko/cli/index.md): Mac용 무료 marsdawn 명령줄 도구. 셸, 스크립트, LLM 에이전트에서 Markdown을 PDF로 내보내고 JSON으로 결과를 받으세요. Homebrew로 설치합니다.
 - [에이전트를 위한 marsdawn](https://marsdawn.southern-light.dev/ko/cli/agents/index.md): marsdawn을 호출해 Markdown을 PDF로 바꾸는 AI 에이전트와 스크립트를 위한 레퍼런스입니다. 명령, JSON 출력, 스키마, 종료 코드, 요구 사항을 다룹니다.
@@ -233,10 +253,10 @@ MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기�
 - [MCP 서버](https://marsdawn.southern-light.dev/ko/cli/mcp/index.md): marsdawn에는 자체 AI 모델이 없으므로 어떤 에이전트가 Markdown을 썼는지는 상관없습니다. CLI, 스킬 파일, MCP 서버 marsdawn-mcp 중 어디서 호출하든 세 가지 모두 같은 내보내기를 실행합니다.
 - [토큰을 아끼는 검토](https://marsdawn.southern-light.dev/ko/token-efficient-review/index.md): 렌더링된 페이지는 사람이 MarsDawn에서 검토하며, 에이전트의 컨텍스트로 다시 읽어 들이지 않습니다. 도구 호출은 렌더링된 내용이 아니라 간결한 JSON 결과를 돌려주므로 호출 자체도 부담이 적습니다.
 - [다른 도구로 Markdown 보기와 MarsDawn 비교](https://marsdawn.southern-light.dev/ko/vs/markdown-preview-tools/index.md): VS Code의 기본 미리보기, 브라우저 확장 프로그램, Claude Desktop의 파일 미리보기에서 Markdown을 읽는 것과 MarsDawn을 비교합니다. 각각 무엇을 렌더링하는지, 파일 하나를 여는 데 무엇이 필요한지 살펴보세요.
-- [미리보기 테마와 PDF 내보내기](https://marsdawn.southern-light.dev/ko/themes/index.md): 라이트와 다크 팔레트를 각각 갖춘 미리보기 테마 네 가지, 그리고 지금 쓰는 테마를 그대로 따르는 PDF 내보내기와 프린트. 브라우저에서 테마를 직접 만들고, 커뮤니티 갤러리도 둘러보세요.
+- [테마](https://marsdawn.southern-light.dev/ko/themes/index.md): 라이트와 다크를 각각 갖춘 기본 미리보기 테마 네 가지와, Mac용 MarsDawn 설정에서 여는 엄선된 테마 갤러리. 훑어보기도 고른 테마를 씁니다.
 - [테마 만들기](https://marsdawn.southern-light.dev/ko/themes/new/index.md): 색과 몇 가지 스타일 옵션을 고르면 샘플 문서에 바로 반영됩니다. 만든 테마는 GitHub 이슈로 제출할 수 있습니다. 설치도 git도 필요 없습니다.
 - [에이전트와 함께 테마 만들기](https://marsdawn.southern-light.dev/ko/themes/agents/index.md): MarsDawn 테마를 만드는 AI 에이전트를 위한 참고 자료입니다. theme.json의 모든 필드와 타입, 범위, CLI 검사·렌더링 절차, 넘겨줄 링크, 제출 방법을 담았습니다.
-- [테마 갤러리](https://marsdawn.southern-light.dev/ko/themes/gallery/index.md): 커뮤니티가 MarsDawn에 제출한 미리보기 테마를 둘러보고, 용도로 걸러 보고, 문제가 있으면 신고하세요. 브라우저에서 직접 만드세요. 설치도 git도 필요 없습니다.
+- [테마 갤러리](https://marsdawn.southern-light.dev/ko/themes/gallery/index.md): 개발자가 검토한 MarsDawn 미리보기 테마를 둘러보고, 용도로 걸러 보고, 문제가 있으면 신고하세요. 브라우저에서 직접 만들 수 있습니다. 설치도 git도 필요 없습니다.
 - [내보낸 PDF 공유하기](https://marsdawn.southern-light.dev/ko/sharing-exported-pdfs/index.md): 에이전트가 쓴 Markdown을 PDF로 내보내, Markdown을 읽지 않고 아무것도 설치하지 않을 동료에게 전달하세요. 문법도, 앱도, 계정도 없이 열립니다.
 - [AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유](https://marsdawn.southern-light.dev/ko/reviewing-ai-output/index.md): AI가 쓴 Markdown은 보자마자 믿을 것이 아니라 사람이 이해해야 합니다. MarsDawn은 렌더링된 페이지를 원본 옆에 두고 Mermaid 다이어그램과 KaTeX 수식을 그려 주어, 구조를 한눈에 읽을 수 있게 합니다.
 - [에이전트가 돌려준 결과 읽기](https://marsdawn.southern-light.dev/ko/reading-agent-output/index.md): AI 에이전트는 계획, 사양서, 진행 보고서 같은 결과를 Markdown으로 돌려줍니다. 에이전트를 만드는 사람들이 체크포인트와 실패에 대해 하는 말, 그 결과물이 읽기 어려운 이유, 그리고 계획을 5분 만에 검토하는 체크리스트를 소개합니다.
@@ -244,6 +264,7 @@ MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기�
 - [에이전트의 계획 검토하기](https://marsdawn.southern-light.dev/ko/reviewing-agent-plans/index.md): AI 에이전트가 넘긴 계획을 실행 전에 약 5분 동안, 어떤 에디터에서든 검토하는 6단계 방법을 예시와 함께 소개합니다.
 - [에이전트 설계 패턴](https://marsdawn.southern-light.dev/ko/agent-design-patterns/index.md): Andrew Ng이 설명한 리플렉션, 도구 사용, 계획, 멀티 에이전트 협업과, 각 패턴이 보통 읽을거리로 넘기는 것을 정리했습니다.
 - [변경 내역](https://marsdawn.southern-light.dev/ko/changelog/index.md): MarsDawn 앱과 무료 marsdawn 명령줄 도구의 버전별 변경 사항입니다.
+- [로드맵](https://marsdawn.southern-light.dev/ko/roadmap/index.md): Mac, iPhone, iPad용 MarsDawn에서 개발 중인 기능과 다음에 나올 기능을 버전별로 정리했습니다. 날짜는 적지 않고, 일정이 없는 항목은 따로 표시합니다.
 - [편집자의 독서 노트](https://marsdawn.southern-light.dev/ko/reading-notes/index.md): AI 에이전트를 만드는 사람들이 실제로 무엇을 주장하는지 살피는 짧은 노트 여섯 편 — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain, Andrew Ng — 그리고 각각이 그런 에이전트가 돌려준 것을 읽어야 하는 사람에게 무엇을 의미하는지.
 - [독서 노트: Anthropic](https://marsdawn.southern-light.dev/ko/reading-notes/anthropic-building-effective-agents/index.md): 2024년 12월 Anthropic이 에이전트를 만드는 사람을 위해 낸 가이드는 workflow와 agent를 나누고, 그중 하나가 두 번째 LLM 호출로 첫 번째를 검토하는 다섯 가지 workflow 패턴을 설명합니다. 그게 폴더에 떨어지는 파일에 무엇을 뜻하는지.
 - [독서 노트: Chip Huyen](https://marsdawn.southern-light.dev/ko/reading-notes/chip-huyen-agents/index.md): Chip Huyen의 2025년 1월 에세이 «Agents»는 에이전트 행동을 read-only와 write로 나눕니다. 그 구분이 계획에서 승인 전에 더 자세히 볼 줄을 빠르게 짚는 방법이 되는 이유.
@@ -255,10 +276,10 @@ MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기�
 - [명세서 템플릿](https://marsdawn.southern-light.dev/ko/templates/spec/index.md): 요구 사항, Mermaid 흐름도, 인수 기준이 들어 있는 Markdown 명세서 템플릿입니다. 에이전트가 채우고, 여러분은 MarsDawn에서 검토하세요.
 - [순서도 템플릿](https://marsdawn.southern-light.dev/ko/templates/flowchart/index.md): Markdown으로 쓰는 Mermaid 순서도 템플릿으로, 다이어그램 아래에 단계를 풀어 씁니다. Mac에서 미리 보고 PDF로 내보내세요.
 - [회의록 템플릿](https://marsdawn.southern-light.dev/ko/templates/meeting-notes/index.md): 결정 사항과 담당자가 정해진 실행 항목을 정리하는 Markdown 회의록 템플릿입니다. 에이전트가 쓰고, 여러분은 MarsDawn에서 확인하세요.
-- [English](https://marsdawn.southern-light.dev/features/index.md): A native Mac Markdown editor: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings, margin notes and paper records.
-- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/features/index.md): Mac 原生的 Markdown 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可以拿去開會、用筆加註，或當紙本保存。
-- [简体中文](https://marsdawn.southern-light.dev/zh-hans/features/index.md): Mac 原生的 Markdown 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可以拿去开会、用笔批注，或当纸质存档。
-- [日本語](https://marsdawn.southern-light.dev/ja/features/index.md): Mac ネイティブの Markdown エディタ：リアルタイムプレビュー、Mermaid と数式、テーマに加え、会議や書き込み、紙での保管に使える PDF とプリントのページ。
-- [Deutsch](https://marsdawn.southern-light.dev/de/features/index.md): Nativer Markdown-Editor für den Mac: Live-Vorschau, Mermaid, Formeln, Themes und saubere PDF- und Druckseiten für Besprechungen, Randnotizen und Papierakten.
-- [Français](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Markdown natif pour Mac : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions, notes en marge et dossiers papier.
-- [Español](https://marsdawn.southern-light.dev/es/features/index.md): Editor de Markdown nativo para Mac: vista previa, Mermaid, fórmulas, temas y páginas en PDF o impresas para reuniones, notas al margen y registros en papel.
+- [English](https://marsdawn.southern-light.dev/features/index.md): A native Mac editor for Markdown, JSON and YAML: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings and records.
+- [繁體中文](https://marsdawn.southern-light.dev/zh-hant/features/index.md): Mac 原生的 Markdown、JSON、YAML 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可拿去開會或存檔。
+- [简体中文](https://marsdawn.southern-light.dev/zh-hans/features/index.md): Mac 原生的 Markdown、JSON、YAML 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可拿去开会或存档。
+- [日本語](https://marsdawn.southern-light.dev/ja/features/index.md): Mac ネイティブの Markdown・JSON・YAML エディタ：リアルタイムプレビュー、Mermaid と数式、テーマ、会議や保管に使える PDF とプリントのページ。
+- [Deutsch](https://marsdawn.southern-light.dev/de/features/index.md): Nativer Mac-Editor für Markdown, JSON und YAML: Live-Vorschau, Mermaid, Formeln, Themes und saubere PDF- und Druckseiten für Besprechungen und Papierakten.
+- [Français](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Mac natif pour Markdown, JSON et YAML : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions et dossiers papier.
+- [Español](https://marsdawn.southern-light.dev/es/features/index.md): Editor nativo para Mac de Markdown, JSON y YAML: vista previa, Mermaid, fórmulas, temas y páginas en PDF o impresas para reuniones y registros en papel.

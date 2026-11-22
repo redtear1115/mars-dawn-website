@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -52,7 +54,7 @@ try {
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/"}, {"@type": "ListItem", "position": 2, "name": "Editor's reading notes", "item": "https://marsdawn.southern-light.dev/reading-notes/"}, {"@type": "ListItem", "position": 3, "name": "Reading notes: Anthropic", "item": "https://marsdawn.southern-light.dev/reading-notes/anthropic-building-effective-agents/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Anthropic draws a line between workflows and agents. Where does your reading fit?", "description": "Anthropic's December 2024 guide for people building agents separates workflows from agents and describes five workflow patterns, including one where a second LLM call reviews the first. What that means for what lands in your folder.", "datePublished": "2026-10-08", "dateModified": "2026-10-08", "inLanguage": "en", "mainEntityOfPage": "https://marsdawn.southern-light.dev/reading-notes/anthropic-building-effective-agents/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Anthropic draws a line between workflows and agents. Where does your reading fit?", "description": "Anthropic's December 2024 guide for people building agents separates workflows from agents and describes five workflow patterns, including one where a second LLM call reviews the first. What that means for what lands in your folder.", "datePublished": "2026-10-08", "dateModified": "2026-10-21", "inLanguage": "en", "mainEntityOfPage": "https://marsdawn.southern-light.dev/reading-notes/anthropic-building-effective-agents/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -145,7 +147,7 @@ try {
 
 <h2 id="try-it">Try it</h2>
 <p>MarsDawn is on the Mac App Store. The free <code>marsdawn</code> command-line tool works today:</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="try-it"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>It exports Markdown to PDF without the app.</p>
 <p><a href="/cli/">Command Line</a> &#183; Know before you buy: <a href="/limits/">What MarsDawn doesn't do</a></p>
 
@@ -170,11 +172,12 @@ try {
         <li><a href="/features/">Features</a></li>
         <li><a href="/quicklook/">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/">PDF export</a></li>
+        <li><a href="/pdf/">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>
         <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/roadmap/">Roadmap</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -211,7 +214,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Themes</h3>
       <ul>
-        <li><a href="/themes/">Preview themes and PDF export</a></li>
+        <li><a href="/themes/">Themes</a></li>
         <li><a href="/themes/gallery/">Theme gallery</a></li>
         <li><a href="/themes/new/">Build a theme</a></li>
         <li><a href="/themes/agents/">Make a theme with your agent</a></li>
@@ -228,6 +231,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reading-notes&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, the Apple logo, Mac, iPhone, iPad and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store and Mac App Store are service marks of Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>

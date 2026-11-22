@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -144,7 +146,7 @@ try {
   <tr><th scope="row">コマンドライン</th><td data-label="MacMD Viewer">独立したコマンドラインツールの記載なし。<code>markdownviewer://</code> の URL スキームと、ファイルを開くための Claude Code のプラグインとフックがある [<a href="#s6">S6</a>]</td><td data-label="MarsDawn">無料の <code>marsdawn</code> ツール：<code>marsdawn export</code> はアプリなしで PDF を書き出し、<code>marsdawn open</code> は行を指定してファイルを開く</td></tr>
   <tr><th scope="row">インターフェイスの言語</th><td data-label="MacMD Viewer">公式の資料に記載なし [<a href="#s1">S1</a>, <a href="#s3">S3</a>, <a href="#s7">S7</a>]</td><td data-label="MarsDawn">英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語</td></tr>
   <tr><th scope="row">動作環境</th><td data-label="MacMD Viewer">macOS 14（Sonoma）以降。Apple シリコンと Intel [<a href="#s1">S1</a>, <a href="#s7">S7</a>]</td><td data-label="MarsDawn">macOS 26（Tahoe）以降</td></tr>
-  <tr><th scope="row">ほかのプラットフォーム</th><td data-label="MacMD Viewer">Mac のみ [<a href="#s1">S1</a>]</td><td data-label="MarsDawn">Mac のみ。iPhone や iPad のアプリはない</td></tr>
+  <tr><th scope="row">ほかのプラットフォーム</th><td data-label="MacMD Viewer">Mac のみ [<a href="#s1">S1</a>]</td><td data-label="MarsDawn">Mac。iPhone と iPad では閲覧のみ</td></tr>
 </tbody>
 </table></div>
 <h2 id="price-and-how-you-buy-it">価格と購入方法</h2>
@@ -191,14 +193,14 @@ try {
 <h3>MacMD Viewer は Mac App Store にありますか？</h3>
 <p>自身のページに挙がっているのは公式サイト、Homebrew、Setapp で、Mac App Store への言及はありません [<a href="#s2">S2</a>, <a href="#s7">S7</a>]。MarsDawn は Mac App Store のみです。</p>
 <h3>MarsDawn は同じファイルを開けますか？</h3>
-<p>はい。<code>.md</code> ファイルのほか、プレーンテキストと PDF も開けます。UTF-8 のテキストはそのまま編集でき、PDF はビューアで開きます。</p>
+<p>はい。<code>.md</code> ファイルのほか、プレーンテキストと PDF も開けます。UTF-8 のテキストはそのまま編集でき、PDF はビューアで開きます。Mac では JSON と YAML も書類として開いて編集でき、ツリープレビューが表示されます。</p>
 <h3>macOS 14 や 15 の場合は？</h3>
 <p>MacMD Viewer は macOS 14 以降で動きます [<a href="#s1">S1</a>]。MarsDawn は macOS 26 以降が必要ですが、無料の <code>marsdawn</code> コマンドラインツールなら PDF の書き出しはできます。</p>
 <h3>なぜ片方は USD 19.99 で、もう片方は USD 2.49 なのですか？</h3>
 <p>得られるものと支払い方が違います。MacMD Viewer は一度きりの購入で、14 日間の返金があり、トライアルはありません [<a href="#s2">S2</a>]。MarsDawn は無料でダウンロードでき、14 日間のトライアルのあと、一度きりのロック解除です。どちらもサブスクリプションではありません。</p>
 <h2 id="try-it-today-free">今すぐ無料で試す</h2>
 <p>MarsDawn は Mac App Store で配信中です。無料の <code>marsdawn</code> コマンドラインツールも、どんな Markdown ファイルも Mermaid 図とハイライトされたコード付きの PDF にレンダリングでき、他に何もインストールする必要はありません。</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre tabindex="0" role="region" aria-labelledby="try-it-today-free"><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <h2 id="next">次に</h2>
@@ -218,11 +220,12 @@ open notes.pdf</code></pre>
         <li><a href="/ja/features/">機能一覧</a></li>
         <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
         <li><a href="/ja/native/">Mac アプリ</a></li>
-        <li><a href="/ja/pdf/">PDF 書き出し</a></li>
+        <li><a href="/ja/pdf/">プリントと PDF</a></li>
         <li><a href="/ja/limits/">MarsDawn ができないこと</a></li>
         <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
         <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>
         <li><a href="/ja/changelog/">更新履歴</a></li>
+        <li><a href="/ja/roadmap/">ロードマップ</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -259,7 +262,7 @@ open notes.pdf</code></pre>
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">テーマ</h3>
       <ul>
-        <li><a href="/ja/themes/">プレビューテーマと PDF 書き出し</a></li>
+        <li><a href="/ja/themes/">テーマ</a></li>
         <li><a href="/ja/themes/gallery/">テーマギャラリー</a></li>
         <li><a href="/ja/themes/new/">テーマを作る</a></li>
         <li><a href="/ja/themes/agents/">エージェントとテーマを作る</a></li>
@@ -276,6 +279,7 @@ open notes.pdf</code></pre>
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-vs&amp;mt=8">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple のロゴ、Mac、iPhone、iPad、iCloud は、米国およびその他の国や地域で登録された Apple Inc. の商標です。App Store および Mac App Store は Apple Inc. のサービスマークです。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>

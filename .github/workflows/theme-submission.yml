@@ -7,12 +7,16 @@ name: Theme submission
 #
 # Three jobs, so no job that touches the submission with third-party code holds a write scope:
 #   gate     ubuntu, no permissions: reads the issue, decides skip / reject / validate, hands the
-#            theme's exact bytes on as an artifact and their sha256 as an output.
+#            theme's exact bytes on as an artifact and their sha256 as an output. It first checks
+#            the opener against .github/theme-submission-blocklist.json, read from this checkout
+#            (the default branch's commit, never the issue); a blocked opener is rejected before
+#            the theme is read, and a missing or malformed list fails the job (#195).
 #   validate macOS, no permissions: the kit CLI at the pinned commit (built by sync_theme_kit.py's own
 #            build on a cache miss; tree hash, --version and a smoke test checked every time), then
 #            `marsdawn theme validate --require-complete --json` on those bytes.
 #   comment  ubuntu, issues: write only, no third-party code: writes or updates the one comment by
-#            github-actions[bot] that carries the marker and the validated sha256.
+#            github-actions[bot] that carries the marker and the validated sha256. For a blocked
+#            opener it writes the neutral comment and adds the theme-blocked label instead.
 # No secrets are used. Issue-triggered workflows only run from the default branch.
 
 on:

@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -51,7 +53,7 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/de/"}, {"@type": "ListItem", "position": 2, "name": "Vorschau-Themen und PDF-Export", "item": "https://marsdawn.southern-light.dev/de/themes/"}, {"@type": "ListItem", "position": 3, "name": "Mit deinem Agenten ein Thema erstellen", "item": "https://marsdawn.southern-light.dev/de/themes/agents/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/de/"}, {"@type": "ListItem", "position": 2, "name": "Themen", "item": "https://marsdawn.southern-light.dev/de/themes/"}, {"@type": "ListItem", "position": 3, "name": "Mit deinem Agenten ein Thema erstellen", "item": "https://marsdawn.southern-light.dev/de/themes/agents/"}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -138,7 +140,7 @@ try {
 
 <h2 id="check-and-render">Prüfen und rendern</h2>
 <p>Führe diese Befehle in dem Ordner aus, der <code>theme.json</code> enthält. Sie brauchen das Werkzeug <code>marsdawn</code>: siehe <a href="/de/cli/agents/">marsdawn für Agenten</a>.</p>
-<pre><code>marsdawn theme validate theme.json --require-complete --json
+<pre tabindex="0" role="region" aria-labelledby="check-and-render"><code>marsdawn theme validate theme.json --require-complete --json
 marsdawn theme css theme.json --json
 marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
@@ -160,7 +162,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 </ul>
 <h3 id="example-dawn">Beispiel: Dawn</h3>
 <p>Das ist <code>dawn.json</code>, Byte für Byte. Ihre einzige Stiloption ist eine dünne Linie in der Akzentfarbe für <code>hr</code>.</p>
-<pre><code>{
+<pre tabindex="0" role="region" aria-labelledby="example-dawn"><code>{
   "schemaVersion": 1,
   "id": "dawn",
   "version": "1.0.0",
@@ -389,7 +391,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
 
 <h2 id="hand-it-over-as-a-link">Als Link übergeben</h2>
 <p>Die Seite <a href="/de/themes/new/">Ein Thema erstellen</a> öffnet ein Thema aus einem Link, damit die Person es nach Augenmaß abstimmen kann. Der Link besteht aus der Adresse der Seite, dann <code>#theme=</code>, dann den Bytes der Datei als base64url ohne Auffüllzeichen. Die Datei darf höchstens 16.384 Bytes groß sein. Diese eine Zeile baut den Link in zsh und in bash, auf macOS und Linux:</p>
-<pre><code>printf 'https://marsdawn.southern-light.dev/de/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="hand-it-over-as-a-link"><code>printf 'https://marsdawn.southern-light.dev/de/themes/new/#theme=%s\n' "$(base64 &lt; theme.json | tr -d '\n=' | tr '+/' '-_')"</code></pre>
 <p>Das Thema steht hinter einem <code>#</code>, das ein Browser nicht an die Website sendet, und die Website leitet es nirgendwohin weiter. Der Link bleibt aber im Verlauf deiner Shell und des Browsers, und jede Person, der du ihn schickst, kann das Thema lesen.</p>
 
 <h2 id="submit-it">Einreichen</h2>
@@ -412,11 +414,12 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
         <li><a href="/de/features/">Funktionen</a></li>
         <li><a href="/de/quicklook/">Übersicht für Markdown</a></li>
         <li><a href="/de/native/">Eine Mac-App</a></li>
-        <li><a href="/de/pdf/">PDF-Export</a></li>
+        <li><a href="/de/pdf/">Drucken und PDF</a></li>
         <li><a href="/de/limits/">Was MarsDawn nicht kann</a></li>
         <li><a href="/de/pay-once/">Kostenlos testen, einmal bezahlen</a></li>
         <li><a href="/de/yours/">Deine Texte bleiben auf deinem Mac</a></li>
         <li><a href="/de/changelog/">Änderungsprotokoll</a></li>
+        <li><a href="/de/roadmap/">Roadmap</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -453,7 +456,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Themen</h3>
       <ul>
-        <li><a href="/de/themes/">Vorschau-Themen und PDF-Export</a></li>
+        <li><a href="/de/themes/">Themen</a></li>
         <li><a href="/de/themes/gallery/">Themen-Galerie</a></li>
         <li><a href="/de/themes/new/">Ein Thema erstellen</a></li>
         <li><a href="/de/themes/agents/" aria-current="page">Mit deinem Agenten ein Thema erstellen</a></li>
@@ -470,6 +473,7 @@ marsdawn theme preview theme.json --appearance dark -o dark.png</code></pre>
     </section>
   </nav>
   <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-themes&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, das Apple Logo, Mac, iPhone, iPad und iCloud sind Marken der Apple Inc., die in den USA und weiteren Ländern und Regionen eingetragen sind. App Store und Mac App Store sind Dienstleistungsmarken der Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>

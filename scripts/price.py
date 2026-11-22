@@ -26,6 +26,7 @@ requires in every such file that states the sale price.
 """
 import re
 
+TRIAL_DAYS = 14
 REGULAR = "4.99"
 SALE = "2.49"
 SALE_LAST_DAY = "2026-11-30"

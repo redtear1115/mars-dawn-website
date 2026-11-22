@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -52,7 +54,7 @@ try {
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/fr/"}, {"@type": "ListItem", "position": 2, "name": "Lire ce que votre agent vous rend", "item": "https://marsdawn.southern-light.dev/fr/reading-agent-output/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Lire ce que votre agent vous rend", "description": "Les agents IA rendent leur travail en Markdown : plans, spécifications, rapports d’avancement. Ce que disent ceux qui construisent des agents sur les points de contrôle et les échecs, pourquoi ces fichiers sont difficiles à lire, et une liste de vérification pour relire un plan en cinq minutes.", "datePublished": "2026-10-06", "dateModified": "2026-10-08", "inLanguage": "fr", "mainEntityOfPage": "https://marsdawn.southern-light.dev/fr/reading-agent-output/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Lire ce que votre agent vous rend", "description": "Les agents IA rendent leur travail en Markdown : plans, spécifications, rapports d’avancement. Ce que disent ceux qui construisent des agents sur les points de contrôle et les échecs, pourquoi ces fichiers sont difficiles à lire, et une liste de vérification pour relire un plan en cinq minutes.", "datePublished": "2026-10-06", "dateModified": "2026-10-21", "inLanguage": "fr", "mainEntityOfPage": "https://marsdawn.southern-light.dev/fr/reading-agent-output/", "image": "https://marsdawn.southern-light.dev/assets/og-en.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -147,7 +149,7 @@ try {
   <li><strong>Diagrammes et maths :</strong> Mermaid et KaTeX sont dessinés dans l’aperçu à côté de la source (&#8984;2), et les deux volets défilent ensemble.</li>
   <li><strong>Réécrit pendant que vous lisez :</strong> quand l’agent réécrit le fichier, MarsDawn le recharge et garde votre position, tant que vous n’avez pas de modifications non enregistrées.</li>
   <li><strong>Plusieurs fichiers :</strong> ouvrez le dossier de l’agent avec Fichier &#9656; Ouvrir un dossier&#8230; (&#8679;&#8984;O). Les nouveaux fichiers apparaissent dans l’onglet Fichiers en une seconde environ, et pour un checkout git, l’en-tête indique la branche ou le worktree.</li>
-  <li><strong>Un retour précis :</strong> Édition &#9656; Copier la référence (&#8997;&#8984;C) copie votre position sous la forme <code>docs/plan.md:42</code>. Copier pour l’IA (&#8963;&#8997;&#8984;C) ajoute le texte sélectionné en dessous. Collez l’un ou l’autre dans la conversation avec l’agent.</li>
+  <li><strong>Un retour précis :</strong> Édition &#9656; Copier la référence (&#8997;&#8984;C) copie votre position sous la forme <code>docs/plan.md:42</code>. <a href="/fr/copy-for-ai/">Copier pour l’IA</a> (&#8963;&#8997;&#8984;C) ajoute le texte sélectionné en dessous. Collez l’un ou l’autre dans la conversation avec l’agent.</li>
 </ul>
 <p>Deux de plus pour la boucle : un agent peut lancer <code>marsdawn open plan.md:42</code> pour ouvrir le fichier dans MarsDawn à la ligne 42, celle qu’il veut vous montrer en premier, et un fichier relu s’exporte en PDF depuis l’app ou avec la commande gratuite <code>marsdawn export</code>.</p>
 <p>MarsDawn n’embarque aucun modèle d’IA. Il ne résume pas le plan, ne le note pas et ne vous dit pas ce qui ne va pas. C’est vous qui lisez ; il garde lisible un fichier long qui change, et vous permet de désigner la ligne exacte.</p>
@@ -166,7 +168,7 @@ try {
 
 <h2 id="try-it">Essayer</h2>
 <p>MarsDawn est sur le <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reading-agent-output&amp;mt=8">Mac App Store</a>. Il existe aussi l’outil en ligne de commande gratuit <code>marsdawn</code> :</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="try-it"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>Il exporte le Markdown en PDF sans l’app, et <code>marsdawn open</code> permet à votre agent d’ouvrir des fichiers dans MarsDawn pour vous.</p>
 <p><a href="/fr/cli/">Ligne de commande</a> &#183; <a href="/fr/cli/agents/">marsdawn pour les agents</a> &#183; À savoir avant d’acheter : <a href="/fr/limits/">Ce que MarsDawn ne fait pas</a></p>
 
@@ -195,11 +197,12 @@ try {
         <li><a href="/fr/features/">Fonctionnalités</a></li>
         <li><a href="/fr/quicklook/">Coup d’œil pour Markdown</a></li>
         <li><a href="/fr/native/">Une app Mac</a></li>
-        <li><a href="/fr/pdf/">Export PDF</a></li>
+        <li><a href="/fr/pdf/">Imprimer et PDF</a></li>
         <li><a href="/fr/limits/">Ce que MarsDawn ne fait pas</a></li>
         <li><a href="/fr/pay-once/">Essai gratuit, achat unique</a></li>
         <li><a href="/fr/yours/">Vos textes restent sur votre Mac</a></li>
         <li><a href="/fr/changelog/">Historique des versions</a></li>
+        <li><a href="/fr/roadmap/">Feuille de route</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -236,7 +239,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Thèmes</h3>
       <ul>
-        <li><a href="/fr/themes/">Thèmes de l’aperçu et export PDF</a></li>
+        <li><a href="/fr/themes/">Thèmes</a></li>
         <li><a href="/fr/themes/gallery/">Galerie de thèmes</a></li>
         <li><a href="/fr/themes/new/">Créer un thème</a></li>
         <li><a href="/fr/themes/agents/">Créer un thème avec votre agent</a></li>
@@ -253,6 +256,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reading-agent-output&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, le logo Apple, Mac, iPhone, iPad et iCloud sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres pays et régions. App Store et Mac App Store sont des marques de service d’Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Consentement aux cookies" hidden>

@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -127,22 +129,22 @@ try {
 <div class="summary"><p><strong>1つの Markdown ファイルを <code>~/.claude/skills/marsdawn/SKILL.md</code> に置くだけ。</strong>これでエージェントが <code>marsdawn</code> をインストールし、PDF に書き出し、JSON の結果を読みます。何かを実行する前には、これまでどおり確認を求めます。</p></div>
 <h2 id="install-it-in-claude-code">Claude Code にインストールする</h2>
 <p>コマンドラインツール <code>marsdawn</code> がスキルを書き出します。書き出されるファイルは、インストール済みの <code>marsdawn</code> のバージョンに合ったものです。まだ <code>marsdawn</code> がない場合は、<a href="https://brew.sh">Homebrew</a> でインストールしてください。</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="install-it-in-claude-code"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>そのあと、スキルをインストールします。</p>
 <pre><code>marsdawn skill --install</code></pre>
 <p>これで <code>~/.claude/skills/marsdawn/SKILL.md</code> が書き出されます。フォルダがなければ作成されます。ファイルは手元の <code>marsdawn</code> から作られるので、そのバージョンにないオプションが書かれることはありません。</p>
 <p>Claude Code は、PDF が必要なタスクのとき、またはあなたが読む Markdown 文書を書いたり修正したりしたときに、これを自動的に読み込みます。<code>/marsdawn</code> として自分で実行することもできます。先に中身を読みたい場合は、<a href="/cli/skill/SKILL.md">短いファイル1つ</a>です。</p>
 <h2 id="after-you-upgrade-marsdawn">marsdawn をアップグレードしたあと</h2>
 <p>Homebrew は <code>marsdawn</code> をアップグレードしますが、スキルには手を触れないので、更新するまで古いバージョンのままです。</p>
-<pre><code>marsdawn skill --install --force</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="after-you-upgrade-marsdawn"><code>marsdawn skill --install --force</code></pre>
 <p><code>--force</code> は、既存の <code>SKILL.md</code> を、あなたが加えた変更も含めて置き換えます。<code>--force</code> を付けない場合、内容の異なる <code>SKILL.md</code> がすでにあると、<code>marsdawn</code> はそのファイルに触れず、内容が違うことを知らせて、終了コード 64（<code>skill_differs</code>）で終了します。ファイルがすでに最新なら、何も変わりません。</p>
 <h2 id="for-other-agents">ほかのエージェントの場合</h2>
 <p><code>--dir</code> に、お使いのエージェントがスキルを置くフォルダを指定すると、<code>marsdawn</code> はそこに <code>SKILL.md</code> を書き出します。</p>
-<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="for-other-agents"><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
 <p>このファイルはただの Markdown で、説明とコマンドだけなので、指示ファイルを読むエージェントならそのまま使えます。</p>
 <h2 id="without-homebrew-or-the-command-line-tool">Homebrew やコマンドラインツールがない場合</h2>
 <p>先に <code>marsdawn</code> をインストールできない場合は、ファイルを直接ダウンロードします。</p>
-<pre><code>mkdir -p ~/.claude/skills/marsdawn
+<pre tabindex="0" role="region" aria-labelledby="without-homebrew-or-the-command-line-tool"><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <p>これはこのサイトにある最新のスキルを取得するので、古い <code>marsdawn</code> より新しいことがあります。ツールをインストールしたら、<code>marsdawn skill --install --force</code> で、それに合ったものに置き換えられます。エージェントにこの URL を指定するか、ファイルをそのまま貼り付けることもできます。このファイルは英語です。</p>
 <h2 id="what-it-teaches">教えること</h2>
@@ -170,11 +172,12 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
         <li><a href="/ja/features/">機能一覧</a></li>
         <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
         <li><a href="/ja/native/">Mac アプリ</a></li>
-        <li><a href="/ja/pdf/">PDF 書き出し</a></li>
+        <li><a href="/ja/pdf/">プリントと PDF</a></li>
         <li><a href="/ja/limits/">MarsDawn ができないこと</a></li>
         <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
         <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>
         <li><a href="/ja/changelog/">更新履歴</a></li>
+        <li><a href="/ja/roadmap/">ロードマップ</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -211,7 +214,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">テーマ</h3>
       <ul>
-        <li><a href="/ja/themes/">プレビューテーマと PDF 書き出し</a></li>
+        <li><a href="/ja/themes/">テーマ</a></li>
         <li><a href="/ja/themes/gallery/">テーマギャラリー</a></li>
         <li><a href="/ja/themes/new/">テーマを作る</a></li>
         <li><a href="/ja/themes/agents/">エージェントとテーマを作る</a></li>
@@ -228,6 +231,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-cli&amp;mt=8">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple のロゴ、Mac、iPhone、iPad、iCloud は、米国およびその他の国や地域で登録された Apple Inc. の商標です。App Store および Mac App Store は Apple Inc. のサービスマークです。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>

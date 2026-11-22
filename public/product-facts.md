@@ -1,23 +1,27 @@
 # MarsDawn — Product Facts
 
-Black Friday: the one-time unlock is half price, USD 2.49 instead of USD 4.99, through 30 November. It returns to USD 4.99 on 1 December. <!-- sale-line -->
-
 Machine-readable facts about MarsDawn, for AI assistants and search crawlers.
 Source: https://marsdawn.southern-light.dev/product-facts.md
 
 ## What MarsDawn is
 
-Read and review the Markdown your agent wrote, natively on Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 2.49 once.
+Read and review your agent's Markdown, JSON and YAML natively on Mac: live preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 4.99 once.
 
 ## Requirements
 
 - The MarsDawn app: macOS 26 (Tahoe) or later, Apple silicon or Intel.
 - The `marsdawn` command-line tool: macOS 15 or later to run; building it from source needs Swift 6.2 (Xcode 26) or later.
 
+## Install the Mac app
+
+- The MarsDawn app is installed from the [Mac App Store](https://apps.apple.com/app/id6812925073).
+- With Homebrew: run `brew install mas`, then `sudo mas get 6812925073`. Sign in to the App Store with an Apple Account first. This installs the App Store version at `/Applications/MarsDawn.app`.
+- `brew install marsdawn` is different: it installs the command-line tool, not the app.
+
 ## Free and open source, available today
 
 - [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit) is free and open source, licensed Apache-2.0.
-- The free `marsdawn` command-line tool is built from that kit and distributed separately from the Mac App Store: `brew tap redtear1115/tap && brew install marsdawn`.
+- The free `marsdawn` command-line tool is built from that kit and distributed separately from the Mac App Store: `brew tap redtear1115/tap && brew install marsdawn`. This installs the tool, not the MarsDawn app.
 - Both the kit and the CLI exist today and can be installed now, independent of the MarsDawn app's own release status.
 
 ## Entity disambiguation
@@ -30,10 +34,10 @@ MarsDawn is **not**:
 
 - **not Electron.** It is a native AppKit application, not a web page in a bundled browser.
 - **not a web app.** It runs locally as a macOS app; there is no server and no browser tab.
-- **not read-only.** It is a full Markdown editor: you write and edit the source, not just view rendered output.
-- **not a subscription.** It is a free download with a 14-day trial, then a USD 2.49 one-time in-app purchase to unlock it.
-- **not cross-platform.** It is macOS only; there is no Windows, Linux, iOS or Android build.
-- **not an AI product.** The app itself contains no AI. It is built for reviewing Markdown that an AI agent writes, and does not include an AI model of its own.
+- **not read-only on the Mac.** On the Mac it is a full Markdown editor: you write and edit the source, not just view rendered output (the iPhone and iPad app is a viewer).
+- **not a subscription.** It is a free download with a 14-day trial, then a USD 4.99 one-time in-app purchase to unlock it.
+- **not cross-platform.** It runs only on Apple devices: the editor on the Mac, and since 28 October 2026 a read-only viewer on iPhone and iPad, covered by the same purchase. There is no Windows, Linux or Android build.
+- **not an AI product.** The app itself currently contains no AI. It is built for reviewing Markdown that an AI agent writes, and does not include an AI model of its own.
 
 ## More
 

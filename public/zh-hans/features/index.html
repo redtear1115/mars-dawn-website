@@ -2,6 +2,7 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -26,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>功能一览：在 Mac 上检查代理的 Markdown · MarsDawn</title>
-<meta name="description" content="Mac 原生的 Markdown 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可以拿去开会、用笔批注，或当纸质存档。">
+<meta name="description" content="Mac 原生的 Markdown、JSON、YAML 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可拿去开会或存档。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -43,7 +45,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/features/">
 <link rel="alternate" type="text/markdown" href="/zh-hans/features/index.md">
 <meta property="og:title" content="功能一览：在 Mac 上检查代理的 Markdown · MarsDawn">
-<meta property="og:description" content="Mac 原生的 Markdown 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可以拿去开会、用笔批注，或当纸质存档。">
+<meta property="og:description" content="Mac 原生的 Markdown、JSON、YAML 编辑器：实时预览、Mermaid 与数学公式、主题，导出和打印的页面可拿去开会或存档。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/features/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -145,8 +147,10 @@ try {
 <h3>大纲和文件边栏</h3>
 <p>边栏的“大纲”列出文稿的标题，点按一下就跳到该处。打开文件夹后，“文件”标签列出里面的文件；代理正在写入时，新文件会自动出现。如果文件夹是 git 检出，上方标题会写出是哪个分支或工作树。</p>
 <p class="more"><a href="/zh-hans/reading-agent-output/">读懂代理交回来的 Markdown</a></p>
+<h3>折叠长文稿</h3>
+<p>在预览中，“显示 ▸ 全部折叠到标题 2”会把长的计划或规格折叠到 2 级标题，“显示 ▸ 全部展开”再全部展开。“格式 ▸ 可折叠区块”会插入一段可以折叠的区块。</p>
 <h3>指出确切的那一行</h3>
-<p>“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 <code>docs/plan.md:42</code>。“拷贝给 AI”再附上所选的文字。粘贴到代理的对话里就行。</p>
+<p>“编辑 ▸ 拷贝引用”会把你的位置拷贝成路径加行号，例如 <code>docs/plan.md:42</code>。“<a href="/zh-hans/copy-for-ai/">拷贝给 AI</a>”再附上所选的文字。粘贴到代理的对话里就行。</p>
 <p class="more"><a href="/zh-hans/reading-agent-output/">读懂代理交回来的 Markdown</a></p>
 <h3>跟着链接跳到另一个文件</h3>
 <p>在预览里点按一个指向另一个 Markdown 文件的链接，MarsDawn 会打开那个文件（已经开着就带到前面），并滚动到那个标题。</p>
@@ -154,13 +158,13 @@ try {
 <p>不是所有的工作都在屏幕上做。MarsDawn 打印和导出的页面，就是你在屏幕上读的那几页，所以人们聚在一起、读东西、留记录的地方都用得上。</p>
 <h3>开会讨论</h3>
 <p>把页面打印出来，或把同一份 PDF 发给每个人，大家就是看同一份文稿，不用挤在一个屏幕前。拿到同一个文件的人，分页位置都一样，所以“第 3 页那张表”指的是同一个东西。接着由人把决议写下来，写在打印出来的纸上，或写成笔记。会议记录模板把决议放在最前面，每个行动项都有负责人。</p>
-<p class="more"><a href="/zh-hans/pdf/">导出 PDF</a> &#183; <a href="/zh-hans/templates/meeting-notes/">会议记录模板</a></p>
+<p class="more"><a href="/zh-hans/pdf/">打印与 PDF</a> &#183; <a href="/zh-hans/templates/meeting-notes/">会议记录模板</a></p>
 <h3>拿笔边读边写</h3>
 <p>有些人习惯用笔读东西：画线、在页边写几个字，才记得住。把文稿打印出来，就可以在纸上这样做。MarsDawn 本身没有批注功能；想直接在 PDF 上标记的话，用你原本就有的 PDF app 就好。</p>
-<p class="more"><a href="/zh-hans/pdf/">导出 PDF</a></p>
+<p class="more"><a href="/zh-hans/pdf/">打印与 PDF</a></p>
 <h3>纸质存档</h3>
 <p>有些行业还是要把纸质文件存起来，会计就是一个例子。MarsDawn 没有任何归档或合规的声明。它做的是打印和导出干净、分好页的页面：图表画进去，短的代码块不被切开，用主题的浅色配色。纸质文件还是正式记录的地方，就可以用这些页面。</p>
-<p class="more"><a href="/zh-hans/pdf/">导出 PDF</a></p>
+<p class="more"><a href="/zh-hans/pdf/">打印与 PDF</a></p>
 <h3>交给不写 Markdown 的人</h3>
 <p>PDF 在任何地方都能打开，也不需要懂 Markdown，所以也适合发给主管或客户。</p>
 <p class="more"><a href="/zh-hans/sharing-exported-pdfs/">分享导出的 PDF</a></p>
@@ -190,13 +194,13 @@ try {
 <h2 id="themes-pdf-and-print">主题、PDF 和打印</h2>
 <h3>四种主题，各有浅色和深色</h3>
 <p>黎明、典雅、流行、活泼各有浅色和深色版本。MarsDawn 会跟着 Mac 的外观切换，也可以在设置中固定一种。从“显示 ▸ 预览主题”或工具栏的调色板按钮选择。</p>
-<p class="more"><a href="/zh-hans/themes/">预览主题与 PDF 导出</a></p>
+<p class="more"><a href="/zh-hans/themes/">主题</a></p>
 <h3>更多主题</h3>
 <p>“设置 ▸ 外观 ▸ 获取更多主题…”会打开额外预览主题的主题图库。装上一个，它就出现在“显示 ▸ 预览主题”里；点按“移除”就拿掉。主题图库只在打开的时候连上网络。</p>
 <p class="more"><a href="/zh-hans/themes/gallery/">主题图库</a> &#183; <a href="/zh-hans/themes/new/">打造一个主题</a></p>
 <h3>导出 PDF，或打印</h3>
-<p>“文件 ▸ 导出为 PDF…”会存成自动分页的 PDF，“文件 ▸ 打印…”打印相同的页面。Mermaid 图表直接画进去，代码保留语法着色，分页时会尽量不让标题落在页尾，也不切开短的代码块和图表。PDF 一律用主题的浅色配色，就算你是在深色下读的也一样。</p>
-<p class="more"><a href="/zh-hans/pdf/">导出 PDF</a></p>
+<p>“文件 ▸ 打印…”和“文件 ▸ 导出为 PDF…”会打开“打印与导出”，先预览页面。选一种布局：“文稿”；“手册”，有封面、目录和 PDF 书签；或“讲义”，有笔记栏。然后打印或存储。Mermaid 图表直接画进去，代码保留语法着色，分页时会尽量不让标题落在页尾，也不切开短的代码块和图表。PDF 一律用主题的浅色配色。</p>
+<p class="more"><a href="/zh-hans/pdf/">打印与 PDF</a></p>
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
     <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="用 MarsDawn 导出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。">
@@ -208,15 +212,25 @@ try {
     <ol><li>Mermaid 图表直接画进 PDF。</li><li>代码保留语法高亮。</li></ol>
   </figcaption>
 </figure>
+<h2 id="iphone-ipad">在 Mac 上写，在路上读</h2>
+<p>代理在 Mac 上工作，它写的计划和报告，你在 iPhone 或 iPad 上也能读。</p>
+<ol class="devsteps">
+  <li><strong>在 Mac 上：</strong>把代理的计划和报告存在 iCloud 云盘里的文件夹。</li>
+  <li><strong>在 iPhone 或 iPad 上：</strong>打开 MarsDawn，点“打开”，选同一个文件，也可以从其他 App 打开。Mermaid 图表、数学公式、代码和表格都会排好显示，也有大纲和你选的主题。</li>
+  <li><strong>交给别人：</strong>共享、打印，或存储为 PDF。</li>
+</ol>
+<p>用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad 上的 MarsDawn。</p>
+<a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mac-iphone&amp;mt=8"><img src="/assets/badges/app-store-zh-hans.svg" width="109" height="40" alt="在 App Store 下载"></a>
+<p class="devnote">在 iPhone 和 iPad 上，MarsDawn 只能阅读：可以打开 Markdown、纯文本、PDF、JSON 和 YAML，但不能编辑。在这里存储的 PDF，里面的链接不能点按。MarsDawn 本身没有云端服务。</p>
 <h2 id="files-tabs-and-quick-look">文件、标签页和快速查看</h2>
 <h3>窗口和标签页</h3>
-<p>每份文稿默认在自己的窗口打开。用“窗口 ▸ 合并所有窗口”，可以把开着的窗口收成同一个窗口里的标签页。输入时会自动存储。</p>
+<p>打开的文稿默认会成为最前面窗口的标签页。想按照 Mac 的标签页设置，请到“设置 ▸ 外观”选择“跟随系统设置”。输入时会自动存储。</p>
 <p class="more"><a href="/zh-hans/native/">为 Mac 而做</a></p>
 <h3>在访达用快速查看</h3>
-<p>在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。快速查看会用你在 MarsDawn 选的主题，也跟着 MarsDawn 的外观设置。</p>
+<p>在访达选取 Markdown 文件并按空格键，就能看到排版后的样子，图表也会显示。JSON 和 YAML 文件则会显示成树状视图。快速查看会用你在 MarsDawn 选的主题，也跟着 MarsDawn 的外观设置。</p>
 <p class="more"><a href="/zh-hans/native/">为 Mac 而做</a> &#183; <a href="/zh-hans/quicklook/">Markdown 快速查看</a></p>
 <h3>其他文件</h3>
-<p>MarsDawn 也能打开纯文本文件（<code>.txt</code>、<code>.log</code>、代码文件）和 PDF。UTF-8 纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。</p>
+<p>MarsDawn 也能打开纯文本文件（<code>.txt</code>、<code>.log</code>、代码文件）和 PDF。UTF-8 纯文本文件打开就能直接编辑，只显示源代码。PDF 则在有页面缩略图、缩放和搜索的查看器中打开。在 Mac 上，JSON 和 YAML 文件可以作为文稿打开并编辑，旁边的树状预览会随输入实时更新。在“访达”中用“快速查看”也会显示同样的树状视图。在 iPhone 和 iPad 上，JSON 和 YAML 以只读方式打开，并有树状预览。</p>
 <h3>你的文件留在你手上</h3>
 <p>不需要账户，没有同步，也没有云端。文稿留在你存储的位置，MarsDawn 不收集任何关于你的数据。</p>
 <p class="more"><a href="/zh-hans/yours/">你写的内容留在你的 Mac 上</a></p>
@@ -236,6 +250,14 @@ try {
 <h2 id="siri-and-shortcuts">Siri 和快捷指令</h2>
 <p>在“快捷指令”App 中搜索 MarsDawn，可以找到三个操作：“新建 Markdown 文稿”（可选模板）、“添加笔记到收件箱”和“打开最近使用的文稿”。笔记会添加到你在“MarsDawn ▸ 设置… ▸ 笔记文件夹”选的文件夹中的 <code>Inbox.md</code>。</p>
 <p class="more"><a href="/zh-hans/native/">为 Mac 而做</a></p>
+<section class="film-mac" aria-labelledby="film-mac-h">
+<h2 id="film-mac-h">观看影片</h2>
+<video controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/marsdawn-film-en-poster.jpg" aria-label="MarsDawn 影片，54 秒">
+<source src="/assets/film/marsdawn-film-en-1080p30.mp4" type="video/mp4">
+<track kind="subtitles" src="/assets/film/marsdawn-film-zh-hans.vtt" srclang="zh-Hans" label="简体中文" default>
+<p>你的浏览器无法播放这支影片。</p>
+</video>
+</section>
 <section class="film-themes" aria-labelledby="film-themes-h">
 <h2 id="film-themes-h">页面打印出来之后</h2>
 <p>大家围着打印出来的页面开会，有人拿笔在页边写字，纸质记录收进档案。</p>
@@ -246,8 +268,8 @@ try {
 </video>
 </section>
 <h2 id="try-it-on-your-mac">在你的 Mac 上试试</h2>
-<p>MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 2.49 解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。</p>
-<p><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8">立即下载试用</a></p>
+<p>MarsDawn 可以免费下载。先免费试用 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。</p>
+<p><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8"><img src="/assets/badges/app-store-zh-hans.svg" width="109" height="40" alt="在 App Store 下载"></a></p>
 <p>试用怎么运作：<a href="/zh-hans/pay-once/">免费试用，买一次就好</a>。刻意不做的事：<a href="/zh-hans/limits/">MarsDawn 做不到的事</a>。</p>
 </main>
 <footer class="footer">
@@ -259,11 +281,12 @@ try {
         <li><a href="/zh-hans/features/" aria-current="page">功能一览</a></li>
         <li><a href="/zh-hans/quicklook/">Markdown 快速查看</a></li>
         <li><a href="/zh-hans/native/">为 Mac 而做</a></li>
-        <li><a href="/zh-hans/pdf/">导出 PDF</a></li>
+        <li><a href="/zh-hans/pdf/">打印与 PDF</a></li>
         <li><a href="/zh-hans/limits/">MarsDawn 做不到的事</a></li>
         <li><a href="/zh-hans/pay-once/">免费试用，买一次就好</a></li>
         <li><a href="/zh-hans/yours/">你写的内容留在你的 Mac 上</a></li>
         <li><a href="/zh-hans/changelog/">更新记录</a></li>
+        <li><a href="/zh-hans/roadmap/">路线图</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -300,7 +323,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">主题</h3>
       <ul>
-        <li><a href="/zh-hans/themes/">预览主题与 PDF 导出</a></li>
+        <li><a href="/zh-hans/themes/">主题</a></li>
         <li><a href="/zh-hans/themes/gallery/">主题图库</a></li>
         <li><a href="/zh-hans/themes/new/">打造一个主题</a></li>
         <li><a href="/zh-hans/themes/agents/">和代理一起做主题</a></li>
@@ -317,6 +340,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 标志、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美国和其他国家和地区注册的商标。App Store 和 Mac App Store 是 Apple Inc. 的服务商标。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>

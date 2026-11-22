@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -25,8 +27,8 @@ try {
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>主題庫：MarsDawn 的社群主題 · MarsDawn</title>
-<meta name="description" content="瀏覽社群投稿的 MarsDawn 預覽主題，依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造一個自己的主題，不用安裝，也不用 git。">
+<title>主題庫：經過審核的 MarsDawn 主題 · MarsDawn</title>
+<meta name="description" content="瀏覽 MarsDawn 的預覽主題，每一個都經過開發者審核；可以依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造自己的主題，不用安裝，也不用 git。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -42,8 +44,8 @@ try {
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/themes/gallery/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/themes/gallery/">
 <link rel="alternate" type="text/markdown" href="/zh-hant/themes/gallery/index.md">
-<meta property="og:title" content="主題庫：MarsDawn 的社群主題 · MarsDawn">
-<meta property="og:description" content="瀏覽社群投稿的 MarsDawn 預覽主題，依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造一個自己的主題，不用安裝，也不用 git。">
+<meta property="og:title" content="主題庫：經過審核的 MarsDawn 主題 · MarsDawn">
+<meta property="og:description" content="瀏覽 MarsDawn 的預覽主題，每一個都經過開發者審核；可以依情境篩選，也可以檢舉有問題的主題。在瀏覽器裡打造自己的主題，不用安裝，也不用 git。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/themes/gallery/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -52,7 +54,7 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hant/"}, {"@type": "ListItem", "position": 2, "name": "預覽主題與 PDF 輸出", "item": "https://marsdawn.southern-light.dev/zh-hant/themes/"}, {"@type": "ListItem", "position": 3, "name": "主題庫", "item": "https://marsdawn.southern-light.dev/zh-hant/themes/gallery/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hant/"}, {"@type": "ListItem", "position": 2, "name": "主題", "item": "https://marsdawn.southern-light.dev/zh-hant/themes/"}, {"@type": "ListItem", "position": 3, "name": "主題庫", "item": "https://marsdawn.southern-light.dev/zh-hant/themes/gallery/"}]}</script>
 <script src="/assets/consent.js" defer></script>
 <script type="module" src="/assets/theme-gallery.js"></script>
 </head>
@@ -124,7 +126,7 @@ try {
 <main id="main">
 <section class="intro">
   <h1>主題庫</h1>
-  <p>社群投稿的預覽主題，每一個都經過開發者審核、合併後才會出現在這裡。依情境篩選，或是<a href="/zh-hant/themes/new/">在瀏覽器裡打造一個自己的主題</a>——不用安裝，也不用 git。</p>
+  <p>MarsDawn 的預覽主題，每一個都經過開發者審核、合併後才會出現在這裡。目前這些主題都由 Southern Light 製作，其中有些改編自知名配色。可以依情境篩選，或是<a href="/zh-hant/themes/new/">在瀏覽器裡打造一個自己的主題</a>：送出後會開一則 GitHub issue 等待審核，不用安裝，也不用 git。</p>
 </section>
 <div class="theme-gallery-filter" id="theme-gallery-filter" role="group" aria-label="依情境篩選">
   <button type="button" class="theme-filter-btn" data-scenario="all" aria-pressed="true">全部</button>
@@ -134,6 +136,15 @@ try {
   <button type="button" class="theme-filter-btn" data-scenario="notes-sharing" aria-pressed="false">筆記分享</button>
 </div>
 <ul class="theme-gallery-cards" id="theme-gallery-cards" data-close-label="關閉">
+  <li class="theme-card" data-scenarios="notes-sharing">
+    <span class="theme-previews"><a class="theme-preview" href="/themes/v1/christmas/1.0.0/preview-light.png"><img src="/themes/v1/christmas/1.0.0/preview-light.png" alt="Christmas — light preview" width="1200" height="1629" loading="lazy"></a><a class="theme-preview" href="/themes/v1/christmas/1.0.0/preview-dark.png"><img src="/themes/v1/christmas/1.0.0/preview-dark.png" alt="Christmas — dark preview" width="1200" height="1629" loading="lazy"></a></span>
+    <strong class="theme-name">Christmas</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">聖誕風格的閱讀調色盤，莓紅標題搭配暖奶油色書頁，深色版本為酒紅黑底</span>
+    <span class="theme-scenarios"><span class="theme-scenario">筆記分享</span></span>
+    <span class="theme-author">作者： Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="christmas" data-theme-version="1.0.0">檢舉</button>
+    <button type="button" class="theme-report-mail" data-theme-id="christmas" data-theme-version="1.0.0">用電子郵件檢舉</button>
+  </li>
   <li class="theme-card" data-scenarios="technical-docs agent-review">
     <span class="theme-previews"><a class="theme-preview" href="/themes/v1/dracula/1.0.1/preview-light.png"><img src="/themes/v1/dracula/1.0.1/preview-light.png" alt="Dracula — light preview" width="1200" height="1626" loading="lazy"></a><a class="theme-preview" href="/themes/v1/dracula/1.0.1/preview-dark.png"><img src="/themes/v1/dracula/1.0.1/preview-dark.png" alt="Dracula — dark preview" width="1200" height="1626" loading="lazy"></a></span>
     <strong class="theme-name">Dracula</strong> <span class="theme-version">v1.0.1</span>
@@ -192,14 +203,14 @@ try {
     <button type="button" class="theme-report-mail" data-theme-id="nord" data-theme-version="1.0.1">用電子郵件檢舉</button>
   </li>
   <li class="theme-card" data-scenarios="technical-docs agent-review">
-    <span class="theme-previews"><a class="theme-preview" href="/themes/v1/solarized/1.0.1/preview-light.png"><img src="/themes/v1/solarized/1.0.1/preview-light.png" alt="Solarized — light preview" width="1200" height="1664" loading="lazy"></a><a class="theme-preview" href="/themes/v1/solarized/1.0.1/preview-dark.png"><img src="/themes/v1/solarized/1.0.1/preview-dark.png" alt="Solarized — dark preview" width="1200" height="1664" loading="lazy"></a></span>
-    <strong class="theme-name">Solarized</strong> <span class="theme-version">v1.0.1</span>
+    <span class="theme-previews"><a class="theme-preview" href="/themes/v1/solarized/1.0.2/preview-light.png"><img src="/themes/v1/solarized/1.0.2/preview-light.png" alt="Solarized — light preview" width="1200" height="1664" loading="lazy"></a><a class="theme-preview" href="/themes/v1/solarized/1.0.2/preview-dark.png"><img src="/themes/v1/solarized/1.0.2/preview-dark.png" alt="Solarized — dark preview" width="1200" height="1664" loading="lazy"></a></span>
+    <strong class="theme-name">Solarized</strong> <span class="theme-version">v1.0.2</span>
     <span class="theme-summary">Ethan Schoonover 設計的藍綠與金色精準色盤 — 改編自 Solarized，為可讀性調整</span>
     <span class="theme-scenarios"><span class="theme-scenario">技術文件</span> <span class="theme-scenario">審閱代理產出</span></span>
     <span class="theme-author">作者： Southern Light</span>
     <span class="theme-credit"><a href="/themes/third-party-notices.html#solarized">版權與授權</a></span>
-    <button type="button" class="theme-report" data-theme-id="solarized" data-theme-version="1.0.1">檢舉</button>
-    <button type="button" class="theme-report-mail" data-theme-id="solarized" data-theme-version="1.0.1">用電子郵件檢舉</button>
+    <button type="button" class="theme-report" data-theme-id="solarized" data-theme-version="1.0.2">檢舉</button>
+    <button type="button" class="theme-report-mail" data-theme-id="solarized" data-theme-version="1.0.2">用電子郵件檢舉</button>
   </li>
   <li class="theme-card" data-scenarios="agent-review formal-output">
     <span class="theme-previews"><a class="theme-preview" href="/themes/v1/spec/1.0.1/preview-light.png"><img src="/themes/v1/spec/1.0.1/preview-light.png" alt="Spec — light preview" width="1200" height="1683" loading="lazy"></a><a class="theme-preview" href="/themes/v1/spec/1.0.1/preview-dark.png"><img src="/themes/v1/spec/1.0.1/preview-dark.png" alt="Spec — dark preview" width="1200" height="1683" loading="lazy"></a></span>
@@ -243,11 +254,12 @@ try {
         <li><a href="/zh-hant/features/">功能一覽</a></li>
         <li><a href="/zh-hant/quicklook/">Markdown 快速查看</a></li>
         <li><a href="/zh-hant/native/">為 Mac 而做</a></li>
-        <li><a href="/zh-hant/pdf/">輸出 PDF</a></li>
+        <li><a href="/zh-hant/pdf/">列印與 PDF</a></li>
         <li><a href="/zh-hant/limits/">MarsDawn 做不到的事</a></li>
         <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a></li>
         <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a></li>
         <li><a href="/zh-hant/changelog/">更新紀錄</a></li>
+        <li><a href="/zh-hant/roadmap/">路線圖</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -284,7 +296,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">主題</h3>
       <ul>
-        <li><a href="/zh-hant/themes/">預覽主題與 PDF 輸出</a></li>
+        <li><a href="/zh-hant/themes/">主題</a></li>
         <li><a href="/zh-hant/themes/gallery/" aria-current="page">主題庫</a></li>
         <li><a href="/zh-hant/themes/new/">打造一個主題</a></li>
         <li><a href="/zh-hant/themes/agents/">和 agent 一起做主題</a></li>
@@ -301,6 +313,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-themes&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 標誌、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美國及其他國家和地區註冊的商標。App Store 和 Mac App Store 是 Apple Inc. 的服務標誌。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>

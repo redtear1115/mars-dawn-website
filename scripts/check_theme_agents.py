@@ -231,7 +231,8 @@ def roles_found(loc: str, got, model: dict) -> list:
 
 
 def pre_blocks(page_html: str) -> list:
-    return [htmllib.unescape(b) for b in re.findall(r"<pre><code>(.*?)</code></pre>", page_html, re.S)]
+    # A block wide enough to scroll is focusable and may be a labelled region (<pre tabindex="0" ...>, #271).
+    return [htmllib.unescape(b) for b in re.findall(r"<pre(?: [^>]*)?><code>(.*?)</code></pre>", page_html, re.S)]
 
 
 def run_recipe(command: str, file_bytes: bytes):

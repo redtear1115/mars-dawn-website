@@ -2,6 +2,7 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -52,7 +54,7 @@ try {
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hans/"}, {"@type": "ListItem", "position": 2, "name": "Mac 上怎么打开 md 文件", "item": "https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "md 文件是什么？", "acceptedAnswer": {"@type": "Answer", "text": ".md 文件是用 Markdown 写成的纯文本文件。Markdown 用简单的字符标记文本：# 是标题，** 包住的是粗体，竖线画出表格。.markdown、.mdown、.mkd、.mkdn 是同样的东西。开发者拿它写 README 和文档，AI 代理也常把计划和报告写成 .md 文件交回来。"}}, {"@type": "Question", "name": "为什么 md 文件打开是纯文本，满是 # 和 ** ？", "acceptedAnswer": {"@type": "Answer", "text": "因为它本来就是纯文本，纯文本编辑器只会照原样显示，文件没有坏。想看到标题、粗体、表格和图表，要用会排版 Markdown 的 app 打开。在 MarsDawn 里，排好的页面就在源代码旁边。"}}, {"@type": "Question", "name": "为什么打开是乱码？", "acceptedAnswer": {"@type": "Answer", "text": "乱码通常是因为文件存成 UTF-8 以外的文本编码，而打开它的 app 猜错了。解法是另存一份 UTF-8 的副本。MarsDawn 打开不是 UTF-8 的纯文本文件时会以只读方式打开，并在窗口上方的提示栏写出它当成哪种编码来读；那里的“保存为 UTF-8…”，或“文件 ▸ 保存为…”（⌥⇧⌘S），可以存出一份能编辑的 UTF-8 副本。"}}, {"@type": "Question", "name": "md 文件可以转成 PDF 吗？", "acceptedAnswer": {"@type": "Answer", "text": "可以。在 MarsDawn 选“文件 ▸ 导出为 PDF…”（⌥⌘E）或“文件 ▸ 打印…”，页面会自动分页，图表画进去，代码保留高亮，使用主题的浅色配色。不装 app 的话，免费的 marsdawn export 命令行工具能导出同样的 PDF：marsdawn export notes.md。请看导出 PDF和Markdown 转 PDF。"}}, {"@type": "Question", "name": "AI 代理写的 md 文件也能这样打开吗？", "acceptedAnswer": {"@type": "Answer", "text": "可以，MarsDawn 就是为这个做的。打开文件，排好的页面就在源代码旁边；代理改好之后，再打开来读一次。代理也可以运行 marsdawn open plan.md，在 MarsDawn 里把文件打开给你。请看读懂代理交回来的 Markdown。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "md 文件是什么？", "acceptedAnswer": {"@type": "Answer", "text": ".md 文件是用 Markdown 写成的纯文本文件。Markdown 用简单的字符标记文本：# 是标题，** 包住的是粗体，竖线画出表格。.markdown、.mdown、.mkd、.mkdn 是同样的东西。开发者拿它写 README 和文档，AI 代理也常把计划和报告写成 .md 文件交回来。"}}, {"@type": "Question", "name": "为什么 md 文件打开是纯文本，满是 # 和 ** ？", "acceptedAnswer": {"@type": "Answer", "text": "因为它本来就是纯文本，纯文本编辑器只会照原样显示，文件没有坏。想看到标题、粗体、表格和图表，要用会排版 Markdown 的 app 打开。在 MarsDawn 里，排好的页面就在源代码旁边。"}}, {"@type": "Question", "name": "为什么打开是乱码？", "acceptedAnswer": {"@type": "Answer", "text": "乱码通常是因为文件存成 UTF-8 以外的文本编码，而打开它的 app 猜错了。解法是另存一份 UTF-8 的副本。MarsDawn 打开不是 UTF-8 的纯文本文件时会以只读方式打开，并在窗口上方的提示栏写出它当成哪种编码来读；那里的“保存为 UTF-8…”，或“文件 ▸ 保存为…”（⌥⇧⌘S），可以存出一份能编辑的 UTF-8 副本。"}}, {"@type": "Question", "name": "md 文件可以转成 PDF 吗？", "acceptedAnswer": {"@type": "Answer", "text": "可以。在 MarsDawn 选“文件 ▸ 导出为 PDF…”（⌥⌘E）或“文件 ▸ 打印…”，页面会自动分页，图表画进去，代码保留高亮，使用主题的浅色配色。不装 app 的话，免费的 marsdawn export 命令行工具能导出同样的 PDF：marsdawn export notes.md。请看打印与 PDF和Markdown 转 PDF。"}}, {"@type": "Question", "name": "AI 代理写的 md 文件也能这样打开吗？", "acceptedAnswer": {"@type": "Answer", "text": "可以，MarsDawn 就是为这个做的。打开文件，排好的页面就在源代码旁边；代理改好之后，再打开来读一次。代理也可以运行 marsdawn open plan.md，在 MarsDawn 里把文件打开给你。请看读懂代理交回来的 Markdown。"}}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -133,8 +135,9 @@ try {
   <li><strong>不打开，直接预览。</strong> 在访达中选中文件，按空格键。装了 MarsDawn 的话，“快速查看”会显示排版后的页面，图表也在。</li>
 </ol>
 <h2 id="read-it-in-marsdawn">在 MarsDawn 里读</h2>
-<p>MarsDawn 是为 Mac 做的 Markdown 编辑器，可以在 Mac App Store 免费下载：先免费试用全部功能 14 天，之后花 USD 2.49 解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。</p>
-<p><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-view-markdown-on-mac&amp;mt=8">到 Mac App Store 免费下载 MarsDawn</a></p>
+<p>MarsDawn 是为 Mac 做的 Markdown 编辑器，可以在 Mac App Store 免费下载：先免费试用全部功能 14 天，之后花 USD 4.99 解锁一次就好。没有订阅，也不需要账户。需要 macOS 26 以上。</p>
+<p><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-view-markdown-on-mac&amp;mt=8"><img src="/assets/badges/app-store-zh-hans.svg" width="109" height="40" alt="在 App Store 下载"></a></p>
+<p>习惯用终端？<a href="/zh-hans/cli/#mac-app">用 Homebrew 和 mas 安装</a>。</p>
 <p>打开 <code>.md</code> 文件，排好的页面就在源代码旁边：</p>
 <ul>
   <li>预览会随着你打字实时更新，两边的窗格一起滚动。</li>
@@ -144,7 +147,7 @@ try {
 <p>如果这份文件是 AI 代理写的，这正是 MarsDawn 要支持的循环：代理写，你读排好的页面，代理再修改。请看<a href="/zh-hans/">首页</a>，想让代理帮你开文件，请看<a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a>。为什么这样的阅读重要、怎么审一份计划，请看<a href="/zh-hans/reading-agent-output/">读懂代理交回来的 Markdown</a>和<a href="/zh-hans/reviewing-agent-plans/">五分钟审完一份代理计划</a>。</p>
 <h2 id="without-the-app-turn-it-into-a-pdf">不装 app 也行：转成 PDF</h2>
 <p>免费的 <code>marsdawn</code> 命令行工具，能把 Markdown 文件排版成 PDF，任何一台 Mac 都打得开。表格、数学公式、Mermaid 图表和代码高亮都会排好，而且不需要安装其他东西，连 MarsDawn app 都不用。</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre tabindex="0" role="region" aria-labelledby="without-the-app-turn-it-into-a-pdf"><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <p><code>export</code> 会在 Markdown 文件旁边写出 <code>notes.pdf</code>，<code>open</code> 会用你的 PDF 查看器打开它。这个工具需要 macOS 15 以上。完整步骤和一页实际导出的结果，请看<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。</p>
@@ -156,13 +159,14 @@ open notes.pdf</code></pre>
 <h3>为什么打开是乱码？</h3>
 <p>乱码通常是因为文件存成 UTF-8 以外的文本编码，而打开它的 app 猜错了。解法是另存一份 UTF-8 的副本。MarsDawn 打开不是 UTF-8 的纯文本文件时会以只读方式打开，并在窗口上方的提示栏写出它当成哪种编码来读；那里的“保存为 UTF-8…”，或“文件 ▸ 保存为…”（⌥⇧⌘S），可以存出一份能编辑的 UTF-8 副本。</p>
 <h3>md 文件可以转成 PDF 吗？</h3>
-<p>可以。在 MarsDawn 选“文件 ▸ 导出为 PDF…”（⌥⌘E）或“文件 ▸ 打印…”，页面会自动分页，图表画进去，代码保留高亮，使用主题的浅色配色。不装 app 的话，免费的 <code>marsdawn export</code> 命令行工具能导出同样的 PDF：<code>marsdawn export notes.md</code>。请看<a href="/zh-hans/pdf/">导出 PDF</a>和<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。</p>
+<p>可以。在 MarsDawn 选“文件 ▸ 导出为 PDF…”（⌥⌘E）或“文件 ▸ 打印…”，页面会自动分页，图表画进去，代码保留高亮，使用主题的浅色配色。不装 app 的话，免费的 <code>marsdawn export</code> 命令行工具能导出同样的 PDF：<code>marsdawn export notes.md</code>。请看<a href="/zh-hans/pdf/">打印与 PDF</a>和<a href="/zh-hans/markdown-to-pdf/">Markdown 转 PDF</a>。</p>
 <h3>AI 代理写的 md 文件也能这样打开吗？</h3>
 <p>可以，MarsDawn 就是为这个做的。打开文件，排好的页面就在源代码旁边；代理改好之后，再打开来读一次。代理也可以运行 <code>marsdawn open plan.md</code>，在 MarsDawn 里把文件打开给你。请看<a href="/zh-hans/reading-agent-output/">读懂代理交回来的 Markdown</a>。</p>
 <h2 id="next">接下来</h2>
 <ul>
   <li>命令行工具的所有选项：<a href="/zh-hans/cli/">命令行工具</a>。</li>
   <li>MarsDawn 做不到的事：<a href="/zh-hans/limits/">这份清单</a>。</li>
+  <li>放在 HackMD 的笔记：<a href="/zh-hans/from-hackmd/">从 HackMD 搬到 Mac</a>。</li>
   <li>Markdown 文件里的图表：<a href="/zh-hans/mermaid-preview-mac/">在 Mac 上预览 Mermaid</a>。</li>
 </ul>
 </main>
@@ -175,11 +179,12 @@ open notes.pdf</code></pre>
         <li><a href="/zh-hans/features/">功能一览</a></li>
         <li><a href="/zh-hans/quicklook/">Markdown 快速查看</a></li>
         <li><a href="/zh-hans/native/">为 Mac 而做</a></li>
-        <li><a href="/zh-hans/pdf/">导出 PDF</a></li>
+        <li><a href="/zh-hans/pdf/">打印与 PDF</a></li>
         <li><a href="/zh-hans/limits/">MarsDawn 做不到的事</a></li>
         <li><a href="/zh-hans/pay-once/">免费试用，买一次就好</a></li>
         <li><a href="/zh-hans/yours/">你写的内容留在你的 Mac 上</a></li>
         <li><a href="/zh-hans/changelog/">更新记录</a></li>
+        <li><a href="/zh-hans/roadmap/">路线图</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -216,7 +221,7 @@ open notes.pdf</code></pre>
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">主题</h3>
       <ul>
-        <li><a href="/zh-hans/themes/">预览主题与 PDF 导出</a></li>
+        <li><a href="/zh-hans/themes/">主题</a></li>
         <li><a href="/zh-hans/themes/gallery/">主题图库</a></li>
         <li><a href="/zh-hans/themes/new/">打造一个主题</a></li>
         <li><a href="/zh-hans/themes/agents/">和代理一起做主题</a></li>
@@ -233,6 +238,7 @@ open notes.pdf</code></pre>
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-view-markdown-on-mac&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 标志、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美国和其他国家和地区注册的商标。App Store 和 Mac App Store 是 Apple Inc. 的服务商标。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>

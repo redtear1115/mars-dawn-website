@@ -33,5 +33,567 @@
    "sha256": "e69d51d89e5fcf7af26fca929e89e202943e0707bead2806c3d786f4c62dccc0",
    "chars": 27606
   }
+ },
+ "later": {
+  "note": "Approved copy that was put into data.py by hand in merged PRs after the pinned comments were read. ingest.py replaces the pinned text with the approved text at these paths: each path must exist, hold the pinned text (old_sha256) and the approved text (new_sha256, read from the commit) or the run stops.",
+  "recorded_at_utc": "2026-11-21T02:30:45Z",
+  "prs": [
+   {
+    "pr": 345,
+    "issue": 344,
+    "note": "es 'Vista Rápida' with a capital R (Apple's es-ES spelling) across the es page: 7 cells. Ray approved on 2026-10-31 (decision 6546302931: es site-wide). The comment names the spelling, not the sentences, so only the header cell 'Vista Rápida' is verbatim in it; the other six are the pinned sentences with the capital R, pinned to the PR and commit.",
+    "comments": [
+     {
+      "id": 6545693119,
+      "role": "Aria proposal, 5 more places; item 2 is the es 'Vista Rápida' spelling",
+      "updated_at": "2026-10-31T15:54:40Z",
+      "sha256": "014f4c53e9cf3cae114a5d20e9241b4713fff0c9dd78d784894b404dd576f371",
+      "chars": 5352
+     },
+     {
+      "id": 6546302931,
+      "role": "Ray decision: es site-wide 'Vista Rápida'",
+      "updated_at": "2026-10-31T16:49:02Z",
+      "sha256": "0b6d1455e28c184e3ff9f23a1700be312786347067a271aa72ef616e278d83df",
+      "chars": 289
+     }
+    ],
+    "fields": [
+     {
+      "path": [
+       "es",
+       "description"
+      ],
+      "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+      "old_sha256": "83bd08f3d02ab687de95f51591ad14cf59b2c32cc48e50c39ba5910de9841aff",
+      "new_sha256": "7610b11ea137b2d218ac11354514217afecf0a3bde02f385da38a0dcf0dd3eef"
+     },
+     {
+      "path": [
+       "es",
+       "apps",
+       0,
+       "para"
+      ],
+      "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+      "old_sha256": "78415c45bba12454f2ae93e8b35275ff60e52cd0095c41f1c222542c12ef4bec",
+      "new_sha256": "6692b51b7c445794d7a0b18177dc5b996183430ee535e7ebc52ced211a39803a"
+     },
+     {
+      "path": [
+       "es",
+       "apps",
+       1,
+       "bullets",
+       1
+      ],
+      "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+      "old_sha256": "5ef408af728959154b30699e0b74c04c58a5d692828021a1497d6059904ccbe4",
+      "new_sha256": "9b66e9266da5d604dce1603cb2fdec9d93c33542b22f6d122040af26c05cbf6a"
+     },
+     {
+      "path": [
+       "es",
+       "apps",
+       2,
+       "para"
+      ],
+      "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+      "old_sha256": "eb144e296581c0c3b9beb2b0baeaa3a9125333406219ca1fe272afdd3033ed63",
+      "new_sha256": "170ca614cfe6abdc196c535ceb42c1011ff6e57f75ed84ce1aad65fcd540ceae"
+     },
+     {
+      "path": [
+       "es",
+       "apps",
+       3,
+       "para"
+      ],
+      "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+      "old_sha256": "4b1c10b0234b5d5398f5a80d2f84aef0c303e428c009725faf5ea6785f4686a8",
+      "new_sha256": "87073970110bf219b52b90e94de560510157fb33bd5173ae6371f5681db74a89"
+     },
+     {
+      "path": [
+       "es",
+       "apps",
+       5,
+       "para"
+      ],
+      "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+      "old_sha256": "6ef77ef144fe329c1fe94df2ea30074fa75cecfb696a9507e3a28ce804ce6dd2",
+      "new_sha256": "f1a2940027f67ab91cb39c04dfa99c079caf5dfa753293058fab7fc160c9431e"
+     },
+     {
+      "path": [
+       "es",
+       "head",
+       7
+      ],
+      "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+      "old_sha256": "48a6cf39159f6409f209ebfdbb666b36ee783847c0bb8afe8ae965046d329b7c",
+      "new_sha256": "a34309d2fd522dc54f3ab445eaf71fb1481e16fbc9e639fde71e673e9a007e82",
+      "comments": [
+       6545693119
+      ]
+     }
+    ]
+   },
+   {
+    "pr": 360,
+    "issue": 357,
+    "note": "Page numbers on the best page, 8 languages x 4 places (MarsDawn bullet, comparison cell, 'not for' bullet removed, FAQ answer). Ray approved 'ok' for #357 on 2026-11-06 (decision 6684273294); all 32 new sentences, and the removal of the 'not for' bullet, are verbatim in the pinned proposal.",
+    "comments": [
+     {
+      "id": 6684229028,
+      "role": "#357 table of page-number sentences, 8 languages (best page tables)",
+      "updated_at": "2026-11-06T11:55:08Z",
+      "sha256": "588dd08b0bef60610499029506ac64c6b2ef99906d8df4b865604ba992fa9103",
+      "chars": 18447
+     },
+     {
+      "id": 6684273294,
+      "role": "Ray decision: #357 copy ok",
+      "updated_at": "2026-11-06T11:57:40Z",
+      "sha256": "0d1df17f3ffb883830c5b15e8908048326c92363b0ae28141ec5865e9e7a8201",
+      "chars": 201
+     }
+    ],
+    "fields": [
+     {
+      "path": [
+       "en",
+       "apps",
+       3,
+       "bullets",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "94348fb2b872b990912e96ccc8368a08544e36ed40976397cbc00b0ad5ba7ba5",
+      "new_sha256": "996fa76f3583f2030549b5745dd762886146a28c369fc7bebf2c11ed9892c0fe",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "en",
+       "faq",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "2042bb024acbe19b72a53ad61e7252e2f7b35ade9da9ea6a5add799504cbff56",
+      "new_sha256": "b74ecfe1cf23dd885044665752ebbaffb6f0d2b9a7bf2b70182571ad552178e5",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "en",
+       "notfor"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "bf7366b9098e8db23e7d146bba868a8d83464dbf302e2d98c764449835d67a5f",
+      "new_sha256": "9257fb61b0128999033813afb4eaff48bcccd4439e7842b7d4b085f9c5662cc1",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "en",
+       "rows",
+       3,
+       4
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "4ee151b7518172996ef1495e2d9a0b4679b99f545507058f8f86c3a3d9c094c7",
+      "new_sha256": "743c6457b416efe2bf6985754a7c35cf64d5a8136be36a12e535a65466c2dc9d",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "zh-hant",
+       "apps",
+       3,
+       "bullets",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "2e4e1fb374f35776236bc19f09cba7520ecf8f96b8d006cb5983c19d514a5ff1",
+      "new_sha256": "74a10625e93ce542e378ba3586e9ad9c18e07885e01385a02ad2971bbf3863aa",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "zh-hant",
+       "faq",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "1e0dd545c6798e8bc82a1ec0501594015e4bbc01ff394c18f99bd04be141be37",
+      "new_sha256": "f304f9b9dcac9a4eac1131191ebeb103c06d022f443d8e751dbf5d3636401bd8",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "zh-hant",
+       "notfor"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "9af7d6d9e9d0991f27fbaddef7210578a2d55fc6982cf084924258c87c11fd58",
+      "new_sha256": "e2ea73e8ec9253d01d79b3ec5759ade718313c3771e20ac4b6e4e6b54cca2b4a",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "zh-hant",
+       "rows",
+       3,
+       4
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "7f32cdfdfd61940ded2db10035b81fbee1e4a3b9885fdbffa76553dfdbafadfb",
+      "new_sha256": "8c7b1894932662f53ae8524a577f203cd564fb2b5128889699b150ca39fd43ad",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "zh-hans",
+       "apps",
+       3,
+       "bullets",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "55fa21cee4e151369cd98b3bcc298e50320688719bb30333ddd55f8a0ce4092a",
+      "new_sha256": "68896431824483a652798dbb505389aac19783f8d949216596a8ab796b336156",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "zh-hans",
+       "faq",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "4138b5604cffebcd7bb86ce1fe2885e6980a644b9ac4d4d5384d3a57210c4bf5",
+      "new_sha256": "bd60510d4ea49608883334556831a824bf787df65aec17a84b35b0acdad2387a",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "zh-hans",
+       "notfor"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "f0815abba7b64717ad0ffa971b9646e837ec3483658359ee8ec95132c7ab129d",
+      "new_sha256": "f27f910d7fb2679b474a06bf378f39df847b790923df81396a486865ce1ef24c",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "zh-hans",
+       "rows",
+       3,
+       4
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "cb9ecfedaa62d836c839f9023f2e2e59c683cc1e821e7b1964cc13792dc75187",
+      "new_sha256": "e4af06f9a535cea6a7aefcf1867cae08fdbd337ad330bfd4f84c2a47b4f75d7b",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "ja",
+       "apps",
+       3,
+       "bullets",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "2d1462522020edafeeb4c64bcac06311367a749bae69b5e54bc0bb2d9bbc55d1",
+      "new_sha256": "5b8ebb86aa7cd410d53e2e7e7229d89fd4c71bec6bcf8d70c57cb7817dae69a4",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "ja",
+       "faq",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "ea74f4f3a310d4764870922599658cbb204653debe2717bdc0310665c2c95bcc",
+      "new_sha256": "1fcb35708eb6c6e1e7327900df989b05bb43ba529dfbd6ae0d7ab4adeeeba84e",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "ja",
+       "notfor"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "2d2ee238f59ef83e8e71c2d1e1bb433ef15f2511fad20c858079852d41344148",
+      "new_sha256": "73520260b94bc695f3756c77e5003a79c3d89c65eecd863cb7d38235730eb139",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "ja",
+       "rows",
+       3,
+       4
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "3966eb20c3e14b697dd431f8c5d3ebc9fa448d8ba28555ac77e9ae71cecb18dc",
+      "new_sha256": "ba607c6fa07c8cfa62e9dbf23452b5889d7cc38e20ed372c790c032b7b2a702b",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "de",
+       "apps",
+       3,
+       "bullets",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "fc874f0f4d7b3521655331e9e64e192df8a881cebe0b0c4c95a626082858ba33",
+      "new_sha256": "d27a14682b4bc4a8dd359e047dbbd4cf2b5aa9967492e18f70af2c30f3531a2b",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "de",
+       "faq",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "3e0730ce1ef068db94b2423ff626c65e6d6e153b2717ff5944727a7ae25c2745",
+      "new_sha256": "d59c36f499479656dfe65964b8cd574f5cb28c84dc4fdd976215b548712d460e",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "de",
+       "notfor"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "4d3e032f93ad73c8e05132c561d40b827371b4908ee97001159f7825eed66ace",
+      "new_sha256": "d89a13c6d740dcf71564027ac6d3aa5b301a9da7bcf811d0d1249d7a6cabb41b",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "de",
+       "rows",
+       3,
+       4
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "aed0041a25545a983fbd4ed008e0e506663dce3f94799166899f35ff7a4078a3",
+      "new_sha256": "e4c49d821bb3f12003cd5c2d7e973f1cd10f15de825ed720fccab04eef13c435",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "fr",
+       "apps",
+       3,
+       "bullets",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "1c444bed43bbb82361f1ec49fcc0fb49afebbbd98c71c53e59462cad8eb658eb",
+      "new_sha256": "c629491d6bb3abcef23592888f8ef2b39f0a90eed9193d425185118e57093fb3",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "fr",
+       "faq",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "55a11d9bae4e638dfc5f6d5a059724aafbfd747548dc6a9fa268d2f4e594c1cf",
+      "new_sha256": "5f2482d73e4fe3ffadfbc41b6a8892c4b2b9e785d6bbe437194edbd0c58916c4",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "fr",
+       "notfor"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "dabd02db303c6f90f3a78a7fe0e43b16cc0bd20fb7bb9279073b5885acdbb08c",
+      "new_sha256": "6d3c7af063c3f3ec92f918f11d255e6f2397251e44e222447da43e8ed885b1a0",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "fr",
+       "rows",
+       3,
+       4
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "9cad3f7a63f66553368a8c051e0164da622a1800db400a04f6221f9fa685a104",
+      "new_sha256": "131b46a211eed3f88b88f51ced3eed3fbfc037cb9a99d4ef178ecd3cc3e12ca0",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "es",
+       "apps",
+       3,
+       "bullets",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "6f6e492188e9b972befcbc192d03f31f8214b21c260293a0e7623d97b731a686",
+      "new_sha256": "3c0536d925175f5a1fc1bc3fa588562247a8fe2132ea32202e6007b1603bf3a4",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "es",
+       "faq",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "767ba9072c3b01f663e344c980509de7bae0dd5bde7587de5438149a50e6e973",
+      "new_sha256": "456276fd72da68bab944531ea6e958883b205b447c6255b3c5c90ffa1701c34e",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "es",
+       "notfor"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "95845bc5c5108bec241761580dc93a595328f5bb330268102526e556f80d7b7b",
+      "new_sha256": "655fd0e538a08a6730ef850c63b80a856442260dde3ce63a63495a8a517b0e61",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "es",
+       "rows",
+       3,
+       4
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "d888b1c34da49c85bace4691bbe93243e38f11c3f4339523d1f37e7c361f21eb",
+      "new_sha256": "0a70c65f72a27061f49718622154eb1a5a811edec2cc069024919b5ea1f3e9a7",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "ko",
+       "apps",
+       3,
+       "bullets",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "22b92c9bf2a1d4df3952d4bf8b8761adfa78fd2ac5aa33b20acd8eabac75521e",
+      "new_sha256": "561d261cac6a1123d3e7e8639f9a669caed20366b7af3e36348e75984162bd2a",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "ko",
+       "faq",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "e2cc1bec596343ed3ad559c15128bb5b9f193d20aa6bbebd916e022849b608dc",
+      "new_sha256": "687f170ae780b8c1a6f210666532c8bb025be633f6ca984ec936fd63f7124496",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "ko",
+       "notfor"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "27ff270650b431e456844548cb6908778cd07daee0bbe9c2fb4701b6f5bf5f98",
+      "new_sha256": "23e1ec8efc4ef93372a7c20379ab11a599b97f1998676990335a7bd493cecdbe",
+      "comments": [
+       6684229028
+      ]
+     },
+     {
+      "path": [
+       "ko",
+       "rows",
+       3,
+       4
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "5494cc5b6dfe08372d3fcd65f04f8d9839299d0a0d1d8730868c4415049215af",
+      "new_sha256": "aab29058fea42932e52dfb4860f66f201c746dc1b74087342ace4e2b46de7105",
+      "comments": [
+       6684229028
+      ]
+     }
+    ]
+   }
+  ]
  }
 }

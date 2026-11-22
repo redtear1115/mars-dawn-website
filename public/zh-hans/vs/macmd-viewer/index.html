@@ -2,6 +2,7 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -144,7 +146,7 @@ try {
   <tr><th scope="row">命令行</th><td data-label="MacMD Viewer">没有描述独立的命令行工具。它有 <code>markdownviewer://</code> URL scheme，以及用来打开文件的 Claude Code 插件和 hook [<a href="#s6">S6</a>]</td><td data-label="MarsDawn">免费的 <code>marsdawn</code> 工具：<code>marsdawn export</code> 不需要 app 就能导出 PDF，<code>marsdawn open</code> 能在指定行打开文件</td></tr>
   <tr><th scope="row">界面语言</th><td data-label="MacMD Viewer">自己的资料没有写明 [<a href="#s1">S1</a>, <a href="#s3">S3</a>, <a href="#s7">S7</a>]</td><td data-label="MarsDawn">英文、繁体中文、简体中文、日文、德文、法文、西班牙文和韩文</td></tr>
   <tr><th scope="row">系统要求</th><td data-label="MacMD Viewer">macOS 14（Sonoma）或更高版本；Apple 芯片与 Intel [<a href="#s1">S1</a>, <a href="#s7">S7</a>]</td><td data-label="MarsDawn">macOS 26（Tahoe）或更高版本</td></tr>
-  <tr><th scope="row">其他平台</th><td data-label="MacMD Viewer">只有 Mac [<a href="#s1">S1</a>]</td><td data-label="MarsDawn">只有 Mac，没有 iPhone 或 iPad 版</td></tr>
+  <tr><th scope="row">其他平台</th><td data-label="MacMD Viewer">只有 Mac [<a href="#s1">S1</a>]</td><td data-label="MarsDawn">Mac；iPhone 和 iPad 上只能阅读</td></tr>
 </tbody>
 </table></div>
 <h2 id="price-and-how-you-buy-it">价格与购买方式</h2>
@@ -191,14 +193,14 @@ try {
 <h3>MacMD Viewer 在 Mac App Store 上吗？</h3>
 <p>它自己的页面列出的是官网、Homebrew 和 Setapp，没有提到 Mac App Store [<a href="#s2">S2</a>, <a href="#s7">S7</a>]。MarsDawn 只在 Mac App Store。</p>
 <h3>MarsDawn 能打开同样的文件吗？</h3>
-<p>可以。它打开 <code>.md</code> 文件，也能打开纯文本文件和 PDF：UTF-8 的文本文件可直接编辑，PDF 以查看器打开。</p>
+<p>可以。它打开 <code>.md</code> 文件，也能打开纯文本文件和 PDF：UTF-8 的文本文件可直接编辑，PDF 以查看器打开。在 Mac 上也能把 JSON 和 YAML 作为文稿打开并编辑，并有树状预览。</p>
 <h3>我的 Mac 是 macOS 14 或 15 呢？</h3>
 <p>MacMD Viewer 在 macOS 14 以上都能跑 [<a href="#s1">S1</a>]。MarsDawn 需要 macOS 26 以上，不过免费的 <code>marsdawn</code> 命令行工具仍然可以导出 PDF。</p>
 <h3>为什么一个是 USD 19.99，一个是 USD 2.49？</h3>
 <p>两者拿到的东西和付费方式不同。MacMD Viewer 是一次买断，有 14 天退款，没有试用 [<a href="#s2">S2</a>]。MarsDawn 免费下载，有 14 天试用，之后一次解锁。两者都不是订阅。</p>
 <h2 id="try-it-today-free">现在就能免费试试看</h2>
 <p>MarsDawn 已在 Mac App Store 上架。免费的 <code>marsdawn</code> 命令行工具也能把任何 Markdown 文件转成 PDF，Mermaid 图表和代码高亮都在，而且不需要安装其他东西：</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre tabindex="0" role="region" aria-labelledby="try-it-today-free"><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <h2 id="next">接下来</h2>
@@ -218,11 +220,12 @@ open notes.pdf</code></pre>
         <li><a href="/zh-hans/features/">功能一览</a></li>
         <li><a href="/zh-hans/quicklook/">Markdown 快速查看</a></li>
         <li><a href="/zh-hans/native/">为 Mac 而做</a></li>
-        <li><a href="/zh-hans/pdf/">导出 PDF</a></li>
+        <li><a href="/zh-hans/pdf/">打印与 PDF</a></li>
         <li><a href="/zh-hans/limits/">MarsDawn 做不到的事</a></li>
         <li><a href="/zh-hans/pay-once/">免费试用，买一次就好</a></li>
         <li><a href="/zh-hans/yours/">你写的内容留在你的 Mac 上</a></li>
         <li><a href="/zh-hans/changelog/">更新记录</a></li>
+        <li><a href="/zh-hans/roadmap/">路线图</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -259,7 +262,7 @@ open notes.pdf</code></pre>
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">主题</h3>
       <ul>
-        <li><a href="/zh-hans/themes/">预览主题与 PDF 导出</a></li>
+        <li><a href="/zh-hans/themes/">主题</a></li>
         <li><a href="/zh-hans/themes/gallery/">主题图库</a></li>
         <li><a href="/zh-hans/themes/new/">打造一个主题</a></li>
         <li><a href="/zh-hans/themes/agents/">和代理一起做主题</a></li>
@@ -276,6 +279,7 @@ open notes.pdf</code></pre>
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-vs&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 标志、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美国和其他国家和地区注册的商标。App Store 和 Mac App Store 是 Apple Inc. 的服务商标。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>

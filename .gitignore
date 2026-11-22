@@ -9,3 +9,6 @@ node_modules/
 
 # SwiftPM build output of tools/hero-render
 .build/
+
+# Python bytecode written by scripts/ checks
+__pycache__/

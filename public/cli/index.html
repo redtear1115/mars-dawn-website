@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -125,26 +127,33 @@ try {
   <p>The free <code>marsdawn</code> command-line tool: export Markdown to PDF from a shell or an LLM agent, and, with the MarsDawn app installed, open files in it.</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app.</p></div>
+<div class="summary"><p><strong>marsdawn is free and distributed separately from the Mac App Store.</strong> Install it with Homebrew: on an Apple silicon Mac it arrives ready to run. <code>export</code> works on its own; <code>open</code> needs the MarsDawn app. Looking for the Mac app? <a href="#mac-app">Install it with Homebrew and mas</a>.</p></div>
 
 <p>Calling marsdawn from an AI agent or a script? See <a href="/cli/agents/">marsdawn for agents</a> for the JSON output, its schemas and every exit code, or <a href="/cli/mcp/">the MCP server</a> if your agent calls tools over MCP instead.</p>
 
 <h2 id="install">Install</h2>
 <p>With <a href="https://brew.sh">Homebrew</a>:</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
+<pre tabindex="0"><code>brew tap redtear1115/tap && brew install marsdawn</code></pre>
 <p>Using a coding agent? Run <code>marsdawn skill --install</code> to add <a href="/cli/skill/">the marsdawn skill</a>: one file that teaches it to open what it wrote in MarsDawn for your review, and to export PDFs.</p>
 <p>On an Apple silicon Mac, Homebrew installs a prebuilt copy in seconds, with nothing else to install. On an Intel Mac it builds marsdawn from source instead, which takes a few minutes and needs Xcode 26 or later (Swift 6.2). The tool runs on macOS 15 or later.</p>
 <p>Or build it from <a href="https://github.com/redtear1115/mars-dawn-kit">the source</a> with Swift Package Manager:</p>
-<pre><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
+<pre tabindex="0"><code>git clone https://github.com/redtear1115/mars-dawn-kit.git
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>Check which version you have with <code>marsdawn --version</code>.</p>
+
+<h2 id="mac-app">Install the MarsDawn app with Homebrew and mas</h2>
+<p><code>brew install marsdawn</code> installs the command-line tool, not the app. The Mac app comes from the Mac App Store, and <a href="https://github.com/mas-cli/mas">mas</a> can get it from the terminal:</p>
+<pre><code>brew install mas
+sudo mas get 6812925073</code></pre>
+<p>Sign in to the App Store with your Apple Account first; <code>sudo</code> asks for your Mac login password. This installs the App Store version at <code>/Applications/MarsDawn.app</code>. It needs macOS 26 or later, and updates come through the App Store.</p>
+<p>It's free to download. The first time you open MarsDawn you can start a 14-day free trial with everything working; to keep using it after that, unlock it once. There is no subscription. <a href="/pay-once/">How it works</a></p>
 
 <h2 id="commands">Commands</h2>
 
 <h3>marsdawn open</h3>
 <p>Opens one or more Markdown files in the MarsDawn app for review. It needs the app installed: without it, <code>marsdawn open</code> exits with code 3 and says MarsDawn isn't installed. <code>export</code> doesn't need the app. The app is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-cli&amp;mt=8">Mac App Store</a>.</p>
-<pre><code>marsdawn open notes.md
+<pre tabindex="0"><code>marsdawn open notes.md
 marsdawn open notes.md:120
 marsdawn open notes.md --line 120
 marsdawn open .
@@ -157,7 +166,7 @@ marsdawn open notes.md --folder .</code></pre>
   <li>A folder argument opens in the window's sidebar instead of as a document: <code>marsdawn open .</code> shows the current folder. <code>--folder &lt;path&gt;</code> does the same alongside files. A window's sidebar shows one folder, so naming two is a usage error.</li>
   <li><code>--wait &lt;n&gt;</code>: with MarsDawn 1.0.2 or later, which reports back, <code>--folder</code> waits up to n seconds (0 to 30, default 2) for the app's answer about the folder. <code>--wait 0</code>, or an app that doesn't report back, doesn't wait and sends the same request as before.</li>
   <li>A <code>--wait</code> value outside 0 to 30 is a usage error (exit 64). Write a negative value as <code>--wait=-1</code>.</li>
-  <li>With <code>--json</code>, the folder is reported as requested, not attached, because the app decides; with <code>--wait</code>, the result also says what happened to it. The full list is in <a href="/cli/agents/">marsdawn for agents</a>.</li>
+  <li>With <code>--json</code>, the folder is reported as requested, not attached, because the app decides. With MarsDawn 1.0.2 or later, the result also says what happened to it, unless you pass <code>--wait 0</code>. The full list is in <a href="/cli/agents/">marsdawn for agents</a>.</li>
   <li><code>--background</code>: open without bringing MarsDawn to the front.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
 </ul>
@@ -165,25 +174,25 @@ marsdawn open notes.md --folder .</code></pre>
 
 <h3>marsdawn export</h3>
 <p>Renders a Markdown file to a paginated PDF, with the same exporter MarsDawn's own PDF export uses. It doesn't need the MarsDawn app. Relative images resolve against the input file's folder.</p>
-<pre><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
+<pre tabindex="0"><code>marsdawn export notes.md -o notes.pdf --theme classic --paper a4</code></pre>
 <ul>
   <li><code>-o, --output &lt;path&gt;</code>: where to write the PDF. Defaults to the input path with a <code>.pdf</code> extension.</li>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: the preview theme's light palette. Defaults to <code>$MARSDAWN_THEME</code>, then <code>dawn</code>.</li>
   <li><code>--paper &lt;a4|letter&gt;</code>: paper size. Defaults to <code>a4</code>.</li>
   <li><code>--breaks</code>: turn every newline inside a paragraph into a line break, as HackMD does. Without it, a newline between two Chinese or Japanese characters is dropped, so the lines read as one sentence.</li>
-  <li><code>--layout &lt;document|handbook&gt;</code>: the page layout. Defaults to <code>document</code>. <code>handbook</code> prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a <code>title</code>.</li>
+  <li><code>--layout &lt;document|handbook|handout&gt;</code>: the page layout. Defaults to <code>document</code>. <code>handbook</code> prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a <code>title</code>. <code>handout</code> leaves a blank notes column on the right of every page, puts the title and date at the top of page 1, and ends every page with the file name, the date and the page number. A very wide table may run into the notes column.</li>
   <li><code>--toc-title &lt;text&gt;</code>: the heading of the handbook's contents page. Defaults to <code>Contents</code>.</li>
-  <li><code>&lt;!--BREAK--&gt;</code> on a line of its own starts a new page, in either layout.</li>
+  <li><code>&lt;!--BREAK--&gt;</code> on a line of its own starts a new page, in every layout.</li>
   <li><code>--allow-remote-images</code>: load images from the web while rendering. Off by default.</li>
   <li><code>--force</code>: replace the output file if it already exists.</li>
   <li><code>--json</code>: print a JSON result instead of text.</li>
   <li>A file over 16 MiB isn't exported: <code>export</code> exits 5 and writes nothing.</li>
 </ul>
-<p><code>--breaks</code> was added in marsdawn 0.7.0, <code>--layout</code> and <code>--toc-title</code> in 0.7.1, and the name <code>handbook</code> in 0.7.2. The 0.7.1 name, <code>manual</code>, still works.</p>
+<p><code>--breaks</code> was added in marsdawn 0.7.0, <code>--layout</code> and <code>--toc-title</code> in 0.7.1, the name <code>handbook</code> in 0.7.2, and <code>handout</code> in 0.7.3. The 0.7.1 name, <code>manual</code>, still works.</p>
 
 <h3>marsdawn theme</h3>
 <p>Checks a theme file (<code>theme.json</code>) and shows what it looks like, before you share it. It doesn't need the MarsDawn app. For the fields of a theme, see <a href="/themes/agents/">Make a theme with your agent</a>.</p>
-<pre><code>marsdawn theme validate my-theme.json
+<pre tabindex="0"><code>marsdawn theme validate my-theme.json
 marsdawn theme css my-theme.json
 marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pre>
 <ul>
@@ -208,14 +217,15 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pr
   <tr><th scope="row"><code>2</code></th><td data-label="Means">input not found.</td><td data-label="What to do">Check the path and the file name</td></tr>
   <tr><th scope="row"><code>3</code></th><td data-label="Means">MarsDawn is not installed (<code>open</code> only).</td><td data-label="What to do">Install the app, or use <code>export</code>, which doesn't need it</td></tr>
   <tr><th scope="row"><code>4</code></th><td data-label="Means">output exists (pass <code>--force</code>).</td><td data-label="What to do">Pass <code>--force</code> to replace it, or <code>-o</code> to write elsewhere</td></tr>
-  <tr><th scope="row"><code>5</code></th><td data-label="Means">export failed.</td><td data-label="What to do">Read <code>message</code> in the JSON result</td></tr>
+  <tr><th scope="row"><code>5</code></th><td data-label="Means">export failed, or the input is larger than 16 MiB (<code>export</code> only).</td><td data-label="What to do">Read <code>message</code> in the JSON result; for <code>input_too_large</code>, split the file</td></tr>
   <tr><th scope="row"><code>6</code></th><td data-label="Means">this MarsDawn can't show a folder, so nothing was opened (<code>open</code> only).</td><td data-label="What to do"></td></tr>
+  <tr><th scope="row"><code>7</code></th><td data-label="Means"><code>skill --install</code> couldn't create the folder or write the file. An existing <code>SKILL.md</code> is left as it was.</td><td data-label="What to do">Check that the folder can be written to, then run it again</td></tr>
   <tr><th scope="row"><code>64</code></th><td data-label="Means">usage error, including a line out of range, <code>--line</code> with more than one file or with a folder, or more than one folder.</td><td data-label="What to do">Fix the option or value; this error is text on stderr, even with <code>--json</code></td></tr>
 </tbody>
 </table></div>
 
 <h2 id="json-output">--json output</h2>
-<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when a folder was given, <code>folder</code>. <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code> and <code>diagramErrors</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
+<p>On success, <code>marsdawn open --json</code> prints <code>ok</code>, <code>opened</code> (a list with each file's <code>path</code>, plus <code>line</code> when one was asked for), <code>app</code> (the app path) and, when a folder was given, <code>folder</code>. <code>marsdawn export --json</code> prints <code>ok</code>, <code>output</code>, <code>pages</code>, <code>theme</code>, <code>paper</code>, <code>diagramErrors</code> and <code>diagramErrorDetails</code>. On failure, both print <code>ok</code>, <code>error</code> and <code>message</code>.</p>
 </main>
 <footer class="footer">
   <nav class="footer-nav" aria-label="Site navigation">
@@ -226,11 +236,12 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pr
         <li><a href="/features/">Features</a></li>
         <li><a href="/quicklook/">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/">PDF export</a></li>
+        <li><a href="/pdf/">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>
         <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/roadmap/">Roadmap</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -267,7 +278,7 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pr
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Themes</h3>
       <ul>
-        <li><a href="/themes/">Preview themes and PDF export</a></li>
+        <li><a href="/themes/">Themes</a></li>
         <li><a href="/themes/gallery/">Theme gallery</a></li>
         <li><a href="/themes/new/">Build a theme</a></li>
         <li><a href="/themes/agents/">Make a theme with your agent</a></li>
@@ -284,6 +295,7 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pr
     </section>
   </nav>
   <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-cli&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, the Apple logo, Mac, iPhone, iPad and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store and Mac App Store are service marks of Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>

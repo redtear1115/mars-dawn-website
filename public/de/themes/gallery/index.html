@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -25,8 +27,8 @@ try {
   f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Themen-Galerie: Community-Themen für MarsDawn · MarsDawn</title>
-<meta name="description" content="Durchsuche Vorschau-Themen, die die Community für MarsDawn eingereicht hat, filtere nach Szenario und melde ein Problem. Bau dein eigenes im Browser, ohne Installation und ohne git.">
+<title>Themengalerie: kuratierte Themen für MarsDawn · MarsDawn</title>
+<meta name="description" content="Geprüfte Vorschauthemen für MarsDawn durchsuchen, nach Szenario filtern oder ein Problem melden. Eigenes Thema im Browser erstellen, ohne git.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -42,8 +44,8 @@ try {
 <link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/themes/gallery/">
 <link rel="canonical" href="https://marsdawn.southern-light.dev/de/themes/gallery/">
 <link rel="alternate" type="text/markdown" href="/de/themes/gallery/index.md">
-<meta property="og:title" content="Themen-Galerie: Community-Themen für MarsDawn · MarsDawn">
-<meta property="og:description" content="Durchsuche Vorschau-Themen, die die Community für MarsDawn eingereicht hat, filtere nach Szenario und melde ein Problem. Bau dein eigenes im Browser, ohne Installation und ohne git.">
+<meta property="og:title" content="Themengalerie: kuratierte Themen für MarsDawn · MarsDawn">
+<meta property="og:description" content="Geprüfte Vorschauthemen für MarsDawn durchsuchen, nach Szenario filtern oder ein Problem melden. Eigenes Thema im Browser erstellen, ohne git.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/de/themes/gallery/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -52,7 +54,7 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/de/"}, {"@type": "ListItem", "position": 2, "name": "Vorschau-Themen und PDF-Export", "item": "https://marsdawn.southern-light.dev/de/themes/"}, {"@type": "ListItem", "position": 3, "name": "Themen-Galerie", "item": "https://marsdawn.southern-light.dev/de/themes/gallery/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/de/"}, {"@type": "ListItem", "position": 2, "name": "Themen", "item": "https://marsdawn.southern-light.dev/de/themes/"}, {"@type": "ListItem", "position": 3, "name": "Themen-Galerie", "item": "https://marsdawn.southern-light.dev/de/themes/gallery/"}]}</script>
 <script src="/assets/consent.js" defer></script>
 <script type="module" src="/assets/theme-gallery.js"></script>
 </head>
@@ -124,7 +126,7 @@ try {
 <main id="main">
 <section class="intro">
   <h1>Themen-Galerie</h1>
-  <p>Vorschau-Themen, die die Community eingereicht hat; jedes wurde vom Entwickler geprüft und gemerged, bevor es hier erscheint. Filtere nach Szenario, oder <a href="/de/themes/new/">baue dein eigenes</a> im Browser &#8212; keine Installation, kein git.</p>
+  <p>Vorschauthemen für MarsDawn, jedes vom Entwickler geprüft und gemerged, bevor es hier erscheint. Die bisherigen Themen stammen alle von Southern Light, einige davon adaptiert von bekannten Paletten. Nach Szenario filtern oder <a href="/de/themes/new/">im Browser ein eigenes erstellen</a>: Das Einreichen öffnet ein GitHub-Issue zur Prüfung, ohne Installation und ohne git.</p>
 </section>
 <div class="theme-gallery-filter" id="theme-gallery-filter" role="group" aria-label="Nach Szenario filtern">
   <button type="button" class="theme-filter-btn" data-scenario="all" aria-pressed="true">Alle</button>
@@ -134,6 +136,15 @@ try {
   <button type="button" class="theme-filter-btn" data-scenario="notes-sharing" aria-pressed="false">Notizen & Teilen</button>
 </div>
 <ul class="theme-gallery-cards" id="theme-gallery-cards" data-close-label="Schließen">
+  <li class="theme-card" data-scenarios="notes-sharing">
+    <span class="theme-previews"><a class="theme-preview" href="/themes/v1/christmas/1.0.0/preview-light.png"><img src="/themes/v1/christmas/1.0.0/preview-light.png" alt="Christmas — light preview" width="1200" height="1629" loading="lazy"></a><a class="theme-preview" href="/themes/v1/christmas/1.0.0/preview-dark.png"><img src="/themes/v1/christmas/1.0.0/preview-dark.png" alt="Christmas — dark preview" width="1200" height="1629" loading="lazy"></a></span>
+    <strong class="theme-name">Christmas</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Lesepalette für Weihnachten: beerenrote Überschriften auf warmer Cremeseite, dunkle Variante in Schwarz mit Weinton</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Notizen & Teilen</span></span>
+    <span class="theme-author">von Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="christmas" data-theme-version="1.0.0">Melden</button>
+    <button type="button" class="theme-report-mail" data-theme-id="christmas" data-theme-version="1.0.0">Per E-Mail melden</button>
+  </li>
   <li class="theme-card" data-scenarios="technical-docs agent-review">
     <span class="theme-previews"><a class="theme-preview" href="/themes/v1/dracula/1.0.1/preview-light.png"><img src="/themes/v1/dracula/1.0.1/preview-light.png" alt="Dracula — light preview" width="1200" height="1626" loading="lazy"></a><a class="theme-preview" href="/themes/v1/dracula/1.0.1/preview-dark.png"><img src="/themes/v1/dracula/1.0.1/preview-dark.png" alt="Dracula — dark preview" width="1200" height="1626" loading="lazy"></a></span>
     <strong class="theme-name">Dracula</strong> <span class="theme-version">v1.0.1</span>
@@ -192,14 +203,14 @@ try {
     <button type="button" class="theme-report-mail" data-theme-id="nord" data-theme-version="1.0.1">Per E-Mail melden</button>
   </li>
   <li class="theme-card" data-scenarios="technical-docs agent-review">
-    <span class="theme-previews"><a class="theme-preview" href="/themes/v1/solarized/1.0.1/preview-light.png"><img src="/themes/v1/solarized/1.0.1/preview-light.png" alt="Solarized — light preview" width="1200" height="1664" loading="lazy"></a><a class="theme-preview" href="/themes/v1/solarized/1.0.1/preview-dark.png"><img src="/themes/v1/solarized/1.0.1/preview-dark.png" alt="Solarized — dark preview" width="1200" height="1664" loading="lazy"></a></span>
-    <strong class="theme-name">Solarized</strong> <span class="theme-version">v1.0.1</span>
+    <span class="theme-previews"><a class="theme-preview" href="/themes/v1/solarized/1.0.2/preview-light.png"><img src="/themes/v1/solarized/1.0.2/preview-light.png" alt="Solarized — light preview" width="1200" height="1664" loading="lazy"></a><a class="theme-preview" href="/themes/v1/solarized/1.0.2/preview-dark.png"><img src="/themes/v1/solarized/1.0.2/preview-dark.png" alt="Solarized — dark preview" width="1200" height="1664" loading="lazy"></a></span>
+    <strong class="theme-name">Solarized</strong> <span class="theme-version">v1.0.2</span>
     <span class="theme-summary">Ethan Schoonovers präzise Palette in Petrol und Gold – nach Solarized, für bessere Lesbarkeit angepasst</span>
     <span class="theme-scenarios"><span class="theme-scenario">Technische Docs</span> <span class="theme-scenario">Agentenausgabe prüfen</span></span>
     <span class="theme-author">von Southern Light</span>
     <span class="theme-credit"><a href="/themes/third-party-notices.html#solarized">Credits &amp; Lizenz</a></span>
-    <button type="button" class="theme-report" data-theme-id="solarized" data-theme-version="1.0.1">Melden</button>
-    <button type="button" class="theme-report-mail" data-theme-id="solarized" data-theme-version="1.0.1">Per E-Mail melden</button>
+    <button type="button" class="theme-report" data-theme-id="solarized" data-theme-version="1.0.2">Melden</button>
+    <button type="button" class="theme-report-mail" data-theme-id="solarized" data-theme-version="1.0.2">Per E-Mail melden</button>
   </li>
   <li class="theme-card" data-scenarios="agent-review formal-output">
     <span class="theme-previews"><a class="theme-preview" href="/themes/v1/spec/1.0.1/preview-light.png"><img src="/themes/v1/spec/1.0.1/preview-light.png" alt="Spec — light preview" width="1200" height="1683" loading="lazy"></a><a class="theme-preview" href="/themes/v1/spec/1.0.1/preview-dark.png"><img src="/themes/v1/spec/1.0.1/preview-dark.png" alt="Spec — dark preview" width="1200" height="1683" loading="lazy"></a></span>
@@ -243,11 +254,12 @@ try {
         <li><a href="/de/features/">Funktionen</a></li>
         <li><a href="/de/quicklook/">Übersicht für Markdown</a></li>
         <li><a href="/de/native/">Eine Mac-App</a></li>
-        <li><a href="/de/pdf/">PDF-Export</a></li>
+        <li><a href="/de/pdf/">Drucken und PDF</a></li>
         <li><a href="/de/limits/">Was MarsDawn nicht kann</a></li>
         <li><a href="/de/pay-once/">Kostenlos testen, einmal bezahlen</a></li>
         <li><a href="/de/yours/">Deine Texte bleiben auf deinem Mac</a></li>
         <li><a href="/de/changelog/">Änderungsprotokoll</a></li>
+        <li><a href="/de/roadmap/">Roadmap</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -284,7 +296,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Themen</h3>
       <ul>
-        <li><a href="/de/themes/">Vorschau-Themen und PDF-Export</a></li>
+        <li><a href="/de/themes/">Themen</a></li>
         <li><a href="/de/themes/gallery/" aria-current="page">Themen-Galerie</a></li>
         <li><a href="/de/themes/new/">Ein Thema erstellen</a></li>
         <li><a href="/de/themes/agents/">Mit deinem Agenten ein Thema erstellen</a></li>
@@ -301,6 +313,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-themes&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, das Apple Logo, Mac, iPhone, iPad und iCloud sind Marken der Apple Inc., die in den USA und weiteren Ländern und Regionen eingetragen sind. App Store und Mac App Store sind Dienstleistungsmarken der Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>

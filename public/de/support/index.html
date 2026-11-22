@@ -2,6 +2,7 @@
 <html lang="de" data-theme="dawn">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -134,6 +136,7 @@ try {
 <p>Zu einer Frage springen</p>
 <ul>
   <li><a href="#what-do-i-need-to-run-marsdawn">Was brauche ich, um MarsDawn zu verwenden?</a></li>
+  <li><a href="#can-i-install-marsdawn-with-homebrew">Kann ich MarsDawn mit Homebrew installieren?</a></li>
   <li><a href="#how-do-i-switch-between-the-editor-and-the-preview">Wie wechsle ich zwischen Editor und Vorschau?</a></li>
   <li><a href="#an-image-in-my-document-doesn-t-show">Ein Bild in meinem Dokument wird nicht angezeigt.</a></li>
   <li><a href="#how-do-i-add-an-image">Wie füge ich ein Bild hinzu?</a></li>
@@ -146,6 +149,8 @@ try {
 </nav>
 <h3 id="what-do-i-need-to-run-marsdawn">Was brauche ich, um MarsDawn zu verwenden?</h3>
 <p>Einen Mac mit macOS 26 Tahoe oder neuer, mit Apple Chip oder Intel-Prozessor.</p>
+<h3 id="can-i-install-marsdawn-with-homebrew">Kann ich MarsDawn mit Homebrew installieren?</h3>
+<p>Ja, über den Mac App Store: Führe <code>brew install mas</code> aus und dann <code>sudo mas get 6812925073</code>. <code>brew install marsdawn</code> ist etwas anderes: Es installiert das Befehlszeilenprogramm, nicht die App.</p>
 <h3 id="how-do-i-switch-between-the-editor-and-the-preview">Wie wechsle ich zwischen Editor und Vorschau?</h3>
 <p>Drücke <kbd>⌘1</kbd> für nur den Quelltext, <kbd>⌘2</kbd> für beides nebeneinander und <kbd>⌘3</kbd> für nur die Vorschau. Dieselben Optionen findest du im Menü „Darstellung“ und in der Symbolleiste.</p>
 <h3 id="an-image-in-my-document-doesn-t-show">Ein Bild in meinem Dokument wird nicht angezeigt.</h3>
@@ -180,11 +185,12 @@ try {
         <li><a href="/de/features/">Funktionen</a></li>
         <li><a href="/de/quicklook/">Übersicht für Markdown</a></li>
         <li><a href="/de/native/">Eine Mac-App</a></li>
-        <li><a href="/de/pdf/">PDF-Export</a></li>
+        <li><a href="/de/pdf/">Drucken und PDF</a></li>
         <li><a href="/de/limits/">Was MarsDawn nicht kann</a></li>
         <li><a href="/de/pay-once/">Kostenlos testen, einmal bezahlen</a></li>
         <li><a href="/de/yours/">Deine Texte bleiben auf deinem Mac</a></li>
         <li><a href="/de/changelog/">Änderungsprotokoll</a></li>
+        <li><a href="/de/roadmap/">Roadmap</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -221,7 +227,7 @@ try {
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Themen</h3>
       <ul>
-        <li><a href="/de/themes/">Vorschau-Themen und PDF-Export</a></li>
+        <li><a href="/de/themes/">Themen</a></li>
         <li><a href="/de/themes/gallery/">Themen-Galerie</a></li>
         <li><a href="/de/themes/new/">Ein Thema erstellen</a></li>
         <li><a href="/de/themes/agents/">Mit deinem Agenten ein Thema erstellen</a></li>
@@ -238,6 +244,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-support&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, das Apple Logo, Mac, iPhone, iPad und iCloud sind Marken der Apple Inc., die in den USA und weiteren Ländern und Regionen eingetragen sind. App Store und Mac App Store sind Dienstleistungsmarken der Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>

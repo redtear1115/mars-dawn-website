@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -125,12 +127,12 @@ try {
   <p>L’outil gratuit <code>marsdawn</code> transforme un fichier Markdown en PDF en une seule commande. Les tableaux, les formules, les diagrammes Mermaid et le code coloré sortent tels qu’on les lit dans la source, et rien d’autre n’est nécessaire, pas même l’app MarsDawn.</p>
 </section>
 <h2 id="install-it">L’installer</h2>
-<pre><code>brew install redtear1115/tap/marsdawn
+<pre tabindex="0" role="region" aria-labelledby="install-it"><code>brew install redtear1115/tap/marsdawn
 marsdawn --version</code></pre>
 <p>Sur un Mac à puce Apple, Homebrew installe une copie précompilée en quelques secondes. Sur un Mac Intel, il compile à partir des sources, ce qui prend quelques minutes et nécessite Xcode 26 ou version ultérieure. L’outil fonctionne sous macOS 15 ou version ultérieure, et <code>marsdawn --version</code> affiche la version installée.</p>
 <h2 id="save-a-document">Enregistrer un document</h2>
 <p>Collez ceci dans un fichier nommé <code>plan.md</code> :</p>
-<pre><code># Plan : des exports plus rapides
+<pre tabindex="0" role="region" aria-labelledby="save-a-document"><code># Plan : des exports plus rapides
 
 Un agent a rédigé ce plan. Vous le relisez, puis vous le transformez en PDF.
 
@@ -159,14 +161,15 @@ let pdf = try export("plan.md")
 <h2 id="export-it">L’exporter</h2>
 <pre><code>marsdawn export plan.md</code></pre>
 <p>Il écrit <code>plan.pdf</code> à côté de la source et indique où il l’a placé :</p>
-<pre><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="export-it"><code>Exported /Users/you/plan.pdf (1 page)</code></pre>
 <p>Voici cette page, capturée lors d’une véritable exécution de <code>marsdawn</code> 0.5.0 :</p>
 <p><img class="pdf-page" src="/assets/cli/plan-fr.png" alt="Le PDF exporté : le titre, un tableau d’étapes, une formule dans le texte et une formule centrée, un diagramme Brouillon, Relecture, Publication et une ligne de Swift colorée." width="989" height="930"></p>
 <h2 id="choose-a-theme-paper-size-and-file-name">Choisir un thème, un format de papier et un nom de fichier</h2>
-<pre><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="choose-a-theme-paper-size-and-file-name"><code>marsdawn export plan.md --theme classic --paper letter -o handout.pdf</code></pre>
 <ul>
   <li><code>--theme</code> : dawn, classic, modern ou vivid, dans les couleurs claires du thème. Sans cette option, <code>export</code> utilise <code>$MARSDAWN_THEME</code>, sinon dawn.</li>
   <li><code>--paper</code> : a4 ou letter. La valeur par défaut est a4.</li>
+  <li><code>--layout</code> : document (par défaut), handbook ou handout. handbook ajoute une couverture tirée du front matter, une table des matières et des signets PDF.</li>
   <li><code>-o</code> : où écrire le PDF, au lieu de le placer à côté de la source.</li>
   <li><code>--allow-remote-images</code> : charge les images du web pendant le rendu. Elles restent désactivées si vous ne le précisez pas.</li>
 </ul>
@@ -179,6 +182,7 @@ let pdf = try export("plan.md")
 </ul>
 <h2 id="next">Pour aller plus loin</h2>
 <ul>
+  <li>Dans l’app MarsDawn, Fichier ▸ Imprimer… affiche un aperçu des mêmes dispositions avant d’imprimer ou d’enregistrer : <a href="/fr/pdf/">Imprimer et PDF</a>.</li>
   <li>Toutes les options et le JSON produit : <a href="/fr/cli/">Ligne de commande</a>.</li>
   <li>Pour qu’un agent de code le fasse à votre place, exécutez <code>marsdawn skill --install</code> pour ajouter <a href="/fr/cli/skill/">la skill d’agent marsdawn</a>.</li>
   <li>Les quatre thèmes d’aperçu, et la direction que prend l’export PDF : <a href="/fr/themes/">thèmes d’aperçu et export PDF</a>.</li>
@@ -194,11 +198,12 @@ let pdf = try export("plan.md")
         <li><a href="/fr/features/">Fonctionnalités</a></li>
         <li><a href="/fr/quicklook/">Coup d’œil pour Markdown</a></li>
         <li><a href="/fr/native/">Une app Mac</a></li>
-        <li><a href="/fr/pdf/">Export PDF</a></li>
+        <li><a href="/fr/pdf/">Imprimer et PDF</a></li>
         <li><a href="/fr/limits/">Ce que MarsDawn ne fait pas</a></li>
         <li><a href="/fr/pay-once/">Essai gratuit, achat unique</a></li>
         <li><a href="/fr/yours/">Vos textes restent sur votre Mac</a></li>
         <li><a href="/fr/changelog/">Historique des versions</a></li>
+        <li><a href="/fr/roadmap/">Feuille de route</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -235,7 +240,7 @@ let pdf = try export("plan.md")
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Thèmes</h3>
       <ul>
-        <li><a href="/fr/themes/">Thèmes de l’aperçu et export PDF</a></li>
+        <li><a href="/fr/themes/">Thèmes</a></li>
         <li><a href="/fr/themes/gallery/">Galerie de thèmes</a></li>
         <li><a href="/fr/themes/new/">Créer un thème</a></li>
         <li><a href="/fr/themes/agents/">Créer un thème avec votre agent</a></li>
@@ -252,6 +257,7 @@ let pdf = try export("plan.md")
     </section>
   </nav>
   <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-markdown-to-pdf&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, le logo Apple, Mac, iPhone, iPad et iCloud sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres pays et régions. App Store et Mac App Store sont des marques de service d’Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Consentement aux cookies" hidden>

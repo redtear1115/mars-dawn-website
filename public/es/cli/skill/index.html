@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -127,22 +129,22 @@ try {
 <div class="summary"><p><strong>Un archivo Markdown, en <code>~/.claude/skills/marsdawn/SKILL.md</code>.</strong> Con él, tu agente instala <code>marsdawn</code>, exporta a PDF y lee el resultado JSON, y aun así pregunta antes de ejecutar cualquier cosa.</p></div>
 <h2 id="install-it-in-claude-code">Instálala en Claude Code</h2>
 <p>La herramienta de línea de comandos <code>marsdawn</code> escribe la skill por ti, y el archivo que escribe corresponde a la versión de <code>marsdawn</code> que tienes instalada. Si aún no tienes <code>marsdawn</code>, instálalo con <a href="https://brew.sh">Homebrew</a>:</p>
-<pre><code>brew install redtear1115/tap/marsdawn</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="install-it-in-claude-code"><code>brew install redtear1115/tap/marsdawn</code></pre>
 <p>Después instala la skill:</p>
 <pre><code>marsdawn skill --install</code></pre>
 <p>Esto escribe <code>~/.claude/skills/marsdawn/SKILL.md</code> y crea la carpeta si no existe. Como el archivo sale de tu copia de <code>marsdawn</code>, nunca describe una opción que tu copia no tenga.</p>
 <p>Claude Code la carga cuando una tarea pide un PDF, o cuando escribió o revisó un documento Markdown para que lo leas, y tú puedes ejecutarla con <code>/marsdawn</code>. Si prefieres leerla antes, es <a href="/cli/skill/SKILL.md">un archivo corto</a>.</p>
 <h2 id="after-you-upgrade-marsdawn">Después de actualizar marsdawn</h2>
 <p>Homebrew actualiza <code>marsdawn</code> pero deja la skill donde estaba, así que se queda en la versión antigua hasta que la renueves:</p>
-<pre><code>marsdawn skill --install --force</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="after-you-upgrade-marsdawn"><code>marsdawn skill --install --force</code></pre>
 <p><code>--force</code> reemplaza el <code>SKILL.md</code> existente, incluidos los cambios que hayas hecho en él. Sin <code>--force</code>, si ya hay un <code>SKILL.md</code> distinto, <code>marsdawn</code> no lo toca, te avisa de que es distinto y termina con el código 64 (<code>skill_differs</code>). Si el archivo ya es el actual, no cambia nada.</p>
 <h2 id="for-other-agents">Para otros agentes</h2>
 <p>Añade <code>--dir</code> con la carpeta donde tu agente guarda sus skills, y <code>marsdawn</code> escribe <code>SKILL.md</code> allí:</p>
-<pre><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
+<pre tabindex="0" role="region" aria-labelledby="for-other-agents"><code>marsdawn skill --install --dir &lt;path&gt;</code></pre>
 <p>El archivo es Markdown simple, instrucciones y comandos, así que un agente que carga archivos de instrucciones puede usarlo tal cual.</p>
 <h2 id="without-homebrew-or-the-command-line-tool">Sin Homebrew ni la herramienta de línea de comandos</h2>
 <p>Si no puedes instalar <code>marsdawn</code> primero, descarga el archivo:</p>
-<pre><code>mkdir -p ~/.claude/skills/marsdawn
+<pre tabindex="0" role="region" aria-labelledby="without-homebrew-or-the-command-line-tool"><code>mkdir -p ~/.claude/skills/marsdawn
 curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/skills/marsdawn/SKILL.md</code></pre>
 <p>Esto descarga la última skill de este sitio, que puede ir por delante de un <code>marsdawn</code> más antiguo. Cuando tengas la herramienta, <code>marsdawn skill --install --force</code> la reemplaza por la que corresponde. También puedes indicarle la URL a un agente o pegar el archivo.</p>
 <h2 id="what-it-teaches">Qué enseña</h2>
@@ -168,13 +170,14 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
       <h3 id="footer-product">Producto</h3>
       <ul>
         <li><a href="/es/features/">Funciones</a></li>
-        <li><a href="/es/quicklook/">Vista rápida para Markdown</a></li>
+        <li><a href="/es/quicklook/">Vista Rápida para Markdown</a></li>
         <li><a href="/es/native/">Una app para Mac</a></li>
-        <li><a href="/es/pdf/">Exportación a PDF</a></li>
+        <li><a href="/es/pdf/">Imprimir y PDF</a></li>
         <li><a href="/es/limits/">Lo que MarsDawn no hace</a></li>
         <li><a href="/es/pay-once/">Pruébalo gratis, paga una vez</a></li>
         <li><a href="/es/yours/">Lo que escribes se queda en tu Mac</a></li>
         <li><a href="/es/changelog/">Historial de cambios</a></li>
+        <li><a href="/es/roadmap/">Hoja de ruta</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -211,7 +214,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Temas</h3>
       <ul>
-        <li><a href="/es/themes/">Temas de la vista previa y exportación a PDF</a></li>
+        <li><a href="/es/themes/">Temas</a></li>
         <li><a href="/es/themes/gallery/">Galería de temas</a></li>
         <li><a href="/es/themes/new/">Crear un tema</a></li>
         <li><a href="/es/themes/agents/">Crea un tema con tu agente</a></li>
@@ -228,6 +231,7 @@ curl -fsSL https://marsdawn.southern-light.dev/cli/skill/SKILL.md -o ~/.claude/s
     </section>
   </nav>
   <p class="footer-meta"><span>Un nuevo amanecer para Markdown.</span> <span>MarsDawn está en el <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-cli&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, el logotipo de Apple, Mac, iPhone, iPad e iCloud son marcas comerciales de Apple Inc., registradas en EE. UU. y en otros países y regiones. App Store y Mac App Store son marcas de servicio de Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>

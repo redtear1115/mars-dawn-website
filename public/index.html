@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -26,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MarsDawn: review your agent's Markdown with live preview</title>
-<meta name="description" content="Read and review the Markdown your agent wrote, natively on Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 2.49 once.">
+<meta name="description" content="Read and review your agent's Markdown, JSON and YAML natively on Mac: live preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 4.99 once.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -45,7 +47,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/">
 <link rel="alternate" type="text/markdown" href="/index.md">
 <meta property="og:title" content="MarsDawn: review your agent's Markdown with live preview">
-<meta property="og:description" content="Read and review the Markdown your agent wrote, natively on Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 2.49 once.">
+<meta property="og:description" content="Read and review your agent's Markdown, JSON and YAML natively on Mac: live preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 4.99 once.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -54,8 +56,9 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "Read and review the Markdown your agent wrote, natively on Mac: live split preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 2.49 once.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "softwareVersion": "1.1.1", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "0", "highPrice": "2.49", "offerCount": 2, "offers": [{"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "One-time unlock after the trial, no subscription", "price": "2.49", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-11-30"}]}, "screenshot": "https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}, "sameAs": ["https://apps.apple.com/app/id6812925073", "https://github.com/redtear1115/mars-dawn-kit", "https://github.com/redtear1115/homebrew-tap", "https://github.com/redtear1115/marsdawn-mcp"], "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is MarsDawn?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn is a native Mac app for reading and reviewing the Markdown your agent wrote, with the source beside a live preview. It draws Mermaid and KaTeX, previews .md files in Quick Look and exports PDF, and you can edit the source too."}}, {"@type": "Question", "name": "Is MarsDawn a subscription?", "acceptedAnswer": {"@type": "Answer", "text": "No. MarsDawn is a free download with a 14-day trial of every feature. After that, a single in-app purchase of USD 2.49 unlocks it for good. Nothing renews, and there is no account."}}, {"@type": "Question", "name": "Does MarsDawn work on iPhone or iPad?", "acceptedAnswer": {"@type": "Answer", "text": "No. MarsDawn is a Mac app and needs macOS 26 or later. There is no iPhone or iPad app."}}, {"@type": "Question", "name": "Can Claude Code open files in MarsDawn?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The free marsdawn command-line tool has an open command that opens a Markdown file in MarsDawn, so Claude Code, or any agent that can run a shell command, can call it. An opt-in Claude Code hook can open each Markdown file Claude writes or edits."}}, {"@type": "Question", "name": "Does MarsDawn upload my documents?", "acceptedAnswer": {"@type": "Answer", "text": "No. The app never uploads your documents, collects no data about you and has no account; your documents and settings stay on your Mac. If a document refers to the web and you load that content, your Mac fetches it from the servers that host it, and MarsDawn's developer receives none of it."}}, {"@type": "Question", "name": "With MCP or the skill, who can see my files?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn itself sends nothing. The skill is a text file of instructions, and the marsdawn CLI and the MCP server run on your Mac; the MCP server works only in folders you allow. The one reading your files is your agent, and what it and its model provider do with them is that agent's policy, which MarsDawn neither controls nor describes."}}, {"@type": "Question", "name": "Is it safe to open HTML someone sent me?", "acceptedAnswer": {"@type": "Answer", "text": "By default it opens static: its code doesn't run and nothing loads from the web. If you choose View › Run This Document, that document runs, and it can send data over the network and read images, stylesheets, fonts and media in its folder. The choice is never remembered, so it opens static again next time."}}, {"@type": "Question", "name": "Is the site's analytics cookie related to the app?", "acceptedAnswer": {"@type": "Answer", "text": "No. The app and this website are separate: the app collects nothing, and a visit can be recorded only on marsdawn.southern-light.dev. The site's Google Analytics starts denied and sets cookies only after you choose Accept; Cookie settings in the footer changes that. The app's requests for theme files under /themes/ are skipped."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "Read and review your agent's Markdown, JSON and YAML natively on Mac: live preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 4.99 once.", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later, iOS 26 or later, iPadOS 26 or later", "softwareVersion": "1.2.2", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "0", "highPrice": "4.99", "offerCount": 2, "offers": [{"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "One-time unlock after the trial, no subscription", "price": "4.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}]}, "screenshot": "https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}, "sameAs": ["https://apps.apple.com/app/id6812925073", "https://github.com/redtear1115/mars-dawn-kit", "https://github.com/redtear1115/homebrew-tap", "https://github.com/redtear1115/marsdawn-mcp"], "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is MarsDawn?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn is a native Mac app for reading and reviewing the Markdown your agent wrote, with the source beside a live preview. It draws Mermaid and KaTeX, previews .md files in Quick Look and exports PDF, and you can edit the source too. On the Mac, it also opens JSON and YAML with a tree preview."}}, {"@type": "Question", "name": "Is MarsDawn a subscription?", "acceptedAnswer": {"@type": "Answer", "text": "No. MarsDawn is a free download with a 14-day trial of every feature. After that, a single in-app purchase of USD 4.99 unlocks it for good. Nothing renews, and there is no account."}}, {"@type": "Question", "name": "Does MarsDawn work on iPhone or iPad?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown, text, PDF, JSON and YAML, with Mermaid, math, code and tables rendered. Files can be shared, printed or saved as PDFs, but not edited. It needs iOS 26 or iPadOS 26 or later. With the same Apple Account, one trial and one unlock cover Mac, iPhone and iPad."}}, {"@type": "Question", "name": "Can Claude Code open files in MarsDawn?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The free marsdawn command-line tool has an open command that opens a Markdown file in MarsDawn, so Claude Code, or any agent that can run a shell command, can call it. An opt-in Claude Code hook can open each Markdown file Claude writes or edits."}}, {"@type": "Question", "name": "Does MarsDawn upload my documents?", "acceptedAnswer": {"@type": "Answer", "text": "No. The app never uploads your documents, collects no data about you and has no account; your documents and settings stay on your Mac. If a document refers to the web and you load that content, your Mac fetches it from the servers that host it, and MarsDawn's developer receives none of it."}}, {"@type": "Question", "name": "With MCP or the skill, who can see my files?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn itself sends nothing. The skill is a text file of instructions, and the marsdawn CLI and the MCP server run on your Mac; the MCP server works only in folders you allow. The one reading your files is your agent, and what it and its model provider do with them is that agent's policy, which MarsDawn neither controls nor describes."}}, {"@type": "Question", "name": "Is it safe to open HTML someone sent me?", "acceptedAnswer": {"@type": "Answer", "text": "By default it opens static: its code doesn't run and nothing loads from the web. If you choose View › Run This Document, that document runs, and it can send data over the network and read images, stylesheets, fonts and media in its folder. The choice is never remembered, so it opens static again next time."}}, {"@type": "Question", "name": "Is the site's analytics cookie related to the app?", "acceptedAnswer": {"@type": "Answer", "text": "No. The app and this website are separate: the app collects nothing, and a visit can be recorded only on marsdawn.southern-light.dev. The site's Google Analytics starts denied and sets cookies only after you choose Accept; Cookie settings in the footer changes that. The app's requests for theme files under /themes/ are skipped."}}, {"@type": "Question", "name": "Why use MarsDawn instead of another app?", "acceptedAnswer": {"@type": "Answer", "text": "You may not need it. If you mostly write your own notes, a notes app such as Obsidian fits better. If you live in VS Code, its built-in preview is free. If you only want to peek at files in Finder, a free Quick Look extension is enough. MarsDawn is for reading and reviewing Markdown an agent wrote: the source beside a live preview, a change from your agent you can undo in one step, and a file opened at the exact line. If it doesn't suit you, write and tell us why."}}, {"@type": "Question", "name": "Will MarsDawn keep being maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every update since MarsDawn arrived on the Mac App Store is in the changelog, and since 28 October 2026 MarsDawn is also on iPhone and iPad, for reading. MarsDawn's rendering core and the free marsdawn command-line tool are already open source under the Apache-2.0 license, in mars-dawn-kit. And if MarsDawn's developer ever stops maintaining the app, the app's own source code will be published under an open-source license, so others can keep it going."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoObject", "name": "MarsDawn: work with any agent, anywhere", "description": "In this 30-second film, you brief your agent from your phone and it writes on your Mac. MarsDawn for Mac opens its Markdown and HTML; on iPhone or iPad you read the same plan, and editing stays on the Mac.", "inLanguage": "en", "duration": "PT30S", "uploadDate": "2026-11-02T10:00:00+08:00", "width": 1920, "height": 1080, "contentUrl": "https://marsdawn.southern-light.dev/assets/film/mars-dawn-agents-16x9-en.mp4", "thumbnailUrl": ["https://marsdawn.southern-light.dev/assets/film/mars-dawn-agents-16x9-poster-en.jpg", "https://marsdawn.southern-light.dev/assets/film/mars-dawn-agents-poster-en.jpg"]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -177,12 +180,14 @@ try {
   <p class="kicker">Frontier tools for builders</p>
   <h1><span>Claim the map.</span> <span>Read the dawn.</span></h1>
   <p>Markdown for humans who steer agentic work.</p>
-  <p class="definition">MarsDawn is a native Mac app for reading and reviewing Markdown, with live split preview, Mermaid diagrams, KaTeX math, Quick Look and PDF export, free to try for 14 days and USD 2.49 once to unlock.</p>
+  <p class="hero-cta"><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8"><img src="/assets/badges/app-store-en.svg" width="120" height="40" alt="Download on the App Store"></a> <a class="cta cta-secondary" href="#install">Install the free CLI</a></p>
+<p class="hero-devices">Write on the Mac, read on iPhone and iPad</p>
+<p class="hero-req"><span aria-hidden="true">macOS 26 · iOS 26 · iPadOS 26</span><span class="visually-hidden">Requires macOS 26, iOS 26 or iPadOS 26 or later</span></p>
+  <p class="definition">MarsDawn is a native Mac app for reading and reviewing Markdown, with live split preview, Mermaid diagrams, KaTeX math, Quick Look and PDF export, free to try for 14 days and USD 4.99 once to unlock. On the Mac, it also opens JSON and YAML with a tree preview.</p>
 </section>
-<p class="sale-line" data-sale-line>Black Friday: the one-time unlock is half price, USD 2.49 instead of USD 4.99, through 30 November. It returns to USD 4.99 on 1 December.</p>
-<p class="hero-cta"><a class="cta cta-primary" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">View on the Mac App Store</a> <a class="cta cta-secondary" href="#install">Install the free CLI</a></p>
 </div>
 <div class="hero-shot">
+<div class="hero-stage">
 <div class="mdw" role="group" aria-label="A working MarsDawn window: choose a theme and a layout">
   <div class="mdw-bar">
     <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -277,15 +282,40 @@ try {
     </div>
   </div>
 </div>
+<picture class="hero-phone">
+  <source media="(prefers-color-scheme: dark)" type="image/webp" srcset="/assets/hero/iphone-dark-420.webp 420w, /assets/hero/iphone-dark-840.webp 840w" sizes="(min-width: 1100px) 230px, (min-width: 640px) 190px, 35vw">
+  <img src="/assets/hero/iphone-light-840.webp" srcset="/assets/hero/iphone-light-420.webp 420w, /assets/hero/iphone-light-840.webp 840w" sizes="(min-width: 1100px) 230px, (min-width: 640px) 190px, 35vw" width="840" height="1826" alt="MarsDawn on iPhone showing an agent's checkout plan with a Mermaid flowchart, in the Dawn theme, light" decoding="async">
+</picture>
+</div>
 </div>
 </div>
 </section>
+<section class="iphone-steps" id="iphone-steps" aria-labelledby="iphone-steps-title">
+<h2 id="iphone-steps-title">Read what your agent wrote, away from your desk</h2>
+<ol>
+  <li>On your Mac, have your agent save its files to a folder in iCloud Drive.</li>
+  <li>On your iPhone or iPad, open it in MarsDawn, or from another app.</li>
+  <li>Share, print or save it as a PDF; edit it on your Mac.</li>
+</ol>
+<p class="iphone-steps-limit">On iPhone and iPad, MarsDawn is for reading only. It opens Markdown, text, PDF, JSON and YAML.</p>
+<p><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home-iphone&amp;mt=8"><img src="/assets/badges/app-store-en.svg" width="120" height="40" alt="Download on the App Store"></a></p>
+<p><a href="/features/#iphone-ipad">More on MarsDawn for iPhone and iPad</a></p>
+</section>
 <section class="film" aria-labelledby="film-h">
 <h2 id="film-h">Watch the film</h2>
-<video controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/marsdawn-film-en-poster.jpg" aria-label="MarsDawn film, 54 seconds">
-<source src="/assets/film/marsdawn-film-en-1080p30.mp4" type="video/mp4">
+<figure class="film-figure">
+<video class="film-wide" controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/mars-dawn-agents-16x9-poster-en.jpg" aria-label="Video: MarsDawn on Mac and iPhone, 30 seconds">
+<source src="/assets/film/mars-dawn-agents-16x9-en.mp4" type="video/mp4">
+<track kind="captions" src="/assets/film/mars-dawn-agents-en.vtt" srclang="en" label="English">
 <p>Your browser cannot play this video.</p>
 </video>
+<video class="film-tall" controls preload="none" playsinline width="1080" height="1920" poster="/assets/film/mars-dawn-agents-poster-en.jpg" aria-label="Video: MarsDawn on Mac and iPhone, 30 seconds">
+<source src="/assets/film/mars-dawn-agents-en.mp4" type="video/mp4">
+<track kind="captions" src="/assets/film/mars-dawn-agents-en.vtt" srclang="en" label="English">
+<p>Your browser cannot play this video.</p>
+</video>
+<figcaption>30 seconds: your agent writes on the Mac, you read on iPhone.</figcaption>
+</figure>
 </section>
 <h2 class="loop-title">Read what your agent wrote.</h2>
 <ol class="loop-steps">
@@ -294,6 +324,27 @@ try {
   <li><strong>The agent revises.</strong> Ask for changes. Open the revised file and read it the same way.</li>
 </ol>
 <p><a href="/reading-agent-output/">How to review what your agent hands back</a> · <a href="/view-markdown-on-mac/">How to open a .md file on a Mac</a></p>
+<section class="feature-cards" aria-labelledby="feature-cards-title">
+<h2 class="visually-hidden" id="feature-cards-title">Features</h2>
+<div class="feature-cards-grid">
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-mermaid-624.png" width="624" height="468" alt="A flowchart with a check and a resend loop, above a code block." loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/mermaid-preview-mac/">Mermaid diagrams and code</a><span>The preview draws the diagram and highlights the code, right next to your source.</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-pdf-665.png" width="665" height="499" alt="The top of a page: a title, a short paragraph and a flowchart." loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/pdf/">Print &amp; PDF</a><span>Mermaid diagrams, drawn into the PDF.</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-vivid-624.png" width="624" height="468" alt="A preview window showing a rendered page: a title, a short paragraph and a flowchart." loading="lazy" decoding="async"><span class="feature-card-os feature-card-os-end" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/quicklook/">Quick Look for Markdown</a><span>Select a Markdown file in Finder and press Space.</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-iphone-944.webp" srcset="/assets/screens/card-iphone-472.webp 472w, /assets/screens/card-iphone-944.webp 944w" sizes="(min-width: 992px) 472px, min(100vw - 32px, 560px)" width="944" height="708" alt="A checkout flowchart, above the start of a code block." loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">iPhone</span></div>
+  <figcaption><a href="/features/#iphone-ipad">Read on iPhone and iPad</a><span>On iPhone and iPad, MarsDawn is for reading only and doesn't edit. Editing stays on the Mac.</span></figcaption>
+</figure>
+</div>
+</section>
 <h2>Review an agent's plan before it runs.</h2>
 <p>Catch the step that's out of order, point at its line, and hand it back.</p>
 <div class="loop-anim loop-plan">
@@ -344,6 +395,7 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
   <li><code>marsdawn open</code> opens files in the MarsDawn app for you to review.</li>
   <li><code>--json</code> gives scripts and agents results they can parse.</li>
 </ul>
+<p>That installs the command-line tool. To get the Mac app with Homebrew, <a href="/cli/#mac-app">see how</a>.</p>
 <p class="install-links"><a href="/cli/">Command Line</a> · <a href="/cli/agents/">marsdawn for agents</a> · <a href="/cli/skill/">Agent skill</a> · <a href="/cli/mcp/">MCP server</a></p>
 </section>
 <nav class="traits" aria-label="What to expect from MarsDawn">
@@ -351,19 +403,20 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
 <ul>
   <li><a href="/native/">A Mac app</a><span>Native windows, tabs, autosave, <a href="/quicklook/">Quick Look</a>.</span></li>
   <li><a href="/yours/">Your writing stays on your Mac</a><span>No account, no sync, no cloud.</span></li>
-  <li><a href="/pay-once/">Try free, pay once</a><span>Free for 14 days, then USD 2.49 once. No subscription.</span></li>
+  <li><a href="/pay-once/">Try free, pay once</a><span>Free for 14 days, then USD 4.99 once. No subscription.</span></li>
   <li><a href="/features/">Features</a><span>Everything MarsDawn does, on one page.</span></li>
+  <li><a href="/themes/">Themes</a><span>Four built in, more in the gallery.</span></li>
 </ul>
 </nav>
 <p class="know">Know before you buy. <a href="/limits/">What MarsDawn doesn't do</a></p>
 <section class="pieces">
 <h2 id="pieces">How the pieces fit</h2>
-<p>What each part does today, as of MarsDawn 1.1.1, marsdawn 0.6.4 and marsdawn-mcp v0.2.4.</p>
+<p>What each part does today, as of MarsDawn 1.2.1, marsdawn 0.7.7 and marsdawn-mcp v0.2.4.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-labelledby="pieces"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">Capability</th><th scope="col">In the app</th><th scope="col">CLI</th><th scope="col">MCP / skill</th><th scope="col">Status</th></tr></thead>
 <tbody>
   <tr><th scope="row">Open at a line</th><td data-label="In the app"><span class="cell">Lands on the line, flashes the preview block</span></td><td data-label="CLI"><span class="cell">marsdawn open notes.md:120 (--background keeps focus)</span></td><td data-label="MCP / skill"><span class="cell">open_in_marsdawn; the skill opens once</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
-  <tr><th scope="row">PDF export</th><td data-label="In the app"><span class="cell">File ▸ Export as PDF… (⌥⌘E)</span></td><td data-label="CLI"><span class="cell">marsdawn export, no app needed</span></td><td data-label="MCP / skill"><span class="cell">export_markdown_to_pdf; skill</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
+  <tr><th scope="row">PDF export</th><td data-label="In the app"><span class="cell">File ▸ Export as PDF… (⌥⌘E), with Document, Handbook and Handout layouts</span></td><td data-label="CLI"><span class="cell">marsdawn export, no app needed; --layout handbook or handout</span></td><td data-label="MCP / skill"><span class="cell">export_markdown_to_pdf; skill</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
   <tr><th scope="row">JSON result</th><td data-label="In the app"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">--json on open and export</span></td><td data-label="MCP / skill"><span class="cell">MCP returns the same JSON</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
   <tr><th scope="row">Agent skill</th><td data-label="In the app"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">marsdawn skill --install</span></td><td data-label="MCP / skill"><span class="cell">Teaches open once and export</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
   <tr><th scope="row">MCP server</th><td data-label="In the app"><span class="cell">—</span></td><td data-label="CLI"><span class="cell">Runs underneath</span></td><td data-label="MCP / skill"><span class="cell">marsdawn-mcp: two tools, allowed folders only</span></td><td data-label="Status"><span class="cell">Shipped</span></td></tr>
@@ -396,14 +449,29 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
 <p>Leaves only when you choose. Copy for AI puts text on your clipboard for you to paste; a theme download, a document you run with View › Run This Document, and the agent you let read a file go out only on your say.</p>
 <p class="more">More: <a href="/privacy/#when-marsdawn-uses-the-internet">Privacy Policy</a></p>
 </section>
+<section class="price-card" aria-labelledby="price-title">
+  <div class="price-card__bar" aria-hidden="true"><span class="price-card__dots"></span>pricing.md</div>
+  <div class="price-card__body">
+    <div class="price-card__head"><h2 id="price-title">MarsDawn</h2><p class="price-card__badge">No subscription</p></div>
+    <p class="price-card__price">USD 4.99, once</p>
+    <blockquote>Free to download. Every feature free for 14 days.</blockquote>
+    <ul>
+      <li>One Apple Account, one purchase, on Mac, iPhone and iPad.</li>
+      <li>No account, and nothing renews.</li>
+      <li>Quick Look in Finder works with or without the trial.</li>
+    </ul>
+    <p class="price-card__action"><a class="price-card__cta" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">Get MarsDawn on the Mac App Store</a></p>
+  </div>
+</section>
 <section class="faq">
 <h2>Questions and answers</h2>
 <h3>What is MarsDawn?</h3>
-<p>MarsDawn is a native Mac app for reading and reviewing the Markdown your agent wrote, with the source beside a live preview. It draws Mermaid and KaTeX, previews .md files in Quick Look and exports PDF, and you can edit the source too.</p>
+<p>MarsDawn is a native Mac app for reading and reviewing the Markdown your agent wrote, with the source beside a live preview. It draws Mermaid and KaTeX, previews .md files in Quick Look and exports PDF, and you can edit the source too. On the Mac, it also opens JSON and YAML with a tree preview.</p>
 <h3>Is MarsDawn a subscription?</h3>
-<p>No. MarsDawn is a free download with a 14-day trial of every feature. After that, a single in-app purchase of USD 2.49 unlocks it for good. Nothing renews, and there is no account.</p>
+<p>No. MarsDawn is a free download with a 14-day trial of every feature. After that, a single in-app purchase of USD 4.99 unlocks it for good. Nothing renews, and there is no account.</p>
 <h3>Does MarsDawn work on iPhone or iPad?</h3>
-<p>No. MarsDawn is a Mac app and needs macOS 26 or later. There is no iPhone or iPad app.</p>
+<p>Yes, for reading. On iPhone and iPad, MarsDawn opens Markdown, text, PDF, JSON and YAML, with Mermaid, math, code and tables rendered. Files can be shared, printed or saved as PDFs, but not edited. It needs iOS 26 or iPadOS 26 or later. With the same Apple Account, one trial and one unlock cover Mac, iPhone and iPad.</p>
+<p class="more">More: <a href="/roadmap/">Roadmap</a></p>
 <h3>Can Claude Code open files in MarsDawn?</h3>
 <p>Yes. The free marsdawn command-line tool has an open command that opens a Markdown file in MarsDawn, so Claude Code, or any agent that can run a shell command, can call it. An opt-in Claude Code hook can open each Markdown file Claude writes or edits.</p>
 <h3>Does MarsDawn upload my documents?</h3>
@@ -418,37 +486,16 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
 <h3>Is the site's analytics cookie related to the app?</h3>
 <p>No. The app and this website are separate: the app collects nothing, and a visit can be recorded only on marsdawn.southern-light.dev. The site's Google Analytics starts denied and sets cookies only after you choose Accept; Cookie settings in the footer changes that. The app's requests for theme files under /themes/ are skipped.</p>
 <p class="more">More: <a href="/privacy/#the-website">Privacy Policy</a></p>
-</section>
-<section class="proof">
-<h2>The app, as it is</h2>
-<h3><a href="/native/">A Mac app</a></h3>
-<figure class="shot">
-  <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="1180" height="844" alt="MarsDawn in split view: the Markdown source on the left, the rendered page on the right.">
-    <span class="marker l tb co-native-1" aria-hidden="true">1</span><span class="marker l co-native-2" aria-hidden="true">2</span><span class="marker r tb co-native-3" aria-hidden="true">3</span><span class="marker r co-native-4" aria-hidden="true">4</span>
-    <span class="leader l up co-native-1" aria-hidden="true"><span>A native Mac window.</span></span><span class="leader l down co-native-2" aria-hidden="true"><span>The Mac's text editor, with Markdown highlighting.</span></span><span class="leader r up co-native-3" aria-hidden="true"><span>⌘1 source, ⌘2 split, ⌘3 preview.</span></span><span class="leader r down co-native-4" aria-hidden="true"><span>The page updates as you type.</span></span>
-  </div></div>
-  <figcaption>
-    <span class="figure-label">In this screenshot</span>
-    <ol><li>A native Mac window.</li><li>The Mac's text editor, with Markdown highlighting.</li><li>⌘1 source, ⌘2 split, ⌘3 preview.</li><li>The page updates as you type.</li></ol>
-  </figcaption>
-</figure>
-<h3><a href="/pdf/">PDF export</a></h3>
-<figure class="shot">
-  <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.">
-    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
-    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid diagrams, drawn into the PDF.</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>Code keeps its highlighting.</span></span>
-  </div></div>
-  <figcaption>
-    <span class="figure-label">In this screenshot</span>
-    <ol><li>Mermaid diagrams, drawn into the PDF.</li><li>Code keeps its highlighting.</li></ol>
-  </figcaption>
-</figure>
+<h3>Why use MarsDawn instead of another app?</h3>
+<p>You may not need it. If you mostly write your own notes, a notes app such as Obsidian fits better. If you live in VS Code, its built-in preview is free. If you only want to peek at files in Finder, a free Quick Look extension is enough. MarsDawn is for reading and reviewing Markdown an agent wrote: the source beside a live preview, a change from your agent you can undo in one step, and a file opened at the exact line. If it doesn't suit you, write and tell us why.</p>
+<p class="more">More: <a href="/vs/">How MarsDawn compares</a> · <a href="/best-markdown-viewer-mac/">Best Markdown viewer for Mac</a></p>
+<h3>Will MarsDawn keep being maintained?</h3>
+<p>Yes. Every update since MarsDawn arrived on the Mac App Store is in the changelog, and since 28 October 2026 MarsDawn is also on iPhone and iPad, for reading. MarsDawn's rendering core and the free marsdawn command-line tool are already open source under the Apache-2.0 license, in mars-dawn-kit. And if MarsDawn's developer ever stops maintaining the app, the app's own source code will be published under an open-source license, so others can keep it going.</p>
+<p class="more">More: <a href="/changelog/">Changelog</a> · <a href="/roadmap/">Roadmap</a> · <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a></p>
 </section>
 <section class="dawn-close">
-<p><strong>A new dawn for Markdown.</strong> MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">Mac App Store</a>.</p>
-<p class="close-next"><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">Download and try it free</a></p>
+<p><strong>A new dawn for Markdown.</strong> MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-close&amp;mt=8">Mac App Store</a>.</p>
+<p class="close-next"><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-close&amp;mt=8"><img src="/assets/badges/app-store-en.svg" width="120" height="40" alt="Download on the App Store"></a></p>
 </section>
 </main>
 <footer class="footer footer-home">
@@ -460,11 +507,12 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
         <li><a href="/features/">Features</a></li>
         <li><a href="/quicklook/">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/">PDF export</a></li>
+        <li><a href="/pdf/">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>
         <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/roadmap/">Roadmap</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -501,7 +549,7 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Themes</h3>
       <ul>
-        <li><a href="/themes/">Preview themes and PDF export</a></li>
+        <li><a href="/themes/">Themes</a></li>
         <li><a href="/themes/gallery/">Theme gallery</a></li>
         <li><a href="/themes/new/">Build a theme</a></li>
         <li><a href="/themes/agents/">Make a theme with your agent</a></li>
@@ -518,6 +566,7 @@ Turn checkout_v2 on for every user on <span class="loop-day loop-d-u a"><span cl
     </section>
   </nav>
   <p class="footer-meta"><span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, the Apple logo, Mac, iPhone, iPad and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store and Mac App Store are service marks of Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>

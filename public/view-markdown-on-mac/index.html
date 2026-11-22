@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -52,7 +54,7 @@ try {
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/"}, {"@type": "ListItem", "position": 2, "name": "How to open .md files on Mac", "item": "https://marsdawn.southern-light.dev/view-markdown-on-mac/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a .md file?", "acceptedAnswer": {"@type": "Answer", "text": "A .md file is a plain text file written in Markdown, a way of marking up text with simple characters: # for a heading, ** around bold, a pipe for a table cell. The extensions .markdown, .mdown, .mkd and .mkdn mean the same thing. Developers use it for READMEs and docs, and AI agents often hand back their plans and reports as .md files."}}, {"@type": "Question", "name": "Why does my .md file open as plain text, with # and ** marks in it?", "acceptedAnswer": {"@type": "Answer", "text": "Because it is plain text, and a plain text editor shows it as it is. Nothing is wrong with the file. To see headings, bold, tables and diagrams, open it in an app that renders Markdown. In MarsDawn the rendered page sits next to the source."}}, {"@type": "Question", "name": "Why does it open with garbled characters?", "acceptedAnswer": {"@type": "Answer", "text": "Garbled characters usually mean the file was saved in a text encoding other than UTF-8, and the app that opened it guessed wrong. The fix is to save a UTF-8 copy. MarsDawn opens a plain text file that isn't UTF-8 read-only, names the encoding it read it as in a bar at the top of the window, and offers Save As UTF-8… there, or File ▸ Save As… (⌥⇧⌘S), to write a UTF-8 copy you can edit."}}, {"@type": "Question", "name": "Can I turn a .md file into a PDF?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. In MarsDawn, choose File ▸ Export as PDF… (⌥⌘E) or File ▸ Print…; the pages are paginated, with diagrams drawn in and code highlighted, in the theme's light colors. Without the app, the free marsdawn export command-line tool makes the same PDF: marsdawn export notes.md. See PDF export and Markdown to PDF."}}, {"@type": "Question", "name": "Can I open the .md files my AI agent wrote?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, that is what MarsDawn is built for. Open the file and read the rendered page next to its source; when the agent revises it, open it again. An agent can also run marsdawn open plan.md to open the file in MarsDawn for you. See Reading what your agent hands back."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a .md file?", "acceptedAnswer": {"@type": "Answer", "text": "A .md file is a plain text file written in Markdown, a way of marking up text with simple characters: # for a heading, ** around bold, a pipe for a table cell. The extensions .markdown, .mdown, .mkd and .mkdn mean the same thing. Developers use it for READMEs and docs, and AI agents often hand back their plans and reports as .md files."}}, {"@type": "Question", "name": "Why does my .md file open as plain text, with # and ** marks in it?", "acceptedAnswer": {"@type": "Answer", "text": "Because it is plain text, and a plain text editor shows it as it is. Nothing is wrong with the file. To see headings, bold, tables and diagrams, open it in an app that renders Markdown. In MarsDawn the rendered page sits next to the source."}}, {"@type": "Question", "name": "Why does it open with garbled characters?", "acceptedAnswer": {"@type": "Answer", "text": "Garbled characters usually mean the file was saved in a text encoding other than UTF-8, and the app that opened it guessed wrong. The fix is to save a UTF-8 copy. MarsDawn opens a plain text file that isn't UTF-8 read-only, names the encoding it read it as in a bar at the top of the window, and offers Save As UTF-8… there, or File ▸ Save As… (⌥⇧⌘S), to write a UTF-8 copy you can edit."}}, {"@type": "Question", "name": "Can I turn a .md file into a PDF?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. In MarsDawn, choose File ▸ Export as PDF… (⌥⌘E) or File ▸ Print…; the pages are paginated, with diagrams drawn in and code highlighted, in the theme's light colors. Without the app, the free marsdawn export command-line tool makes the same PDF: marsdawn export notes.md. See Print & PDF and Markdown to PDF."}}, {"@type": "Question", "name": "Can I open the .md files my AI agent wrote?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, that is what MarsDawn is built for. Open the file and read the rendered page next to its source; when the agent revises it, open it again. An agent can also run marsdawn open plan.md to open the file in MarsDawn for you. See Reading what your agent hands back."}}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -133,8 +135,9 @@ try {
   <li><strong>Preview without opening it.</strong> Select the file in Finder and press Space. With MarsDawn installed, Quick Look shows the rendered page, diagrams included.</li>
 </ol>
 <h2 id="read-it-in-marsdawn">Read it in MarsDawn</h2>
-<p>MarsDawn is a Markdown editor for the Mac. It is free to download from the Mac App Store: try everything for 14 days, then unlock it once for USD 2.49. No subscription, no account. It needs macOS 26 or later.</p>
-<p><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-view-markdown-on-mac&amp;mt=8">Download MarsDawn free on the Mac App Store</a></p>
+<p>MarsDawn is a Markdown editor for the Mac. It is free to download from the Mac App Store: try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account. It needs macOS 26 or later.</p>
+<p><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-view-markdown-on-mac&amp;mt=8"><img src="/assets/badges/app-store-en.svg" width="120" height="40" alt="Download on the App Store"></a></p>
+<p>Prefer the terminal? <a href="/cli/#mac-app">Install it with Homebrew and mas</a>.</p>
 <p>Open a <code>.md</code> file and read the rendered page next to the source:</p>
 <ul>
   <li>The preview updates as you type, and the two panes scroll together.</li>
@@ -144,7 +147,7 @@ try {
 <p>If an AI agent wrote the file, this is the loop MarsDawn is built for: the agent writes, you read it rendered, and it revises. See <a href="/">the home page</a>, and <a href="/cli/agents/">marsdawn for agents</a> for letting an agent open files for you. For why that reading matters and how to review a plan, see <a href="/reading-agent-output/">Reading what your agent hands back</a> and <a href="/reviewing-agent-plans/">Reviewing an agent plan in five minutes</a>.</p>
 <h2 id="without-the-app-turn-it-into-a-pdf">Without the app: turn it into a PDF</h2>
 <p>The free <code>marsdawn</code> command-line tool renders a Markdown file to a PDF, which any Mac can open. Tables, math, Mermaid diagrams and highlighted code come out rendered, and it needs nothing else installed, not even the MarsDawn app.</p>
-<pre><code>brew tap redtear1115/tap && brew install marsdawn
+<pre tabindex="0" role="region" aria-labelledby="without-the-app-turn-it-into-a-pdf"><code>brew tap redtear1115/tap && brew install marsdawn
 marsdawn export notes.md
 open notes.pdf</code></pre>
 <p><code>export</code> writes <code>notes.pdf</code> next to the Markdown file, and <code>open</code> shows it in your PDF viewer. It needs macOS 15 or later. The walk-through, with a real exported page, is on <a href="/markdown-to-pdf/">Markdown to PDF</a>.</p>
@@ -156,7 +159,7 @@ open notes.pdf</code></pre>
 <h3>Why does it open with garbled characters?</h3>
 <p>Garbled characters usually mean the file was saved in a text encoding other than UTF-8, and the app that opened it guessed wrong. The fix is to save a UTF-8 copy. MarsDawn opens a plain text file that isn't UTF-8 read-only, names the encoding it read it as in a bar at the top of the window, and offers Save As UTF-8… there, or File ▸ Save As… (⌥⇧⌘S), to write a UTF-8 copy you can edit.</p>
 <h3>Can I turn a .md file into a PDF?</h3>
-<p>Yes. In MarsDawn, choose File ▸ Export as PDF… (⌥⌘E) or File ▸ Print…; the pages are paginated, with diagrams drawn in and code highlighted, in the theme's light colors. Without the app, the free <code>marsdawn export</code> command-line tool makes the same PDF: <code>marsdawn export notes.md</code>. See <a href="/pdf/">PDF export</a> and <a href="/markdown-to-pdf/">Markdown to PDF</a>.</p>
+<p>Yes. In MarsDawn, choose File ▸ Export as PDF… (⌥⌘E) or File ▸ Print…; the pages are paginated, with diagrams drawn in and code highlighted, in the theme's light colors. Without the app, the free <code>marsdawn export</code> command-line tool makes the same PDF: <code>marsdawn export notes.md</code>. See <a href="/pdf/">Print &amp; PDF</a> and <a href="/markdown-to-pdf/">Markdown to PDF</a>.</p>
 <h3>Can I open the .md files my AI agent wrote?</h3>
 <p>Yes, that is what MarsDawn is built for. Open the file and read the rendered page next to its source; when the agent revises it, open it again. An agent can also run <code>marsdawn open plan.md</code> to open the file in MarsDawn for you. See <a href="/reading-agent-output/">Reading what your agent hands back</a>.</p>
 <h2 id="next">Next</h2>
@@ -164,6 +167,7 @@ open notes.pdf</code></pre>
   <li>Every option of the command-line tool: <a href="/cli/">Command Line</a>.</li>
   <li>What MarsDawn doesn't do: <a href="/limits/">the list</a>.</li>
   <li>Reading Markdown in VS Code, a browser or Claude Desktop instead: <a href="/vs/markdown-preview-tools/">how they compare</a>.</li>
+  <li>Notes you keep on HackMD: <a href="/from-hackmd/">Move from HackMD to your Mac</a>.</li>
   <li>Diagrams in a Markdown file: <a href="/mermaid-preview-mac/">Mermaid preview on Mac</a>.</li>
 </ul>
 </main>
@@ -176,11 +180,12 @@ open notes.pdf</code></pre>
         <li><a href="/features/">Features</a></li>
         <li><a href="/quicklook/">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/">PDF export</a></li>
+        <li><a href="/pdf/">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>
         <li><a href="/changelog/">Changelog</a></li>
+        <li><a href="/roadmap/">Roadmap</a></li>
       </ul>
     </section>
     <section aria-labelledby="footer-agents">
@@ -217,7 +222,7 @@ open notes.pdf</code></pre>
     <section aria-labelledby="footer-themes">
       <h3 id="footer-themes">Themes</h3>
       <ul>
-        <li><a href="/themes/">Preview themes and PDF export</a></li>
+        <li><a href="/themes/">Themes</a></li>
         <li><a href="/themes/gallery/">Theme gallery</a></li>
         <li><a href="/themes/new/">Build a theme</a></li>
         <li><a href="/themes/agents/">Make a theme with your agent</a></li>
@@ -234,6 +239,7 @@ open notes.pdf</code></pre>
     </section>
   </nav>
   <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-view-markdown-on-mac&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, the Apple logo, Mac, iPhone, iPad and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store and Mac App Store are service marks of Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>
