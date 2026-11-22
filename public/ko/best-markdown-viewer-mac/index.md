@@ -1,5 +1,7 @@
 # Mac용 Markdown 뷰어 추천 (2026)
 
+블랙 프라이데이 할인: 한 번만 구입하는 잠금 해제가 11월 30일까지 반값인 USD 2.49입니다(정가 USD 4.99). 12월 1일부터는 다시 USD 4.99입니다. <!-- sale-line -->
+
 어떤 Markdown 뷰어가 가장 좋은지는 무엇을 읽느냐에 달려 있습니다. 직접 쓴 메모라면 올인원 노트 앱으로 충분합니다. 다이어그램과 수식이 들어간 긴 문서나 AI 에이전트가 계속 다시 쓰는 파일이라면, 각 앱이 자동 새로 고침, Mermaid, PDF를 어떻게 다루는지 확인하세요. 아래 앱은 알파벳 순서이며, 각각 누구에게 맞는지, 솔직한 단점 하나, 가격을 적었습니다.
 
 ## MacDown 3000
@@ -32,7 +34,7 @@ Marked 3은 다른 앱에서 쓴 Markdown을 보기 위한 미리보기 앱입�
 
 - 맞는 사람: AI 에이전트가 쓴 Markdown을 검토하는 사람.
 - 단점: PDF에 페이지 번호를 넣으려면 설명서나 프린트물 레이아웃을 써야 합니다. 기본값인 문서 레이아웃에는 없습니다.
-- 가격: 무료 다운로드, 14일 체험 후 USD 4.99 한 번 결제. 계정 불필요. Mac App Store 전용.
+- 가격: 무료 다운로드, 14일 체험 후 USD 2.49 한 번 결제. 계정 불필요. Mac App Store 전용.
 
 ## Obsidian
 
@@ -73,7 +75,7 @@ Marked 3은 다른 앱에서 쓴 Markdown을 보기 위한 미리보기 앱입�
 | MacDown 3000 | 무료 | 지원 | MathJax | 지원 | 지원 | 문서화 안 됨 | 지원 | 네이티브 |
 | Marked 3 | 월 USD 2.99부터 | 지원 | MathJax, KaTeX | 지원, 페이지 번호 | 지원 | 문서화 안 됨 | Marked QL, USD 9.99 | 네이티브 |
 | MarkEdit | 무료 | 확장 프로그램 | KaTeX(확장 프로그램) | Pandoc | 문서화 안 됨 | 문서화 안 됨 | 지원 | 네이티브(웹 뷰) |
-| MarsDawn | USD 4.99 한 번 | 지원 | KaTeX | 지원, 설명서와 프린트물에 페이지 번호 | 지원, 실행 취소 가능 | 지원 | 지원 | 네이티브 |
+| MarsDawn | USD 2.49 한 번 | 지원 | KaTeX | 지원, 설명서와 프린트물에 페이지 번호 | 지원, 실행 취소 가능 | 지원 | 지원 | 네이티브 |
 | Obsidian | 무료 | 지원 | MathJax | 지원 | 지원 | 문서화 안 됨 | 문서화 안 됨 | Electron |
 | QLMarkdown | 무료 | 선택 사항 | MathJax(선택 사항) | 문서화 안 됨 | 해당 없음 | 해당 없음 | 그 자체 | 네이티브 |
 | Typora | USD 14.99 한 번 | 지원 | MathJax | 지원, 페이지 번호 | 문서화 안 됨 | 문서화 안 됨 | 문서화 안 됨 | 네이티브 |
@@ -107,10 +109,10 @@ Obsidian과 VS Code를 제외한 모두입니다. MarkEdit은 네이티브 앱�
 
 ## 더 보기
 
-- [MarsDawn](https://marsdawn.southern-light.dev/ko/index.md): 에이전트가 쓴 Markdown, JSON, YAML을 검토하는 Mac 네이티브 앱. 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료 체험 후 한 번만 USD 4.99.
+- [MarsDawn](https://marsdawn.southern-light.dev/ko/index.md): 에이전트가 쓴 Markdown, JSON, YAML을 검토하는 Mac 네이티브 앱. 실시간 미리보기, Mermaid, KaTeX, 훑어보기, PDF 내보내기. 무료 체험 후 한 번만 USD 2.49.
 - [기능 한눈에 보기](https://marsdawn.southern-light.dev/ko/features/index.md): Mac 네이티브 Markdown, JSON, YAML 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 회의와 기록에 쓸 수 있는 깔끔한 PDF와 프린트 페이지.
 - [내 글은 내 Mac에](https://marsdawn.southern-light.dev/ko/yours/index.md): MarsDawn에는 계정도, 동기화도, 클라우드도 없습니다. Markdown 문서는 직접 고른 파일과 폴더에 담겨 Mac에 남습니다.
-- [무료로 체험하고, 한 번만 구입](https://marsdawn.southern-light.dev/ko/pay-once/index.md): MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다.
+- [무료로 체험하고, 한 번만 구입](https://marsdawn.southern-light.dev/ko/pay-once/index.md): MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 2.49에 한 번만 잠금 해제하세요. 구독도, 계정도 없습니다.
 - [프린트 및 PDF](https://marsdawn.southern-light.dev/ko/pdf/index.md): Mac에서 미리 본 뒤 Markdown을 프린트하거나 PDF로 저장하세요. 문서·설명서·프린트물 레이아웃을 지원하고 다이어그램과 코드 색도 그대로 남습니다.
 - [Mac 앱](https://marsdawn.southern-light.dev/ko/native/index.md): 진짜 Mac 앱인 Markdown 편집기. 네이티브 윈도우와 탭, 자동 저장, 버전 기록, Finder의 훑어보기, 그리고 Mac답게 동작하는 텍스트 편집기를 갖췄습니다.
 - [MarsDawn이 하지 않는 일](https://marsdawn.southern-light.dev/ko/limits/index.md): 동기화도, iPhone·iPad에서의 편집도, 플러그인도, 계정도 없습니다. 테마는 바꿀 수 있지만 사용자 지정 CSS는 없습니다. 구입 전에 알아 두세요.
@@ -123,7 +125,7 @@ Obsidian과 VS Code를 제외한 모두입니다. MarkEdit은 네이티브 앱�
 - [HackMD에서 Mac으로](https://marsdawn.southern-light.dev/ko/from-hackmd/index.md): HackMD 노트를 .md로 내려받아 Mac의 MarsDawn에서 읽는 방법입니다. 모든 노트 다운로드, GitHub 저장소에서 옮기기, 이미지 처리 방법을 정리했습니다.
 - [Markdown을 PDF로](https://marsdawn.southern-light.dev/ko/markdown-to-pdf/index.md): 무료 marsdawn 명령줄 도구로 Mac에서 Markdown을 PDF로 변환하세요. Homebrew로 설치하고 명령 하나만 실행하면 됩니다. 표, 수식, Mermaid, 코드까지 지원합니다.
 - [MarsDawn 비교: VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/ko/vs/index.md): Mac에서 Markdown을, 대개는 에이전트가 쓴 글을 읽고 검토할 방법을 고르는 분을 위한 페이지입니다. 아래 표의 각 칸은 각 회사의 공식 페이지나 저희가 직접 확인한 내용이며, 모두 2026년 10월 16일 기준입니다(MarsDawn의 PDF 칸은 2026년 11월 7일에 업데이트). 제품은 바뀌므로 내용이 오래될 수 있습니다. 틀린 내용을 발견하면 지원 페이지의 주소로 알려 주세요.
-- [MacMD Viewer와 MarsDawn 비교](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 읽기 전용 Markdown 뷰어로 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 14일 무료 체험 후 USD 4.99를 한 번만 내면 됩니다. 항목별 비교, 출처 포함.
+- [MacMD Viewer와 MarsDawn 비교](https://marsdawn.southern-light.dev/ko/vs/macmd-viewer/index.md): MacMD Viewer는 읽기 전용 Markdown 뷰어로 USD 19.99입니다. MarsDawn은 편집과 미리보기를 나란히 보여 주며, 14일 무료 체험 후 USD 2.49를 한 번만 내면 됩니다. 항목별 비교, 출처 포함.
 - [명령줄](https://marsdawn.southern-light.dev/ko/cli/index.md): Mac용 무료 marsdawn 명령줄 도구. 셸, 스크립트, LLM 에이전트에서 Markdown을 PDF로 내보내고 JSON으로 결과를 받으세요. Homebrew로 설치합니다.
 - [에이전트를 위한 marsdawn](https://marsdawn.southern-light.dev/ko/cli/agents/index.md): marsdawn을 호출해 Markdown을 PDF로 바꾸는 AI 에이전트와 스크립트를 위한 레퍼런스입니다. 명령, JSON 출력, 스키마, 종료 코드, 요구 사항을 다룹니다.
 - [에이전트 스킬](https://marsdawn.southern-light.dev/ko/cli/skill/index.md): 코딩 에이전트가 불러오는 파일 하나로, 에이전트가 쓴 Markdown을 MarsDawn에서 열어 검토하게 하고, marsdawn을 설치해 Markdown을 PDF로 내보내고 JSON 결과를 읽게 합니다.
