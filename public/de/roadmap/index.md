@@ -4,7 +4,7 @@ Black-Friday-Angebot: Der einmalige Kauf zum Freischalten kostet bis 30. Novembe
 
 Woran wir als Nächstes arbeiten, nach Version. Es gibt keine Termine: Eine Version erscheint, wenn sie fertig ist.
 
-Zuletzt aktualisiert: 16. November 2026
+Zuletzt aktualisiert: 24. November 2026
 
 Pläne können sich ändern: Ein Punkt kann in eine andere Version wandern oder wegfallen.
 
@@ -14,7 +14,7 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 
 ## Als Nächstes
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - Nachdem ein Agent eine Datei geändert hat, sehen, welche Blöcke sich geändert haben.
 - Ein Bildbetrachter für PNG, JPEG, GIF und WebP.

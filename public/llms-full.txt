@@ -3180,7 +3180,7 @@ Source: https://marsdawn.southern-light.dev/roadmap/
 
 What we're building next, by version. There are no dates: a version ships when it's ready.
 
-Last updated: 16 November 2026
+Last updated: 24 November 2026
 
 Plans can change: an item may move to another version or be dropped.
 
@@ -3190,7 +3190,7 @@ Everything that has shipped is in the [changelog](/changelog/).
 
 ## Next
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - After an agent changes a file, see which blocks changed.
 - An image viewer for PNG, JPEG, GIF and WebP.
@@ -7043,7 +7043,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/roadmap/
 
 依版本列出我們接下來要做的事。不寫日期：版本做好了才會推出。
 
-最後更新：2026 年 11 月 16 日
+最後更新：2026 年 11 月 24 日
 
 計畫可能會調整：項目可能移到別的版本，也可能取消。
 
@@ -7053,7 +7053,7 @@ Source: https://marsdawn.southern-light.dev/zh-hant/roadmap/
 
 ## 接下來
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - agent 改了檔案之後，看得出哪些區塊變了。
 - 圖片檢視器：開啟 PNG、JPEG、GIF、WebP。
@@ -10879,7 +10879,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/roadmap/
 
 按版本列出我们接下来要做的事。不写日期：版本做好了才会推出。
 
-最后更新：2026 年 11 月 16 日
+最后更新：2026 年 11 月 24 日
 
 计划可能会调整：项目可能移到别的版本，也可能取消。
 
@@ -10889,7 +10889,7 @@ Source: https://marsdawn.southern-light.dev/zh-hans/roadmap/
 
 ## 接下来
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - 代理改了文件之后，看得出哪些区块变了。
 - 图片查看器：打开 PNG、JPEG、GIF、WebP。
@@ -14714,7 +14714,7 @@ Source: https://marsdawn.southern-light.dev/ja/roadmap/
 
 これから作るものを、バージョンごとにまとめています。日付は書きません。準備ができたバージョンから公開します。
 
-最終更新：2026年11月16日
+最終更新：2026年11月24日
 
 計画は変わることがあります。項目が別のバージョンに移ったり、取りやめになったりすることもあります。
 
@@ -14724,7 +14724,7 @@ Source: https://marsdawn.southern-light.dev/ja/roadmap/
 
 ## 今後の予定
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - エージェントがファイルを変更したあと、どのブロックが変わったかがわかります。
 - 画像ビューア：PNG、JPEG、GIF、WebP を開けます。
@@ -18524,7 +18524,7 @@ Source: https://marsdawn.southern-light.dev/de/roadmap/
 
 Woran wir als Nächstes arbeiten, nach Version. Es gibt keine Termine: Eine Version erscheint, wenn sie fertig ist.
 
-Zuletzt aktualisiert: 16. November 2026
+Zuletzt aktualisiert: 24. November 2026
 
 Pläne können sich ändern: Ein Punkt kann in eine andere Version wandern oder wegfallen.
 
@@ -18534,7 +18534,7 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 
 ## Als Nächstes
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - Nachdem ein Agent eine Datei geändert hat, sehen, welche Blöcke sich geändert haben.
 - Ein Bildbetrachter für PNG, JPEG, GIF und WebP.
@@ -22300,7 +22300,7 @@ Source: https://marsdawn.southern-light.dev/fr/roadmap/
 
 Ce que nous préparons, version par version. Pas de dates : une version sort quand elle est prête.
 
-Dernière mise à jour : 16 novembre 2026
+Dernière mise à jour : 24 novembre 2026
 
 Les plans peuvent changer : un élément peut passer à une autre version ou être abandonné.
 
@@ -22310,7 +22310,7 @@ Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/chang
 
 ## Ensuite
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - Après qu’un agent a modifié un fichier, voir quels blocs ont changé.
 - Un visualiseur d’images pour PNG, JPEG, GIF et WebP.
@@ -26076,7 +26076,7 @@ Source: https://marsdawn.southern-light.dev/es/roadmap/
 
 Lo que vamos a hacer a continuación, por versión. No hay fechas: una versión sale cuando está lista.
 
-Última actualización: 16 de noviembre de 2026
+Última actualización: 24 de noviembre de 2026
 
 Los planes pueden cambiar: un elemento puede pasar a otra versión o descartarse.
 
@@ -26086,7 +26086,7 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
 ## A continuación
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - Después de que un agente cambie un archivo, ve qué bloques cambiaron.
 - Un visor de imágenes para PNG, JPEG, GIF y WebP.
@@ -29852,7 +29852,7 @@ Source: https://marsdawn.southern-light.dev/ko/roadmap/
 
 다음에 만들 것을 버전별로 정리했습니다. 날짜는 적지 않습니다. 준비가 끝난 버전부터 내놓습니다.
 
-마지막 업데이트: 2026년 11월 16일
+마지막 업데이트: 2026년 11월 24일
 
 계획은 바뀔 수 있습니다. 항목이 다른 버전으로 옮겨지거나 취소될 수도 있습니다.
 
@@ -29862,7 +29862,7 @@ Source: https://marsdawn.southern-light.dev/ko/roadmap/
 
 ## 다음 계획
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - 에이전트가 파일을 바꾼 뒤 어떤 블록이 바뀌었는지 보여 줍니다.
 - 이미지 뷰어: PNG, JPEG, GIF, WebP를 엽니다.

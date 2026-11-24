@@ -4,7 +4,7 @@ Black Friday: the one-time unlock is half price, USD 2.49 instead of USD 4.99, t
 
 What we're building next, by version. There are no dates: a version ships when it's ready.
 
-Last updated: 16 November 2026
+Last updated: 24 November 2026
 
 Plans can change: an item may move to another version or be dropped.
 
@@ -14,7 +14,7 @@ Everything that has shipped is in the [changelog](/changelog/).
 
 ## Next
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - After an agent changes a file, see which blocks changed.
 - An image viewer for PNG, JPEG, GIF and WebP.
