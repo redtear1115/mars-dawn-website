@@ -526,6 +526,11 @@ def self_test(source: Path) -> bool:
         lacks = f"A2 en/changelog: {notes['versions'][0]['version']} lacks the bullet "
         ios_v = notes["ios"]["versions"][0]["version"]
         ios_anchor = "ios-" + ios_v.replace(".", "-")
+        # A11's plant moves an iOS entry into the Mac section: pick one whose version the Mac lists too, so
+        # that A15 (a version the Mac section does not know) stays quiet when the newest iOS version is new.
+        mac_versions = {e["version"] for e in notes["versions"]}
+        ios_in_mac = next((e["version"] for e in notes["ios"]["versions"] if e["version"] in mac_versions), ios_v)
+        ios_in_mac_anchor = "ios-" + ios_in_mac.replace(".", "-")
         ios_bullet = notes["ios"]["versions"][0]["whatsNew"]["en-US"].split("\n")[0][2:]
         ios_html = html.escape(ios_bullet, quote=False)
         ios_lacks = f"A9 en/changelog: iOS {ios_v} lacks the bullet "
@@ -564,7 +569,7 @@ def self_test(source: Path) -> bool:
             # A10: the iOS anchor is wrong.
             ("A10", lambda p, v: edit(p / "ja" / "changelog" / "index.html", f'<h3 id="{ios_anchor}">', '<h3 id="ios-102">')),
             # A11: the iOS entry sits in the Mac section.
-            ("A11", lambda p, v: move_ios_entry(p / "fr" / "changelog" / "index.html", ios_anchor)),
+            ("A11", lambda p, v: move_ios_entry(p / "fr" / "changelog" / "index.html", ios_in_mac_anchor)),
             # A12: the iOS line is gone, from the HTML and from the twin.
             ("A12", lambda p, v: edit(p / "changelog" / "index.html", f'<p>{copy["en"]["ios_line"]}</p>', "")),
             ("A12", lambda p, v: edit(p / "es" / "changelog" / "index.md", plain(copy["es"]["ios_line"]), "")),
@@ -648,6 +653,7 @@ def pending_self_test(base: Path, source: Path, copy: dict, notes: dict, fresh) 
         # The same complete pages, the same data, through --no-pending-in-public: the pending version is found.
         found = scan_public(public, data, copy)
         expect("P1-P5 on the same pages (" + label + ")", found, {"P1", "P2", "P3", "P5"} if mac and not ios
+               or ios and data["ios"]["versions"][0]["version"] not in {e["version"] for e in data["versions"]}
                else {"P1", "P2", "P5"}, minimum=len(LOCALES))
 
     # --no-pending-in-public on small trees with made-up versions (so the cases hold whatever is pending in the

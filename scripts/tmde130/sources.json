@@ -40,7 +40,7 @@
  },
  "app": {
   "repo": "redtear1115/mars-dawn",
-  "_pins": "Each pin is one commit of the app repo and the sha256 of every release-notes file read at it. 1.2.2 and ios-1.0.2 are read at 7445942a89651b375a2b132c3eff4b93ad3338ca, tag 1.2.2 on the app repo's main (mars-dawn#701 changed item 4 of iOS 1.0.2 in en, de, fr, es; mars-dawn#703 added item 4 to Mac 1.2.2 in all ten ASC locales); the earlier pin was c884e68a83c2 (mars-dawn#673): when either file changes in the app repo, set the new commit and sha256s here and run the ingester again.",
+  "_pins": "Each pin is one commit of the app repo and the sha256 of every release-notes file read at it. 1.2.2 and ios-1.0.2 are read at 7445942a89651b375a2b132c3eff4b93ad3338ca, tag 1.2.2 on the app repo's main (mars-dawn#701 changed item 4 of iOS 1.0.2 in en, de, fr, es; mars-dawn#703 added item 4 to Mac 1.2.2 in all ten ASC locales); the earlier pin was c884e68a83c2 (mars-dawn#673): when either file changes in the app repo, set the new commit and sha256s here and run the ingester again. 1.2.3 is read at f70dd27bb3f1119b1ce71041be4febff2e4abcf0, the app repo's origin/main on 2026-11-22. ios-1.0.3 is read at dad172c63630f5b33ff5ed926670c493378e3cd4 (mars-dawn#735).",
   "pins": [
    {
     "commit": "1a048a6255c97fa5600807ee276fa0e7984d0ab3",
@@ -58,13 +58,26 @@
      "docs/release-notes/1.2.2.md": "95d7b3ca41c9ebd33fb8ea2f7024b10d32bc8fbbc6aa732b38846d73968c07af",
      "docs/release-notes/ios-1.0.2.md": "f461e4058542c42f9ddd87c9bf899e1fed526e3ed14e80a7ed5ff1bdd34692ee"
     }
+   },
+   {
+    "commit": "f70dd27bb3f1119b1ce71041be4febff2e4abcf0",
+    "files": {
+     "docs/release-notes/1.2.3.md": "0d5d951f2329d2cd56c6ef92af737c6a253814c04a5810faf9993f29f2cf87ba"
+    }
+   },
+   {
+    "commit": "dad172c63630f5b33ff5ed926670c493378e3cd4",
+    "files": {
+     "docs/release-notes/ios-1.0.3.md": "dc390ce6892b2a4d230e29afebec8ed526d3bfdd3d1742bded674afbf1bac7c6"
+    }
    }
   ]
  },
+ "_local_sources": "Superseded: iOS 1.0.3 What's New is now read from the app repo's docs/release-notes/ios-1.0.3.md at dad172c63630f5b33ff5ed926670c493378e3cd4 (mars-dawn#735), five bullets per locale, and its text equals what App Store Connect read back (10/10, 0 diff). Nothing outside the repo is read.",
  "asc": {
-  "what": "App Store Connect read, GET only, of every Mac version's localizations and What's New (tools/release/asc.py, 2026-11-16, #266, #368)",
-  "fetched_at": "2026-11-16T04:12:42.723252+00:00",
-  "sha256": "445863faee7cbd642bcca89be8913fa96df099382412bc1a22a4a877493e7a5b"
+  "what": "App Store Connect read, GET only, of every Mac version's localizations and What's New (2026-11-24 CST, read by Paula in the asc_status style, not by tools/release/asc.py; #266, #368, #403)",
+  "fetched_at": "2026-11-23T20:03:57.149404+00:00",
+  "sha256": "9a66f07cae1ee708fae80c981711dac773778f18b26512d689265edd0725f315"
  },
  "first_version": "1.0.0",
  "dates": {
@@ -79,7 +92,8 @@
   {"version": "1.1.1", "released": "2026-10-15", "released_at_store": "Thu Oct 15 2026 20:36:01 GMT+0000 (Coordinated Universal Time)"},
   {"version": "1.2.0", "released": "2026-10-27", "released_at_store": "Tue Oct 27 2026 17:08:18 GMT+0000 (Coordinated Universal Time)"},
   {"version": "1.2.1", "released": "2026-11-03", "released_at_store": "Tue Nov 03 2026 19:21:37 GMT+0000 (Coordinated Universal Time)"},
-  {"version": "1.2.2", "released": "2026-11-14", "released_at_store": "Sat Nov 14 2026 19:38:36 GMT+0000 (Coordinated Universal Time)"}
+  {"version": "1.2.2", "released": "2026-11-14", "released_at_store": "Sat Nov 14 2026 19:38:36 GMT+0000 (Coordinated Universal Time)"},
+  {"version": "1.2.3", "released": "2026-11-23", "released_at_store": "Mon Nov 23 2026 19:25:47 GMT+0000 (Coordinated Universal Time)"}
  ],
  "ios": {
   "_pending": "A pending version is not on the App Store yet: its What's New is the release-notes file at the pin (sha256 held) and its date is 'released' here, the due date of the milestone 'Mac 1.2.2 + iOS 1.0.2 live' until the day it ships (then set the real date). The ASC read and the public page are not consulted. The build, the Markdown twins, llms.txt, llms-full.txt and the home page's softwareVersion leave a pending version out: it appears nowhere in public/ (check_app_changelog.py --no-pending-in-public). To ship: drop 'pending', set 'released' to the App Store's UTC date, add released_at_store, run the ingester, rebuild; an iOS version then takes its date from ios.dates.url, as a Mac one does from dates.url. The steps are in scripts/tmde130/ingest.py's docstring.",
@@ -89,7 +103,8 @@
    "rule": "the same as the Mac page's; no iOS version has been read from it yet (1.0.0 and 1.0.1 are on the page but not listed on /changelog/)"
   },
   "versions": [
-   {"version": "1.0.2", "released": "2026-11-13", "released_at_store": "Fri Nov 13 2026 23:04:15 GMT+0000 (Coordinated Universal Time)"}
+   {"version": "1.0.2", "released": "2026-11-13", "released_at_store": "Fri Nov 13 2026 23:04:15 GMT+0000 (Coordinated Universal Time)"},
+   {"version": "1.0.3", "released": "2026-11-23", "released_at_store": "Mon Nov 23 2026 07:57:09 GMT+0000 (Coordinated Universal Time)"}
   ]
  }
 }

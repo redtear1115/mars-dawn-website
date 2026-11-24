@@ -8,6 +8,16 @@ Was als Nächstes kommt, steht in der [Roadmap](/de/roadmap/).
 
 ## MarsDawn für den Mac
 
+### MarsDawn 1.2.3
+
+23. November 2026
+
+- Ziehe eine Datei aus der Seitenleiste „Dateien“ in den Finder, um sie zu kopieren. Auch das PDF aus der Vorschau von „Drucken und Exportieren“ lässt sich herausziehen.
+- Behoben: Wenn die Vorschau unerwartet neu startet, kehrt sie ungefähr an die Stelle zurück, an der du gelesen hast, statt nach oben zu springen.
+- Behoben: marsdawn open --background wechselt nicht mehr zum neuen Tab, auch wenn die Datei schon geöffnet ist. Ist MarsDawn ausgeblendet oder minimiert, bleibt es dabei.
+- Behoben: Solange MarsDawn nicht freigeschaltet ist, ist Ablage > „Drucken …“ in einem PDF-Fenster jetzt abgeblendet, statt verfügbar auszusehen und nichts zu tun.
+- Behoben: Im Blatt „Drucken und Exportieren“ wird nur noch das gewählte Layout mit einem Rahmen hervorgehoben.
+
 ### MarsDawn 1.2.2
 
 14. November 2026
@@ -55,6 +65,16 @@ Was als Nächstes kommt, steht in der [Roadmap](/de/roadmap/).
 Frühere Versionen sind nur auf Englisch beschrieben: [zum englischen Änderungsprotokoll](/changelog/).
 
 ## MarsDawn für iPhone und iPad
+
+### MarsDawn 1.0.3
+
+23. November 2026
+
+- Auf dem iPhone sitzen die Schaltflächen „Teilen“ und „Erscheinungsbild und Thema“ jetzt in einer unteren Symbolleiste, dazwischen stehen die verbleibenden Testtage. Ein langer Dateiname wird in der Mitte gekürzt, sodass die Dateinamenerweiterung sichtbar bleibt.
+- Behoben: Das Öffnen einer Datei, die MarsDawn nicht lesen kann, ersetzt nicht mehr das geöffnete Dokument.
+- Auf dem iPad öffnet sich das Bedienfeld „Erscheinungsbild und Thema“ jetzt an seiner Schaltfläche in der Symbolleiste, im Hoch- und im Querformat.
+- Behoben: Beim Drucken wechselt eine dunkle Vorschau nicht mehr zu hellen Farben.
+- Behoben: Nachdem du MarsDawn auf dem iPhone freigeschaltet hast, schließt sich das Blatt zum Freischalten, und die Schaltfläche „MarsDawn freischalten“ bleibt nicht mehr auf der Startseite der App stehen.
 
 ### MarsDawn 1.0.2
 

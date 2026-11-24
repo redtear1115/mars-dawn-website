@@ -8,6 +8,16 @@ What's coming next is on the [roadmap](/roadmap/).
 
 ## MarsDawn for Mac
 
+### MarsDawn 1.2.3
+
+23 November 2026
+
+- Drag a file from the Files sidebar to Finder to copy it. You can drag the PDF out of the Print & Export preview, too.
+- Fixed: when the preview restarts unexpectedly, it returns to about where you were reading instead of jumping to the top.
+- Fixed: marsdawn open --background no longer switches to the new tab, even when the file is already open. A hidden or minimized MarsDawn stays that way.
+- Fixed: in a PDF window, File > Print... is now dimmed while MarsDawn is locked, instead of looking available and doing nothing.
+- Fixed: in the Print & Export sheet, only the layout you chose is highlighted with an outline.
+
 ### MarsDawn 1.2.2
 
 14 November 2026
@@ -76,6 +86,16 @@ What's coming next is on the [roadmap](/roadmap/).
 First release.
 
 ## MarsDawn for iPhone and iPad
+
+### MarsDawn 1.0.3
+
+23 November 2026
+
+- On iPhone, the Share button and the Appearance and Theme button now sit in a bottom bar, with the trial countdown between them. A long file name is shortened in the middle, so its extension stays visible.
+- Fixed: opening a file MarsDawn can't read no longer replaces the document you have open.
+- On iPad, the Appearance and Theme panel now opens from its toolbar button, in portrait and landscape.
+- Fixed: printing no longer switches a dark preview to light colors.
+- Fixed: after you unlock MarsDawn on iPhone, the unlock sheet closes and the Unlock MarsDawn button no longer stays on the home screen.
 
 ### MarsDawn 1.0.2
 

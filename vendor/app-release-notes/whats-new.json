@@ -18,9 +18,21 @@
      "docs/release-notes/1.2.2.md": "95d7b3ca41c9ebd33fb8ea2f7024b10d32bc8fbbc6aa732b38846d73968c07af",
      "docs/release-notes/ios-1.0.2.md": "f461e4058542c42f9ddd87c9bf899e1fed526e3ed14e80a7ed5ff1bdd34692ee"
     }
+   },
+   {
+    "commit": "f70dd27bb3f1119b1ce71041be4febff2e4abcf0",
+    "files": {
+     "docs/release-notes/1.2.3.md": "0d5d951f2329d2cd56c6ef92af737c6a253814c04a5810faf9993f29f2cf87ba"
+    }
+   },
+   {
+    "commit": "dad172c63630f5b33ff5ed926670c493378e3cd4",
+    "files": {
+     "docs/release-notes/ios-1.0.3.md": "dc390ce6892b2a4d230e29afebec8ed526d3bfdd3d1742bded674afbf1bac7c6"
+    }
    }
   ],
-  "asc_read": "2026-11-16T04:12:42.723252+00:00",
+  "asc_read": "2026-11-23T20:03:57.149404+00:00",
   "dates": "https://apps.apple.com/us/app/id6812925073?platform=mac",
   "dates_read": "2026-11-16",
   "ios_dates": "https://apps.apple.com/us/app/id6812925073?platform=iphone",
@@ -37,6 +49,22 @@
   "ko": "ko"
  },
  "versions": [
+  {
+   "version": "1.2.3",
+   "asc_version_id": "3f83a191-cc6f-475c-a55a-ffdfa9c91fc4",
+   "released": "2026-11-23",
+   "released_at_store": "Mon Nov 23 2026 19:25:47 GMT+0000 (Coordinated Universal Time)",
+   "whatsNew": {
+    "de-DE": "- Ziehe eine Datei aus der Seitenleiste „Dateien“ in den Finder, um sie zu kopieren. Auch das PDF aus der Vorschau von „Drucken und Exportieren“ lässt sich herausziehen.\n- Behoben: Wenn die Vorschau unerwartet neu startet, kehrt sie ungefähr an die Stelle zurück, an der du gelesen hast, statt nach oben zu springen.\n- Behoben: marsdawn open --background wechselt nicht mehr zum neuen Tab, auch wenn die Datei schon geöffnet ist. Ist MarsDawn ausgeblendet oder minimiert, bleibt es dabei.\n- Behoben: Solange MarsDawn nicht freigeschaltet ist, ist Ablage > „Drucken …“ in einem PDF-Fenster jetzt abgeblendet, statt verfügbar auszusehen und nichts zu tun.\n- Behoben: Im Blatt „Drucken und Exportieren“ wird nur noch das gewählte Layout mit einem Rahmen hervorgehoben.",
+    "en-US": "- Drag a file from the Files sidebar to Finder to copy it. You can drag the PDF out of the Print & Export preview, too.\n- Fixed: when the preview restarts unexpectedly, it returns to about where you were reading instead of jumping to the top.\n- Fixed: marsdawn open --background no longer switches to the new tab, even when the file is already open. A hidden or minimized MarsDawn stays that way.\n- Fixed: in a PDF window, File > Print... is now dimmed while MarsDawn is locked, instead of looking available and doing nothing.\n- Fixed: in the Print & Export sheet, only the layout you chose is highlighted with an outline.",
+    "es-ES": "- Arrastra un archivo de la barra lateral «Archivos» al Finder para copiarlo. También puedes arrastrar el PDF desde la vista previa de «Imprimir y exportar».\n- Corregido: cuando la vista previa se reinicia de forma inesperada, vuelve aproximadamente al punto donde estabas leyendo, en lugar de saltar al principio.\n- Corregido: marsdawn open --background ya no cambia a la pestaña nueva, ni siquiera cuando el archivo ya está abierto. Si MarsDawn está oculto o minimizado, se queda como estaba.\n- Corregido: en una ventana de PDF, Archivo > «Imprimir…» aparece ahora atenuado mientras MarsDawn no esté desbloqueado, en lugar de parecer disponible y no hacer nada.\n- Corregido: en la hoja «Imprimir y exportar», solo la disposición elegida se resalta con un contorno.",
+    "fr-FR": "- Faites glisser un fichier de la barre latérale « Fichiers » vers le Finder pour le copier. Vous pouvez aussi faire glisser le PDF depuis l’aperçu de « Imprimer et exporter ».\n- Corrigé : quand l’aperçu redémarre de façon inattendue, il revient à peu près à l’endroit où vous lisiez, au lieu de remonter tout en haut.\n- Corrigé : marsdawn open --background n’active plus le nouvel onglet, même quand le fichier est déjà ouvert. Si MarsDawn est masqué ou réduit, il le reste.\n- Corrigé : dans une fenêtre PDF, Fichier > « Imprimer… » est désormais grisé tant que MarsDawn n’est pas déverrouillé, au lieu de sembler disponible sans rien faire.\n- Corrigé : dans la feuille « Imprimer et exporter », seule la mise en page choisie est mise en évidence par un contour.",
+    "ja": "- 「ファイル」サイドバーのファイルを Finder にドラッグして、コピーできます。「プリントと書き出し」のプレビューにある PDF も、ドラッグして取り出せます。\n- 修正：プレビューが予期せず再起動したとき、一番上に戻らず、読んでいたおおよその位置に戻るようになりました。\n- 修正：marsdawn open --background で開いても、新しいタブに切り替わらなくなりました。ファイルがすでに開いている場合も同じです。非表示にした MarsDawn や、Dock にしまった MarsDawn は、そのままの状態を保ちます。\n- 修正：MarsDawn のロックが解除されていない間は、PDF ウインドウの「ファイル > プリント…」が淡く表示されます。使えそうに見えて何も起きない、ということはなくなりました。\n- 修正：「プリントと書き出し」シートで、選んだレイアウトだけが枠で強調表示されるようになりました。",
+    "ko": "- ‘파일’ 사이드바의 파일을 Finder로 끌어다 놓아 복사할 수 있습니다. ‘프린트 및 내보내기’ 미리보기의 PDF도 끌어낼 수 있습니다.\n- 수정: 미리보기가 예기치 않게 다시 시작되면 맨 위로 돌아가지 않고, 읽고 있던 대략적인 위치로 돌아갑니다.\n- 수정: marsdawn open --background로 파일을 열어도 더 이상 새 탭으로 전환되지 않으며, 파일이 이미 열려 있을 때도 마찬가지입니다. 가려지거나 최소화된 MarsDawn은 그 상태를 유지합니다.\n- 수정: MarsDawn 잠금을 해제하기 전에는 PDF 윈도우의 파일 > ‘프린트…’가 흐리게 표시되어, 사용할 수 있는 것처럼 보이지만 아무 반응이 없는 일이 없어졌습니다.\n- 수정: ‘프린트 및 내보내기’ 시트에서 선택한 레이아웃만 테두리로 강조 표시됩니다.",
+    "zh-Hans": "- 可以把“文件”边栏里的文件拖到 Finder 来拷贝。“打印与导出”预览里的 PDF 也能拖出去。\n- 修复：预览意外重新启动后，会回到你读到的大约位置，不再跳回最上面。\n- 修复：用 marsdawn open --background 打开文件时，不再切换到新标签页，文件已经打开也一样；隐藏或最小化的 MarsDawn 会保持原状。\n- 修复：MarsDawn 尚未解锁时，PDF 窗口里的“文件 ▸ 打印…”会变灰，不再看起来能用却没有反应。\n- 修复：“打印与导出”面板里，现在只有你选的布局会用外框标示。",
+    "zh-Hant": "- 可以把「檔案」側邊欄裡的檔案拖到 Finder 來拷貝。「列印與輸出」預覽裡的 PDF 也能拖出去。\n- 修正：預覽意外重新啟動後，會回到你讀到的大約位置，不再跳回最上面。\n- 修正：用 marsdawn open --background 開檔時，不再切到新分頁，檔案已經開著也一樣；隱藏或最小化的 MarsDawn 會維持原狀。\n- 修正：MarsDawn 尚未解鎖時，PDF 視窗裡的「檔案 ▸ 列印⋯」會變灰，不再看起來能用卻沒有反應。\n- 修正：「列印與輸出」面板現在只有你選的版面會用外框標示。"
+   }
+  },
   {
    "version": "1.2.2",
    "asc_version_id": "97f9b5d8-9ad1-4120-9579-9081c5ea5f32",
@@ -140,6 +168,21 @@
  ],
  "ios": {
   "versions": [
+   {
+    "version": "1.0.3",
+    "released": "2026-11-23",
+    "released_at_store": "Mon Nov 23 2026 07:57:09 GMT+0000 (Coordinated Universal Time)",
+    "whatsNew": {
+     "de-DE": "- Auf dem iPhone sitzen die Schaltflächen „Teilen“ und „Erscheinungsbild und Thema“ jetzt in einer unteren Symbolleiste, dazwischen stehen die verbleibenden Testtage. Ein langer Dateiname wird in der Mitte gekürzt, sodass die Dateinamenerweiterung sichtbar bleibt.\n- Behoben: Das Öffnen einer Datei, die MarsDawn nicht lesen kann, ersetzt nicht mehr das geöffnete Dokument.\n- Auf dem iPad öffnet sich das Bedienfeld „Erscheinungsbild und Thema“ jetzt an seiner Schaltfläche in der Symbolleiste, im Hoch- und im Querformat.\n- Behoben: Beim Drucken wechselt eine dunkle Vorschau nicht mehr zu hellen Farben.\n- Behoben: Nachdem du MarsDawn auf dem iPhone freigeschaltet hast, schließt sich das Blatt zum Freischalten, und die Schaltfläche „MarsDawn freischalten“ bleibt nicht mehr auf der Startseite der App stehen.",
+     "en-US": "- On iPhone, the Share button and the Appearance and Theme button now sit in a bottom bar, with the trial countdown between them. A long file name is shortened in the middle, so its extension stays visible.\n- Fixed: opening a file MarsDawn can't read no longer replaces the document you have open.\n- On iPad, the Appearance and Theme panel now opens from its toolbar button, in portrait and landscape.\n- Fixed: printing no longer switches a dark preview to light colors.\n- Fixed: after you unlock MarsDawn on iPhone, the unlock sheet closes and the Unlock MarsDawn button no longer stays on the home screen.",
+     "es-ES": "- En el iPhone, los botones «Compartir» y «Aspecto y tema» ahora están en una barra de herramientas inferior, con los días de prueba que quedan entre ambos. Un nombre de archivo largo se acorta por el medio, así que la extensión sigue visible.\n- Corregido: abrir un archivo que MarsDawn no puede leer ya no reemplaza el documento que tienes abierto.\n- En el iPad, el panel «Aspecto y tema» ahora se abre desde su botón de la barra de herramientas, tanto en vertical como en horizontal.\n- Corregido: imprimir ya no cambia una vista previa oscura a colores claros.\n- Corregido: después de desbloquear MarsDawn en el iPhone, la hoja de desbloqueo se cierra y el botón «Desbloquear MarsDawn» ya no se queda en la pantalla de inicio de la app.",
+     "fr-FR": "- Sur iPhone, les boutons « Partager » et « Apparence et thème » se trouvent désormais dans une barre d’outils du bas, avec le nombre de jours d’essai restants entre les deux. Un nom de fichier trop long est raccourci en son milieu, ce qui laisse l’extension visible.\n- Corrigé : l’ouverture d’un fichier que MarsDawn ne peut pas lire ne remplace plus le document ouvert.\n- Sur iPad, le panneau « Apparence et thème » s’ouvre désormais à partir de son bouton dans la barre d’outils, en orientation portrait comme en paysage.\n- Corrigé : à l’impression, un aperçu sombre ne passe plus aux couleurs claires.\n- Corrigé : une fois MarsDawn déverrouillé sur iPhone, la feuille de déverrouillage se ferme et le bouton « Déverrouiller MarsDawn » ne reste plus sur l’écran d’accueil de l’app.",
+     "ja": "- iPhone では、「共有」ボタンと「外観モードとテーマ」ボタンが画面下部のツールバーに移り、その間にトライアルの残り日数が表示されます。長いファイル名は途中が省略され、拡張子は見えたままです。\n- 修正：MarsDawn で読み込めないファイルを開いても、開いている書類が置き換えられなくなりました。\n- iPad では、「外観モードとテーマ」パネルがツールバーのボタンから開くようになり、縦向きでも横向きでも同じです。\n- 修正：プリントしても、ダークのプレビューがライトカラーに切り替わらなくなりました。\n- 修正：iPhone で MarsDawn のロックを解除すると、ロック解除のシートが閉じ、MarsDawn のホーム画面に「MarsDawn のロックを解除」ボタンが残らなくなりました。",
+     "ko": "- iPhone에서는 ‘공유’ 버튼과 ‘화면 모드 및 테마’ 버튼이 하단 도구 막대로 옮겨지고, 그 사이에 체험 남은 일수가 표시됩니다. 긴 파일 이름은 가운데가 생략되어 확장자가 그대로 보입니다.\n- 수정: MarsDawn에서 읽을 수 없는 파일을 열어도 현재 열려 있는 문서가 대체되지 않습니다.\n- iPad에서는 ‘화면 모드 및 테마’ 패널이 도구 막대의 버튼에서 열리며, 세로 방향과 가로 방향 모두 같습니다.\n- 수정: 프린트해도 어두운 미리보기가 밝은 색상으로 바뀌지 않습니다.\n- 수정: iPhone에서 MarsDawn 잠금을 해제하면 잠금 해제 시트가 닫히고, MarsDawn 홈 화면에 ‘MarsDawn 잠금 해제’ 버튼이 더 이상 남아 있지 않습니다.",
+     "zh-Hans": "- 在 iPhone 上，“共享”和“外观与主题”按钮移到底部工具栏，试用倒计时在两者之间。长文件名会从中间省略，扩展名仍然看得到。\n- 修复：打开 MarsDawn 读不了的文件时，不再替换你当前打开的文稿。\n- 在 iPad 上，“外观与主题”面板会从工具栏按钮旁弹出，竖屏和横屏都一样。\n- 修复：打印时，深色的预览不会再变成浅色。\n- 修复：在 iPhone 上解锁 MarsDawn 后，解锁面板会自动关闭，首页也不再留着“解锁 MarsDawn”。",
+     "zh-Hant": "- 在 iPhone 上，「分享」和「外觀與主題」按鈕移到底部工具列，試用倒數在兩者之間。長檔名會從中間省略，副檔名仍看得到。\n- 修正：打開 MarsDawn 讀不了的檔案時，不再取代你目前打開的文件。\n- 在 iPad 上，「外觀與主題」面板會從工具列按鈕旁彈出，直式和橫式都一樣。\n- 修正：列印時，深色的預覽不會再變成淺色。\n- 修正：在 iPhone 上解鎖 MarsDawn 後，解鎖面板會自動收起，首頁也不再留著「解鎖 MarsDawn」。"
+    }
+   },
    {
     "version": "1.0.2",
     "released": "2026-11-13",

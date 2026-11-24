@@ -8,6 +8,16 @@ Ce qui arrive ensuite figure dans la [feuille de route](/fr/roadmap/).
 
 ## MarsDawn pour Mac
 
+### MarsDawn 1.2.3
+
+23 novembre 2026
+
+- Faites glisser un fichier de la barre latérale « Fichiers » vers le Finder pour le copier. Vous pouvez aussi faire glisser le PDF depuis l’aperçu de « Imprimer et exporter ».
+- Corrigé : quand l’aperçu redémarre de façon inattendue, il revient à peu près à l’endroit où vous lisiez, au lieu de remonter tout en haut.
+- Corrigé : marsdawn open --background n’active plus le nouvel onglet, même quand le fichier est déjà ouvert. Si MarsDawn est masqué ou réduit, il le reste.
+- Corrigé : dans une fenêtre PDF, Fichier > « Imprimer… » est désormais grisé tant que MarsDawn n’est pas déverrouillé, au lieu de sembler disponible sans rien faire.
+- Corrigé : dans la feuille « Imprimer et exporter », seule la mise en page choisie est mise en évidence par un contour.
+
 ### MarsDawn 1.2.2
 
 14 novembre 2026
@@ -55,6 +65,16 @@ Ce qui arrive ensuite figure dans la [feuille de route](/fr/roadmap/).
 Les versions précédentes ne sont décrites qu’en anglais : [voir l’historique en anglais](/changelog/).
 
 ## MarsDawn pour iPhone et iPad
+
+### MarsDawn 1.0.3
+
+23 novembre 2026
+
+- Sur iPhone, les boutons « Partager » et « Apparence et thème » se trouvent désormais dans une barre d’outils du bas, avec le nombre de jours d’essai restants entre les deux. Un nom de fichier trop long est raccourci en son milieu, ce qui laisse l’extension visible.
+- Corrigé : l’ouverture d’un fichier que MarsDawn ne peut pas lire ne remplace plus le document ouvert.
+- Sur iPad, le panneau « Apparence et thème » s’ouvre désormais à partir de son bouton dans la barre d’outils, en orientation portrait comme en paysage.
+- Corrigé : à l’impression, un aperçu sombre ne passe plus aux couleurs claires.
+- Corrigé : une fois MarsDawn déverrouillé sur iPhone, la feuille de déverrouillage se ferme et le bouton « Déverrouiller MarsDawn » ne reste plus sur l’écran d’accueil de l’app.
 
 ### MarsDawn 1.0.2
 

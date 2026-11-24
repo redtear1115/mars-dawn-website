@@ -8,6 +8,16 @@ Lo que viene después está en la [hoja de ruta](/es/roadmap/).
 
 ## MarsDawn para Mac
 
+### MarsDawn 1.2.3
+
+23 de noviembre de 2026
+
+- Arrastra un archivo de la barra lateral «Archivos» al Finder para copiarlo. También puedes arrastrar el PDF desde la vista previa de «Imprimir y exportar».
+- Corregido: cuando la vista previa se reinicia de forma inesperada, vuelve aproximadamente al punto donde estabas leyendo, en lugar de saltar al principio.
+- Corregido: marsdawn open --background ya no cambia a la pestaña nueva, ni siquiera cuando el archivo ya está abierto. Si MarsDawn está oculto o minimizado, se queda como estaba.
+- Corregido: en una ventana de PDF, Archivo > «Imprimir…» aparece ahora atenuado mientras MarsDawn no esté desbloqueado, en lugar de parecer disponible y no hacer nada.
+- Corregido: en la hoja «Imprimir y exportar», solo la disposición elegida se resalta con un contorno.
+
 ### MarsDawn 1.2.2
 
 14 de noviembre de 2026
@@ -55,6 +65,16 @@ Lo que viene después está en la [hoja de ruta](/es/roadmap/).
 Las versiones anteriores solo tienen notas en inglés: [ver el historial en inglés](/changelog/).
 
 ## MarsDawn para iPhone y iPad
+
+### MarsDawn 1.0.3
+
+23 de noviembre de 2026
+
+- En el iPhone, los botones «Compartir» y «Aspecto y tema» ahora están en una barra de herramientas inferior, con los días de prueba que quedan entre ambos. Un nombre de archivo largo se acorta por el medio, así que la extensión sigue visible.
+- Corregido: abrir un archivo que MarsDawn no puede leer ya no reemplaza el documento que tienes abierto.
+- En el iPad, el panel «Aspecto y tema» ahora se abre desde su botón de la barra de herramientas, tanto en vertical como en horizontal.
+- Corregido: imprimir ya no cambia una vista previa oscura a colores claros.
+- Corregido: después de desbloquear MarsDawn en el iPhone, la hoja de desbloqueo se cierra y el botón «Desbloquear MarsDawn» ya no se queda en la pantalla de inicio de la app.
 
 ### MarsDawn 1.0.2
 
