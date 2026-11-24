@@ -57,6 +57,7 @@ from common import Refusal, rules  # noqa: E402
 
 ROOT = common.ROOT
 MAX_MANIFEST_BYTES = 256 * 1024
+BUILD_TIMEOUT_SECONDS = 2700
 
 
 def values_from_env() -> dict:
@@ -267,9 +268,18 @@ def make_commit(values: dict, manifest: dict, contents: dict) -> str:
     check_data_diffs(values, manifest, contents)
     data_files = {p: d for p, d in contents.items() if common.bot_path_kind(p, values["theme_id"], values["version"]) != "page"}
     write_tree(data_files)
-    pages = subprocess.run([sys.executable, str(ROOT / "scripts" / "build_pages.py")], cwd=str(ROOT),
-                           capture_output=True, text=True, timeout=600,
-                           env=dict(os.environ, PYTHONDONTWRITEBYTECODE="1"))
+    try:
+        pages = subprocess.run([sys.executable, str(ROOT / "scripts" / "build_pages.py")], cwd=str(ROOT),
+                               capture_output=True, text=True, timeout=BUILD_TIMEOUT_SECONDS,
+                               env=dict(os.environ, PYTHONDONTWRITEBYTECODE="1"))
+    except subprocess.TimeoutExpired as err:
+        chunks = []
+        for chunk in (err.stdout, err.stderr):
+            if isinstance(chunk, bytes):
+                chunk = chunk.decode("utf-8", errors="replace")
+            chunks.append(chunk or "")
+        common.echo_untrusted("".join(chunks))
+        raise Refusal("pages", f"build_pages.py timed out after {BUILD_TIMEOUT_SECONDS} s")
     common.echo_untrusted(pages.stdout + pages.stderr)
     if pages.returncode != 0:
         raise Refusal("pages", f"build_pages.py failed (exit {pages.returncode})")
