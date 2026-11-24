@@ -30,12 +30,12 @@
   },
   "date": {
    "issue": 363,
-   "id": 6908362373,
-   "what": "roadmap_updated for 8 locales with the date 2026-11-16 (the 2026-11-24 of A, only the date changed), as JSON under '## 決定（資料）'; the owner's 2026-11-16 go-ahead is #363 6908334791",
-   "created_at": "2026-11-16T05:39:09Z",
-   "updated_at": "2026-11-16T05:39:09Z",
-   "sha256": "86208cf5dc9df572403e4a6d9d4c2bd511bb09c83e24044671551a3e58d1ffaa",
-   "chars": 812
+   "id": 7134613032,
+   "what": "roadmap_updated for 8 locales with the date 2026-11-24 (#405: the two items not shipped in Mac 1.2.3 move to Mac 1.2.4; only the date changed from the 2026-11-16 pin 6908362373), as JSON under '## 決定（資料）'; pinned by the project manager for #405",
+   "created_at": "2026-11-24T14:35:01Z",
+   "updated_at": "2026-11-24T14:35:01Z",
+   "sha256": "6e8c6e6eff86f2d13d0c83cbf95a845a669c29803cc401ea876b5214d93bc0ba",
+   "chars": 797
   }
  }
 }
