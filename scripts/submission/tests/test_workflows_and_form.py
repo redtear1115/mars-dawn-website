@@ -116,7 +116,7 @@ class JobSplit(unittest.TestCase):
         self.assertFalse([u for u in self.uses(build) if u.startswith("actions/cache")])
         runs = " ".join(step.get("run", "") for step in build["steps"])
         self.assertIn("kit_cli.py build", runs)
-        self.assertEqual(build["timeout-minutes"], "45")
+        self.assertEqual(build["timeout-minutes"], "60")
 
     def test_write_jobs_run_no_third_party_code_and_no_kit(self):
         for name, job_id in (("theme-submission.yml", "comment"), ("theme-pr.yml", "commit")):
