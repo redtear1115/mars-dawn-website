@@ -172,6 +172,23 @@ class Stage(Staged):
     def test_a_failed_build_is_refused(self):
         self.refused("build", plant="fail")
 
+    def test_timed_out_build_output_is_fenced(self):
+        import contextlib
+        import io
+        from unittest.mock import patch
+
+        buffer = io.StringIO()
+        cmd = [sys.executable, "-c", "import time; print('::error::forged-timeout', flush=True); time.sleep(5)"]
+        with patch.object(stage, "BUILD_TIMEOUT_SECONDS", 1), contextlib.redirect_stdout(buffer):
+            with self.assertRaises(subprocess.TimeoutExpired):
+                stage.stage(self.theme, Path("/nonexistent/marsdawn"), self.out,
+                            gate_values(self.data, self.base), build_cmd=cmd)
+        opening, forged, closing = buffer.getvalue().splitlines()
+        self.assertRegex(opening, r"^::stop-commands::[0-9a-f]{32}$")
+        token = opening.removeprefix("::stop-commands::")
+        self.assertEqual(forged, "::error::forged-timeout")
+        self.assertEqual(closing, f"::{token}::")
+
     def test_a_checkout_other_than_the_gates_base_is_refused(self):
         self.assertIn("base commit the gate resolved", self.refused("git", base_sha="f" * 40))
 

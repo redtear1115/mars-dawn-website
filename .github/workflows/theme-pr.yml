@@ -61,7 +61,7 @@ permissions: {}
 jobs:
   build:
     runs-on: macos-15
-    timeout-minutes: 45
+    timeout-minutes: 60
     permissions: {}
     outputs:
       manifest_sha256: ${{ steps.stage.outputs.manifest_sha256 }}

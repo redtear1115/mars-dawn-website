@@ -38,6 +38,7 @@ import common  # noqa: E402
 from common import Refusal, rules  # noqa: E402
 
 ROOT = common.ROOT
+BUILD_TIMEOUT_SECONDS = 2700
 
 
 def git(*args, env=None) -> str:
@@ -130,7 +131,17 @@ def stage(theme: Path, binary: Path, out: Path, values: dict, build_cmd=None) ->
     cmd = build_cmd or [sys.executable, str(ROOT / "scripts" / "build_themes.py"), "--marsdawn-bin", str(binary)]
     if values["author_change"]:
         cmd += ["--allow-author-change", tid]
-    build = subprocess.run(cmd, cwd=str(ROOT), env=bot_env(epoch), timeout=1500, capture_output=True, text=True)
+    try:
+        build = subprocess.run(cmd, cwd=str(ROOT), env=bot_env(epoch), timeout=BUILD_TIMEOUT_SECONDS,
+                               capture_output=True, text=True)
+    except subprocess.TimeoutExpired as err:
+        chunks = []
+        for chunk in (err.stdout, err.stderr):
+            if isinstance(chunk, bytes):
+                chunk = chunk.decode("utf-8", errors="replace")
+            chunks.append(chunk or "")
+        common.echo_untrusted("".join(chunks))
+        raise
     common.echo_untrusted(build.stdout + build.stderr)
     if build.returncode != 0:
         raise Refusal("build", f"build_themes.py refused or failed (exit {build.returncode}); see its output above")
