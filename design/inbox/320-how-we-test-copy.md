@@ -2,13 +2,13 @@
 
 Issue: https://github.com/redtear1115/mars-dawn-website/issues/320
 Outline: the issue's latest comment (Una's review, accepted as is), plus Ray's later decisions relayed by Paula (S11, S14).
-Status: **en and zh-Hant updated for final Ray review (2026-11-25)**. Other 6 locales stay at `16d360e` until Ray approves en/zh-Hant, then Aria syncs all 6 in one pass. Do not publish before Ray approves and all 8 locales are synced.
+Status: **all 8 locales synced (2026-11-25)**. Ray approved en and zh-Hant on 2026-11-25 («321 ok», message id `46d7b939-0139-4d22-ac39-06bfacff7c0a`; recorded in PR comment 7161015950, sha256 `81c1566c089457da04b083206f2a10f12a44fd8042b42ea2c670c27a2f58994c`). zh-Hans, ja, ko, de, fr, es were synced from that approved text in one pass. Do not publish until the page is built from this file.
 
 ## How to read this file
 
 - The bodies below are HTML fragments in the same shape as the other evergreen articles in `scripts/build_pages.py` (`section.intro` → `div.summary` → `h2` sections → Next → Sources).
 - **Every number has a source in an HTML comment** (`<!-- src: ... -->`), as #320's acceptance requires.
-- **Placeholders**: `en` and `zh-Hant` have **0** `{{TBD}}` placeholders (`{{TBD:mba-run}}` resolved with verified public `run 40315907904` from `kit #240` after `kit #242` merged into that branch). `zh-Hans`, `ja`, `ko`, `de`, `fr`, `es` still carry `{{TBD:mba-run}}` and 2026-10-26 figures pending Ray's sign-off on `en` and `zh-Hant`. Don't publish while any remain: `grep -n 'TBD' design/inbox/320-how-we-test-copy.md`.
+- **Placeholders**: all 8 locales have **0** `{{TBD}}` placeholders. `{{TBD:mba-run}}` is resolved with verified public `run 40315907904`. Don't publish a copy that still contains `TBD`: `grep -n 'TBD' design/inbox/320-how-we-test-copy.md`.
 - Suggested slug: `/how-we-test/` (zh-Hant `/zh-hant/how-we-test/`). It needs to be added to `article_dates.py`'s `ARTICLE_SLUGS` and to the footer `ui` dict. Footer labels are at the end of this file.
 - The app repo is private, so app facts are described in the text but not linked. Kit facts link to the public kit repo.
 
@@ -256,8 +256,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>只想知道 MarsDawn 会拿哪些极端或恶意的文件来测试？可以直接跳到“<a href="#inputs">我们丢给它的东西</a>”。</p>
 
 <h2>只在 MacBook Air 上失败的测试</h2>
-<!-- src S4: kit PR #240 (not merged), run 40196953693 -->
-<p>导出引擎的测试，在 GitHub 的 macOS 15 机器上完整跑一次将近一小时：debug 版约 32 分钟，release 版约 25 分钟。为了缩短时间，我们开始把 macOS 26 那一半移到自己的 MacBook Air 上跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>）。</p>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>导出引擎的测试，在 GitHub 的 macOS 15 机器上完整跑一次将近一小时：debug 版约 32 分钟，release 版约 25 分钟。为了缩短时间，我们试着把 macOS 26 那一半移到自己的 MacBook Air 上跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>）。</p>
 <!-- src S1: kit #241, run 40271990387 -->
 <p>在那台机器上第一次跑，就有一个测试失败。这个测试会导出一份带提示框（Note、Tip、Warning）的 PDF，检查每个提示框边上的色条颜色对不对，也就是色差要小于 0.16。在 MacBook Air 上，色差是 0.1634、0.1648 和 0.1796。换到 Mac mini，同一个 commit、同样的 macOS 和 Xcode，测试通过。</p>
 <p>我们第一个怀疑是导出坏了。结果不是：PDF 本身没问题，两台机器不一样的，是测试读它的方式。</p>
@@ -265,8 +265,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>这个测试会把 PDF 每一页画成图像再读像素，而 macOS 画这张图时，用的是主显示器的色彩空间。Mac mini 接的是普通的外接显示器，MacBook Air 用的是内建显示屏。我们拿一张填满同一种橙色的图像读回来：(0.784, 0.278, 0.106) 在 Mac mini 上读成 (0.822, 0.335, 0.179)，在 MacBook Air 上读成 (0.782, 0.395, 0.221)。</p>
 <!-- src S3: kit #242 verification comment -->
 <p>关键在这里：在 Mac mini 上，测试读到的颜色其实也不对，最多差了 0.128，只是刚好落在 0.16 的上限内。它能通过，靠的是那台显示器，而不是真的量对了色条。</p>
-<!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>修复（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改测试：把页面画进一张固定使用 sRGB 色彩空间的图像，完全不经过屏幕。现在两台机器都能准确读出色条的颜色：无论是 MacBook Air 的内建显示屏还是 Mac mini，色差都是 0.0。这个 pull request 的 CI 全部通过（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），MacBook Air 机器上的完整测试也通过了（run {{TBD:mba-run}}）。接着我们故意让它失败：把每个预期颜色都改成蓝色，五个提示框全部变红。</p>
+<!-- src S3, S10 -->
+<p>修复（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改测试：把页面画进一张固定使用 sRGB 色彩空间的图像，完全不经过屏幕。现在两台机器都能准确读出色条的颜色：无论是 MacBook Air 的内建显示屏还是 Mac mini，色差都是 0.0。这个 pull request 的 CI 全部通过（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），修复并入 MacBook Air 测试分支后，那台机器上的完整测试也全部通过（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>）。接着我们故意让它失败：把每个预期颜色都改成蓝色，五个提示框全部变红。</p>
 <p>它还有一个已知的漏洞：Note 和 Caution 用的两种橙色只差约 0.119，在 0.16 的上限内，所以这两个颜色如果对调，测试多半发现不了。我们把这件事记了下来，没有假装这个测试已经完整。</p>
 <p>一个不会失败的测试，什么也保护不了；因为错误的理由而失败的测试（比如屏幕的颜色描述文件）也一样。一台机器上的绿灯，只说明测试在那台机器上通过，不说明它测的就是名字上写的那件事。</p>
 
@@ -277,10 +277,10 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>参考 PDF：</strong>导出引擎（开源的 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>，<code>marsdawn</code> 命令也用它）把一组样本文稿导出成 PDF，每一页的文字都和事先记录的版本比对。抓内容悄悄丢失，或页数突然改变。</li>
   <!-- src S6, S9 -->
   <li><strong>不同的系统和版本：</strong>引擎在 macOS 15（支持的最低版本）和 macOS 26（App 实际发布的版本）上都要跑，各跑 debug 和 release 两种版本。App 的完整测试则跑四种组合：签名与不签名，各自再分付费墙开与关。抓只在旧系统上出错，或只在用户实际拿到的版本里出错的问题。</li>
-  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
-  <li><strong>真实硬件：</strong>我们正把引擎的一部分测试，从 GitHub 的机器移到自己的 Mac 上，第一台就是上面那台 MacBook Air。就像这个故事，换一台机器，能抓到只因为跑在某台机器上才通过的测试。</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>真实硬件：</strong>App 的 CI 跑在我们自己的 Mac 上（Mac mini 和 MacBook Air 两台都跑）；把引擎的测试搬到那台 MacBook Air 试跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>，目前仍是实验草稿），就是抓到上面那个颜色描述文件问题的契机。换一台机器，能抓到只因为跑在某台机器上才通过的测试。</li>
   <!-- src S12 -->
-  <li><strong>红灯对照组：</strong>App 的 CI 固定放着 11 份故意弄坏的清理脚本，每份都去掉一道安全检查，测试碰到每一份都必须失败。这个脚本会删除 Mac 上旧的构建和工作副本，少一道检查就可能删错东西。只要有一份弄坏的通过，坏掉的就是测试本身。</li>
+  <li><strong>红灯对照组：</strong>App 的 CI 固定放着 22 份故意弄坏的清理脚本和 20 份故意弄坏的测试执行脚本，每份都去掉一道安全检查，测试碰到每一份都必须失败。清理脚本会删除 Mac 上旧的构建和工作副本，少一道检查就可能删错东西。只要有一份弄坏的通过，坏掉的就是测试本身。</li>
   <!-- src S3, S15 -->
   <li><strong>另一双眼睛：</strong>我们的做法是合并前把改动交给另一个代理验证，像 kit #242 那样；涉及使用流程的改动，会先做情境审查。抓“说做完了其实没做完”，以及代码能跑、却用错了场合。</li>
   <!-- src S21 -->
@@ -304,7 +304,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>恶意的主题文件。</strong>会被拒绝，错误信息也不会重复文件里隐藏的控制字符或链接。超过 16 KB 的主题文件直接不读。</li>
 </ul>
 <!-- src S5 -->
-<p>这些都有代价。引擎单次运行的时间上限从 30 分钟拉到 45、50，再到 70 分钟；macOS 15 还曾在测试全部通过的情况下，两次撞上 50 分钟的上限。</p>
+<p>这些都有代价。引擎单次运行的时间上限从 30 分钟拉到 45、50、70，现在已经拉到 90 分钟；macOS 15 曾在测试全部通过的情况下两次撞上 50 分钟上限，后来又在最后一步撞上 70 分钟，前面所有步骤都已经通过。</p>
 
 <h2>你也能照做的四个习惯</h2>
 <ol>
@@ -331,7 +331,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <ul>
   <li>失败的测试和原因：<a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>。</li>
   <li>修复和独立验证：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>。</li>
-  <li>把 CI 移到 MacBook Air，附运行时间：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>。</li>
+  <li>在 MacBook Air 试跑 CI（实验草稿），附运行时间：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>。</li>
   <li>导出引擎的 CI，时间上限的调整历史写在注释里：<a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>。</li>
   <li>App 的代码仓库不公开；上面关于 App 的内容，来自它的 CI 配置和测试脚本。</li>
 </ul>
@@ -355,8 +355,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>MarsDawn がどんな極端なファイルや悪意のあるファイルでテストされているかだけ知りたい方は、「<a href="#inputs">テストに投げ込むもの</a>」へどうぞ。</p>
 
 <h2>MacBook Air でだけ失敗したテスト</h2>
-<!-- src S4: kit PR #240 (not merged), run 40196953693 -->
-<p>書き出しエンジンのテストを GitHub の macOS 15 ランナーで一通り実行すると、1 時間近くかかります。debug ビルドで約 32 分、release ビルドで約 25 分です。これを短くするため、macOS 26 の分を自前の MacBook Air に移し始めました（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>）。</p>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>書き出しエンジンのテストを GitHub の macOS 15 ランナーで一通り実行すると、1 時間近くかかります。debug ビルドで約 32 分、release ビルドで約 25 分です。これを短くするため、macOS 26 の分を自前の MacBook Air に移してみました（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>）。</p>
 <!-- src S1: kit #241, run 40271990387 -->
 <p>そこでの最初の実行で、テストがひとつ失敗しました。コールアウト（Note、Tip、Warning）を含む PDF を書き出し、それぞれの端にある色の帯が正しい色か、つまり色差が 0.16 未満かを確かめるテストです。MacBook Air での色差は 0.1634、0.1648、0.1796 でした。Mac mini では、同じコミット、同じ macOS と Xcode で、テストは通りました。</p>
 <p>最初は書き出しが壊れたのだと思いました。違いました。PDF には何の問題もなく、2 台で違っていたのは、テストがそれを読む方法でした。</p>
@@ -364,8 +364,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>このテストは PDF の各ページを画像にしてピクセルを読みます。macOS はその画像を、メインディスプレイのカラースペースで描きます。Mac mini はふつうの外部ディスプレイにつながっていて、MacBook Air は内蔵ディスプレイを使っていました。1 色のオレンジで塗りつぶした画像を読み戻すと、(0.784, 0.278, 0.106) が Mac mini では (0.822, 0.335, 0.179)、MacBook Air では (0.782, 0.395, 0.221) になりました。</p>
 <!-- src S3: kit #242 verification comment -->
 <p>大事なのはここからです。Mac mini でも、テストは正しい色を読めていませんでした。ずれは最大 0.128 で、0.16 の上限にぎりぎり収まっていただけです。通っていたのはディスプレイのおかげで、帯の色を正しく測れていたからではありません。</p>
-<!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）で変えたのはテストだけです。ページを sRGB に固定したカラースペースの画像に描くので、画面はまったく関わりません。いまは 2 台とも帯の色を正確に読めます。色差は、MacBook Air の内蔵ディスプレイでも Mac mini でも 0.0 です。プルリクエストの CI は通り（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>）、MacBook Air のランナーでの全テストも通りました（run {{TBD:mba-run}}）。そのあと、わざと失敗させました。期待する色をすべて青にすると、5 つのコールアウトすべてで赤になりました。</p>
+<!-- src S3, S10 -->
+<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）で変えたのはテストだけです。ページを sRGB に固定したカラースペースの画像に描くので、画面はまったく関わりません。いまは 2 台とも帯の色を正確に読めます。色差は、MacBook Air の内蔵ディスプレイでも Mac mini でも 0.0 です。プルリクエストの CI は通り（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>）、修正が MacBook Air のランナー用ブランチに入ったあと、そのマシンでも全テストが通りました（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>）。そのあと、わざと失敗させました。期待する色をすべて青にすると、5 つのコールアウトすべてで赤になりました。</p>
 <p>既知の穴もまだあります。Note と Caution は色差が約 0.119 の 2 つのオレンジを使っていて、0.16 の上限より内側です。この 2 色が入れ替わっても、テストはおそらく気づきません。テストが完全なふりはせず、このことを記録に残しました。</p>
 <p>失敗しようのないテストは何も守りません。画面のカラープロファイルのような、間違った理由で失敗するテストも同じです。1 台のマシンでの緑は、そこでテストが通ったことを示すだけで、名前どおりのものを測っているという意味ではありません。</p>
 
@@ -376,10 +376,10 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>参照 PDF：</strong>書き出しエンジン（オープンソースの <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>。<code>marsdawn</code> コマンドもこれで動いています）でサンプルの書類を書き出し、各ページのテキストを記録済みのものと比べます。内容が知らないうちに消えることや、ページ数が変わることを捕まえます。</li>
   <!-- src S6, S9 -->
   <li><strong>異なるシステムとビルド：</strong>エンジンは、サポートする最も古い macOS 15 と、アプリを出荷している macOS 26 の両方で、それぞれ debug と release のビルドとして実行します。アプリの全テストは 4 通りの組み合わせで実行します。署名ありと署名なし、それぞれペイウォールのオフとオンです。古いシステムでだけ、あるいはお客さまが実際に受け取るビルドでだけ壊れるものを捕まえます。</li>
-  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
-  <li><strong>実機：</strong>エンジンのテストの一部を、GitHub のマシンから自前の Mac へ移しているところです。最初の 1 台が上の MacBook Air です。この話のとおり、2 台目のマシンは、そのマシンで動いているから通っているだけのテストを捕まえます。</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>実機：</strong>アプリの CI は自前の Mac（Mac mini と MacBook Air の両方）で動いています。エンジンのテスト一式をその MacBook Air で試したこと（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>、いまもオープンな実験ドラフト）が、上のカラープロファイルの不具合を捕まえました。2 台目のマシンは、そのマシンで動いているから通っているだけのテストを捕まえます。</li>
   <!-- src S12 -->
-  <li><strong>赤になるべき対照群：</strong>アプリの CI には、わざと壊したクリーンアップスクリプトのコピーが 11 個あり、それぞれ安全チェックがひとつずつ抜いてあります。テストはそのすべてで失敗しなければなりません。このスクリプトは Mac から古いビルドや作業コピーを削除するので、チェックがひとつ欠けるだけで、消してはいけないものを消しかねません。壊したコピーがひとつでも通れば、壊れているのはテストのほうです。</li>
+  <li><strong>赤になるべき対照群：</strong>アプリの CI には、わざと壊したクリーンアップスクリプトのコピーが 22 個、テスト実行スクリプトのコピーが 20 個あり、それぞれ安全チェックがひとつずつ抜いてあります。テストはそのすべてで失敗しなければなりません。クリーンアップスクリプトは Mac から古いビルドや作業コピーを削除するので、チェックがひとつ欠けるだけで、消してはいけないものを消しかねません。壊したコピーがひとつでも通れば、壊れているのはテストのほうです。</li>
   <!-- src S3, S15 -->
   <li><strong>もうひとつの目：</strong>kit #242 のように、マージの前に別のエージェントに変更を検証させるのが私たちのやり方です。使い方の流れに関わる変更は、先にシナリオレビューを通します。「完了」と言いながら終わっていないことや、動くけれど使われる場面を間違えているコードを捕まえます。</li>
   <!-- src S21 -->
@@ -403,7 +403,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>悪意のあるテーマファイル。</strong>拒否され、エラーメッセージがファイル内の隠れた制御文字やリンクを繰り返すこともありません。16 KB を超えるテーマファイルは読み込みもしません。</li>
 </ul>
 <!-- src S5 -->
-<p>どれもただではありません。エンジン 1 回分の制限時間は 30 分から 45 分、50 分、70 分と延び、macOS 15 は全テストが通っていたのに 50 分の上限に 2 回達したことがあります。</p>
+<p>どれもただではありません。エンジン 1 回分の制限時間は 30 分から 45 分、50 分、70 分、いまは 90 分まで延びました。macOS 15 は全テストが通っていたのに 50 分の上限に 2 回達したことがあり、その後、それまでの手順はすべて通ったまま、最後の手順で 70 分に達したことがあります。</p>
 
 <h2>まねできる 4 つの習慣</h2>
 <ol>
@@ -430,7 +430,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <ul>
   <li>失敗したテストとその原因：<a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>。</li>
   <li>修正と独立した検証：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>。</li>
-  <li>CI を MacBook Air に移す作業と実行時間：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>。</li>
+  <li>MacBook Air で CI を試した作業（オープンな実験ドラフト）と実行時間：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>。</li>
   <li>書き出しエンジンの CI。制限時間の変遷はコメントにあります：<a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>。</li>
   <li>アプリのリポジトリは非公開です。上のアプリに関する内容は、その CI ワークフローとテストスクリプトにもとづいています。</li>
 </ul>
@@ -454,8 +454,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>MarsDawn이 어떤 극단적이거나 악의적인 파일로 테스트되는지만 궁금하다면 '<a href="#inputs">테스트에 던져 넣는 것들</a>'로 바로 가세요.</p>
 
 <h2>MacBook Air에서만 실패한 테스트</h2>
-<!-- src S4: kit PR #240 (not merged), run 40196953693 -->
-<p>내보내기 엔진의 테스트를 GitHub의 macOS 15 러너에서 전부 돌리면 거의 한 시간이 걸립니다. debug 빌드가 약 32분, release 빌드가 약 25분입니다. 이 시간을 줄이려고 macOS 26 쪽을 우리 MacBook Air로 옮기기 시작했습니다(<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>내보내기 엔진의 테스트를 GitHub의 macOS 15 러너에서 전부 돌리면 거의 한 시간이 걸립니다. debug 빌드가 약 32분, release 빌드가 약 25분입니다. 이 시간을 줄이려고 macOS 26 쪽을 우리 MacBook Air로 옮겨 보았습니다(<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
 <!-- src S1: kit #241, run 40271990387 -->
 <p>그곳에서 처음 돌렸을 때 테스트 하나가 실패했습니다. 콜아웃(Note, Tip, Warning)이 들어간 PDF를 내보내고, 각 콜아웃 가장자리의 색 막대가 올바른 색인지, 즉 색 차이가 0.16 미만인지 확인하는 테스트입니다. MacBook Air에서 색 차이는 0.1634, 0.1648, 0.1796이었습니다. Mac mini에서는 같은 커밋, 같은 macOS와 Xcode로 테스트가 통과했습니다.</p>
 <p>처음에는 내보내기가 망가졌다고 생각했습니다. 아니었습니다. PDF에는 아무 문제가 없었고, 두 기기에서 달랐던 것은 테스트가 그것을 읽는 방식이었습니다.</p>
@@ -463,8 +463,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>이 테스트는 PDF의 각 페이지를 이미지로 바꿔 픽셀을 읽는데, macOS는 그 이미지를 주 디스플레이의 색 공간으로 그립니다. Mac mini는 평범한 외장 모니터에 연결되어 있었고, MacBook Air는 내장 디스플레이를 쓰고 있었습니다. 주황색 한 가지로 채운 이미지를 다시 읽어 보니, (0.784, 0.278, 0.106)이 Mac mini에서는 (0.822, 0.335, 0.179), MacBook Air에서는 (0.782, 0.395, 0.221)로 돌아왔습니다.</p>
 <!-- src S3: kit #242 verification comment -->
 <p>중요한 건 여기부터입니다. Mac mini에서도 테스트는 올바른 색을 읽지 못하고 있었습니다. 최대 0.128까지 어긋나 있었고, 0.16 한도 안에 겨우 들어왔을 뿐입니다. 통과한 건 모니터 덕분이지, 막대를 제대로 측정해서가 아니었습니다.</p>
-<!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>수정(<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>)은 테스트만 바꿉니다. 페이지를 sRGB로 고정한 색 공간의 이미지에 그리기 때문에 화면이 전혀 끼어들지 않습니다. 이제 두 기기 모두 막대 색을 정확하게 읽습니다. 색 차이는 MacBook Air의 내장 디스플레이에서도, Mac mini에서도 0.0입니다. 풀 리퀘스트의 CI가 통과했고(<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), MacBook Air 러너에서 전체 테스트도 통과했습니다(run {{TBD:mba-run}}). 그다음 일부러 실패시켰습니다. 기대하는 색을 모두 파란색으로 바꾸자 콜아웃 다섯 개 모두에서 빨간불이 들어왔습니다.</p>
+<!-- src S3, S10 -->
+<p>수정(<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>)은 테스트만 바꿉니다. 페이지를 sRGB로 고정한 색 공간의 이미지에 그리기 때문에 화면이 전혀 끼어들지 않습니다. 이제 두 기기 모두 막대 색을 정확하게 읽습니다. 색 차이는 MacBook Air의 내장 디스플레이에서도, Mac mini에서도 0.0입니다. 풀 리퀘스트의 CI가 통과했고(<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), 수정이 MacBook Air 러너 브랜치에 들어간 뒤 그 러너에서도 전체 테스트가 통과했습니다(<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>). 그다음 일부러 실패시켰습니다. 기대하는 색을 모두 파란색으로 바꾸자 콜아웃 다섯 개 모두에서 빨간불이 들어왔습니다.</p>
 <p>알려진 빈틈도 아직 있습니다. Note와 Caution은 색 차이가 약 0.119인 두 주황색을 쓰는데, 0.16 한도 안쪽입니다. 그래서 두 색이 서로 바뀌어도 테스트는 아마 알아차리지 못할 것입니다. 테스트가 완벽한 척하지 않고 이 사실을 기록해 두었습니다.</p>
 <p>실패할 수 없는 테스트는 아무것도 지켜 주지 못합니다. 화면의 색상 프로파일처럼 엉뚱한 이유로 실패하는 테스트도 마찬가지입니다. 한 기기에서의 초록불은 테스트가 거기서 통과했다는 뜻일 뿐, 이름에 적힌 것을 측정한다는 뜻은 아닙니다.</p>
 
@@ -475,10 +475,10 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>기준 PDF:</strong> 내보내기 엔진(오픈 소스인 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, <code>marsdawn</code> 명령도 이것으로 돌아갑니다)으로 샘플 문서를 내보내고, 페이지마다 텍스트를 기록해 둔 사본과 비교합니다. 내용이 조용히 사라지거나 페이지 수가 바뀌는 것을 잡아냅니다.</li>
   <!-- src S6, S9 -->
   <li><strong>다른 시스템과 빌드:</strong> 엔진은 지원하는 가장 오래된 버전인 macOS 15와, 앱이 출시되는 macOS 26에서 각각 debug와 release 빌드로 돌아갑니다. 앱의 전체 테스트는 네 가지 조합으로 돕니다. 서명한 것과 서명하지 않은 것, 각각 페이월을 끈 것과 켠 것입니다. 오래된 시스템에서만, 또는 고객이 실제로 받는 빌드에서만 망가지는 것을 잡아냅니다.</li>
-  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
-  <li><strong>실제 하드웨어:</strong> 엔진 테스트의 일부를 GitHub의 기기에서 우리 Mac으로 옮기는 중이며, 첫 번째가 위의 MacBook Air입니다. 이 이야기처럼, 두 번째 기기는 특정 기기에서 돌았기 때문에 통과했을 뿐인 테스트를 잡아냅니다.</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>실제 하드웨어:</strong> 앱의 CI는 우리 Mac(Mac mini와 MacBook Air 둘 다)에서 돕니다. 엔진 테스트 일체를 그 MacBook Air에서 시험 실행한 것(<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>, 아직 열린 실험 초안)이 위의 색상 프로파일 버그를 잡아냈습니다. 두 번째 기기는 특정 기기에서 돌았기 때문에 통과했을 뿐인 테스트를 잡아냅니다.</li>
   <!-- src S12 -->
-  <li><strong>빨간불 대조군:</strong> 앱의 CI에는 일부러 망가뜨린 정리 스크립트 사본 11개가 있고, 사본마다 안전 검사가 하나씩 빠져 있습니다. 테스트는 그 모두에서 실패해야 합니다. 이 스크립트는 Mac에서 오래된 빌드와 작업 사본을 지우기 때문에, 검사 하나만 빠져도 엉뚱한 것을 지울 수 있습니다. 망가뜨린 사본이 하나라도 통과하면 망가진 것은 테스트입니다.</li>
+  <li><strong>빨간불 대조군:</strong> 앱의 CI에는 일부러 망가뜨린 정리 스크립트 사본 22개와 테스트 실행 스크립트 사본 20개가 있고, 사본마다 안전 검사가 하나씩 빠져 있습니다. 테스트는 그 모두에서 실패해야 합니다. 정리 스크립트는 Mac에서 오래된 빌드와 작업 사본을 지우기 때문에, 검사 하나만 빠져도 엉뚱한 것을 지울 수 있습니다. 망가뜨린 사본이 하나라도 통과하면 망가진 것은 테스트입니다.</li>
   <!-- src S3, S15 -->
   <li><strong>또 하나의 눈:</strong> kit #242처럼, 병합 전에 다른 에이전트에게 변경을 검증하게 하는 것이 우리의 방식입니다. 사용 흐름에 관련된 변경은 먼저 시나리오 리뷰를 거칩니다. 끝났다고 했지만 끝나지 않은 것, 그리고 동작은 하지만 잘못된 상황에 쓰인 코드를 잡아냅니다.</li>
   <!-- src S21 -->
@@ -502,7 +502,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>악의적인 테마 파일.</strong> 거부되며, 오류 메시지가 파일 속 숨은 제어 문자나 링크를 그대로 되풀이하지도 않습니다. 16KB가 넘는 테마 파일은 아예 읽지 않습니다.</li>
 </ul>
 <!-- src S5 -->
-<p>이 모든 것에는 비용이 듭니다. 엔진 한 번 실행의 제한 시간은 30분에서 45분, 50분, 70분으로 늘었고, macOS 15는 모든 테스트가 통과했는데도 50분 한도에 두 번 걸린 적이 있습니다.</p>
+<p>이 모든 것에는 비용이 듭니다. 엔진 한 번 실행의 제한 시간은 30분에서 45분, 50분, 70분, 지금은 90분까지 늘었습니다. macOS 15는 모든 테스트가 통과했는데도 50분 한도에 두 번 걸린 적이 있고, 나중에는 앞선 단계는 모두 통과한 채 마지막 단계에서 70분에 걸린 적이 있습니다.</p>
 
 <h2>따라 할 수 있는 네 가지 습관</h2>
 <ol>
@@ -529,7 +529,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <ul>
   <li>실패한 테스트와 원인: <a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>.</li>
   <li>수정과 독립 검증: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>.</li>
-  <li>CI를 MacBook Air로 옮기는 작업과 실행 시간: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
+  <li>MacBook Air에서 CI를 시험 실행한 작업(아직 열린 실험 초안)과 실행 시간: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
   <li>내보내기 엔진의 CI. 제한 시간이 바뀐 내력은 주석에 있습니다: <a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>.</li>
   <li>앱 저장소는 비공개입니다. 위의 앱 관련 내용은 앱의 CI 워크플로와 테스트 스크립트에서 가져왔습니다.</li>
 </ul>
@@ -553,8 +553,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>Du willst nur wissen, mit welchen extremen oder feindseligen Dateien MarsDawn getestet wird? Dann spring direkt zu <a href="#inputs">Was wir hineinwerfen</a>.</p>
 
 <h2>Der Test, der auf einem MacBook Air fehlschlug</h2>
-<!-- src S4: kit PR #240 (not merged), run 40196953693 -->
-<p>Ein kompletter Durchlauf der Tests der Export-Engine dauert auf dem macOS-15-Runner von GitHub fast eine Stunde: etwa 32 Minuten für den Debug-Build und etwa 25 für den Release-Build. Um das zu verkürzen, haben wir begonnen, die macOS-26-Hälfte auf ein eigenes MacBook Air zu verlegen (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>Ein kompletter Durchlauf der Tests der Export-Engine dauert auf dem macOS-15-Runner von GitHub fast eine Stunde: etwa 32 Minuten für den Debug-Build und etwa 25 für den Release-Build. Um das zu verkürzen, haben wir versucht, die macOS-26-Hälfte auf ein eigenes MacBook Air zu verlegen (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
 <!-- src S1: kit #241, run 40271990387 -->
 <p>Beim ersten Lauf dort schlug ein Test fehl. Er exportiert ein PDF mit Hinweisboxen (Note, Tip, Warning) und prüft, ob jede am Rand einen Balken in der richtigen Farbe hat, also mit einem Farbabstand unter 0,16. Auf dem MacBook Air lagen die Abstände bei 0,1634, 0,1648 und 0,1796. Auf einem Mac mini, mit demselben Commit und denselben macOS- und Xcode-Versionen, bestand der Test.</p>
 <p>Unser erster Verdacht: Der Export ist kaputt. War er nicht. Mit dem PDF war alles in Ordnung; was sich zwischen den Geräten unterschied, war die Art, wie der Test es las.</p>
@@ -562,8 +562,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>Der Test wandelte jede PDF-Seite in ein Bild um und las die Pixel, und macOS zeichnet dieses Bild im Farbraum des Hauptbildschirms. Der Mac mini hing an einem gewöhnlichen externen Monitor, das MacBook Air nutzte sein eingebautes Display. Wir füllten ein Bild mit einem einzigen Orange und lasen es zurück: Aus (0,784; 0,278; 0,106) wurde auf dem Mac mini (0,822; 0,335; 0,179) und auf dem MacBook Air (0,782; 0,395; 0,221).</p>
 <!-- src S3: kit #242 verification comment -->
 <p>Jetzt kommt der entscheidende Teil: Auch auf dem Mac mini hatte der Test nicht die richtigen Farben gelesen. Er lag um bis zu 0,128 daneben, knapp innerhalb der Grenze von 0,16. Er bestand wegen des Monitors, nicht weil er den Balken richtig gemessen hätte.</p>
-<!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>Der Fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) ändert nur den Test: Er zeichnet die Seite in ein Bild mit festem sRGB-Farbraum, sodass kein Bildschirm beteiligt ist. Beide Geräte lesen die Balkenfarben jetzt exakt, mit einem Farbabstand von 0,0, auf dem eingebauten Display des MacBook Air genauso wie auf dem Mac mini. Die CI des Pull Requests lief durch (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), ebenso die komplette Testsuite auf dem MacBook-Air-Runner (run {{TBD:mba-run}}). Dann haben wir ihn absichtlich scheitern lassen: Mit Blau als erwarteter Farbe überall wurde er für alle fünf Hinweisboxen rot.</p>
+<!-- src S3, S10 -->
+<p>Der Fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) ändert nur den Test: Er zeichnet die Seite in ein Bild mit festem sRGB-Farbraum, sodass kein Bildschirm beteiligt ist. Beide Geräte lesen die Balkenfarben jetzt exakt, mit einem Farbabstand von 0,0, auf dem eingebauten Display des MacBook Air genauso wie auf dem Mac mini. Die CI des Pull Requests lief durch (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), und sobald der Fix den Runner-Zweig des MacBook Air erreichte, bestand dort auch die komplette Testsuite (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>). Dann haben wir ihn absichtlich scheitern lassen: Mit Blau als erwarteter Farbe überall wurde er für alle fünf Hinweisboxen rot.</p>
 <p>Eine bekannte Lücke hat er noch. Note und Caution verwenden zwei Orangetöne, die etwa 0,119 auseinanderliegen, also innerhalb der Grenze von 0,16. Würden die beiden vertauscht, würde der Test es wahrscheinlich nicht merken. Das haben wir aufgeschrieben, statt so zu tun, als wäre der Test vollständig.</p>
 <p>Ein Test, der nicht fehlschlagen kann, schützt nichts, und einer, der aus dem falschen Grund fehlschlägt, etwa wegen des Farbprofils eines Bildschirms, ebenso wenig. Grün auf einem Gerät heißt nur, dass der Test dort bestanden hat, nicht, dass er misst, was sein Name sagt.</p>
 
@@ -574,10 +574,10 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>Referenz-PDFs:</strong> Die Export-Engine (das quelloffene <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, auf dem auch der Befehl <code>marsdawn</code> läuft) exportiert Beispieldokumente, und der Text jeder Seite wird mit einer gespeicherten Fassung verglichen. Das fängt Inhalte, die still verschwinden, oder eine Seitenzahl, die sich ändert.</li>
   <!-- src S6, S9 -->
   <li><strong>Verschiedene Systeme und Builds:</strong> Die Engine läuft auf macOS 15, der ältesten unterstützten Version, und auf macOS 26, mit dem die App ausgeliefert wird, jeweils als Debug- und als Release-Build. Die komplette Testsuite der App läuft in vier Kombinationen: signiert und unsigniert, jeweils mit ausgeschalteter und eingeschalteter Paywall. Das fängt, was nur auf einem älteren System kaputtgeht oder nur in dem Build, den die Kundschaft tatsächlich bekommt.</li>
-  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
-  <li><strong>Echte Hardware:</strong> Wir verlegen einen Teil der Engine-Tests von den Maschinen von GitHub auf eigene Macs, angefangen mit dem MacBook Air von oben. Wie die Geschichte zeigt, fängt ein zweites Gerät Tests, die nur wegen des Geräts bestehen, auf dem sie laufen.</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>Echte Hardware:</strong> Die CI der App läuft auf eigenen Macs (sowohl dem Mac mini als auch dem MacBook Air), und der Versuch, die Testsuite der Engine auf diesem MacBook Air laufen zu lassen (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>, weiterhin ein offener Entwurf), hat den Farbprofil-Fehler oben gefunden. Ein zweites Gerät fängt Tests, die nur wegen des Geräts bestehen, auf dem sie laufen.</li>
   <!-- src S12 -->
-  <li><strong>Negativkontrollen:</strong> Die CI der App hält 11 absichtlich kaputte Kopien eines Aufräumskripts bereit, jeder fehlt eine Sicherheitsprüfung, und die Tests müssen bei jeder einzelnen fehlschlagen. Das Skript löscht alte Builds und Arbeitskopien auf einem Mac, eine fehlende Prüfung könnte also das Falsche löschen. Besteht eine kaputte Kopie, ist der Test das, was kaputt ist.</li>
+  <li><strong>Negativkontrollen:</strong> Die CI der App hält 22 absichtlich kaputte Kopien eines Aufräumskripts und 20 eines Test-Runner-Skripts bereit, jeder fehlt eine Sicherheitsprüfung, und die Tests müssen bei jeder einzelnen fehlschlagen. Das Aufräumskript löscht alte Builds und Arbeitskopien auf einem Mac, eine fehlende Prüfung könnte also das Falsche löschen. Besteht eine kaputte Kopie, ist der Test das, was kaputt ist.</li>
   <!-- src S3, S15 -->
   <li><strong>Ein zweites Paar Augen:</strong> Bei uns prüft in der Regel ein separater Agent eine Änderung, bevor sie zusammengeführt wird, wie bei kit #242, und Änderungen an Abläufen in der App bekommen vorher ein Szenario-Review. Das fängt „fertig“, das es nicht ist, und Code, der funktioniert, aber in der falschen Situation.</li>
   <!-- src S21 -->
@@ -601,7 +601,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>Eine feindselige Theme-Datei.</strong> Sie wird abgelehnt, und die Fehlermeldung wiederholt nie versteckte Steuerzeichen oder Links aus der Datei. Theme-Dateien über 16 KB werden gar nicht erst gelesen.</li>
 </ul>
 <!-- src S5 -->
-<p>Nichts davon ist umsonst. Das Zeitlimit für einen Engine-Lauf ist von 30 Minuten auf 45, dann 50, dann 70 gestiegen, und macOS 15 ist einmal zweimal an das 50-Minuten-Limit gestoßen, obwohl jeder Test bestand.</p>
+<p>Nichts davon ist umsonst. Das Zeitlimit für einen Engine-Lauf ist von 30 Minuten auf 45, dann 50, dann 70 und jetzt auf 90 gestiegen. macOS 15 ist zweimal an das 50-Minuten-Limit gestoßen, obwohl jeder Test bestand, und später im letzten Schritt auf 70 Minuten gekommen, während jeder Schritt davor bestanden hatte.</p>
 
 <h2>Vier Gewohnheiten zum Nachmachen</h2>
 <ol>
@@ -628,7 +628,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <ul>
   <li>Der fehlschlagende Test und seine Ursache: <a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>.</li>
   <li>Der Fix und seine unabhängige Prüfung: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>.</li>
-  <li>Die CI auf ein MacBook Air verlegen, mit Laufzeiten: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
+  <li>Die CI auf einem MacBook Air ausprobieren (offener Entwurf), mit Laufzeiten: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
   <li>Die CI der Export-Engine, mit der Geschichte ihres Zeitlimits in den Kommentaren: <a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>.</li>
   <li>Das Repository der App ist privat; die Angaben zur App oben stammen aus ihrem CI-Workflow und ihren Testskripten.</li>
 </ul>
@@ -652,8 +652,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>Vous voulez seulement savoir avec quels fichiers extrêmes ou hostiles MarsDawn est testé ? Passez directement à <a href="#inputs">Ce que nous lui faisons subir</a>.</p>
 
 <h2>Le test qui échouait sur un MacBook Air</h2>
-<!-- src S4: kit PR #240 (not merged), run 40196953693 -->
-<p>Une exécution complète des tests du moteur d’export sur le runner macOS 15 de GitHub prend près d’une heure : environ 32 minutes pour le build debug et environ 25 pour le build release. Pour réduire ce temps, nous avons commencé à déplacer la moitié macOS 26 sur un MacBook Air à nous (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>Une exécution complète des tests du moteur d’export sur le runner macOS 15 de GitHub prend près d’une heure : environ 32 minutes pour le build debug et environ 25 pour le build release. Pour réduire ce temps, nous avons essayé de déplacer la moitié macOS 26 sur un MacBook Air à nous (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
 <!-- src S1: kit #241, run 40271990387 -->
 <p>À la première exécution, un test a échoué. Il exporte un PDF avec des encadrés (Note, Tip, Warning) et vérifie que chacun porte sur son bord une barre de la bonne couleur, c’est-à-dire avec un écart de couleur inférieur à 0,16. Sur le MacBook Air, les écarts étaient de 0,1634, 0,1648 et 0,1796. Sur un Mac mini, avec le même commit, le même macOS et le même Xcode, le test passait.</p>
 <p>Notre première idée : l’export était cassé. Il ne l’était pas. Le PDF n’avait aucun problème ; ce qui différait d’une machine à l’autre, c’était la façon dont le test le lisait.</p>
@@ -661,8 +661,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>Le test transformait chaque page du PDF en image et en lisait les pixels, et macOS dessine cette image dans l’espace colorimétrique de l’écran principal. Le Mac mini était branché sur un moniteur externe ordinaire ; le MacBook Air utilisait son écran intégré. Nous avons rempli une image d’un seul orange et l’avons relue : (0,784 ; 0,278 ; 0,106) revenait en (0,822 ; 0,335 ; 0,179) sur le Mac mini et en (0,782 ; 0,395 ; 0,221) sur le MacBook Air.</p>
 <!-- src S3: kit #242 verification comment -->
 <p>Voici ce qui compte : sur le Mac mini non plus, le test ne lisait pas les bonnes couleurs. Il se trompait de 0,128 au plus, juste sous la limite de 0,16. Il passait grâce au moniteur, pas parce qu’il mesurait correctement la barre.</p>
-<!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>Le correctif (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) ne modifie que le test : il dessine la page dans une image à l’espace colorimétrique sRGB fixe, sans aucun écran en jeu. Les deux machines lisent désormais exactement les couleurs des barres, avec un écart de 0,0, sur l’écran intégré du MacBook Air comme sur le Mac mini. La CI de la pull request est passée (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), tout comme la suite complète sur le runner du MacBook Air (run {{TBD:mba-run}}). Puis nous l’avons fait échouer exprès : avec du bleu comme couleur attendue partout, il est passé au rouge pour les cinq encadrés.</p>
+<!-- src S3, S10 -->
+<p>Le correctif (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) ne modifie que le test : il dessine la page dans une image à l’espace colorimétrique sRGB fixe, sans aucun écran en jeu. Les deux machines lisent désormais exactement les couleurs des barres, avec un écart de 0,0, sur l’écran intégré du MacBook Air comme sur le Mac mini. La CI de la pull request est passée (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), et une fois le correctif arrivé sur la branche du runner du MacBook Air, la suite complète y est passée aussi (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>). Puis nous l’avons fait échouer exprès : avec du bleu comme couleur attendue partout, il est passé au rouge pour les cinq encadrés.</p>
 <p>Il lui reste une faille connue. Note et Caution utilisent deux oranges séparés d’environ 0,119, sous la limite de 0,16 : si on les intervertissait, le test ne le remarquerait probablement pas. Nous l’avons noté plutôt que de faire comme si le test était complet.</p>
 <p>Un test qui ne peut pas échouer ne protège rien, pas plus qu’un test qui échoue pour une mauvaise raison, comme le profil colorimétrique d’un écran. Le vert sur une machine vous dit que le test y est passé, pas qu’il mesure ce que dit son nom.</p>
 
@@ -673,10 +673,10 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>PDF de référence :</strong> le moteur d’export (le projet open source <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, qui fait aussi tourner la commande <code>marsdawn</code>) exporte des documents d’exemple, et le texte de chaque page est comparé à une copie enregistrée. Cela rattrape le contenu qui disparaît sans bruit, ou un nombre de pages qui change.</li>
   <!-- src S6, S9 -->
   <li><strong>Systèmes et builds différents :</strong> le moteur tourne sous macOS 15, la plus ancienne version prise en charge, et sous macOS 26, celle avec laquelle l’app est livrée, chaque fois en build debug et en build release. La suite complète de l’app tourne en quatre combinaisons : signée et non signée, chacune avec le paywall désactivé puis activé. Cela rattrape ce qui ne casse que sur un système plus ancien, ou seulement dans le build que reçoivent réellement les clients.</li>
-  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
-  <li><strong>Vrai matériel :</strong> nous déplaçons une partie des tests du moteur des machines de GitHub vers nos propres Mac, à commencer par le MacBook Air ci-dessus. Comme le montre cette histoire, une deuxième machine rattrape les tests qui ne passent qu’à cause de la machine sur laquelle ils tournent.</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>Vrai matériel :</strong> la CI de l’app tourne sur nos propres Mac (le Mac mini et le MacBook Air), et c’est en essayant la suite du moteur sur ce MacBook Air (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>, toujours un brouillon ouvert) que le bug de profil colorimétrique ci-dessus a été attrapé. Une deuxième machine rattrape les tests qui ne passent qu’à cause de la machine sur laquelle ils tournent.</li>
   <!-- src S12 -->
-  <li><strong>Contrôles négatifs :</strong> la CI de l’app garde 11 copies volontairement cassées d’un script de nettoyage, chacune privée d’une vérification de sécurité, et les tests doivent échouer sur chacune. Ce script supprime d’anciens builds et copies de travail sur un Mac : une seule vérification manquante pourrait supprimer ce qu’il ne faut pas. Si une copie cassée passe, c’est le test qui est cassé.</li>
+  <li><strong>Contrôles négatifs :</strong> la CI de l’app garde 22 copies volontairement cassées d’un script de nettoyage et 20 d’un script d’exécution des tests, chacune privée d’une vérification de sécurité, et les tests doivent échouer sur chacune. Le script de nettoyage supprime d’anciens builds et copies de travail sur un Mac : une seule vérification manquante pourrait supprimer ce qu’il ne faut pas. Si une copie cassée passe, c’est le test qui est cassé.</li>
   <!-- src S3, S15 -->
   <li><strong>Un deuxième regard :</strong> notre pratique est de faire vérifier un changement par un agent distinct avant de le fusionner, comme pour kit #242, et les changements qui touchent à la façon d’utiliser l’app passent d’abord par une revue de scénarios. Cela rattrape le « terminé » qui ne l’est pas, et le code qui marche, mais dans la mauvaise situation.</li>
   <!-- src S21 -->
@@ -700,7 +700,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>Un fichier de thème hostile.</strong> Il est refusé, et le message d’erreur ne répète jamais les caractères de contrôle cachés ni les liens du fichier. Les fichiers de thème de plus de 16 Ko ne sont même pas lus.</li>
 </ul>
 <!-- src S5 -->
-<p>Rien de tout cela n’est gratuit. La limite de temps d’une exécution du moteur est passée de 30 minutes à 45, puis 50, puis 70, et macOS 15 a un jour atteint deux fois la limite de 50 minutes alors que tous les tests passaient.</p>
+<p>Rien de tout cela n’est gratuit. La limite de temps d’une exécution du moteur est passée de 30 minutes à 45, puis 50, puis 70, et maintenant à 90. macOS 15 a atteint deux fois la limite de 50 minutes alors que tous les tests passaient, puis a atteint 70 minutes à sa dernière étape, toutes les étapes précédentes ayant réussi.</p>
 
 <h2>Quatre habitudes à reprendre</h2>
 <ol>
@@ -727,7 +727,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <ul>
   <li>Le test qui échouait et sa cause : <a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>.</li>
   <li>Le correctif et sa vérification indépendante : <a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>.</li>
-  <li>Le passage de la CI sur un MacBook Air, avec les temps d’exécution : <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
+  <li>L’essai de la CI sur un MacBook Air (brouillon ouvert), avec les temps d’exécution : <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
   <li>La CI du moteur d’export, avec l’historique de sa limite de temps dans les commentaires : <a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>.</li>
   <li>Le dépôt de l’app est privé ; les détails sur l’app ci-dessus viennent de son workflow de CI et de ses scripts de test.</li>
 </ul>
@@ -751,8 +751,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>¿Solo quieres saber con qué archivos extremos u hostiles se prueba MarsDawn? Salta directamente a <a href="#inputs">Lo que le echamos</a>.</p>
 
 <h2>La prueba que fallaba en un MacBook Air</h2>
-<!-- src S4: kit PR #240 (not merged), run 40196953693 -->
-<p>Una ejecución completa de las pruebas del motor de exportación en el runner de macOS 15 de GitHub tarda cerca de una hora: unos 32 minutos para la compilación debug y unos 25 para la release. Para acortarlo, empezamos a pasar la mitad de macOS 26 a un MacBook Air propio (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>Una ejecución completa de las pruebas del motor de exportación en el runner de macOS 15 de GitHub tarda cerca de una hora: unos 32 minutos para la compilación debug y unos 25 para la release. Para acortarlo, probamos a pasar la mitad de macOS 26 a un MacBook Air propio (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
 <!-- src S1: kit #241, run 40271990387 -->
 <p>En su primera ejecución allí, falló una prueba. Exporta un PDF con recuadros de aviso (Note, Tip, Warning) y comprueba que cada uno tenga en el borde una barra del color correcto, es decir, con una distancia de color menor que 0,16. En el MacBook Air, las distancias fueron 0,1634, 0,1648 y 0,1796. En un Mac mini, con el mismo commit, el mismo macOS y el mismo Xcode, la prueba pasaba.</p>
 <p>Lo primero que pensamos fue que la exportación se había roto. No era así. El PDF no tenía ningún problema; lo que cambiaba entre las dos máquinas era cómo lo leía la prueba.</p>
@@ -760,8 +760,8 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <p>La prueba convertía cada página del PDF en una imagen y leía los píxeles, y macOS dibuja esa imagen en el espacio de color de la pantalla principal. El Mac mini estaba conectado a un monitor externo corriente; el MacBook Air usaba su pantalla integrada. Llenamos una imagen con un solo naranja y la volvimos a leer: (0,784; 0,278; 0,106) volvía como (0,822; 0,335; 0,179) en el Mac mini y como (0,782; 0,395; 0,221) en el MacBook Air.</p>
 <!-- src S3: kit #242 verification comment -->
 <p>Esto es lo importante: en el Mac mini, la prueba tampoco leía los colores correctos. Se desviaba hasta 0,128, justo dentro del límite de 0,16. Pasaba gracias al monitor, no porque midiera bien la barra.</p>
-<!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>La corrección (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) solo cambia la prueba: dibuja la página en una imagen con un espacio de color sRGB fijo, así que no interviene ninguna pantalla. Ahora las dos máquinas leen los colores de las barras con exactitud, con una distancia de 0,0, tanto en la pantalla integrada del MacBook Air como en el Mac mini. La CI del pull request pasó (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), y también la batería completa en el runner del MacBook Air (run {{TBD:mba-run}}). Después la hicimos fallar a propósito: con todos los colores esperados en azul, se puso en rojo en los cinco recuadros de aviso.</p>
+<!-- src S3, S10 -->
+<p>La corrección (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) solo cambia la prueba: dibuja la página en una imagen con un espacio de color sRGB fijo, así que no interviene ninguna pantalla. Ahora las dos máquinas leen los colores de las barras con exactitud, con una distancia de 0,0, tanto en la pantalla integrada del MacBook Air como en el Mac mini. La CI del pull request pasó (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), y una vez que la corrección llegó a la rama del runner del MacBook Air, la batería completa pasó allí también (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>). Después la hicimos fallar a propósito: con todos los colores esperados en azul, se puso en rojo en los cinco recuadros de aviso.</p>
 <p>Todavía tiene un hueco conocido. Note y Caution usan dos naranjas separados por unos 0,119, dentro del límite de 0,16, así que si se intercambiaran, la prueba probablemente no lo notaría. Lo dejamos por escrito en lugar de fingir que la prueba es completa.</p>
 <p>Una prueba que no puede fallar no protege nada, y tampoco una que falla por el motivo equivocado, como el perfil de color de una pantalla. El verde en una máquina te dice que la prueba pasó allí, no que mida lo que dice su nombre.</p>
 
@@ -772,10 +772,10 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>PDF de referencia:</strong> el motor de exportación (el proyecto de código abierto <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, que también hace funcionar el comando <code>marsdawn</code>) exporta documentos de ejemplo, y el texto de cada página se compara con una copia guardada. Esto atrapa contenido que desaparece sin avisar o un número de páginas que cambia.</li>
   <!-- src S6, S9 -->
   <li><strong>Sistemas y compilaciones distintos:</strong> el motor se ejecuta en macOS 15, la versión más antigua que admite, y en macOS 26, con la que se distribuye la app, cada uno como compilación debug y release. La batería completa de la app se ejecuta en cuatro combinaciones: firmada y sin firmar, cada una con el paywall desactivado y activado. Esto atrapa lo que solo se rompe en un sistema más antiguo, o solo en la compilación que reciben de verdad los clientes.</li>
-  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
-  <li><strong>Hardware real:</strong> estamos pasando parte de las pruebas del motor de las máquinas de GitHub a Mac propios, empezando por el MacBook Air de arriba. Como muestra esta historia, una segunda máquina atrapa las pruebas que solo pasan por la máquina en la que se ejecutan.</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>Hardware real:</strong> la CI de la app corre en Mac propios (tanto el Mac mini como el MacBook Air), y probar la batería del motor en ese MacBook Air (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>, sigue siendo un borrador abierto) es lo que atrapó el fallo del perfil de color de arriba. Una segunda máquina atrapa las pruebas que solo pasan por la máquina en la que se ejecutan.</li>
   <!-- src S12 -->
-  <li><strong>Controles negativos:</strong> la CI de la app guarda 11 copias rotas a propósito de un script de limpieza, a cada una le falta una comprobación de seguridad, y las pruebas tienen que fallar con todas. El script borra compilaciones antiguas y copias de trabajo de un Mac, así que una sola comprobación que falte podría borrar lo que no debe. Si una copia rota pasa, lo que está roto es la prueba.</li>
+  <li><strong>Controles negativos:</strong> la CI de la app guarda 22 copias rotas a propósito de un script de limpieza y 20 de un script de ejecución de pruebas, a cada una le falta una comprobación de seguridad, y las pruebas tienen que fallar con todas. El script de limpieza borra compilaciones antiguas y copias de trabajo de un Mac, así que una sola comprobación que falte podría borrar lo que no debe. Si una copia rota pasa, lo que está roto es la prueba.</li>
   <!-- src S3, S15 -->
   <li><strong>Otro par de ojos:</strong> nuestra práctica es que un agente aparte verifique un cambio antes de fusionarlo, como en kit #242, y los cambios que afectan a cómo se usa la app pasan antes por una revisión de escenarios. Esto atrapa el «terminado» que no lo está, y el código que funciona, pero en la situación equivocada.</li>
   <!-- src S21 -->
@@ -799,7 +799,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
   <li><strong>Un archivo de tema hostil.</strong> Se rechaza, y el mensaje de error nunca repite caracteres de control ocultos ni enlaces del archivo. Los archivos de tema de más de 16 KB ni siquiera se leen.</li>
 </ul>
 <!-- src S5 -->
-<p>Nada de esto es gratis. El límite de tiempo de una ejecución del motor ha pasado de 30 minutos a 45, luego a 50 y luego a 70, y macOS 15 llegó una vez dos veces al límite de 50 minutos con todas las pruebas pasando.</p>
+<p>Nada de esto es gratis. El límite de tiempo de una ejecución del motor ha pasado de 30 minutos a 45, luego a 50, luego a 70 y ahora a 90. macOS 15 llegó dos veces al límite de 50 minutos con todas las pruebas pasando, y más tarde llegó a 70 minutos en su último paso, con todos los pasos anteriores pasando.</p>
 
 <h2>Cuatro hábitos que puedes copiar</h2>
 <ol>
@@ -826,7 +826,7 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 <ul>
   <li>La prueba que fallaba y su causa: <a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>.</li>
   <li>La corrección y su verificación independiente: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>.</li>
-  <li>Cómo pasamos la CI a un MacBook Air, con tiempos de ejecución: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
+  <li>Probar la CI en un MacBook Air (borrador abierto), con tiempos de ejecución: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
   <li>La CI del motor de exportación, con el historial de su límite de tiempo en los comentarios: <a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>.</li>
   <li>El repositorio de la app es privado; los detalles de la app que aparecen arriba salen de su flujo de CI y de sus scripts de prueba.</li>
 </ul>
@@ -840,4 +840,4 @@ Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57
 |---|---|---|---|---|---|---|---|
 | How we test | 我們怎麼測試 | 我们怎么测试 | テストのしかた | 테스트하는 방법 | So testen wir | Comment nous testons | Cómo probamos |
 
-en and zh-Hant: re-verified and updated on 2026-11-25 against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57f`, `mars-dawn-website@53ab560` (0 `{{TBD}}`, awaiting Ray's final sign-off). zh-Hans, ja, ko, de, fr, es: still at `16d360e` (still carrying `{{TBD:mba-run}}` and 2026-10-26 figures) and will be synced in one pass after Ray approves en and zh-Hant. Do not publish before all 8 locales are synced.
+en and zh-Hant: approved by Ray on 2026-11-25 («321 ok»; PR comment 7161015950). zh-Hans, ja, ko, de, fr, es: synced from that approved text on 2026-11-25 (0 `{{TBD}}`). Do not publish until the page is built from this file.
