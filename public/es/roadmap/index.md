@@ -4,7 +4,7 @@ Oferta de Black Friday: la compra única que desbloquea la app está a mitad de 
 
 Lo que vamos a hacer a continuación, por versión. No hay fechas: una versión sale cuando está lista.
 
-Última actualización: 16 de noviembre de 2026
+Última actualización: 24 de noviembre de 2026
 
 Los planes pueden cambiar: un elemento puede pasar a otra versión o descartarse.
 
@@ -14,7 +14,7 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
 ## A continuación
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - Después de que un agente cambie un archivo, ve qué bloques cambiaron.
 - Un visor de imágenes para PNG, JPEG, GIF y WebP.

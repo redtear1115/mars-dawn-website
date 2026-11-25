@@ -4,7 +4,7 @@ Offre Black Friday : l’achat unique qui déverrouille l’app est à moitié p
 
 Ce que nous préparons, version par version. Pas de dates : une version sort quand elle est prête.
 
-Dernière mise à jour : 16 novembre 2026
+Dernière mise à jour : 24 novembre 2026
 
 Les plans peuvent changer : un élément peut passer à une autre version ou être abandonné.
 
@@ -14,7 +14,7 @@ Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/chang
 
 ## Ensuite
 
-### Mac 1.2.3
+### Mac 1.2.4
 
 - Après qu’un agent a modifié un fichier, voir quels blocs ont changé.
 - Un visualiseur d’images pour PNG, JPEG, GIF et WebP.
