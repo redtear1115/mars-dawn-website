@@ -1,7 +1,43 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-21T01:26:49Z",
+  "generatedAt": "2026-11-24T23:43:05Z",
   "themes": [
+    {
+      "id": "catppuccin-frappe",
+      "version": "1.0.0",
+      "name": {
+        "en": "Catppuccin Frappé"
+      },
+      "summary": {
+        "de": "Sanfte Pastelltöne: nachts Frappé, tagsüber Latte – nach Catppuccin, für bessere Lesbarkeit angepasst",
+        "en": "Soothing pastels: Frappé by night, Latte by day — adapted from Catppuccin, adjusted for readability",
+        "es": "Pasteles relajantes: Frappé de noche, Latte de día —adaptada de Catppuccin y ajustada para leer mejor",
+        "fr": "Des pastels apaisants : Frappé la nuit, Latte le jour – adaptée de Catppuccin, ajustée pour la lisibilité",
+        "ja": "やさしいパステル調。夜は Frappé、昼は Latte — Catppuccin を基に、読みやすさのために調整",
+        "ko": "차분한 파스텔 톤: 밤에는 Frappé, 낮에는 Latte — Catppuccin을 바탕으로 가독성에 맞게 조정",
+        "zh-Hans": "柔和粉彩色调：夜晚用 Frappé，白天用 Latte — 改编自 Catppuccin，为可读性调整",
+        "zh-Hant": "柔和粉彩色調：夜晚用 Frappé，白天用 Latte — 改編自 Catppuccin，為可讀性調整"
+      },
+      "scenarios": [
+        "technical-docs",
+        "agent-review"
+      ],
+      "author": {
+        "name": "charliie",
+        "github": "charliie-dev"
+      },
+      "minAppVersion": "1.1.0",
+      "files": {
+        "theme.json": {
+          "path": "catppuccin-frappe/1.0.0/theme.json",
+          "sha256": "55c5e4cafc5f4f48caea913cdef96c79c390cadfbfe065db6f3828dd182ee529"
+        }
+      },
+      "previews": {
+        "light": "catppuccin-frappe/1.0.0/preview-light.png",
+        "dark": "catppuccin-frappe/1.0.0/preview-dark.png"
+      }
+    },
     {
       "id": "christmas",
       "version": "1.0.0",
