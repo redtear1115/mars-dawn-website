@@ -23,6 +23,7 @@ Birgitta Böckeler, writing for Thoughtworks, draws the distinction plainly: “
 
 ## Next
 
+- A test passed on one Mac and failed on another; the product was fine, and the test had been reading colours through the screen's colour profile: [A test that passes on one Mac may not be testing what you think.](/how-we-test/)
 - How that review stays cheap for the agent's own context: [token-efficient review](/token-efficient-review/).
 - Handing the reviewed document to someone else: [sharing a PDF](/sharing-exported-pdfs/).
 - Why it's hard to read, and how to do it: [Reading what your agent hands back](/reading-agent-output/).
@@ -64,6 +65,7 @@ Birgitta Böckeler, writing for Thoughtworks, draws the distinction plainly: “
 - [Agent transparency](https://marsdawn.southern-light.dev/agent-transparency/index.md): Anthropic's guide to building agents asks for transparency: show the planning steps. What it says, what it doesn't, and why the steps usually end up as a Markdown file someone has to read.
 - [Reviewing an agent plan](https://marsdawn.southern-light.dev/reviewing-agent-plans/index.md): A six-step way to review the plan an AI agent hands you before it runs, in about five minutes and in any editor, with a worked example.
 - [Agent design patterns](https://marsdawn.southern-light.dev/agent-design-patterns/index.md): Reflection, tool use, planning and multi-agent collaboration, as Andrew Ng described them, and what each tends to hand back for you to read.
+- [How we test](https://marsdawn.southern-light.dev/how-we-test/index.md): A test passed on one Mac and failed on another. The product was fine; the test was reading the screen's colours. How we layer our tests, and four habits you can copy.
 - [Changelog](https://marsdawn.southern-light.dev/changelog/index.md): What changed in each version of the MarsDawn app and the free marsdawn CLI.
 - [Roadmap](https://marsdawn.southern-light.dev/roadmap/index.md): What's in progress and what's next for MarsDawn on Mac, iPhone and iPad, by version. No dates, and unscheduled ideas are marked.
 - [Editor's reading notes](https://marsdawn.southern-light.dev/reading-notes/index.md): Six short notes on what the people building AI agents actually argue — Anthropic, Chip Huyen, Lilian Weng, Harrison Chase, LangChain and Andrew Ng — and what each one means for the person who has to read what such an agent hands back.

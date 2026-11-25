@@ -319,6 +319,7 @@ UI = {
         "sharing-exported-pdfs": "Sharing exported PDFs", "reviewing-ai-output": "Why AI output still needs a human reader",
         "reading-agent-output": "Reading what your agent hands back", "agent-transparency": "Agent transparency",
         "reviewing-agent-plans": "Reviewing an agent plan", "agent-design-patterns": "Agent design patterns",
+        "how-we-test": "How we test",
         "changelog": "Changelog",
         "roadmap": "Roadmap",
         "reading-notes": "Editor's reading notes", "reading-notes-anthropic": "Reading notes: Anthropic",
@@ -350,6 +351,7 @@ UI = {
         "sharing-exported-pdfs": "分享輸出的 PDF", "reviewing-ai-output": "為什麼 AI 寫的東西還是需要人讀過",
         "reading-agent-output": "讀懂 agent 交回來的 Markdown", "agent-transparency": "agent 的透明",
         "reviewing-agent-plans": "審 agent 計畫", "agent-design-patterns": "agent 設計模式",
+        "how-we-test": "我們怎麼測試",
         "changelog": "更新紀錄",
         "roadmap": "路線圖",
         "reading-notes": "編者的閱讀筆記", "reading-notes-anthropic": "閱讀筆記：Anthropic",
@@ -2576,6 +2578,7 @@ BRAINSTORM_PAGES = {
 
 <h2>Next</h2>
 <ul>
+  <li>A test passed on one Mac and failed on another; the product was fine, and the test had been reading colours through the screen's colour profile: <a href="/how-we-test/">A test that passes on one Mac may not be testing what you think.</a></li>
   <li>How that review stays cheap for the agent's own context: <a href="/token-efficient-review/">token-efficient review</a>.</li>
   <li>Handing the reviewed document to someone else: <a href="/sharing-exported-pdfs/">sharing a PDF</a>.</li>
   <li>Why it's hard to read, and how to do it: <a href="/reading-agent-output/">Reading what your agent hands back</a>.</li>
@@ -2611,6 +2614,7 @@ BRAINSTORM_PAGES = {
 
 <h2>接下來</h2>
 <ul>
+  <li>同一個測試在一台 Mac 通過、在另一台失敗，產品沒壞，是測試透過螢幕的色彩描述檔在讀顏色：<a href="/zh-hant/how-we-test/">在一台 Mac 上通過的測試，不一定在測你以為的東西。</a></li>
   <li>這樣的審閱怎麼不花 agent 自己的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
   <li>把審閱過的文件交給別人：<a href="/zh-hant/sharing-exported-pdfs/">分享 PDF</a>。</li>
   <li>為什麼難讀、該怎麼讀：<a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a>。</li>
@@ -3127,6 +3131,101 @@ plan.md:6：沒有處理舊連結。加一步讓舊連結繼續能用，也寫�
 </ul>
 """,
     },
+
+    ("en", "how-we-test"): {
+        "title": "How we test MarsDawn: one test, two Macs · MarsDawn",
+        "description": "A test passed on one Mac and failed on another. The product was fine; the test was reading the screen's colours. How we layer our tests, and four habits you can copy.",
+        "body": r"""<section class="intro">
+  <h1>A test that passes on one Mac may not be testing what you think.</h1>
+  <!-- src S11 -->
+  <p>Vibe coding isn't a bad thing, and MarsDawn is built with agents too. But software you rely on is judged by what comes after the first version: years of maintenance and security, which start with checking that a change didn't break anything.</p>
+</section>
+
+<div class="summary"><p><strong>A test passed on a Mac mini and failed on a MacBook Air. The product was fine. The test had been reading colours through the screen's colour profile, and on the Mac mini it had been passing by luck. A second machine found a bug in the test, not in the code.</strong></p></div>
+<p>Only want to know which extreme or hostile files MarsDawn is tested against? Skip to <a href="#inputs">What we throw at it</a>.</p>
+
+<h2>The test that failed on a MacBook Air</h2>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>A full run of the export engine's tests on GitHub's macOS 15 runner takes close to an hour: about 32 minutes for the debug build and about 25 for the release build. To cut that down, we tried moving the macOS 26 half onto a MacBook Air of our own (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
+<!-- src S1: kit #241, run 40271990387 -->
+<p>On its first run there, one test failed. It exports a PDF with callouts (Note, Tip, Warning) and checks that each one has a bar at its edge in the right colour, meaning a colour distance under 0.16. On the MacBook Air the distances were 0.1634, 0.1648 and 0.1796. On a Mac mini, with the same commit, macOS and Xcode, the test passed.</p>
+<p>Our first guess was that the export had broken. It hadn't. Nothing was wrong with the PDF; what differed between the machines was how the test read it.</p>
+<!-- src S1, S2: kit #241 -->
+<p>The test turned each PDF page into an image and read the pixels, and macOS draws that image in the colour space of the main display. The Mac mini was connected to an ordinary external monitor; the MacBook Air was using its built-in screen. We filled an image with one orange and read it back: (0.784, 0.278, 0.106) came back as (0.822, 0.335, 0.179) on the Mac mini and (0.782, 0.395, 0.221) on the MacBook Air.</p>
+<!-- src S3: kit #242 verification comment -->
+<p>Here's the part that matters: on the Mac mini, the test hadn't been reading the right colours either. It was off by as much as 0.128, just inside the 0.16 limit. It passed because of the monitor, not because it measured the bar correctly.</p>
+<!-- src S3, S10 -->
+<p>The fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) changes only the test: it draws the page into an image with a fixed sRGB colour space, so no screen is involved. Both machines now read the bar colours exactly, with a distance of 0.0, on the MacBook Air's built-in screen as well as on the Mac mini. The pull request's CI passed (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), and once the fix reached the MacBook Air runner branch, the full suite passed there too (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>). Then we made it fail on purpose: with every expected colour set to blue, it went red for all five callouts.</p>
+<p>It still has a known gap. Note and Caution use two oranges about 0.119 apart, inside the 0.16 limit, so if those two were swapped, the test would probably not notice. We've written that down rather than pretend the test is complete.</p>
+<p>A test that can't fail protects nothing, and neither does one that fails for the wrong reason, like a screen's colour profile. Green on one machine tells you the test passed there, not that it measures what its name says.</p>
+
+<h2>Tests are layers of nets</h2>
+<p>No single test catches everything. Each layer is a net with a different mesh, and a mistake that slips through one should land in the next:</p>
+<ul>
+  <!-- src S13 -->
+  <li><strong>Reference PDFs:</strong> the export engine (the open-source <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, which also powers the <code>marsdawn</code> command) exports sample documents, and every page's text is compared with a recorded copy. This catches content that silently goes missing, or a page count that changes.</li>
+  <!-- src S6, S9 -->
+  <li><strong>Different systems and builds:</strong> the engine runs on macOS 15, the oldest version it supports, and macOS 26, the one the app ships on, each as a debug and a release build. The app's full suite runs in four combinations: signed and unsigned, each with the paywall off and on. This catches what breaks only on an older system, or only in the build customers actually get.</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>Real hardware:</strong> the app's CI runs on Macs of our own (both the Mac mini and the MacBook Air), and trying the engine's suite on that MacBook Air (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>, still an open draft) is what caught the colour-profile bug above. A second machine catches tests that pass only because of the machine they run on.</li>
+  <!-- src S12 -->
+  <li><strong>Red controls:</strong> the app's CI keeps 22 deliberately broken copies of a cleanup script and 20 of its test runner script, each missing one safety check, and the tests must fail on every one. The cleanup script removes old builds and working copies from a Mac, so one missing check could remove the wrong thing. If a broken copy passes, the test is what's broken.</li>
+  <!-- src S3, S15 -->
+  <li><strong>A second pair of eyes:</strong> our practice is to have a separate agent verify a change before it's merged, as with kit #242, and changes to how people use the app get a scenario review first. This catches "done" that isn't, and code that works but in the wrong situation.</li>
+  <!-- src S21 -->
+  <li><strong>A person merges.</strong> The developer behind MarsDawn reviews and merges every change; no agent or bot merges anything.</li>
+</ul>
+
+<h2 id="inputs">What we throw at it</h2>
+<p>Those nets are only as good as what goes into them. A few of the inputs the engine's tests feed it, and what each test makes sure happens:</p>
+<ul>
+  <!-- src S16 -->
+  <li><strong>Very large files.</strong> On our test machine, in a release build, a 2 MB document renders in under a second and a half, and a 5 MB one too complex to lay out still opens as plain text within a second. Anything over 16 MB is shown as text without being parsed at all.</li>
+  <!-- src S16 -->
+  <li><strong>Hundreds of thousands of lines.</strong> About 3 MB of one-word lines, close to 800,000 of them, is spotted as too much partway through: the engine stops reading there and shows the file as plain text.</li>
+  <!-- src S17 -->
+  <li><strong>Markers that never close.</strong> A megabyte of section openers with no closers, or tens of thousands stacked inside each other, must take no more than about twice as long as a megabyte of plain text. Past eight levels, nothing nests any deeper.</li>
+  <!-- src S18 -->
+  <li><strong>Formulas.</strong> A broken formula shows an error where it sits instead of breaking the page. One over 10,000 characters stays as written, only the first 1,000 in a document are drawn at a time, and nothing in a formula can turn into a link, an image or page markup.</li>
+  <!-- src S19 -->
+  <li><strong>Hostile HTML inside Markdown.</strong> Scripts are removed and never run, and embedded frames are taken out before the page shows them. Remote images stay off unless you allow them, and even then only secure (HTTPS) ones load. One control copy has the script filter taken out, and the test must fail on it.</li>
+  <!-- src S20 -->
+  <li><strong>A hostile theme file.</strong> It's refused, and the error message never repeats hidden control characters or links from the file. Theme files over 16 KB aren't read at all.</li>
+</ul>
+<!-- src S5 -->
+<p>None of this is free. The time limit for one engine run has gone from 30 minutes to 45, then 50, then 70, and now 90; macOS 15 hit the 50-minute limit twice with every test passing, and later hit 70 minutes in its final step with every step before it passing.</p>
+
+<h2>Four habits you can copy</h2>
+<ol>
+  <li><strong>Keep the agent that writes apart from the agent that checks.</strong> Give the checker the change and what "done" means, not the writing agent's explanation, and ask it to run the tests itself and say what it didn't check. For kit #242, the verifier ran the old test on the MacBook Air to watch it fail before passing the new one. It costs a second session's tokens.</li>
+  <!-- src S14 -->
+  <li><strong>See every test fail once.</strong> Green only means something if you've seen the same test go red when the thing it checks was really wrong. So before you trust a green check, break what it guards (or ask the agent to), watch it go red, put it back, and watch it go green. Agents are good at writing tests that pass; that's exactly why you need to see them fail.</li>
+  <li><strong>Run your tests in a second environment.</strong> No second Mac? A CI matrix with two OS versions, or a debug build and a release build, is a fine start. You're looking for tests that pass only by accident.</li>
+  <!-- src S7, S8 -->
+  <li><strong>Treat "no tests ran" as a failure.</strong> Python 3.9's <code>unittest</code> exits successfully when it finds no tests at all, so a typo in a path gives you a green check. Our CI reads the count and fails on zero, and checks that the summary says "0 failed", not just the exit code. We added that check after an independent verification caught the gap in our own CI.</li>
+</ol>
+
+<h2>The short version</h2>
+<!-- src S11 -->
+<p>Whether an app was vibe coded matters less than whether anyone keeps testing and maintaining it. That's worth checking when you choose software: does it say how it's tested, and when was it last updated?</p>
+<p>Let the agent be fast. Leave the checking to tests that measure the right thing, and to a person who reads the result.</p>
+
+<h2>Next</h2>
+<ul>
+  <li>Why a person still has to read what an agent wrote: <a href="/reviewing-ai-output/">Why AI output still needs a human reader</a>.</li>
+  <li>How to read the plans and reports an agent hands back: <a href="/reading-agent-output/">Reading what your agent hands back</a>.</li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+  <li>The failing test and its cause: <a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>.</li>
+  <li>The fix and its independent verification: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>.</li>
+  <li>Trying CI on a MacBook Air (open draft), with run times: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
+  <li>The export engine's CI, with the history of its time limit in the comments: <a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>.</li>
+  <li>The app's repository is private; the app details above come from its CI workflow and test scripts.</li>
+</ul>
+""",
+    },
     ("zh-hant", "agent-design-patterns"): {
         "title": "四種 agent 設計模式，各自會交給你什麼文件 · MarsDawn",
         "description": "Andrew Ng 提出的四種 agent 設計模式：reflection、tool use、planning、multi-agent collaboration，以及每一種通常會交回什麼要你讀的文件。",
@@ -3200,6 +3299,101 @@ plan.md:6：沒有處理舊連結。加一步讓舊連結繼續能用，也寫�
   <li>Chip Huyen，〈Agents〉，2025 年 1 月 7 日：<a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
   <li>Lilian Weng，〈LLM Powered Autonomous Agents〉，Lil’Log，2023 年 6 月 23 日：<a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a></li>
   <li>Erik S. 與 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：<a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> （引文依 2026-09-26 的線上版本）</li>
+</ul>
+""",
+    },
+
+    ("zh-hant", "how-we-test"): {
+        "title": "MarsDawn 怎麼測試：同一個測試，兩台 Mac · MarsDawn",
+        "description": "同一個測試，在一台 Mac 通過、在另一台失敗。產品沒壞，是測試讀到了螢幕的色彩。我們怎麼一層一層地測試，以及你也能照做的四個習慣。",
+        "body": r"""<section class="intro">
+  <h1>在一台 Mac 上通過的測試，不一定在測你以為的東西。</h1>
+  <!-- src S11 -->
+  <p>vibe coding 不是壞事，MarsDawn 也是用 agent 開發的。但要讓人長期依賴的軟體，看的是第一版之後的事：多年的維護和安全，而這要從確認改動沒有改壞東西開始。</p>
+</section>
+
+<div class="summary"><p><strong>同一個測試，在 Mac mini 上通過，在 MacBook Air 上失敗。產品沒壞。是測試透過螢幕的色彩描述檔在讀顏色，它在 Mac mini 上通過只是運氣好。換一台機器，抓到的是測試的 bug，不是程式的 bug。</strong></p></div>
+<p>只想知道 MarsDawn 會拿哪些極端或惡意的檔案來測試？可以直接跳到〈<a href="#inputs">我們丟給它的東西</a>〉。</p>
+
+<h2>只在 MacBook Air 上失敗的測試</h2>
+<!-- src S4: kit PR #240（實驗草稿）、run 40196953693 -->
+<p>輸出引擎的測試，在 GitHub 的 macOS 15 機器上完整跑一次將近一小時：debug 版約 32 分鐘，release 版約 25 分鐘。為了縮短時間，我們試著把 macOS 26 那一半移到自己的 MacBook Air 上跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>）。</p>
+<!-- src S1: kit #241、run 40271990387 -->
+<p>在那台機器上第一次跑，就有一個測試失敗。這個測試會輸出一份帶有提示框（Note、Tip、Warning）的 PDF，檢查每個提示框邊上的色條顏色對不對，也就是色差要小於 0.16。在 MacBook Air 上，色差是 0.1634、0.1648 和 0.1796。換到 Mac mini，同一個 commit、同樣的 macOS 和 Xcode，測試通過。</p>
+<p>我們第一個懷疑是輸出壞了。結果不是：PDF 本身沒問題，兩台機器不一樣的，是測試讀它的方式。</p>
+<!-- src S1, S2: kit #241 -->
+<p>這個測試會把 PDF 每一頁畫成圖片再讀像素，而 macOS 畫這張圖時，用的是主螢幕的色彩空間。Mac mini 接的是一般的外接螢幕，MacBook Air 用的是內建螢幕。我們拿一張填滿同一種橘色的圖片讀回來：(0.784, 0.278, 0.106) 在 Mac mini 上讀成 (0.822, 0.335, 0.179)，在 MacBook Air 上讀成 (0.782, 0.395, 0.221)。</p>
+<!-- src S3: kit #242 驗證留言 -->
+<p>重點在這裡：在 Mac mini 上，測試讀到的顏色其實也不對，最多差了 0.128，只是剛好落在 0.16 的上限內。它會通過，靠的是那台螢幕，不是因為它真的量對了色條。</p>
+<!-- src S3, S10 -->
+<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改測試：把頁面畫進一張固定使用 sRGB 色彩空間的圖片，完全不經過螢幕。現在兩台機器都能準確讀出色條的顏色：不論是 MacBook Air 的內建螢幕還是 Mac mini，色差都是 0.0。這個 pull request 的 CI 全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），修正併入 MacBook Air 測試分支後，那台機器上的完整測試也全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>）。接著我們故意讓它失敗：把每個預期顏色都改成藍色，五個提示框全部變紅。</p>
+<p>它還有一個已知的漏洞：Note 和 Caution 用的兩種橘色只差約 0.119，在 0.16 的上限內，所以這兩個顏色如果對調，測試多半不會發現。我們把這件事記了下來，沒有假裝這個測試已經完整。</p>
+<p>一個不會失敗的測試，什麼也保護不了；因為錯的理由而失敗的測試（例如螢幕的色彩描述檔）也一樣。一台機器上的綠燈，只代表測試在那台機器上通過，不代表它測的就是名字上寫的那件事。</p>
+
+<h2>測試是一層一層的網子</h2>
+<p>沒有一個測試能抓到所有問題。每一層都是一張網目不同的網，從這一層漏掉的錯，應該要被下一層接住：</p>
+<ul>
+  <!-- src S13 -->
+  <li><strong>參考 PDF：</strong>輸出引擎（開源的 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>，<code>marsdawn</code> 指令也用它）把一組樣本文件輸出成 PDF，每一頁的文字都和事先記錄的版本比對。抓內容悄悄不見，或頁數突然改變。</li>
+  <!-- src S6, S9 -->
+  <li><strong>不同的系統和版本：</strong>引擎在 macOS 15（支援的最舊版本）和 macOS 26（App 實際出貨的版本）上都要跑，各跑 debug 和 release 兩種版本。App 的完整測試則跑四種組合：簽章與不簽章，各自再分付費牆開與關。抓只在舊系統上壞掉，或只在使用者實際拿到的版本裡壞掉的問題。</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>真的硬體：</strong>App 的 CI 跑在我們自己的 Mac 上（Mac mini 和 MacBook Air 兩台都跑）；把引擎的測試搬到那台 MacBook Air 試跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>，目前仍是實驗草稿），就是抓到上面那個色彩描述檔問題的契機。換一台機器，能抓到只因為跑在某台機器上才通過的測試。</li>
+  <!-- src S12 -->
+  <li><strong>紅燈對照組：</strong>App 的 CI 固定放著 22 份故意弄壞的清理腳本和 20 份故意弄壞的測試執行腳本，每份都拿掉一道安全檢查，測試碰到每一份都必須失敗。清理腳本會刪掉 Mac 上舊的建置和工作副本，少一道檢查就可能刪錯東西。只要有一份弄壞的通過，壞掉的就是測試本身。</li>
+  <!-- src S3, S15 -->
+  <li><strong>另一雙眼睛：</strong>我們的做法是合併前把改動交給另一個 agent 驗證，像 kit #242 那樣；牽涉到使用流程的改動，會先做情境審查。抓「說做完了其實沒做完」，以及程式能跑、卻用錯了場合。</li>
+  <!-- src S21 -->
+  <li><strong>最後由人合併。</strong>每個改動都由 MarsDawn 的開發者本人審過、親手合併；agent 和 bot 都不會合併。</li>
+</ul>
+
+<h2 id="inputs">我們丟給它的東西</h2>
+<p>網子好不好，要看丟進去的是什麼。下面是引擎測試會餵給它的幾種輸入，以及每個測試確保會發生的事：</p>
+<ul>
+  <!-- src S16 -->
+  <li><strong>超大的檔案。</strong>在我們的測試機上、以 release 版來量：2 MB 的文件在一秒半內顯示完；5 MB、複雜到排不了版的文件照樣打得開，一秒內以純文字顯示。超過 16 MB 的檔案完全不解析，直接以文字顯示。</li>
+  <!-- src S16 -->
+  <li><strong>幾十萬行。</strong>大約 3 MB、每行只有一個字的文件，將近 80 萬行，讀到一半就會被判定太多：引擎在那裡停下來，改以純文字顯示。</li>
+  <!-- src S17 -->
+  <li><strong>永遠不關的標記。</strong>1 MB 只開不關的區塊標記，或疊了幾萬層的區塊，花的時間不能超過同樣 1 MB 純文字的兩倍左右；超過八層的部分不再往下巢狀。</li>
+  <!-- src S18 -->
+  <li><strong>數學公式。</strong>寫錯的公式就在原處顯示錯誤，不會讓整頁壞掉。超過一萬個字元的公式保留原樣；一份文件一次最多畫前 1,000 個；公式裡的內容也不會變成連結、圖片或網頁標籤。</li>
+  <!-- src S19 -->
+  <li><strong>藏在 Markdown 裡的惡意 HTML。</strong>指令碼會被移除，絕不執行；內嵌的框架在頁面顯示前就被拿掉。遠端圖片預設不載入，就算你允許，也只載入安全連線（HTTPS）的圖片。另有一份拿掉指令碼過濾的對照版本，測試碰到它必須失敗。</li>
+  <!-- src S20 -->
+  <li><strong>惡意的主題檔。</strong>會被拒絕，錯誤訊息也不會重複檔案裡隱藏的控制字元或連結。超過 16 KB 的主題檔直接不讀。</li>
+</ul>
+<!-- src S5 -->
+<p>這些都有代價。引擎單次執行的時間上限從 30 分鐘拉到 45、50、70，現在已經拉到 90 分鐘；macOS 15 曾在測試全部通過的情況下兩次撞到 50 分鐘上限，後來又在最後一步撞到 70 分鐘，前面所有步驟都已經通過。</p>
+
+<h2>你也能照做的四個習慣</h2>
+<ol>
+  <li><strong>寫的 agent 和驗的 agent 分開。</strong>只給驗證的那個改動本身和「怎樣才算完成」，不要附上寫程式那個 agent 的解釋，請它自己跑測試，並列出沒驗到的地方。驗 kit #242 時，驗證的 agent 先在 MacBook Air 上跑舊測試、親眼看它失敗，才讓新測試過關。代價是多一個 session 的 token。</li>
+  <!-- src S14 -->
+  <li><strong>每個測試都要看它失敗一次。</strong>只有看過同一個測試在它檢查的東西真的出錯時亮紅燈，綠燈才有意義。所以相信綠燈之前，先把它守著的東西弄壞（或請 agent 弄壞），看它變紅；再改回來，看它變綠。agent 很會寫出會通過的測試，正因為這樣，你才需要看到它失敗。</li>
+  <li><strong>測試至少在第二個環境跑一次。</strong>沒有第二台 Mac 也沒關係，CI 裡跑兩個 OS 版本，或 debug 和 release 各跑一次，就是不錯的起點。要找的是那些靠運氣才通過的測試。</li>
+  <!-- src S7, S8 -->
+  <li><strong>「一個測試都沒跑」要算失敗。</strong>Python 3.9 的 <code>unittest</code> 一個測試都沒找到時，還是會回報成功，所以路徑打錯一個字，你照樣拿到綠燈。我們的 CI 會讀測試數量，是 0 就失敗，也會檢查摘要寫的是「0 failed」，不只看結束代碼。這道檢查，是一次獨立驗證在我們自己的 CI 裡抓到這個漏洞之後才加上的。</li>
+</ol>
+
+<h2>一句話</h2>
+<!-- src S11 -->
+<p>一個 App 是不是 vibe coding 做的，沒那麼重要；重要的是有沒有人持續在測試、在維護。選軟體的時候值得看一眼：它有沒有說明自己怎麼測試？最近一次更新是什麼時候？</p>
+<p>速度交給 agent，把關留給真的量對東西的測試，以及讀過結果的人。</p>
+
+<h2>接下來</h2>
+<ul>
+  <li>為什麼 agent 寫的東西還是要有人讀過：<a href="/zh-hant/reviewing-ai-output/">為什麼 AI 寫的東西還是需要人讀過</a>。</li>
+  <li>怎麼讀 agent 交回來的計畫和報告：<a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a>。</li>
+</ul>
+
+<h2>資料來源</h2>
+<ul>
+  <li>失敗的測試和原因：<a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>。</li>
+  <li>修正和獨立驗證：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>。</li>
+  <li>在 MacBook Air 試跑 CI（實驗草稿），附執行時間：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>。</li>
+  <li>輸出引擎的 CI，時間上限的調整歷史寫在註解裡：<a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>。</li>
+  <li>App 的程式碼庫不公開；上面關於 App 的內容，來自它的 CI 設定和測試腳本。</li>
 </ul>
 """,
     },
@@ -6201,7 +6395,7 @@ def page_markdown(pages: dict, locale: str, slug: str) -> str:
 
 PAGE_ORDER = ["index", "features", "yours", "pay-once", "pdf", "native", "limits", "support", "privacy", "view-markdown-on-mac", "mermaid-preview-mac", "quicklook", "copy-for-ai", "from-hackmd", "markdown-to-pdf", "vs", "vs/macmd-viewer", "best-markdown-viewer-mac", "cli", "cli/agents", "cli/skill",
               "cli/mcp", "token-efficient-review", "vs/markdown-preview-tools", "themes", "themes/new", "themes/agents", "themes/gallery", "sharing-exported-pdfs", "reviewing-ai-output",
-              "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "changelog", "roadmap",
+              "reading-agent-output", "agent-transparency", "reviewing-agent-plans", "agent-design-patterns", "how-we-test", "changelog", "roadmap",
               "reading-notes", "reading-notes/anthropic-building-effective-agents", "reading-notes/chip-huyen-agents", "reading-notes/lilian-weng-llm-agents", "reading-notes/harrison-chase-what-is-an-agent", "reading-notes/langchain-what-is-an-agent", "reading-notes/andrew-ng-design-patterns",
               *templates_pages.SLUGS]
 SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support", "privacy": "privacy", "cli": "cli", "cli/agents": "agents",
@@ -6214,6 +6408,7 @@ SLUG_TO_UI_KEY = {"index": "home", "features": "features", "support": "support",
                   "sharing-exported-pdfs": "sharing-exported-pdfs", "reviewing-ai-output": "reviewing-ai-output",
                   "reading-agent-output": "reading-agent-output", "agent-transparency": "agent-transparency",
                   "reviewing-agent-plans": "reviewing-agent-plans", "agent-design-patterns": "agent-design-patterns",
+                  "how-we-test": "how-we-test",
                   "changelog": "changelog", "roadmap": "roadmap",
                   "reading-notes": "reading-notes", "reading-notes/anthropic-building-effective-agents": "reading-notes-anthropic", "reading-notes/chip-huyen-agents": "reading-notes-chip-huyen", "reading-notes/lilian-weng-llm-agents": "reading-notes-lilian-weng", "reading-notes/harrison-chase-what-is-an-agent": "reading-notes-harrison-chase", "reading-notes/langchain-what-is-an-agent": "reading-notes-langchain", "reading-notes/andrew-ng-design-patterns": "reading-notes-andrew-ng",
                   "templates": "templates", "templates/spec": "templates-spec",

@@ -44,8 +44,8 @@ notices page have no `index.html`; scripts/check_hreflang.py scans the same set;
 covers those): the main navigation, which is in the markup twice (a wide and a narrow copy), has the
 five main pages in order under the page's own language prefix in each copy; the footer has six groups
 and 32 links plus one Cookie settings button last, and the same links, group for group, in every
-locale; every page the footer leaves out (the reading notes, the pattern hub, the template pages) is
-linked from another page's `<main>` in every locale, so none is an orphan; and no page carries a store
+locale; every page the footer leaves out is linked from another page's `<main>` in every locale
+unless its slug is explicitly exempt from the inbound-link check; and no page carries a store
 chip. The language switch's own rules are check_hreflang.py's.
 
 No-break spaces survive into the agent outputs (website #361): the fr and de copy uses U+00A0 (before
@@ -347,8 +347,12 @@ def check_footer_across_locales(chromes, problems):
             problems.append(f"{relative}: the footer's links differ from the en page's")
 
 
+# Pages allowed to have no inbound HTML link. Empty since how-we-test (#320) is linked from reviewing-ai-output.
+INBOUND_LINK_EXEMPT_SLUGS = set()
+
+
 def check_no_orphans(chromes, problems):
-    """Each page the footer leaves out is linked from another page's <main>, in every locale."""
+    """Check inbound links for pages outside the footer, except explicitly exempt slugs."""
     for locale in sorted({locale_of(relative) for relative in chromes}):
         mine = {slug_of(r): c for r, c in chromes.items() if locale_of(r) == locale}
         root = root_of(locale)
@@ -357,7 +361,7 @@ def check_no_orphans(chromes, problems):
             continue
         for slug in sorted(mine):
             target = root if slug == "" else f"{root}{slug}/"
-            if slug == "" or target in in_footer:
+            if slug == "" or slug in INBOUND_LINK_EXEMPT_SLUGS or target in in_footer:
                 continue
             linked = any(target in c.main_hrefs for other, c in mine.items() if other != slug)
             if not linked:
