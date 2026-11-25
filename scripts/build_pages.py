@@ -7069,8 +7069,18 @@ def apply_app_changelog(merged: dict) -> dict:
 HOME_FALLBACK = {"zh-hans": "zh-hant", "ja": "en", "de": "en", "fr": "en", "es": "en", "ko": "en"}
 
 
+# #417: main() keeps its all_pages() result here for the one build it runs, so has_page() and the
+# English-heading lookups don't rebuild every page on each call (they used to, 60-odd times a page).
+# Anything that imports this module and never calls main() still gets a fresh all_pages().
+_BUILD_PAGES = None
+
+
+def _pages() -> dict:
+    return _BUILD_PAGES if _BUILD_PAGES is not None else all_pages()
+
+
 def has_page(locale: str, slug: str) -> bool:
-    return (locale, slug) in all_pages()
+    return (locale, slug) in _pages()
 
 
 # --- The header and the footer (website #247) -------------------------------------------------------
@@ -7411,7 +7421,7 @@ TOC_LABEL = {
 
 def _anchor_ids(slug: str) -> list:
     tag = TOC_PAGES[slug]
-    body = all_pages()[("en", slug)]["body"]
+    body = _pages()[("en", slug)]["body"]
     heads = re.findall(rf"<{tag}>(.*?)</{tag}>", body)
     return [re.sub(r"[^a-z0-9]+", "-", re.sub(r"<[^>]+>", "", h).lower()).strip("-") for h in heads]
 
@@ -7442,7 +7452,7 @@ def add_toc(locale: str, slug: str, html: str) -> str:
 def add_h2_ids(locale: str, slug: str, page: dict, html: str) -> str:
     """Give each section of a page a stable anchor, named from the English heading so a link works
     in every language. Skipped where a locale's sections don't line up one for one with English."""
-    heads = re.findall(r"<h2>(.*?)</h2>", all_pages()[("en", slug)]["body"])
+    heads = re.findall(r"<h2>(.*?)</h2>", _pages()[("en", slug)]["body"])
     if len(re.findall(r"<h2>", page["body"])) != len(heads):
         return html
     for head in heads:
@@ -8381,12 +8391,13 @@ def sync_theme_kit_assets_into_public() -> None:
 
 
 def main() -> None:
+    global _BUILD_PAGES
     # Every page, Markdown twin and llms file below goes through price.localize() on its way out, so
     # it states the current phase's unlock price (app #103); check_price_phase.py holds public/ to it.
     # The twins, llms files and product-facts.md also get the sale line in the sale phase
     # (price.sale_note_md()): in the twin's own language, in English in the files that mix them.
     sync_theme_kit_assets_into_public()
-    pages = all_pages()
+    pages = _BUILD_PAGES = all_pages()
     for (locale, slug), page in pages.items():
         folder = SITE / LOCALES[locale]["prefix"] / ("" if slug == "index" else slug)
         folder.mkdir(parents=True, exist_ok=True)
