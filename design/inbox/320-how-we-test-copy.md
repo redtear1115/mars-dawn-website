@@ -2,41 +2,43 @@
 
 Issue: https://github.com/redtear1115/mars-dawn-website/issues/320
 Outline: the issue's latest comment (Una's review, accepted as is), plus Ray's later decisions relayed by Paula (S11, S14).
-Status: **proposal**. It goes live only after Ray approves.
+Status: **en and zh-Hant updated for final Ray review (2026-11-25)**. Other 6 locales stay at `16d360e` until Ray approves en/zh-Hant, then Aria syncs all 6 in one pass. Do not publish before Ray approves and all 8 locales are synced.
 
 ## How to read this file
 
 - The bodies below are HTML fragments in the same shape as the other evergreen articles in `scripts/build_pages.py` (`section.intro` → `div.summary` → `h2` sections → Next → Sources).
 - **Every number has a source in an HTML comment** (`<!-- src: ... -->`), as #320's acceptance requires.
-- **Placeholders**: `{{TBD:...}}`. kit #242's are filled in (merged as 85fe880, PR CI run 40285279080). One is left: the self-hosted MacBook Air run, which comes from kit #240. Don't publish while any are left: `grep -n 'TBD' design/inbox/320-how-we-test-copy.md`.
+- **Placeholders**: `en` and `zh-Hant` have **0** `{{TBD}}` placeholders (`{{TBD:mba-run}}` resolved with verified public `run 40315907904` from `kit #240` after `kit #242` merged into that branch). `zh-Hans`, `ja`, `ko`, `de`, `fr`, `es` still carry `{{TBD:mba-run}}` and 2026-10-26 figures pending Ray's sign-off on `en` and `zh-Hant`. Don't publish while any remain: `grep -n 'TBD' design/inbox/320-how-we-test-copy.md`.
 - Suggested slug: `/how-we-test/` (zh-Hant `/zh-hant/how-we-test/`). It needs to be added to `article_dates.py`'s `ARTICLE_SLUGS` and to the footer `ui` dict. Footer labels are at the end of this file.
 - The app repo is private, so app facts are described in the text but not linked. Kit facts link to the public kit repo.
 
 ## Facts and sources
+
+Re-verified on **2026-11-25** against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57f`, `mars-dawn-website@53ab560`, and live pages on `https://marsdawn.southern-light.dev`.
 
 | # | Fact | Source |
 |---|---|---|
 | S1 | The test failed on the MacBook Air: 0.1634 / 0.1648 / 0.1796, limit 0.16. It passed on the Mac mini. Same commit, macOS 26.6.2, Xcode 27.1. | kit #241 body; CI run 40271990387 |
 | S2 | The pure-colour probe: sRGB (0.784, 0.278, 0.106) reads back as (0.822, 0.335, 0.179) on the mini and (0.782, 0.395, 0.221) on the Air. | kit #241 body |
 | S3 | Independent verification of the fix: `best` 0.0 on both machines. The old path on the mini was off by up to 0.128. With the expected colours set to #0000FF, all 5 callouts fail. Note (#C8471B) and Caution (#B03C0C) are about 0.119 apart. | kit PR #242, comment of 2026-10-26 07:39 UTC |
-| S4 | A full run on hosted macOS 15: debug about 32 min plus release about 25 min (run 40196953693). Moving macOS 26 to self-hosted MacBook Airs is expected to cut a normal PR from about 60 min to about 15–20. | kit PR #240 body (**not merged**; the 15–20 min figure is an estimate and is not used in the text) |
-| S5 | The timeout went from 30 to 45, then 50, then 70 minutes. macos-15 hit the 50-minute limit twice in the release pass with every test passing (run 39231688388). | kit `.github/workflows/ci.yml` comments, main 8e93930, lines 27–34 |
-| S6 | Kit CI matrix: macos-15 (the floor) and macos-26 (what the app ships on), debug and release passes. The PDF corpus runs in its own process. A release suite name that matches no test fails the job. | kit `ci.yml` lines 21–26, 85–129 |
-| S7 | App CI: one self-hosted runner, `CODE_SIGNING_ALLOWED=NO`. python 3.9's unittest exits 0 having found no tests, so the job checks that the count is above 0, and guards.sh's summary must read "N passed, 0 failed" with N > 0. | app `.github/workflows/ci.yml` lines 78–108 (private) |
-| S8 | That guards.sh check came out of an independent verification of #335 (finding P3). | app #341 (private) |
-| S9 | `tools/test.sh --all`: signed and unsigned, each with the paywall off and on, so 4 combinations, run locally on a Mac and a MacBook Air (not in CI). **These are not debug/release × macOS 15/26; that matrix is the kit's CI (S6).** | app `tools/test.sh` lines 9, 24–26; #320 owner comment |
-| S10 | kit #242 merged as 85fe880. Its PR CI run is all green. | https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080 |
+| S4 | A full run on hosted macOS 15: debug about 32 min plus release about 25 min (run 40196953693; on `kit@a1bc57f`, `ci.yml` line 34 notes 52 to 68 min across the last 12 successful macos-15 runs). `kit #240` (moving macOS 26 to self-hosted MacBook Airs) remains an **open draft PR** (head `e55b018`, last updated 2026-10-26); kit `main` still runs on hosted runners. | kit PR #240 body (open draft); kit@a1bc57f `.github/workflows/ci.yml` lines 25–26, 34 |
+| S5 | The timeout went from 30 to 45, then 50, then 70, and now 90 minutes. macos-15 hit the 50-minute limit twice in the release pass with every test passing (run 39231688388), and later reached 70 minutes in its last PDF corpus step with every step until then passing (run 42047469590 attempt 1, kit #263; raised to 90 in `05a5bca` / kit #272). | kit@a1bc57f `.github/workflows/ci.yml` lines 27–39 |
+| S6 | Kit CI matrix: macos-15 (the floor, `Package.swift` `.macOS(.v15)`) and macos-26 (what the app ships on, `mars-dawn@5b88262` `project.yml` line 5 `macOS: "26.0"`), debug and release passes. On feature PRs, the release pass runs the 31 configuration-sensitive `RELEASE_SUITES`; PRs into `main`, pushes to `main`, and tags run the full release pass. The PDF corpus runs in its own process. A release suite name that matches no test fails the job. | kit@a1bc57f `ci.yml` lines 20–26, 43–76, 98–134; `Package.swift` line 9 |
+| S7 | App CI: runs on both self-hosted Macs (`ray-mba-marsdawn` MacBook Air and `marsdawn-mac` Mac mini, `runs-on: [self-hosted, marsdawn]`), `CODE_SIGNING_ALLOWED=NO`. python 3.9's unittest exits 0 having found no tests, so the job checks that the count is above 0, and `guards.sh`'s summary must read "N passed, 0 failed" with N > 0. | app@5b88262 `.github/workflows/ci.yml` lines 18–24, 108–137 (private) |
+| S8 | That `guards.sh` check came out of an independent verification of #335 (finding P3). | app #341 (private) |
+| S9 | `tools/test.sh --all`: signed and unsigned, each with the paywall off and on, so 4 combinations, run locally on a Mac and a MacBook Air (not in CI). **These are not debug/release × macOS 15/26; that matrix is the kit's CI (S6).** | app@5b88262 `tools/test.sh` lines 10–18, 44–47 (private); #320 owner comment |
+| S10 | kit #242 merged as `85fe880` on 2026-10-26; its PR CI run is all green (run 40285279080). Once `85fe880` was merged into kit #240's branch `ci/mba-kit-runners` (`3f1159d` → `e55b018`), the full suite on the self-hosted MacBook Air runners (`ray-mba-kit-1`, `ray-mba-kit-2`) passed all 6 jobs (run 40315907904). | https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080 ; https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904 |
 | S11 | Vibe coding framing: Ray's decision, relayed by Paula on 2026-10-26: vibe coding isn't bad, but software depends on long-term maintenance and security, and people should be choosy about the software they pick. No names of people or products. | #320 / Ray |
-| S12 | Red controls: the app's CI expects exactly 11. Each is a copy of the local cleanup script (`tools/cleanup-local.sh`) with one safety guard cut out, and the test suite must FAIL against every one; if a copy passes, CI fails. | app `ci.yml` (`expected 11 red controls caught`); `tools/test-cleanup-local.sh` lines 9–13, 685–713 (private) |
-| S13 | PDF goldens: sample documents are exported and each page's text is compared with a recorded copy, per OS build (the `pdf-goldens` CI job). The corpus guards against export silently losing content, the page count changing, and export drifting from the preview. | kit `Tests/MarsDawnExportTests/PDFCorpusTests.swift` lines 10–13, 126–175; `record-pdf-goldens.yml` |
+| S12 | Red controls: the app's CI expects 22 for the cleanup script (`tools/cleanup-local.sh`) and 20 for the test runner script and hygiene checks (`tools/test.sh` / `tools/check-test-hygiene.sh`). Each is a copy with one safety guard cut out, and the test suite must FAIL against every one; if a copy passes, CI fails. | app@5b88262 `ci.yml` lines 65–106 (`expected 22 red controls caught`, `expected 20 red controls caught`); `tools/test-cleanup-local.sh` lines 9–13, 984–1005; `tools/test-test-sh.sh` lines 12–14, 507–593 (private) |
+| S13 | PDF goldens: sample documents are exported and each page's text is compared with a recorded copy, per macOS major version (the `pdf-goldens` CI job compares `Goldens/macos-26/`). The corpus guards against export silently losing content, the page count changing, and export drifting from the preview. | kit@a1bc57f `Tests/MarsDawnExportTests/PDFCorpusTests.swift` lines 10–13, 126–179; `ci.yml` lines 208–238; `record-pdf-goldens.yml` |
 | S14 | Ray's decision, relayed by Paula on 2026-10-26: add back "deliberately break a test to check it catches the error" as a recommended habit, and lead into 「測試是一層一層的網子，有很多種目的，這種紅綠測試的意涵」. | #320 / Ray |
 | S15 | Scenario review: UX copy and flows go through a scenario review (`needs-ux` → `replied-ux`) before copy and build; #320 itself went through one. | website #320 labels and comment of 2026-10-26 08:31 UTC |
-| S16 | Large inputs. 2 MB of dense Markdown renders within 1.5 s; 5 MB (about a million nodes) falls back to plain source within 1.0 s (release budgets; debug allows 10×). The default byte cap is 16 MiB: one byte over is shown as source, unparsed. About 3 MB of one-line blocks (`- a`, `# a`; ~786,000 lines) is refused by the pre-scan's early stop and falls back as too complex (no timing assertion). There is **no** test aimed at line breaks as such; this is the closest. | kit main 85fe880: `Tests/MarsDawnKitTests/MarkdownParsingTests.swift` lines 375–394 (`largeDocuments`), 396–417; `Tests/MarsDawnKitTests/ByteCapTests.swift` lines 5–7, 73, 103; `Tests/MarsDawnKitTests/NodeBudgetTests.swift` line 218 (`realSizeBlockHeavyDocumentsStopEarly`) |
-| S17 | Unclosed markers. 1 MiB of `:::` callout openers with no closers, and 65,536 openers then closers, must each render in under 2× the time of 1 MiB of plain text (+0.05 s). Callout nesting caps at 8. Doubling unmatched `<details>` openings may at most 2.5× the time (release). | kit `Tests/MarsDawnKitTests/CalloutSecurityTests.swift` lines 125–146, 156; `Tests/MarsDawnKitTests/DetailsGroupingCostTests.swift` lines 74–84 |
-| S18 | Math (KaTeX in the preview). A bad expression shows an error instead of throwing; over 10,000 characters stays as source; at most 1,000 expressions per update; hostile TeX never becomes markup; `trust: false` gives no link or image. | kit `Tests/MarsDawnKitTests/PreviewMathPageTests.swift` lines 85, 98, 133, 160, 192; `Tests/MarsDawnKitTests/MathRenderingTests.swift` lines 383–387 |
-| S19 | Hostile HTML. `script`/`noscript` are removed from the content and nothing runs; a copy with that filter reverted must fail (red control); inline handlers are blocked by the enforced CSP; `link`/`meta`/`base`/`iframe`/`object`/`embed` never reach the page. Remote content: the blocked list stops every request; with remote images allowed only the HTTPS image loads and plain HTTP never connects; preconnects are stopped too. The app's own setting to load remote images is off unless the user turns it on (`loadRemoteImages`, read with `UserDefaults.bool`, so false when unset). | app `MarsDawn/Settings/AppSettings.swift` lines 150–152, 259 (private); kit `Tests/MarsDawnKitTests/PreviewFilterAndCSPSecurityTests.swift` lines 43, 54, 96; `Tests/MarsDawnKitTests/PreviewDOMFilterTests.swift` lines 29–31, 98; `Tests/MarsDawnKitTests/ContentRuleBehaviorTests.swift` lines 84, 150, 245 |
-| S20 | Hostile theme files are refused, and no message repeats a control character, a link, a mention or more than a capped slice of the input. Theme files over 16,384 bytes are refused unread. | kit `Tests/MarsDawnThemesTests/ThemeFixtureTests.swift` lines 108–123, 128, 145 |
-| S21 | Merging: Ray reviews and performs every merge (e.g. kit #242, merged by redtear1115 on 2026-10-26); bots never merge. Ray's confirmation, relayed by Paula on 2026-10-26. | #320 / Ray; kit PR #242 |
+| S16 | Large inputs. 2 MB of dense Markdown renders within 1.5 s; 5 MB (about a million nodes) falls back to plain source within 1.0 s (release budgets; debug allows 10×). The default byte cap is 16 MiB: one byte over is shown as source, unparsed. About 3 MB of one-line blocks (`- a`, `# a`; ~786,000 lines) is refused by the pre-scan's early stop and falls back as too complex (no timing assertion). There is **no** test aimed at line breaks as such; this is the closest. | kit@a1bc57f `Tests/MarsDawnKitTests/MarkdownParsingTests.swift` lines 375–394 (`largeDocuments`), 396–417; `Tests/MarsDawnKitTests/ByteCapTests.swift` lines 5–7, 73, 103; `Tests/MarsDawnKitTests/NodeBudgetTests.swift` line 218 (`realSizeBlockHeavyDocumentsStopEarly`) |
+| S17 | Unclosed markers. 1 MiB of `:::` callout openers with no closers, and 65,536 openers then closers, must each render in under 2× the time of 1 MiB of plain text (+0.05 s). Callout nesting caps at 8. Doubling unmatched `<details>` openings may at most 2.5× the time (release). | kit@a1bc57f `Tests/MarsDawnKitTests/CalloutSecurityTests.swift` lines 174–214; `Tests/MarsDawnKitTests/DetailsGroupingCostTests.swift` lines 74–84 |
+| S18 | Math (KaTeX in the preview). A bad expression shows an error instead of throwing; over 10,000 characters stays as source; at most 1,000 expressions per update; hostile TeX never becomes markup; `trust: false` gives no link or image. | kit@a1bc57f `Tests/MarsDawnKitTests/PreviewMathPageTests.swift` lines 85, 98, 133, 160, 192; `Tests/MarsDawnKitTests/MathRenderingTests.swift` lines 340, 383–387 |
+| S19 | Hostile HTML. `script`/`noscript` are removed from the content and nothing runs; a copy with that filter reverted must fail (red control); inline handlers are blocked by the enforced CSP; `link`/`meta`/`base`/`iframe`/`object`/`embed` never reach the page. Remote content: the blocked list stops every request; with remote images allowed only the HTTPS image loads and plain HTTP never connects; preconnects are stopped too. The app's own setting to load remote images is off unless the user turns it on (`loadRemoteImages`, read with `UserDefaults.bool`, so false when unset). | app@5b88262 `MarsDawn/Settings/AppSettings.swift` lines 182–185, 320 (private); kit@a1bc57f `Tests/MarsDawnKitTests/PreviewFilterAndCSPSecurityTests.swift` lines 43, 54, 96; `Tests/MarsDawnKitTests/PreviewDOMFilterTests.swift` lines 29–31, 98; `Tests/MarsDawnKitTests/ContentRuleBehaviorTests.swift` lines 84, 150, 245 |
+| S20 | Hostile theme files are refused, and no message repeats a control character, a link, a mention or more than a capped slice of the input. Theme files over 16,384 bytes are refused unread. | kit@a1bc57f `Tests/MarsDawnThemesTests/ThemeFixtureTests.swift` lines 108–123, 128, 145 |
+| S21 | Merging: Ray reviews and performs every merge (verified 2026-11-25 across recent merged PRs on `mars-dawn`, `mars-dawn-kit`, and `mars-dawn-website`, all merged by `redtear1115`); bots never merge. Ray's confirmation, relayed by Paula on 2026-10-26. | #320 / Ray; kit PR #242; recent merged PRs (2026-11-25) |
 
 ---
 
@@ -56,8 +58,8 @@ Status: **proposal**. It goes live only after Ray approves.
 <p>Only want to know which extreme or hostile files MarsDawn is tested against? Skip to <a href="#inputs">What we throw at it</a>.</p>
 
 <h2>The test that failed on a MacBook Air</h2>
-<!-- src S4: kit PR #240 (not merged), run 40196953693 -->
-<p>A full run of the export engine's tests on GitHub's macOS 15 runner takes close to an hour: about 32 minutes for the debug build and about 25 for the release build. To cut that down, we started moving the macOS 26 half onto a MacBook Air of our own (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>A full run of the export engine's tests on GitHub's macOS 15 runner takes close to an hour: about 32 minutes for the debug build and about 25 for the release build. To cut that down, we tried moving the macOS 26 half onto a MacBook Air of our own (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
 <!-- src S1: kit #241, run 40271990387 -->
 <p>On its first run there, one test failed. It exports a PDF with callouts (Note, Tip, Warning) and checks that each one has a bar at its edge in the right colour, meaning a colour distance under 0.16. On the MacBook Air the distances were 0.1634, 0.1648 and 0.1796. On a Mac mini, with the same commit, macOS and Xcode, the test passed.</p>
 <p>Our first guess was that the export had broken. It hadn't. Nothing was wrong with the PDF; what differed between the machines was how the test read it.</p>
@@ -65,8 +67,8 @@ Status: **proposal**. It goes live only after Ray approves.
 <p>The test turned each PDF page into an image and read the pixels, and macOS draws that image in the colour space of the main display. The Mac mini was connected to an ordinary external monitor; the MacBook Air was using its built-in screen. We filled an image with one orange and read it back: (0.784, 0.278, 0.106) came back as (0.822, 0.335, 0.179) on the Mac mini and (0.782, 0.395, 0.221) on the MacBook Air.</p>
 <!-- src S3: kit #242 verification comment -->
 <p>Here's the part that matters: on the Mac mini, the test hadn't been reading the right colours either. It was off by as much as 0.128, just inside the 0.16 limit. It passed because of the monitor, not because it measured the bar correctly.</p>
-<!-- src S3, S10; {{TBD:mba-run}} = the self-hosted MacBook Air run, from kit #240 -->
-<p>The fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) changes only the test: it draws the page into an image with a fixed sRGB colour space, so no screen is involved. Both machines now read the bar colours exactly, with a distance of 0.0, on the MacBook Air's built-in screen as well as on the Mac mini. The pull request's CI passed (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), and so did the full suite on the MacBook Air runner (run {{TBD:mba-run}}). Then we made it fail on purpose: with every expected colour set to blue, it went red for all five callouts.</p>
+<!-- src S3, S10 -->
+<p>The fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) changes only the test: it draws the page into an image with a fixed sRGB colour space, so no screen is involved. Both machines now read the bar colours exactly, with a distance of 0.0, on the MacBook Air's built-in screen as well as on the Mac mini. The pull request's CI passed (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), and once the fix reached the MacBook Air runner branch, the full suite passed there too (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>). Then we made it fail on purpose: with every expected colour set to blue, it went red for all five callouts.</p>
 <p>It still has a known gap. Note and Caution use two oranges about 0.119 apart, inside the 0.16 limit, so if those two were swapped, the test would probably not notice. We've written that down rather than pretend the test is complete.</p>
 <p>A test that can't fail protects nothing, and neither does one that fails for the wrong reason, like a screen's colour profile. Green on one machine tells you the test passed there, not that it measures what its name says.</p>
 
@@ -77,10 +79,10 @@ Status: **proposal**. It goes live only after Ray approves.
   <li><strong>Reference PDFs:</strong> the export engine (the open-source <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, which also powers the <code>marsdawn</code> command) exports sample documents, and every page's text is compared with a recorded copy. This catches content that silently goes missing, or a page count that changes.</li>
   <!-- src S6, S9 -->
   <li><strong>Different systems and builds:</strong> the engine runs on macOS 15, the oldest version it supports, and macOS 26, the one the app ships on, each as a debug and a release build. The app's full suite runs in four combinations: signed and unsigned, each with the paywall off and on. This catches what breaks only on an older system, or only in the build customers actually get.</li>
-  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
-  <li><strong>Real hardware:</strong> we're moving part of the engine's tests from GitHub's machines onto Macs of our own, starting with the MacBook Air above. As the story shows, a second machine catches tests that pass only because of the machine they run on.</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>Real hardware:</strong> the app's CI runs on Macs of our own (both the Mac mini and the MacBook Air), and trying the engine's suite on that MacBook Air (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>, still an open draft) is what caught the colour-profile bug above. A second machine catches tests that pass only because of the machine they run on.</li>
   <!-- src S12 -->
-  <li><strong>Red controls:</strong> the app's CI keeps 11 deliberately broken copies of a cleanup script, each missing one safety check, and the tests must fail on every one. The script removes old builds and working copies from a Mac, so one missing check could remove the wrong thing. If a broken copy passes, the test is what's broken.</li>
+  <li><strong>Red controls:</strong> the app's CI keeps 22 deliberately broken copies of a cleanup script and 20 of its test runner script, each missing one safety check, and the tests must fail on every one. The cleanup script removes old builds and working copies from a Mac, so one missing check could remove the wrong thing. If a broken copy passes, the test is what's broken.</li>
   <!-- src S3, S15 -->
   <li><strong>A second pair of eyes:</strong> our practice is to have a separate agent verify a change before it's merged, as with kit #242, and changes to how people use the app get a scenario review first. This catches "done" that isn't, and code that works but in the wrong situation.</li>
   <!-- src S21 -->
@@ -104,7 +106,7 @@ Status: **proposal**. It goes live only after Ray approves.
   <li><strong>A hostile theme file.</strong> It's refused, and the error message never repeats hidden control characters or links from the file. Theme files over 16 KB aren't read at all.</li>
 </ul>
 <!-- src S5 -->
-<p>None of this is free. The time limit for one engine run has gone from 30 minutes to 45, then 50, then 70, and macOS 15 once hit the 50-minute limit twice with every test passing.</p>
+<p>None of this is free. The time limit for one engine run has gone from 30 minutes to 45, then 50, then 70, and now 90; macOS 15 hit the 50-minute limit twice with every test passing, and later hit 70 minutes in its final step with every step before it passing.</p>
 
 <h2>Four habits you can copy</h2>
 <ol>
@@ -131,7 +133,7 @@ Status: **proposal**. It goes live only after Ray approves.
 <ul>
   <li>The failing test and its cause: <a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>.</li>
   <li>The fix and its independent verification: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>.</li>
-  <li>Moving CI onto a MacBook Air, with run times: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
+  <li>Trying CI on a MacBook Air (open draft), with run times: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
   <li>The export engine's CI, with the history of its time limit in the comments: <a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>.</li>
   <li>The app's repository is private; the app details above come from its CI workflow and test scripts.</li>
 </ul>
@@ -155,8 +157,8 @@ Status: **proposal**. It goes live only after Ray approves.
 <p>只想知道 MarsDawn 會拿哪些極端或惡意的檔案來測試？可以直接跳到〈<a href="#inputs">我們丟給它的東西</a>〉。</p>
 
 <h2>只在 MacBook Air 上失敗的測試</h2>
-<!-- src S4: kit PR #240（未合併）、run 40196953693 -->
-<p>輸出引擎的測試，在 GitHub 的 macOS 15 機器上完整跑一次將近一小時：debug 版約 32 分鐘，release 版約 25 分鐘。為了縮短時間，我們開始把 macOS 26 那一半移到自己的 MacBook Air 上跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>）。</p>
+<!-- src S4: kit PR #240（實驗草稿）、run 40196953693 -->
+<p>輸出引擎的測試，在 GitHub 的 macOS 15 機器上完整跑一次將近一小時：debug 版約 32 分鐘，release 版約 25 分鐘。為了縮短時間，我們試著把 macOS 26 那一半移到自己的 MacBook Air 上跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>）。</p>
 <!-- src S1: kit #241、run 40271990387 -->
 <p>在那台機器上第一次跑，就有一個測試失敗。這個測試會輸出一份帶有提示框（Note、Tip、Warning）的 PDF，檢查每個提示框邊上的色條顏色對不對，也就是色差要小於 0.16。在 MacBook Air 上，色差是 0.1634、0.1648 和 0.1796。換到 Mac mini，同一個 commit、同樣的 macOS 和 Xcode，測試通過。</p>
 <p>我們第一個懷疑是輸出壞了。結果不是：PDF 本身沒問題，兩台機器不一樣的，是測試讀它的方式。</p>
@@ -164,8 +166,8 @@ Status: **proposal**. It goes live only after Ray approves.
 <p>這個測試會把 PDF 每一頁畫成圖片再讀像素，而 macOS 畫這張圖時，用的是主螢幕的色彩空間。Mac mini 接的是一般的外接螢幕，MacBook Air 用的是內建螢幕。我們拿一張填滿同一種橘色的圖片讀回來：(0.784, 0.278, 0.106) 在 Mac mini 上讀成 (0.822, 0.335, 0.179)，在 MacBook Air 上讀成 (0.782, 0.395, 0.221)。</p>
 <!-- src S3: kit #242 驗證留言 -->
 <p>重點在這裡：在 Mac mini 上，測試讀到的顏色其實也不對，最多差了 0.128，只是剛好落在 0.16 的上限內。它會通過，靠的是那台螢幕，不是因為它真的量對了色條。</p>
-<!-- src S3, S10；{{TBD:mba-run}}＝自架 MacBook Air 的 run，來自 kit #240 -->
-<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改測試：把頁面畫進一張固定使用 sRGB 色彩空間的圖片，完全不經過螢幕。現在兩台機器都能準確讀出色條的顏色：不論是 MacBook Air 的內建螢幕還是 Mac mini，色差都是 0.0。這個 pull request 的 CI 全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），MacBook Air 機器上的完整測試也通過了（run {{TBD:mba-run}}）。接著我們故意讓它失敗：把每個預期顏色都改成藍色，五個提示框全部變紅。</p>
+<!-- src S3, S10 -->
+<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改測試：把頁面畫進一張固定使用 sRGB 色彩空間的圖片，完全不經過螢幕。現在兩台機器都能準確讀出色條的顏色：不論是 MacBook Air 的內建螢幕還是 Mac mini，色差都是 0.0。這個 pull request 的 CI 全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），修正併入 MacBook Air 測試分支後，那台機器上的完整測試也全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>）。接著我們故意讓它失敗：把每個預期顏色都改成藍色，五個提示框全部變紅。</p>
 <p>它還有一個已知的漏洞：Note 和 Caution 用的兩種橘色只差約 0.119，在 0.16 的上限內，所以這兩個顏色如果對調，測試多半不會發現。我們把這件事記了下來，沒有假裝這個測試已經完整。</p>
 <p>一個不會失敗的測試，什麼也保護不了；因為錯的理由而失敗的測試（例如螢幕的色彩描述檔）也一樣。一台機器上的綠燈，只代表測試在那台機器上通過，不代表它測的就是名字上寫的那件事。</p>
 
@@ -176,10 +178,10 @@ Status: **proposal**. It goes live only after Ray approves.
   <li><strong>參考 PDF：</strong>輸出引擎（開源的 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>，<code>marsdawn</code> 指令也用它）把一組樣本文件輸出成 PDF，每一頁的文字都和事先記錄的版本比對。抓內容悄悄不見，或頁數突然改變。</li>
   <!-- src S6, S9 -->
   <li><strong>不同的系統和版本：</strong>引擎在 macOS 15（支援的最舊版本）和 macOS 26（App 實際出貨的版本）上都要跑，各跑 debug 和 release 兩種版本。App 的完整測試則跑四種組合：簽章與不簽章，各自再分付費牆開與關。抓只在舊系統上壞掉，或只在使用者實際拿到的版本裡壞掉的問題。</li>
-  <!-- src S4, S1; tense follows kit #240: keep "moving" until it merges and {{TBD:mba-run}} is filled -->
-  <li><strong>真的硬體：</strong>我們正把引擎的一部分測試，從 GitHub 的機器移到自己的 Mac 上，第一台就是上面那台 MacBook Air。就像這個故事，換一台機器，能抓到只因為跑在某台機器上才通過的測試。</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>真的硬體：</strong>App 的 CI 跑在我們自己的 Mac 上（Mac mini 和 MacBook Air 兩台都跑）；把引擎的測試搬到那台 MacBook Air 試跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>，目前仍是實驗草稿），就是抓到上面那個色彩描述檔問題的契機。換一台機器，能抓到只因為跑在某台機器上才通過的測試。</li>
   <!-- src S12 -->
-  <li><strong>紅燈對照組：</strong>App 的 CI 固定放著 11 份故意弄壞的清理腳本，每份都拿掉一道安全檢查，測試碰到每一份都必須失敗。這個腳本會刪掉 Mac 上舊的建置和工作副本，少一道檢查就可能刪錯東西。只要有一份弄壞的通過，壞掉的就是測試本身。</li>
+  <li><strong>紅燈對照組：</strong>App 的 CI 固定放著 22 份故意弄壞的清理腳本和 20 份故意弄壞的測試執行腳本，每份都拿掉一道安全檢查，測試碰到每一份都必須失敗。清理腳本會刪掉 Mac 上舊的建置和工作副本，少一道檢查就可能刪錯東西。只要有一份弄壞的通過，壞掉的就是測試本身。</li>
   <!-- src S3, S15 -->
   <li><strong>另一雙眼睛：</strong>我們的做法是合併前把改動交給另一個 agent 驗證，像 kit #242 那樣；牽涉到使用流程的改動，會先做情境審查。抓「說做完了其實沒做完」，以及程式能跑、卻用錯了場合。</li>
   <!-- src S21 -->
@@ -203,7 +205,7 @@ Status: **proposal**. It goes live only after Ray approves.
   <li><strong>惡意的主題檔。</strong>會被拒絕，錯誤訊息也不會重複檔案裡隱藏的控制字元或連結。超過 16 KB 的主題檔直接不讀。</li>
 </ul>
 <!-- src S5 -->
-<p>這些都有代價。引擎單次執行的時間上限從 30 分鐘拉到 45、50，再到 70 分鐘；macOS 15 還曾在測試全部通過的情況下，兩次撞到 50 分鐘的上限。</p>
+<p>這些都有代價。引擎單次執行的時間上限從 30 分鐘拉到 45、50、70，現在已經拉到 90 分鐘；macOS 15 曾在測試全部通過的情況下兩次撞到 50 分鐘上限，後來又在最後一步撞到 70 分鐘，前面所有步驟都已經通過。</p>
 
 <h2>你也能照做的四個習慣</h2>
 <ol>
@@ -230,7 +232,7 @@ Status: **proposal**. It goes live only after Ray approves.
 <ul>
   <li>失敗的測試和原因：<a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>。</li>
   <li>修正和獨立驗證：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>。</li>
-  <li>把 CI 移到 MacBook Air，附執行時間：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>。</li>
+  <li>在 MacBook Air 試跑 CI（實驗草稿），附執行時間：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>。</li>
   <li>輸出引擎的 CI，時間上限的調整歷史寫在註解裡：<a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>。</li>
   <li>App 的程式碼庫不公開；上面關於 App 的內容，來自它的 CI 設定和測試腳本。</li>
 </ul>
@@ -838,6 +840,4 @@ Status: **proposal**. It goes live only after Ray approves.
 |---|---|---|---|---|---|---|---|
 | How we test | 我們怎麼測試 | 我们怎么测试 | テストのしかた | 테스트하는 방법 | So testen wir | Comment nous testons | Cómo probamos |
 
-en and zh-Hant: approved by Ray as of 57f26b8 (「ok 文案可以」). zh-Hans, ja, ko, de, fr, es: translated from that approved text, en and zh-Hant unchanged. All eight still carry `{{TBD:mba-run}}` (one place each, in the fix paragraph); fill it in every locale before publishing.
-
-Co-authored-by: Grok <grok@southern-light.dev>
+en and zh-Hant: re-verified and updated on 2026-11-25 against `mars-dawn@5b88262`, `mars-dawn-kit@a1bc57f`, `mars-dawn-website@53ab560` (0 `{{TBD}}`, awaiting Ray's final sign-off). zh-Hans, ja, ko, de, fr, es: still at `16d360e` (still carrying `{{TBD:mba-run}}` and 2026-10-26 figures) and will be synced in one pass after Ray approves en and zh-Hant. Do not publish before all 8 locales are synced.
