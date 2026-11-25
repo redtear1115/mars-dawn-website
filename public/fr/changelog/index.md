@@ -1,25 +1,135 @@
 # Historique des versions
 
-Ce qui a changé dans chaque version de l’app MarsDawn du Mac App Store et de l’outil en ligne de commande gratuit marsdawn. Pour l’app, la date est le jour où la version est parue sur le Mac App Store.
+Offre Black Friday : l’achat unique qui déverrouille l’app est à moitié prix, 2,49 USD au lieu de 4,99 USD, jusqu’au 30 novembre. Il repasse à 4,99 USD le 1er décembre. <!-- sale-line -->
+
+Ce qui a changé dans chaque version de l’app MarsDawn pour Mac, iPhone et iPad, et de l’outil en ligne de commande gratuit marsdawn. Pour l’app, la date est le jour où la version est parue sur l’App Store.
 
 Ce qui arrive ensuite figure dans la [feuille de route](/fr/roadmap/).
 
-## App MarsDawn
+## MarsDawn pour Mac
+
+### MarsDawn 1.2.3
+
+23 novembre 2026
+
+- Faites glisser un fichier de la barre latérale « Fichiers » vers le Finder pour le copier. Vous pouvez aussi faire glisser le PDF depuis l’aperçu de « Imprimer et exporter ».
+- Corrigé : quand l’aperçu redémarre de façon inattendue, il revient à peu près à l’endroit où vous lisiez, au lieu de remonter tout en haut.
+- Corrigé : marsdawn open --background n’active plus le nouvel onglet, même quand le fichier est déjà ouvert. Si MarsDawn est masqué ou réduit, il le reste.
+- Corrigé : dans une fenêtre PDF, Fichier > « Imprimer… » est désormais grisé tant que MarsDawn n’est pas déverrouillé, au lieu de sembler disponible sans rien faire.
+- Corrigé : dans la feuille « Imprimer et exporter », seule la mise en page choisie est mise en évidence par un contour.
+
+### MarsDawn 1.2.2
+
+14 novembre 2026
+
+- Fichier > « Imprimer… » et Fichier > « Exporter au format PDF… » ouvrent désormais la feuille « Imprimer et exporter », avec un aperçu du PDF. Choisissez « Document », « Guide » ou « Polycopié », puis imprimez ou enregistrez au format PDF. L’impression n’est plus limitée à « Document ».
+- Corrigé : un texte tapé juste après l’enregistrement automatique pouvait être remplacé, et le défilement juste après le retour à « Partagé » pouvait revenir en arrière.
+- Avec « Guide », la feuille « Imprimer et exporter » montre ce qui figurera sur la couverture, et vous pouvez ajouter l’image de couverture « Lever de soleil sur Mars ». « Imprimer et exporter » peut aussi être ajouté à la barre d’outils.
+- Fichier > « Ajouter les plans Claude Code… » ajoute à la barre latérale « Fichiers » le dossier où Claude Code enregistre ses plans, les plus récents en premier. Le menu de tri de la barre latérale propose une nouvelle option, « Afficher uniquement les fichiers que MarsDawn peut ouvrir », à régler pour chaque dossier.
+
+### MarsDawn 1.2.1
+
+3 novembre 2026
+
+- Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre.
+- MarsDawn est désormais disponible sur iPhone et iPad, pour la lecture. Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent Mac, iPhone et iPad, et les écrans de déverrouillage l’indiquent désormais.
+
+### MarsDawn 1.2.0
+
+27 octobre 2026
+
+- Une barre de format au-dessus de l’éditeur et un nouveau menu Format insèrent gras (⌘B), italique (⌘I), barré (⇧⌘X), titres H1–H6 (⌥⌘1–⌥⌘6), code, citations, listes à puces, numérotées et de pointage, liens (⌘K), « Image… », tableaux, séparateurs, diagrammes Mermaid et formules. Affichée par défaut ; masquez-la via Présentation > « Masquer la barre de format » ou Réglages > Apparence.
+- Présentation > Source uniquement > « Masquer la syntaxe Markdown » (⌘/) masque les marqueurs en mode Source uniquement tout en laissant la ligne du curseur en Markdown brut, et mémorise votre choix.
+- Fichier > « Créer à partir du presse-papiers » (⌥⌘V) ouvre le presse-papiers dans un nouveau document. Le texte JSON échappé issu d’une IA (comme \n) est converti une fois pour la lecture, avec une barre pour garder le texte tel quel.
+- Sélectionnez du texte dans l’éditeur ou l’aperçu et choisissez « Envoyer à… » au clic secondaire pour ouvrir Claude ou ChatGPT avec une invite, la sélection, le chemin relatif (ou le nom du fichier) et les numéros de ligne. Une confirmation s’affiche au premier envoi ; si la sélection est trop longue, la copie est proposée.
+- Édition > « Copier en texte riche » copie les blocs sélectionnés, ou tout le document, en texte mis en forme pour Mail, Pages, Google Docs ou Notion, avec le Markdown en texte brut à côté.
+- Aide > « Installer l’outil en ligne de commande et le skill d’agent… » ouvre une fenêtre avec la commande en une ligne et les instructions à copier pour votre agent IA, sans rien installer elle-même.
+- Fichier > « Exporter au format PDF… » ajoute un menu « Mise en page » mémorisé à trois choix compatibles avec tous les thèmes : « Standard », « Guide » (couverture tirée de votre front matter, table des matières numérotée, chapitres sur une nouvelle page, pied de page « n / N », signets PDF, marge de reliure) et « Polycopié » (colonne de notes à droite, titre en page 1, pied « nom · date · n / N », tableaux larges). « Imprimer… » utilise toujours « Standard ».
+- Appuyez sur ⌘F en mode Aperçu uniquement ou côté aperçu en mode Partagé pour rechercher : ⌘G et ⇧⌘G parcourent les occurrences en boucle, ⌘E reprend la sélection et les résultats sont surlignés en jaune. En mode Partagé, la recherche porte sur le côté actif.
+- Le texte entouré d’un seul tilde de chaque côté et sans espace, comme ~x~, s’affiche désormais en indice, comme dans HackMD. Pour barrer du texte, utilisez deux tildes : ~~x~~. Cela s’applique à l’aperçu, à « Exporter au format PDF » et à Coup d’œil.
+- MarsDawn lit aussi davantage de syntaxe HackMD : ==surlignage==, ^exposant^, une table des matières [TOC], des tailles d’image comme =300x200 et des intégrations comme {%youtube %}, qui s’affichent sous forme de liens.
+- « Conserver les sauts de ligne simples » dans Réglages > Apparence conserve chaque saut de ligne de la source dans l’aperçu, « Exporter au format PDF », l’impression et Coup d’œil, comme dans HackMD.
+- Les fichiers Markdown dans un autre encodage (comme Big5) s’ouvrent en lecture seule avec une barre proposant « Enregistrer en UTF-8… ». « Exporter au format PDF… » et « Imprimer… » restent disponibles.
+- Au-delà de 16 Mio, la barre latérale Plan affiche « Ce document est trop volumineux pour afficher un plan. » au lieu de « Aucun titre ».
+- Le décompte des mots ignore les blocs de code dans les sections details repliées, et un appel de note juste au-dessus d’un tableau s’affiche correctement en lien.
 
 ### MarsDawn 1.1.1
 
 15 octobre 2026
 
-- En allemand, en japonais, en espagnol et en français, Réglages > Apparence > « Obtenir plus de thèmes… » affiche désormais le filtre de scénario sous forme de menu local intitulé « Scénario », pour que les cinq choix tiennent. L’anglais, le coréen et le chinois utilisent toujours le contrôle segmenté.
-- Lorsqu’un thème est retiré de la galerie, l’avis dans « Obtenir plus de thèmes… » affiche maintenant le nom du thème (par exemple Inkwell Ivory) au lieu de son identifiant interne.
+- En allemand, en japonais, en espagnol et en français, Réglages > Apparence > « Obtenir plus de thèmes… » affiche désormais le filtre de scénario sous forme de menu local intitulé « Scénario », pour que les cinq choix tiennent. L’anglais, le coréen et le chinois utilisent toujours le contrôle segmenté.
+- Lorsqu’un thème est retiré de la galerie, l’avis dans « Obtenir plus de thèmes… » affiche maintenant le nom du thème (par exemple Inkwell Ivory) au lieu de son identifiant interne.
 - Les sections details repliables écrites à la manière de GitHub s’affichent désormais repliées, avec leur résumé visible, dans l’aperçu et dans Coup d’œil, et s’ouvrent d’un clic. L’export PDF imprime toujours le contenu de chaque section.
-- Les documents ouverts depuis le Finder, le Dock, Fichier > « Ouvrir… » ou la commande marsdawn open s’ouvrent désormais en onglets dans la fenêtre au premier plan, tout comme les nouveaux documents. Pour conserver l’ancien comportement, choisissez « Suivre le réglage système » dans Réglages > Apparence.
+- Les documents ouverts depuis le Finder, le Dock, Fichier > « Ouvrir… » ou la commande marsdawn open s’ouvrent désormais en onglets dans la fenêtre au premier plan, tout comme les nouveaux documents. Pour conserver l’ancien comportement, choisissez « Suivre le réglage système » dans Réglages > Apparence.
 
-Les versions précédentes ne sont décrites qu’en anglais : [voir l’historique en anglais](/changelog/).
+Les versions précédentes ne sont décrites qu’en anglais : [voir l’historique en anglais](/changelog/).
+
+## MarsDawn pour iPhone et iPad
+
+### MarsDawn 1.0.3
+
+23 novembre 2026
+
+- Sur iPhone, les boutons « Partager » et « Apparence et thème » se trouvent désormais dans une barre d’outils du bas, avec le nombre de jours d’essai restants entre les deux. Un nom de fichier trop long est raccourci en son milieu, ce qui laisse l’extension visible.
+- Corrigé : l’ouverture d’un fichier que MarsDawn ne peut pas lire ne remplace plus le document ouvert.
+- Sur iPad, le panneau « Apparence et thème » s’ouvre désormais à partir de son bouton dans la barre d’outils, en orientation portrait comme en paysage.
+- Corrigé : à l’impression, un aperçu sombre ne passe plus aux couleurs claires.
+- Corrigé : une fois MarsDawn déverrouillé sur iPhone, la feuille de déverrouillage se ferme et le bouton « Déverrouiller MarsDawn » ne reste plus sur l’écran d’accueil de l’app.
+
+### MarsDawn 1.0.2
+
+13 novembre 2026
+
+- Ouvrez des PDF et recherchez du texte à l’intérieur. Un PDF protégé demande d’abord son mot de passe.
+- Ouvrez les fichiers JSON et YAML comme des documents en lecture seule, avec un aperçu en arbre.
+- Ouvrez des fichiers Markdown, texte, PDF, JSON et YAML depuis Fichiers, Mail et d’autres apps.
+- Recherchez du texte dans l’aperçu (⌘F au clavier). « Apparence et thème » propose un nouveau réglage : « Conserver les sauts de ligne simples ».
+- Partagez le fichier depuis la barre d’outils ou imprimez-le.
+- Sur iPad et sur l’iPhone Duo déplié, le plan devient une barre latérale qui indique où vous en êtes. Les signets PDF y apparaissent aussi.
+
+Les versions antérieures à 1.0.2 ne sont pas listées.
 
 ## Outil en ligne de commande marsdawn
 
 Les versions antérieures à 0.5.1 ne sont pas listées.
+
+### marsdawn 0.7.7
+
+9 novembre 2026. Export PNG, blocs repliables et exports plus rapides des gros fichiers.
+
+- `marsdawn export --format png` exporte un document en PNG pour vérifier son rendu : `--width` (600–2000, 1200 par défaut), `--appearance light|dark`, `--theme`, et `--lines` ou `--heading` pour n’en exporter qu’une partie. Une page de plus de 8 000 pixels de haut est découpée en images numérotées, jamais au milieu d’un tableau, d’un bloc de code ou d’un diagramme.
+- `marsdawn export --details` définit comment les blocs repliables s’impriment : `expand`, par défaut, les imprime tous ouverts, comme avant ; `as-written` n’ouvre que les blocs écrits ouverts et n’imprime que le résumé des autres. Dans les deux cas, le résumé s’imprime sur une ligne en gras, sans triangle.
+- Les blocs repliables prennent en charge davantage de syntaxes de HackMD et d’Obsidian : `:::spoiler` sans titre ou avec `{state="open"}`, du Markdown dans les titres, des `::::spoiler` imbriqués, et les encadrés repliables d’Obsidian `> [!note]-` et `> [!tip]+`.
+- Les gros documents s’exportent beaucoup plus vite : dans notre test, un fichier de 10 Mo a pris environ 74 secondes au lieu d’environ 4 minutes.
+- Quand plusieurs commandes `marsdawn export` s’exécutaient en même temps, l’une d’elles pouvait se terminer avec le code 5. Elle réessaie désormais.
+- Quand l’app MarsDawn n’est pas ouverte, plusieurs commandes `marsdawn open` lancées en même temps ouvrent désormais chaque fichier. Avant, certains fichiers ne s’ouvraient pas alors que la commande indiquait un succès.
+
+### marsdawn 0.7.6
+
+2 novembre 2026. Les PDF Guide sous macOS 27.2.
+
+- Sous macOS 27.2, un PDF en mise en page Guide conserve les numéros de page de la table des matières et les signets des chapitres qui commencent sur une nouvelle page.
+
+### marsdawn 0.7.5
+
+30 octobre 2026. Les titres du Polycopié restent avec leurs tableaux.
+
+- Dans la mise en page Polycopié, un titre reste avec le tableau large placé dessous, au lieu de se retrouver seul en bas de page.
+
+### marsdawn 0.7.4
+
+25 octobre 2026. Corrections des notes de bas de page.
+
+- Une référence de note de bas de page dans le paragraphe juste au-dessus d’un tableau renvoie à sa note.
+- Une référence de note de bas de page dans le titre d’un encadré, le résumé d’un spoiler ou le texte alternatif d’une image ne laisse plus de caractères parasites sur la page. Dans le texte alternatif, elle reste telle qu’elle a été écrite.
+- Une référence de note de bas de page sur une ligne suivante d’une définition de note arrive au bon endroit et ne casse plus un code en ligne voisin.
+- La skill pour agents cite toutes les erreurs d’utilisation qui affichent du JSON.
+
+### marsdawn 0.7.3
+
+22 octobre 2026. La mise en page Polycopié.
+
+- `marsdawn export --layout handout` laisse une colonne de notes vide à droite de chaque page, place le titre et la date en haut de la page 1 et termine chaque page par le nom du fichier, la date et le numéro de page. Un tableau très large peut déborder sur la colonne de notes.
 
 ### marsdawn 0.7.2
 
@@ -64,7 +174,7 @@ Les versions antérieures à 0.5.1 ne sont pas listées.
 6 octobre 2026. MarsDawn est sur le Mac App Store.
 
 - Quand l’app n’est pas installée, `marsdawn open` renvoie vers MarsDawn sur le Mac App Store.
-- Le README et la skill pour agents expliquent `marsdawn open .` et `--folder` : MarsDawn 1.0.0 affiche le dossier dans la barre latérale de la fenêtre.
+- Le README et la skill pour agents expliquent `marsdawn open .` et `--folder` : MarsDawn 1.0.0 affiche le dossier dans la barre latérale de la fenêtre.
 
 ### marsdawn 0.6.1
 
@@ -79,7 +189,7 @@ Les versions antérieures à 0.5.1 ne sont pas listées.
 
 - Dans un diagramme de séquence, le libellé d’un message qui croise les lignes de vie d’autres participants reste lisible, dans l’aperçu comme dans les PDF exportés.
 - `marsdawn export` gère les documents remplis de diagrammes Mermaid. Un document de 50 diagrammes, qui échouait auparavant avec le code 5, s’exporte désormais.
-- `marsdawn export --json` ajoute `diagramErrorDetails`, avec les numéros de ligne de chaque erreur de diagramme : où le diagramme commence dans votre document et, quand Mermaid en indique une, la ligne de l’erreur elle-même.
+- `marsdawn export --json` ajoute `diagramErrorDetails`, avec les numéros de ligne de chaque erreur de diagramme : où le diagramme commence dans votre document et, quand Mermaid en indique une, la ligne de l’erreur elle-même.
 - `marsdawn skill --install` installe la skill pour Claude Code dans `~/.claude/skills/marsdawn/SKILL.md`, ou dans un autre dossier avec `--dir`. Il laisse intact un fichier identique et ne remplace un fichier différent qu’avec `--force`. Sinon, il se termine avec le code 64 (`skill_differs`) sans rien modifier.
 
 ### marsdawn 0.5.3
@@ -88,7 +198,7 @@ Les versions antérieures à 0.5.1 ne sont pas listées.
 
 - `marsdawn open --folder` peut indiquer ce qu’il est advenu du dossier. Avec une app qui répond, il attend jusqu’à `--wait` secondes (2 par défaut), et `--json` donne un état comme `attached` ou `needsUser`.
 - Un diagramme Mermaid qui ne s’analyse pas affiche le message d’erreur complet de Mermaid au lieu de sa seule première ligne, avec le numéro de ligne compté depuis le début de votre document.
-- La recherche de la fin d’un bloc front matter s’arrête après 1 000 lignes : un bloc non fermé n’entraîne plus le parcours du reste d’un long document.
+- La recherche de la fin d’un bloc front matter s’arrête après 1 000 lignes : un bloc non fermé n’entraîne plus le parcours du reste d’un long document.
 - Une app peut donner au lien de retour d’une note de bas de page un libellé traduit pour l’export PDF et l’impression. Le libellé n’est pas imprimé sur la page, et `marsdawn export` garde le libellé anglais.
 - La copie intégrée de highlight.js est désormais épinglée par version, source et SHA-256, comme KaTeX et Mermaid.
 
@@ -96,7 +206,7 @@ Les versions antérieures à 0.5.1 ne sont pas listées.
 
 24 septembre 2026. Notes de bas de page, contraste et dossiers.
 
-- Les notes de bas de page s’affichent dans les PDF exportés : appels numérotés, avec les notes après le corps du texte.
+- Les notes de bas de page s’affichent dans les PDF exportés : appels numérotés, avec les notes après le corps du texte.
 - Chaque thème respecte le contraste WCAG AA, en clair comme en sombre. Classique est désormais en noir et blanc.
 - `marsdawn skill` affiche la skill pour agents qui correspond au marsdawn installé.
 - `marsdawn open` se termine avec le code 6 (`app_cannot_open_folders`) quand le MarsDawn trouvé ne peut pas afficher de dossier, au lieu d’annoncer un succès.
@@ -114,21 +224,23 @@ Les versions antérieures à 0.5.1 ne sont pas listées.
 
 ## Plus
 
-- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Lisez et relisez le Markdown de votre agent sur Mac : aperçu partagé en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.
-- [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Markdown natif pour Mac : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions, notes en marge et dossiers papier.
+- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Relisez le Markdown, JSON et YAML de votre agent sur Mac : aperçu en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 2,49 USD une fois.
+- [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Mac natif pour Markdown, JSON et YAML : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions et dossiers papier.
 - [Vos textes restent sur votre Mac](https://marsdawn.southern-light.dev/fr/yours/index.md): MarsDawn n’a ni compte, ni synchronisation, ni cloud. Vos documents Markdown restent sur votre Mac, dans les fichiers et dossiers que vous choisissez.
-- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
-- [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.
+- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 2,49 USD. Sans abonnement, sans compte.
+- [Imprimer et PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Prévisualisez votre Markdown, puis imprimez-le ou enregistrez-le en PDF sur Mac, en disposition Document, Guide ou Polycopié, avec diagrammes et code coloré.
 - [Une app Mac](https://marsdawn.southern-light.dev/fr/native/index.md): Un éditeur Markdown qui est une vraie app Mac : fenêtres et onglets natifs, enregistrement automatique, historique des versions, Coup d’œil dans le Finder et un éditeur de texte qui se comporte comme sur Mac.
-- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
+- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas de modification sur iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
 - [Assistance](https://marsdawn.southern-light.dev/fr/support/index.md): De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
 - [Politique de confidentialité](https://marsdawn.southern-light.dev/fr/privacy/index.md): MarsDawn ne collecte aucune donnée personnelle. Vos documents et vos réglages restent sur votre Mac.
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
+- [Passer de HackMD à votre Mac](https://marsdawn.southern-light.dev/fr/from-hackmd/index.md): Téléchargez vos notes HackMD en .md et lisez-les dans MarsDawn sur votre Mac. Comment tout télécharger, partir d’un dépôt GitHub et garder vos images.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
-- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 2,49 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.
 - [marsdawn pour les agents](https://marsdawn.southern-light.dev/fr/cli/agents/index.md): Une référence pour les agents IA et les scripts qui appellent marsdawn pour convertir du Markdown en PDF : commandes, sortie JSON, schémas, codes de sortie et configuration requise.

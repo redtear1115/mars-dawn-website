@@ -1,30 +1,34 @@
 # Comment ouvrir un fichier .md sur Mac.
 
-Double-cliquez dessus. Si votre Mac l’ouvre dans un éditeur de texte et que vous voyez `#` et `**` au lieu de titres et de gras, le fichier n’a rien : un fichier `.md` est du texte brut, et cet éditeur affiche le texte tel quel. Ouvrez-le dans une app qui fait le rendu du Markdown, comme MarsDawn, et faites-en l’app par défaut pour que tous les fichiers `.md` s’y ouvrent.
+Offre Black Friday : l’achat unique qui déverrouille l’app est à moitié prix, 2,49 USD au lieu de 4,99 USD, jusqu’au 30 novembre. Il repasse à 4,99 USD le 1er décembre. <!-- sale-line -->
 
-Un fichier `.md` est du texte brut. Les titres, les mots en gras, les tableaux et les diagrammes y sont écrits sous forme de marques : `#` pour un titre, `**` autour du gras, des barres verticales pour un tableau, un bloc de code `mermaid` pour un diagramme. Ouvrez-le dans un éditeur de texte brut et vous lisez les marques. Pour lire la page telle que l’auteur l’a voulue, il faut qu’un outil en fasse le rendu.
+Double-cliquez dessus. Si votre Mac l’ouvre dans un éditeur de texte et que vous voyez `#` et `**` au lieu de titres et de gras, le fichier n’a rien : un fichier `.md` est du texte brut, et cet éditeur affiche le texte tel quel. Ouvrez-le dans une app qui fait le rendu du Markdown, comme MarsDawn, et faites-en l’app par défaut pour que tous les fichiers `.md` s’y ouvrent.
+
+Un fichier `.md` est du texte brut. Les titres, les mots en gras, les tableaux et les diagrammes y sont écrits sous forme de marques : `#` pour un titre, `**` autour du gras, des barres verticales pour un tableau, un bloc de code `mermaid` pour un diagramme. Ouvrez-le dans un éditeur de texte brut et vous lisez les marques. Pour lire la page telle que l’auteur l’a voulue, il faut qu’un outil en fasse le rendu.
 
 ## Ouvrir un fichier .md sur votre Mac
 
 1. **Double-cliquez sur le fichier.** Il s’ouvre dans l’app que votre Mac a définie pour les fichiers `.md`. Sans app Markdown, c’est souvent un éditeur de texte brut, qui affiche les marques au lieu de la page.
-2. **Choisissez l’app vous-même.** Faites un clic en maintenant la touche Contrôle enfoncée sur le fichier et choisissez « Ouvrir avec », puis l’app. Ou choisissez « Fichier ▸ Lire les informations » (⌘I), choisissez une app sous « Ouvrir avec : », puis cliquez sur « Tout modifier… » pour que tous les fichiers de ce type s’y ouvrent. MarsDawn ouvre les fichiers `.md`, `.markdown`, `.mdown`, `.mkd` et `.mkdn`.
+2. **Choisissez l’app vous-même.** Faites un clic en maintenant la touche Contrôle enfoncée sur le fichier et choisissez « Ouvrir avec », puis l’app. Ou choisissez « Fichier ▸ Lire les informations » (⌘I), choisissez une app sous « Ouvrir avec : », puis cliquez sur « Tout modifier… » pour que tous les fichiers de ce type s’y ouvrent. MarsDawn ouvre les fichiers `.md`, `.markdown`, `.mdown`, `.mkd` et `.mkdn`.
 3. **Afficher sans ouvrir.** Sélectionnez le fichier dans le Finder et appuyez sur la barre d’espace. Avec MarsDawn installé, Coup d’œil affiche la page rendue, diagrammes compris.
 
 ## Le lire dans MarsDawn
 
-MarsDawn est un éditeur Markdown pour Mac. Il se télécharge gratuitement sur le Mac App Store : essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte. macOS 26 ou version ultérieure est requis.
+MarsDawn est un éditeur Markdown pour Mac. Il se télécharge gratuitement sur le Mac App Store : essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 2,49 USD. Sans abonnement, sans compte. macOS 26 ou version ultérieure est requis.
 
 [Télécharger MarsDawn gratuitement sur le Mac App Store](https://apps.apple.com/app/id6812925073)
 
-Ouvrez un fichier `.md` et lisez la page rendue à côté de la source :
+Vous préférez le terminal ? [Installez MarsDawn avec Homebrew et mas](/fr/cli/#mac-app).
+
+Ouvrez un fichier `.md` et lisez la page rendue à côté de la source :
 
 - L’aperçu se met à jour pendant la saisie, et les deux volets défilent ensemble.
 - Les organigrammes et les diagrammes de séquence [Mermaid](/fr/mermaid-preview-mac/) sont dessinés dans l’aperçu, et les blocs de code sont colorés.
 - Quand vous voulez modifier quelque chose, la source est juste là. MarsDawn est un éditeur, pas seulement une visionneuse.
 
-Si un agent IA a rédigé le fichier, c’est la boucle pour laquelle MarsDawn est conçu : l’agent écrit, vous lisez le rendu, et il révise. Consultez [la page d’accueil](/fr/), ainsi que [marsdawn pour les agents](/fr/cli/agents/) pour laisser un agent ouvrir des fichiers à votre place. Pour comprendre pourquoi cette lecture compte et comment relire un plan, consultez [Lire ce que votre agent vous rend](/fr/reading-agent-output/) et [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/).
+Si un agent IA a rédigé le fichier, c’est la boucle pour laquelle MarsDawn est conçu : l’agent écrit, vous lisez le rendu, et il révise. Consultez [la page d’accueil](/fr/), ainsi que [marsdawn pour les agents](/fr/cli/agents/) pour laisser un agent ouvrir des fichiers à votre place. Pour comprendre pourquoi cette lecture compte et comment relire un plan, consultez [Lire ce que votre agent vous rend](/fr/reading-agent-output/) et [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/).
 
-## Sans l’app : en faire un PDF
+## Sans l’app : en faire un PDF
 
 L’outil en ligne de commande gratuit `marsdawn` fait le rendu d’un fichier Markdown en PDF, que n’importe quel Mac peut ouvrir. Les tableaux, les formules, les diagrammes Mermaid et le code coloré sont rendus, et rien d’autre n’est nécessaire, pas même l’app MarsDawn.
 
@@ -38,49 +42,52 @@ open notes.pdf
 
 ## Questions
 
-### Qu’est-ce qu’un fichier .md ?
+### Qu’est-ce qu’un fichier .md ?
 
-Un fichier `.md` est un fichier de texte brut écrit en Markdown, une façon de mettre en forme du texte avec des caractères simples : `#` pour un titre, `**` autour du gras, une barre verticale pour une cellule de tableau. Les extensions `.markdown`, `.mdown`, `.mkd` et `.mkdn` veulent dire la même chose. Les développeurs s’en servent pour les README et la documentation, et les agents IA rendent souvent leurs plans et leurs rapports sous forme de fichiers `.md`.
+Un fichier `.md` est un fichier de texte brut écrit en Markdown, une façon de mettre en forme du texte avec des caractères simples : `#` pour un titre, `**` autour du gras, une barre verticale pour une cellule de tableau. Les extensions `.markdown`, `.mdown`, `.mkd` et `.mkdn` veulent dire la même chose. Les développeurs s’en servent pour les README et la documentation, et les agents IA rendent souvent leurs plans et leurs rapports sous forme de fichiers `.md`.
 
-### Pourquoi mon fichier .md s’ouvre-t-il en texte brut, avec des # et des ** ?
+### Pourquoi mon fichier .md s’ouvre-t-il en texte brut, avec des # et des ** ?
 
 Parce que c’est du texte brut, et qu’un éditeur de texte brut l’affiche tel quel. Le fichier n’a aucun problème. Pour voir les titres, le gras, les tableaux et les diagrammes, ouvrez-le dans une app qui fait le rendu du Markdown. Dans MarsDawn, la page rendue se trouve à côté de la source.
 
-### Pourquoi s’ouvre-t-il avec des caractères illisibles ?
+### Pourquoi s’ouvre-t-il avec des caractères illisibles ?
 
-Des caractères illisibles signifient généralement que le fichier a été enregistré dans un encodage autre que l’UTF-8 et que l’app qui l’a ouvert s’est trompée. La solution est d’enregistrer une copie en UTF-8. MarsDawn ouvre en lecture seule un fichier de texte brut qui n’est pas en UTF-8, indique dans une barre en haut de la fenêtre l’encodage dans lequel il l’a lu, et propose là « Enregistrer en UTF-8… » ou « Fichier ▸ Enregistrer sous… » (⌥⇧⌘S) pour écrire une copie en UTF-8 que vous pouvez modifier.
+Des caractères illisibles signifient généralement que le fichier a été enregistré dans un encodage autre que l’UTF-8 et que l’app qui l’a ouvert s’est trompée. La solution est d’enregistrer une copie en UTF-8. MarsDawn ouvre en lecture seule un fichier de texte brut qui n’est pas en UTF-8, indique dans une barre en haut de la fenêtre l’encodage dans lequel il l’a lu, et propose là « Enregistrer en UTF-8… » ou « Fichier ▸ Enregistrer sous… » (⌥⇧⌘S) pour écrire une copie en UTF-8 que vous pouvez modifier.
 
-### Puis-je transformer un fichier .md en PDF ?
+### Puis-je transformer un fichier .md en PDF ?
 
-Oui. Dans MarsDawn, choisissez « Fichier ▸ Exporter au format PDF… » (⌥⌘E) ou « Fichier ▸ Imprimer… » ; les pages sont paginées, les diagrammes sont dessinés et le code est coloré, dans les couleurs claires du thème. Sans l’app, l’outil en ligne de commande gratuit `marsdawn export` produit le même PDF : `marsdawn export notes.md`. Voir [Export PDF](/fr/pdf/) et [Markdown vers PDF](/fr/markdown-to-pdf/).
+Oui. Dans MarsDawn, choisissez « Fichier ▸ Exporter au format PDF… » (⌥⌘E) ou « Fichier ▸ Imprimer… » ; les pages sont paginées, les diagrammes sont dessinés et le code est coloré, dans les couleurs claires du thème. Sans l’app, l’outil en ligne de commande gratuit `marsdawn export` produit le même PDF : `marsdawn export notes.md`. Voir [Imprimer et PDF](/fr/pdf/) et [Markdown vers PDF](/fr/markdown-to-pdf/).
 
-### Puis-je ouvrir les fichiers .md que mon agent IA a écrits ?
+### Puis-je ouvrir les fichiers .md que mon agent IA a écrits ?
 
-Oui, c’est pour cela que MarsDawn est conçu. Ouvrez le fichier et lisez la page rendue à côté de sa source ; quand l’agent le révise, ouvrez-le de nouveau. Un agent peut aussi exécuter `marsdawn open plan.md` pour ouvrir le fichier dans MarsDawn à votre place. Voir [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
+Oui, c’est pour cela que MarsDawn est conçu. Ouvrez le fichier et lisez la page rendue à côté de sa source ; quand l’agent le révise, ouvrez-le de nouveau. Un agent peut aussi exécuter `marsdawn open plan.md` pour ouvrir le fichier dans MarsDawn à votre place. Voir [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
 
 ## Pour aller plus loin
 
-- Toutes les options de l’outil en ligne de commande : [Ligne de commande](/fr/cli/).
-- Ce que MarsDawn ne fait pas : [la liste](/fr/limits/).
-- Lire du Markdown plutôt dans VS Code, un navigateur ou Claude Desktop : [la comparaison](/fr/vs/markdown-preview-tools/).
-- Les diagrammes dans un fichier Markdown : [Aperçu Mermaid sur Mac](/fr/mermaid-preview-mac/).
+- Toutes les options de l’outil en ligne de commande : [Ligne de commande](/fr/cli/).
+- Ce que MarsDawn ne fait pas : [la liste](/fr/limits/).
+- Lire du Markdown plutôt dans VS Code, un navigateur ou Claude Desktop : [la comparaison](/fr/vs/markdown-preview-tools/).
+- Les notes que vous gardez sur HackMD : [Passer de HackMD à votre Mac](/fr/from-hackmd/).
+- Les diagrammes dans un fichier Markdown : [Aperçu Mermaid sur Mac](/fr/mermaid-preview-mac/).
 
 ## Plus
 
-- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Lisez et relisez le Markdown de votre agent sur Mac : aperçu partagé en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.
-- [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Markdown natif pour Mac : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions, notes en marge et dossiers papier.
+- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Relisez le Markdown, JSON et YAML de votre agent sur Mac : aperçu en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 2,49 USD une fois.
+- [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Mac natif pour Markdown, JSON et YAML : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions et dossiers papier.
 - [Vos textes restent sur votre Mac](https://marsdawn.southern-light.dev/fr/yours/index.md): MarsDawn n’a ni compte, ni synchronisation, ni cloud. Vos documents Markdown restent sur votre Mac, dans les fichiers et dossiers que vous choisissez.
-- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
-- [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.
+- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 2,49 USD. Sans abonnement, sans compte.
+- [Imprimer et PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Prévisualisez votre Markdown, puis imprimez-le ou enregistrez-le en PDF sur Mac, en disposition Document, Guide ou Polycopié, avec diagrammes et code coloré.
 - [Une app Mac](https://marsdawn.southern-light.dev/fr/native/index.md): Un éditeur Markdown qui est une vraie app Mac : fenêtres et onglets natifs, enregistrement automatique, historique des versions, Coup d’œil dans le Finder et un éditeur de texte qui se comporte comme sur Mac.
-- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
+- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas de modification sur iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
 - [Assistance](https://marsdawn.southern-light.dev/fr/support/index.md): De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
 - [Politique de confidentialité](https://marsdawn.southern-light.dev/fr/privacy/index.md): MarsDawn ne collecte aucune donnée personnelle. Vos documents et vos réglages restent sur votre Mac.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
+- [Passer de HackMD à votre Mac](https://marsdawn.southern-light.dev/fr/from-hackmd/index.md): Téléchargez vos notes HackMD en .md et lisez-les dans MarsDawn sur votre Mac. Comment tout télécharger, partir d’un dépôt GitHub et garder vos images.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
-- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 2,49 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.
 - [marsdawn pour les agents](https://marsdawn.southern-light.dev/fr/cli/agents/index.md): Une référence pour les agents IA et les scripts qui appellent marsdawn pour convertir du Markdown en PDF : commandes, sortie JSON, schémas, codes de sortie et configuration requise.
@@ -117,5 +124,5 @@ Oui, c’est pour cela que MarsDawn est conçu. Ouvrez le fichier et lisez la pa
 - [简体中文](https://marsdawn.southern-light.dev/zh-hans/view-markdown-on-mac/index.md): Mac 上怎么打开 md 文件：双击、设为默认 App、在访达用快速查看。AI 代理写出来的 .md，也可以用 MarsDawn 打开，读排好版的页面。
 - [日本語](https://marsdawn.southern-light.dev/ja/view-markdown-on-mac/index.md): Mac で .md ファイルを開く方法：ダブルクリック、標準のアプリの設定、Finder のクイックルック。AI エージェントが書いた .md は、MarsDawn でレンダリングして読めます。
 - [Deutsch](https://marsdawn.southern-light.dev/de/view-markdown-on-mac/index.md): So öffnest du eine .md-Datei auf dem Mac: Doppelklick, Standard-App, Übersicht im Finder. Von einem KI-Agenten geschriebene .md liest du gerendert in MarsDawn.
-- [Español](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Cómo abrir un archivo .md en una Mac: doble clic, app predeterminada, Vista rápida en el Finder. Lee en MarsDawn, ya renderizados, los .md de un agente de IA.
+- [Español](https://marsdawn.southern-light.dev/es/view-markdown-on-mac/index.md): Cómo abrir un archivo .md en una Mac: doble clic, app predeterminada, Vista Rápida en el Finder. Lee en MarsDawn, ya renderizados, los .md de un agente de IA.
 - [한국어](https://marsdawn.southern-light.dev/ko/view-markdown-on-mac/index.md): Mac에서 .md 파일을 여는 방법: 더블 클릭, 기본 앱 지정, Finder 훑어보기. AI 에이전트가 쓴 .md 파일은 MarsDawn에서 렌더링된 모습으로 읽으세요.

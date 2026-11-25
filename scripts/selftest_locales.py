@@ -30,7 +30,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 LOCALE = "de"
-EXPECTED_PAGE_COUNT = 46
+EXPECTED_PAGE_COUNT = 48
 
 
 def sh(scratch: Path, *args, check=False) -> subprocess.CompletedProcess:

@@ -1,21 +1,23 @@
 # Créer un thème avec votre agent
 
+Offre Black Friday : l’achat unique qui déverrouille l’app est à moitié prix, 2,49 USD au lieu de 4,99 USD, jusqu’au 30 novembre. Il repasse à 4,99 USD le 1er décembre. <!-- sale-line -->
+
 Une référence pour un agent IA qui crée un thème d’aperçu MarsDawn. L’agent écrit un seul `theme.json`, le vérifie et le rend avec l’outil en ligne de commande `marsdawn`, puis vous remet un lien. Vous l’ajustez à l’œil sur la page [Créer un thème](/fr/themes/new/) et vous le soumettez. Les tableaux de champs ci-dessous sont lus dans le code source du kit, et une vérification les maintient identiques.
 
 **Écrivez un `theme.json`, lancez `marsdawn theme validate theme.json --require-complete --json` jusqu’à obtenir le code de sortie 0, rendez-le avec `marsdawn theme preview` en clair et en sombre, puis donnez un lien à la personne.** Un thème n’est fait que de paramètres. Il ne contient jamais de CSS.
 
 ## Ce qu’est un thème
 
-- **Des couleurs** pour le clair et pour le sombre : une palette de base, et des couleurs de syntaxe et de diagramme facultatives. Chacune est de la forme `#RRGGBB`.
-- **Un style de police** : `sans`, `serif` ou `rounded`.
-- **Un ensemble fermé d’options de style** : des nombres dans des plages fixes et des choix dans des listes fixes. Une couleur dans une option de style est toujours un rôle de palette comme `accent`, jamais une couleur littérale.
-- **Des textes affichés** : un nom et un résumé, et éventuellement un auteur et une licence.
+- **Des couleurs** pour le clair et pour le sombre : une palette de base, et des couleurs de syntaxe et de diagramme facultatives. Chacune est de la forme `#RRGGBB`.
+- **Un style de police** : `sans`, `serif` ou `rounded`.
+- **Un ensemble fermé d’options de style** : des nombres dans des plages fixes et des choix dans des listes fixes. Une couleur dans une option de style est toujours un rôle de palette comme `accent`, jamais une couleur littérale.
+- **Des textes affichés** : un nom et un résumé, et éventuellement un auteur et une licence.
 
 Une clé absente des tableaux ci-dessous est une erreur, tout comme une clé écrite deux fois. Le fichier fait au plus 16 384 octets.
 
 ## Vérifier et rendre
 
-Lancez ces commandes dans le dossier qui contient `theme.json`. Elles demandent l’outil `marsdawn` : voir [marsdawn pour les agents](/fr/cli/agents/).
+Lancez ces commandes dans le dossier qui contient `theme.json`. Elles demandent l’outil `marsdawn` : voir [marsdawn pour les agents](/fr/cli/agents/).
 
 ```
 marsdawn theme validate theme.json --require-complete --json
@@ -24,22 +26,22 @@ marsdawn theme preview theme.json --appearance light -o light.png
 marsdawn theme preview theme.json --appearance dark -o dark.png
 ```
 
-- Codes de sortie : 0 valide, 1 invalide avec des identifiants de règle, 2 fichier introuvable, 64 erreur d’usage. `preview` ajoute 4 quand le PNG existe déjà (passez `--force` ou choisissez un autre nom) et 5 quand le rendu échoue.
+- Codes de sortie : 0 valide, 1 invalide avec des identifiants de règle, 2 fichier introuvable, 64 erreur d’usage. `preview` ajoute 4 quand le PNG existe déjà (passez `--force` ou choisissez un autre nom) et 5 quand le rendu échoue.
 - Avec `--json`, un thème invalide énumère ses problèmes sous `issues`, chacun avec un identifiant `rule`, un `path` et un `message`. Corrigez-les et relancez la commande.
-- `--require-complete` est la vérification d’un thème destiné à être publié : elle exige aussi les couleurs `syntax` et `diagram` dans les deux palettes.
-- `css` affiche le CSS que sert l’aperçu. `preview` rend un document d’exemple en PNG. Les deux valident d’abord : un thème invalide ne produit aucun rendu.
+- `--require-complete` est la vérification d’un thème destiné à être publié : elle exige aussi les couleurs `syntax` et `diagram` dans les deux palettes.
+- `css` affiche le CSS que sert l’aperçu. `preview` rend un document d’exemple en PNG. Les deux valident d’abord : un thème invalide ne produit aucun rendu.
 - Regardez le PNG clair et le PNG sombre avant de remettre le thème.
 
 ## Partir d’un thème intégré
 
-Copiez l’un des quatre thèmes intégrés et modifiez-le. Chacun est un fichier complet et valide :
+Copiez l’un des quatre thèmes intégrés et modifiez-le. Chacun est un fichier complet et valide :
 
 - [`/assets/theme-sim/kit/themes/dawn.json`](/assets/theme-sim/kit/themes/dawn.json): le thème par défaut, et l’exemple ci-dessous
 - [`/assets/theme-sim/kit/themes/classic.json`](/assets/theme-sim/kit/themes/classic.json): une palette plus sobre, proche d’un document
 - [`/assets/theme-sim/kit/themes/modern.json`](/assets/theme-sim/kit/themes/modern.json): une palette plus froide et plus contemporaine
 - [`/assets/theme-sim/kit/themes/vivid.json`](/assets/theme-sim/kit/themes/vivid.json): une palette plus vive et plus contrastée
 
-### Exemple : Dawn
+### Exemple : Dawn
 
 Voici `dawn.json`, octet pour octet. Sa seule option de style est un fin filet de couleur d’accent pour `hr`.
 
@@ -74,16 +76,16 @@ Voici `dawn.json`, octet pour octet. Sa seule option de style est un fin filet d
 
 Chaque objet ci-dessous est lu de la même façon. `required` signifie que la clé doit être présente, et une clé qui n’est pas listée est une erreur.
 
-Types : `string`, `integer`, `number`, `boolean`, `map` (balise de langue vers texte), `enum` (l’une des valeurs listées), `role` (un rôle de palette) et `object` (le tableau vers lequel il renvoie). Un `[]` après un type signifie une liste.
+Types : `string`, `integer`, `number`, `boolean`, `map` (balise de langue vers texte), `enum` (l’une des valeurs listées), `role` (un rôle de palette) et `object` (le tableau vers lequel il renvoie). Un `[]` après un type signifie une liste.
 
 ### `theme.json`
 
 | Champ | Type | Présence | Valeurs et remarques |
 |---|---|---|---|
 | `schemaVersion` | `integer` | `required` | Toujours `1`. |
-| `id` | `string` | `required` | De 1 à 32 caractères : lettres minuscules et chiffres, en blocs reliés par des tirets simples, par exemple `calm-green`. |
+| `id` | `string` | `required` | De 1 à 32 caractères : lettres minuscules et chiffres, en blocs reliés par des tirets simples, par exemple `calm-green`. |
 | `version` | `string` | `required` | `MAJOR.MINOR.PATCH`, par exemple `1.0.0`. |
-| `name` | `map` | `required` | Balise de langue vers texte. `en` est obligatoire ; les autres clés sont des balises de langue comme `zh-Hant`. Chaque texte compte au plus 48 caractères, sans lien ni saut de ligne. |
+| `name` | `map` | `required` | Balise de langue vers texte. `en` est obligatoire ; les autres clés sont des balises de langue comme `zh-Hant`. Chaque texte compte au plus 48 caractères, sans lien ni saut de ligne. |
 | `summary` | `map` | `required` | Même forme que `name`, au plus 120 caractères par texte. |
 | `fontDesign` | `enum` | `required` | `sans`, `serif`, `rounded` |
 | `scenarios` | `enum[]` | `required` | `agent-review`, `technical-docs`, `formal-output`, `notes-sharing` — Un ou deux, sans répétition. Ils fixent le contraste que le thème doit atteindre. |
@@ -154,7 +156,7 @@ Types : `string`, `integer`, `number`, `boolean`, `map` (balise de langue vers t
 | `hr` | `object` | `optional` | [`style.hr`](#t-style-hr) |
 | `table` | `object` | `optional` | [`style.table`](#t-style-table) |
 | `listMarker` | `role` | `optional` | [un rôle de palette](#roles) |
-| `inlineCode` | `role` | `optional` | [un rôle de palette](#roles) — Seulement `text` ou un rôle de syntaxe : `keyword`, `string`, `comment`, `number`, `function` ou `type`. |
+| `inlineCode` | `role` | `optional` | [un rôle de palette](#roles) — Seulement `text` ou un rôle de syntaxe : `keyword`, `string`, `comment`, `number`, `function` ou `type`. |
 | `link` | `object` | `optional` | [`style.link`](#t-style-link) |
 | `syntax` | `object` | `optional` | [`style.syntax`](#t-style-syntax) |
 
@@ -236,7 +238,7 @@ Ces options de style sont des objets avec un `type`. Chaque `type` accepte les c
 
 ### Rôles de palette
 
-Un rôle de palette est l’un de ces noms :
+Un rôle de palette est l’un de ces noms :
 
 `background`, `surface`, `text`, `muted`, `border`, `heading`, `accent`, `link`, `quote`, `keyword`, `string`, `comment`, `number`, `function`, `type`
 
@@ -265,7 +267,7 @@ Un nombre est arrondi au multiple le plus proche de son pas, puis doit se trouve
 
 ## Le remettre sous forme de lien
 
-La page [Créer un thème](/fr/themes/new/) ouvre un thème à partir d’un lien, pour que la personne puisse l’ajuster à l’œil. Le lien est l’adresse de la page, puis `#theme=`, puis les octets du fichier en base64url sans remplissage. Le fichier fait au plus 16 384 octets. Cette seule ligne construit le lien sous zsh et sous bash, sur macOS et sur Linux :
+La page [Créer un thème](/fr/themes/new/) ouvre un thème à partir d’un lien, pour que la personne puisse l’ajuster à l’œil. Le lien est l’adresse de la page, puis `#theme=`, puis les octets du fichier en base64url sans remplissage. Le fichier fait au plus 16 384 octets. Cette seule ligne construit le lien sous zsh et sous bash, sur macOS et sur Linux :
 
 ```
 printf 'https://marsdawn.southern-light.dev/fr/themes/new/#theme=%s\n' "$(base64 < theme.json | tr -d '\n=' | tr '+/' '-_')"
@@ -275,12 +277,12 @@ Le thème voyage après un `#`, que le navigateur n’envoie pas au site, et le 
 
 ## Le soumettre
 
-L’agent prépare le fichier et le lien. La personne soumet. Les deux voies demandent le Developer Certificate of Origin et la publication sous Apache-2.0, et c’est la personne qui fait cette attestation : l’agent ne coche pas la case et ne signe pas à sa place.
+L’agent prépare le fichier et le lien. La personne soumet. Les deux voies demandent le Developer Certificate of Origin et la publication sous Apache-2.0, et c’est la personne qui fait cette attestation : l’agent ne coche pas la case et ne signe pas à sa place.
 
-- **Issue.** La personne ouvre le lien et appuie sur **Submit** dans la page « Créer un thème », ou ouvre le [formulaire d’issue](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml) et colle le JSON dans *Theme*. Un workflow vérifie le thème et répond.
+- **Issue.** La personne ouvre le lien et appuie sur **Submit** dans la page « Créer un thème », ou ouvre le [formulaire d’issue](https://github.com/redtear1115/mars-dawn-website/issues/new?template=theme-submission.yml) et colle le JSON dans *Theme*. Un workflow vérifie le thème et répond.
 - **Pull request.** Ne modifiez que `themes/<id>/theme.json`, mettez dans `author.github` l’identifiant de l’auteur de la pull request et signez chaque commit avec `git commit -s`. Les règles sont dans [CONTRIBUTING.md](https://github.com/redtear1115/mars-dawn-website/blob/main/CONTRIBUTING.md).
 
-Le nom d’auteur, le nom, le résumé et l’identifiant GitHub d’un thème soumis deviennent publics de façon permanente : mettez dans `author.name` un nom que la personne accepte de publier.
+Le nom d’auteur, le nom, le résumé et l’identifiant GitHub d’un thème soumis deviennent publics de façon permanente : mettez dans `author.name` un nom que la personne accepte de publier.
 
 ## Thèmes publiés
 
@@ -288,21 +290,23 @@ Pour voir à quoi ressemblent les thèmes publiés, parcourez la [galerie de th�
 
 ## Plus
 
-- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Lisez et relisez le Markdown de votre agent sur Mac : aperçu partagé en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.
-- [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Markdown natif pour Mac : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions, notes en marge et dossiers papier.
+- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Relisez le Markdown, JSON et YAML de votre agent sur Mac : aperçu en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 2,49 USD une fois.
+- [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Mac natif pour Markdown, JSON et YAML : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions et dossiers papier.
 - [Vos textes restent sur votre Mac](https://marsdawn.southern-light.dev/fr/yours/index.md): MarsDawn n’a ni compte, ni synchronisation, ni cloud. Vos documents Markdown restent sur votre Mac, dans les fichiers et dossiers que vous choisissez.
-- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
-- [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.
+- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 2,49 USD. Sans abonnement, sans compte.
+- [Imprimer et PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Prévisualisez votre Markdown, puis imprimez-le ou enregistrez-le en PDF sur Mac, en disposition Document, Guide ou Polycopié, avec diagrammes et code coloré.
 - [Une app Mac](https://marsdawn.southern-light.dev/fr/native/index.md): Un éditeur Markdown qui est une vraie app Mac : fenêtres et onglets natifs, enregistrement automatique, historique des versions, Coup d’œil dans le Finder et un éditeur de texte qui se comporte comme sur Mac.
-- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
+- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas de modification sur iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
 - [Assistance](https://marsdawn.southern-light.dev/fr/support/index.md): De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
 - [Politique de confidentialité](https://marsdawn.southern-light.dev/fr/privacy/index.md): MarsDawn ne collecte aucune donnée personnelle. Vos documents et vos réglages restent sur votre Mac.
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
+- [Passer de HackMD à votre Mac](https://marsdawn.southern-light.dev/fr/from-hackmd/index.md): Téléchargez vos notes HackMD en .md et lisez-les dans MarsDawn sur votre Mac. Comment tout télécharger, partir d’un dépôt GitHub et garder vos images.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
-- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 2,49 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.
 - [marsdawn pour les agents](https://marsdawn.southern-light.dev/fr/cli/agents/index.md): Une référence pour les agents IA et les scripts qui appellent marsdawn pour convertir du Markdown en PDF : commandes, sortie JSON, schémas, codes de sortie et configuration requise.

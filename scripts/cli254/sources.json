@@ -71,6 +71,560 @@
    "updated_at": "2026-10-20T16:36:31Z",
    "sha256": "e41989fce4804f874ee0b876a03a4396267fe7e54637a3f184b12b94d047c997",
    "chars": 37303
+  },
+  "J": {
+   "issue": 296,
+   "id": 6666104435,
+   "what": "Aria's rewrite of the folder item, the status item and /cli/'s --json item, 8 locales, 2026-11-05",
+   "created_at": "2026-11-05T18:37:06Z",
+   "updated_at": "2026-11-05T18:37:06Z",
+   "sha256": "4800a5035ab5255b1d3cc8149af9e3532f08d906b1097d445be07c482b8164a9",
+   "chars": 10712
+  },
+  "approval_296": {
+   "issue": 296,
+   "id": 6683377854,
+   "what": "owner approval of J, 2026-11-06: 「4. 核准 並且實際跑一次」, relayed by Ditto with Ray's words quoted",
+   "created_at": "2026-11-06T11:05:46Z",
+   "updated_at": "2026-11-06T11:05:46Z",
+   "sha256": "9fba7f746d1d915d48086bc9455a2492f3323b4fb52eba9b7f0058a859e47114",
+   "chars": 285
+  },
+  "K": {
+   "issue": 355,
+   "id": 6666174606,
+   "what": "Aria's en and zh-Hant changelog entries for marsdawn 0.7.3 to 0.7.6, 2026-11-05",
+   "created_at": "2026-11-05T18:40:08Z",
+   "updated_at": "2026-11-05T18:40:08Z",
+   "sha256": "a6f531ce0eae6da3a376137c9188d1e9aabc80ef90b5f39760ea6e4d4b9309e5",
+   "chars": 3037
+  },
+  "approval_355": {
+   "issue": 355,
+   "id": 6683315581,
+   "what": "owner approval of K, 2026-11-06: 「有什麼需要特別注意的嗎 不然幫我回 ok」, relayed by Ditto with Ray's words quoted",
+   "created_at": "2026-11-06T11:02:15Z",
+   "updated_at": "2026-11-06T11:02:15Z",
+   "sha256": "7813a6f40daef2a37e0bd1a930881a2eba48a052eae2655a2a23167c556fee1c",
+   "chars": 264
+  },
+  "K_i18n": {
+   "issue": 355,
+   "id": 6684157004,
+   "what": "Aria's zh-Hans, ja, ko, de, fr and es of K, 2026-11-06, under the standing machine-locale OK",
+   "created_at": "2026-11-06T11:51:09Z",
+   "updated_at": "2026-11-06T11:51:09Z",
+   "sha256": "5af66720b71d638deaff9c79c4006fcc5c212734d74cb20ef522878615381eb6",
+   "chars": 7971
   }
+ },
+ "local_copy_295": [
+  {
+   "path": "approved295/three.md",
+   "issue": 295,
+   "sha256": "59a0591cb1872ec1a53e7cd0cfa7466f5845c438b3bd947948c82ea4e51e58c8",
+   "locales": [
+    "en",
+    "zh-hant",
+    "ja"
+   ]
+  },
+  {
+   "path": "approved295/five.md",
+   "issue": 295,
+   "sha256": "027ef3133193cbfa54831aa65dad8ad2149f83f96539159431d39320fb5856ea",
+   "locales": [
+    "zh-hans",
+    "ko",
+    "de",
+    "fr",
+    "es"
+   ]
+  }
+ ],
+ "later": {
+  "note": "Approved copy that was put into data.py by hand in merged PRs after the pinned comments were read. ingest.py applies it as its last step: each path must hold the pinned text (old_sha256; null means the path does not exist yet and is added) and the approved text read from the commit's data.py must hash to new_sha256, or the run stops.",
+  "recorded_at_utc": "2026-11-21T02:59:38Z",
+  "prs": [
+   {
+    "pr": 360,
+    "issue": 357,
+    "note": "/cli/ --layout and its version sentence (website#357): 'handout' added to the --layout value and one sentence appended to the layout bullet (6684261359), '<!--BREAK-->' works in every layout (6687498264), and the 0.7.3 version sentence (6684261359), 22 cells: export_items/1 and /3 in 7 languages (zh-Hant's two cells are in the PR #367 group) and export_since in 8. Ray approved 6684261359 with 'ok' (6684273294) and the BREAK edit for en and zh-Hant (6687760695); the other six languages went through the machine review. The comments hold the new sentence or the edit, not the whole bullet: the bullet is the pinned text with that change.",
+    "comments": [
+     {
+      "id": 6684261359,
+      "role": "#357 Aria proposal: Roadmap Open a URL and /cli/ handout (bullet sentence, version sentence), 8 languages",
+      "updated_at": "2026-11-06T11:56:58Z",
+      "sha256": "8213e89af72f0d5860792a0f3be00871de12d541c0f780eead8eedbae8a6b50c",
+      "chars": 5532
+     },
+     {
+      "id": 6684273294,
+      "role": "Ray decision: #357 copy ok (covers 6684229028 and 6684261359)",
+      "updated_at": "2026-11-06T11:57:40Z",
+      "sha256": "0d1df17f3ffb883830c5b15e8908048326c92363b0ae28141ec5865e9e7a8201",
+      "chars": 201
+     },
+     {
+      "id": 6687498264,
+      "role": "#360 Aria proposal: <!--BREAK--> 'in every layout', 8 languages",
+      "updated_at": "2026-11-06T14:42:49Z",
+      "sha256": "599d98649e7ed56cb04972c47bfb911f54f5a1d976db6e0375a331db5fbc7be9",
+      "chars": 1333
+     },
+     {
+      "id": 6687760695,
+      "role": "Ray decision: the BREAK edit ok (en and zh-Hant)",
+      "updated_at": "2026-11-06T14:54:43Z",
+      "sha256": "6beec0633a271f6ed62edc894d6c91a74dd2b2d40999814d50deb045ab878f4c",
+      "chars": 201
+     }
+    ],
+    "fields": [
+     {
+      "path": [
+       "en",
+       "export_items",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "67908a8d40a24c8744efd15e43d03389f2340f6d1c11b7e92a70b54e597b75ce",
+      "new_sha256": "561daed616bcbf66f29eba8341c88a7ee412ffe6a5b9ad7f7575e11672a3d6f7",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "en",
+       "export_items",
+       3
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "5331ad2abfaca642340658dba906b36c2869a8d0d7f8c039261993564516ea4c",
+      "new_sha256": "b07f71cf71e7e9570483721a85e112579cca756f408fde6b5af426f072cf7521",
+      "comments": [
+       6687498264
+      ]
+     },
+     {
+      "path": [
+       "en",
+       "export_since"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "2609328287a736784a83d4cef27c5bf99a40878a37bca3951805cc78138d4b15",
+      "new_sha256": "10f4961cf55ec4293ff75145ea3d0eb08d1fe4b66754f8b4dd3c4c92343b9156",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "zh-hant",
+       "export_since"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "aa7accad1060cea7bd8875ce95ea3ee86ac2f6ecdd19cee1799aa0637c1df5a6",
+      "new_sha256": "135652d29ec09406227afcd9577bb4442d9d86d6fd01a2caf0a9ef208aa1b46c",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "zh-hans",
+       "export_items",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "0a2af5b4830e8d29ab36074eaecbc6c958aebb8da3b9156a3b9e59a0f721169a",
+      "new_sha256": "151a60efd7c8dbee7e07c718310d29f4efc3394783a3d1c610a93654abd33826",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "zh-hans",
+       "export_items",
+       3
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "08bc4bfdab9e06532cbe0148b2776fd2a0ee2f361cdd941b1c7256dac2838a71",
+      "new_sha256": "2562b4aca42cb84138a319f0cae4e5d80d53e8cfdc059f650cdda2e4432be691",
+      "comments": [
+       6687498264
+      ]
+     },
+     {
+      "path": [
+       "zh-hans",
+       "export_since"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "18e8bbca37afddd6146d71391873a0a9d9048269ed233b2f6dbf06b0c94754b5",
+      "new_sha256": "28dc2cb4142053da28329e171aab2a3aa08b059fa82a9361052d8bf0126706ec",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "ja",
+       "export_items",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "a67f4010726682e5b224e63ec73e5dd2dc14cff97e124c3b15ccf9bad6c98d38",
+      "new_sha256": "0ecd64a7d352c20ad09928de519524803bfbc4c438dca2d98226380d2b091a15",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "ja",
+       "export_items",
+       3
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "903aad5daebd9a54af97ba17c8b54c6d4f20f8e7bd2fa21638b3c517d6d57223",
+      "new_sha256": "541f6845718799340a878fed4b6f181b1e515e6861be1b95ecd2167d3a5b3b6e",
+      "comments": [
+       6687498264
+      ]
+     },
+     {
+      "path": [
+       "ja",
+       "export_since"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "d9ccf6bcd003ddfeb273047a4a0ff6fc5e79e86d4974305838b0ed9adbea4009",
+      "new_sha256": "f931a8d47bc4e2336985ba552c4ee1962cad6248578c2ad3652f05e2f1b640df",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "de",
+       "export_items",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "780b2ccebd377986cbad5abebdbed48a37cb106268198e176d8bed6c49b892a3",
+      "new_sha256": "8e705cbc02d93afcf6e3ebe89875829a4b5ac6c43a6e2b0f3608ed21f73b847d",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "de",
+       "export_items",
+       3
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "59aeb9129a6de95c31729e6672ecb58267041f5b0e5125f02996dc203521b0d8",
+      "new_sha256": "0215dc9d604c3b432f286bd1d83f0fa44894dbe509b8ccfe0e249fa30f46e12b",
+      "comments": [
+       6687498264
+      ]
+     },
+     {
+      "path": [
+       "de",
+       "export_since"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "2ee093d3d214ad1bb4a9332e7755cce83e320d31735f61ccc5035f2b5bc51f5e",
+      "new_sha256": "c84e6b3295526a1ecb2c29973364b43b22099e58c7f9dcf69b793c00654251fb",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "fr",
+       "export_items",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "f6b7fc512b9c966e5d1d01d1be510bcb0ca3e08e5ec8ac7db7ad7ce02b444408",
+      "new_sha256": "60311913026181fc71555fe3c92d937a8bebc2b7d128eefd7578249149235f87",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "fr",
+       "export_items",
+       3
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "1177d772b4c5870b03814675b6e6d341566f8ce07337b6c31db11bdf203862fd",
+      "new_sha256": "9c9376f88382300daa841ee36e0154c9e984292269e6ce526dcb67a542c86f9b",
+      "comments": [
+       6687498264
+      ]
+     },
+     {
+      "path": [
+       "fr",
+       "export_since"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "297e13ac8643a1e604032f3e8391d42bf89d151589d2983818b01165c8f8fa8f",
+      "new_sha256": "e799649eef066a54299a3937b30ed2e9dfbf50170c4fb5ddfb0df024df53e532",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "es",
+       "export_items",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "13e3bdad1b29551fe6fed4a8ac1ff06e11129809a5a1c147d06d42cd7c96687c",
+      "new_sha256": "ea37f4ea060a0846c3a7f6fd6c18ed79d93cf4422fb09786c66c6d9dcbef3f68",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "es",
+       "export_items",
+       3
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "b887ceaec54b3dad6919362c6c51e9c37d06484a27ccc4f0837c766420564c96",
+      "new_sha256": "30f8d7a7867a512e885bb1d3de74cf184dc5882c84fcf8afcc183ce300a71025",
+      "comments": [
+       6687498264
+      ]
+     },
+     {
+      "path": [
+       "es",
+       "export_since"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "0702d041782cb221d4a449758e6b60f3458d2d1ea3a278569eb552b2c45c7339",
+      "new_sha256": "abc9114ed6d9080c93451e335480b92cf56c776247d0b7a0e9f94c73e26bfde1",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "ko",
+       "export_items",
+       1
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "b1a453c7dd71d86dae6033c935d4605b115b97590e0db686523a28e6b865c371",
+      "new_sha256": "b028ba6c3102f60d6d69d8b662521c3681b14a04e3a2b3d0dc240fd6363182d9",
+      "comments": [
+       6684261359
+      ]
+     },
+     {
+      "path": [
+       "ko",
+       "export_items",
+       3
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "230aa9e051004387a3bb981ed04e4947b64a3dcb9fd109f7e8cf9b7779c72cc1",
+      "new_sha256": "04818d913f1d16834001388712a0c0aa236762942c15b4a269fe4d9cadccdabe",
+      "comments": [
+       6687498264
+      ]
+     },
+     {
+      "path": [
+       "ko",
+       "export_since"
+      ],
+      "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+      "old_sha256": "7b5f0da32f637567290b9136c91d499d5b3248a7946e11b36d222b4035a6906a",
+      "new_sha256": "5091fc9bb8a7c8689d375c2515e12b2f251384c276212b9c7a471f98560a7cc3",
+      "comments": [
+       6684261359
+      ]
+     }
+    ]
+   },
+   {
+    "pr": 367,
+    "issue": 286,
+    "note": "zh-Hant only for the two export_items cells: the handout sentence 'handout 會輸出成講義：...' and the BREAK line '每種版面都適用', verbatim as the sentence and the edit in Aria's table 6666173964 (rows 6 and 7), which Ray approved on 2026-11-06 (6683376822). Plus the marsdawn 0.7.7 changelog entry in 8 languages (the path is added: the pinned comments have no 0.7.7). Its six bullets are verbatim in Aria's comments (6708556472 en and zh-Hant, 6708851024 the other six, 6709138349 bullet 6), approved by Ray (6708595128, 6716443242); the summary line carries the release date 2026-11-09, filled by hand at the kit 0.7.7 tag, so these eight are pinned to the PR and commit, not to one comment.",
+    "comments": [
+     {
+      "id": 6666173964,
+      "role": "#286 Aria table: as-of line, PDF row, /cli/ handout sentence and BREAK line (en, zh-Hant)",
+      "updated_at": "2026-11-05T18:40:06Z",
+      "sha256": "d3bb83250923183a4f0b03c4aacbacbc8968992c31fd5ca87c847ab5b5c0abad",
+      "chars": 5122
+     },
+     {
+      "id": 6683376822,
+      "role": "Ray decision: #286 table ok, zh-Hant 輸出",
+      "updated_at": "2026-11-06T11:05:42Z",
+      "sha256": "6ce672d10c593f100d26ac0cf52719d961a6e0718228e4dc86ba28e7edb16fa9",
+      "chars": 560
+     },
+     {
+      "id": 6708556472,
+      "role": "#367 Aria: 0.7.7 changelog items 1 to 5 and summary (en, zh-Hant)",
+      "updated_at": "2026-11-07T14:57:47Z",
+      "sha256": "27f2baf49a5c23f78baf7a41e99bf8105709cff671bdbe1df04054d43cdc00b6",
+      "chars": 3693
+     },
+     {
+      "id": 6708851024,
+      "role": "#367 Aria: 0.7.7 changelog, zh-hans, ja, ko, de, fr, es",
+      "updated_at": "2026-11-07T15:16:59Z",
+      "sha256": "34e02a3742fb4d51049290e16be383c7282c366de10a1e509b21ec05fdbbc8da",
+      "chars": 7119
+     },
+     {
+      "id": 6709138349,
+      "role": "#367 Aria: 0.7.7 item 6, marsdawn open, 8 languages",
+      "updated_at": "2026-11-07T15:38:00Z",
+      "sha256": "7444338c8626d8b80d2fb710e62d4fb8c0e4d31696defcabef884f20bc3a0c06",
+      "chars": 1848
+     },
+     {
+      "id": 6708595128,
+      "role": "Ray decision: 0.7.7 items 1 to 5 ok",
+      "updated_at": "2026-11-07T14:59:43Z",
+      "sha256": "db8de004f61fe8b5857ea9c8e37cf5d2225f41e451b3ada846e6ef2581e9782e",
+      "chars": 397
+     },
+     {
+      "id": 6716443242,
+      "role": "Ray decision: 0.7.7 item 6 ok",
+      "updated_at": "2026-11-08T02:58:49Z",
+      "sha256": "ad2bee22706882eeb1861876e82acf74a7e35d2dda938783d91f58da2bb7b016",
+      "chars": 235
+     }
+    ],
+    "fields": [
+     {
+      "path": [
+       "zh-hant",
+       "export_items",
+       1
+      ],
+      "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+      "old_sha256": "fece84803edc551a6feca14e09aaf099beac488d3f0799628ffb46b533a1ff3e",
+      "new_sha256": "53fcb0929dbf6c775801f0ff73b0fbd224835813c2369039810d46f38ac73f04",
+      "comments": [
+       6666173964
+      ]
+     },
+     {
+      "path": [
+       "zh-hant",
+       "export_items",
+       3
+      ],
+      "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+      "old_sha256": "b1dfae2a6b48c74cbd67a4248a1171511dba39785919eb250ef557b43c8bbd2f",
+      "new_sha256": "b25e8f657dcc4159bd5b0c04c1c815fb92acfa6ce71efaa8d8e9a10ebff683ef",
+      "comments": [
+       6666173964
+      ]
+     },
+     {
+      "path": [
+       "en",
+       "changelog",
+       "0.7.7"
+      ],
+      "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+      "old_sha256": null,
+      "new_sha256": "09be6ebd63c5ced786ae9606e05468d2ae4855ce7b7ed1ba6b18a92db1816aee"
+     },
+     {
+      "path": [
+       "zh-hant",
+       "changelog",
+       "0.7.7"
+      ],
+      "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+      "old_sha256": null,
+      "new_sha256": "04f10a15e3291513991c5ec772e25a88a2a8d8e94afb45f75d98549805f62516"
+     },
+     {
+      "path": [
+       "zh-hans",
+       "changelog",
+       "0.7.7"
+      ],
+      "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+      "old_sha256": null,
+      "new_sha256": "aee11ab193699adc3a5ac05c8ae69fcc4ab3fa9dd2d1b5551d7f201cb746f50d"
+     },
+     {
+      "path": [
+       "ja",
+       "changelog",
+       "0.7.7"
+      ],
+      "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+      "old_sha256": null,
+      "new_sha256": "e047f8087a98be480ef576a6f04a28cfb4b24ebf73dd2cbe9311a4b69dfd257d"
+     },
+     {
+      "path": [
+       "de",
+       "changelog",
+       "0.7.7"
+      ],
+      "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+      "old_sha256": null,
+      "new_sha256": "a86ea2b3cd921796dfec4ac16209e847cabe39935b7bebd767dc83d03e78e22c"
+     },
+     {
+      "path": [
+       "fr",
+       "changelog",
+       "0.7.7"
+      ],
+      "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+      "old_sha256": null,
+      "new_sha256": "1b4b785785fc58660b4aadbbacbfd34f24a3a3b0b20755bc4bca0bb0ddf98863"
+     },
+     {
+      "path": [
+       "es",
+       "changelog",
+       "0.7.7"
+      ],
+      "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+      "old_sha256": null,
+      "new_sha256": "9f90580938f6ba86ccf72b378fed5e2feb2e30ab169317c7caaeffe329899a52"
+     },
+     {
+      "path": [
+       "ko",
+       "changelog",
+       "0.7.7"
+      ],
+      "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+      "old_sha256": null,
+      "new_sha256": "2f4a345885e39de910d207d530f2d301086adc01bfbfa2200996a57b8d183b6e"
+     }
+    ]
+   }
+  ]
  }
 }

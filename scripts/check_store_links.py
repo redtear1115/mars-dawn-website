@@ -15,6 +15,9 @@ Every listing URL gets exactly one verdict; the rules are:
       (the `&` is written `&amp;` in HTML), and no listing URL appears outside an <a href>.
   R2  Its <ct> is `web-` + the first path segment of the page's slug, `web-home` for a home page,
       `web-404` for the 404 pages, `web-themes` for themes/third-party-notices.html. No locale in it.
+      Page-specific positions also allow home: web-home-iphone/web-close; features: web-mac-iphone;
+      pay-once: web-pricing.
+  R6  Every HTML page except redirect stubs includes the Smart App Banner in its head.
   R3  A listing URL inside <script type="application/ld+json"> is exactly the plain
       https://apps.apple.com/app/id6812925073 (downloadUrl, sameAs).
   R4  A listing URL in public/**/*.md and public/**/*.txt (the twins, llms.txt, llms-full.txt,
@@ -69,6 +72,10 @@ def stray_params(url: str) -> list:
 
 def check_html(relative: str, text: str, problems: list) -> int:
     count = 0
+    head = re.search(r"<head\b[^>]*>(.*?)</head>", text, re.S | re.I)
+    redirect = head and re.search(r'<meta\s+http-equiv=["\']refresh["\']', head.group(1), re.I)
+    if not redirect and (not head or '<meta name="apple-itunes-app" content="app-id=6812925073">' not in head.group(1)):
+        problems.append(f"R6 {relative}: missing Smart App Banner meta in head")
     for block in LD_BLOCK.findall(text):
         for match in LISTING.finditer(block):
             count += 1
@@ -79,6 +86,15 @@ def check_html(relative: str, text: str, problems: list) -> int:
                 problems.append(f"R3 {relative}: JSON-LD listing URL must be exactly {PLAIN}, found {url}")
     rest = LD_BLOCK.sub("", text)
     want = expected_ct(relative)
+    path = relative.split("/")
+    if path[0] in LOCALE_PREFIXES:
+        path = path[1:]
+    positions = {
+        "index.html": {"web-home-iphone", "web-close"},
+        "features/index.html": {"web-mac-iphone"},
+        "pay-once/index.html": {"web-pricing"},
+    }
+    allowed = {want} | positions.get("/".join(path), set())
     for match in LISTING.finditer(rest):
         count += 1
         url = url_of(match)
@@ -94,7 +110,7 @@ def check_html(relative: str, text: str, problems: list) -> int:
             problems.append(f"R1 {relative}: <a href> to the listing isn't the campaign form {CAMPAIGN_BASE}?pt={PROVIDER}&amp;ct={want}&amp;mt=8: {url}")
         elif form.group("pt") != PROVIDER:
             problems.append(f"R1 {relative}: wrong provider token pt={form.group('pt')}, want pt={PROVIDER}: {url}")
-        elif form.group("ct") != want:
+        elif form.group("ct") not in allowed:
             problems.append(f"R2 {relative}: wrong campaign token ct={form.group('ct')}, want ct={want}: {url}")
     return count
 
@@ -139,7 +155,8 @@ def fixture(root: Path) -> None:
         target.write_text(text, encoding="utf-8")
 
     def page(ct):
-        return (f'<footer><a href="{campaign_href(ct)}">Mac App Store</a></footer>\n'
+        return ('<head><meta name="apple-itunes-app" content="app-id=6812925073"></head>\n'
+                f'<footer><a href="{campaign_href(ct)}">Mac App Store</a></footer>\n'
                 f'<script type="application/ld+json">{{"downloadUrl": "{PLAIN}", "sameAs": ["{PLAIN}"]}}</script>\n')
     write("index.html", page("web-home"))
     write("zh-hant/index.html", page("web-home"))
@@ -148,6 +165,12 @@ def fixture(root: Path) -> None:
     write("404.html", page("web-404"))
     write("themes/third-party-notices.html", page("web-themes"))
     write("view-markdown-on-mac/index.md", f"Get it on the [Mac App Store]({PLAIN}).\n")
+    for prefix in ("", *(locale + "/" for locale in LOCALE_PREFIXES)):
+        for path, tokens in {"index.html": ("web-home-iphone", "web-close"),
+                             "features/index.html": ("web-mac-iphone",),
+                             "pay-once/index.html": ("web-pricing",)}.items():
+            write(prefix + path, page(expected_ct(prefix + path)) +
+                  "".join(f'<a href="{campaign_href(token)}">Download</a>' for token in tokens))
     write("llms.txt", f"- App: {PLAIN}\n")
 
 
@@ -174,6 +197,12 @@ def self_test() -> int:
 
         view = "view-markdown-on-mac/index.html"
         plants = [
+            ("position token on the wrong page", "R2 view-markdown-on-mac/index.html: wrong campaign token ct=web-close",
+             edit(view, "ct=web-view-markdown-on-mac", "ct=web-close")),
+            ("localized position token on the wrong page", "R2 zh-hant/vs/macmd-viewer/index.html: wrong campaign token ct=web-mac-iphone",
+             edit("zh-hant/vs/macmd-viewer/index.html", "ct=web-vs", "ct=web-mac-iphone")),
+            ("missing Smart App Banner", "R6 index.html: missing Smart App Banner meta in head",
+             edit("index.html", '<meta name="apple-itunes-app" content="app-id=6812925073">', "")),
             ("a plain <a href> in a page", "R1 view-markdown-on-mac/index.html: <a href> to the listing isn't the campaign form",
              edit(view, campaign_href("web-view-markdown-on-mac"), PLAIN)),
             ("a listing URL in prose, outside an <a href>", "R1 view-markdown-on-mac/index.html: listing URL outside an <a href>",

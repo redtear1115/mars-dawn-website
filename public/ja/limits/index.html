@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -26,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MarsDawn ができないこと · MarsDawn</title>
-<meta name="description" content="同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。">
+<meta name="description" content="同期なし、iPhone・iPad では編集不可、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -43,7 +45,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ja/limits/">
 <link rel="alternate" type="text/markdown" href="/ja/limits/index.md">
 <meta property="og:title" content="MarsDawn ができないこと · MarsDawn">
-<meta property="og:description" content="同期なし、iPhone・iPad アプリなし、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。">
+<meta property="og:description" content="同期なし、iPhone・iPad では編集不可、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/limits/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -129,26 +131,26 @@ try {
   <div class="shot-frame"><div class="shot-canvas">
     <img src="/assets/screens/03-dark-1180.png" srcset="/assets/screens/03-dark-800.png 800w, /assets/screens/03-dark-1180.png 1180w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="1180" height="844" alt="MarsDawn のダークモード、左が Markdown のソース、右がレンダリングされたページ。">
     <span class="marker l tb co-limits-1" aria-hidden="true">1</span><span class="marker l co-limits-2" aria-hidden="true">2</span><span class="marker r tb co-limits-3" aria-hidden="true">3</span><span class="marker r co-limits-4" aria-hidden="true">4</span>
-    <span class="leader l up co-limits-1" aria-hidden="true"><span>この Mac で、ウインドウひとつにつき文書ひとつ。</span></span><span class="leader l down co-limits-2" aria-hidden="true"><span>ここで Markdown を書きます。</span></span><span class="leader r up co-limits-3" aria-hidden="true"><span>ツールバーにあるのはテーマとレイアウトだけで、プラグインメニューはありません。</span></span><span class="leader r down co-limits-4" aria-hidden="true"><span>このページは読むためのもので、編集はできません。</span></span>
+    <span class="leader l up co-limits-1" aria-hidden="true"><span>書類はどれも、この Mac 上のファイルです。</span></span><span class="leader l down co-limits-2" aria-hidden="true"><span>ここで Markdown を書きます。</span></span><span class="leader r up co-limits-3" aria-hidden="true"><span>ツールバーにあるのはテーマとレイアウトだけで、プラグインメニューはありません。</span></span><span class="leader r down co-limits-4" aria-hidden="true"><span>このページは読むためのもので、編集はできません。</span></span>
   </div></div>
   <figcaption>
     <span class="figure-label">このスクリーンショットの内容</span>
-    <ol><li>この Mac で、ウインドウひとつにつき文書ひとつ。</li><li>ここで Markdown を書きます。</li><li>ツールバーにあるのはテーマとレイアウトだけで、プラグインメニューはありません。</li><li>このページは読むためのもので、編集はできません。</li></ol>
+    <ol><li>書類はどれも、この Mac 上のファイルです。</li><li>ここで Markdown を書きます。</li><li>ツールバーにあるのはテーマとレイアウトだけで、プラグインメニューはありません。</li><li>このページは読むためのもので、編集はできません。</li></ol>
   </figcaption>
 </figure>
 <h2 id="left-out">省かれているもの</h2>
 <h3>デバイスと使う人</h3>
 <ul>
   <li><strong>同期：</strong>MarsDawn は文書を同期しません。文書は保存した場所にそのまま残るので、別の Mac でも使いたい場合は、すでに同期しているフォルダに保存してください。</li>
-  <li><strong>iPhone と iPad：</strong>これらの端末向けアプリはありません。MarsDawn は Mac 専用です。</li>
+  <li><strong>iPhone と iPad：</strong>MarsDawn は閲覧専用です。Markdown、テキスト、PDF、JSON、YAML のファイルを開けますが、編集はできません。共有、プリント、PDF として保存はできますが、ここで保存した PDF のリンクは機能しません。JSON と YAML のファイルは共有のみで、プリントや PDF として保存はできません。読むのは iCloud Drive に置いたファイルか、ほかの App から開いたファイルで、MarsDawn 自体にはクラウドサービスがありません。</li>
   <li><strong>共有：</strong>アカウントも共同編集もありません。MarsDawn は自分の Mac で使う一人のためのものです。</li>
-  <li><strong>システム：</strong>MarsDawn には macOS 26 以降が必要です。</li>
+  <li><strong>システム：</strong>MarsDawn には、Mac では macOS 26 以降、iPhone と iPad では iOS 26 または iPadOS 26 以降が必要です。</li>
 </ul>
 <h3>ファイルと機能</h3>
 <ul>
   <li><strong>編集：</strong>左に Markdown を書き、右でページを読みます。ページ自体は編集できません。</li>
   <li><strong>形式：</strong>MarsDawn は PDF の書き出しとプリントに対応していますが、Word ファイルへの書き出しはできません。</li>
-  <li><strong>その他のファイル：</strong>プレーンテキストファイルと PDF は読み取り専用で開きます。</li>
+  <li><strong>その他のファイル：</strong>PDF と、UTF-8 以外のエンコーディングのテキストファイルは読み出し専用で開きます。Mac では JSON と YAML を書類として開いて編集でき、ツリープレビューも表示されます。iPhone と iPad では読み出し専用で開き、ツリープレビューも表示されます。</li>
   <li><strong>テーマ：</strong>夜明け、クラシック、モダン、ビビッドの4種類が内蔵されており、それぞれライトとダークがあります。また、審査済みの<a href="/ja/themes/gallery/">テーマギャラリー</a>からさらにインストールできます（「設定 ▸ 外観モード ▸ テーマを追加…」）。テーマは色といくつかのスタイルオプションを設定するもので、カスタム CSS は使えません。詳しくは<a href="/ja/themes/">テーマ</a>をご覧ください。</li>
   <li><strong>プラグイン：</strong>MarsDawn にプラグインや拡張機能はありません。</li>
 </ul>
@@ -158,8 +160,8 @@ try {
 <h2>MarsDawn に期待できること</h2>
 <ul>
   <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a><span>アカウント不要、同期なし、クラウドなし。</span></li>
-  <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a><span>14日間無料、その後は一度だけ USD 4.99。サブスクリプションはありません。</span></li>
-  <li><a href="/ja/pdf/">PDF 書き出し</a><span>図表、コードのハイライト、配慮された改ページ。</span></li>
+  <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a><span>14日間無料、その後は一度だけ USD 2.49。サブスクリプションはありません。</span></li>
+  <li><a href="/ja/pdf/">プリントと PDF</a><span>プレビューしてレイアウトを選び、プリントか保存。</span></li>
   <li><a href="/ja/native/">Mac アプリ</a><span>ネイティブのウインドウとタブ、自動保存、クイックルック。</span></li>
 </ul>
 </nav>
@@ -173,7 +175,7 @@ try {
         <li><a href="/ja/features/">機能一覧</a></li>
         <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
         <li><a href="/ja/native/">Mac アプリ</a></li>
-        <li><a href="/ja/pdf/">PDF 書き出し</a></li>
+        <li><a href="/ja/pdf/">プリントと PDF</a></li>
         <li><a href="/ja/limits/" aria-current="page">MarsDawn ができないこと</a></li>
         <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
         <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>
@@ -232,6 +234,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-limits&amp;mt=8">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple のロゴ、Mac、iPhone、iPad、iCloud は、米国およびその他の国や地域で登録された Apple Inc. の商標です。App Store および Mac App Store は Apple Inc. のサービスマークです。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>

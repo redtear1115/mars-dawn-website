@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -122,12 +124,57 @@ try {
 <main id="main">
 <section class="intro">
   <h1>Historique des versions</h1>
-  <p>Ce qui a changé dans chaque version de l’app MarsDawn du Mac App Store et de l’outil en ligne de commande gratuit marsdawn. Pour l’app, la date est le jour où la version est parue sur le Mac App Store.</p>
+  <p>Ce qui a changé dans chaque version de l’app MarsDawn pour Mac, iPhone et iPad, et de l’outil en ligne de commande gratuit marsdawn. Pour l’app, la date est le jour où la version est parue sur l’App Store.</p>
 </section>
 
 <p>Ce qui arrive ensuite figure dans la <a href="/fr/roadmap/">feuille de route</a>.</p>
 
-<h2 id="marsdawn-app">App MarsDawn</h2>
+<h2 id="marsdawn-app">MarsDawn pour Mac</h2>
+
+<h3 id="app-1-2-3">MarsDawn 1.2.3</h3>
+<p>23 novembre 2026</p>
+<ul>
+  <li>Faites glisser un fichier de la barre latérale « Fichiers » vers le Finder pour le copier. Vous pouvez aussi faire glisser le PDF depuis l’aperçu de « Imprimer et exporter ».</li>
+  <li>Corrigé : quand l’aperçu redémarre de façon inattendue, il revient à peu près à l’endroit où vous lisiez, au lieu de remonter tout en haut.</li>
+  <li>Corrigé : marsdawn open --background n’active plus le nouvel onglet, même quand le fichier est déjà ouvert. Si MarsDawn est masqué ou réduit, il le reste.</li>
+  <li>Corrigé : dans une fenêtre PDF, Fichier &gt; « Imprimer… » est désormais grisé tant que MarsDawn n’est pas déverrouillé, au lieu de sembler disponible sans rien faire.</li>
+  <li>Corrigé : dans la feuille « Imprimer et exporter », seule la mise en page choisie est mise en évidence par un contour.</li>
+</ul>
+
+<h3 id="app-1-2-2">MarsDawn 1.2.2</h3>
+<p>14 novembre 2026</p>
+<ul>
+  <li>Fichier &gt; « Imprimer… » et Fichier &gt; « Exporter au format PDF… » ouvrent désormais la feuille « Imprimer et exporter », avec un aperçu du PDF. Choisissez « Document », « Guide » ou « Polycopié », puis imprimez ou enregistrez au format PDF. L’impression n’est plus limitée à « Document ».</li>
+  <li>Corrigé : un texte tapé juste après l’enregistrement automatique pouvait être remplacé, et le défilement juste après le retour à « Partagé » pouvait revenir en arrière.</li>
+  <li>Avec « Guide », la feuille « Imprimer et exporter » montre ce qui figurera sur la couverture, et vous pouvez ajouter l’image de couverture « Lever de soleil sur Mars ». « Imprimer et exporter » peut aussi être ajouté à la barre d’outils.</li>
+  <li>Fichier &gt; « Ajouter les plans Claude Code… » ajoute à la barre latérale « Fichiers » le dossier où Claude Code enregistre ses plans, les plus récents en premier. Le menu de tri de la barre latérale propose une nouvelle option, « Afficher uniquement les fichiers que MarsDawn peut ouvrir », à régler pour chaque dossier.</li>
+</ul>
+
+<h3 id="app-1-2-1">MarsDawn 1.2.1</h3>
+<p>3 novembre 2026</p>
+<ul>
+  <li>Sur Mac, ouvrez les fichiers JSON et YAML comme des documents modifiables, avec un aperçu en arbre qui se met à jour pendant la saisie. Coup d’œil dans le Finder affiche le même arbre.</li>
+  <li>MarsDawn est désormais disponible sur iPhone et iPad, pour la lecture. Avec le même compte Apple, un seul essai et un seul déverrouillage couvrent Mac, iPhone et iPad, et les écrans de déverrouillage l’indiquent désormais.</li>
+</ul>
+
+<h3 id="app-1-2-0">MarsDawn 1.2.0</h3>
+<p>27 octobre 2026</p>
+<ul>
+  <li>Une barre de format au-dessus de l’éditeur et un nouveau menu Format insèrent gras (⌘B), italique (⌘I), barré (⇧⌘X), titres H1–H6 (⌥⌘1–⌥⌘6), code, citations, listes à puces, numérotées et de pointage, liens (⌘K), « Image… », tableaux, séparateurs, diagrammes Mermaid et formules. Affichée par défaut ; masquez-la via Présentation &gt; « Masquer la barre de format » ou Réglages &gt; Apparence.</li>
+  <li>Présentation &gt; Source uniquement &gt; « Masquer la syntaxe Markdown » (⌘/) masque les marqueurs en mode Source uniquement tout en laissant la ligne du curseur en Markdown brut, et mémorise votre choix.</li>
+  <li>Fichier &gt; « Créer à partir du presse-papiers » (⌥⌘V) ouvre le presse-papiers dans un nouveau document. Le texte JSON échappé issu d’une IA (comme \n) est converti une fois pour la lecture, avec une barre pour garder le texte tel quel.</li>
+  <li>Sélectionnez du texte dans l’éditeur ou l’aperçu et choisissez « Envoyer à… » au clic secondaire pour ouvrir Claude ou ChatGPT avec une invite, la sélection, le chemin relatif (ou le nom du fichier) et les numéros de ligne. Une confirmation s’affiche au premier envoi ; si la sélection est trop longue, la copie est proposée.</li>
+  <li>Édition &gt; « Copier en texte riche » copie les blocs sélectionnés, ou tout le document, en texte mis en forme pour Mail, Pages, Google Docs ou Notion, avec le Markdown en texte brut à côté.</li>
+  <li>Aide &gt; « Installer l’outil en ligne de commande et le skill d’agent… » ouvre une fenêtre avec la commande en une ligne et les instructions à copier pour votre agent IA, sans rien installer elle-même.</li>
+  <li>Fichier &gt; « Exporter au format PDF… » ajoute un menu « Mise en page » mémorisé à trois choix compatibles avec tous les thèmes : « Standard », « Guide » (couverture tirée de votre front matter, table des matières numérotée, chapitres sur une nouvelle page, pied de page « n / N », signets PDF, marge de reliure) et « Polycopié » (colonne de notes à droite, titre en page 1, pied « nom · date · n / N », tableaux larges). « Imprimer… » utilise toujours « Standard ».</li>
+  <li>Appuyez sur ⌘F en mode Aperçu uniquement ou côté aperçu en mode Partagé pour rechercher : ⌘G et ⇧⌘G parcourent les occurrences en boucle, ⌘E reprend la sélection et les résultats sont surlignés en jaune. En mode Partagé, la recherche porte sur le côté actif.</li>
+  <li>Le texte entouré d’un seul tilde de chaque côté et sans espace, comme ~x~, s’affiche désormais en indice, comme dans HackMD. Pour barrer du texte, utilisez deux tildes : ~~x~~. Cela s’applique à l’aperçu, à « Exporter au format PDF » et à Coup d’œil.</li>
+  <li>MarsDawn lit aussi davantage de syntaxe HackMD : ==surlignage==, ^exposant^, une table des matières [TOC], des tailles d’image comme =300x200 et des intégrations comme {%youtube %}, qui s’affichent sous forme de liens.</li>
+  <li>« Conserver les sauts de ligne simples » dans Réglages &gt; Apparence conserve chaque saut de ligne de la source dans l’aperçu, « Exporter au format PDF », l’impression et Coup d’œil, comme dans HackMD.</li>
+  <li>Les fichiers Markdown dans un autre encodage (comme Big5) s’ouvrent en lecture seule avec une barre proposant « Enregistrer en UTF-8… ». « Exporter au format PDF… » et « Imprimer… » restent disponibles.</li>
+  <li>Au-delà de 16 Mio, la barre latérale Plan affiche « Ce document est trop volumineux pour afficher un plan. » au lieu de « Aucun titre ».</li>
+  <li>Le décompte des mots ignore les blocs de code dans les sections details repliées, et un appel de note juste au-dessus d’un tableau s’affiche correctement en lien.</li>
+</ul>
 
 <h3 id="app-1-1-1">MarsDawn 1.1.1</h3>
 <p>15 octobre 2026</p>
@@ -140,8 +187,71 @@ try {
 
 <p>Les versions précédentes ne sont décrites qu’en anglais : <a href="/changelog/">voir l’historique en anglais</a>.</p>
 
+<h2 id="marsdawn-ios">MarsDawn pour iPhone et iPad</h2>
+
+<h3 id="ios-1-0-3">MarsDawn 1.0.3</h3>
+<p>23 novembre 2026</p>
+<ul>
+  <li>Sur iPhone, les boutons « Partager » et « Apparence et thème » se trouvent désormais dans une barre d’outils du bas, avec le nombre de jours d’essai restants entre les deux. Un nom de fichier trop long est raccourci en son milieu, ce qui laisse l’extension visible.</li>
+  <li>Corrigé : l’ouverture d’un fichier que MarsDawn ne peut pas lire ne remplace plus le document ouvert.</li>
+  <li>Sur iPad, le panneau « Apparence et thème » s’ouvre désormais à partir de son bouton dans la barre d’outils, en orientation portrait comme en paysage.</li>
+  <li>Corrigé : à l’impression, un aperçu sombre ne passe plus aux couleurs claires.</li>
+  <li>Corrigé : une fois MarsDawn déverrouillé sur iPhone, la feuille de déverrouillage se ferme et le bouton « Déverrouiller MarsDawn » ne reste plus sur l’écran d’accueil de l’app.</li>
+</ul>
+
+<h3 id="ios-1-0-2">MarsDawn 1.0.2</h3>
+<p>13 novembre 2026</p>
+<ul>
+  <li>Ouvrez des PDF et recherchez du texte à l’intérieur. Un PDF protégé demande d’abord son mot de passe.</li>
+  <li>Ouvrez les fichiers JSON et YAML comme des documents en lecture seule, avec un aperçu en arbre.</li>
+  <li>Ouvrez des fichiers Markdown, texte, PDF, JSON et YAML depuis Fichiers, Mail et d’autres apps.</li>
+  <li>Recherchez du texte dans l’aperçu (⌘F au clavier). « Apparence et thème » propose un nouveau réglage : « Conserver les sauts de ligne simples ».</li>
+  <li>Partagez le fichier depuis la barre d’outils ou imprimez-le.</li>
+  <li>Sur iPad et sur l’iPhone Duo déplié, le plan devient une barre latérale qui indique où vous en êtes. Les signets PDF y apparaissent aussi.</li>
+</ul>
+
+<p>Les versions antérieures à 1.0.2 ne sont pas listées.</p>
+
 <h2 id="marsdawn-command-line-tool">Outil en ligne de commande marsdawn</h2>
 <p>Les versions antérieures à 0.5.1 ne sont pas listées.</p>
+
+<h3 id="marsdawn-0-7-7">marsdawn 0.7.7</h3>
+<p>9 novembre 2026. Export PNG, blocs repliables et exports plus rapides des gros fichiers.</p>
+<ul>
+  <li><code>marsdawn export --format png</code> exporte un document en PNG pour vérifier son rendu : <code>--width</code> (600–2000, 1200 par défaut), <code>--appearance light|dark</code>, <code>--theme</code>, et <code>--lines</code> ou <code>--heading</code> pour n’en exporter qu’une partie. Une page de plus de 8 000 pixels de haut est découpée en images numérotées, jamais au milieu d’un tableau, d’un bloc de code ou d’un diagramme.</li>
+  <li><code>marsdawn export --details</code> définit comment les blocs repliables s’impriment : <code>expand</code>, par défaut, les imprime tous ouverts, comme avant ; <code>as-written</code> n’ouvre que les blocs écrits ouverts et n’imprime que le résumé des autres. Dans les deux cas, le résumé s’imprime sur une ligne en gras, sans triangle.</li>
+  <li>Les blocs repliables prennent en charge davantage de syntaxes de HackMD et d’Obsidian : <code>:::spoiler</code> sans titre ou avec <code>{state="open"}</code>, du Markdown dans les titres, des <code>::::spoiler</code> imbriqués, et les encadrés repliables d’Obsidian <code>&gt; [!note]-</code> et <code>&gt; [!tip]+</code>.</li>
+  <li>Les gros documents s’exportent beaucoup plus vite : dans notre test, un fichier de 10 Mo a pris environ 74 secondes au lieu d’environ 4 minutes.</li>
+  <li>Quand plusieurs commandes <code>marsdawn export</code> s’exécutaient en même temps, l’une d’elles pouvait se terminer avec le code 5. Elle réessaie désormais.</li>
+  <li>Quand l’app MarsDawn n’est pas ouverte, plusieurs commandes <code>marsdawn open</code> lancées en même temps ouvrent désormais chaque fichier. Avant, certains fichiers ne s’ouvraient pas alors que la commande indiquait un succès.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-6">marsdawn 0.7.6</h3>
+<p>2 novembre 2026. Les PDF Guide sous macOS 27.2.</p>
+<ul>
+  <li>Sous macOS 27.2, un PDF en mise en page Guide conserve les numéros de page de la table des matières et les signets des chapitres qui commencent sur une nouvelle page.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-5">marsdawn 0.7.5</h3>
+<p>30 octobre 2026. Les titres du Polycopié restent avec leurs tableaux.</p>
+<ul>
+  <li>Dans la mise en page Polycopié, un titre reste avec le tableau large placé dessous, au lieu de se retrouver seul en bas de page.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-4">marsdawn 0.7.4</h3>
+<p>25 octobre 2026. Corrections des notes de bas de page.</p>
+<ul>
+  <li>Une référence de note de bas de page dans le paragraphe juste au-dessus d’un tableau renvoie à sa note.</li>
+  <li>Une référence de note de bas de page dans le titre d’un encadré, le résumé d’un spoiler ou le texte alternatif d’une image ne laisse plus de caractères parasites sur la page. Dans le texte alternatif, elle reste telle qu’elle a été écrite.</li>
+  <li>Une référence de note de bas de page sur une ligne suivante d’une définition de note arrive au bon endroit et ne casse plus un code en ligne voisin.</li>
+  <li>La skill pour agents cite toutes les erreurs d’utilisation qui affichent du JSON.</li>
+</ul>
+
+<h3 id="marsdawn-0-7-3">marsdawn 0.7.3</h3>
+<p>22 octobre 2026. La mise en page Polycopié.</p>
+<ul>
+  <li><code>marsdawn export --layout handout</code> laisse une colonne de notes vide à droite de chaque page, place le titre et la date en haut de la page 1 et termine chaque page par le nom du fichier, la date et le numéro de page. Un tableau très large peut déborder sur la colonne de notes.</li>
+</ul>
 
 <h3 id="marsdawn-0-7-2">marsdawn 0.7.2</h3>
 <p>20 octobre 2026. La mise en page Guide, les encadrés et les polices japonaises.</p>
@@ -243,7 +353,7 @@ try {
         <li><a href="/fr/features/">Fonctionnalités</a></li>
         <li><a href="/fr/quicklook/">Coup d’œil pour Markdown</a></li>
         <li><a href="/fr/native/">Une app Mac</a></li>
-        <li><a href="/fr/pdf/">Export PDF</a></li>
+        <li><a href="/fr/pdf/">Imprimer et PDF</a></li>
         <li><a href="/fr/limits/">Ce que MarsDawn ne fait pas</a></li>
         <li><a href="/fr/pay-once/">Essai gratuit, achat unique</a></li>
         <li><a href="/fr/yours/">Vos textes restent sur votre Mac</a></li>
@@ -302,6 +412,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Une nouvelle aube pour Markdown.</span> <span>MarsDawn est disponible sur le <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-changelog&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, le logo Apple, Mac, iPhone, iPad et iCloud sont des marques d’Apple Inc., déposées aux États-Unis et dans d’autres pays et régions. App Store et Mac App Store sont des marques de service d’Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Consentement aux cookies" hidden>

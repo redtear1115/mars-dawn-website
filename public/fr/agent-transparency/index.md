@@ -1,58 +1,60 @@
-# Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?
+# Anthropic veut des agents transparents. Mais qui lit ce qu’ils exposent ?
 
-En décembre 2024, Anthropic a publié « Building Effective Agents », un guide destiné à ceux qui construisent des agents IA. Son résumé énonce trois principes, dont la transparence. Cet article s’intéresse à l’autre bout de ce principe : dès qu’un agent expose ses étapes, quelqu’un doit les lire.
+Offre Black Friday : l’achat unique qui déverrouille l’app est à moitié prix, 2,49 USD au lieu de 4,99 USD, jusqu’au 30 novembre. Il repasse à 4,99 USD le 1er décembre. <!-- sale-line -->
 
-**La transparence, c’est l’agent qui la fournit. La lecture, c’est vous. Anthropic demande aux concepteurs de montrer les étapes de planification d’un agent ; pour la plupart des personnes qui pilotent un agent de code, ces étapes arrivent dans un fichier Markdown que quelqu’un doit lire au bon moment.**
+En décembre 2024, Anthropic a publié « Building Effective Agents », un guide destiné à ceux qui construisent des agents IA. Son résumé énonce trois principes, dont la transparence. Cet article s’intéresse à l’autre bout de ce principe : dès qu’un agent expose ses étapes, quelqu’un doit les lire.
+
+**La transparence, c’est l’agent qui la fournit. La lecture, c’est vous. Anthropic demande aux concepteurs de montrer les étapes de planification d’un agent ; pour la plupart des personnes qui pilotent un agent de code, ces étapes arrivent dans un fichier Markdown que quelqu’un doit lire au bon moment.**
 
 ## Ce que dit le guide
 
-Erik S. et Barry Zhang résument leurs conseils ainsi :
+Erik S. et Barry Zhang résument leurs conseils ainsi :
 
-> « Quand nous implémentons des agents, nous essayons de suivre trois principes fondamentaux : garder une conception simple. Privilégier la transparence en montrant explicitement les étapes de planification de l’agent. Soigner l’interface agent-ordinateur (ACI) par une documentation et des tests approfondis des outils. »
+> « Quand nous implémentons des agents, nous essayons de suivre trois principes fondamentaux : garder une conception simple. Privilégier la transparence en montrant explicitement les étapes de planification de l’agent. Soigner l’interface agent-ordinateur (ACI) par une documentation et des tests approfondis des outils. »
 
 Ce sont des principes de conception pour ceux qui construisent des agents, pas des consignes pour la personne qui en utilise un. Le principe demande que les étapes soient montrées. Il ne dit pas qui les lit.
 
-Le même article décrit ce que fait un agent une fois qu’il a une tâche : « Une fois la tâche claire, les agents planifient et agissent de façon autonome, en revenant éventuellement vers l’humain pour obtenir des informations ou un avis. » Et : « Les agents peuvent alors faire une pause pour obtenir un retour humain à des points de contrôle ou face à un blocage. » Regardez les mots *éventuellement* et *peuvent*. Les points de contrôle sont décrits comme quelque chose qu’un agent peut avoir, pas quelque chose qu’il doit avoir.
+Le même article décrit ce que fait un agent une fois qu’il a une tâche : « Une fois la tâche claire, les agents planifient et agissent de façon autonome, en revenant éventuellement vers l’humain pour obtenir des informations ou un avis. » Et : « Les agents peuvent alors faire une pause pour obtenir un retour humain à des points de contrôle ou face à un blocage. » Regardez les mots *éventuellement* et *peuvent*. Les points de contrôle sont décrits comme quelque chose qu’un agent peut avoir, pas quelque chose qu’il doit avoir.
 
 ## L’essentiel de la vérification ne se fait pas par vous
 
-Il est facile d’en exagérer la portée, alors voici ce que le guide place réellement en premier. L’agent se vérifie lui-même face au monde : « Pendant l’exécution, il est crucial que les agents obtiennent à chaque étape une “vérité terrain” de l’environnement (comme les résultats d’appels d’outils ou d’exécution de code) pour évaluer leur progression. » Dans cette phrase, la vérité terrain désigne des résultats de tests et des sorties d’outils. Pas une personne.
+Il est facile d’en exagérer la portée, alors voici ce que le guide place réellement en premier. L’agent se vérifie lui-même face au monde : « Pendant l’exécution, il est crucial que les agents obtiennent à chaque étape une “vérité terrain” de l’environnement (comme les résultats d’appels d’outils ou d’exécution de code) pour évaluer leur progression. » Dans cette phrase, la vérité terrain désigne des résultats de tests et des sorties d’outils. Pas une personne.
 
-Le guide est aussi direct sur le risque : « La nature autonome des agents implique des coûts plus élevés et un risque d’erreurs qui s’accumulent. » Sa réponse : des tests approfondis dans des environnements isolés, avec des garde-fous. Il ne dit pas « lisez plus attentivement ».
+Le guide est aussi direct sur le risque : « La nature autonome des agents implique des coûts plus élevés et un risque d’erreurs qui s’accumulent. » Sa réponse : des tests approfondis dans des environnements isolés, avec des garde-fous. Il ne dit pas « lisez plus attentivement ».
 
-Une personne intervient plus loin, dans l’annexe sur les agents de code : « Cependant, si les tests automatisés aident à vérifier le fonctionnement, la relecture humaine reste cruciale pour garantir que les solutions répondent aux exigences plus larges du système. » Cette phrase porte sur du code. Mais le manque qu’elle désigne est familier avec n’importe quel agent : un test peut vous dire que quelque chose fonctionne, pas que c’est ce que vous vouliez.
+Une personne intervient plus loin, dans l’annexe sur les agents de code : « Cependant, si les tests automatisés aident à vérifier le fonctionnement, la relecture humaine reste cruciale pour garantir que les solutions répondent aux exigences plus larges du système. » Cette phrase porte sur du code. Mais le manque qu’elle désigne est familier avec n’importe quel agent : un test peut vous dire que quelque chose fonctionne, pas que c’est ce que vous vouliez.
 
 ## Où finissent les étapes
 
 **À partir d’ici, c’est notre lecture, pas celle d’Anthropic.**
 
-Si vous utilisez un agent de code au quotidien, ses étapes de planification n’apparaissent généralement pas dans un tableau de bord. Elles apparaissent sous forme de fichiers : `plan.md`, une liste de tâches à cocher, un fichier d’avancement que l’agent réécrit sans cesse, un résumé à la fin. La transparence, de votre côté, signifie davantage à lire.
+Si vous utilisez un agent de code au quotidien, ses étapes de planification n’apparaissent généralement pas dans un tableau de bord. Elles apparaissent sous forme de fichiers : `plan.md`, une liste de tâches à cocher, un fichier d’avancement que l’agent réécrit sans cesse, un résumé à la fin. La transparence, de votre côté, signifie davantage à lire.
 
-Montrer les étapes, c’est la part de l’agent. L’autre part, c’est une personne qui les lit au moment où cela compte : avant que la migration ne s’exécute, avant que la branche ne soit fusionnée, avant que « terminé » ne soit accepté. Un agent qui expose tout dans un fichier de 600 lignes que personne n’ouvre est transparent sur le papier et sans surveillance dans les faits.
+Montrer les étapes, c’est la part de l’agent. L’autre part, c’est une personne qui les lit au moment où cela compte : avant que la migration ne s’exécute, avant que la branche ne soit fusionnée, avant que « terminé » ne soit accepté. Un agent qui expose tout dans un fichier de 600 lignes que personne n’ouvre est transparent sur le papier et sans surveillance dans les faits.
 
-Harrison Chase a fait une remarque voisine en 2024, à propos du fonctionnement des frameworks d’agents plutôt que des documents : « Vous voudrez pouvoir observer ce qui se passe à l’intérieur, puisque les étapes exactes ne sont peut-être pas connues à l’avance. » Il parlait d’outillage pour ceux qui construisent des agents. Si c’est vous qui pilotez l’agent, le simple fichier qu’il ne cesse d’écrire est souvent la partie que vous pouvez observer.
+Harrison Chase a fait une remarque voisine en 2024, à propos du fonctionnement des frameworks d’agents plutôt que des documents : « Vous voudrez pouvoir observer ce qui se passe à l’intérieur, puisque les étapes exactes ne sont peut-être pas connues à l’avance. » Il parlait d’outillage pour ceux qui construisent des agents. Si c’est vous qui pilotez l’agent, le simple fichier qu’il ne cesse d’écrire est souvent la partie que vous pouvez observer.
 
 Aucun de ces auteurs ne mentionne MarsDawn, et aucun ne le recommande, pas plus qu’aucun autre outil Markdown.
 
 ## Pourquoi cette lecture est plus difficile qu’il n’y paraît
 
-Le fichier est long, et ce qui compte se trouve rarement en haut. Le diagramme qui explique la modification est du source Mermaid, pas une image (pour le voir dessiné, consultez [Comment afficher un fichier Markdown sur Mac](/fr/view-markdown-on-mac/)). L’agent réécrit peut-être le fichier alors que vous en êtes à la moitié. Il y a souvent plus d’un fichier, parfois sur différentes branches ou worktrees. Et quand vous repérez un problème, « la partie sur le cache a l’air bizarre » laisse l’agent deviner. La version longue se trouve sur [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
+Le fichier est long, et ce qui compte se trouve rarement en haut. Le diagramme qui explique la modification est du source Mermaid, pas une image (pour le voir dessiné, consultez [Comment afficher un fichier Markdown sur Mac](/fr/view-markdown-on-mac/)). L’agent réécrit peut-être le fichier alors que vous en êtes à la moitié. Il y a souvent plus d’un fichier, parfois sur différentes branches ou worktrees. Et quand vous repérez un problème, « la partie sur le cache a l’air bizarre » laisse l’agent deviner. La version longue se trouve sur [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
 
 ## Ce que MarsDawn apporte, et ce qu’il n’apporte pas
 
-MarsDawn est une app Mac pour cette lecture. Il ne rend pas un agent plus transparent, et il n’embarque aucun modèle d’IA : il ne résumera pas le plan et ne vous dira pas s’il est juste. Ce qu’il fait :
+MarsDawn est une app Mac pour cette lecture. Il ne rend pas un agent plus transparent, et il n’embarque aucun modèle d’IA : il ne résumera pas le plan et ne vous dira pas s’il est juste. Ce qu’il fait :
 
-- **Fichiers longs :** Présentation ▸ Afficher la barre latérale (⌃⌘S) ouvre l’onglet Plan, qui liste les titres. Cliquez sur l’un d’eux pour y sauter.
-- **Diagrammes et maths :** la source et la page rendue sont côte à côte (⌘2) et défilent ensemble, avec Mermaid et KaTeX dessinés. Si un diagramme est cassé, l’aperçu affiche sa source avec l’erreur en dessous.
-- **Réécrit pendant que vous lisez :** quand l’agent réécrit le fichier, MarsDawn le recharge et garde votre position, tant que vous n’avez pas de modifications non enregistrées.
-- **Plusieurs fichiers :** ouvrez le dossier de l’agent avec Fichier ▸ Ouvrir un dossier… (⇧⌘O). Les nouveaux fichiers apparaissent dans l’onglet Fichiers en une seconde environ, et pour un checkout git, l’en-tête indique la branche ou le worktree.
-- **Désigner une ligne :** Édition ▸ Copier la référence (⌥⌘C) copie votre position sous la forme `docs/plan.md:42`, et Copier pour l’IA (⌃⌥⌘C) ajoute le texte sélectionné en dessous, prêt à coller dans la conversation avec l’agent.
+- **Fichiers longs :** Présentation ▸ Afficher la barre latérale (⌃⌘S) ouvre l’onglet Plan, qui liste les titres. Cliquez sur l’un d’eux pour y sauter.
+- **Diagrammes et maths :** la source et la page rendue sont côte à côte (⌘2) et défilent ensemble, avec Mermaid et KaTeX dessinés. Si un diagramme est cassé, l’aperçu affiche sa source avec l’erreur en dessous.
+- **Réécrit pendant que vous lisez :** quand l’agent réécrit le fichier, MarsDawn le recharge et garde votre position, tant que vous n’avez pas de modifications non enregistrées.
+- **Plusieurs fichiers :** ouvrez le dossier de l’agent avec Fichier ▸ Ouvrir un dossier… (⇧⌘O). Les nouveaux fichiers apparaissent dans l’onglet Fichiers en une seconde environ, et pour un checkout git, l’en-tête indique la branche ou le worktree.
+- **Désigner une ligne :** Édition ▸ Copier la référence (⌥⌘C) copie votre position sous la forme `docs/plan.md:42`, et Copier pour l’IA (⌃⌥⌘C) ajoute le texte sélectionné en dessous, prêt à coller dans la conversation avec l’agent.
 
 C’est toujours vous qui lisez. MarsDawn garde lisible un fichier long qui change pendant que vous le faites.
 
 ## Essayer
 
-MarsDawn est sur le [Mac App Store](https://apps.apple.com/app/id6812925073). Il existe aussi l’outil en ligne de commande gratuit `marsdawn` :
+MarsDawn est sur le [Mac App Store](https://apps.apple.com/app/id6812925073). Il existe aussi l’outil en ligne de commande gratuit `marsdawn` :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -60,37 +62,39 @@ brew install redtear1115/tap/marsdawn
 
 Il exporte le Markdown en PDF sans l’app.
 
-[Ligne de commande](/fr/cli/) · À savoir avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
+[Ligne de commande](/fr/cli/) · À savoir avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
 
 ## Pour aller plus loin
 
-- Pourquoi ce que rend un agent est difficile à lire, avec une liste de vérification : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
-- La liste, étape par étape avec un exemple : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/).
-- Quels documents vous remettent les différents types d’agents : [Quatre modèles de conception d’agents et les documents que chacun vous remet](/fr/agent-design-patterns/).
-- L’argument court pour lire ce que produit l’IA : [Pourquoi ce que produit l’IA a toujours besoin d’un lecteur humain](/fr/reviewing-ai-output/).
+- Pourquoi ce que rend un agent est difficile à lire, avec une liste de vérification : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
+- La liste, étape par étape avec un exemple : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/).
+- Quels documents vous remettent les différents types d’agents : [Quatre modèles de conception d’agents et les documents que chacun vous remet](/fr/agent-design-patterns/).
+- L’argument court pour lire ce que produit l’IA : [Pourquoi ce que produit l’IA a toujours besoin d’un lecteur humain](/fr/reviewing-ai-output/).
 
 ## Sources
 
-- Erik S. et Barry Zhang, « Building Effective Agents », Anthropic, 19 décembre 2024 : [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) (cité d’après la version en ligne le 26/09/2026 ; l’article précise désormais qu’une grande partie des outils décrits a changé depuis décembre 2024).
-- Harrison Chase, « What is an agent? », LangChain, 28 juin 2024, copie archivée : [http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/](http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/) (l’adresse d’origine affiche désormais un autre article, de 2026).
+- Erik S. et Barry Zhang, « Building Effective Agents », Anthropic, 19 décembre 2024 : [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) (cité d’après la version en ligne le 26/09/2026 ; l’article précise désormais qu’une grande partie des outils décrits a changé depuis décembre 2024).
+- Harrison Chase, « What is an agent? », LangChain, 28 juin 2024, copie archivée : [http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/](http://web.archive.org/web/20240724003401/https://blog.langchain.dev/what-is-an-agent/) (l’adresse d’origine affiche désormais un autre article, de 2026).
 
 ## Plus
 
-- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Lisez et relisez le Markdown de votre agent sur Mac : aperçu partagé en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.
-- [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Markdown natif pour Mac : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions, notes en marge et dossiers papier.
+- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Relisez le Markdown, JSON et YAML de votre agent sur Mac : aperçu en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 2,49 USD une fois.
+- [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Mac natif pour Markdown, JSON et YAML : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions et dossiers papier.
 - [Vos textes restent sur votre Mac](https://marsdawn.southern-light.dev/fr/yours/index.md): MarsDawn n’a ni compte, ni synchronisation, ni cloud. Vos documents Markdown restent sur votre Mac, dans les fichiers et dossiers que vous choisissez.
-- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
-- [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.
+- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 2,49 USD. Sans abonnement, sans compte.
+- [Imprimer et PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Prévisualisez votre Markdown, puis imprimez-le ou enregistrez-le en PDF sur Mac, en disposition Document, Guide ou Polycopié, avec diagrammes et code coloré.
 - [Une app Mac](https://marsdawn.southern-light.dev/fr/native/index.md): Un éditeur Markdown qui est une vraie app Mac : fenêtres et onglets natifs, enregistrement automatique, historique des versions, Coup d’œil dans le Finder et un éditeur de texte qui se comporte comme sur Mac.
-- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
+- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas de modification sur iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
 - [Assistance](https://marsdawn.southern-light.dev/fr/support/index.md): De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
 - [Politique de confidentialité](https://marsdawn.southern-light.dev/fr/privacy/index.md): MarsDawn ne collecte aucune donnée personnelle. Vos documents et vos réglages restent sur votre Mac.
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
+- [Passer de HackMD à votre Mac](https://marsdawn.southern-light.dev/fr/from-hackmd/index.md): Téléchargez vos notes HackMD en .md et lisez-les dans MarsDawn sur votre Mac. Comment tout télécharger, partir d’un dépôt GitHub et garder vos images.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
-- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 2,49 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.
 - [marsdawn pour les agents](https://marsdawn.southern-light.dev/fr/cli/agents/index.md): Une référence pour les agents IA et les scripts qui appellent marsdawn pour convertir du Markdown en PDF : commandes, sortie JSON, schémas, codes de sortie et configuration requise.

@@ -2,6 +2,7 @@
 <html lang="ja" data-theme="dawn">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -134,6 +136,7 @@ try {
 <p>質問へ移動</p>
 <ul>
   <li><a href="#what-do-i-need-to-run-marsdawn">MarsDawn を動かすには何が必要ですか？</a></li>
+  <li><a href="#can-i-install-marsdawn-with-homebrew">Homebrew で MarsDawn をインストールできますか？</a></li>
   <li><a href="#how-do-i-switch-between-the-editor-and-the-preview">エディタとプレビューはどう切り替えますか？</a></li>
   <li><a href="#an-image-in-my-document-doesn-t-show">文書内の画像が表示されません。</a></li>
   <li><a href="#how-do-i-add-an-image">画像を追加するには？</a></li>
@@ -146,6 +149,8 @@ try {
 </nav>
 <h3 id="what-do-i-need-to-run-marsdawn">MarsDawn を動かすには何が必要ですか？</h3>
 <p>macOS 26 Tahoe 以降を搭載した Mac。Apple シリコンでも Intel でも動作します。</p>
+<h3 id="can-i-install-marsdawn-with-homebrew">Homebrew で MarsDawn をインストールできますか？</h3>
+<p>はい、Mac App Store 経由でインストールできます。<code>brew install mas</code> を実行してから、<code>sudo mas get 6812925073</code> を実行してください。<code>brew install marsdawn</code> は別のもので、インストールされるのはコマンドラインツールであり、アプリではありません。</p>
 <h3 id="how-do-i-switch-between-the-editor-and-the-preview">エディタとプレビューはどう切り替えますか？</h3>
 <p><kbd>⌘1</kbd> でソースのみ、<kbd>⌘2</kbd> で左右分割、<kbd>⌘3</kbd> でプレビューのみになります。同じ選択肢は「表示」メニューとツールバーにもあります。</p>
 <h3 id="an-image-in-my-document-doesn-t-show">文書内の画像が表示されません。</h3>
@@ -180,7 +185,7 @@ try {
         <li><a href="/ja/features/">機能一覧</a></li>
         <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
         <li><a href="/ja/native/">Mac アプリ</a></li>
-        <li><a href="/ja/pdf/">PDF 書き出し</a></li>
+        <li><a href="/ja/pdf/">プリントと PDF</a></li>
         <li><a href="/ja/limits/">MarsDawn ができないこと</a></li>
         <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
         <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>
@@ -239,6 +244,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-support&amp;mt=8">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple のロゴ、Mac、iPhone、iPad、iCloud は、米国およびその他の国や地域で登録された Apple Inc. の商標です。App Store および Mac App Store は Apple Inc. のサービスマークです。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>

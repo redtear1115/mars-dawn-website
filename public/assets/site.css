@@ -32,6 +32,7 @@ body [lang] { font-family: var(--font); }
 :lang(ko) { word-break: keep-all; overflow-wrap: anywhere; }
 
 @media (prefers-color-scheme: dark) {
+  .price-card .price-card__cta { background: var(--ember); color: var(--paper); }
   :root {
     --paper: #1C1A1F;
     --sand: #262229;
@@ -42,6 +43,77 @@ body [lang] { font-family: var(--font); }
     --link: #FF9E6B;
     --rule: #E08A5C;
   }
+}
+
+/* pricing.md (#274): one shared document card, with silent Markdown punctuation. */
+.price-card {
+  margin: 36px 0;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+.price-card__bar {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 10px 16px;
+  background: var(--sand);
+  color: var(--dust);
+  font: 0.8rem var(--mono);
+}
+.price-card__dots {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: var(--dust);
+  box-shadow: 9px 0 var(--dust), 18px 0 var(--dust);
+}
+.price-card__body { padding: 20px; }
+.price-card__head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.price-card h2 { margin: 0; padding: 0; border: 0; font-size: 1.375rem; text-wrap: wrap; }
+.price-card__badge { margin: 0; font-size: 0.85rem; }
+.price-card .price-card__price { margin: 20px 0 14px; font-size: clamp(1.6rem, 7vw, 2.2rem); line-height: 1.3; font-weight: 650; }
+.price-card blockquote { margin: 0 0 20px; padding: 0; border: 0; color: var(--ink); font-style: normal; }
+.price-card ul { margin: 0 0 20px; padding: 0; list-style: none; }
+.price-card li { padding-left: 1.2em; text-indent: -1.2em; }
+.price-card__action { margin: 0; }
+.price-card__cta {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--link);
+  color: #FFFFFF;
+  font-weight: 650;
+  text-decoration: none;
+}
+.price-card h2::before,
+.price-card__price::before,
+.price-card blockquote::before,
+.price-card li::before,
+.price-card__badge::before,
+.price-card__badge::after,
+.price-card__cta::before { color: var(--dust); font-family: var(--mono); font-weight: 400; }
+.price-card .price-card__cta::before { color: inherit; }
+.price-card h2::before { content: "# "; content: "# " / ""; }
+.price-card__price::before { content: "## "; content: "## " / ""; }
+.price-card blockquote::before { content: "> "; content: "> " / ""; }
+.price-card li::before { content: "- "; content: "- " / ""; }
+.price-card__badge::before, .price-card__badge::after { content: "**"; content: "**" / ""; }
+.price-card__cta::before { content: "- [ ] "; content: "- [ ] " / ""; flex-shrink: 0; white-space: pre; }
+.price-card__cta:hover::before,
+.price-card__cta:focus::before { content: "- [x] "; content: "- [x] " / ""; }
+.price-card__cta:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (min-width: 768px) {
+  .price-card { max-width: 520px; margin-inline: auto; }
+}
+@media (max-width: 479px) {
+  .price-card__head { flex-direction: column; gap: 6px; }
 }
 
 * { box-sizing: border-box; }
@@ -566,6 +638,33 @@ img.pdf-page {
               0 3px 8px -4px color-mix(in srgb, #000 16%, transparent);
 }
 
+/* /pdf/'s three layouts (#383): pages exported by the CLI, opaque white paper, so the image gets a hairline
+   edge and no plate of its own. Three across from 640px, one under the other on a phone. */
+.layout-shots {
+  display: grid;
+  gap: 28px;
+  margin: 24px 0 8px;
+}
+@media (min-width: 640px) {
+  .layout-shots { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+.layout-shots figure { margin: 0; }
+.layout-shots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  box-shadow: 0 1px 2px color-mix(in srgb, #000 10%, transparent),
+              0 3px 8px -4px color-mix(in srgb, #000 16%, transparent);
+}
+.layout-shots figcaption {
+  margin-top: 10px;
+  color: var(--dust);
+  font-size: 0.9rem;
+}
+.layout-shots figcaption strong { color: var(--ink); }
+
 .marker {
   position: absolute;
   left: var(--x);
@@ -876,8 +975,105 @@ html { overflow-x: hidden; }
   text-wrap: pretty;
   text-shadow: 0 1px 14px color-mix(in srgb, #000 55%, transparent);
 }
+/* The sale line (price.py, sale phase only) sits in the hero copy but outside .hero, so it would
+   take the page's ink: on the sky, it is the hero sub (the Fixed Sky Rule). Under /pay-once/'s
+   intro it stays page text. */
+.hero-copy .sale-line {
+  color: var(--hero-sub);
+  text-wrap: pretty;
+  text-shadow: 0 1px 14px color-mix(in srgb, #000 55%, transparent);
+}
 
 .hero-shot { margin-top: clamp(36px, 8vw, 88px); }
+
+/* #330 (#327 B): under the store badge, the devices line and the system requirements; on a phone's
+   first screen with the headline. */
+.hero p.hero-devices {
+  margin: 12px 0 0;
+  color: var(--hero-ink);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.hero p.hero-req {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+.hero p.hero-req + .definition { margin-top: 20px; }
+/* Read, not shown: the requirements' full sentence (#338 P2). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+/* On a phone the badge and the CLI button stack, and in the longer languages that pushed the devices
+   line below a 320 x 568 first screen. There the CLI button moves under the requirements: the
+   order the plan asks for (badge, devices line, requirements) is kept, and the line stays in view. */
+@media (max-width: 639px) {
+  .hero-copy .intro { display: flex; flex-direction: column; }
+  .hero-copy .intro > * { margin-left: 0; margin-right: 0; }
+  .hero-copy .hero-cta { display: contents; }
+  .hero-copy .hero-cta .store-badge { align-self: flex-start; margin-top: 18px; }
+  .hero-copy .hero-cta .cta-secondary { order: 1; align-self: flex-start; margin-top: 14px; }
+  .hero-copy .definition { order: 2; }
+}
+
+/* The window with an iPhone screenshot over its lower right (#327 B): one picture, scaled at every
+   width, so the phone is always about 38% of the window's width and never larger than the window.
+   The stage takes the width .mdw used to take itself (the window inside fills it), and leaves room
+   under the window for the phone's overhang. Nothing reaches past the stage's edges, so a narrow
+   screen never scrolls sideways. */
+.hero-stage {
+  --mdw-width: max(100%, var(--w-media));
+  position: relative;
+  margin: 0 calc((100% - var(--mdw-width)) / 2);
+  padding-bottom: 7%;
+}
+.hero-stage .mdw { margin: 0; width: 88%; }
+/* The phone fits a box 38% of the stage wide and as tall as the stage below the window's title
+   bar: a tall capture is sized by the box's height, so the phone never stands taller than the
+   window it sits on. */
+.hero-phone {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 14%;
+  width: 38%;
+  max-width: 400px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  /* #339: the box is the phone's size container (its size comes from top, bottom and width, never
+     from the picture), so the phone below can be sized from it before the image arrives. */
+  container-type: size;
+}
+/* #339: the phone's size is worked out from the box alone, not from the loaded image: as wide as
+   the box or as tall as it, whichever comes first, at 840:1826. With auto sizes alone the img was
+   0 x 0 until it loaded and the page shifted. Both sides are given (no height: 100% with
+   aspect-ratio, which stretched the phone at 375 px wide when the width hit its max), and with
+   them max-width and max-height never bind. The width: auto and height: auto before them are the
+   fallback: a browser without container units drops the cq lines and sizes the phone as before
+   #339, the original fit, losing only the placeholder before the image loads. */
+.hero-phone img {
+  display: block;
+  flex: none;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  width: min(100cqw, 100cqh * 840 / 1826);
+  height: min(100cqh, 100cqw * 1826 / 840);
+  border-radius: 9% / 4.2%;
+  box-shadow: 0 0 0 1px color-mix(in srgb, #000 22%, transparent),
+              0 30px 50px -22px color-mix(in srgb, #000 70%, transparent),
+              0 10px 22px -12px color-mix(in srgb, #000 55%, transparent);
+}
 
 /* The hero's MarsDawn window: a working model of the app, drawn after its macOS 26
    window (public/assets/screens/01-split and 03-dark). The theme menu and the layout
@@ -1380,11 +1576,82 @@ html { overflow-x: hidden; }
 .know { margin: 24px 0 0; color: var(--dust); }
 .know a { font-weight: 600; }
 
-.proof { margin-top: 64px; }
-.proof h3 { margin: 36px 0 0; }
+/* Home feature cards (#332): four 4:3 shots, one feature each. One column below 992px, at most 560px
+   wide and centred; from 992px a 2x2 grid as wide as the hero window and the plates (--w-media), so each
+   card is about 472px. The picture's box is 4:3 whatever loads (no layout shift), and the platform word
+   is text on the page's own paper, readable in light and dark. */
+.feature-cards { margin: 48px 0; }
+.feature-cards-grid {
+  display: grid;
+  gap: 32px;
+  width: min(100%, 560px);
+  margin-inline: auto;
+}
+.feature-card { margin: 0; min-width: 0; }
+.feature-card-shot {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--sand);
+  container-type: inline-size;
+  box-shadow: 0 1px 2px color-mix(in srgb, #000 12%, transparent),
+              0 14px 34px -14px color-mix(in srgb, #000 35%, transparent);
+}
+.feature-card-shot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.feature-card-os {
+  position: absolute;
+  top: 0.45em;
+  left: 0.45em;
+  padding: 0 0.8em;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  /* Scales with the picture, so on a narrow card the label stays over the empty band above the first heading. */
+  font-size: clamp(0.65rem, 3.4cqw, 0.8rem);
+  font-weight: 650;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+/* Card 3's picture is a whole window with text in its other corners, so its label sits bottom-right (#332). */
+.feature-card-os-end { top: auto; left: auto; right: 0.45em; bottom: 0.45em; }
+.feature-card figcaption { display: grid; gap: 2px; margin-top: 10px; overflow-wrap: anywhere; }
+.feature-card figcaption a { justify-self: start; font-weight: 650; }
+.feature-card figcaption span { color: var(--dust); font-size: 0.95rem; line-height: 1.45; }
+@media (max-width: 991px) {
+  .feature-card figcaption a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+@media (min-width: 992px) {
+  .feature-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 16px;
+    width: max(100%, var(--w-media));
+    margin-inline: calc((100% - max(100%, var(--w-media))) / 2);
+  }
+}
 /* On a phone the command wraps instead of scrolling out of sight; one click still selects all of it.
    The code element sets the wrapping: the site's `pre code` rule keeps it on one line otherwise. */
 .install pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* /copy-for-ai/'s sample of what Copy for AI pastes (#364): a narrow phone folds a line instead of
+   scrolling, so the whole answer is on the first screen. Wide enough, the lines are the app's own;
+   folding is display only, and a copied selection keeps the original lines. */
+.copy-sample code { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* The 18-second film under the sample (scripts/brand_film_copy_for_ai.py, #366): always shown, 16:9 at
+   every width. As wide as the hero window and the screenshot plates (--w-media), never narrower than the
+   text column, so on a phone it is the column. width and height on the element hold its place before the
+   poster arrives. It has no animation or transition of its own; reduced motion is handled in
+   copy-for-ai-film.js, which then leaves the poster as it is. */
+.film-copy-ai { margin: 32px 0 0; }
+.film-copy-ai video {
+  display: block;
+  width: max(100%, var(--w-media));
+  margin-inline: calc((100% - max(100%, var(--w-media))) / 2);
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: var(--r-plate);
+  background: #000;
+}
 :lang(ja) :is(h2, h3) { word-break: auto-phrase; }
 
 /* ---- Themes page: the themes themselves, two to a row ----------------------
@@ -1662,3 +1929,61 @@ main:has(.compare-scroll) h2[id],
 [id^="cmp-"],
 [id^="col-"] { scroll-margin-top: 24px; }
 [id^="col-"] { scroll-margin-left: 9rem; }
+
+/* /features/: the Mac, iPhone and iPad steps (#323). Three numbered cards side by side, one column
+   on a phone, in reading order. The number is text (the list's own counter), not colour or an arrow. */
+.devsteps {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+  counter-reset: devstep;
+}
+.devsteps li {
+  counter-increment: devstep;
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--sand);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+}
+.devsteps li::before {
+  content: counter(devstep);
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  background: var(--ember);
+  color: var(--paper);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.devsteps strong { display: block; }
+@media (min-width: 720px) {
+  .devsteps { grid-template-columns: repeat(3, 1fr); }
+}
+.devnote {
+  padding-left: 12px;
+  border-left: 3px solid var(--ember);
+}
+main > h2[id="iphone-ipad"] { scroll-margin-top: 16px; }
+
+/* Apple badges keep their intrinsic proportions and a quarter-height clear space. */
+.store-badge { display: inline-block; padding: 10px; max-width: 100%; box-sizing: border-box; vertical-align: middle; line-height: 0; }
+.store-badge img { display: block; height: 40px; width: auto; }
+.footer-legal { margin: 0; font-size: 0.75rem; color: var(--dust); overflow-wrap: anywhere; }
+
+/* Home steps (#331): text tier, hairlines, and DOM order at every width. */
+.iphone-steps { margin: 48px 0; overflow-wrap: anywhere; }
+.iphone-steps h2 { margin: 0 0 24px; }
+.iphone-steps ol { display: grid; gap: 24px; margin: 0; padding-left: 24px; }
+.iphone-steps li { min-width: 0; padding: 12px 0 0 8px; border-top: 1px solid var(--hairline); }
+.iphone-steps li + li { margin-top: 0; }
+.iphone-steps li::marker { color: var(--dust); font-weight: 650; }
+.iphone-steps-limit { margin-top: 24px; padding-left: 16px; border-left: 2px solid var(--ember); }
+@media (min-width: 720px) {
+  .iphone-steps ol { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+}

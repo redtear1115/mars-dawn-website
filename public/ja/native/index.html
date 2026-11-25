@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -123,7 +125,7 @@ try {
 <main id="main">
 <section class="intro">
   <h1>Mac 自身のパーツで作られています。</h1>
-  <p class="definition">MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ USD 4.99 で解除できます。</p>
+  <p class="definition">MarsDawn は、Markdown を読んで確かめるための Mac ネイティブアプリです。分割ライブプレビュー、Mermaid の図、KaTeX の数式、クイックルック、PDF 書き出しに対応し、14 日間無料で試せて、一度だけ USD 2.49 で解除できます。Mac では JSON と YAML もツリープレビュー付きで開けます。</p>
   <p>ウインドウ、タブ、メニュー、テキストエディタはすべて Mac 自身のものです。レンダリングされたページは、Safari を動かしているエンジンである WebKit が描画します。</p>
 </section>
 <figure class="shot">
@@ -151,12 +153,18 @@ try {
   <li>Siri とショートカット：テンプレートから新しい文書を作成する、メモの受信トレイに1行追加する、最近使った文書を再度開く、といった操作ができます。</li>
   <li>英語、繁体字中国語、簡体字中国語、日本語、ドイツ語、フランス語、スペイン語、韓国語に対応。</li>
 </ul>
+<h3>小さくて、静か</h3>
+<ul>
+  <li>Mac App Store からのダウンロードは 11.4 MB。</li>
+  <li>書類を開いたまま変更がないとき、CPU 使用率は 0%。</li>
+</ul>
+<p>バージョン 1.2.1 で計測（2026年11月）。</p>
 <nav class="traits" aria-label="MarsDawn に期待できること">
 <h2>MarsDawn に期待できること</h2>
 <ul>
   <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a><span>アカウント不要、同期なし、クラウドなし。</span></li>
-  <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a><span>14日間無料、その後は一度だけ USD 4.99。サブスクリプションはありません。</span></li>
-  <li><a href="/ja/pdf/">PDF 書き出し</a><span>図表、コードのハイライト、配慮された改ページ。</span></li>
+  <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a><span>14日間無料、その後は一度だけ USD 2.49。サブスクリプションはありません。</span></li>
+  <li><a href="/ja/pdf/">プリントと PDF</a><span>プレビューしてレイアウトを選び、プリントか保存。</span></li>
   <li><a href="/ja/limits/">MarsDawn ができないこと</a><span>購入前に知っておくこと。</span></li>
 </ul>
 </nav>
@@ -170,7 +178,7 @@ try {
         <li><a href="/ja/features/">機能一覧</a></li>
         <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
         <li><a href="/ja/native/" aria-current="page">Mac アプリ</a></li>
-        <li><a href="/ja/pdf/">PDF 書き出し</a></li>
+        <li><a href="/ja/pdf/">プリントと PDF</a></li>
         <li><a href="/ja/limits/">MarsDawn ができないこと</a></li>
         <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
         <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>
@@ -229,6 +237,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-native&amp;mt=8">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple のロゴ、Mac、iPhone、iPad、iCloud は、米国およびその他の国や地域で登録された Apple Inc. の商標です。App Store および Mac App Store は Apple Inc. のサービスマークです。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>

@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -26,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>기능 한눈에 보기: Mac에서 에이전트의 Markdown 검토 · MarsDawn</title>
-<meta name="description" content="Mac 네이티브 Markdown 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 그리고 회의와 여백 메모, 종이 기록에 쓸 수 있는 깔끔한 PDF와 프린트 페이지.">
+<meta name="description" content="Mac 네이티브 Markdown, JSON, YAML 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 회의와 기록에 쓸 수 있는 깔끔한 PDF와 프린트 페이지.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -43,7 +45,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ko/features/">
 <link rel="alternate" type="text/markdown" href="/ko/features/index.md">
 <meta property="og:title" content="기능 한눈에 보기: Mac에서 에이전트의 Markdown 검토 · MarsDawn">
-<meta property="og:description" content="Mac 네이티브 Markdown 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 그리고 회의와 여백 메모, 종이 기록에 쓸 수 있는 깔끔한 PDF와 프린트 페이지.">
+<meta property="og:description" content="Mac 네이티브 Markdown, JSON, YAML 편집기: 실시간 미리보기, Mermaid와 수식, 테마, 회의와 기록에 쓸 수 있는 깔끔한 PDF와 프린트 페이지.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ko/features/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -145,8 +147,10 @@ try {
 <h3>개요와 파일 사이드바</h3>
 <p>사이드바의 개요 탭에는 문서의 제목이 나열되며, 하나를 클릭하면 그 위치로 이동합니다. 폴더를 열면 파일 탭에 안에 든 파일이 나열되고, 에이전트가 쓰는 동안 새 파일이 저절로 나타납니다. 폴더가 git 체크아웃이면 머리말에 브랜치나 worktree 이름이 표시됩니다.</p>
 <p class="more"><a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a></p>
+<h3>긴 문서 접기</h3>
+<p>미리보기에서 보기 ▸ 모두 제목 2까지 접기를 선택하면 긴 계획이나 사양서가 2단계 제목까지 접히고, 보기 ▸ 모두 펼치기로 다시 펼칩니다. 포맷 ▸ 접을 수 있는 블록으로 접히는 블록을 넣을 수 있습니다.</p>
 <h3>정확한 줄 가리키기</h3>
-<p>편집 ▸ 참조 복사는 현재 위치를 <code>docs/plan.md:42</code>처럼 경로와 줄 번호로 복사합니다. AI용으로 복사는 그 아래에 선택한 텍스트를 덧붙입니다. 어느 쪽이든 에이전트의 채팅에 붙여넣으면 됩니다.</p>
+<p>편집 ▸ 참조 복사는 현재 위치를 <code>docs/plan.md:42</code>처럼 경로와 줄 번호로 복사합니다. <a href="/ko/copy-for-ai/">AI용으로 복사</a>는 그 아래에 선택한 텍스트를 덧붙입니다. 어느 쪽이든 에이전트의 채팅에 붙여넣으면 됩니다.</p>
 <p class="more"><a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a></p>
 <h3>파일 사이의 링크 따라가기</h3>
 <p>미리보기에서 다른 Markdown 파일로 가는 링크를 클릭하면 MarsDawn이 그 파일을 열고(이미 열려 있으면 앞으로 가져오고) 해당 제목까지 스크롤합니다.</p>
@@ -154,13 +158,13 @@ try {
 <p>모든 작업이 화면에서만 이루어지지는 않습니다. MarsDawn이 프린트하고 내보내는 페이지는 화면에서 읽는 바로 그 페이지이므로, 사람들이 모이고, 읽고, 기록을 보관하는 곳에서도 쓸 수 있습니다.</p>
 <h3>회의에서</h3>
 <p>페이지를 프린트하거나 모두에게 같은 PDF를 보내면, 한 화면을 함께 보는 대신 테이블 전체가 같은 문서로 작업할 수 있습니다. 같은 파일을 가진 사람은 페이지 나눔도 같으므로 ‘3쪽의 표’가 모두에게 같은 것을 가리킵니다. 그다음 사람들이 결정 사항을 프린트한 종이나 메모에 적습니다. 회의 메모 템플릿은 결정 사항으로 시작하고 각 실행 항목에 담당자를 둡니다.</p>
-<p class="more"><a href="/ko/pdf/">PDF 내보내기</a> &#183; <a href="/ko/templates/meeting-notes/">회의록 템플릿</a></p>
+<p class="more"><a href="/ko/pdf/">프린트 및 PDF</a> &#183; <a href="/ko/templates/meeting-notes/">회의록 템플릿</a></p>
 <h3>펜으로 읽기</h3>
 <p>펜으로 밑줄을 긋고 여백에 적어 가며 읽어야 머리에 잘 남는 사람도 있습니다. 문서를 프린트해서 종이 위에서 그렇게 하세요. MarsDawn에는 자체 주석 도구가 없으니, PDF에 표시하고 싶다면 이미 쓰고 있는 PDF 앱을 사용하세요.</p>
-<p class="more"><a href="/ko/pdf/">PDF 내보내기</a></p>
+<p class="more"><a href="/ko/pdf/">프린트 및 PDF</a></p>
 <h3>종이 기록</h3>
 <p>아직도 종이로 보관하는 분야가 있으며, 회계가 그 예입니다. MarsDawn은 보관이나 규정 준수에 대해 아무것도 주장하지 않습니다. 하는 일은 깔끔하게 페이지가 나뉜 페이지를 프린트하고 내보내는 것입니다. 다이어그램이 그려지고, 짧은 코드 블록은 잘리지 않으며, 테마의 라이트 색상이 쓰입니다. 종이가 여전히 기록인 곳에서 사용하세요.</p>
-<p class="more"><a href="/ko/pdf/">PDF 내보내기</a></p>
+<p class="more"><a href="/ko/pdf/">프린트 및 PDF</a></p>
 <h3>Markdown을 쓰지 않는 사람에게 전달하기</h3>
 <p>PDF는 어디서나 열리고 Markdown을 몰라도 되므로, 상사나 고객에게 보내기에도 알맞습니다.</p>
 <p class="more"><a href="/ko/sharing-exported-pdfs/">내보낸 PDF 공유하기</a></p>
@@ -195,8 +199,8 @@ try {
 <p>설정 ▸ 화면 모드 ▸ 테마 더 받기…를 선택하면 추가 미리보기 테마 갤러리가 열립니다. 하나를 설치하면 보기 ▸ 미리보기 테마에 나타나고, 제거를 누르면 다시 없어집니다. 갤러리는 열려 있는 동안에만 온라인에 연결됩니다.</p>
 <p class="more"><a href="/ko/themes/gallery/">테마 갤러리</a> &#183; <a href="/ko/themes/new/">테마 만들기</a></p>
 <h3>PDF로 내보내기, 또는 프린트</h3>
-<p>파일 ▸ PDF로 내보내기…는 페이지가 나뉜 PDF를 저장하고, 파일 ▸ 프린트…는 같은 페이지를 프린트합니다. Mermaid 다이어그램이 그려지고, 코드는 구문 강조를 유지하며, 페이지 나눔은 제목을 해당 절에서 떼어 놓거나 짧은 코드 블록이나 다이어그램을 반으로 자르지 않도록 피합니다. 다크 모드로 읽고 있었더라도 PDF에는 항상 테마의 라이트 색상이 쓰입니다.</p>
-<p class="more"><a href="/ko/pdf/">PDF 내보내기</a></p>
+<p>파일 ▸ 프린트… 또는 파일 ▸ PDF로 내보내기… 메뉴를 선택하면 ‘프린트 및 내보내기’가 열려 페이지를 미리 볼 수 있습니다. 레이아웃은 ‘문서’, 표지·목차·PDF 책갈피가 있는 ‘설명서’, 메모 칸이 있는 ‘프린트물’ 중에서 고른 뒤 프린트하거나 저장합니다. Mermaid 다이어그램이 그려지고, 코드는 구문 강조를 유지하며, 페이지 나눔은 제목을 해당 절에서 떼어 놓거나 짧은 코드 블록이나 다이어그램을 반으로 자르지 않도록 피합니다. PDF에는 항상 테마의 라이트 색상이 쓰입니다.</p>
+<p class="more"><a href="/ko/pdf/">프린트 및 PDF</a></p>
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
     <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="MarsDawn에서 내보낸 PDF를 페이지 축소판과 함께 PDF 뷰어로 연 모습.">
@@ -208,15 +212,25 @@ try {
     <ol><li>Mermaid 다이어그램이 PDF 안에 그려집니다.</li><li>코드는 하이라이트를 유지합니다.</li></ol>
   </figcaption>
 </figure>
+<h2 id="iphone-ipad">Mac에서 쓰고, 이동 중에 읽기</h2>
+<p>에이전트는 Mac에서 일합니다. 에이전트가 쓴 계획과 보고서는 iPhone이나 iPad에서도 읽을 수 있습니다.</p>
+<ol class="devsteps">
+  <li><strong>Mac에서:</strong> 에이전트의 계획과 보고서를 iCloud Drive의 폴더에 저장합니다.</li>
+  <li><strong>iPhone이나 iPad에서:</strong> MarsDawn에서 '열기'를 탭하고 같은 파일을 고르거나, 다른 앱에서 엽니다. Mermaid 다이어그램, 수식, 코드, 표가 제대로 표시되고, 개요와 내가 고른 테마도 쓸 수 있습니다.</li>
+  <li><strong>전달하기:</strong> 공유하거나 프린트하거나 PDF로 저장합니다.</li>
+</ol>
+<p>같은 Apple 계정으로 한 번의 체험과 한 번의 잠금 해제가 Mac, iPhone, iPad의 MarsDawn을 모두 포함합니다.</p>
+<a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mac-iphone&amp;mt=8"><img src="/assets/badges/app-store-ko.svg" width="130" height="40" alt="App Store에서 다운로드하기"></a>
+<p class="devnote">iPhone과 iPad의 MarsDawn은 읽기 전용입니다. Markdown, 텍스트, PDF, JSON, YAML을 열 수 있지만 편집은 할 수 없습니다. 여기서 저장한 PDF의 링크는 작동하지 않습니다. MarsDawn 자체에는 클라우드 서비스가 없습니다.</p>
 <h2 id="files-tabs-and-quick-look">파일, 탭, 훑어보기</h2>
 <h3>윈도우와 탭</h3>
-<p>각 문서는 별도의 윈도우에서 열립니다. 윈도우 ▸ 모든 윈도우 통합을 선택하면 열려 있는 윈도우가 한 윈도우의 탭으로 모입니다. 자동 저장은 입력하는 동안 작동합니다.</p>
+<p>문서는 기본적으로 맨 앞 윈도우의 탭으로 열립니다. Mac의 탭 설정을 따르려면 설정 ▸ 화면 모드에서 시스템 설정 따르기를 선택하십시오. 자동 저장은 입력하는 동안 작동합니다.</p>
 <p class="more"><a href="/ko/native/">Mac 앱</a></p>
 <h3>Finder의 훑어보기</h3>
-<p>Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 있습니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.</p>
+<p>Finder에서 Markdown 파일을 선택하고 스페이스 바를 누르면 다이어그램을 포함해 렌더링된 상태로 읽을 수 있습니다. JSON과 YAML 파일은 트리 보기로 표시됩니다. 훑어보기는 MarsDawn에서 고른 테마를 쓰고, MarsDawn의 화면 모드 설정을 따릅니다.</p>
 <p class="more"><a href="/ko/native/">Mac 앱</a> &#183; <a href="/ko/quicklook/">Markdown 훑어보기</a></p>
 <h3>기타 파일</h3>
-<p>MarsDawn은 일반 텍스트 파일(<code>.txt</code>, <code>.log</code>, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다.</p>
+<p>MarsDawn은 일반 텍스트 파일(<code>.txt</code>, <code>.log</code>, 소스 코드)과 PDF도 열 수 있습니다. UTF-8 텍스트는 바로 편집할 수 있으며 소스만 표시됩니다. PDF는 페이지 썸네일, 확대/축소, 검색을 지원하는 뷰어에서 열립니다. Mac에서 JSON 및 YAML 파일을 편집 가능한 문서로 열 수 있으며, 입력할 때마다 업데이트되는 트리 미리보기가 옆에 표시됩니다. Finder의 훑어보기에서도 같은 트리 보기가 표시됩니다. iPhone과 iPad에서는 JSON과 YAML을 읽기 전용으로 열 수 있으며, 트리 미리보기가 표시됩니다.</p>
 <h3>내 파일은 내 것</h3>
 <p>계정도, 동기화도, 클라우드도 없습니다. 문서는 저장한 곳에 그대로 있고, MarsDawn은 나에 대한 어떤 데이터도 수집하지 않습니다.</p>
 <p class="more"><a href="/ko/yours/">내 글은 내 Mac에</a></p>
@@ -236,6 +250,13 @@ try {
 <h2 id="siri-and-shortcuts">Siri 및 단축어</h2>
 <p>단축어 앱에서 MarsDawn을 검색하면 세 가지 동작이 있습니다. 새로운 Markdown 문서(템플릿으로 시작), 수신함에 메모 추가, 최근 사용한 문서 열기입니다. 메모는 MarsDawn ▸ 설정… ▸ 메모 폴더에서 선택한 폴더의 <code>Inbox.md</code>에 추가됩니다.</p>
 <p class="more"><a href="/ko/native/">Mac 앱</a></p>
+<section class="film-mac" aria-labelledby="film-mac-h">
+<h2 id="film-mac-h">영상 보기</h2>
+<video controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/marsdawn-film-en-poster.jpg" aria-label="MarsDawn 영상(영어), 54초">
+<source src="/assets/film/marsdawn-film-en-1080p30.mp4" type="video/mp4">
+<p>이 브라우저에서는 영상을 재생할 수 없습니다.</p>
+</video>
+</section>
 <section class="film-themes" aria-labelledby="film-themes-h">
 <h2 id="film-themes-h">페이지를 프린트한 뒤</h2>
 <p>프린트한 페이지를 둘러싼 회의, 여백에 펜으로 쓰는 글씨, 서류철에 보관되는 종이 기록.</p>
@@ -245,8 +266,8 @@ try {
 </video>
 </section>
 <h2 id="try-it-on-your-mac">Mac에서 사용해 보세요</h2>
-<p>MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 4.99에 한 번만 잠금 해제하면 됩니다. 구독도, 계정도 필요 없습니다. macOS 26 이상이 필요합니다.</p>
-<p><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8">지금 다운로드하고 체험하기</a></p>
+<p>MarsDawn은 무료로 다운로드할 수 있습니다. 14일 동안 모든 기능을 체험한 뒤 USD 2.49에 한 번만 잠금 해제하면 됩니다. 구독도, 계정도 필요 없습니다. macOS 26 이상이 필요합니다.</p>
+<p><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8"><img src="/assets/badges/app-store-ko.svg" width="130" height="40" alt="App Store에서 다운로드하기"></a></p>
 <p>체험 방식: <a href="/ko/pay-once/">무료로 체험하고, 한 번만 구입</a>. 일부러 넣지 않은 것: <a href="/ko/limits/">MarsDawn이 하지 않는 일</a>.</p>
 </main>
 <footer class="footer">
@@ -258,7 +279,7 @@ try {
         <li><a href="/ko/features/" aria-current="page">기능 한눈에 보기</a></li>
         <li><a href="/ko/quicklook/">Markdown 훑어보기</a></li>
         <li><a href="/ko/native/">Mac 앱</a></li>
-        <li><a href="/ko/pdf/">PDF 내보내기</a></li>
+        <li><a href="/ko/pdf/">프린트 및 PDF</a></li>
         <li><a href="/ko/limits/">MarsDawn이 하지 않는 일</a></li>
         <li><a href="/ko/pay-once/">무료로 체험하고, 한 번만 구입</a></li>
         <li><a href="/ko/yours/">내 글은 내 Mac에</a></li>
@@ -317,6 +338,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, Apple 로고, Mac, iPhone, iPad 및 iCloud는 미국 및 기타 국가와 지역에서 등록된 Apple Inc.의 상표입니다. App Store 및 Mac App Store는 Apple Inc.의 서비스 마크입니다.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>

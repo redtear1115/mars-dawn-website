@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -26,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>機能一覧：エージェントの Markdown を Mac で確かめる · MarsDawn</title>
-<meta name="description" content="Mac ネイティブの Markdown エディタ：リアルタイムプレビュー、Mermaid と数式、テーマに加え、会議や書き込み、紙での保管に使える PDF とプリントのページ。">
+<meta name="description" content="Mac ネイティブの Markdown・JSON・YAML エディタ：リアルタイムプレビュー、Mermaid と数式、テーマ、会議や保管に使える PDF とプリントのページ。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -43,7 +45,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/ja/features/">
 <link rel="alternate" type="text/markdown" href="/ja/features/index.md">
 <meta property="og:title" content="機能一覧：エージェントの Markdown を Mac で確かめる · MarsDawn">
-<meta property="og:description" content="Mac ネイティブの Markdown エディタ：リアルタイムプレビュー、Mermaid と数式、テーマに加え、会議や書き込み、紙での保管に使える PDF とプリントのページ。">
+<meta property="og:description" content="Mac ネイティブの Markdown・JSON・YAML エディタ：リアルタイムプレビュー、Mermaid と数式、テーマ、会議や保管に使える PDF とプリントのページ。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/ja/features/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -145,8 +147,10 @@ try {
 <h3>アウトラインとファイルのサイドバー</h3>
 <p>サイドバーの「アウトライン」には書類の見出しが並び、クリックするとその位置に移動します。フォルダを開くと「ファイル」タブに中身が一覧表示され、エージェントが書き込んでいるあいだも新しいファイルが自動的に現れます。フォルダが git のチェックアウトなら、見出しにブランチまたはワークツリーの名前が表示されます。</p>
 <p class="more"><a href="/ja/reading-agent-output/">エージェントが返してくるものを読む</a></p>
+<h3>長い書類を折りたたむ</h3>
+<p>プレビューで「表示 ▸ すべてを見出し 2 まで折りたたむ」を選ぶと、長い計画や仕様書が見出しレベル 2 まで折りたたまれ、「表示 ▸ すべてを展開」で元に戻ります。「フォーマット ▸ 折りたたみ可能なブロック」で、折りたためるブロックを挿入できます。</p>
 <h3>正確な行を示す</h3>
-<p>「編集 ▸ 参照をコピー」は、現在の位置を <code>docs/plan.md:42</code> のようにパスと行番号でコピーします。「AI 用にコピー」は、その下に選択したテキストも付けます。どちらもエージェントのチャットにそのままペーストできます。</p>
+<p>「編集 ▸ 参照をコピー」は、現在の位置を <code>docs/plan.md:42</code> のようにパスと行番号でコピーします。「<a href="/ja/copy-for-ai/">AI 用にコピー</a>」は、その下に選択したテキストも付けます。どちらもエージェントのチャットにそのままペーストできます。</p>
 <p class="more"><a href="/ja/reading-agent-output/">エージェントが返してくるものを読む</a></p>
 <h3>ファイル間のリンクをたどる</h3>
 <p>プレビューで別の Markdown ファイルへのリンクをクリックすると、MarsDawn がそのファイルを開き（すでに開いていれば前面に出し）、見出しの位置までスクロールします。</p>
@@ -154,13 +158,13 @@ try {
 <p>すべての作業が画面の上で行われるわけではありません。MarsDawn がプリントして書き出すページは画面で読むページそのものなので、人が集まり、読み、記録を残す場面で使えます。</p>
 <h3>会議で</h3>
 <p>ページをプリントするか、同じ PDF を全員に送れば、1つの画面を囲むのではなく、全員が同じ書類で作業できます。同じファイルを持っていれば改ページ位置も同じなので、「3ページの表」は誰にとっても同じものを指します。そのあと、人が決定事項を、プリントした紙の上やメモに書き留めます。会議メモのテンプレートは決定事項から始まり、各アクションアイテムに担当者を置きます。</p>
-<p class="more"><a href="/ja/pdf/">PDF 書き出し</a> &#183; <a href="/ja/templates/meeting-notes/">議事録テンプレート</a></p>
+<p class="more"><a href="/ja/pdf/">プリントと PDF</a> &#183; <a href="/ja/templates/meeting-notes/">議事録テンプレート</a></p>
 <h3>ペンで読む</h3>
 <p>ペンを使うほうが頭に入る人もいます。線を引き、余白に書き込み、記憶に残すためです。書類をプリントして、紙の上でそうしてください。MarsDawn 自体には注釈ツールがないので、PDF に書き込みたい場合は、お使いの PDF アプリを使ってください。</p>
-<p class="more"><a href="/ja/pdf/">PDF 書き出し</a></p>
+<p class="more"><a href="/ja/pdf/">プリントと PDF</a></p>
 <h3>紙での記録</h3>
 <p>分野によっては、いまも紙で保管します。会計はその一例です。MarsDawn は保管やコンプライアンスについて何も謳っていません。できるのは、きれいに改ページされたページをプリントして書き出すことです。図は描画され、短いコードブロックは途中で切れず、テーマのライトの配色で出力されます。紙がいまも正式な記録である場面で使ってください。</p>
-<p class="more"><a href="/ja/pdf/">PDF 書き出し</a></p>
+<p class="more"><a href="/ja/pdf/">プリントと PDF</a></p>
 <h3>Markdown を使わない人に渡す</h3>
 <p>PDF はどんなアプリでも開け、Markdown の知識も要らないので、上司やクライアントに送るのにも向いています。</p>
 <p class="more"><a href="/ja/sharing-exported-pdfs/">書き出した PDF を共有する</a></p>
@@ -195,8 +199,8 @@ try {
 <p>「設定 ▸ 外観モード ▸ テーマを追加…」で、追加のプレビューテーマのギャラリーが開きます。インストールしたものは「表示 ▸ プレビューのテーマ」に並び、「取り除く」で削除できます。ギャラリーは開いているあいだだけオンラインになります。</p>
 <p class="more"><a href="/ja/themes/gallery/">テーマギャラリー</a> &#183; <a href="/ja/themes/new/">テーマを作る</a></p>
 <h3>PDF として書き出す、またはプリント</h3>
-<p>「ファイル ▸ PDF として書き出す…」は改ページ済みの PDF を保存し、「ファイル ▸ プリント…」は同じページをプリントします。Mermaid の図は描画され、コードはハイライトを保ち、改ページでは見出しが節から離れたり、短いコードブロックや図が途中で切れたりしないようにします。ダークで読んでいても、PDF は常にテーマのライトの配色です。</p>
-<p class="more"><a href="/ja/pdf/">PDF 書き出し</a></p>
+<p>「ファイル ▸ プリント…」と「ファイル ▸ PDF として書き出す…」は「プリントと書き出し」を開き、ページをプレビューできます。レイアウトは「書類」、表紙・目次・PDF のブックマーク付きの「ハンドブック」、メモ欄付きの「配布資料」から選び、プリントまたは保存します。Mermaid の図は描画され、コードはハイライトを保ち、改ページでは見出しが節から離れたり、短いコードブロックや図が途中で切れたりしないようにします。PDF は常にテーマのライトの配色です。</p>
+<p class="more"><a href="/ja/pdf/">プリントと PDF</a></p>
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
     <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="MarsDawn から書き出した PDF を、ページのサムネイル付きの PDF ビューアで開いたところ。">
@@ -208,15 +212,25 @@ try {
     <ol><li>Mermaid 図は PDF に描き込まれます。</li><li>コードはハイライトを保ちます。</li></ol>
   </figcaption>
 </figure>
+<h2 id="iphone-ipad">Mac で書いて、出先で読む</h2>
+<p>エージェントは Mac で作業します。その計画やレポートは、iPhone や iPad でも読めます。</p>
+<ol class="devsteps">
+  <li><strong>Mac で：</strong>エージェントの計画やレポートを、iCloud Drive のフォルダに保存します。</li>
+  <li><strong>iPhone や iPad で：</strong>MarsDawn で「開く」をタップして同じファイルを選ぶか、ほかの App から開きます。Mermaid の図、数式、コード、表がきちんと表示され、アウトラインと選んだテーマも使えます。</li>
+  <li><strong>人に渡す：</strong>共有、プリント、PDF として保存ができます。</li>
+</ol>
+<p>同じ Apple Account なら、1 回のトライアルと 1 回のロック解除で、Mac、iPhone、iPad の MarsDawn をすべて利用できます。</p>
+<a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mac-iphone&amp;mt=8"><img src="/assets/badges/app-store-ja.svg" width="109" height="40" alt="App Storeからダウンロード"></a>
+<p class="devnote">iPhone と iPad の MarsDawn は閲覧専用です。Markdown、テキスト、PDF、JSON、YAML を開けますが、編集はできません。ここで保存した PDF のリンクは機能しません。MarsDawn 自体にはクラウドサービスがありません。</p>
 <h2 id="files-tabs-and-quick-look">ファイル、タブ、クイックルック</h2>
 <h3>ウインドウとタブ</h3>
-<p>書類はそれぞれ別のウインドウで開きます。「ウインドウ ▸ すべてのウインドウを結合」を選ぶと、開いているウインドウを1つのウインドウのタブにまとめられます。自動保存は入力中に働きます。</p>
+<p>書類は、標準では最前面のウインドウのタブとして開きます。Mac のタブの設定に合わせるには、「設定 ▸ 外観モード」で「システム設定に従う」を選びます。自動保存は入力中に働きます。</p>
 <p class="more"><a href="/ja/native/">Mac アプリ</a></p>
 <h3>Finder のクイックルック</h3>
-<p>Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。クイックルックは MarsDawn で選んだテーマを使い、その外観モードの設定に従います。</p>
+<p>Finder で Markdown ファイルを選んでスペースバーを押すと、図も含めて整形された状態で読めます。JSON と YAML のファイルはツリー表示になります。クイックルックは MarsDawn で選んだテーマを使い、その外観モードの設定に従います。</p>
 <p class="more"><a href="/ja/native/">Mac アプリ</a> &#183; <a href="/ja/quicklook/">Markdown のクイックルック</a></p>
 <h3>そのほかのファイル</h3>
-<p>MarsDawn では、テキストファイル（<code>.txt</code>、<code>.log</code>、ソースコード）と PDF も開けます。UTF-8 のテキストはそのまま編集でき、ソースのみの表示になります。PDF は、ページのサムネール、拡大・縮小、検索を備えたビューアで開きます。</p>
+<p>MarsDawn では、テキストファイル（<code>.txt</code>、<code>.log</code>、ソースコード）と PDF も開けます。UTF-8 のテキストはそのまま編集でき、ソースのみの表示になります。PDF は、ページのサムネール、拡大・縮小、検索を備えたビューアで開きます。Mac で JSON と YAML のファイルを書類として開いて編集でき、入力に合わせて更新されるツリープレビューが横に表示されます。Finder のクイックルックでも同じツリー表示になります。iPhone と iPad では、JSON と YAML を読み出し専用で開き、ツリープレビューで表示できます。</p>
 <h3>ファイルはあなたのもの</h3>
 <p>アカウントも、同期も、クラウドもありません。書類は保存した場所に残り、MarsDawn があなたに関するデータを収集することはありません。</p>
 <p class="more"><a href="/ja/yours/">あなたの文章は Mac に残ります</a></p>
@@ -236,6 +250,14 @@ try {
 <h2 id="siri-and-shortcuts">Siri とショートカット</h2>
 <p>「ショートカット」App で MarsDawn を検索すると、3つのアクションが見つかります：「新規 Markdown 書類」（テンプレートから）、「受信トレイにメモを追加」、「最近使った書類を開く」。メモは、「MarsDawn ▸ 設定… ▸ メモフォルダ」で選んだフォルダの <code>Inbox.md</code> に追加されます。</p>
 <p class="more"><a href="/ja/native/">Mac アプリ</a></p>
+<section class="film-mac" aria-labelledby="film-mac-h">
+<h2 id="film-mac-h">動画を見る</h2>
+<video controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/marsdawn-film-en-poster.jpg" aria-label="MarsDawn の動画（54 秒）">
+<source src="/assets/film/marsdawn-film-en-1080p30.mp4" type="video/mp4">
+<track kind="subtitles" src="/assets/film/marsdawn-film-ja.vtt" srclang="ja" label="日本語" default>
+<p>お使いのブラウザではこの動画を再生できません。</p>
+</video>
+</section>
 <section class="film-themes" aria-labelledby="film-themes-h">
 <h2 id="film-themes-h">ページをプリントしたあと</h2>
 <p>プリントしたページを囲んで会議をし、余白にペンで書き込み、紙の記録をファイルに綴じる。</p>
@@ -246,8 +268,8 @@ try {
 </video>
 </section>
 <h2 id="try-it-on-your-mac">Mac で試してみる</h2>
-<p>MarsDawn は無料でダウンロードできます。14日間はすべての機能を試せて、その後は USD 4.99 で一度だけ購入します。サブスクリプションもアカウントも不要です。macOS 26 以降が必要です。</p>
-<p><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8">今すぐダウンロードして試す</a></p>
+<p>MarsDawn は無料でダウンロードできます。14日間はすべての機能を試せて、その後は USD 2.49 で一度だけ購入します。サブスクリプションもアカウントも不要です。macOS 26 以降が必要です。</p>
+<p><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8"><img src="/assets/badges/app-store-ja.svg" width="109" height="40" alt="App Storeからダウンロード"></a></p>
 <p>試用のしくみ：<a href="/ja/pay-once/">無料で試して、一度だけ購入</a>。あえて入れていないこと：<a href="/ja/limits/">MarsDawn ができないこと</a>。</p>
 </main>
 <footer class="footer">
@@ -259,7 +281,7 @@ try {
         <li><a href="/ja/features/" aria-current="page">機能一覧</a></li>
         <li><a href="/ja/quicklook/">Markdown のクイックルック</a></li>
         <li><a href="/ja/native/">Mac アプリ</a></li>
-        <li><a href="/ja/pdf/">PDF 書き出し</a></li>
+        <li><a href="/ja/pdf/">プリントと PDF</a></li>
         <li><a href="/ja/limits/">MarsDawn ができないこと</a></li>
         <li><a href="/ja/pay-once/">無料で試して、一度だけ購入</a></li>
         <li><a href="/ja/yours/">あなたの文章は Mac に残ります</a></li>
@@ -318,6 +340,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Markdown の新しい夜明け。</span> <span>MarsDawn は <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8">Mac App Store</a> で配信中です。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple のロゴ、Mac、iPhone、iPad、iCloud は、米国およびその他の国や地域で登録された Apple Inc. の商標です。App Store および Mac App Store は Apple Inc. のサービスマークです。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="クッキーの同意設定" hidden>

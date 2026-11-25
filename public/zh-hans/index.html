@@ -2,6 +2,7 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -26,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MarsDawn：检查代理的 Markdown，实时预览</title>
-<meta name="description" content="读懂、检查代理写的 Markdown 的 Mac 原生 app：分栏实时预览、Mermaid、KaTeX、快速查看、PDF 导出。可免费试用，之后一次 USD 4.99。">
+<meta name="description" content="检查代理写的 Markdown、JSON、YAML：Mac 原生 app，实时预览、Mermaid、KaTeX、快速查看、PDF。免费试用，之后一次 USD 2.49。">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -45,7 +47,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hans/">
 <link rel="alternate" type="text/markdown" href="/zh-hans/index.md">
 <meta property="og:title" content="MarsDawn：检查代理的 Markdown，实时预览">
-<meta property="og:description" content="读懂、检查代理写的 Markdown 的 Mac 原生 app：分栏实时预览、Mermaid、KaTeX、快速查看、PDF 导出。可免费试用，之后一次 USD 4.99。">
+<meta property="og:description" content="检查代理写的 Markdown、JSON、YAML：Mac 原生 app，实时预览、Mermaid、KaTeX、快速查看、PDF。免费试用，之后一次 USD 2.49。">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hans/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -54,8 +56,9 @@ try {
 <meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "读懂、检查代理写的 Markdown 的 Mac 原生 app：分栏实时预览、Mermaid、KaTeX、快速查看、PDF 导出。可免费试用，之后一次 USD 4.99。", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "softwareVersion": "1.1.1", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "0", "highPrice": "4.99", "offerCount": 2, "offers": [{"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "One-time unlock after the trial, no subscription", "price": "4.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}]}, "screenshot": "https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}, "sameAs": ["https://apps.apple.com/app/id6812925073", "https://github.com/redtear1115/mars-dawn-kit", "https://github.com/redtear1115/homebrew-tap", "https://github.com/redtear1115/marsdawn-mcp"], "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/zh-hans/"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "MarsDawn 是什么？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源文本和实时预览并排，能画 Mermaid、排 KaTeX，在快速查看里预览 .md，也能导出 PDF。源文本也可以直接改。"}}, {"@type": "Question", "name": "MarsDawn 要订阅吗？", "acceptedAnswer": {"@type": "Answer", "text": "不用。MarsDawn 免费下载，14 天内所有功能都能试用；之后一次 USD 4.99 的 App 内购买就能永久解锁。没有任何续订，也不需要账户。"}}, {"@type": "Question", "name": "MarsDawn 有 iPhone 或 iPad 版吗？", "acceptedAnswer": {"@type": "Answer", "text": "还没有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本。iPhone 与 iPad 版正在开发中，目前还不能使用。"}}, {"@type": "Question", "name": "Claude Code 可以用 MarsDawn 打开文件吗？", "acceptedAnswer": {"@type": "Answer", "text": "可以。免费的 marsdawn 命令行工具有 open 命令，能用 MarsDawn 打开 Markdown 文件，所以 Claude Code，或任何能执行 shell 命令的代理，都能调用它。另有一个需要自行启用的 Claude Code hook，可以在 Claude 写入或编辑 Markdown 文件时自动打开。"}}, {"@type": "Question", "name": "MarsDawn 会上传我的文稿吗？", "acceptedAnswer": {"@type": "Answer", "text": "不会。App 不会上传你的文稿，不收集任何关于你的数据，也没有账户；文稿和设置都留在你的 Mac 上。只有文稿引用网络内容、而你选择加载时，你的 Mac 才会向托管这些内容的服务器获取，MarsDawn 的开发者收不到这些信息。"}}, {"@type": "Question", "name": "用 MCP 或 skill 时，谁能看到我的文件？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn 本身不发送任何东西。skill 只是一份文字说明，marsdawn 命令行和 MCP 服务器都在你的 Mac 上运行，MCP 服务器也只在你允许的文件夹里操作。真正读取文件的是你的代理，它和它的模型提供方如何处理这些文件，取决于那个代理的政策；MarsDawn 无法控制，也不代为说明。"}}, {"@type": "Question", "name": "打开别人发来的 HTML 安全吗？", "acceptedAnswer": {"@type": "Answer", "text": "默认打开时是静态的：代码不会运行，也不会从网络加载任何东西。如果你选择“显示 › 运行这份文稿”，这份文稿就会运行，可以通过网络发送数据，并读取它所在文件夹里的图片、样式表、字体与媒体文件。这个选择不会被记住，下次打开又是静态的。"}}, {"@type": "Question", "name": "网站的分析 cookie 和 App 有关吗？", "acceptedAnswer": {"@type": "Answer", "text": "没有关系。App 和这个网站是两回事：App 不收集数据，会记录访问的只有 marsdawn.southern-light.dev。网站的 Google Analytics 一开始是拒绝状态，你在横幅中选择“接受”后才会设置 cookie，页脚的“Cookie 设置”可以随时更改。App 请求 /themes/ 下主题文件的请求不会被记录。"}}, {"@type": "Question", "name": "为什么用 MarsDawn，不用别的 App？", "acceptedAnswer": {"@type": "Answer", "text": "你可能不需要它。如果你主要写自己的笔记，Obsidian 这类笔记 App 更合适。如果你整天待在 VS Code 里，它内置的预览是免费的。如果你只想在访达里瞄一眼文件，免费的快速查看扩展就够了。如果你的 PDF 需要页码，MarsDawn 不会加。MarsDawn 是用来阅读和审阅代理写的 Markdown 的：源文本旁边就是实时预览，代理的修改一步就能撤销，文件直接打开到指定的那一行。如果它不合用，欢迎写信告诉我们原因。"}}, {"@type": "Question", "name": "MarsDawn 会持续维护吗？", "acceptedAnswer": {"@type": "Answer", "text": "会。MarsDawn 上架 Mac App Store 以来的每次更新都在更新记录里，iPhone 与 iPad 版也在开发中。MarsDawn 的渲染核心和免费的 marsdawn 命令行工具，已经以 Apache-2.0 许可证在 mars-dawn-kit 开源。如果 MarsDawn 的开发者哪天停止维护这个 App，会以开源许可证公开 App 本身的源代码，让其他人可以接手。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MarsDawn", "description": "检查代理写的 Markdown、JSON、YAML：Mac 原生 app，实时预览、Mermaid、KaTeX、快速查看、PDF。免费试用，之后一次 USD 2.49。", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later, iOS 26 or later, iPadOS 26 or later", "softwareVersion": "1.2.3", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "0", "highPrice": "2.49", "offerCount": 2, "offers": [{"@type": "Offer", "name": "Free download with a 14-day trial", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}, {"@type": "Offer", "name": "One-time unlock after the trial, no subscription", "price": "2.49", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-11-30"}]}, "screenshot": "https://marsdawn.southern-light.dev/assets/screens/01-split-1180.png", "publisher": {"@type": "Person", "name": "Nan-Kuang Lee"}, "sameAs": ["https://apps.apple.com/app/id6812925073", "https://github.com/redtear1115/mars-dawn-kit", "https://github.com/redtear1115/homebrew-tap", "https://github.com/redtear1115/marsdawn-mcp"], "downloadUrl": "https://apps.apple.com/app/id6812925073", "url": "https://marsdawn.southern-light.dev/zh-hans/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "MarsDawn 是什么？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源文本和实时预览并排，能画 Mermaid、排 KaTeX，在快速查看里预览 .md，也能导出 PDF。源文本也可以直接改。在 Mac 上也能打开 JSON 和 YAML，附树状预览。"}}, {"@type": "Question", "name": "MarsDawn 要订阅吗？", "acceptedAnswer": {"@type": "Answer", "text": "不用。MarsDawn 免费下载，14 天内所有功能都能试用；之后一次 USD 2.49 的 App 内购买就能永久解锁。没有任何续订，也不需要账户。"}}, {"@type": "Question", "name": "MarsDawn 有 iPhone 或 iPad 版吗？", "acceptedAnswer": {"@type": "Answer", "text": "有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown、纯文本、PDF、JSON 和 YAML 文件，排好 Mermaid 图表、数学公式、代码和表格。可以共享、打印文件，或存储为 PDF，但不能编辑。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad。"}}, {"@type": "Question", "name": "Claude Code 可以用 MarsDawn 打开文件吗？", "acceptedAnswer": {"@type": "Answer", "text": "可以。免费的 marsdawn 命令行工具有 open 命令，能用 MarsDawn 打开 Markdown 文件，所以 Claude Code，或任何能执行 shell 命令的代理，都能调用它。另有一个需要自行启用的 Claude Code hook，可以在 Claude 写入或编辑 Markdown 文件时自动打开。"}}, {"@type": "Question", "name": "MarsDawn 会上传我的文稿吗？", "acceptedAnswer": {"@type": "Answer", "text": "不会。App 不会上传你的文稿，不收集任何关于你的数据，也没有账户；文稿和设置都留在你的 Mac 上。只有文稿引用网络内容、而你选择加载时，你的 Mac 才会向托管这些内容的服务器获取，MarsDawn 的开发者收不到这些信息。"}}, {"@type": "Question", "name": "用 MCP 或 skill 时，谁能看到我的文件？", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn 本身不发送任何东西。skill 只是一份文字说明，marsdawn 命令行和 MCP 服务器都在你的 Mac 上运行，MCP 服务器也只在你允许的文件夹里操作。真正读取文件的是你的代理，它和它的模型提供方如何处理这些文件，取决于那个代理的政策；MarsDawn 无法控制，也不代为说明。"}}, {"@type": "Question", "name": "打开别人发来的 HTML 安全吗？", "acceptedAnswer": {"@type": "Answer", "text": "默认打开时是静态的：代码不会运行，也不会从网络加载任何东西。如果你选择“显示 › 运行这份文稿”，这份文稿就会运行，可以通过网络发送数据，并读取它所在文件夹里的图片、样式表、字体与媒体文件。这个选择不会被记住，下次打开又是静态的。"}}, {"@type": "Question", "name": "网站的分析 cookie 和 App 有关吗？", "acceptedAnswer": {"@type": "Answer", "text": "没有关系。App 和这个网站是两回事：App 不收集数据，会记录访问的只有 marsdawn.southern-light.dev。网站的 Google Analytics 一开始是拒绝状态，你在横幅中选择“接受”后才会设置 cookie，页脚的“Cookie 设置”可以随时更改。App 请求 /themes/ 下主题文件的请求不会被记录。"}}, {"@type": "Question", "name": "为什么用 MarsDawn，不用别的 App？", "acceptedAnswer": {"@type": "Answer", "text": "你可能不需要它。如果你主要写自己的笔记，Obsidian 这类笔记 App 更合适。如果你整天待在 VS Code 里，它内置的预览是免费的。如果你只想在访达里瞄一眼文件，免费的快速查看扩展就够了。MarsDawn 是用来阅读和审阅代理写的 Markdown 的：源文本旁边就是实时预览，代理的修改一步就能撤销，文件直接打开到指定的那一行。如果它不合用，欢迎写信告诉我们原因。"}}, {"@type": "Question", "name": "MarsDawn 会持续维护吗？", "acceptedAnswer": {"@type": "Answer", "text": "会。MarsDawn 上架 Mac App Store 以来的每次更新都在更新记录里；2026 年 10 月 28 日起，iPhone 和 iPad 上也能用 MarsDawn 阅读。MarsDawn 的渲染核心和免费的 marsdawn 命令行工具，已经以 Apache-2.0 许可证在 mars-dawn-kit 开源。如果 MarsDawn 的开发者哪天停止维护这个 App，会以开源许可证公开 App 本身的源代码，让其他人可以接手。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoObject", "name": "MarsDawn：任何 agent，任何地方", "description": "這支 30 秒短片裡，你用手機交代 agent，它在 Mac 上動筆。Mac 版 MarsDawn 打開它寫的 Markdown 和 HTML；在 iPhone 或 iPad 上讀同一份計畫，修改回到 Mac。", "inLanguage": "zh-Hant", "duration": "PT30S", "uploadDate": "2026-11-02T10:00:00+08:00", "width": 1920, "height": 1080, "contentUrl": "https://marsdawn.southern-light.dev/assets/film/mars-dawn-agents-16x9-zh-Hant.mp4", "thumbnailUrl": ["https://marsdawn.southern-light.dev/assets/film/mars-dawn-agents-16x9-poster-zh-Hant.jpg", "https://marsdawn.southern-light.dev/assets/film/mars-dawn-agents-poster-zh-Hant.jpg"]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
 <body>
@@ -177,11 +180,15 @@ try {
   <p class="kicker">给建造者的前线工具</p>
   <h1><span>拿稳地图。</span><span>读过黎明。</span></h1>
   <p>给要掌舵 agentic 开发的人用的 Markdown。</p>
-  <p class="definition">MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、Mermaid 图表、KaTeX 数学公式、快速查看与 PDF 导出；可免费试用 14 天，一次付 USD 4.99 解锁。</p>
+  <p class="sale-line" data-sale-line>黑色星期五特价：一次解锁只要半价 USD 2.49（原价 USD 4.99），优惠到 11 月 30 日，12 月 1 日起恢复 USD 4.99。</p>
+<p class="hero-cta"><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8"><img src="/assets/badges/app-store-zh-hans.svg" width="109" height="40" alt="在 App Store 下载"></a> <a class="cta cta-secondary" href="#install">安装免费的 CLI</a></p>
+<p class="hero-devices">在 Mac 上写，在 iPhone 和 iPad 上读</p>
+<p class="hero-req"><span aria-hidden="true">macOS 26 · iOS 26 · iPadOS 26</span><span class="visually-hidden">需要 macOS 26、iOS 26 或 iPadOS 26 以上</span></p>
+  <p class="definition">MarsDawn 是读、检查 Markdown 的 Mac 原生 app，有分栏实时预览、Mermaid 图表、KaTeX 数学公式、快速查看与 PDF 导出；可免费试用 14 天，一次付 USD 2.49 解锁。在 Mac 上也能打开 JSON 和 YAML，附树状预览。</p>
 </section>
-<p class="hero-cta"><a class="cta cta-primary" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">在 Mac App Store 查看</a> <a class="cta cta-secondary" href="#install">安装免费的 CLI</a></p>
 </div>
 <div class="hero-shot">
+<div class="hero-stage">
 <div class="mdw" role="group" aria-label="可以操作的 MarsDawn 窗口：选一个主题和布局">
   <div class="mdw-bar">
     <span class="mdw-lights" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -276,16 +283,40 @@ try {
     </div>
   </div>
 </div>
+<picture class="hero-phone">
+  <source media="(prefers-color-scheme: dark)" type="image/webp" srcset="/assets/hero/iphone-dark-420.webp 420w, /assets/hero/iphone-dark-840.webp 840w" sizes="(min-width: 1100px) 230px, (min-width: 640px) 190px, 35vw">
+  <img src="/assets/hero/iphone-light-840.webp" srcset="/assets/hero/iphone-light-420.webp 420w, /assets/hero/iphone-light-840.webp 840w" sizes="(min-width: 1100px) 230px, (min-width: 640px) 190px, 35vw" width="840" height="1826" alt="iPhone 上的 MarsDawn，显示代理写的结账计划和一张 Mermaid 流程图，黎明主题浅色" decoding="async">
+</picture>
+</div>
 </div>
 </div>
 </section>
+<section class="iphone-steps" id="iphone-steps" aria-labelledby="iphone-steps-title">
+<h2 id="iphone-steps-title">离开座位，也能读代理写的东西</h2>
+<ol>
+  <li>在 Mac 上，让代理把文件存进 iCloud 云盘里的文件夹。</li>
+  <li>在 iPhone 或 iPad 上用 MarsDawn 打开，也可以从其他 App 打开。</li>
+  <li>可以共享、打印或存储为 PDF；要修改，回到 Mac 上操作。</li>
+</ol>
+<p class="iphone-steps-limit">在 iPhone 和 iPad 上只能阅读，可以打开 Markdown、纯文本、PDF、JSON 和 YAML 文件。</p>
+<p><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home-iphone&amp;mt=8"><img src="/assets/badges/app-store-zh-hans.svg" width="109" height="40" alt="在 App Store 下载"></a></p>
+<p><a href="/zh-hans/features/#iphone-ipad">进一步了解 iPhone 和 iPad 版</a></p>
+</section>
 <section class="film" aria-labelledby="film-h">
 <h2 id="film-h">观看影片</h2>
-<video controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/marsdawn-film-en-poster.jpg" aria-label="MarsDawn 影片，54 秒">
-<source src="/assets/film/marsdawn-film-en-1080p30.mp4" type="video/mp4">
-<track kind="subtitles" src="/assets/film/marsdawn-film-zh-hans.vtt" srclang="zh-Hans" label="简体中文" default>
+<figure class="film-figure">
+<video class="film-wide" controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/mars-dawn-agents-16x9-poster-zh-Hant.jpg" aria-label="视频：Mac 与 iPhone 上的 MarsDawn，30 秒，繁体中文字幕">
+<source src="/assets/film/mars-dawn-agents-16x9-zh-Hant.mp4" type="video/mp4">
+<track kind="captions" src="/assets/film/mars-dawn-agents-zh-Hant.vtt" srclang="zh-Hant" label="繁体中文">
 <p>你的浏览器无法播放这支影片。</p>
 </video>
+<video class="film-tall" controls preload="none" playsinline width="1080" height="1920" poster="/assets/film/mars-dawn-agents-poster-zh-Hant.jpg" aria-label="视频：Mac 与 iPhone 上的 MarsDawn，30 秒，繁体中文字幕">
+<source src="/assets/film/mars-dawn-agents-zh-Hant.mp4" type="video/mp4">
+<track kind="captions" src="/assets/film/mars-dawn-agents-zh-Hant.vtt" srclang="zh-Hant" label="繁体中文">
+<p>你的浏览器无法播放这支影片。</p>
+</video>
+<figcaption>30 秒：代理在 Mac 上写，你在 iPhone 上读。（繁体中文字幕）</figcaption>
+</figure>
 </section>
 <h2 class="loop-title">读代理写的 Markdown。</h2>
 <ol class="loop-steps">
@@ -294,6 +325,27 @@ try {
   <li><strong>代理修改。</strong>提出修改意见，代理改好之后，再打开来读一次。</li>
 </ol>
 <p><a href="/zh-hans/reading-agent-output/">如何审阅代理交回来的东西</a> · <a href="/zh-hans/view-markdown-on-mac/">Mac 上怎么打开 md 文件</a></p>
+<section class="feature-cards" aria-labelledby="feature-cards-title">
+<h2 class="visually-hidden" id="feature-cards-title">功能</h2>
+<div class="feature-cards-grid">
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-mermaid-624.png" width="624" height="468" alt="流程图含检查步骤和重发循环，下方是代码块。" loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/zh-hans/mermaid-preview-mac/">Mermaid 图表和代码</a><span>预览会把图表画出来、代码高亮，就在源代码旁边。</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-pdf-665.png" width="665" height="499" alt="页面顶部：标题、一小段文字和一张流程图。" loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/zh-hans/pdf/">打印与 PDF</a><span>Mermaid 图表直接画进 PDF。</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-vivid-624.png" width="624" height="468" alt="预览窗口显示排版后的页面：标题、一小段文字和一张流程图。" loading="lazy" decoding="async"><span class="feature-card-os feature-card-os-end" aria-hidden="true">Mac</span></div>
+  <figcaption><a href="/zh-hans/quicklook/">Markdown 快速查看</a><span>在访达选取 Markdown 文件，按空格键。</span></figcaption>
+</figure>
+<figure class="feature-card">
+  <div class="feature-card-shot"><img src="/assets/screens/card-iphone-944.webp" srcset="/assets/screens/card-iphone-472.webp 472w, /assets/screens/card-iphone-944.webp 944w" sizes="(min-width: 992px) 472px, min(100vw - 32px, 560px)" width="944" height="708" alt="结账流程图，下方是代码块的开头。" loading="lazy" decoding="async"><span class="feature-card-os" aria-hidden="true">iPhone</span></div>
+  <figcaption><a href="/zh-hans/features/#iphone-ipad">在 iPhone 和 iPad 上阅读</a><span>在 iPhone 和 iPad 上，MarsDawn 只能阅读，不能编辑。要修改，回到 Mac 上操作。</span></figcaption>
+</figure>
+</div>
+</section>
 <h2>代理的计划，运行前先看过。</h2>
 <p>找出顺序不对的那一步，指出是哪一行，再交回给代理。</p>
 <div class="loop-anim loop-hans loop-plan">
@@ -344,6 +396,7 @@ try {
   <li><code>marsdawn open</code> 在 MarsDawn app 里打开文件，让你审阅。</li>
   <li><code>--json</code> 返回脚本和代理能解析的结果。</li>
 </ul>
+<p>上面装的是命令行工具。要用 Homebrew 装 Mac app，<a href="/zh-hans/cli/#mac-app">看这里</a>。</p>
 <p class="install-links"><a href="/zh-hans/cli/">命令行工具</a> · <a href="/zh-hans/cli/agents/">给 AI 代理的 marsdawn 参考</a> · <a href="/zh-hans/cli/skill/">给代理的 skill</a> · <a href="/zh-hans/cli/mcp/">MCP 服务器</a></p>
 </section>
 <nav class="traits" aria-label="MarsDawn 是什么样的 app">
@@ -351,7 +404,7 @@ try {
 <ul>
   <li><a href="/zh-hans/native/">为 Mac 而做</a><span>原生窗口、标签页、自动保存、<a href="/zh-hans/quicklook/">快速查看</a>。</span></li>
   <li><a href="/zh-hans/yours/">你写的内容留在你的 Mac 上</a><span>不需要账户，没有同步，也没有云端。</span></li>
-  <li><a href="/zh-hans/pay-once/">免费试用，买一次就好</a><span>免费试用 14 天，之后 USD 4.99 买一次，没有订阅。</span></li>
+  <li><a href="/zh-hans/pay-once/">免费试用，买一次就好</a><span>免费试用 14 天，之后 USD 2.49 买一次，没有订阅。</span></li>
   <li><a href="/zh-hans/features/">功能一览</a><span>MarsDawn 能做的事，一页看完。</span></li>
   <li><a href="/zh-hans/themes/">主题</a><span>内置四种，主题图库里还有更多。</span></li>
 </ul>
@@ -359,7 +412,7 @@ try {
 <p class="know">购买前先知道。 <a href="/zh-hans/limits/">MarsDawn 做不到的事</a></p>
 <section class="pieces">
 <h2 id="pieces">各部分怎么搭在一起</h2>
-<p>以 MarsDawn 1.1.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 为准，各部分目前能做的事。</p>
+<p>以 MarsDawn 1.2.1、marsdawn 0.6.4、marsdawn-mcp v0.2.4 为准，各部分目前能做的事。</p>
 <div class="table-scroll" tabindex="0" role="region" aria-labelledby="pieces"><table class="compare compare-wide compare-pieces">
 <thead><tr><th scope="col">功能</th><th scope="col">App 内</th><th scope="col">CLI</th><th scope="col">MCP／skill</th><th scope="col">状态</th></tr></thead>
 <tbody>
@@ -397,14 +450,28 @@ try {
 <p>只在你选择时离开。“拷贝给 AI”只把文字放进剪贴板，由你自己粘贴；下载主题、用“显示 › 运行这份文稿”运行的文稿，以及你让代理读取的文件，都要你决定才会往外送。</p>
 <p class="more">详见：<a href="/zh-hans/privacy/#when-marsdawn-uses-the-internet">隐私政策</a></p>
 </section>
+<section class="price-card" aria-labelledby="price-title">
+  <div class="price-card__bar" aria-hidden="true"><span class="price-card__dots"></span>pricing.md</div>
+  <div class="price-card__body">
+    <div class="price-card__head"><h2 id="price-title">MarsDawn</h2><p class="price-card__badge">无需订阅</p></div>
+    <p class="price-card__price">一次 USD 2.49</p>
+    <blockquote>免费下载，14 天内所有功能免费试用。</blockquote>
+    <ul>
+      <li>同一个 Apple 账户，一次购买，Mac、iPhone、iPad 都能用。</li>
+      <li>不需要账户，也不会续订。</li>
+      <li>访达的快速查看不论有没有试用都能用。</li>
+    </ul>
+    <p class="price-card__action"><a class="price-card__cta" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">到 Mac App Store 下载 MarsDawn</a></p>
+  </div>
+</section>
 <section class="faq">
 <h2>常见问题</h2>
 <h3>MarsDawn 是什么？</h3>
-<p>MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源文本和实时预览并排，能画 Mermaid、排 KaTeX，在快速查看里预览 .md，也能导出 PDF。源文本也可以直接改。</p>
+<p>MarsDawn 是 Mac 原生 app，用来读懂、检查代理写的 Markdown：源文本和实时预览并排，能画 Mermaid、排 KaTeX，在快速查看里预览 .md，也能导出 PDF。源文本也可以直接改。在 Mac 上也能打开 JSON 和 YAML，附树状预览。</p>
 <h3>MarsDawn 要订阅吗？</h3>
-<p>不用。MarsDawn 免费下载，14 天内所有功能都能试用；之后一次 USD 4.99 的 App 内购买就能永久解锁。没有任何续订，也不需要账户。</p>
+<p>不用。MarsDawn 免费下载，14 天内所有功能都能试用；之后一次 USD 2.49 的 App 内购买就能永久解锁。没有任何续订，也不需要账户。</p>
 <h3>MarsDawn 有 iPhone 或 iPad 版吗？</h3>
-<p>还没有。MarsDawn 是 Mac app，需要 macOS 26 或更新版本。iPhone 与 iPad 版正在开发中，目前还不能使用。</p>
+<p>有，用来阅读。iPhone 和 iPad 上的 MarsDawn 能打开 Markdown、纯文本、PDF、JSON 和 YAML 文件，排好 Mermaid 图表、数学公式、代码和表格。可以共享、打印文件，或存储为 PDF，但不能编辑。需要 iOS 26 或 iPadOS 26 以上。用同一个 Apple 账户，一次试用、一次解锁，就涵盖 Mac、iPhone 和 iPad。</p>
 <p class="more">详见：<a href="/zh-hans/roadmap/">路线图</a></p>
 <h3>Claude Code 可以用 MarsDawn 打开文件吗？</h3>
 <p>可以。免费的 marsdawn 命令行工具有 open 命令，能用 MarsDawn 打开 Markdown 文件，所以 Claude Code，或任何能执行 shell 命令的代理，都能调用它。另有一个需要自行启用的 Claude Code hook，可以在 Claude 写入或编辑 Markdown 文件时自动打开。</p>
@@ -421,42 +488,15 @@ try {
 <p>没有关系。App 和这个网站是两回事：App 不收集数据，会记录访问的只有 marsdawn.southern-light.dev。网站的 Google Analytics 一开始是拒绝状态，你在横幅中选择“接受”后才会设置 cookie，页脚的“Cookie 设置”可以随时更改。App 请求 /themes/ 下主题文件的请求不会被记录。</p>
 <p class="more">详见：<a href="/zh-hans/privacy/#the-website">隐私政策</a></p>
 <h3>为什么用 MarsDawn，不用别的 App？</h3>
-<p>你可能不需要它。如果你主要写自己的笔记，Obsidian 这类笔记 App 更合适。如果你整天待在 VS Code 里，它内置的预览是免费的。如果你只想在访达里瞄一眼文件，免费的快速查看扩展就够了。如果你的 PDF 需要页码，MarsDawn 不会加。MarsDawn 是用来阅读和审阅代理写的 Markdown 的：源文本旁边就是实时预览，代理的修改一步就能撤销，文件直接打开到指定的那一行。如果它不合用，欢迎写信告诉我们原因。</p>
+<p>你可能不需要它。如果你主要写自己的笔记，Obsidian 这类笔记 App 更合适。如果你整天待在 VS Code 里，它内置的预览是免费的。如果你只想在访达里瞄一眼文件，免费的快速查看扩展就够了。MarsDawn 是用来阅读和审阅代理写的 Markdown 的：源文本旁边就是实时预览，代理的修改一步就能撤销，文件直接打开到指定的那一行。如果它不合用，欢迎写信告诉我们原因。</p>
 <p class="more">详见：<a href="/zh-hans/vs/">MarsDawn 与其他工具比较</a> · <a href="/zh-hans/best-markdown-viewer-mac/">Mac Markdown 查看器推荐</a></p>
 <h3>MarsDawn 会持续维护吗？</h3>
-<p>会。MarsDawn 上架 Mac App Store 以来的每次更新都在更新记录里，iPhone 与 iPad 版也在开发中。MarsDawn 的渲染核心和免费的 marsdawn 命令行工具，已经以 Apache-2.0 许可证在 mars-dawn-kit 开源。如果 MarsDawn 的开发者哪天停止维护这个 App，会以开源许可证公开 App 本身的源代码，让其他人可以接手。</p>
+<p>会。MarsDawn 上架 Mac App Store 以来的每次更新都在更新记录里；2026 年 10 月 28 日起，iPhone 和 iPad 上也能用 MarsDawn 阅读。MarsDawn 的渲染核心和免费的 marsdawn 命令行工具，已经以 Apache-2.0 许可证在 mars-dawn-kit 开源。如果 MarsDawn 的开发者哪天停止维护这个 App，会以开源许可证公开 App 本身的源代码，让其他人可以接手。</p>
 <p class="more">详见：<a href="/zh-hans/changelog/">更新记录</a> · <a href="/zh-hans/roadmap/">路线图</a> · <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a></p>
 </section>
-<section class="proof">
-<h2>App 实际的样子</h2>
-<h3><a href="/zh-hans/native/">为 Mac 而做</a></h3>
-<figure class="shot">
-  <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/01-split-1180.png" srcset="/assets/screens/01-split-800.png 800w, /assets/screens/01-split-1180.png 1180w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="1180" height="844" alt="MarsDawn 的并排布局：左边是 Markdown 源代码，右边是排版后的页面。">
-    <span class="marker l tb co-native-1" aria-hidden="true">1</span><span class="marker l co-native-2" aria-hidden="true">2</span><span class="marker r tb co-native-3" aria-hidden="true">3</span><span class="marker r co-native-4" aria-hidden="true">4</span>
-    <span class="leader l up co-native-1" aria-hidden="true"><span>原生的 Mac 窗口。</span></span><span class="leader l down co-native-2" aria-hidden="true"><span>Mac 原生的文本编辑器，附 Markdown 语法高亮。</span></span><span class="leader r up co-native-3" aria-hidden="true"><span>⌘1 源代码、⌘2 并排、⌘3 预览。</span></span><span class="leader r down co-native-4" aria-hidden="true"><span>页面会随着打字更新。</span></span>
-  </div></div>
-  <figcaption>
-    <span class="figure-label">这张截图里</span>
-    <ol><li>原生的 Mac 窗口。</li><li>Mac 原生的文本编辑器，附 Markdown 语法高亮。</li><li>⌘1 源代码、⌘2 并排、⌘3 预览。</li><li>页面会随着打字更新。</li></ol>
-  </figcaption>
-</figure>
-<h3><a href="/zh-hans/pdf/">导出 PDF</a></h3>
-<figure class="shot">
-  <div class="shot-frame"><div class="shot-canvas">
-    <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="用 MarsDawn 导出的 PDF，在内置的 PDF 查看器中打开，旁边有页面缩略图。">
-    <span class="marker r co-pdf-1" aria-hidden="true">1</span><span class="marker r co-pdf-2" aria-hidden="true">2</span>
-    <span class="leader r co-pdf-1" aria-hidden="true"><span>Mermaid 图表直接画进 PDF。</span></span><span class="leader r co-pdf-2" aria-hidden="true"><span>代码保留语法高亮。</span></span>
-  </div></div>
-  <figcaption>
-    <span class="figure-label">这张截图里</span>
-    <ol><li>Mermaid 图表直接画进 PDF。</li><li>代码保留语法高亮。</li></ol>
-  </figcaption>
-</figure>
-</section>
 <section class="dawn-close">
-<p><strong>Markdown 的新黎明。</strong> MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">Mac App Store</a> 上架。</p>
-<p class="close-next"><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-home&amp;mt=8">立即下载试用</a></p>
+<p><strong>Markdown 的新黎明。</strong> MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-close&amp;mt=8">Mac App Store</a> 上架。</p>
+<p class="close-next"><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-close&amp;mt=8"><img src="/assets/badges/app-store-zh-hans.svg" width="109" height="40" alt="在 App Store 下载"></a></p>
 </section>
 </main>
 <footer class="footer footer-home">
@@ -468,7 +508,7 @@ try {
         <li><a href="/zh-hans/features/">功能一览</a></li>
         <li><a href="/zh-hans/quicklook/">Markdown 快速查看</a></li>
         <li><a href="/zh-hans/native/">为 Mac 而做</a></li>
-        <li><a href="/zh-hans/pdf/">导出 PDF</a></li>
+        <li><a href="/zh-hans/pdf/">打印与 PDF</a></li>
         <li><a href="/zh-hans/limits/">MarsDawn 做不到的事</a></li>
         <li><a href="/zh-hans/pay-once/">免费试用，买一次就好</a></li>
         <li><a href="/zh-hans/yours/">你写的内容留在你的 Mac 上</a></li>
@@ -527,6 +567,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple、Apple 标志、Mac、iPhone、iPad 和 iCloud 是 Apple Inc. 在美国和其他国家和地区注册的商标。App Store 和 Mac App Store 是 Apple Inc. 的服务商标。</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意设置" hidden>

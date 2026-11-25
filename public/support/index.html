@@ -2,6 +2,7 @@
 <html lang="en" data-theme="dawn">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -134,6 +136,7 @@ try {
 <p>Jump to a question</p>
 <ul>
   <li><a href="#what-do-i-need-to-run-marsdawn">What do I need to run MarsDawn?</a></li>
+  <li><a href="#can-i-install-marsdawn-with-homebrew">Can I install MarsDawn with Homebrew?</a></li>
   <li><a href="#how-do-i-switch-between-the-editor-and-the-preview">How do I switch between the editor and the preview?</a></li>
   <li><a href="#an-image-in-my-document-doesn-t-show">An image in my document doesn't show.</a></li>
   <li><a href="#how-do-i-add-an-image">How do I add an image?</a></li>
@@ -146,6 +149,8 @@ try {
 </nav>
 <h3 id="what-do-i-need-to-run-marsdawn">What do I need to run MarsDawn?</h3>
 <p>A Mac with macOS 26 Tahoe or later, on Apple silicon or Intel.</p>
+<h3 id="can-i-install-marsdawn-with-homebrew">Can I install MarsDawn with Homebrew?</h3>
+<p>Yes, through the Mac App Store: run <code>brew install mas</code>, then <code>sudo mas get 6812925073</code>. <code>brew install marsdawn</code> is a different thing: it installs the command-line tool, not the app.</p>
 <h3 id="how-do-i-switch-between-the-editor-and-the-preview">How do I switch between the editor and the preview?</h3>
 <p>Press <kbd>⌘1</kbd> for the source only, <kbd>⌘2</kbd> for side by side, and <kbd>⌘3</kbd> for the preview only. The same choices are in the View menu and the toolbar.</p>
 <h3 id="an-image-in-my-document-doesn-t-show">An image in my document doesn't show.</h3>
@@ -180,7 +185,7 @@ try {
         <li><a href="/features/">Features</a></li>
         <li><a href="/quicklook/">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/">PDF export</a></li>
+        <li><a href="/pdf/">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>
@@ -239,6 +244,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-support&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, the Apple logo, Mac, iPhone, iPad and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store and Mac App Store are service marks of Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>

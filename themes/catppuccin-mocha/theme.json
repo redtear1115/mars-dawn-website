@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "catppuccin-mocha",
+  "version": "1.0.0",
+  "name": {
+    "en": "Catppuccin Mocha"
+  },
+  "summary": {
+    "en": "Soothing pastels: Mocha by night, Latte by day — adapted from Catppuccin, adjusted for readability",
+    "zh-Hant": "柔和粉彩色調：夜晚用 Mocha，白天用 Latte — 改編自 Catppuccin，為可讀性調整",
+    "zh-Hans": "柔和粉彩色调：夜晚用 Mocha，白天用 Latte — 改编自 Catppuccin，为可读性调整",
+    "ja": "やさしいパステル調。夜は Mocha、昼は Latte — Catppuccin を基に、読みやすさのために調整",
+    "de": "Sanfte Pastelltöne: nachts Mocha, tagsüber Latte – nach Catppuccin, für bessere Lesbarkeit angepasst",
+    "fr": "Des pastels apaisants : Mocha la nuit, Latte le jour – adaptée de Catppuccin, ajustée pour la lisibilité",
+    "es": "Pasteles relajantes: Mocha de noche, Latte de día —adaptada de Catppuccin y ajustada para leer mejor",
+    "ko": "차분한 파스텔 톤: 밤에는 Mocha, 낮에는 Latte — Catppuccin을 바탕으로 가독성에 맞게 조정"
+  },
+  "fontDesign": "rounded",
+  "scenarios": [
+    "technical-docs",
+    "agent-review"
+  ],
+  "author": {
+    "name": "charliie",
+    "github": "charliie-dev"
+  },
+  "license": "Apache-2.0",
+  "light": {
+    "background": "#EFF1F5",
+    "surface": "#E6E9EF",
+    "text": "#4C4F69",
+    "muted": "#63667C",
+    "border": "#CCD0DA",
+    "heading": "#822DE9",
+    "accent": "#B44095",
+    "link": "#1B63F2",
+    "quote": "#86899B",
+    "syntax": {
+      "keyword": "#8533EC",
+      "string": "#047900",
+      "comment": "#64677B",
+      "number": "#CB2700",
+      "function": "#155DEC",
+      "type": "#A35200"
+    },
+    "diagram": {
+      "node": "#CCD0DA",
+      "nodeBorder": "#5469DF",
+      "text": "#4C4F69",
+      "line": "#86899B",
+      "secondary": "#C8E0E4",
+      "tertiary": "#EEE0EF",
+      "note": "#EBDBC5"
+    }
+  },
+  "dark": {
+    "background": "#1E1E2E",
+    "surface": "#181825",
+    "text": "#CDD6F4",
+    "muted": "#A6ADC8",
+    "border": "#313244",
+    "heading": "#CBA6F7",
+    "accent": "#F5C2E7",
+    "link": "#89B4FA",
+    "quote": "#7F849C",
+    "syntax": {
+      "keyword": "#CBA6F7",
+      "string": "#A6E3A1",
+      "comment": "#9399B2",
+      "number": "#FAB387",
+      "function": "#89B4FA",
+      "type": "#F9E2AF"
+    },
+    "diagram": {
+      "node": "#313244",
+      "nodeBorder": "#B4BEFE",
+      "text": "#CDD6F4",
+      "line": "#7F849C",
+      "secondary": "#33414C",
+      "tertiary": "#3C3548",
+      "note": "#4E494A"
+    }
+  },
+  "style": {
+    "radius": 8,
+    "h1": {
+      "decoration": {
+        "type": "shortRule",
+        "color": "accent"
+      }
+    },
+    "h2": {
+      "decoration": {
+        "type": "none"
+      }
+    },
+    "hr": {
+      "style": {
+        "type": "line",
+        "color": "border",
+        "thickness": 2
+      }
+    },
+    "table": {
+      "header": {
+        "type": "surface"
+      },
+      "rounded": true
+    },
+    "blockquote": {
+      "style": {
+        "type": "bar",
+        "width": 3
+      }
+    },
+    "listMarker": "accent",
+    "inlineCode": "keyword"
+  }
+}

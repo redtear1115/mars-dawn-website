@@ -1,75 +1,124 @@
-"""The brand film's section on the home page (website #159): its own section directly below the hero.
+"""The 30-second mars-dawn-agents home page film (website #335).
 
-The film is English in every locale (its on-screen lines are burned into the picture). zh-Hant,
-zh-Hans and ja add a WebVTT track in their own language, `default`, so the translation shows
-without a click; the other locales have none. The poster shows first and a click plays with sound:
-no autoplay, `preload="none"`, so the film's 3 MB is fetched only when a visitor asks. Only the
-poster (a downsized JPEG) is part of first load.
+Layout decided in #327: Daphne's issuecomment-6542253169 and Ray's
+issuecomment-6542248332. Copy approved in #335 issuecomment-6537988090 /
+6541001486. Both Chinese locales play the Traditional Chinese film (Ray's decision E);
+other locales play English. The music-only film has burned-in captions, with optional
+caption tracks shared by its desktop 16:9 and phone 9:16 versions.
 
-Files, under public/assets/film/ (hand-placed, not generated):
-  marsdawn-film-en-1080p30.mp4   the film, from the brand-films repo (out/mars-dawn/web/)
-  marsdawn-film-en-poster.jpg    its poster: the frame at 20.0 s ("Read what your agent wrote."), 1280 px wide
-  marsdawn-film-<zh-hant|zh-hans|ja>.vtt   the translation tracks, copied from #159's comment
-
-The section moves nothing of its own: no transition, no animation, so reduced motion needs no
-rule. Its styles are appended to public/assets/loop.css by build_pages.py (one stylesheet less to fetch); the CSP's `media-src 'self'` allows the
-film and its tracks (public/_headers).
+Assets are hand-placed under public/assets/film/. Playback requires a click,
+preload="none"; styles are appended to loop.css by build_pages.py, with no inline styles.
 """
 
-FILM = "/assets/film/marsdawn-film-en-1080p30.mp4"
-POSTER = "/assets/film/marsdawn-film-en-poster.jpg"
-DURATION_SECONDS = 54
+import html
 
-# Locale -> (track file, srclang, the track's label in its own language). Locales not listed have
-# no track: they watch the English film as it is.
-TRACKS = {
-    "zh-hant": ("/assets/film/marsdawn-film-zh-hant.vtt", "zh-Hant", "繁體中文"),
-    "zh-hans": ("/assets/film/marsdawn-film-zh-hans.vtt", "zh-Hans", "简体中文"),
-    "ja": ("/assets/film/marsdawn-film-ja.vtt", "ja", "日本語"),
-}
+DURATION_SECONDS = 30
+# Planned go-live, a placeholder: set to the real deploy time when the film goes live.
+# Google wants a full ISO 8601 datetime with an offset (brand_film_themes.py / #256).
+UPLOAD_DATE = "2026-11-02T10:00:00+08:00"
 
-# (heading, the video's accessible name, fallback text for a browser that cannot play it).
+# (heading, accessible name, browser fallback, figcaption).
 COPY = {
-    "en": ("Watch the film", "MarsDawn film, 54 seconds", "Your browser cannot play this video."),
-    "zh-hant": ("觀看影片", "MarsDawn 影片，54 秒", "你的瀏覽器無法播放這支影片。"),
-    "zh-hans": ("观看影片", "MarsDawn 影片，54 秒", "你的浏览器无法播放这支影片。"),
-    "ja": ("動画を見る", "MarsDawn の動画（54 秒）", "お使いのブラウザではこの動画を再生できません。"),
-    "de": ("Den Film ansehen", "MarsDawn-Film (Englisch), 54 Sekunden", "Dein Browser kann dieses Video nicht abspielen."),
-    "fr": ("Voir le film", "Film MarsDawn (en anglais), 54 secondes", "Votre navigateur ne peut pas lire cette vidéo."),
-    "es": ("Ver el video", "Video de MarsDawn (en inglés), 54 segundos", "Tu navegador no puede reproducir este video."),
-    "ko": ("영상 보기", "MarsDawn 영상(영어), 54초", "이 브라우저에서는 영상을 재생할 수 없습니다."),
+    "en": ('Watch the film', 'Video: MarsDawn on Mac and iPhone, 30 seconds', 'Your browser cannot play this video.', '30 seconds: your agent writes on the Mac, you read on iPhone.'),
+    "zh-hant": ('觀看影片', '影片：Mac 與 iPhone 上的 MarsDawn，30 秒', '你的瀏覽器無法播放這支影片。', '30 秒：agent 在 Mac 上寫，你在 iPhone 上讀。'),
+    "zh-hans": ('观看影片', '视频：Mac 与 iPhone 上的 MarsDawn，30 秒，繁体中文字幕', '你的浏览器无法播放这支影片。', '30 秒：代理在 Mac 上写，你在 iPhone 上读。（繁体中文字幕）'),
+    "ja": ('動画を見る', '動画：Mac と iPhone の MarsDawn、30 秒、英語字幕', 'お使いのブラウザではこの動画を再生できません。', '30 秒：エージェントが Mac で書き、あなたは iPhone で読む。（英語字幕）'),
+    "ko": ('영상 보기', '동영상: Mac과 iPhone의 MarsDawn, 30초, 영어 자막', '이 브라우저에서는 영상을 재생할 수 없습니다.', '30초: 에이전트는 Mac에서 쓰고, 나는 iPhone에서 읽습니다. (영어 자막)'),
+    "de": ('Den Film ansehen', 'Video: MarsDawn auf Mac und iPhone, 30 Sekunden, englische Untertitel', 'Dein Browser kann dieses Video nicht abspielen.', '30 Sekunden: Dein Agent schreibt auf dem Mac, du liest auf dem iPhone. (Englische Untertitel)'),
+    "fr": ('Voir le film', 'Vidéo\xa0: MarsDawn sur Mac et iPhone, 30 secondes, sous-titres en anglais', 'Votre navigateur ne peut pas lire cette vidéo.', '30 secondes\xa0: votre agent écrit sur le Mac, vous lisez sur iPhone. (Sous-titres en anglais)'),
+    "es": ('Ver el video', 'Vídeo: MarsDawn en Mac y iPhone, 30 segundos, subtítulos en inglés', 'Tu navegador no puede reproducir este video.', '30 segundos: tu agente escribe en el Mac y tú lees en el iPhone. (Subtítulos en inglés)'),
 }
+
+
+def _film_language(locale: str) -> str:
+    return "zh-Hant" if locale in ("zh-hant", "zh-hans") else "en"
 
 
 def film_html(locale: str) -> str:
-    heading, label, fallback = COPY[locale]
-    track = ""
-    if locale in TRACKS:
-        src, lang, name = TRACKS[locale]
-        track = f'\n<track kind="subtitles" src="{src}" srclang="{lang}" label="{name}" default>'
+    heading, label, fallback, caption = (html.escape(value, quote=True) for value in COPY[locale])
+    language = _film_language(locale)
+    track_label = {"zh-hant": "繁體中文", "zh-hans": "繁体中文"}.get(locale, "English")
+    track = (
+        f'<track kind="captions" src="/assets/film/mars-dawn-agents-{language}.vtt" '
+        f'srclang="{language}" label="{html.escape(track_label, quote=True)}">'
+    )
+    videos = []
+    for shape, width, height, prefix in (
+        ("wide", 1920, 1080, "mars-dawn-agents-16x9"),
+        ("tall", 1080, 1920, "mars-dawn-agents"),
+    ):
+        videos.append(
+            f'<video class="film-{shape}" controls preload="none" playsinline width="{width}" height="{height}" '
+            f'poster="/assets/film/{prefix}-poster-{language}.jpg" aria-label="{label}">\n'
+            f'<source src="/assets/film/{prefix}-{language}.mp4" type="video/mp4">\n'
+            f'{track}\n'
+            f'<p>{fallback}</p>\n'
+            '</video>'
+        )
     return (
         '<section class="film" aria-labelledby="film-h">\n'
         f'<h2 id="film-h">{heading}</h2>\n'
-        f'<video controls preload="none" playsinline width="1920" height="1080" poster="{POSTER}" aria-label="{label}">\n'
-        f'<source src="{FILM}" type="video/mp4">{track}\n'
-        f"<p>{fallback}</p>\n"
-        "</video>\n"
-        "</section>"
+        '<figure class="film-figure">\n'
+        + "\n".join(videos)
+        + f'\n<figcaption>{caption}</figcaption>\n'
+        '</figure>\n'
+        '</section>'
     )
 
 
-CSS = """/* The home page's brand film (scripts/brand_film.py, website #159). It has no animation or
-   transition of its own, so there is no reduced-motion rule to write. */
+def video_object(locale: str, base_url: str) -> dict:
+    language = _film_language(locale)
+    if language == "zh-Hant":
+        name = "MarsDawn：任何 agent，任何地方"
+        description = "這支 30 秒短片裡，你用手機交代 agent，它在 Mac 上動筆。Mac 版 MarsDawn 打開它寫的 Markdown 和 HTML；在 iPhone 或 iPad 上讀同一份計畫，修改回到 Mac。"
+    else:
+        name = "MarsDawn: work with any agent, anywhere"
+        description = "In this 30-second film, you brief your agent from your phone and it writes on your Mac. MarsDawn for Mac opens its Markdown and HTML; on iPhone or iPad you read the same plan, and editing stays on the Mac."
+    return {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": name,
+        "description": description,
+        "inLanguage": language,
+        "duration": "PT30S",
+        "uploadDate": UPLOAD_DATE,
+        "width": 1920,
+        "height": 1080,
+        "contentUrl": f"{base_url}/assets/film/mars-dawn-agents-16x9-{language}.mp4",
+        "thumbnailUrl": [
+            f"{base_url}/assets/film/mars-dawn-agents-16x9-poster-{language}.jpg",
+            f"{base_url}/assets/film/mars-dawn-agents-poster-{language}.jpg",
+        ],
+    }
+
+
+CSS = """/* The home page's agents film (scripts/brand_film.py, website #335).
+   No animation or transition of its own, so no reduced-motion rule is needed. */
 .film { margin-top: 56px; }
 .film h2 { margin-top: 0; }
-/* --w-media (site.css): the same edges as the hero window, the loop and the screenshot plates. */
+.film figure { margin: 0; }
 .film video {
   display: block;
-  width: max(100%, var(--w-media));
-  margin-inline: calc((100% - max(100%, var(--w-media))) / 2);
-  aspect-ratio: 16 / 9;
   height: auto;
   border-radius: var(--r-plate);
   background: #000;
+}
+.film video.film-wide {
+  width: max(100%, var(--w-media));
+  margin-inline: calc((100% - max(100%, var(--w-media))) / 2);
+  aspect-ratio: 16 / 9;
+}
+.film video.film-tall {
+  aspect-ratio: 9 / 16;
+  width: min(100%, calc(80svh * 9 / 16));
+  margin-inline: auto;
+}
+.film figcaption { margin-top: 12px; }
+@media (min-width: 900px) {
+  .film video.film-tall { display: none; }
+}
+@media (max-width: 899.98px) {
+  .film video.film-wide { display: none; }
+  .film figcaption { text-align: center; }
 }
 """

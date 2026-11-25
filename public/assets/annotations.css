@@ -16,6 +16,9 @@
 .co-limits-2 { --x: 1.27%; --y: 12.09%; }
 .co-limits-3 { --x: 97.46%; --y: 3.09%; }
 .co-limits-4 { --x: 74.58%; --y: 11.85%; }
+.co-print-export-1 { --x: 1.61%; --y: 48.3%; }
+.co-print-export-2 { --x: 99.77%; --y: 20.92%; }
+.co-print-export-3 { --x: 99.77%; --y: 96.09%; }
 
 /* The second brand film's section on /features/ and /themes/ (scripts/brand_film_themes.py). It has no
    animation or transition of its own, so there is no reduced-motion rule to write. */
@@ -23,6 +26,21 @@
 .film-themes h2 { margin-top: 0; }
 /* --w-media (site.css): the same edges as the hero window, the loop and the screenshot plates. */
 .film-themes video {
+  display: block;
+  width: max(100%, var(--w-media));
+  margin-inline: calc((100% - max(100%, var(--w-media))) / 2);
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: var(--r-plate);
+  background: #000;
+}
+
+/* The first brand film on /features/ (scripts/brand_film_mac.py, website #159). It has no animation or
+   transition of its own, so there is no reduced-motion rule to write. */
+.film-mac { margin-top: 48px; }
+.film-mac h2 { margin-top: 0; }
+/* --w-media (site.css): the same edges as the hero window, the loop and the screenshot plates. */
+.film-mac video {
   display: block;
   width: max(100%, var(--w-media));
   margin-inline: calc((100% - max(100%, var(--w-media))) / 2);

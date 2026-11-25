@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -52,7 +54,7 @@ try {
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/"}, {"@type": "ListItem", "position": 2, "name": "Quick Look for Markdown", "item": "https://marsdawn.southern-light.dev/quicklook/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I preview a Markdown file in Finder?", "acceptedAnswer": {"@type": "Answer", "text": "Select the file and press Space. With MarsDawn installed, Quick Look shows the rendered page, with Mermaid diagrams, KaTeX math and highlighted code."}}, {"@type": "Question", "name": "Does Quick Look still work after the 14-day trial?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Quick Look is not locked by the trial. It keeps rendering Markdown files while the trial runs, after it ends and once you unlock."}}, {"@type": "Question", "name": "Why does Quick Look show plain text?", "acceptedAnswer": {"@type": "Answer", "text": "The Quick Look extension may be switched off. Open System Settings, go to General ▸ Login Items & Extensions, click the Info button next to Quick Look under Extensions, turn on MarsDawn Preview, then click Done."}}, {"@type": "Question", "name": "Does Quick Look cost extra?", "acceptedAnswer": {"@type": "Answer", "text": "No. The Quick Look extension is part of MarsDawn, with no separate purchase. MarsDawn is a free download with a 14-day trial and a one-time USD 4.99 unlock, and Quick Look works with or without the trial."}}, {"@type": "Question", "name": "Which version of macOS does it need?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn needs macOS 26 or later."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I preview a Markdown file in Finder?", "acceptedAnswer": {"@type": "Answer", "text": "Select the file and press Space. With MarsDawn installed, Quick Look shows the rendered page, with Mermaid diagrams, KaTeX math and highlighted code."}}, {"@type": "Question", "name": "Does Quick Look still work after the 14-day trial?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Quick Look is not locked by the trial. It keeps rendering Markdown files while the trial runs, after it ends and once you unlock."}}, {"@type": "Question", "name": "Why does Quick Look show plain text?", "acceptedAnswer": {"@type": "Answer", "text": "The Quick Look extension may be switched off. Open System Settings, go to General ▸ Login Items & Extensions, click the Info button next to Quick Look under Extensions, turn on MarsDawn Preview, then click Done."}}, {"@type": "Question", "name": "Does Quick Look cost extra?", "acceptedAnswer": {"@type": "Answer", "text": "No. The Quick Look extension is part of MarsDawn, with no separate purchase. MarsDawn is a free download with a 14-day trial and a one-time USD 2.49 unlock, and Quick Look works with or without the trial."}}, {"@type": "Question", "name": "Which version of macOS does it need?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn needs macOS 26 or later."}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "How to preview a Markdown file with Quick Look", "step": [{"@type": "HowToStep", "position": 1, "name": "Install MarsDawn.", "text": "Download MarsDawn from the Mac App Store. The Quick Look extension is part of the app."}, {"@type": "HowToStep", "position": 2, "name": "Select a Markdown file.", "text": "In Finder, click a .md file once."}, {"@type": "HowToStep", "position": 3, "name": "Press Space.", "text": "The rendered preview opens. Press Space again to close it."}, {"@type": "HowToStep", "position": 4, "name": "If you see plain text, switch the extension on.", "text": "Open System Settings, go to General ▸ Login Items & Extensions, click the Info button next to Quick Look under Extensions, turn on MarsDawn Preview, then click Done."}]}</script>
 <script src="/assets/consent.js" defer></script>
 </head>
@@ -132,6 +134,7 @@ try {
   <li>Mermaid diagrams, KaTeX math and highlighted code blocks.</li>
   <li>The preview theme you picked in MarsDawn, in light or dark.</li>
   <li>Web images stay blocked, and pictures stored next to the file can appear as placeholders.</li>
+  <li>JSON and YAML files as a tree, the same as MarsDawn's tree preview.</li>
 </ul>
 <section class="howto">
 <h2 id="how-to-preview-a-markdown-file-with-quick-look">How to preview a Markdown file with Quick Look</h2>
@@ -153,7 +156,7 @@ try {
 <h3>Why does Quick Look show plain text?</h3>
 <p>The Quick Look extension may be switched off. Open System Settings, go to General ▸ Login Items &amp; Extensions, click the Info button next to Quick Look under Extensions, turn on MarsDawn Preview, then click Done.</p>
 <h3>Does Quick Look cost extra?</h3>
-<p>No. The Quick Look extension is part of MarsDawn, with no separate purchase. MarsDawn is a free download with a 14-day trial and a one-time USD 4.99 unlock, and Quick Look works with or without the trial.</p>
+<p>No. The Quick Look extension is part of MarsDawn, with no separate purchase. MarsDawn is a free download with a 14-day trial and a one-time USD 2.49 unlock, and Quick Look works with or without the trial.</p>
 <h3>Which version of macOS does it need?</h3>
 <p>MarsDawn needs macOS 26 or later.</p>
 </section>
@@ -173,7 +176,7 @@ try {
         <li><a href="/features/">Features</a></li>
         <li><a href="/quicklook/" aria-current="page">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/">PDF export</a></li>
+        <li><a href="/pdf/">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>
@@ -232,6 +235,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-quicklook&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, the Apple logo, Mac, iPhone, iPad and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store and Mac App Store are service marks of Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>

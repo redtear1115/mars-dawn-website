@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -125,7 +127,7 @@ try {
   <p>La herramienta de línea de comandos gratuita <code>marsdawn</code>: exporta Markdown a PDF desde una shell o un agente LLM y, si tienes instalada la app MarsDawn, abre archivos en ella.</p>
 </section>
 
-<div class="summary"><p><strong>marsdawn es gratis y se distribuye por separado del Mac App Store.</strong> Instálalo con Homebrew: en una Mac con chip de Apple llega listo para usar. <code>export</code> funciona por sí solo; <code>open</code> necesita la app MarsDawn.</p></div>
+<div class="summary"><p><strong>marsdawn es gratis y se distribuye por separado del Mac App Store.</strong> Instálalo con Homebrew: en una Mac con chip de Apple llega listo para usar. <code>export</code> funciona por sí solo; <code>open</code> necesita la app MarsDawn. ¿Buscas la app para Mac? <a href="#mac-app">Instálala con Homebrew y mas</a>.</p></div>
 
 <p>¿Llamas a marsdawn desde un agente de IA o un script? Consulta <a href="/es/cli/agents/">marsdawn para agentes</a> para ver la salida JSON, sus esquemas y todos los códigos de salida, o <a href="/es/cli/mcp/">el servidor MCP</a> si tu agente llama a herramientas por MCP.</p>
 
@@ -139,6 +141,13 @@ try {
 cd mars-dawn-kit
 swift build -c release --product marsdawn</code></pre>
 <p>Revisa qué versión tienes con <code>marsdawn --version</code>.</p>
+
+<h2 id="mac-app">Instala la app MarsDawn con Homebrew y mas</h2>
+<p><code>brew install marsdawn</code> instala la herramienta de línea de comandos, no la app. La app para Mac está en el Mac App Store, y con <a href="https://github.com/mas-cli/mas">mas</a> puedes obtenerla desde la terminal:</p>
+<pre><code>brew install mas
+sudo mas get 6812925073</code></pre>
+<p>Primero inicia sesión en el App Store con tu cuenta de Apple; <code>sudo</code> te pedirá la contraseña de inicio de sesión de tu Mac. Esto instala la versión del App Store en <code>/Applications/MarsDawn.app</code>. Requiere macOS 26 o posterior, y las actualizaciones llegan por el App Store.</p>
+<p>La descarga es gratuita. La primera vez que abras MarsDawn, puedes comenzar la prueba gratuita de 14 días, con todas las funciones disponibles; para seguir usándolo después, desbloquéalo una sola vez. No hay suscripción. <a href="/es/pay-once/">Cómo funciona</a></p>
 
 <h2 id="commands">Comandos</h2>
 
@@ -157,7 +166,7 @@ marsdawn open notes.md --folder .</code></pre>
   <li>Una carpeta como argumento se abre en la barra lateral de la ventana en lugar de como documento: <code>marsdawn open .</code> muestra la carpeta actual. <code>--folder &lt;path&gt;</code> hace lo mismo junto con archivos. La barra lateral de una ventana muestra una carpeta, así que indicar dos es un error de uso.</li>
   <li><code>--wait &lt;n&gt;</code>: con MarsDawn 1.0.2 o posterior, que informa del resultado, <code>--folder</code> espera hasta n segundos (de 0 a 30, 2 de forma predeterminada) la respuesta de la app sobre la carpeta. Con <code>--wait 0</code>, o con una app que no informa del resultado, no espera y envía la misma solicitud que antes.</li>
   <li>Un valor de <code>--wait</code> fuera de 0 a 30 es un error de uso (código 64). Escribe un valor negativo como <code>--wait=-1</code>.</li>
-  <li>Con <code>--json</code>, la carpeta figura como solicitada, no como mostrada, porque decide la app; con <code>--wait</code>, el resultado también dice qué pasó con ella. La lista completa está en <a href="/es/cli/agents/">marsdawn para agentes</a>.</li>
+  <li>Con <code>--json</code>, la carpeta figura como solicitada, no como mostrada, porque decide la app. Con MarsDawn 1.0.2 o posterior, el resultado también dice qué pasó con ella, salvo con <code>--wait 0</code>. La lista completa está en <a href="/es/cli/agents/">marsdawn para agentes</a>.</li>
   <li><code>--background</code>: abrir sin traer MarsDawn al frente.</li>
   <li><code>--json</code>: mostrar un resultado JSON en lugar de texto.</li>
 </ul>
@@ -171,15 +180,15 @@ marsdawn open notes.md --folder .</code></pre>
   <li><code>--theme &lt;dawn|classic|modern|vivid&gt;</code>: la paleta clara del tema de la vista previa. De forma predeterminada, <code>$MARSDAWN_THEME</code> y, si no, <code>dawn</code>.</li>
   <li><code>--paper &lt;a4|letter&gt;</code>: tamaño del papel. De forma predeterminada, <code>a4</code>.</li>
   <li><code>--breaks</code>: mostrar cada salto de línea dentro de un párrafo como un salto de línea, como HackMD. Sin esta opción, un salto de línea entre dos caracteres chinos o japoneses desaparece, y las líneas se leen como una sola frase.</li>
-  <li><code>--layout &lt;document|handbook&gt;</code>: la disposición de página. De forma predeterminada, <code>document</code>. <code>handbook</code> genera una guía: márgenes más anchos con un lado de encuadernación, cada encabezado de primer nivel en una página nueva, una tabla de contenido con números de página, números de página en el pie y marcadores PDF, además de una portada cuando el front matter tiene <code>title</code>.</li>
+  <li><code>--layout &lt;document|handbook|handout&gt;</code>: la disposición de página. De forma predeterminada, <code>document</code>. <code>handbook</code> genera una guía: márgenes más anchos con un lado de encuadernación, cada encabezado de primer nivel en una página nueva, una tabla de contenido con números de página, números de página en el pie y marcadores PDF, además de una portada cuando el front matter tiene <code>title</code>. <code>handout</code> deja una columna de notas en blanco a la derecha de cada página, pone el título y la fecha en la parte superior de la página 1 y termina cada página con el nombre del archivo, la fecha y el número de página. Una tabla muy ancha puede invadir la columna de notas.</li>
   <li><code>--toc-title &lt;text&gt;</code>: el título de la página de contenido de la guía. De forma predeterminada, <code>Contents</code>.</li>
-  <li><code>&lt;!--BREAK--&gt;</code> solo en una línea empieza una página nueva, en ambas disposiciones.</li>
+  <li><code>&lt;!--BREAK--&gt;</code> solo en una línea empieza una página nueva, en todas las disposiciones.</li>
   <li><code>--allow-remote-images</code>: cargar imágenes de la web durante el renderizado. Desactivado de forma predeterminada.</li>
   <li><code>--force</code>: reemplazar el archivo de salida si ya existe.</li>
   <li><code>--json</code>: mostrar un resultado JSON en lugar de texto.</li>
   <li>Un archivo de más de 16 MiB no se exporta: <code>export</code> termina con el código 5 y no escribe nada.</li>
 </ul>
-<p><code>--breaks</code> llegó con marsdawn 0.7.0, <code>--layout</code> y <code>--toc-title</code> con la 0.7.1, y el valor <code>handbook</code> con la 0.7.2. El valor anterior de la 0.7.1, <code>manual</code>, sigue funcionando.</p>
+<p><code>--breaks</code> llegó con marsdawn 0.7.0, <code>--layout</code> y <code>--toc-title</code> con la 0.7.1, el valor <code>handbook</code> con la 0.7.2, y el valor <code>handout</code> con la 0.7.3. El valor anterior de la 0.7.1, <code>manual</code>, sigue funcionando.</p>
 
 <h3>marsdawn theme</h3>
 <p>Comprueba un archivo de tema (<code>theme.json</code>) y muestra cómo se ve antes de que lo compartas. No necesita la app MarsDawn. Para los campos de un tema, consulta <a href="/es/themes/agents/">Crea un tema con tu agente</a>.</p>
@@ -224,9 +233,9 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pr
       <h3 id="footer-product">Producto</h3>
       <ul>
         <li><a href="/es/features/">Funciones</a></li>
-        <li><a href="/es/quicklook/">Vista rápida para Markdown</a></li>
+        <li><a href="/es/quicklook/">Vista Rápida para Markdown</a></li>
         <li><a href="/es/native/">Una app para Mac</a></li>
-        <li><a href="/es/pdf/">Exportación a PDF</a></li>
+        <li><a href="/es/pdf/">Imprimir y PDF</a></li>
         <li><a href="/es/limits/">Lo que MarsDawn no hace</a></li>
         <li><a href="/es/pay-once/">Pruébalo gratis, paga una vez</a></li>
         <li><a href="/es/yours/">Lo que escribes se queda en tu Mac</a></li>
@@ -285,6 +294,7 @@ marsdawn theme preview my-theme.json --appearance dark -o preview.png</code></pr
     </section>
   </nav>
   <p class="footer-meta"><span>Un nuevo amanecer para Markdown.</span> <span>MarsDawn está en el <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-cli&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, el logotipo de Apple, Mac, iPhone, iPad e iCloud son marcas comerciales de Apple Inc., registradas en EE. UU. y en otros países y regiones. App Store y Mac App Store son marcas de servicio de Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>

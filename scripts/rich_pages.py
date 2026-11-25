@@ -92,6 +92,7 @@ def open_md_page(copy: dict, listing_url: str, brew: str) -> dict:
 <h2>{copy["read_h2"]}</h2>
 <p>{copy["read_p1_html"]}</p>
 <p><a href="{listing_url}">{copy["download"]}</a></p>
+<p>{copy["read_mas_html"]}</p>
 <p>{copy["read_p2_html"]}</p>
 <ul>
   <li>{copy["read_b1_html"]}</li>

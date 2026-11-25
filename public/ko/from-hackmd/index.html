@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HackMD에서 Mac으로: 노트, 이미지, GitHub · MarsDawn</title>
+<meta name="description" content="HackMD 노트를 .md로 내려받아 Mac의 MarsDawn에서 읽는 방법입니다. 모든 노트 다운로드, GitHub 저장소에서 옮기기, 이미지 처리 방법을 정리했습니다.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/from-hackmd/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/from-hackmd/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/from-hackmd/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/from-hackmd/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/from-hackmd/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/from-hackmd/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/from-hackmd/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/from-hackmd/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/from-hackmd/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/ko/from-hackmd/">
+<link rel="alternate" type="text/markdown" href="/ko/from-hackmd/index.md">
+<meta property="og:title" content="HackMD에서 Mac으로: 노트, 이미지, GitHub · MarsDawn">
+<meta property="og:description" content="HackMD 노트를 .md로 내려받아 Mac의 MarsDawn에서 읽는 방법입니다. 모든 노트 다운로드, GitHub 저장소에서 옮기기, 이미지 처리 방법을 정리했습니다.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/ko/from-hackmd/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/ko/"}, {"@type": "ListItem", "position": 2, "name": "HackMD에서 Mac으로", "item": "https://marsdawn.southern-light.dev/ko/from-hackmd/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "HackMD 노트를 한 번에 모두 내려받을 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네. Download all notes를 쓰면 .md 파일이 든 .zip 파일 하나를 받습니다. 폴더는 유지되지 않고 이미지도 포함되지 않습니다."}}, {"@type": "Question", "name": "MarsDawn에서 이미지가 보이지 않는 이유는 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "MarsDawn은 웹 이미지를 기본으로 불러오지 않습니다. 이미지 불러오기를 클릭하세요. 비공개 노트의 이미지는 불러올 수 없으니 파일 옆에 저장하세요."}}, {"@type": "Question", "name": "HackMD를 꼭 떠나야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "아닙니다. 함께 쓸 때는 HackMD가 여전히 더 좋은 선택입니다. MarsDawn은 Mac에서 읽고 검토하기 위한 앱입니다."}}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/ko/" aria-label="MarsDawn 홈">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="site-nav" aria-label="주요 탐색">
+    <ul class="site-nav-wide">
+      <li><a href="/ko/features/">기능</a></li>
+      <li><a href="/ko/cli/">에이전트</a></li>
+      <li><a href="/ko/themes/">테마</a></li>
+      <li><a href="/ko/vs/">비교</a></li>
+      <li><a href="/ko/support/">지원</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>메뉴</summary>
+      <ul>
+        <li><a href="/ko/features/">기능</a></li>
+        <li><a href="/ko/cli/">에이전트</a></li>
+        <li><a href="/ko/themes/">테마</a></li>
+        <li><a href="/ko/vs/">비교</a></li>
+        <li><a href="/ko/support/">지원</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="언어">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/from-hackmd/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/from-hackmd/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/from-hackmd/" hreflang="ja" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/from-hackmd/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary lang="ko">한국어</summary>
+      <ul>
+        <li><a href="/de/from-hackmd/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/from-hackmd/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/from-hackmd/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/from-hackmd/" hreflang="ko" aria-current="true" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>KO</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/from-hackmd/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/from-hackmd/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/from-hackmd/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/from-hackmd/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/from-hackmd/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/from-hackmd/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/from-hackmd/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/from-hackmd/" hreflang="ko" aria-current="true" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>HackMD에서 Mac으로</h1>
+  <p>노트는 이미 Markdown이므로 변환할 필요가 없습니다. 옮길 양에 맞춰 방법을 고르세요. 이미지는 따로 처리해야 하니, HackMD에서 무엇이든 삭제하기 전에 ‘이미지’ 부분을 읽어 보세요.</p>
+</section>
+<p>이 페이지는 2026년 11월에 HackMD 무료 계정으로 확인한 내용입니다. HackMD는 바뀔 수 있으며, 유료 요금제와 팀 워크스페이스는 확인하지 않았습니다.</p>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">하고 싶은 일</th><th scope="col">방법</th></tr></thead>
+<tbody>
+  <tr><th scope="row">노트를 모두 옮기기</th><td>모든 노트 다운로드</td></tr>
+  <tr><th scope="row">GitHub에 있는 노트 옮기기</th><td>저장소 clone</td></tr>
+  <tr><th scope="row">한두 개만 옮기기</th><td>노트 하나 다운로드</td></tr>
+</tbody>
+</table></div>
+<h2 id="download-all-notes">모든 노트 다운로드</h2>
+<p>HackMD의 노트 설정에 Download all notes가 있습니다. 개인 공간과 팀 공간 모두에서 쓸 수 있습니다. 노트마다 .md 파일이 하나씩 든 .zip 파일 하나를 받게 되며, 파일 이름은 노트 제목입니다.</p>
+<ul>
+  <li>폴더는 유지되지 않습니다. 모든 노트가 최상위에 들어갑니다.</li>
+  <li>이미지는 포함되지 않습니다. .md 안에는 URL이 그대로 남습니다.</li>
+  <li>제목과 태그를 포함하는 옵션은 기본으로 켜져 있으며, 각 노트 맨 앞에 front matter 블록을 추가합니다. 끄면 노트 원문과 같습니다.</li>
+</ul>
+<p>압축을 푼 뒤 MarsDawn에서 파일 ▸ 폴더 열기…를 선택해 그 폴더를 엽니다.</p>
+<h2 id="clone-the-repo">저장소 clone</h2>
+<p>HackMD의 GitHub 동기화는 노트 하나를 파일 하나에 연결합니다. 푸시한 노트는 이미 저장소에 있습니다. clone한 뒤 파일 ▸ 폴더 열기…로 열면 사이드바에 저장소와 브랜치가 표시됩니다.</p>
+<p>아직 GitHub에 연결하지 않은 노트는 옮기려고 일부러 연결할 필요가 없습니다. 노트마다 따로 연결해야 하고, 무료 요금제의 푸시는 한 달에 20번까지입니다. 무료 개인 계정에서는 워크스페이스 전체를 한 번에 푸시하는 방법을 찾지 못했습니다.</p>
+<p>옮긴 뒤에는 저장소를 원본으로 삼으세요. HackMD에서 푸시하면 GitHub의 내용을 그대로 덮어씁니다. GitHub 쪽이 더 최신이어도 마찬가지이며, 경고도 없습니다.</p>
+<h2 id="download-one-note">노트 하나 다운로드</h2>
+<p>노트 메뉴에서 .md나 .html로 내려받을 수 있습니다. .md를 선택해 MarsDawn에서 여세요.</p>
+<h2 id="images">이미지</h2>
+<p>HackMD에 올린 이미지의 주소는 <code>https://hackmd.io/_uploads/...</code>입니다. 누가 볼 수 있는지는 노트의 권한을 따릅니다.</p>
+<div class="table-scroll"><table class="compare">
+<thead><tr><th scope="col">노트</th><th scope="col">Mac으로 옮긴 뒤</th><th scope="col">처리 방법</th></tr></thead>
+<tbody>
+  <tr><th scope="row">공개</th><td>이미지를 HackMD에서 불러옵니다</td><td>미리보기에서 이미지 불러오기를 클릭하거나, 설정 ▸ 이미지 ▸ 원격 이미지 자동으로 불러오기를 켜세요</td></tr>
+  <tr><th scope="row">비공개</th><td>MarsDawn이 HackMD에 로그인되어 있지 않아 이미지가 오류를 냅니다</td><td>로그인한 브라우저에서 이미지를 저장해 .md 옆에 두고 경로를 바꾸세요. 모두가 봐도 된다면 노트를 공개로 바꿔도 됩니다</td></tr>
+</tbody>
+</table></div>
+<ul>
+  <li><strong>오래된 노트</strong> 의 이미지는 <code>i.imgur.com</code> 주소일 수 있습니다.</li>
+  <li><strong>노트를 삭제하면 이미지도 쓸 수 없게 됩니다.</strong> 주소가 더 이상 열리지 않으니, 이미지를 먼저 옮기세요.</li>
+</ul>
+<p>파일 옆의 이미지를 MarsDawn이 읽지 못하면, 미리보기의 버튼으로 그 폴더에 접근을 허용하세요.</p>
+<h2 id="how-your-notes-will-look">어떻게 보이나요</h2>
+<p>HackMD 문법은 대부분 그대로 읽을 수 있습니다. <code>==강조==</code>, <code>^위첨자^</code>, <code>~아래첨자~</code>, <code>[TOC]</code>, <code>=300x200</code> 같은 이미지 크기, Mermaid, KaTeX를 지원합니다. <code>{%youtube %}</code>는 링크로 표시됩니다. HackMD처럼 모든 줄바꿈을 유지하려면 설정 ▸ 화면 모드 ▸ 단일 줄 바꿈 유지를 켜세요.</p>
+<p><code>:::</code> 블록도 지원합니다. <code>:::info</code>, <code>:::success</code>, <code>:::warning</code>, <code>:::danger</code>는 색 막대와 제목이 있는 블록으로 표시되며, 제목 기본값은 참고, 팁, 경고, 위험입니다. 이름 뒤에 제목을 직접 쓰면 그 제목이 쓰입니다. <code>:::spoiler</code>는 클릭하면 열리는 접을 수 있는 블록으로 표시됩니다. 다른 이름의 <code>:::</code> 블록이나 닫는 <code>:::</code> 줄이 없는 블록은 쓴 그대로 표시됩니다.</p>
+<p>몇 가지는 다르게 보입니다.</p>
+<ul>
+  <li><code>++밑줄++</code>과 <code>:sparkles:</code> 같은 이모지 코드는 쓴 그대로 표시됩니다.</li>
+  <li><code>{%hackmd id %}</code>는 펼쳐지지 않습니다.</li>
+  <li><code>&lt;i class="fa ..."&gt;</code> 아이콘은 표시되지 않습니다.</li>
+</ul>
+<h2 id="for-scripts-hackmd-cli">스크립트로: hackmd-cli</h2>
+<p><code>hackmd-cli</code>에는 모든 노트를 한 번에 내보내는 명령이 없습니다. 한 번에 노트 하나를 내보내 화면에 출력하므로, 노트 목록을 뽑은 뒤 반복문을 돌려야 합니다. Node.js, <code>jq</code>, HackMD 설정에서 만든 API 토큰이 필요합니다. 스크립트가 필요 없다면 Download all notes가 더 간단합니다.</p>
+<pre tabindex="0" role="region" aria-labelledby="for-scripts-hackmd-cli"><code>npm install -g @hackmd/hackmd-cli
+export HMD_API_ACCESS_TOKEN=&lt;내 토큰&gt;
+hackmd-cli notes --output json | jq -r '.[].id' | while read -r id; do
+  hackmd-cli export --noteId="$id" &gt; "$id.md"
+done</code></pre>
+<ul>
+  <li><strong>폴더는 옮겨지지 않습니다.</strong> 노트 목록에 폴더 정보가 없어서 모든 파일이 한곳에 들어갑니다.</li>
+  <li><strong>이미지는 <code>hackmd.io</code> 링크 그대로입니다.</strong> 위의 ‘이미지’ 부분대로 처리하세요.</li>
+  <li><strong>파일 이름은 노트 ID입니다.</strong> 제목이 아닙니다.</li>
+  <li><strong>무료 요금제의 API는 30일에 400번까지입니다.</strong> 목록에 1번, 노트 하나마다 1번 씁니다.</li>
+</ul>
+<p>노트가 적은 계정에서만 시도해 봤기 때문에, 목록이 아주 길 때 어떻게 되는지는 모릅니다. 끝나면 HackMD 설정에서 토큰을 삭제하세요.</p>
+<h2 id="writing-together">함께 쓰려면</h2>
+<p>MarsDawn에는 여러 사람이 동시에 편집하는 기능이 없습니다. 함께 써야 한다면 HackMD를 계속 쓰세요. 팀이 문서를 git으로 관리한다면 각자 자기 MarsDawn으로 같은 저장소를 열어 같은 문서를 함께 완성할 수 있습니다. 팀이 git으로 문서 함께 검토하기를 참고하세요.</p>
+<section class="faq">
+<h2 id="questions">자주 묻는 질문</h2>
+<h3>HackMD 노트를 한 번에 모두 내려받을 수 있나요?</h3>
+<p>네. Download all notes를 쓰면 .md 파일이 든 .zip 파일 하나를 받습니다. 폴더는 유지되지 않고 이미지도 포함되지 않습니다.</p>
+<h3>MarsDawn에서 이미지가 보이지 않는 이유는 무엇인가요?</h3>
+<p>MarsDawn은 웹 이미지를 기본으로 불러오지 않습니다. 이미지 불러오기를 클릭하세요. 비공개 노트의 이미지는 불러올 수 없으니 파일 옆에 저장하세요.</p>
+<h3>HackMD를 꼭 떠나야 하나요?</h3>
+<p>아닙니다. 함께 쓸 때는 HackMD가 여전히 더 좋은 선택입니다. MarsDawn은 Mac에서 읽고 검토하기 위한 앱입니다.</p>
+</section>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="사이트 탐색">
+    <h2 class="footer-nav-title">사이트 탐색</h2>
+    <section aria-labelledby="footer-product">
+      <h3 id="footer-product">제품</h3>
+      <ul>
+        <li><a href="/ko/features/">기능 한눈에 보기</a></li>
+        <li><a href="/ko/quicklook/">Markdown 훑어보기</a></li>
+        <li><a href="/ko/native/">Mac 앱</a></li>
+        <li><a href="/ko/pdf/">프린트 및 PDF</a></li>
+        <li><a href="/ko/limits/">MarsDawn이 하지 않는 일</a></li>
+        <li><a href="/ko/pay-once/">무료로 체험하고, 한 번만 구입</a></li>
+        <li><a href="/ko/yours/">내 글은 내 Mac에</a></li>
+        <li><a href="/ko/changelog/">변경 내역</a></li>
+        <li><a href="/ko/roadmap/">로드맵</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h3 id="footer-agents">에이전트와 CLI</h3>
+      <ul>
+        <li><a href="/ko/cli/">명령줄</a></li>
+        <li><a href="/ko/cli/agents/">에이전트를 위한 marsdawn</a></li>
+        <li><a href="/ko/cli/mcp/">MCP 서버</a></li>
+        <li><a href="/ko/cli/skill/">에이전트 스킬</a></li>
+        <li><a href="/ko/agent-transparency/">에이전트의 투명성</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h3 id="footer-guides">가이드</h3>
+      <ul>
+        <li><a href="/ko/view-markdown-on-mac/">Mac에서 .md 파일 여는 방법</a></li>
+        <li><a href="/ko/markdown-to-pdf/">Markdown을 PDF로</a></li>
+        <li><a href="/ko/mermaid-preview-mac/">Mac에서 Mermaid 미리보기</a></li>
+        <li><a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a></li>
+        <li><a href="/ko/reviewing-ai-output/">AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유</a></li>
+        <li><a href="/ko/reviewing-agent-plans/">에이전트의 계획 검토하기</a></li>
+        <li><a href="/ko/token-efficient-review/">토큰을 아끼는 검토</a></li>
+        <li><a href="/ko/sharing-exported-pdfs/">내보낸 PDF 공유하기</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h3 id="footer-compare">비교</h3>
+      <ul>
+        <li><a href="/ko/vs/">MarsDawn 비교: VS Code 미리보기, Obsidian, QLMarkdown, LynxOffice</a></li>
+        <li><a href="/ko/vs/macmd-viewer/">MacMD Viewer와 MarsDawn 비교</a></li>
+        <li><a href="/ko/vs/markdown-preview-tools/">다른 도구로 Markdown 보기와 MarsDawn 비교</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h3 id="footer-themes">테마</h3>
+      <ul>
+        <li><a href="/ko/themes/">테마</a></li>
+        <li><a href="/ko/themes/gallery/">테마 갤러리</a></li>
+        <li><a href="/ko/themes/new/">테마 만들기</a></li>
+        <li><a href="/ko/themes/agents/">에이전트와 함께 테마 만들기</a></li>
+        <li><a href="/ko/templates/">템플릿</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h3 id="footer-support">지원 및 법적 정보</h3>
+      <ul>
+        <li><a href="/ko/support/">지원</a></li>
+        <li><a href="/ko/privacy/">개인정보 처리방침</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">쿠키 설정</button></li>
+      </ul>
+    </section>
+  </nav>
+  <p class="footer-meta"><span>Markdown의 새로운 새벽.</span> <span>MarsDawn은 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-from-hackmd&amp;mt=8">Mac App Store</a>에서 구입할 수 있습니다.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, Apple 로고, Mac, iPhone, iPad 및 iCloud는 미국 및 기타 국가와 지역에서 등록된 Apple Inc.의 상표입니다. App Store 및 Mac App Store는 Apple Inc.의 서비스 마크입니다.</p>
+</footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="쿠키 동의" hidden>
+  <p>분석 쿠키를 사용합니다. 수락하기 전에는 꺼져 있습니다.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">거부</button>
+    <button type="button" id="consent-accept" class="consent-btn">수락</button>
+  </div>
+</div>
+</body>
+</html>

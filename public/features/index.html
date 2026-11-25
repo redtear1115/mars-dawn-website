@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -26,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Features: review your agent's Markdown on Mac · MarsDawn</title>
-<meta name="description" content="A native Mac Markdown editor: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings, margin notes and paper records.">
+<meta name="description" content="A native Mac editor for Markdown, JSON and YAML: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings and records.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -43,7 +45,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/features/">
 <link rel="alternate" type="text/markdown" href="/features/index.md">
 <meta property="og:title" content="Features: review your agent's Markdown on Mac · MarsDawn">
-<meta property="og:description" content="A native Mac Markdown editor: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings, margin notes and paper records.">
+<meta property="og:description" content="A native Mac editor for Markdown, JSON and YAML: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings and records.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/features/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -145,8 +147,10 @@ try {
 <h3>Outline and Files sidebar</h3>
 <p>The sidebar's Outline tab lists a document's headings; click one to jump there. Open a folder and the Files tab lists what is in it, and new files appear on their own while an agent is writing into it. If the folder is a git checkout, the header names the branch or worktree.</p>
 <p class="more"><a href="/reading-agent-output/">Reading what your agent hands back</a></p>
+<h3>Fold a long document</h3>
+<p>In the preview, View ▸ Collapse All to Heading 2 folds a long plan or spec down to its level 2 headings, and View ▸ Expand All opens it again. Format ▸ Collapsible Section inserts a block that folds.</p>
 <h3>Point at the exact line</h3>
-<p>Edit ▸ Copy Reference copies your place as a path and line, like <code>docs/plan.md:42</code>. Copy for AI adds the selected text under it. Paste either into the agent's chat.</p>
+<p>Edit ▸ Copy Reference copies your place as a path and line, like <code>docs/plan.md:42</code>. <a href="/copy-for-ai/">Copy for AI</a> adds the selected text under it. Paste either into the agent's chat.</p>
 <p class="more"><a href="/reading-agent-output/">Reading what your agent hands back</a></p>
 <h3>Follow links between files</h3>
 <p>Click a link to another Markdown file in the preview and MarsDawn opens it, or brings it forward if it is already open, and scrolls to the heading.</p>
@@ -154,13 +158,13 @@ try {
 <p>Not all of the work happens on a screen. The pages MarsDawn prints and exports are the ones you read on screen, so they work where people meet, read and keep records.</p>
 <h3>In the meeting</h3>
 <p>Print the pages, or send everyone the same PDF, and the whole table works from the same document instead of one shared screen. Everyone holding the same file has the same page breaks, so "the table on page 3" points at one thing. Then the people write the decisions down, on the printout or in notes. The meeting-notes template starts with decisions and gives each action item an owner.</p>
-<p class="more"><a href="/pdf/">PDF export</a> &#183; <a href="/templates/meeting-notes/">Meeting notes template</a></p>
+<p class="more"><a href="/pdf/">Print &amp; PDF</a> &#183; <a href="/templates/meeting-notes/">Meeting notes template</a></p>
 <h3>Reading with a pen</h3>
 <p>Some people take things in better with a pen: underlining, writing in the margin, so it sticks. Print the document and do that on paper. MarsDawn has no annotation tool of its own, so if you would rather mark up the PDF, use the PDF app you already have.</p>
-<p class="more"><a href="/pdf/">PDF export</a></p>
+<p class="more"><a href="/pdf/">Print &amp; PDF</a></p>
 <h3>Paper records</h3>
 <p>Some fields still file paper, accounting among them. MarsDawn makes no archival or compliance claim. What it does is print and export clean, paginated pages: diagrams drawn in, short code blocks kept whole, the theme's light colors. Use them wherever paper is still the record.</p>
-<p class="more"><a href="/pdf/">PDF export</a></p>
+<p class="more"><a href="/pdf/">Print &amp; PDF</a></p>
 <h3>Handing it to someone who doesn't use Markdown</h3>
 <p>A PDF opens in anything and needs no Markdown knowledge, so it is also the one to send a manager or a client.</p>
 <p class="more"><a href="/sharing-exported-pdfs/">Sharing exported PDFs</a></p>
@@ -195,8 +199,8 @@ try {
 <p>Settings ▸ Appearance ▸ Get More Themes… opens a gallery of extra preview themes. Install one and it shows up under View ▸ Preview Theme; Remove takes it away again. The gallery only goes online while it is open.</p>
 <p class="more"><a href="/themes/gallery/">Theme gallery</a> &#183; <a href="/themes/new/">Build a theme</a></p>
 <h3>Export as PDF, or print</h3>
-<p>File ▸ Export as PDF… saves a paginated PDF, and File ▸ Print… prints the same pages. Mermaid diagrams are drawn in, code keeps its highlighting, and page breaks avoid splitting a heading from its section or cutting a short code block or diagram in half. The PDF always uses the theme's light colors, even if you were reading in dark.</p>
-<p class="more"><a href="/pdf/">PDF export</a></p>
+<p>File ▸ Print… and File ▸ Export as PDF… open Print &amp; Export, with a preview of the pages. Pick a layout: Document; Handbook, with a cover, a table of contents and PDF bookmarks; or Handout, with a notes column. Then print or save. Mermaid diagrams are drawn in, code keeps its highlighting, and page breaks avoid splitting a heading from its section or cutting a short code block or diagram in half. PDFs use the theme's light colors.</p>
+<p class="more"><a href="/pdf/">Print &amp; PDF</a></p>
 <figure class="shot">
   <div class="shot-frame"><div class="shot-canvas">
     <img src="/assets/screens/05-pdf-980.png" srcset="/assets/screens/05-pdf-800.png 800w, /assets/screens/05-pdf-980.png 980w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="980" height="760" alt="A PDF exported from MarsDawn, open in its PDF viewer with page thumbnails.">
@@ -208,15 +212,25 @@ try {
     <ol><li>Mermaid diagrams, drawn into the PDF.</li><li>Code keeps its highlighting.</li></ol>
   </figcaption>
 </figure>
+<h2 id="iphone-ipad">On your Mac, and on the go</h2>
+<p>Your agent works on the Mac. Its plans and reports can come with you on your iPhone or iPad.</p>
+<ol class="devsteps">
+  <li><strong>On the Mac:</strong> save the agent's plans and reports in a folder in iCloud Drive.</li>
+  <li><strong>On iPhone or iPad:</strong> in MarsDawn, tap Open and pick the same file, or open one from another app. Mermaid diagrams, math, code and tables are rendered, with an outline and your theme.</li>
+  <li><strong>Pass it on:</strong> share, print or save it as a PDF.</li>
+</ol>
+<p>With the same Apple Account, one trial and one unlock cover MarsDawn on Mac, iPhone and iPad.</p>
+<a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-mac-iphone&amp;mt=8"><img src="/assets/badges/app-store-en.svg" width="120" height="40" alt="Download on the App Store"></a>
+<p class="devnote">On iPhone and iPad, MarsDawn is for reading only: it opens Markdown, text, PDF, JSON and YAML but doesn't edit. Links in a PDF saved there don't work. MarsDawn has no cloud service of its own.</p>
 <h2 id="files-tabs-and-quick-look">Files, tabs and Quick Look</h2>
 <h3>Windows and tabs</h3>
-<p>Each document opens in its own window. Choose Window ▸ Merge All Windows to gather open windows as tabs of one. Autosave runs as you type.</p>
+<p>By default, documents open as tabs of the front window. To use your Mac's tab setting instead, choose Follow System Setting in Settings ▸ Appearance. Autosave runs as you type.</p>
 <p class="more"><a href="/native/">A Mac app</a></p>
 <h3>Quick Look in Finder</h3>
-<p>Select a Markdown file in Finder and press Space to read it rendered, diagrams included. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.</p>
+<p>Select a Markdown file in Finder and press Space to read it rendered, diagrams included. JSON and YAML files show as a tree. Quick Look uses the theme you picked in MarsDawn and follows its Appearance setting.</p>
 <p class="more"><a href="/native/">A Mac app</a> &#183; <a href="/quicklook/">Quick Look for Markdown</a></p>
 <h3>Other files</h3>
-<p>MarsDawn also opens plain text files (<code>.txt</code>, <code>.log</code>, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search.</p>
+<p>MarsDawn also opens plain text files (<code>.txt</code>, <code>.log</code>, source code) and PDFs. UTF-8 text opens ready to edit, as source only. PDFs open in a viewer with page thumbnails, zoom and search. On the Mac, open JSON and YAML files as editable documents, with a tree preview that updates as you type. Quick Look in Finder shows the same tree. On iPhone and iPad, JSON and YAML open read-only, with a tree preview.</p>
 <h3>Your files stay yours</h3>
 <p>There is no account, no sync and no cloud. Documents stay where you save them, and MarsDawn collects no data about you.</p>
 <p class="more"><a href="/yours/">Your writing stays on your Mac</a></p>
@@ -236,6 +250,13 @@ try {
 <h2 id="siri-and-shortcuts">Siri and Shortcuts</h2>
 <p>Search for MarsDawn in the Shortcuts app to find three actions: New Markdown Document (from a template), Add Note to Inbox and Open Recent Document. Notes go to <code>Inbox.md</code> in the folder you choose in MarsDawn ▸ Settings… ▸ Notes Folder.</p>
 <p class="more"><a href="/native/">A Mac app</a></p>
+<section class="film-mac" aria-labelledby="film-mac-h">
+<h2 id="film-mac-h">Watch the film</h2>
+<video controls preload="none" playsinline width="1920" height="1080" poster="/assets/film/marsdawn-film-en-poster.jpg" aria-label="MarsDawn film, 54 seconds">
+<source src="/assets/film/marsdawn-film-en-1080p30.mp4" type="video/mp4">
+<p>Your browser cannot play this video.</p>
+</video>
+</section>
 <section class="film-themes" aria-labelledby="film-themes-h">
 <h2 id="film-themes-h">After the page is printed</h2>
 <p>A meeting around printed pages, a pen in the margin, a paper record on file.</p>
@@ -245,8 +266,8 @@ try {
 </video>
 </section>
 <h2 id="try-it-on-your-mac">Try it on your Mac</h2>
-<p>MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account. It needs macOS 26 or later.</p>
-<p><a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8">Download and try it free</a></p>
+<p>MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 2.49. No subscription, no account. It needs macOS 26 or later.</p>
+<p><a class="store-badge" href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8"><img src="/assets/badges/app-store-en.svg" width="120" height="40" alt="Download on the App Store"></a></p>
 <p>How the trial works: <a href="/pay-once/">Try free, pay once</a>. What is left out on purpose: <a href="/limits/">What MarsDawn doesn't do</a>.</p>
 </main>
 <footer class="footer">
@@ -258,7 +279,7 @@ try {
         <li><a href="/features/" aria-current="page">Features</a></li>
         <li><a href="/quicklook/">Quick Look for Markdown</a></li>
         <li><a href="/native/">A Mac app</a></li>
-        <li><a href="/pdf/">PDF export</a></li>
+        <li><a href="/pdf/">Print &amp; PDF</a></li>
         <li><a href="/limits/">What MarsDawn doesn't do</a></li>
         <li><a href="/pay-once/">Try free, pay once</a></li>
         <li><a href="/yours/">Your writing stays on your Mac</a></li>
@@ -317,6 +338,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>A new dawn for Markdown.</span> <span>MarsDawn is on the <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-features&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, the Apple logo, Mac, iPhone, iPad and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store and Mac App Store are service marks of Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent" hidden>

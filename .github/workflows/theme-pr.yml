@@ -61,7 +61,7 @@ permissions: {}
 jobs:
   build:
     runs-on: macos-15
-    timeout-minutes: 45
+    timeout-minutes: 60
     permissions: {}
     outputs:
       manifest_sha256: ${{ steps.stage.outputs.manifest_sha256 }}
@@ -78,7 +78,7 @@ jobs:
           echo "Selecting $app"
           sudo xcode-select -s "$app"
       # From source, every time: a cold release build of the kit (about 35 s on an 8-core Mac;
-      # the kit's own CI allows 30 min for build + tests on this image), well inside 45 min.
+      # the kit's own CI allows 30 min for build + tests on this image), well inside 60 min.
       - name: Build the kit CLI at the pinned commit
         env:
           PYTHONDONTWRITEBYTECODE: "1"
@@ -117,7 +117,7 @@ jobs:
   commit:
     needs: build
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 60
     permissions:
       contents: write
       pull-requests: write

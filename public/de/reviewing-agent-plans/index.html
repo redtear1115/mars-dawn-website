@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -162,7 +164,7 @@ All tests pass.</code></pre>
 <pre tabindex="0"><code>plan.md:10: deletes the avatars before step 5 copies them. Copy first, check the count, then delete, and wait for my OK before deleting.
 plan.md:14: which tests? Add one that loads an old avatar URL after the switch.
 plan.md:6: nothing about keeping old links working. Add a step for that, and a way to undo the switch.</code></pre>
-<p>Jeder Editor mit Zeilennummern genügt. In MarsDawn kopiert Bearbeiten &#9656; Verweis kopieren (&#8997;&#8984;C) deine Stelle als <code>plan.md:10</code>, und Für KI kopieren (&#8963;&#8997;&#8984;C) fügt den ausgewählten Text darunter ein.</p>
+<p>Jeder Editor mit Zeilennummern genügt. In MarsDawn kopiert Bearbeiten &#9656; Verweis kopieren (&#8997;&#8984;C) deine Stelle als <code>plan.md:10</code>, und <a href="/de/copy-for-ai/">Für KI kopieren</a> (&#8963;&#8997;&#8984;C) fügt den ausgewählten Text darunter ein.</p>
 
 <h2 id="if-you-have-one-minute">Wenn du nur eine Minute hast</h2>
 <p>Mach Schritt 2. Dort fliegt ein Agent auf, der glaubt, fertig zu sein.</p>
@@ -202,7 +204,7 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
         <li><a href="/de/features/">Funktionen</a></li>
         <li><a href="/de/quicklook/">Übersicht für Markdown</a></li>
         <li><a href="/de/native/">Eine Mac-App</a></li>
-        <li><a href="/de/pdf/">PDF-Export</a></li>
+        <li><a href="/de/pdf/">Drucken und PDF</a></li>
         <li><a href="/de/limits/">Was MarsDawn nicht kann</a></li>
         <li><a href="/de/pay-once/">Kostenlos testen, einmal bezahlen</a></li>
         <li><a href="/de/yours/">Deine Texte bleiben auf deinem Mac</a></li>
@@ -261,6 +263,7 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
     </section>
   </nav>
   <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-reviewing-agent-plans&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, das Apple Logo, Mac, iPhone, iPad und iCloud sind Marken der Apple Inc., die in den USA und weiteren Ländern und Regionen eingetragen sind. App Store und Mac App Store sind Dienstleistungsmarken der Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>

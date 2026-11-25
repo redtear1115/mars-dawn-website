@@ -16,6 +16,10 @@ macOS 버전과 MarsDawn 버전(MarsDawn › MarsDawn에 관하여)을 함께 �
 
 macOS 26 Tahoe 이상이 설치된 Apple 실리콘 또는 Intel 기반 Mac이 필요합니다.
 
+### Homebrew로 MarsDawn을 설치할 수 있습니까?
+
+예, Mac App Store를 통해 설치할 수 있습니다. `brew install mas`를 실행한 다음 `sudo mas get 6812925073`을 실행하세요. `brew install marsdawn`은 다른 것으로, 앱이 아니라 명령줄 도구를 설치합니다.
+
 ### 편집기와 미리보기는 어떻게 전환합니까?
 
 <kbd>⌘1</kbd>을 누르면 소스만, <kbd>⌘2</kbd>를 누르면 나란히, <kbd>⌘3</kbd>을 누르면 미리보기만 표시됩니다. 같은 선택 항목이 보기 메뉴와 도구 막대에도 있습니다.

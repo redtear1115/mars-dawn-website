@@ -22,6 +22,11 @@
    a page-only scan would only catch it after the next `build_pages.py` run happened to touch that
    page, and theme-sim/*.js pages are otherwise static (build_pages.py copies them, unchanged).
 
+3. Every generated page's GTM loader (the inline script that loads googletagmanager.com/gtm.js)
+   returns before it creates the GTM <script> unless it runs on the production host (#310) and
+   outside an automated browser (navigator.webdriver, #311). Without either guard, local previews
+   or Playwright runs load GTM and show up in GA as real visitors.
+
 Usage:
     python3 scripts/check_no_inline_scripts.py [--root public]
     python3 scripts/check_no_inline_scripts.py --self-test
@@ -39,6 +44,13 @@ SCRIPT_TAG = re.compile(r"<script\b([^>]*)>(.*?)</script>", re.S | re.I)
 ATTR = re.compile(r'([\w-]+)\s*=\s*"([^"]*)"')
 NON_EXECUTABLE_TYPES = {"application/ld+json", "application/json"}
 STYLE_ATTR = re.compile(r'\bstyle\s*=\s*"')
+GTM_LOADER_MARKER = "googletagmanager.com/gtm.js"
+# The guards build_pages.py's GTM_HEAD_SCRIPT checks before it creates the GTM <script>:
+# production host only (GTM_HOSTNAME, #310), and never in an automated browser (#311).
+GTM_LOADER_GUARDS = (
+    "location.hostname !== 'marsdawn.southern-light.dev'",
+    "navigator.webdriver === true",
+)
 
 
 def allowed_hashes(headers_text: str) -> set:
@@ -75,6 +87,23 @@ def style_attribute_problems(text: str, path: Path) -> list:
     return problems
 
 
+def gtm_guard_problems(html: str, path: Path) -> list:
+    problems = []
+    for m in SCRIPT_TAG.finditer(html):
+        attrs = dict(ATTR.findall(m.group(1)))
+        body = m.group(2)
+        if "src" in attrs or GTM_LOADER_MARKER not in body:
+            continue  # not the GTM loader
+        create_at = body.find("createElement")
+        for guard in GTM_LOADER_GUARDS:
+            at = body.find(guard)
+            if at == -1:
+                problems.append(f"{path}: GTM loader is missing the guard {guard!r} (fix GTM_HEAD_SCRIPT in build_pages.py)")
+            elif create_at != -1 and at > create_at:
+                problems.append(f"{path}: GTM loader checks {guard!r} only after createElement, too late to stop GTM loading")
+    return problems
+
+
 def check(root: Path) -> list:
     headers_path = root / "_headers"
     if not headers_path.is_file():
@@ -86,6 +115,7 @@ def check(root: Path) -> list:
         rel = html_path.relative_to(root)
         problems += inline_script_problems(text, rel, allowed)
         problems += style_attribute_problems(text, rel)
+        problems += gtm_guard_problems(text, rel)
     theme_sim_src = root / "assets" / "theme-sim"
     if theme_sim_src.is_dir():
         for js_path in sorted(theme_sim_src.rglob("*.js")):
@@ -143,12 +173,26 @@ def self_test() -> int:
             return 1
         js_target.write_text(js_text, encoding="utf-8")
 
+        # Plant 4: a GTM loader without the webdriver guard. Its text changed, so the hash rule
+        # fires too; what matters is that the guard rule names the missing guard and the page.
+        text4 = target.read_text(encoding="utf-8")
+        assert " || w.navigator.webdriver === true" in text4
+        target.write_text(text4.replace(" || w.navigator.webdriver === true", "", 1), encoding="utf-8")
+        result = check(work)
+        guard_hits = [p for p in result if "GTM loader" in p]
+        if len(guard_hits) == 1 and "navigator.webdriver" in guard_hits[0] and "themes/new" in guard_hits[0]:
+            print("  caught: a planted GTM loader without the navigator.webdriver guard")
+        else:
+            print(f"  MISSED: a planted GTM loader without the navigator.webdriver guard: {result}", file=sys.stderr)
+            return 1
+        target.write_text(text4, encoding="utf-8")
+
     # Prove the restore worked: the real tree (never touched) is still clean.
     restored = check(ROOT / "public")
     if restored:
         print(f"  MISSED: the real tree is no longer clean: {restored}", file=sys.stderr)
         return 1
-    print("self-test: 3 plants, 0 missed")
+    print("self-test: 4 plants, 0 missed")
     return 0
 
 
@@ -165,10 +209,10 @@ def main() -> int:
     for p in problems:
         print(f"::error::{p}")
     if problems:
-        print(f"{len(problems)} problem(s). Move the script to an external file, or the style to a stylesheet -- the CSP allows neither inline.")
+        print(f"{len(problems)} problem(s). Move the script to an external file, or the style to a stylesheet -- the CSP allows neither inline. A GTM loader guard problem is fixed in build_pages.py's GTM_HEAD_SCRIPT.")
         return 1
     n = len(list(Path(args.root).rglob("*.html")))
-    print(f"{n} page(s) (plus public/assets/theme-sim/**/*.js) checked: no inline <script> outside the CSP's hashed pair, no style= attribute, 0 problems")
+    print(f"{n} page(s) (plus public/assets/theme-sim/**/*.js) checked: no inline <script> outside the CSP's hashed pair, no style= attribute, GTM loader guarded (host + webdriver), 0 problems")
     return 0
 
 

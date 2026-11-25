@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -124,7 +126,7 @@ try {
 <main id="main">
 <section class="intro">
   <h1>Themen-Galerie</h1>
-  <p>Vorschauthemen für MarsDawn, jedes vom Entwickler geprüft und gemerged, bevor es hier erscheint. Die bisherigen acht stammen von Southern Light, vier davon adaptiert von bekannten Paletten. Nach Szenario filtern oder <a href="/de/themes/new/">im Browser ein eigenes erstellen</a>: Das Einreichen öffnet ein GitHub-Issue zur Prüfung, ohne Installation und ohne git.</p>
+  <p>Vorschauthemen für MarsDawn, jedes vom Entwickler geprüft und gemerged, bevor es hier erscheint. Die bisherigen Themen stammen alle von Southern Light, einige davon adaptiert von bekannten Paletten. Nach Szenario filtern oder <a href="/de/themes/new/">im Browser ein eigenes erstellen</a>: Das Einreichen öffnet ein GitHub-Issue zur Prüfung, ohne Installation und ohne git.</p>
 </section>
 <div class="theme-gallery-filter" id="theme-gallery-filter" role="group" aria-label="Nach Szenario filtern">
   <button type="button" class="theme-filter-btn" data-scenario="all" aria-pressed="true">Alle</button>
@@ -134,6 +136,42 @@ try {
   <button type="button" class="theme-filter-btn" data-scenario="notes-sharing" aria-pressed="false">Notizen & Teilen</button>
 </div>
 <ul class="theme-gallery-cards" id="theme-gallery-cards" data-close-label="Schließen">
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <span class="theme-previews"><a class="theme-preview" href="/themes/v1/catppuccin-frappe/1.0.0/preview-light.png"><img src="/themes/v1/catppuccin-frappe/1.0.0/preview-light.png" alt="Catppuccin Frappé — light preview" width="1200" height="1630" loading="lazy"></a><a class="theme-preview" href="/themes/v1/catppuccin-frappe/1.0.0/preview-dark.png"><img src="/themes/v1/catppuccin-frappe/1.0.0/preview-dark.png" alt="Catppuccin Frappé — dark preview" width="1200" height="1630" loading="lazy"></a></span>
+    <strong class="theme-name">Catppuccin Frappé</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Sanfte Pastelltöne: nachts Frappé, tagsüber Latte – nach Catppuccin, für bessere Lesbarkeit angepasst</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Technische Docs</span> <span class="theme-scenario">Agentenausgabe prüfen</span></span>
+    <span class="theme-author">von charliie</span>
+    <button type="button" class="theme-report" data-theme-id="catppuccin-frappe" data-theme-version="1.0.0">Melden</button>
+    <button type="button" class="theme-report-mail" data-theme-id="catppuccin-frappe" data-theme-version="1.0.0">Per E-Mail melden</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <span class="theme-previews"><a class="theme-preview" href="/themes/v1/catppuccin-macchiato/1.0.0/preview-light.png"><img src="/themes/v1/catppuccin-macchiato/1.0.0/preview-light.png" alt="Catppuccin Macchiato — light preview" width="1200" height="1630" loading="lazy"></a><a class="theme-preview" href="/themes/v1/catppuccin-macchiato/1.0.0/preview-dark.png"><img src="/themes/v1/catppuccin-macchiato/1.0.0/preview-dark.png" alt="Catppuccin Macchiato — dark preview" width="1200" height="1630" loading="lazy"></a></span>
+    <strong class="theme-name">Catppuccin Macchiato</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Sanfte Pastelltöne: nachts Macchiato, tagsüber Latte – nach Catppuccin, für bessere Lesbarkeit angepasst</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Technische Docs</span> <span class="theme-scenario">Agentenausgabe prüfen</span></span>
+    <span class="theme-author">von charliie</span>
+    <button type="button" class="theme-report" data-theme-id="catppuccin-macchiato" data-theme-version="1.0.0">Melden</button>
+    <button type="button" class="theme-report-mail" data-theme-id="catppuccin-macchiato" data-theme-version="1.0.0">Per E-Mail melden</button>
+  </li>
+  <li class="theme-card" data-scenarios="technical-docs agent-review">
+    <span class="theme-previews"><a class="theme-preview" href="/themes/v1/catppuccin-mocha/1.0.0/preview-light.png"><img src="/themes/v1/catppuccin-mocha/1.0.0/preview-light.png" alt="Catppuccin Mocha — light preview" width="1200" height="1630" loading="lazy"></a><a class="theme-preview" href="/themes/v1/catppuccin-mocha/1.0.0/preview-dark.png"><img src="/themes/v1/catppuccin-mocha/1.0.0/preview-dark.png" alt="Catppuccin Mocha — dark preview" width="1200" height="1630" loading="lazy"></a></span>
+    <strong class="theme-name">Catppuccin Mocha</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Sanfte Pastelltöne: nachts Mocha, tagsüber Latte – nach Catppuccin, für bessere Lesbarkeit angepasst</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Technische Docs</span> <span class="theme-scenario">Agentenausgabe prüfen</span></span>
+    <span class="theme-author">von charliie</span>
+    <button type="button" class="theme-report" data-theme-id="catppuccin-mocha" data-theme-version="1.0.0">Melden</button>
+    <button type="button" class="theme-report-mail" data-theme-id="catppuccin-mocha" data-theme-version="1.0.0">Per E-Mail melden</button>
+  </li>
+  <li class="theme-card" data-scenarios="notes-sharing">
+    <span class="theme-previews"><a class="theme-preview" href="/themes/v1/christmas/1.0.0/preview-light.png"><img src="/themes/v1/christmas/1.0.0/preview-light.png" alt="Christmas — light preview" width="1200" height="1629" loading="lazy"></a><a class="theme-preview" href="/themes/v1/christmas/1.0.0/preview-dark.png"><img src="/themes/v1/christmas/1.0.0/preview-dark.png" alt="Christmas — dark preview" width="1200" height="1629" loading="lazy"></a></span>
+    <strong class="theme-name">Christmas</strong> <span class="theme-version">v1.0.0</span>
+    <span class="theme-summary">Lesepalette für Weihnachten: beerenrote Überschriften auf warmer Cremeseite, dunkle Variante in Schwarz mit Weinton</span>
+    <span class="theme-scenarios"><span class="theme-scenario">Notizen & Teilen</span></span>
+    <span class="theme-author">von Southern Light</span>
+    <button type="button" class="theme-report" data-theme-id="christmas" data-theme-version="1.0.0">Melden</button>
+    <button type="button" class="theme-report-mail" data-theme-id="christmas" data-theme-version="1.0.0">Per E-Mail melden</button>
+  </li>
   <li class="theme-card" data-scenarios="technical-docs agent-review">
     <span class="theme-previews"><a class="theme-preview" href="/themes/v1/dracula/1.0.1/preview-light.png"><img src="/themes/v1/dracula/1.0.1/preview-light.png" alt="Dracula — light preview" width="1200" height="1626" loading="lazy"></a><a class="theme-preview" href="/themes/v1/dracula/1.0.1/preview-dark.png"><img src="/themes/v1/dracula/1.0.1/preview-dark.png" alt="Dracula — dark preview" width="1200" height="1626" loading="lazy"></a></span>
     <strong class="theme-name">Dracula</strong> <span class="theme-version">v1.0.1</span>
@@ -243,7 +281,7 @@ try {
         <li><a href="/de/features/">Funktionen</a></li>
         <li><a href="/de/quicklook/">Übersicht für Markdown</a></li>
         <li><a href="/de/native/">Eine Mac-App</a></li>
-        <li><a href="/de/pdf/">PDF-Export</a></li>
+        <li><a href="/de/pdf/">Drucken und PDF</a></li>
         <li><a href="/de/limits/">Was MarsDawn nicht kann</a></li>
         <li><a href="/de/pay-once/">Kostenlos testen, einmal bezahlen</a></li>
         <li><a href="/de/yours/">Deine Texte bleiben auf deinem Mac</a></li>
@@ -302,6 +340,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-themes&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, das Apple Logo, Mac, iPhone, iPad und iCloud sind Marken der Apple Inc., die in den USA und weiteren Ländern und Regionen eingetragen sind. App Store und Mac App Store sind Dienstleistungsmarken der Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>

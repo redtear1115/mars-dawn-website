@@ -7,6 +7,8 @@ import unittest
 import support as s
 from support import common
 
+import publish
+
 sys.path.insert(0, str(common.ROOT / "scripts"))
 import check_workflows  # noqa: E402
 
@@ -116,7 +118,12 @@ class JobSplit(unittest.TestCase):
         self.assertFalse([u for u in self.uses(build) if u.startswith("actions/cache")])
         runs = " ".join(step.get("run", "") for step in build["steps"])
         self.assertIn("kit_cli.py build", runs)
-        self.assertEqual(build["timeout-minutes"], "45")
+        self.assertEqual(build["timeout-minutes"], "60")
+
+    def test_commit_job_outlasts_the_page_build_timeout(self):
+        timeout = self.jobs("theme-pr.yml")["commit"]["timeout-minutes"]
+        self.assertEqual(timeout, "60")
+        self.assertGreater(int(timeout) * 60, publish.BUILD_TIMEOUT_SECONDS)
 
     def test_write_jobs_run_no_third_party_code_and_no_kit(self):
         for name, job_id in (("theme-submission.yml", "comment"), ("theme-pr.yml", "commit")):

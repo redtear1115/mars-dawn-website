@@ -3,6 +3,8 @@ for build_themes.py: the artifact rules, the commit's text and identity, and eve
 
 tests/test_integration.py runs the real build_themes.py and kit instead, where a kit CLI is at hand.
 """
+import contextlib
+import io
 import json
 import os
 import shutil
@@ -12,6 +14,7 @@ import tempfile
 import time
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import support as s
 from support import common, rules
@@ -20,6 +23,12 @@ import publish
 import stage
 
 TID, VERSION = "olympus-dusk", "1.0.0"
+
+
+class BuildTimeouts(unittest.TestCase):
+    def test_build_timeouts_are_45_minutes(self):
+        self.assertEqual(publish.BUILD_TIMEOUT_SECONDS, 2700)
+        self.assertEqual(stage.BUILD_TIMEOUT_SECONDS, 2700)
 
 # A stand-in for build_themes.py: publishes themes/<id>/theme.json the way the real one lays it out,
 # plus one generated page. PLANT (env) makes it misbehave in one way.
@@ -172,6 +181,19 @@ class Stage(Staged):
     def test_a_failed_build_is_refused(self):
         self.refused("build", plant="fail")
 
+    def test_timed_out_build_output_is_fenced(self):
+        buffer = io.StringIO()
+        cmd = [sys.executable, "-c", "import time; print('::error::forged-timeout', flush=True); time.sleep(5)"]
+        with patch.object(stage, "BUILD_TIMEOUT_SECONDS", 1), contextlib.redirect_stdout(buffer):
+            with self.assertRaises(subprocess.TimeoutExpired):
+                stage.stage(self.theme, Path("/nonexistent/marsdawn"), self.out,
+                            gate_values(self.data, self.base), build_cmd=cmd)
+        opening, forged, closing = buffer.getvalue().splitlines()
+        self.assertRegex(opening, r"^::stop-commands::[0-9a-f]{32}$")
+        token = opening.removeprefix("::stop-commands::")
+        self.assertEqual(forged, "::error::forged-timeout")
+        self.assertEqual(closing, f"::{token}::")
+
     def test_a_checkout_other_than_the_gates_base_is_refused(self):
         self.assertIn("base commit the gate resolved", self.refused("git", base_sha="f" * 40))
 
@@ -210,6 +232,32 @@ class Publish(Staged):
             publish.make_commit(values or self.values, manifest, contents)
         self.assertEqual(caught.exception.code, code, caught.exception.message)
         return caught.exception.message
+
+    def assert_timed_out_pages_output_is_fenced(self, stdout, stderr, expected):
+        buffer = io.StringIO()
+        run = subprocess.run
+        pages_cmd = [sys.executable, str(self.clone / "scripts" / "build_pages.py")]
+
+        def run_with_timeout(cmd, **kwargs):
+            if cmd == pages_cmd:
+                self.assertEqual(kwargs["timeout"], 1)
+                raise subprocess.TimeoutExpired(cmd, kwargs["timeout"], output=stdout, stderr=stderr)
+            return run(cmd, **kwargs)
+
+        with patch.object(publish, "BUILD_TIMEOUT_SECONDS", 1), contextlib.redirect_stdout(buffer):
+            with patch.object(publish.subprocess, "run", side_effect=run_with_timeout):
+                self.assertEqual(self.refused("pages"), "build_pages.py timed out after 1 s")
+        opening, output, closing = buffer.getvalue().splitlines()
+        self.assertRegex(opening, r"^::stop-commands::[0-9a-f]{32}$")
+        token = opening.removeprefix("::stop-commands::")
+        self.assertEqual(output, expected)
+        self.assertEqual(closing, f"::{token}::")
+
+    def test_timed_out_pages_stdout_is_fenced(self):
+        self.assert_timed_out_pages_output_is_fenced(b"::error::forged-timeout\n", None, "::error::forged-timeout")
+
+    def test_timed_out_pages_stderr_is_decoded_and_fenced(self):
+        self.assert_timed_out_pages_output_is_fenced(None, b"partial stderr: \xff\n", "partial stderr: \ufffd")
 
     def test_commit_has_the_bot_identity_the_build_time_and_only_the_allowed_text(self):
         manifest, contents = publish.verify_artifact(self.out, self.values)

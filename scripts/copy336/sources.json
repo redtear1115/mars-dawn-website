@@ -1,0 +1,14 @@
+{
+ "comments": {
+  "A": {
+   "issue": 336,
+   "id": 6560244450,
+   "what": "Aria's zh-Hant copy for #336 (title, description, opening, scenarios, two new tools, two new table columns, not-for list, FAQ); vendored in approved.md without its trailing attribution line",
+   "created_at": "2026-11-01T15:51:52Z",
+   "updated_at": "2026-11-01T15:51:52Z",
+   "sha256": "6876315787fba9367778c1488ffc82d3e75f05a8f5cea0ab63c83b442ed78a8e",
+   "chars": 4402,
+   "vendored_sha256": "947df0ab427cef92430ba4d7f20dcc692d15270745d41094ee784344c1da9a18"
+  }
+ }
+}

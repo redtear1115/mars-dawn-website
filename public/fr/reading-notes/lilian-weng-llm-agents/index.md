@@ -1,18 +1,20 @@
 # Le plan d’agent de Lilian Weng en 2023, et le fichier que chaque partie laisse
 
-**En juin 2023, alors chez OpenAI, Lilian Weng a publié sur son blog Lil’Log une longue enquête décrivant un agent piloté par LLM comme un cerveau (le modèle) plus trois composants : planification, mémoire et usage d’outils. C’est un cadre précoce et largement cité de ce dont un agent est fait, et candid sur les endroits où ce cadre casse encore.**
+Offre Black Friday : l’achat unique qui déverrouille l’app est à moitié prix, 2,49 USD au lieu de 4,99 USD, jusqu’au 30 novembre. Il repasse à 4,99 USD le 1er décembre. <!-- sale-line -->
+
+**En juin 2023, alors chez OpenAI, Lilian Weng a publié sur son blog Lil’Log une longue enquête décrivant un agent piloté par LLM comme un cerveau (le modèle) plus trois composants : planification, mémoire et usage d’outils. C’est un cadre précoce et largement cité de ce dont un agent est fait, et candid sur les endroits où ce cadre casse encore.**
 
 ## Ce que le billet avance
 
-L’aperçu de Weng pose le cadre de tout le texte :
+L’aperçu de Weng pose le cadre de tout le texte :
 
 > “In a LLM-powered autonomous agent system, LLM functions as the agent’s brain, complemented by several key components: Planning ... Memory ... Tool use”.
 
-La planification, chez elle, couvre à la fois le découpage d’une tâche en sous-objectifs et la réflexion sur les actions passées pour améliorer les suivantes. La mémoire se partage entre court terme (le contexte que le modèle voit actuellement, qu’elle appelle in-context) et long terme (en général stocké hors du modèle, dans une base vectorielle interrogeable). L’usage d’outils laisse le modèle appeler tout ce qu’un jeu de poids figé ne peut fournir seul — informations actuelles, exécution de code, autres API. Vers la fin, dans une section « Challenges », elle nomme une limite clairement :
+La planification, chez elle, couvre à la fois le découpage d’une tâche en sous-objectifs et la réflexion sur les actions passées pour améliorer les suivantes. La mémoire se partage entre court terme (le contexte que le modèle voit actuellement, qu’elle appelle in-context) et long terme (en général stocké hors du modèle, dans une base vectorielle interrogeable). L’usage d’outils laisse le modèle appeler tout ce qu’un jeu de poids figé ne peut fournir seul — informations actuelles, exécution de code, autres API. Vers la fin, dans une section « Challenges », elle nomme une limite clairement :
 
 > “LLMs struggle to adjust plans when faced with unexpected errors, making them less robust compared to humans who learn from trial and error.”
 
-Ailleurs, dans une étude de cas sur l’agent de chimie ChemCrow, elle signale un problème plus étroit : une évaluation basée sur un LLM le notait à peu près égal à GPT-4, tandis que des experts humains jugeaient ChemCrow bien meilleur en exactitude. Sa conclusion porte sur l’auto-évaluation, pas spécifiquement sur son composant « reflection » :
+Ailleurs, dans une étude de cas sur l’agent de chimie ChemCrow, elle signale un problème plus étroit : une évaluation basée sur un LLM le notait à peu près égal à GPT-4, tandis que des experts humains jugeaient ChemCrow bien meilleur en exactitude. Sa conclusion porte sur l’auto-évaluation, pas spécifiquement sur son composant « reflection » :
 
 > “The lack of expertise may cause LLMs not knowing its flaws and thus cannot well judge the correctness of task results.”
 
@@ -20,17 +22,17 @@ Weng ne mentionne MarsDawn nulle part dans ce billet et ne recommande aucun outi
 
 ## Notre lecture, pas celle de Weng
 
-Weng décrit l’architecture d’agent en 2023, pas la lecture de la sortie d’un agent — elle ne mentionne aucune personne qui vérifierait un fichier. Mais ses trois composants se projettent sur trois choses différentes que vous pouvez vous retrouver à lire. La planification tend à vous laisser un document avant l’exécution — le plan lui-même, parfois avec une « reflection » ou une auto-revue déjà pliée dedans. La mémoire est en général invisible, sauf si l’agent tient un fichier brouillon courant comme stockage long terme ; alors ce fichier mérite d’être ouvert pour lui-même, car il peut traîner une vieille hypothèse fausse à travers bien des étapes suivantes sans le dire. L’usage d’outils tend à vous laisser un rapport de ce qui a tourné et de ce qui est revenu — plus près d’un transcript que d’un plan.
+Weng décrit l’architecture d’agent en 2023, pas la lecture de la sortie d’un agent — elle ne mentionne aucune personne qui vérifierait un fichier. Mais ses trois composants se projettent sur trois choses différentes que vous pouvez vous retrouver à lire. La planification tend à vous laisser un document avant l’exécution — le plan lui-même, parfois avec une « reflection » ou une auto-revue déjà pliée dedans. La mémoire est en général invisible, sauf si l’agent tient un fichier brouillon courant comme stockage long terme ; alors ce fichier mérite d’être ouvert pour lui-même, car il peut traîner une vieille hypothèse fausse à travers bien des étapes suivantes sans le dire. L’usage d’outils tend à vous laisser un rapport de ce qui a tourné et de ce qui est revenu — plus près d’un transcript que d’un plan.
 
-Son point sur les plans qui ne s’ajustent pas aux erreurs inattendues est, lu de votre côté, une raison pour qu’un plan approuvé hier soit périmé aujourd’hui : si quelque chose que le plan n’avait pas prévu est arrivé entre-temps, l’agent peut continuer plutôt que de replanifier, et le rapport final peut décrire le succès du plan d’origine sans décrire le détour. C’est notre inférence, pas une affirmation d’elle — elle écrit sur la robustesse du modèle, pas sur ce qu’un lecteur devrait surveiller.
+Son point sur les plans qui ne s’ajustent pas aux erreurs inattendues est, lu de votre côté, une raison pour qu’un plan approuvé hier soit périmé aujourd’hui : si quelque chose que le plan n’avait pas prévu est arrivé entre-temps, l’agent peut continuer plutôt que de replanifier, et le rapport final peut décrire le succès du plan d’origine sans décrire le détour. C’est notre inférence, pas une affirmation d’elle — elle écrit sur la robustesse du modèle, pas sur ce qu’un lecteur devrait surveiller.
 
 ## Où MarsDawn aide, et où non
 
-MarsDawn n’a aucun modèle d’IA à l’intérieur, donc il ne peut pas vous dire si un plan a discrètement dérivé de ce qui s’est vraiment passé, et il ne distingue pas un fichier de planification d’un fichier de mémoire ou d’un rapport d’usage d’outils — c’est une lecture du contenu, qui vous appartient. Ce qu’il fait : l’onglet Plan (Présentation ▸ Afficher la barre latérale, ⌃⌘S) montre d’un coup d’œil la forme d’un long plan, la source et l’aperçu rendu côte à côte (⌘2) avec Mermaid et KaTeX dessinés, et si l’agent réécrit le fichier en cours de lecture, MarsDawn le recharge et garde votre place, tant que vous n’avez pas de modifications non enregistrées — utile précisément parce qu’un plan silencieusement révisé est exactement le mode de défaillance que sa section « Challenges » décrit du côté du modèle.
+MarsDawn n’a aucun modèle d’IA à l’intérieur, donc il ne peut pas vous dire si un plan a discrètement dérivé de ce qui s’est vraiment passé, et il ne distingue pas un fichier de planification d’un fichier de mémoire ou d’un rapport d’usage d’outils — c’est une lecture du contenu, qui vous appartient. Ce qu’il fait : l’onglet Plan (Présentation ▸ Afficher la barre latérale, ⌃⌘S) montre d’un coup d’œil la forme d’un long plan, la source et l’aperçu rendu côte à côte (⌘2) avec Mermaid et KaTeX dessinés, et si l’agent réécrit le fichier en cours de lecture, MarsDawn le recharge et garde votre place, tant que vous n’avez pas de modifications non enregistrées — utile précisément parce qu’un plan silencieusement révisé est exactement le mode de défaillance que sa section « Challenges » décrit du côté du modèle.
 
 ## Essayer
 
-MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
+MarsDawn est sur le Mac App Store. L’outil en ligne de commande gratuit `marsdawn` fonctionne déjà :
 
 ```
 brew install redtear1115/tap/marsdawn
@@ -38,35 +40,37 @@ brew install redtear1115/tap/marsdawn
 
 Il exporte le Markdown en PDF sans l’app.
 
-[Ligne de commande](/fr/cli/) · Avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
+[Ligne de commande](/fr/cli/) · Avant d’acheter : [Ce que MarsDawn ne fait pas](/fr/limits/)
 
 ## Ensuite
 
-- Quels documents les différents patrons de conception d’agents tendent à vous rendre : [Quatre patrons de conception d’agents et les documents que chacun vous tend](/fr/agent-design-patterns/)
-- La relecture en cinq minutes d’un plan avant qu’il ne tourne : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/)
-- Retour à la série : [Notes de lecture de la rédaction](/fr/reading-notes/)
+- Quels documents les différents patrons de conception d’agents tendent à vous rendre : [Quatre patrons de conception d’agents et les documents que chacun vous tend](/fr/agent-design-patterns/)
+- La relecture en cinq minutes d’un plan avant qu’il ne tourne : [Relire le plan d’un agent en cinq minutes](/fr/reviewing-agent-plans/)
+- Retour à la série : [Notes de lecture de la rédaction](/fr/reading-notes/)
 
 ## Sources
 
-- Lilian Weng, “LLM Powered Autonomous Agents,” Lil’Log, June 23, 2023: [https://lilianweng.github.io/posts/2023-06-23-agent/](https://lilianweng.github.io/posts/2023-06-23-agent/) (récupéré et cité le 2026-09-26 ; elle était alors chez OpenAI, décrite ici seulement telle qu’elle était alors).
+- Lilian Weng, “LLM Powered Autonomous Agents,” Lil’Log, June 23, 2023: [https://lilianweng.github.io/posts/2023-06-23-agent/](https://lilianweng.github.io/posts/2023-06-23-agent/) (récupéré et cité le 2026-09-26 ; elle était alors chez OpenAI, décrite ici seulement telle qu’elle était alors).
 
 ## Plus
 
-- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Lisez et relisez le Markdown de votre agent sur Mac : aperçu partagé en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 4,99 USD une fois.
-- [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Markdown natif pour Mac : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions, notes en marge et dossiers papier.
+- [MarsDawn](https://marsdawn.southern-light.dev/fr/index.md): Relisez le Markdown, JSON et YAML de votre agent sur Mac : aperçu en direct, Mermaid, KaTeX, Coup d’œil, export PDF. Essai gratuit, puis 2,49 USD une fois.
+- [Fonctionnalités](https://marsdawn.southern-light.dev/fr/features/index.md): Éditeur Mac natif pour Markdown, JSON et YAML : aperçu en direct, Mermaid, formules, thèmes et pages PDF ou imprimées pour réunions et dossiers papier.
 - [Vos textes restent sur votre Mac](https://marsdawn.southern-light.dev/fr/yours/index.md): MarsDawn n’a ni compte, ni synchronisation, ni cloud. Vos documents Markdown restent sur votre Mac, dans les fichiers et dossiers que vous choisissez.
-- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 4,99 USD. Sans abonnement, sans compte.
-- [Export PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Exportez du Markdown en PDF ou imprimez-le sur votre Mac, avec les diagrammes Mermaid et le code en couleur. Les sauts de page évitent de couper les blocs de code courts.
+- [Essai gratuit, achat unique](https://marsdawn.southern-light.dev/fr/pay-once/index.md): MarsDawn se télécharge gratuitement. Essayez tout pendant 14 jours, puis déverrouillez-le une fois pour 2,49 USD. Sans abonnement, sans compte.
+- [Imprimer et PDF](https://marsdawn.southern-light.dev/fr/pdf/index.md): Prévisualisez votre Markdown, puis imprimez-le ou enregistrez-le en PDF sur Mac, en disposition Document, Guide ou Polycopié, avec diagrammes et code coloré.
 - [Une app Mac](https://marsdawn.southern-light.dev/fr/native/index.md): Un éditeur Markdown qui est une vraie app Mac : fenêtres et onglets natifs, enregistrement automatique, historique des versions, Coup d’œil dans le Finder et un éditeur de texte qui se comporte comme sur Mac.
-- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas d’app iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
+- [Ce que MarsDawn ne fait pas](https://marsdawn.southern-light.dev/fr/limits/index.md): Pas de synchronisation, pas de modification sur iPhone ou iPad, pas de plug-ins, pas de comptes. Des thèmes, mais pas de CSS personnalisé. À savoir avant d’acheter.
 - [Assistance](https://marsdawn.southern-light.dev/fr/support/index.md): De l’aide pour MarsDawn, l’éditeur Markdown pour macOS.
 - [Politique de confidentialité](https://marsdawn.southern-light.dev/fr/privacy/index.md): MarsDawn ne collecte aucune donnée personnelle. Vos documents et vos réglages restent sur votre Mac.
 - [Ouvrir un fichier .md sur Mac](https://marsdawn.southern-light.dev/fr/view-markdown-on-mac/index.md): Ouvrir un fichier .md sur Mac : double-clic, app par défaut, Coup d’œil dans le Finder. Les .md écrits par un agent IA se lisent mis en forme dans MarsDawn.
 - [Aperçu Mermaid sur Mac](https://marsdawn.southern-light.dev/fr/mermaid-preview-mac/index.md): Diagrammes Mermaid dessinés à côté de votre Markdown sur Mac : aperçu en direct, Coup d’œil et export PDF. Un diagramme erroné affiche l’erreur et la ligne.
 - [Coup d’œil pour Markdown](https://marsdawn.southern-light.dev/fr/quicklook/index.md): Avec MarsDawn, Coup d’œil affiche le Markdown mis en forme dans le Finder avec Espace : Mermaid, KaTeX, code coloré. Il fonctionne toujours après l’essai.
+- [Copier pour l’IA](https://marsdawn.southern-light.dev/fr/copy-for-ai/index.md): Copiez le texte sélectionné avec son chemin de fichier et ses numéros de ligne, puis collez-le dans Claude Code ou tout autre agent. Sur votre Mac, sans IDE ni plug-in.
+- [Passer de HackMD à votre Mac](https://marsdawn.southern-light.dev/fr/from-hackmd/index.md): Téléchargez vos notes HackMD en .md et lisez-les dans MarsDawn sur votre Mac. Comment tout télécharger, partir d’un dépôt GitHub et garder vos images.
 - [Markdown vers PDF](https://marsdawn.southern-light.dev/fr/markdown-to-pdf/index.md): Convertissez du Markdown en PDF sur Mac avec l’outil en ligne de commande gratuit marsdawn. Installez-le avec Homebrew et lancez une seule commande : tableaux, maths, Mermaid et code.
-- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
-- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 4,99 USD une seule fois.
+- [MarsDawn comparé : aperçu VS Code, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/fr/vs/index.md): Pour celles et ceux qui choisissent comment lire et relire du Markdown sur Mac, souvent écrit par un agent. Chaque cellule ci-dessous vient des pages du fournisseur ou de notre propre vérification, toutes au 16 octobre 2026, sauf la cellule PDF de MarsDawn, mise à jour le 7 novembre 2026 ; les produits évoluent, une cellule peut donc vieillir. Si vous repérez une erreur, écrivez à l’adresse indiquée sur Assistance.
+- [MacMD Viewer vs MarsDawn](https://marsdawn.southern-light.dev/fr/vs/macmd-viewer/index.md): MacMD Viewer est une visionneuse Markdown en lecture seule à 19,99 USD. MarsDawn modifie avec l’aperçu à côté : 14 jours gratuits, puis 2,49 USD une seule fois.
 - [Meilleur lecteur Markdown pour Mac (2026)](https://marsdawn.southern-light.dev/fr/best-markdown-viewer-mac/index.md): Huit lecteurs Markdown pour Mac comparés : prix, Mermaid, maths, PDF, rechargement en direct, Coup d’œil, natif ou Electron, et à qui chacun convient.
 - [Ligne de commande](https://marsdawn.southern-light.dev/fr/cli/index.md): L’outil en ligne de commande gratuit marsdawn pour Mac : exportez du Markdown en PDF depuis un shell, un script ou un agent LLM, avec une sortie JSON. S’installe avec Homebrew.
 - [marsdawn pour les agents](https://marsdawn.southern-light.dev/fr/cli/agents/index.md): Une référence pour les agents IA et les scripts qui appellent marsdawn pour convertir du Markdown en PDF : commandes, sortie JSON, schémas, codes de sortie et configuration requise.

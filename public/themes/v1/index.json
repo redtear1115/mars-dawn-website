@@ -1,7 +1,150 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-21T08:10:56Z",
+  "generatedAt": "2026-11-25T04:15:18Z",
   "themes": [
+    {
+      "id": "catppuccin-frappe",
+      "version": "1.0.0",
+      "name": {
+        "en": "Catppuccin Frappé"
+      },
+      "summary": {
+        "de": "Sanfte Pastelltöne: nachts Frappé, tagsüber Latte – nach Catppuccin, für bessere Lesbarkeit angepasst",
+        "en": "Soothing pastels: Frappé by night, Latte by day — adapted from Catppuccin, adjusted for readability",
+        "es": "Pasteles relajantes: Frappé de noche, Latte de día —adaptada de Catppuccin y ajustada para leer mejor",
+        "fr": "Des pastels apaisants : Frappé la nuit, Latte le jour – adaptée de Catppuccin, ajustée pour la lisibilité",
+        "ja": "やさしいパステル調。夜は Frappé、昼は Latte — Catppuccin を基に、読みやすさのために調整",
+        "ko": "차분한 파스텔 톤: 밤에는 Frappé, 낮에는 Latte — Catppuccin을 바탕으로 가독성에 맞게 조정",
+        "zh-Hans": "柔和粉彩色调：夜晚用 Frappé，白天用 Latte — 改编自 Catppuccin，为可读性调整",
+        "zh-Hant": "柔和粉彩色調：夜晚用 Frappé，白天用 Latte — 改編自 Catppuccin，為可讀性調整"
+      },
+      "scenarios": [
+        "technical-docs",
+        "agent-review"
+      ],
+      "author": {
+        "name": "charliie",
+        "github": "charliie-dev"
+      },
+      "minAppVersion": "1.1.0",
+      "files": {
+        "theme.json": {
+          "path": "catppuccin-frappe/1.0.0/theme.json",
+          "sha256": "55c5e4cafc5f4f48caea913cdef96c79c390cadfbfe065db6f3828dd182ee529"
+        }
+      },
+      "previews": {
+        "light": "catppuccin-frappe/1.0.0/preview-light.png",
+        "dark": "catppuccin-frappe/1.0.0/preview-dark.png"
+      }
+    },
+    {
+      "id": "catppuccin-macchiato",
+      "version": "1.0.0",
+      "name": {
+        "en": "Catppuccin Macchiato"
+      },
+      "summary": {
+        "de": "Sanfte Pastelltöne: nachts Macchiato, tagsüber Latte – nach Catppuccin, für bessere Lesbarkeit angepasst",
+        "en": "Soothing pastels: Macchiato by night, Latte by day — adapted from Catppuccin, adjusted for readability",
+        "es": "Pasteles relajantes: Macchiato de noche, Latte de día —adaptada de Catppuccin y ajustada para leer mejor",
+        "fr": "Des pastels apaisants : Macchiato la nuit, Latte le jour – adaptée de Catppuccin, ajustée pour la lisibilité",
+        "ja": "やさしいパステル調。夜は Macchiato、昼は Latte — Catppuccin を基に、読みやすさのために調整",
+        "ko": "차분한 파스텔 톤: 밤에는 Macchiato, 낮에는 Latte — Catppuccin을 바탕으로 가독성에 맞게 조정",
+        "zh-Hans": "柔和粉彩色调：夜晚用 Macchiato，白天用 Latte — 改编自 Catppuccin，为可读性调整",
+        "zh-Hant": "柔和粉彩色調：夜晚用 Macchiato，白天用 Latte — 改編自 Catppuccin，為可讀性調整"
+      },
+      "scenarios": [
+        "technical-docs",
+        "agent-review"
+      ],
+      "author": {
+        "name": "charliie",
+        "github": "charliie-dev"
+      },
+      "minAppVersion": "1.1.0",
+      "files": {
+        "theme.json": {
+          "path": "catppuccin-macchiato/1.0.0/theme.json",
+          "sha256": "7134472e4669813109ed90d67981d8684069b0b3416d0b492aa730d9fd228dca"
+        }
+      },
+      "previews": {
+        "light": "catppuccin-macchiato/1.0.0/preview-light.png",
+        "dark": "catppuccin-macchiato/1.0.0/preview-dark.png"
+      }
+    },
+    {
+      "id": "catppuccin-mocha",
+      "version": "1.0.0",
+      "name": {
+        "en": "Catppuccin Mocha"
+      },
+      "summary": {
+        "de": "Sanfte Pastelltöne: nachts Mocha, tagsüber Latte – nach Catppuccin, für bessere Lesbarkeit angepasst",
+        "en": "Soothing pastels: Mocha by night, Latte by day — adapted from Catppuccin, adjusted for readability",
+        "es": "Pasteles relajantes: Mocha de noche, Latte de día —adaptada de Catppuccin y ajustada para leer mejor",
+        "fr": "Des pastels apaisants : Mocha la nuit, Latte le jour – adaptée de Catppuccin, ajustée pour la lisibilité",
+        "ja": "やさしいパステル調。夜は Mocha、昼は Latte — Catppuccin を基に、読みやすさのために調整",
+        "ko": "차분한 파스텔 톤: 밤에는 Mocha, 낮에는 Latte — Catppuccin을 바탕으로 가독성에 맞게 조정",
+        "zh-Hans": "柔和粉彩色调：夜晚用 Mocha，白天用 Latte — 改编自 Catppuccin，为可读性调整",
+        "zh-Hant": "柔和粉彩色調：夜晚用 Mocha，白天用 Latte — 改編自 Catppuccin，為可讀性調整"
+      },
+      "scenarios": [
+        "technical-docs",
+        "agent-review"
+      ],
+      "author": {
+        "name": "charliie",
+        "github": "charliie-dev"
+      },
+      "minAppVersion": "1.1.0",
+      "files": {
+        "theme.json": {
+          "path": "catppuccin-mocha/1.0.0/theme.json",
+          "sha256": "a164383d7b13700473e4085455b37dba27ae92348b011bcb068d6c44ca1384c1"
+        }
+      },
+      "previews": {
+        "light": "catppuccin-mocha/1.0.0/preview-light.png",
+        "dark": "catppuccin-mocha/1.0.0/preview-dark.png"
+      }
+    },
+    {
+      "id": "christmas",
+      "version": "1.0.0",
+      "name": {
+        "en": "Christmas"
+      },
+      "summary": {
+        "de": "Lesepalette für Weihnachten: beerenrote Überschriften auf warmer Cremeseite, dunkle Variante in Schwarz mit Weinton",
+        "en": "A Christmas reading palette: berry-red headings on a warm cream page, with a wine-black dark version",
+        "es": "Paleta de Navidad para leer: encabezados rojo frambuesa sobre una cálida página crema, variante oscura en negro vino",
+        "fr": "Palette de Noël pour lire : titres rouge framboise sur une page crème chaleureuse, variante sombre en noir bordeaux",
+        "ja": "クリスマス気分で読むためのパレット。温かなクリーム色のページにベリーレッドの見出し、ダーク版はワインレッドを帯びた黒",
+        "ko": "크리스마스 분위기의 읽기용 팔레트 — 따뜻한 크림색 페이지에 베리 레드 제목, 다크 버전은 와인빛이 감도는 블랙",
+        "zh-Hans": "圣诞风格的阅读调色盘，莓红标题搭配暖奶油色书页，深色版本为酒红黑底",
+        "zh-Hant": "聖誕風格的閱讀調色盤，莓紅標題搭配暖奶油色書頁，深色版本為酒紅黑底"
+      },
+      "scenarios": [
+        "notes-sharing"
+      ],
+      "author": {
+        "name": "Southern Light",
+        "github": "redtear1115"
+      },
+      "minAppVersion": "1.1.0",
+      "files": {
+        "theme.json": {
+          "path": "christmas/1.0.0/theme.json",
+          "sha256": "7b97392c941c6afa7cef1bc8f92c61798398daf672da9fa29306615bb56f3ad3"
+        }
+      },
+      "previews": {
+        "light": "christmas/1.0.0/preview-light.png",
+        "dark": "christmas/1.0.0/preview-dark.png"
+      }
+    },
     {
       "id": "dracula",
       "version": "1.0.1",

@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "christmas",
+  "version": "1.0.0",
+  "name": {
+    "en": "Christmas"
+  },
+  "summary": {
+    "en": "A Christmas reading palette: berry-red headings on a warm cream page, with a wine-black dark version",
+    "zh-Hant": "聖誕風格的閱讀調色盤，莓紅標題搭配暖奶油色書頁，深色版本為酒紅黑底",
+    "zh-Hans": "圣诞风格的阅读调色盘，莓红标题搭配暖奶油色书页，深色版本为酒红黑底",
+    "ja": "クリスマス気分で読むためのパレット。温かなクリーム色のページにベリーレッドの見出し、ダーク版はワインレッドを帯びた黒",
+    "de": "Lesepalette für Weihnachten: beerenrote Überschriften auf warmer Cremeseite, dunkle Variante in Schwarz mit Weinton",
+    "fr": "Palette de Noël pour lire : titres rouge framboise sur une page crème chaleureuse, variante sombre en noir bordeaux",
+    "es": "Paleta de Navidad para leer: encabezados rojo frambuesa sobre una cálida página crema, variante oscura en negro vino",
+    "ko": "크리스마스 분위기의 읽기용 팔레트 — 따뜻한 크림색 페이지에 베리 레드 제목, 다크 버전은 와인빛이 감도는 블랙"
+  },
+  "fontDesign": "sans",
+  "scenarios": [
+    "notes-sharing"
+  ],
+  "author": {
+    "name": "Southern Light",
+    "github": "redtear1115"
+  },
+  "license": "Apache-2.0",
+  "light": {
+    "background": "#FBF2E2",
+    "surface": "#F4E8D5",
+    "text": "#2B2023",
+    "muted": "#6A5A5C",
+    "border": "#E5D3B8",
+    "heading": "#830018",
+    "accent": "#B3243F",
+    "link": "#2C7552",
+    "quote": "#9A6F14",
+    "syntax": {
+      "keyword": "#9C1F3A",
+      "string": "#00695A",
+      "comment": "#6E6264",
+      "number": "#8A5E0C",
+      "function": "#5B3A7A",
+      "type": "#2969AC"
+    },
+    "diagram": {
+      "node": "#FBE6E8",
+      "nodeBorder": "#B24A5E",
+      "text": "#2B2023",
+      "line": "#8C6F73",
+      "secondary": "#E4F0E8",
+      "tertiary": "#FBF3DC",
+      "note": "#FFF0C8"
+    }
+  },
+  "dark": {
+    "background": "#221114",
+    "surface": "#2F1A1E",
+    "text": "#F2E9E4",
+    "muted": "#B3A2A4",
+    "border": "#45282F",
+    "heading": "#F96377",
+    "accent": "#FF7A90",
+    "link": "#A0F2CC",
+    "quote": "#E8C26A",
+    "syntax": {
+      "keyword": "#FF8FA0",
+      "string": "#86DCC8",
+      "comment": "#A08F92",
+      "number": "#E8C26A",
+      "function": "#DCC8F5",
+      "type": "#6FB2E8"
+    },
+    "diagram": {
+      "node": "#3F2128",
+      "nodeBorder": "#E0788A",
+      "text": "#F2E9E4",
+      "line": "#B8A3A7",
+      "secondary": "#1F3328",
+      "tertiary": "#2E2A1C",
+      "note": "#40361F"
+    }
+  },
+  "style": {
+    "link": {
+      "underline": true
+    },
+    "h1": {
+      "decoration": {
+        "type": "gradientBar",
+        "from": "heading",
+        "to": "link"
+      }
+    },
+    "h2": {
+      "decoration": {
+        "type": "dot",
+        "color": "link"
+      }
+    },
+    "blockquote": {
+      "style": {
+        "type": "bar",
+        "width": 4
+      }
+    },
+    "hr": {
+      "style": {
+        "type": "gradient",
+        "colors": [
+          "heading",
+          "quote",
+          "link"
+        ]
+      }
+    },
+    "listMarker": "link"
+  }
+}

@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="apple-itunes-app" content="app-id=6812925073">
 <script>window.dataLayer = window.dataLayer || [];
 function gtag(){ dataLayer.push(arguments); }
 gtag('consent', 'default', {
@@ -17,6 +18,7 @@ try {
   }
 } catch (e) {}</script>
 <script>(function(w,d,s,l,i){
+  if (w.location.hostname !== 'marsdawn.southern-light.dev' || w.navigator.webdriver === true) return;
   w[l] = w[l] || [];
   w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
@@ -26,7 +28,7 @@ try {
 })(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Was MarsDawn nicht kann · MarsDawn</title>
-<meta name="description" content="Keine Synchronisierung, keine iPhone- oder iPad-App, keine Plug-ins, keine Konten. Themen, aber kein eigenes CSS. Vor dem Kauf gut zu wissen.">
+<meta name="description" content="Keine Synchronisierung, kein Bearbeiten auf iPhone oder iPad, keine Plug-ins, keine Konten. Themen, aber kein eigenes CSS. Vor dem Kauf gut zu wissen.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="/assets/favicon-64.png">
 <link rel="stylesheet" href="/assets/site.css">
@@ -43,7 +45,7 @@ try {
 <link rel="canonical" href="https://marsdawn.southern-light.dev/de/limits/">
 <link rel="alternate" type="text/markdown" href="/de/limits/index.md">
 <meta property="og:title" content="Was MarsDawn nicht kann · MarsDawn">
-<meta property="og:description" content="Keine Synchronisierung, keine iPhone- oder iPad-App, keine Plug-ins, keine Konten. Themen, aber kein eigenes CSS. Vor dem Kauf gut zu wissen.">
+<meta property="og:description" content="Keine Synchronisierung, kein Bearbeiten auf iPhone oder iPad, keine Plug-ins, keine Konten. Themen, aber kein eigenes CSS. Vor dem Kauf gut zu wissen.">
 <meta property="og:url" content="https://marsdawn.southern-light.dev/de/limits/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
@@ -129,26 +131,26 @@ try {
   <div class="shot-frame"><div class="shot-canvas">
     <img src="/assets/screens/03-dark-1180.png" srcset="/assets/screens/03-dark-800.png 800w, /assets/screens/03-dark-1180.png 1180w" sizes="(min-width: 992px) 57rem, calc(100vw - 52px)" width="1180" height="844" alt="MarsDawn im dunklen Modus, links der Markdown-Quelltext, rechts die gerenderte Seite.">
     <span class="marker l tb co-limits-1" aria-hidden="true">1</span><span class="marker l co-limits-2" aria-hidden="true">2</span><span class="marker r tb co-limits-3" aria-hidden="true">3</span><span class="marker r co-limits-4" aria-hidden="true">4</span>
-    <span class="leader l up co-limits-1" aria-hidden="true"><span>Ein Dokument pro Fenster, auf diesem Mac.</span></span><span class="leader l down co-limits-2" aria-hidden="true"><span>Hier schreibst du Markdown.</span></span><span class="leader r up co-limits-3" aria-hidden="true"><span>Die Symbolleiste enthält Themen und Layouts, und es gibt kein Plug-in-Menü.</span></span><span class="leader r down co-limits-4" aria-hidden="true"><span>Die Seite ist zum Lesen da, nicht zum Bearbeiten.</span></span>
+    <span class="leader l up co-limits-1" aria-hidden="true"><span>Jedes Dokument ist eine Datei auf diesem Mac.</span></span><span class="leader l down co-limits-2" aria-hidden="true"><span>Hier schreibst du Markdown.</span></span><span class="leader r up co-limits-3" aria-hidden="true"><span>Die Symbolleiste enthält Themen und Layouts, und es gibt kein Plug-in-Menü.</span></span><span class="leader r down co-limits-4" aria-hidden="true"><span>Die Seite ist zum Lesen da, nicht zum Bearbeiten.</span></span>
   </div></div>
   <figcaption>
     <span class="figure-label">Auf diesem Bildschirmfoto</span>
-    <ol><li>Ein Dokument pro Fenster, auf diesem Mac.</li><li>Hier schreibst du Markdown.</li><li>Die Symbolleiste enthält Themen und Layouts, und es gibt kein Plug-in-Menü.</li><li>Die Seite ist zum Lesen da, nicht zum Bearbeiten.</li></ol>
+    <ol><li>Jedes Dokument ist eine Datei auf diesem Mac.</li><li>Hier schreibst du Markdown.</li><li>Die Symbolleiste enthält Themen und Layouts, und es gibt kein Plug-in-Menü.</li><li>Die Seite ist zum Lesen da, nicht zum Bearbeiten.</li></ol>
   </figcaption>
 </figure>
 <h2 id="left-out">Bewusst weggelassen</h2>
 <h3>Geräte und Personen</h3>
 <ul>
   <li><strong>Synchronisierung:</strong> MarsDawn synchronisiert deine Dokumente nicht. Sie bleiben dort, wo du sie sicherst. Um eines auf einem anderen Mac zu verwenden, lege es in einen Ordner, den du ohnehin synchronisierst.</li>
-  <li><strong>iPhone und iPad:</strong> Dafür gibt es keine App; MarsDawn ist für den Mac.</li>
+  <li><strong>iPhone und iPad:</strong> MarsDawn ist dort nur zum Lesen da. Es öffnet Markdown, Text, PDF, JSON und YAML, bearbeitet aber nichts. Teilen, Drucken und Sichern als PDF gehen, aber Links in einem dort gesicherten PDF funktionieren nicht. JSON- und YAML-Dateien lassen sich nur teilen, nicht drucken oder als PDF sichern. Es liest die Dateien, die du in iCloud Drive ablegst oder aus einer anderen App öffnest; eine eigene Cloud hat MarsDawn nicht.</li>
   <li><strong>Teilen:</strong> Es gibt keine Konten und keine gemeinsame Bearbeitung, denn MarsDawn ist für eine Person an ihrem eigenen Mac.</li>
-  <li><strong>System:</strong> MarsDawn benötigt macOS 26 oder neuer.</li>
+  <li><strong>System:</strong> MarsDawn benötigt auf dem Mac macOS 26 oder neuer und auf iPhone und iPad iOS 26 bzw. iPadOS 26 oder neuer.</li>
 </ul>
 <h3>Dateien und Funktionen</h3>
 <ul>
   <li><strong>Bearbeiten:</strong> Du schreibst links Markdown und liest rechts die Seite; die Seite selbst lässt sich nicht bearbeiten.</li>
   <li><strong>Formate:</strong> MarsDawn exportiert PDF und druckt, exportiert aber keine Word-Dateien.</li>
-  <li><strong>Andere Dateien:</strong> Reine Textdateien und PDFs werden schreibgeschützt geöffnet.</li>
+  <li><strong>Andere Dateien:</strong> PDFs und Textdateien in anderen Kodierungen als UTF-8 öffnen sich schreibgeschützt. Auf dem Mac öffnest du JSON und YAML als bearbeitbare Dokumente mit Baumvorschau; auf iPhone und iPad öffnen sie sich schreibgeschützt, ebenfalls mit Baumvorschau.</li>
   <li><strong>Themen:</strong> Enthalten sind Morgenrot, Klassisch, Modern und Lebhaft, jeweils hell und dunkel, und über die kuratierte <a href="/de/themes/gallery/">Themengalerie</a> (Einstellungen ▸ Erscheinungsbild ▸ Weitere Themes laden …) lassen sich weitere installieren. Ein Thema legt Farben und ein paar Stiloptionen fest; eigenes CSS gibt es nicht. Siehe <a href="/de/themes/">Themen</a>.</li>
   <li><strong>Plug-ins:</strong> MarsDawn hat keine Plug-ins oder Erweiterungen.</li>
 </ul>
@@ -158,8 +160,8 @@ try {
 <h2>Was du von MarsDawn erwarten kannst</h2>
 <ul>
   <li><a href="/de/yours/">Deine Texte bleiben auf deinem Mac</a><span>Kein Konto, keine Synchronisierung, keine Cloud.</span></li>
-  <li><a href="/de/pay-once/">Kostenlos testen, einmal bezahlen</a><span>14 Tage kostenlos, danach einmalig 4,99 USD. Kein Abo.</span></li>
-  <li><a href="/de/pdf/">PDF-Export</a><span>Diagramme, hervorgehobener Code, saubere Seitenumbrüche.</span></li>
+  <li><a href="/de/pay-once/">Kostenlos testen, einmal bezahlen</a><span>14 Tage kostenlos, danach einmalig 2,49 USD. Kein Abo.</span></li>
+  <li><a href="/de/pdf/">Drucken und PDF</a><span>Vorschau, Layout wählen, dann drucken oder sichern.</span></li>
   <li><a href="/de/native/">Eine Mac-App</a><span>Native Fenster und Tabs, automatisches Sichern, Übersicht.</span></li>
 </ul>
 </nav>
@@ -173,7 +175,7 @@ try {
         <li><a href="/de/features/">Funktionen</a></li>
         <li><a href="/de/quicklook/">Übersicht für Markdown</a></li>
         <li><a href="/de/native/">Eine Mac-App</a></li>
-        <li><a href="/de/pdf/">PDF-Export</a></li>
+        <li><a href="/de/pdf/">Drucken und PDF</a></li>
         <li><a href="/de/limits/" aria-current="page">Was MarsDawn nicht kann</a></li>
         <li><a href="/de/pay-once/">Kostenlos testen, einmal bezahlen</a></li>
         <li><a href="/de/yours/">Deine Texte bleiben auf deinem Mac</a></li>
@@ -232,6 +234,7 @@ try {
     </section>
   </nav>
   <p class="footer-meta"><span>Ein neuer Morgen für Markdown.</span> <span>MarsDawn gibt es im <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-limits&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+  <p class="footer-legal">Apple, das Apple Logo, Mac, iPhone, iPad und iCloud sind Marken der Apple Inc., die in den USA und weiteren Ländern und Regionen eingetragen sind. App Store und Mac App Store sind Dienstleistungsmarken der Apple Inc.</p>
 </footer>
 </div>
 <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie-Einwilligung" hidden>

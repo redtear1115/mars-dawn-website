@@ -51,7 +51,9 @@ REQUIRED = ("name", "description", "applicationCategory", "operatingSystem", "so
 
 
 def newest_app_version():
-    versions = [v["version"] for v in json.loads(NOTES.read_text(encoding="utf-8"))["versions"]]
+    # A pending entry is not shipped yet and must never be the "current" version.
+    versions = [v["version"] for v in json.loads(NOTES.read_text(encoding="utf-8"))["versions"]
+                if not v.get("pending")]
     return max(versions, key=lambda v: tuple(map(int, v.split("."))))
 
 
@@ -104,7 +106,7 @@ def self_test():
         if until:
             paid["priceValidUntil"] = until
         return [{"@type": "SoftwareApplication", "name": "MarsDawn", "description": "d",
-                 "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later",
+                 "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later, iOS 26 or later, iPadOS 26 or later",
                  "softwareVersion": newest_app_version(), "screenshot": "https://x/s.png", "publisher": PUBLISHER,
                  "sameAs": ["https://x"], "downloadUrl": "https://x", "url": "https://x",
                  "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "0",

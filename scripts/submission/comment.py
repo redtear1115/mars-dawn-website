@@ -16,6 +16,10 @@ the kit's messages (which can quote the submission) are only ever inside one fen
 longer than any backtick run in them, and cut inside the fence so the closing fence always stays.
 A result.json that is missing, malformed, or for another sha256 than the gate's makes the verdict
 "error": the comment never claims more than the gate's own digest proves.
+
+GATE_REASON=blocked (the gate found the opener on the blocklist, #195) gets a short neutral comment
+that names no list, reason or account, and the issue also gets the theme-blocked label (added after
+the comment, once per run, with the same GitHub client).
 """
 import argparse
 import json
@@ -44,6 +48,8 @@ REJECTIONS = {
                   f"({common.SIMULATOR_URL}) produces themes that meet them.",
     "too-many": f"You have more than {3} open theme submissions. Please wait until some of them are reviewed, then "
                 f"edit this issue to have it checked.",
+    "blocked": "Theme submissions from this account aren't accepted, so this theme wasn't checked and can't be "
+               "approved.",
 }
 
 
@@ -131,6 +137,11 @@ def upsert(api, number: int, body: str) -> str:
     return "created"
 
 
+def label_blocked(api, number: int) -> None:
+    """Adds theme-blocked to the issue of a blocked opener (adding a label that's already there is a no-op)."""
+    api.request("POST", f"/repos/{{repo}}/issues/{number}/labels", {"labels": [common.BLOCKED_LABEL]})
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--result", type=Path, default=None)
@@ -144,7 +155,10 @@ def main(argv=None) -> int:
             sha = common.env_token("GATE_SHA256", common.SHA256_RE)
         result = load_result(args.result, sha) if sha else None
         body = body_for(action, reason, sha, result)
-        outcome = upsert(common.GitHub.from_env(), number, body)
+        api = common.GitHub.from_env()
+        outcome = upsert(api, number, body)
+        if action == "reject" and reason == "blocked":
+            label_blocked(api, number)
     except common.Refusal as refusal:
         common.error(f"refused ({refusal.code}): {refusal.message}")
         return 1
