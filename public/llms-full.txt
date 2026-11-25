@@ -2550,6 +2550,7 @@ Birgitta Böckeler, writing for Thoughtworks, draws the distinction plainly: “
 
 ## Next
 
+- A test passed on one Mac and failed on another; the product was fine, and the test had been reading colours through the screen's colour profile: [A test that passes on one Mac may not be testing what you think.](/how-we-test/)
 - How that review stays cheap for the agent's own context: [token-efficient review](/token-efficient-review/).
 - Handing the reviewed document to someone else: [sharing a PDF](/sharing-exported-pdfs/).
 - Why it's hard to read, and how to do it: [Reading what your agent hands back](/reading-agent-output/).
@@ -6490,6 +6491,7 @@ Thoughtworks 的 Birgitta Böckeler 講得很直接：「LLMs are NOT compilers,
 
 ## 接下來
 
+- 同一個測試在一台 Mac 通過、在另一台失敗，產品沒壞，是測試透過螢幕的色彩描述檔在讀顏色：[在一台 Mac 上通過的測試，不一定在測你以為的東西。](/zh-hant/how-we-test/)
 - 這樣的審閱怎麼不花 agent 自己的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
 - 把審閱過的文件交給別人：[分享 PDF](/zh-hant/sharing-exported-pdfs/)。
 - 為什麼難讀、該怎麼讀：[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)。
@@ -10408,6 +10410,7 @@ Thoughtworks 的 Birgitta Böckeler 讲得很直接：“LLMs are NOT compilers,
 
 ## 接下来
 
+- 同一个测试在一台 Mac 上通过、在另一台上失败，产品没坏，是测试透过屏幕的颜色描述文件在读颜色：[在一台 Mac 上通过的测试，不一定在测你以为的东西。](/zh-hans/how-we-test/)
 - 这样的审阅怎么不花代理自己的 context：[节省 token 的审阅方式](/zh-hans/token-efficient-review/)。
 - 把审阅过的文稿交给别人：[分享 PDF](/zh-hans/sharing-exported-pdfs/)。
 - 为什么难读、该怎么读：[读懂代理交回来的 Markdown](/zh-hans/reading-agent-output/)。
@@ -14326,6 +14329,7 @@ Thoughtworks の Birgitta Böckeler は、この違いをはっきりと言い�
 
 ## 次に
 
+- あるテストが 1 台の Mac では通り、もう 1 台では失敗したのは、製品に問題があったからではなく、テストが画面のカラープロファイルを通して色を読んでいたため：[ある Mac で通るテストが、思っているものをテストしているとは限りません。](/ja/how-we-test/)
 - このレビューが、なぜエージェント自身の context にとって安上がりなのか：[トークンを抑えたレビュー](/ja/token-efficient-review/)。
 - レビュー済みの文書を、ほかの人に渡す：[PDF を共有する](/ja/sharing-exported-pdfs/)。
 - なぜ読みにくいのか、どう読むか：[エージェントが返してくるものを読む](/ja/reading-agent-output/)。
@@ -18250,6 +18254,7 @@ Birgitta Böckeler zieht für Thoughtworks die Grenze klar: „LLMs sind KEINE C
 
 ## Weiter
 
+- Ein Test bestand auf einem Mac und schlug auf einem anderen fehl; das Produkt war in Ordnung, und der Test las die Farben durch das Farbprofil des Bildschirms: [Ein Test, der auf einem Mac besteht, testet vielleicht nicht, was du denkst.](/de/how-we-test/)
 - Wie dieses Prüfen für den eigenen Kontext des Agenten günstig bleibt: [Token-sparsames Prüfen](/de/token-efficient-review/).
 - Das geprüfte Dokument an jemand anderen weitergeben: [ein PDF teilen](/de/sharing-exported-pdfs/).
 - Warum das Lesen schwer ist und wie es geht: [Lesen, was dein Agent zurückgibt](/de/reading-agent-output/).
@@ -22108,6 +22113,7 @@ Birgitta Böckeler, pour Thoughtworks, pose la distinction sans détour : « l
 
 ## Pour aller plus loin
 
+- Un test passait sur un Mac et échouait sur un autre ; le produit allait bien, et le test lisait les couleurs à travers le profil colorimétrique de l’écran : [Un test qui passe sur un Mac ne teste peut-être pas ce que vous croyez.](/fr/how-we-test/)
 - Comment cette relecture reste économique pour le contexte de l’agent : [une relecture économe en tokens](/fr/token-efficient-review/).
 - Remettre le document relu à quelqu’un d’autre : [partager un PDF](/fr/sharing-exported-pdfs/).
 - Pourquoi c’est difficile à lire, et comment s’y prendre : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
@@ -25966,6 +25972,7 @@ Birgitta Böckeler, en un texto para Thoughtworks, marca la diferencia sin rodeo
 
 ## Siguiente
 
+- Una prueba pasaba en un Mac y fallaba en otro; el producto estaba bien, y la prueba leía los colores a través del perfil de color de la pantalla: [Una prueba que pasa en un Mac quizá no esté probando lo que crees.](/es/how-we-test/)
 - Cómo esa revisión sale barata para el contexto del propio agente: [revisión con pocos tokens](/es/token-efficient-review/).
 - Entregar el documento revisado a otra persona: [compartir un PDF](/es/sharing-exported-pdfs/).
 - Por qué cuesta leerlo y cómo hacerlo: [Leer lo que te devuelve tu agente](/es/reading-agent-output/).
@@ -29824,6 +29831,7 @@ Thoughtworks에 글을 쓴 Birgitta Böckeler는 그 차이를 분명히 짚습�
 
 ## 다음
 
+- 한 테스트가 한 Mac에서는 통과하고 다른 Mac에서는 실패했지만, 제품에는 문제가 없었고 테스트가 화면의 색상 프로파일을 거쳐 색을 읽고 있었습니다: [한 Mac에서 통과한 테스트가 생각하는 것을 테스트하고 있다는 보장은 없습니다.](/ko/how-we-test/)
 - 그 검토가 에이전트 자신의 컨텍스트에 부담을 주지 않는 방법: [토큰을 아끼는 검토](/ko/token-efficient-review/).
 - 검토한 문서를 다른 사람에게 전달하기: [PDF 공유하기](/ko/sharing-exported-pdfs/).
 - 왜 읽기 어려운지, 어떻게 읽으면 되는지: [에이전트가 돌려준 결과 읽기](/ko/reading-agent-output/).

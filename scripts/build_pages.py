@@ -2578,6 +2578,7 @@ BRAINSTORM_PAGES = {
 
 <h2>Next</h2>
 <ul>
+  <li>A test passed on one Mac and failed on another; the product was fine, and the test had been reading colours through the screen's colour profile: <a href="/how-we-test/">A test that passes on one Mac may not be testing what you think.</a></li>
   <li>How that review stays cheap for the agent's own context: <a href="/token-efficient-review/">token-efficient review</a>.</li>
   <li>Handing the reviewed document to someone else: <a href="/sharing-exported-pdfs/">sharing a PDF</a>.</li>
   <li>Why it's hard to read, and how to do it: <a href="/reading-agent-output/">Reading what your agent hands back</a>.</li>
@@ -2613,6 +2614,7 @@ BRAINSTORM_PAGES = {
 
 <h2>接下來</h2>
 <ul>
+  <li>同一個測試在一台 Mac 通過、在另一台失敗，產品沒壞，是測試透過螢幕的色彩描述檔在讀顏色：<a href="/zh-hant/how-we-test/">在一台 Mac 上通過的測試，不一定在測你以為的東西。</a></li>
   <li>這樣的審閱怎麼不花 agent 自己的 context：<a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a>。</li>
   <li>把審閱過的文件交給別人：<a href="/zh-hant/sharing-exported-pdfs/">分享 PDF</a>。</li>
   <li>為什麼難讀、該怎麼讀：<a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a>。</li>

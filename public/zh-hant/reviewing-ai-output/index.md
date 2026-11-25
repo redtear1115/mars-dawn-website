@@ -23,6 +23,7 @@ Thoughtworks 的 Birgitta Böckeler 講得很直接：「LLMs are NOT compilers,
 
 ## 接下來
 
+- 同一個測試在一台 Mac 通過、在另一台失敗，產品沒壞，是測試透過螢幕的色彩描述檔在讀顏色：[在一台 Mac 上通過的測試，不一定在測你以為的東西。](/zh-hant/how-we-test/)
 - 這樣的審閱怎麼不花 agent 自己的 context：[節省 token 的審閱方式](/zh-hant/token-efficient-review/)。
 - 把審閱過的文件交給別人：[分享 PDF](/zh-hant/sharing-exported-pdfs/)。
 - 為什麼難讀、該怎麼讀：[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)。

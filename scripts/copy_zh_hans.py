@@ -1053,6 +1053,7 @@ marsdawn --version</code></pre>
 
 <h2>接下来</h2>
 <ul>
+  <li>同一个测试在一台 Mac 上通过、在另一台上失败，产品没坏，是测试透过屏幕的颜色描述文件在读颜色：<a href="/zh-hans/how-we-test/">在一台 Mac 上通过的测试，不一定在测你以为的东西。</a></li>
   <li>这样的审阅怎么不花代理自己的 context：<a href="/zh-hans/token-efficient-review/">节省 token 的审阅方式</a>。</li>
   <li>把审阅过的文稿交给别人：<a href="/zh-hans/sharing-exported-pdfs/">分享 PDF</a>。</li>
   <li>为什么难读、该怎么读：<a href="/zh-hans/reading-agent-output/">读懂代理交回来的 Markdown</a>。</li>

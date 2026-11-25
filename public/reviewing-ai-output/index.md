@@ -23,6 +23,7 @@ Birgitta Böckeler, writing for Thoughtworks, draws the distinction plainly: “
 
 ## Next
 
+- A test passed on one Mac and failed on another; the product was fine, and the test had been reading colours through the screen's colour profile: [A test that passes on one Mac may not be testing what you think.](/how-we-test/)
 - How that review stays cheap for the agent's own context: [token-efficient review](/token-efficient-review/).
 - Handing the reviewed document to someone else: [sharing a PDF](/sharing-exported-pdfs/).
 - Why it's hard to read, and how to do it: [Reading what your agent hands back](/reading-agent-output/).

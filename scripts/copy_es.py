@@ -1577,6 +1577,7 @@ swift build -c release --product marsdawn
 
 <h2>Siguiente</h2>
 <ul>
+  <li>Una prueba pasaba en un Mac y fallaba en otro; el producto estaba bien, y la prueba leía los colores a través del perfil de color de la pantalla: <a href="/es/how-we-test/">Una prueba que pasa en un Mac quizá no esté probando lo que crees.</a></li>
   <li>Cómo esa revisión sale barata para el contexto del propio agente: <a href="/es/token-efficient-review/">revisión con pocos tokens</a>.</li>
   <li>Entregar el documento revisado a otra persona: <a href="/es/sharing-exported-pdfs/">compartir un PDF</a>.</li>
   <li>Por qué cuesta leerlo y cómo hacerlo: <a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a>.</li>

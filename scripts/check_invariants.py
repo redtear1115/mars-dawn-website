@@ -347,8 +347,8 @@ def check_footer_across_locales(chromes, problems):
             problems.append(f"{relative}: the footer's links differ from the en page's")
 
 
-# Issue #320 ships this article through the discovery files without approved inbound HTML links.
-INBOUND_LINK_EXEMPT_SLUGS = {"how-we-test"}
+# Pages allowed to have no inbound HTML link. Empty since how-we-test (#320) is linked from reviewing-ai-output.
+INBOUND_LINK_EXEMPT_SLUGS = set()
 
 
 def check_no_orphans(chromes, problems):

@@ -23,6 +23,7 @@ Thoughtworks 的 Birgitta Böckeler 讲得很直接：“LLMs are NOT compilers,
 
 ## 接下来
 
+- 同一个测试在一台 Mac 上通过、在另一台上失败，产品没坏，是测试透过屏幕的颜色描述文件在读颜色：[在一台 Mac 上通过的测试，不一定在测你以为的东西。](/zh-hans/how-we-test/)
 - 这样的审阅怎么不花代理自己的 context：[节省 token 的审阅方式](/zh-hans/token-efficient-review/)。
 - 把审阅过的文稿交给别人：[分享 PDF](/zh-hans/sharing-exported-pdfs/)。
 - 为什么难读、该怎么读：[读懂代理交回来的 Markdown](/zh-hans/reading-agent-output/)。

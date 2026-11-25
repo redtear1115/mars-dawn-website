@@ -23,6 +23,7 @@ Birgitta Böckeler, pour Thoughtworks, pose la distinction sans détour : « l
 
 ## Pour aller plus loin
 
+- Un test passait sur un Mac et échouait sur un autre ; le produit allait bien, et le test lisait les couleurs à travers le profil colorimétrique de l’écran : [Un test qui passe sur un Mac ne teste peut-être pas ce que vous croyez.](/fr/how-we-test/)
 - Comment cette relecture reste économique pour le contexte de l’agent : [une relecture économe en tokens](/fr/token-efficient-review/).
 - Remettre le document relu à quelqu’un d’autre : [partager un PDF](/fr/sharing-exported-pdfs/).
 - Pourquoi c’est difficile à lire, et comment s’y prendre : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).

@@ -23,6 +23,7 @@ Birgitta Böckeler zieht für Thoughtworks die Grenze klar: „LLMs sind KEINE C
 
 ## Weiter
 
+- Ein Test bestand auf einem Mac und schlug auf einem anderen fehl; das Produkt war in Ordnung, und der Test las die Farben durch das Farbprofil des Bildschirms: [Ein Test, der auf einem Mac besteht, testet vielleicht nicht, was du denkst.](/de/how-we-test/)
 - Wie dieses Prüfen für den eigenen Kontext des Agenten günstig bleibt: [Token-sparsames Prüfen](/de/token-efficient-review/).
 - Das geprüfte Dokument an jemand anderen weitergeben: [ein PDF teilen](/de/sharing-exported-pdfs/).
 - Warum das Lesen schwer ist und wie es geht: [Lesen, was dein Agent zurückgibt](/de/reading-agent-output/).

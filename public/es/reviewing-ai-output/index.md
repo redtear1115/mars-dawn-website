@@ -23,6 +23,7 @@ Birgitta Böckeler, en un texto para Thoughtworks, marca la diferencia sin rodeo
 
 ## Siguiente
 
+- Una prueba pasaba en un Mac y fallaba en otro; el producto estaba bien, y la prueba leía los colores a través del perfil de color de la pantalla: [Una prueba que pasa en un Mac quizá no esté probando lo que crees.](/es/how-we-test/)
 - Cómo esa revisión sale barata para el contexto del propio agente: [revisión con pocos tokens](/es/token-efficient-review/).
 - Entregar el documento revisado a otra persona: [compartir un PDF](/es/sharing-exported-pdfs/).
 - Por qué cuesta leerlo y cómo hacerlo: [Leer lo que te devuelve tu agente](/es/reading-agent-output/).
