@@ -1685,6 +1685,101 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
 """,
     }
 
+    pages['how-we-test'] = {
+        "title": "MarsDawn을 테스트하는 방법: 테스트 하나, Mac 두 대 · MarsDawn",
+        "description": "한 Mac에서 통과한 테스트가 다른 Mac에서는 실패했습니다. 제품은 멀쩡했고, 테스트가 화면의 색을 읽고 있었습니다. 테스트를 여러 겹으로 쌓는 방법과 따라 할 수 있는 네 가지 습관.",
+        "body": r"""<section class="intro">
+  <h1>한 Mac에서 통과한 테스트가 생각하는 것을 테스트하고 있다는 보장은 없습니다.</h1>
+  <!-- src S11 -->
+  <p>바이브 코딩(vibe coding)은 나쁜 것이 아니며, MarsDawn도 에이전트와 함께 만듭니다. 하지만 사람들이 오래 의지하는 소프트웨어는 첫 버전 이후 몇 년에 걸친 유지보수와 보안으로 평가받고, 그 출발점은 변경이 아무것도 망가뜨리지 않았는지 확인하는 일입니다.</p>
+</section>
+
+<div class="summary"><p><strong>한 테스트가 Mac mini에서는 통과하고 MacBook Air에서는 실패했습니다. 제품에는 문제가 없었습니다. 테스트가 화면의 색상 프로파일을 거쳐 색을 읽고 있었고, Mac mini에서 통과한 것은 운이 좋았을 뿐입니다. 두 번째 기기가 찾아낸 것은 코드가 아니라 테스트의 버그였습니다.</strong></p></div>
+<p>MarsDawn이 어떤 극단적이거나 악의적인 파일로 테스트되는지만 궁금하다면 '<a href="#inputs">테스트에 던져 넣는 것들</a>'로 바로 가세요.</p>
+
+<h2>MacBook Air에서만 실패한 테스트</h2>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>내보내기 엔진의 테스트를 GitHub의 macOS 15 러너에서 전부 돌리면 거의 한 시간이 걸립니다. debug 빌드가 약 32분, release 빌드가 약 25분입니다. 이 시간을 줄이려고 macOS 26 쪽을 우리 MacBook Air로 옮겨 보았습니다(<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
+<!-- src S1: kit #241, run 40271990387 -->
+<p>그곳에서 처음 돌렸을 때 테스트 하나가 실패했습니다. 콜아웃(Note, Tip, Warning)이 들어간 PDF를 내보내고, 각 콜아웃 가장자리의 색 막대가 올바른 색인지, 즉 색 차이가 0.16 미만인지 확인하는 테스트입니다. MacBook Air에서 색 차이는 0.1634, 0.1648, 0.1796이었습니다. Mac mini에서는 같은 커밋, 같은 macOS와 Xcode로 테스트가 통과했습니다.</p>
+<p>처음에는 내보내기가 망가졌다고 생각했습니다. 아니었습니다. PDF에는 아무 문제가 없었고, 두 기기에서 달랐던 것은 테스트가 그것을 읽는 방식이었습니다.</p>
+<!-- src S1, S2: kit #241 -->
+<p>이 테스트는 PDF의 각 페이지를 이미지로 바꿔 픽셀을 읽는데, macOS는 그 이미지를 주 디스플레이의 색 공간으로 그립니다. Mac mini는 평범한 외장 모니터에 연결되어 있었고, MacBook Air는 내장 디스플레이를 쓰고 있었습니다. 주황색 한 가지로 채운 이미지를 다시 읽어 보니, (0.784, 0.278, 0.106)이 Mac mini에서는 (0.822, 0.335, 0.179), MacBook Air에서는 (0.782, 0.395, 0.221)로 돌아왔습니다.</p>
+<!-- src S3: kit #242 verification comment -->
+<p>중요한 건 여기부터입니다. Mac mini에서도 테스트는 올바른 색을 읽지 못하고 있었습니다. 최대 0.128까지 어긋나 있었고, 0.16 한도 안에 겨우 들어왔을 뿐입니다. 통과한 건 모니터 덕분이지, 막대를 제대로 측정해서가 아니었습니다.</p>
+<!-- src S3, S10 -->
+<p>수정(<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>)은 테스트만 바꿉니다. 페이지를 sRGB로 고정한 색 공간의 이미지에 그리기 때문에 화면이 전혀 끼어들지 않습니다. 이제 두 기기 모두 막대 색을 정확하게 읽습니다. 색 차이는 MacBook Air의 내장 디스플레이에서도, Mac mini에서도 0.0입니다. 풀 리퀘스트의 CI가 통과했고(<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), 수정이 MacBook Air 러너 브랜치에 들어간 뒤 그 러너에서도 전체 테스트가 통과했습니다(<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>). 그다음 일부러 실패시켰습니다. 기대하는 색을 모두 파란색으로 바꾸자 콜아웃 다섯 개 모두에서 빨간불이 들어왔습니다.</p>
+<p>알려진 빈틈도 아직 있습니다. Note와 Caution은 색 차이가 약 0.119인 두 주황색을 쓰는데, 0.16 한도 안쪽입니다. 그래서 두 색이 서로 바뀌어도 테스트는 아마 알아차리지 못할 것입니다. 테스트가 완벽한 척하지 않고 이 사실을 기록해 두었습니다.</p>
+<p>실패할 수 없는 테스트는 아무것도 지켜 주지 못합니다. 화면의 색상 프로파일처럼 엉뚱한 이유로 실패하는 테스트도 마찬가지입니다. 한 기기에서의 초록불은 테스트가 거기서 통과했다는 뜻일 뿐, 이름에 적힌 것을 측정한다는 뜻은 아닙니다.</p>
+
+<h2>테스트는 여러 겹의 그물입니다</h2>
+<p>모든 것을 잡아내는 테스트는 없습니다. 겹마다 그물코가 다른 그물이 있고, 한 그물을 빠져나간 실수는 다음 그물에 걸려야 합니다.</p>
+<ul>
+  <!-- src S13 -->
+  <li><strong>기준 PDF:</strong> 내보내기 엔진(오픈 소스인 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, <code>marsdawn</code> 명령도 이것으로 돌아갑니다)으로 샘플 문서를 내보내고, 페이지마다 텍스트를 기록해 둔 사본과 비교합니다. 내용이 조용히 사라지거나 페이지 수가 바뀌는 것을 잡아냅니다.</li>
+  <!-- src S6, S9 -->
+  <li><strong>다른 시스템과 빌드:</strong> 엔진은 지원하는 가장 오래된 버전인 macOS 15와, 앱이 출시되는 macOS 26에서 각각 debug와 release 빌드로 돌아갑니다. 앱의 전체 테스트는 네 가지 조합으로 돕니다. 서명한 것과 서명하지 않은 것, 각각 페이월을 끈 것과 켠 것입니다. 오래된 시스템에서만, 또는 고객이 실제로 받는 빌드에서만 망가지는 것을 잡아냅니다.</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>실제 하드웨어:</strong> 앱의 CI는 우리 Mac(Mac mini와 MacBook Air 둘 다)에서 돕니다. 엔진 테스트 일체를 그 MacBook Air에서 시험 실행한 것(<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>, 아직 열린 실험 초안)이 위의 색상 프로파일 버그를 잡아냈습니다. 두 번째 기기는 특정 기기에서 돌았기 때문에 통과했을 뿐인 테스트를 잡아냅니다.</li>
+  <!-- src S12 -->
+  <li><strong>빨간불 대조군:</strong> 앱의 CI에는 일부러 망가뜨린 정리 스크립트 사본 22개와 테스트 실행 스크립트 사본 20개가 있고, 사본마다 안전 검사가 하나씩 빠져 있습니다. 테스트는 그 모두에서 실패해야 합니다. 정리 스크립트는 Mac에서 오래된 빌드와 작업 사본을 지우기 때문에, 검사 하나만 빠져도 엉뚱한 것을 지울 수 있습니다. 망가뜨린 사본이 하나라도 통과하면 망가진 것은 테스트입니다.</li>
+  <!-- src S3, S15 -->
+  <li><strong>또 하나의 눈:</strong> kit #242처럼, 병합 전에 다른 에이전트에게 변경을 검증하게 하는 것이 우리의 방식입니다. 사용 흐름에 관련된 변경은 먼저 시나리오 리뷰를 거칩니다. 끝났다고 했지만 끝나지 않은 것, 그리고 동작은 하지만 잘못된 상황에 쓰인 코드를 잡아냅니다.</li>
+  <!-- src S21 -->
+  <li><strong>병합은 사람이 합니다.</strong> 모든 변경은 MarsDawn 개발자가 직접 검토하고 병합합니다. 에이전트나 봇은 병합하지 않습니다.</li>
+</ul>
+
+<h2 id="inputs">테스트에 던져 넣는 것들</h2>
+<p>그물이 얼마나 쓸모 있는지는 무엇을 던져 넣느냐에 달려 있습니다. 엔진 테스트가 넣는 입력 몇 가지와, 각 테스트가 보장하는 것입니다.</p>
+<ul>
+  <!-- src S16 -->
+  <li><strong>아주 큰 파일.</strong> 우리 테스트 기기에서 release 빌드로 재면, 2MB 문서는 1.5초 안에 표시되고, 레이아웃하기에 너무 복잡한 5MB 문서도 1초 안에 일반 텍스트로 열립니다. 16MB가 넘는 것은 아예 파싱하지 않고 텍스트로 보여 줍니다.</li>
+  <!-- src S16 -->
+  <li><strong>수십만 줄.</strong> 한 줄에 한 단어씩, 약 3MB에 80만 줄 가까운 문서는 도중에 너무 많다고 판단됩니다. 엔진은 거기서 읽기를 멈추고 일반 텍스트로 표시합니다.</li>
+  <!-- src S17 -->
+  <li><strong>닫히지 않는 표시.</strong> 닫는 짝이 없는 블록 시작 표시 1MB, 또는 수만 겹으로 쌓인 블록도 같은 1MB 일반 텍스트의 약 두 배보다 오래 걸리면 안 됩니다. 8단계를 넘는 부분은 더 이상 중첩되지 않습니다.</li>
+  <!-- src S18 -->
+  <li><strong>수식.</strong> 잘못된 수식은 페이지를 망가뜨리지 않고 그 자리에 오류를 표시합니다. 10,000자가 넘는 수식은 쓴 그대로 두고, 한 번에 문서의 처음 1,000개까지만 그립니다. 수식 안의 내용이 링크나 이미지, 페이지 마크업이 되는 일은 없습니다.</li>
+  <!-- src S19 -->
+  <li><strong>Markdown 속에 숨은 악의적인 HTML.</strong> 스크립트는 제거되어 절대 실행되지 않고, 삽입된 프레임도 페이지에 보이기 전에 제거됩니다. 원격 이미지는 허용하지 않는 한 불러오지 않으며, 허용해도 안전한(HTTPS) 이미지만 불러옵니다. 스크립트 필터를 뺀 대조용 사본도 있어서, 테스트는 그 사본에서 실패해야 합니다.</li>
+  <!-- src S20 -->
+  <li><strong>악의적인 테마 파일.</strong> 거부되며, 오류 메시지가 파일 속 숨은 제어 문자나 링크를 그대로 되풀이하지도 않습니다. 16KB가 넘는 테마 파일은 아예 읽지 않습니다.</li>
+</ul>
+<!-- src S5 -->
+<p>이 모든 것에는 비용이 듭니다. 엔진 한 번 실행의 제한 시간은 30분에서 45분, 50분, 70분, 지금은 90분까지 늘었습니다. macOS 15는 모든 테스트가 통과했는데도 50분 한도에 두 번 걸린 적이 있고, 나중에는 앞선 단계는 모두 통과한 채 마지막 단계에서 70분에 걸린 적이 있습니다.</p>
+
+<h2>따라 할 수 있는 네 가지 습관</h2>
+<ol>
+  <li><strong>작성하는 에이전트와 확인하는 에이전트를 나누세요.</strong> 확인하는 쪽에는 작성한 에이전트의 설명은 붙이지 말고 변경 자체와 '완료'의 기준만 주고, 테스트를 직접 돌려 확인하지 않은 것을 말해 달라고 하세요. kit #242에서는 검증한 에이전트가 새 테스트를 통과시키기 전에 MacBook Air에서 예전 테스트를 돌려 실패하는 것을 확인했습니다. 드는 비용은 두 번째 세션의 토큰입니다.</li>
+  <!-- src S14 -->
+  <li><strong>모든 테스트가 한 번은 실패하는 것을 보세요.</strong> 초록불은 확인하는 대상이 정말 잘못됐을 때 같은 테스트가 빨간불로 바뀌는 것을 본 적이 있어야 의미가 있습니다. 그러니 초록불을 믿기 전에, 그 테스트가 지키는 것을 망가뜨려 보고(또는 에이전트에게 맡기고) 빨간불을 확인한 뒤, 되돌려 초록불을 확인하세요. 에이전트는 통과하는 테스트를 잘 씁니다. 바로 그래서 실패하는 모습을 봐야 합니다.</li>
+  <li><strong>테스트를 두 번째 환경에서 돌리세요.</strong> 두 번째 Mac이 없어도 괜찮습니다. OS 버전 두 개, 또는 debug와 release 빌드로 된 CI 매트릭스면 충분한 출발점입니다. 찾는 것은 우연히 통과하는 테스트입니다.</li>
+  <!-- src S7, S8 -->
+  <li><strong>'테스트가 하나도 돌지 않음'을 실패로 처리하세요.</strong> Python 3.9의 <code>unittest</code>는 테스트를 하나도 찾지 못해도 성공으로 끝납니다. 그래서 경로에 오타 하나만 있어도 초록불을 받습니다. 우리 CI는 테스트 수를 읽어 0이면 실패시키고, 종료 코드만이 아니라 요약에 "0 failed"라고 적혀 있는지도 확인합니다. 이 검사는 독립 검증이 우리 CI의 이 빈틈을 찾아낸 뒤에 추가했습니다.</li>
+</ol>
+
+<h2>짧게 말하면</h2>
+<!-- src S11 -->
+<p>앱이 바이브 코딩으로 만들어졌는지보다, 누군가 계속 테스트하고 유지보수하는지가 더 중요합니다. 소프트웨어를 고를 때 확인해 볼 만합니다. 어떻게 테스트하는지 밝히고 있는지, 마지막 업데이트는 언제였는지.</p>
+<p>속도는 에이전트에게 맡기세요. 확인은 올바른 것을 측정하는 테스트와, 결과를 읽는 사람에게 맡기세요.</p>
+
+<h2>다음</h2>
+<ul>
+  <li>에이전트가 쓴 것을 여전히 사람이 읽어야 하는 이유: <a href="/ko/reviewing-ai-output/">AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유</a>.</li>
+  <li>에이전트가 돌려준 계획과 보고서를 읽는 방법: <a href="/ko/reading-agent-output/">에이전트가 돌려준 결과 읽기</a>.</li>
+</ul>
+
+<h2>출처</h2>
+<ul>
+  <li>실패한 테스트와 원인: <a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>.</li>
+  <li>수정과 독립 검증: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>.</li>
+  <li>MacBook Air에서 CI를 시험 실행한 작업(아직 열린 실험 초안)과 실행 시간: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
+  <li>내보내기 엔진의 CI. 제한 시간이 바뀐 내력은 주석에 있습니다: <a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>.</li>
+  <li>앱 저장소는 비공개입니다. 위의 앱 관련 내용은 앱의 CI 워크플로와 테스트 스크립트에서 가져왔습니다.</li>
+</ul>
+""",
+    }
+
     # /templates/ pages (scripts/templates_pages.py), one entry per table there, for #162 to merge.
     # The downloads are TEMPLATES byte for byte; Mermaid node labels are translated, as in ja.
     templates = {
@@ -1857,7 +1952,7 @@ flowchart LR
     }
 
     app_ui_languages = '영어, 중국어(번체), 중국어(간체), 일본어, 독일어, 프랑스어, 스페인어, 한국어'
-    ui = {'features': '기능 한눈에 보기', 'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 .md 파일 여는 방법', 'mermaid-preview-mac': 'Mac에서 Mermaid 미리보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': 'PDF 내보내기', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '테마', 'themes-new': '테마 만들기', 'themes-agents': '에이전트와 함께 테마 만들기', 'themes-gallery': '테마 갤러리', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'changelog': '변경 내역', 'roadmap': '로드맵', 'reading-notes': '편집자의 독서 노트', 'reading-notes-anthropic': '독서 노트: Anthropic', 'reading-notes-chip-huyen': '독서 노트: Chip Huyen', 'reading-notes-lilian-weng': '독서 노트: Lilian Weng', 'reading-notes-harrison-chase': '독서 노트: Harrison Chase', 'reading-notes-langchain': '독서 노트: LangChain(Jess Ou)', 'reading-notes-andrew-ng': '독서 노트: Andrew Ng', 'consent_text': '분석 쿠키를 사용합니다. 수락하기 전에는 꺼져 있습니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
+    ui = {'features': '기능 한눈에 보기', 'home': 'MarsDawn', 'privacy': '개인정보 처리방침', 'support': '지원', 'cli': '명령줄', 'agents': '에이전트를 위한 marsdawn', 'using_cli': 'CLI 사용하기', 'markdown-to-pdf': 'Markdown을 PDF로', 'skill': '에이전트 스킬', 'view-markdown-on-mac': 'Mac에서 .md 파일 여는 방법', 'mermaid-preview-mac': 'Mac에서 Mermaid 미리보기', 'vs-macmd-viewer': 'MacMD Viewer와 MarsDawn 비교', 'updated': f'최종 업데이트: {k.UPDATED}', 'tagline': '에이전트가 쓴 글을 읽으세요.', 'slogan': 'Markdown의 새로운 새벽.', 'footer_store': f'MarsDawn은 <a href="{k.LISTING_URL}">Mac App Store</a>에서 구입할 수 있습니다.', 'footer_nav': '사이트', 'more': '더 보기', 'yours': '내 글은 내 Mac에', 'pay-once': '무료로 체험하고, 한 번만 구입', 'pdf': 'PDF 내보내기', 'native': 'Mac 앱', 'limits': 'MarsDawn이 하지 않는 일', 'mcp': 'MCP 서버', 'token-efficient-review': '토큰을 아끼는 검토', 'vs-markdown-preview-tools': '다른 도구로 Markdown 보기와 MarsDawn 비교', 'themes': '테마', 'themes-new': '테마 만들기', 'themes-agents': '에이전트와 함께 테마 만들기', 'themes-gallery': '테마 갤러리', 'sharing-exported-pdfs': '내보낸 PDF 공유하기', 'reviewing-ai-output': 'AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유', 'reading-agent-output': '에이전트가 돌려준 결과 읽기', 'agent-transparency': '에이전트의 투명성', 'reviewing-agent-plans': '에이전트의 계획 검토하기', 'agent-design-patterns': '에이전트 설계 패턴', 'how-we-test': '테스트하는 방법', 'changelog': '변경 내역', 'roadmap': '로드맵', 'reading-notes': '편집자의 독서 노트', 'reading-notes-anthropic': '독서 노트: Anthropic', 'reading-notes-chip-huyen': '독서 노트: Chip Huyen', 'reading-notes-lilian-weng': '독서 노트: Lilian Weng', 'reading-notes-harrison-chase': '독서 노트: Harrison Chase', 'reading-notes-langchain': '독서 노트: LangChain(Jess Ou)', 'reading-notes-andrew-ng': '독서 노트: Andrew Ng', 'consent_text': '분석 쿠키를 사용합니다. 수락하기 전에는 꺼져 있습니다.', 'consent_accept': '수락', 'consent_decline': '거부', 'consent_aria': '쿠키 동의', 'cookie_settings': '쿠키 설정', 'view_markdown_source': 'Markdown 소스 보기'}
     store_chip = 'Mac App Store에서 판매 중'
     trait_link = {'features': ('기능 한눈에 보기', 'MarsDawn이 하는 모든 일을 한 페이지에.'), 'yours': ('내 글은 내 Mac에', '계정도, 동기화도, 클라우드도 없습니다.'), 'pay-once': ('무료로 체험하고, 한 번만 구입', '14일 무료, 이후 USD 4.99 1회 구입. 구독이 아닙니다.'), 'pdf': ('PDF 내보내기', '다이어그램, 코드 하이라이트, 세심한 페이지 나눔.'), 'native': ('Mac 앱', '네이티브 윈도우와 탭, 자동 저장, 훑어보기.'), 'limits': ('MarsDawn이 하지 않는 일', '구입 전에 알아 둘 점.')}
     trait_nav_heading = 'MarsDawn에서 기대할 수 있는 것'

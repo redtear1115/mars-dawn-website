@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MarsDawn 怎麼測試：同一個測試，兩台 Mac · MarsDawn</title>
+<meta name="description" content="同一個測試，在一台 Mac 通過、在另一台失敗。產品沒壞，是測試讀到了螢幕的色彩。我們怎麼一層一層地測試，以及你也能照做的四個習慣。">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/how-we-test/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/how-we-test/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/how-we-test/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/how-we-test/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/how-we-test/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/how-we-test/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/how-we-test/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/how-we-test/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/how-we-test/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/zh-hant/how-we-test/">
+<link rel="alternate" type="text/markdown" href="/zh-hant/how-we-test/index.md">
+<meta property="og:title" content="MarsDawn 怎麼測試：同一個測試，兩台 Mac · MarsDawn">
+<meta property="og:description" content="同一個測試，在一台 Mac 通過、在另一台失敗。產品沒壞，是測試讀到了螢幕的色彩。我們怎麼一層一層地測試，以及你也能照做的四個習慣。">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/zh-hant/how-we-test/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/zh-hant/"}, {"@type": "ListItem", "position": 2, "name": "我們怎麼測試", "item": "https://marsdawn.southern-light.dev/zh-hant/how-we-test/"}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到內容</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/zh-hant/" aria-label="MarsDawn 首頁">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="site-nav" aria-label="主要導覽">
+    <ul class="site-nav-wide">
+      <li><a href="/zh-hant/features/">功能</a></li>
+      <li><a href="/zh-hant/cli/">Agent</a></li>
+      <li><a href="/zh-hant/themes/">主題</a></li>
+      <li><a href="/zh-hant/vs/">比較</a></li>
+      <li><a href="/zh-hant/support/">支援</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>選單</summary>
+      <ul>
+        <li><a href="/zh-hant/features/">功能</a></li>
+        <li><a href="/zh-hant/cli/">Agent</a></li>
+        <li><a href="/zh-hant/themes/">主題</a></li>
+        <li><a href="/zh-hant/vs/">比較</a></li>
+        <li><a href="/zh-hant/support/">支援</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="語言">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/how-we-test/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/how-we-test/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/how-we-test/" hreflang="ja" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/how-we-test/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary>更多</summary>
+      <ul>
+        <li><a href="/de/how-we-test/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/how-we-test/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/how-we-test/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/how-we-test/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>繁中</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/how-we-test/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/how-we-test/" hreflang="zh-Hant" aria-current="true" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/how-we-test/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/how-we-test/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/how-we-test/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/how-we-test/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/how-we-test/" hreflang="es" lang="es">Español</a></li>
+        <li><a href="/ko/how-we-test/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>在一台 Mac 上通過的測試，不一定在測你以為的東西。</h1>
+  <!-- src S11 -->
+  <p>vibe coding 不是壞事，MarsDawn 也是用 agent 開發的。但要讓人長期依賴的軟體，看的是第一版之後的事：多年的維護和安全，而這要從確認改動沒有改壞東西開始。</p>
+</section>
+
+<div class="summary"><p><strong>同一個測試，在 Mac mini 上通過，在 MacBook Air 上失敗。產品沒壞。是測試透過螢幕的色彩描述檔在讀顏色，它在 Mac mini 上通過只是運氣好。換一台機器，抓到的是測試的 bug，不是程式的 bug。</strong></p></div>
+<p>只想知道 MarsDawn 會拿哪些極端或惡意的檔案來測試？可以直接跳到〈<a href="#inputs">我們丟給它的東西</a>〉。</p>
+
+<h2 id="the-test-that-failed-on-a-macbook-air">只在 MacBook Air 上失敗的測試</h2>
+<!-- src S4: kit PR #240（實驗草稿）、run 40196953693 -->
+<p>輸出引擎的測試，在 GitHub 的 macOS 15 機器上完整跑一次將近一小時：debug 版約 32 分鐘，release 版約 25 分鐘。為了縮短時間，我們試著把 macOS 26 那一半移到自己的 MacBook Air 上跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>）。</p>
+<!-- src S1: kit #241、run 40271990387 -->
+<p>在那台機器上第一次跑，就有一個測試失敗。這個測試會輸出一份帶有提示框（Note、Tip、Warning）的 PDF，檢查每個提示框邊上的色條顏色對不對，也就是色差要小於 0.16。在 MacBook Air 上，色差是 0.1634、0.1648 和 0.1796。換到 Mac mini，同一個 commit、同樣的 macOS 和 Xcode，測試通過。</p>
+<p>我們第一個懷疑是輸出壞了。結果不是：PDF 本身沒問題，兩台機器不一樣的，是測試讀它的方式。</p>
+<!-- src S1, S2: kit #241 -->
+<p>這個測試會把 PDF 每一頁畫成圖片再讀像素，而 macOS 畫這張圖時，用的是主螢幕的色彩空間。Mac mini 接的是一般的外接螢幕，MacBook Air 用的是內建螢幕。我們拿一張填滿同一種橘色的圖片讀回來：(0.784, 0.278, 0.106) 在 Mac mini 上讀成 (0.822, 0.335, 0.179)，在 MacBook Air 上讀成 (0.782, 0.395, 0.221)。</p>
+<!-- src S3: kit #242 驗證留言 -->
+<p>重點在這裡：在 Mac mini 上，測試讀到的顏色其實也不對，最多差了 0.128，只是剛好落在 0.16 的上限內。它會通過，靠的是那台螢幕，不是因為它真的量對了色條。</p>
+<!-- src S3, S10 -->
+<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改測試：把頁面畫進一張固定使用 sRGB 色彩空間的圖片，完全不經過螢幕。現在兩台機器都能準確讀出色條的顏色：不論是 MacBook Air 的內建螢幕還是 Mac mini，色差都是 0.0。這個 pull request 的 CI 全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），修正併入 MacBook Air 測試分支後，那台機器上的完整測試也全部通過（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>）。接著我們故意讓它失敗：把每個預期顏色都改成藍色，五個提示框全部變紅。</p>
+<p>它還有一個已知的漏洞：Note 和 Caution 用的兩種橘色只差約 0.119，在 0.16 的上限內，所以這兩個顏色如果對調，測試多半不會發現。我們把這件事記了下來，沒有假裝這個測試已經完整。</p>
+<p>一個不會失敗的測試，什麼也保護不了；因為錯的理由而失敗的測試（例如螢幕的色彩描述檔）也一樣。一台機器上的綠燈，只代表測試在那台機器上通過，不代表它測的就是名字上寫的那件事。</p>
+
+<h2 id="tests-are-layers-of-nets">測試是一層一層的網子</h2>
+<p>沒有一個測試能抓到所有問題。每一層都是一張網目不同的網，從這一層漏掉的錯，應該要被下一層接住：</p>
+<ul>
+  <!-- src S13 -->
+  <li><strong>參考 PDF：</strong>輸出引擎（開源的 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>，<code>marsdawn</code> 指令也用它）把一組樣本文件輸出成 PDF，每一頁的文字都和事先記錄的版本比對。抓內容悄悄不見，或頁數突然改變。</li>
+  <!-- src S6, S9 -->
+  <li><strong>不同的系統和版本：</strong>引擎在 macOS 15（支援的最舊版本）和 macOS 26（App 實際出貨的版本）上都要跑，各跑 debug 和 release 兩種版本。App 的完整測試則跑四種組合：簽章與不簽章，各自再分付費牆開與關。抓只在舊系統上壞掉，或只在使用者實際拿到的版本裡壞掉的問題。</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>真的硬體：</strong>App 的 CI 跑在我們自己的 Mac 上（Mac mini 和 MacBook Air 兩台都跑）；把引擎的測試搬到那台 MacBook Air 試跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>，目前仍是實驗草稿），就是抓到上面那個色彩描述檔問題的契機。換一台機器，能抓到只因為跑在某台機器上才通過的測試。</li>
+  <!-- src S12 -->
+  <li><strong>紅燈對照組：</strong>App 的 CI 固定放著 22 份故意弄壞的清理腳本和 20 份故意弄壞的測試執行腳本，每份都拿掉一道安全檢查，測試碰到每一份都必須失敗。清理腳本會刪掉 Mac 上舊的建置和工作副本，少一道檢查就可能刪錯東西。只要有一份弄壞的通過，壞掉的就是測試本身。</li>
+  <!-- src S3, S15 -->
+  <li><strong>另一雙眼睛：</strong>我們的做法是合併前把改動交給另一個 agent 驗證，像 kit #242 那樣；牽涉到使用流程的改動，會先做情境審查。抓「說做完了其實沒做完」，以及程式能跑、卻用錯了場合。</li>
+  <!-- src S21 -->
+  <li><strong>最後由人合併。</strong>每個改動都由 MarsDawn 的開發者本人審過、親手合併；agent 和 bot 都不會合併。</li>
+</ul>
+
+<h2 id="inputs">我們丟給它的東西</h2>
+<p>網子好不好，要看丟進去的是什麼。下面是引擎測試會餵給它的幾種輸入，以及每個測試確保會發生的事：</p>
+<ul>
+  <!-- src S16 -->
+  <li><strong>超大的檔案。</strong>在我們的測試機上、以 release 版來量：2 MB 的文件在一秒半內顯示完；5 MB、複雜到排不了版的文件照樣打得開，一秒內以純文字顯示。超過 16 MB 的檔案完全不解析，直接以文字顯示。</li>
+  <!-- src S16 -->
+  <li><strong>幾十萬行。</strong>大約 3 MB、每行只有一個字的文件，將近 80 萬行，讀到一半就會被判定太多：引擎在那裡停下來，改以純文字顯示。</li>
+  <!-- src S17 -->
+  <li><strong>永遠不關的標記。</strong>1 MB 只開不關的區塊標記，或疊了幾萬層的區塊，花的時間不能超過同樣 1 MB 純文字的兩倍左右；超過八層的部分不再往下巢狀。</li>
+  <!-- src S18 -->
+  <li><strong>數學公式。</strong>寫錯的公式就在原處顯示錯誤，不會讓整頁壞掉。超過一萬個字元的公式保留原樣；一份文件一次最多畫前 1,000 個；公式裡的內容也不會變成連結、圖片或網頁標籤。</li>
+  <!-- src S19 -->
+  <li><strong>藏在 Markdown 裡的惡意 HTML。</strong>指令碼會被移除，絕不執行；內嵌的框架在頁面顯示前就被拿掉。遠端圖片預設不載入，就算你允許，也只載入安全連線（HTTPS）的圖片。另有一份拿掉指令碼過濾的對照版本，測試碰到它必須失敗。</li>
+  <!-- src S20 -->
+  <li><strong>惡意的主題檔。</strong>會被拒絕，錯誤訊息也不會重複檔案裡隱藏的控制字元或連結。超過 16 KB 的主題檔直接不讀。</li>
+</ul>
+<!-- src S5 -->
+<p>這些都有代價。引擎單次執行的時間上限從 30 分鐘拉到 45、50、70，現在已經拉到 90 分鐘；macOS 15 曾在測試全部通過的情況下兩次撞到 50 分鐘上限，後來又在最後一步撞到 70 分鐘，前面所有步驟都已經通過。</p>
+
+<h2 id="four-habits-you-can-copy">你也能照做的四個習慣</h2>
+<ol>
+  <li><strong>寫的 agent 和驗的 agent 分開。</strong>只給驗證的那個改動本身和「怎樣才算完成」，不要附上寫程式那個 agent 的解釋，請它自己跑測試，並列出沒驗到的地方。驗 kit #242 時，驗證的 agent 先在 MacBook Air 上跑舊測試、親眼看它失敗，才讓新測試過關。代價是多一個 session 的 token。</li>
+  <!-- src S14 -->
+  <li><strong>每個測試都要看它失敗一次。</strong>只有看過同一個測試在它檢查的東西真的出錯時亮紅燈，綠燈才有意義。所以相信綠燈之前，先把它守著的東西弄壞（或請 agent 弄壞），看它變紅；再改回來，看它變綠。agent 很會寫出會通過的測試，正因為這樣，你才需要看到它失敗。</li>
+  <li><strong>測試至少在第二個環境跑一次。</strong>沒有第二台 Mac 也沒關係，CI 裡跑兩個 OS 版本，或 debug 和 release 各跑一次，就是不錯的起點。要找的是那些靠運氣才通過的測試。</li>
+  <!-- src S7, S8 -->
+  <li><strong>「一個測試都沒跑」要算失敗。</strong>Python 3.9 的 <code>unittest</code> 一個測試都沒找到時，還是會回報成功，所以路徑打錯一個字，你照樣拿到綠燈。我們的 CI 會讀測試數量，是 0 就失敗，也會檢查摘要寫的是「0 failed」，不只看結束代碼。這道檢查，是一次獨立驗證在我們自己的 CI 裡抓到這個漏洞之後才加上的。</li>
+</ol>
+
+<h2 id="the-short-version">一句話</h2>
+<!-- src S11 -->
+<p>一個 App 是不是 vibe coding 做的，沒那麼重要；重要的是有沒有人持續在測試、在維護。選軟體的時候值得看一眼：它有沒有說明自己怎麼測試？最近一次更新是什麼時候？</p>
+<p>速度交給 agent，把關留給真的量對東西的測試，以及讀過結果的人。</p>
+
+<h2 id="next">接下來</h2>
+<ul>
+  <li>為什麼 agent 寫的東西還是要有人讀過：<a href="/zh-hant/reviewing-ai-output/">為什麼 AI 寫的東西還是需要人讀過</a>。</li>
+  <li>怎麼讀 agent 交回來的計畫和報告：<a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a>。</li>
+</ul>
+
+<h2 id="sources">資料來源</h2>
+<ul>
+  <li>失敗的測試和原因：<a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>。</li>
+  <li>修正和獨立驗證：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>。</li>
+  <li>在 MacBook Air 試跑 CI（實驗草稿），附執行時間：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>。</li>
+  <li>輸出引擎的 CI，時間上限的調整歷史寫在註解裡：<a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>。</li>
+  <li>App 的程式碼庫不公開；上面關於 App 的內容，來自它的 CI 設定和測試腳本。</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="網站導覽">
+    <h2 class="footer-nav-title">網站導覽</h2>
+    <section aria-labelledby="footer-product">
+      <h3 id="footer-product">產品</h3>
+      <ul>
+        <li><a href="/zh-hant/features/">功能一覽</a></li>
+        <li><a href="/zh-hant/quicklook/">Markdown 快速查看</a></li>
+        <li><a href="/zh-hant/native/">為 Mac 而做</a></li>
+        <li><a href="/zh-hant/pdf/">輸出 PDF</a></li>
+        <li><a href="/zh-hant/limits/">MarsDawn 做不到的事</a></li>
+        <li><a href="/zh-hant/pay-once/">免費試用，買一次就好</a></li>
+        <li><a href="/zh-hant/yours/">你寫的內容留在你的 Mac 上</a></li>
+        <li><a href="/zh-hant/changelog/">更新紀錄</a></li>
+        <li><a href="/zh-hant/roadmap/">路線圖</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h3 id="footer-agents">Agent 與命令列</h3>
+      <ul>
+        <li><a href="/zh-hant/cli/">命令列工具</a></li>
+        <li><a href="/zh-hant/cli/agents/">給 AI agent 的 marsdawn 參考</a></li>
+        <li><a href="/zh-hant/cli/mcp/">MCP 伺服器</a></li>
+        <li><a href="/zh-hant/cli/skill/">給 agent 的 skill</a></li>
+        <li><a href="/zh-hant/agent-transparency/">agent 的透明</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h3 id="footer-guides">教學</h3>
+      <ul>
+        <li><a href="/zh-hant/view-markdown-on-mac/">Mac 怎麼開 md 檔</a></li>
+        <li><a href="/zh-hant/markdown-to-pdf/">Markdown 轉 PDF</a></li>
+        <li><a href="/zh-hant/mermaid-preview-mac/">在 Mac 上預覽 Mermaid</a></li>
+        <li><a href="/zh-hant/reading-agent-output/">讀懂 agent 交回來的 Markdown</a></li>
+        <li><a href="/zh-hant/reviewing-ai-output/">為什麼 AI 寫的東西還是需要人讀過</a></li>
+        <li><a href="/zh-hant/reviewing-agent-plans/">審 agent 計畫</a></li>
+        <li><a href="/zh-hant/token-efficient-review/">節省 token 的審閱方式</a></li>
+        <li><a href="/zh-hant/sharing-exported-pdfs/">分享輸出的 PDF</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h3 id="footer-compare">比較</h3>
+      <ul>
+        <li><a href="/zh-hant/vs/">MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice</a></li>
+        <li><a href="/zh-hant/vs/macmd-viewer/">MacMD Viewer 對比 MarsDawn</a></li>
+        <li><a href="/zh-hant/vs/markdown-preview-tools/">在別處看 Markdown，對比 MarsDawn</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h3 id="footer-themes">主題</h3>
+      <ul>
+        <li><a href="/zh-hant/themes/">主題</a></li>
+        <li><a href="/zh-hant/themes/gallery/">主題庫</a></li>
+        <li><a href="/zh-hant/themes/new/">打造一個主題</a></li>
+        <li><a href="/zh-hant/themes/agents/">和 agent 一起做主題</a></li>
+        <li><a href="/zh-hant/templates/">範本</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h3 id="footer-support">支援與法律</h3>
+      <ul>
+        <li><a href="/zh-hant/support/">支援</a></li>
+        <li><a href="/zh-hant/privacy/">隱私權政策</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">Cookie 設定</button></li>
+      </ul>
+    </section>
+  </nav>
+  <p class="footer-meta"><span>Markdown 的新黎明。</span> <span>MarsDawn 已在 <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-how-we-test&amp;mt=8">Mac App Store</a> 上架。</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie 同意設定" hidden>
+  <p>本站使用分析用 cookie，按下「接受」前不會啟用。</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">拒絕</button>
+    <button type="button" id="consent-accept" class="consent-btn">接受</button>
+  </div>
+</div>
+</body>
+</html>

@@ -430,7 +430,7 @@ SKILL_INSTALL = '<h2>在 Claude Code 中安装</h2>\n<p>命令行工具 <code>ma
 
 def build(k) -> dict:
     k.set_skill_install(SKILL_INSTALL)
-    ui = {'features': '功能一览', 'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI 代理的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给代理的 skill', 'view-markdown-on-mac': 'Mac 上怎么打开 md 文件', 'mermaid-preview-mac': '在 Mac 上预览 Mermaid', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读代理写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '主题', 'themes-new': '打造一个主题', 'themes-agents': '和代理一起做主题', 'themes-gallery': '主题图库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂代理交回来的 Markdown', 'agent-transparency': '代理的透明', 'reviewing-agent-plans': '审代理计划', 'agent-design-patterns': '代理设计模式', 'changelog': '更新记录', 'roadmap': '路线图', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本站使用分析用 cookie，点击“接受”前不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
+    ui = {'features': '功能一览', 'home': 'MarsDawn', 'privacy': '隐私政策', 'support': '支持', 'cli': '命令行工具', 'agents': '给 AI 代理的 marsdawn 参考', 'using_cli': '使用 CLI', 'markdown-to-pdf': 'Markdown 转 PDF', 'skill': '给代理的 skill', 'view-markdown-on-mac': 'Mac 上怎么打开 md 文件', 'mermaid-preview-mac': '在 Mac 上预览 Mermaid', 'vs-macmd-viewer': 'MacMD Viewer 对比 MarsDawn', 'updated': f"最后更新：{k.UPDATED}", 'tagline': '读代理写的 Markdown。', 'slogan': 'Markdown 的新黎明。', 'footer_store': f'MarsDawn 已在 <a href="{k.LISTING_URL}">Mac App Store</a> 上架。', 'footer_nav': '网站', 'more': '其他页面', 'yours': '你写的内容留在你的 Mac 上', 'pay-once': '免费试用，买一次就好', 'pdf': '导出 PDF', 'native': '为 Mac 而做', 'limits': 'MarsDawn 做不到的事', 'mcp': 'MCP 服务器', 'token-efficient-review': '节省 token 的审阅方式', 'vs-markdown-preview-tools': '在别处看 Markdown，对比 MarsDawn', 'themes': '主题', 'themes-new': '打造一个主题', 'themes-agents': '和代理一起做主题', 'themes-gallery': '主题图库', 'sharing-exported-pdfs': '分享导出的 PDF', 'reviewing-ai-output': '为什么 AI 写的东西还是需要人读过', 'reading-agent-output': '读懂代理交回来的 Markdown', 'agent-transparency': '代理的透明', 'reviewing-agent-plans': '审代理计划', 'agent-design-patterns': '代理设计模式', 'how-we-test': '我们怎么测试', 'changelog': '更新记录', 'roadmap': '路线图', 'reading-notes': '编者的阅读笔记', 'reading-notes-anthropic': '阅读笔记：Anthropic', 'reading-notes-chip-huyen': '阅读笔记：Chip Huyen', 'reading-notes-lilian-weng': '阅读笔记：Lilian Weng', 'reading-notes-harrison-chase': '阅读笔记：Harrison Chase', 'reading-notes-langchain': '阅读笔记：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '阅读笔记：Andrew Ng', 'consent_text': '本站使用分析用 cookie，点击“接受”前不会启用。', 'consent_accept': '接受', 'consent_decline': '拒绝', 'consent_aria': 'Cookie 同意设置', 'cookie_settings': 'Cookie 设置', 'view_markdown_source': '查看 Markdown 源文件'}
     store_chip = '已在 Mac App Store 上架'
     schema_notes = {'export': 'export 成功', 'open': 'open 成功，marsdawn 0.5.1 以后，包括在侧边栏显示的文件夹', 'open_v2': 'open 成功，marsdawn 0.3.0 到 0.5.0', 'error': '两个命令的失败结果，marsdawn 0.5.2 以后', 'open_v1': 'open 成功，marsdawn 0.2.x，当时 <code>opened</code> 是路径清单', 'error_v1': '两个命令的失败结果，marsdawn 0.5.1 以前'}
     example_plan = '# 计划：让导出更快\n\n这份计划由 agent 撰写，你审阅后再把它转成 PDF。\n\n## 步骤\n\n| 步骤 | 负责 | 状态 |\n|------|------|------|\n| 找出慢的页面 | Agent | 完成 |\n| 缓存算好的图表 | Agent | 审阅中 |\n\n目标是 50 页的文稿在 $t < 2\\,\\text{s}$ 内完成：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  草稿 --> 审阅 --> 发布\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -1483,6 +1483,101 @@ plan.md:6：没有处理旧链接。加一步让旧链接继续能用，也写�
   <li>Chip Huyen，〈Agents〉，2025 年 1 月 7 日：<a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
   <li>Lilian Weng，〈LLM Powered Autonomous Agents〉，Lil’Log，2023 年 6 月 23 日：<a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a></li>
   <li>Erik S. 与 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：<a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a> （引文依 2026-09-26 的线上版本）</li>
+</ul>
+""",
+    }
+
+    pages['how-we-test'] = {
+        "title": "MarsDawn 怎么测试：同一个测试，两台 Mac · MarsDawn",
+        "description": "同一个测试，在一台 Mac 上通过，在另一台上失败。产品没坏，是测试读到了屏幕的色彩。我们怎么一层一层地测试，以及你也能照做的四个习惯。",
+        "body": r"""<section class="intro">
+  <h1>在一台 Mac 上通过的测试，不一定在测你以为的东西。</h1>
+  <!-- src S11 -->
+  <p>vibe coding 不是坏事，MarsDawn 也是用代理开发的。但让人长期依赖的软件，看的是第一版之后的事：多年的维护和安全，而这要从确认改动没有改坏东西开始。</p>
+</section>
+
+<div class="summary"><p><strong>同一个测试，在 Mac mini 上通过，在 MacBook Air 上失败。产品没坏。是测试通过屏幕的颜色描述文件在读颜色，它在 Mac mini 上通过只是运气好。换一台机器，抓到的是测试的 bug，不是代码的 bug。</strong></p></div>
+<p>只想知道 MarsDawn 会拿哪些极端或恶意的文件来测试？可以直接跳到“<a href="#inputs">我们丢给它的东西</a>”。</p>
+
+<h2>只在 MacBook Air 上失败的测试</h2>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>导出引擎的测试，在 GitHub 的 macOS 15 机器上完整跑一次将近一小时：debug 版约 32 分钟，release 版约 25 分钟。为了缩短时间，我们试着把 macOS 26 那一半移到自己的 MacBook Air 上跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>）。</p>
+<!-- src S1: kit #241, run 40271990387 -->
+<p>在那台机器上第一次跑，就有一个测试失败。这个测试会导出一份带提示框（Note、Tip、Warning）的 PDF，检查每个提示框边上的色条颜色对不对，也就是色差要小于 0.16。在 MacBook Air 上，色差是 0.1634、0.1648 和 0.1796。换到 Mac mini，同一个 commit、同样的 macOS 和 Xcode，测试通过。</p>
+<p>我们第一个怀疑是导出坏了。结果不是：PDF 本身没问题，两台机器不一样的，是测试读它的方式。</p>
+<!-- src S1, S2: kit #241 -->
+<p>这个测试会把 PDF 每一页画成图像再读像素，而 macOS 画这张图时，用的是主显示器的色彩空间。Mac mini 接的是普通的外接显示器，MacBook Air 用的是内建显示屏。我们拿一张填满同一种橙色的图像读回来：(0.784, 0.278, 0.106) 在 Mac mini 上读成 (0.822, 0.335, 0.179)，在 MacBook Air 上读成 (0.782, 0.395, 0.221)。</p>
+<!-- src S3: kit #242 verification comment -->
+<p>关键在这里：在 Mac mini 上，测试读到的颜色其实也不对，最多差了 0.128，只是刚好落在 0.16 的上限内。它能通过，靠的是那台显示器，而不是真的量对了色条。</p>
+<!-- src S3, S10 -->
+<p>修复（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）只改测试：把页面画进一张固定使用 sRGB 色彩空间的图像，完全不经过屏幕。现在两台机器都能准确读出色条的颜色：无论是 MacBook Air 的内建显示屏还是 Mac mini，色差都是 0.0。这个 pull request 的 CI 全部通过（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>），修复并入 MacBook Air 测试分支后，那台机器上的完整测试也全部通过（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>）。接着我们故意让它失败：把每个预期颜色都改成蓝色，五个提示框全部变红。</p>
+<p>它还有一个已知的漏洞：Note 和 Caution 用的两种橙色只差约 0.119，在 0.16 的上限内，所以这两个颜色如果对调，测试多半发现不了。我们把这件事记了下来，没有假装这个测试已经完整。</p>
+<p>一个不会失败的测试，什么也保护不了；因为错误的理由而失败的测试（比如屏幕的颜色描述文件）也一样。一台机器上的绿灯，只说明测试在那台机器上通过，不说明它测的就是名字上写的那件事。</p>
+
+<h2>测试是一层一层的网</h2>
+<p>没有哪个测试能抓到所有问题。每一层都是一张网眼不同的网，从这一层漏掉的错，应该被下一层接住：</p>
+<ul>
+  <!-- src S13 -->
+  <li><strong>参考 PDF：</strong>导出引擎（开源的 <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>，<code>marsdawn</code> 命令也用它）把一组样本文稿导出成 PDF，每一页的文字都和事先记录的版本比对。抓内容悄悄丢失，或页数突然改变。</li>
+  <!-- src S6, S9 -->
+  <li><strong>不同的系统和版本：</strong>引擎在 macOS 15（支持的最低版本）和 macOS 26（App 实际发布的版本）上都要跑，各跑 debug 和 release 两种版本。App 的完整测试则跑四种组合：签名与不签名，各自再分付费墙开与关。抓只在旧系统上出错，或只在用户实际拿到的版本里出错的问题。</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>真实硬件：</strong>App 的 CI 跑在我们自己的 Mac 上（Mac mini 和 MacBook Air 两台都跑）；把引擎的测试搬到那台 MacBook Air 试跑（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>，目前仍是实验草稿），就是抓到上面那个颜色描述文件问题的契机。换一台机器，能抓到只因为跑在某台机器上才通过的测试。</li>
+  <!-- src S12 -->
+  <li><strong>红灯对照组：</strong>App 的 CI 固定放着 22 份故意弄坏的清理脚本和 20 份故意弄坏的测试执行脚本，每份都去掉一道安全检查，测试碰到每一份都必须失败。清理脚本会删除 Mac 上旧的构建和工作副本，少一道检查就可能删错东西。只要有一份弄坏的通过，坏掉的就是测试本身。</li>
+  <!-- src S3, S15 -->
+  <li><strong>另一双眼睛：</strong>我们的做法是合并前把改动交给另一个代理验证，像 kit #242 那样；涉及使用流程的改动，会先做情境审查。抓“说做完了其实没做完”，以及代码能跑、却用错了场合。</li>
+  <!-- src S21 -->
+  <li><strong>最后由人合并。</strong>每个改动都由 MarsDawn 的开发者本人审过、亲手合并；代理和 bot 都不会合并。</li>
+</ul>
+
+<h2 id="inputs">我们丢给它的东西</h2>
+<p>网好不好，要看丢进去的是什么。下面是引擎测试会喂给它的几种输入，以及每个测试确保会发生的事：</p>
+<ul>
+  <!-- src S16 -->
+  <li><strong>超大的文件。</strong>在我们的测试机上、以 release 版来测：2 MB 的文稿在一秒半内显示完；5 MB、复杂到排不了版的文稿照样能打开，一秒内以纯文本显示。超过 16 MB 的文件完全不解析，直接以文本显示。</li>
+  <!-- src S16 -->
+  <li><strong>几十万行。</strong>大约 3 MB、每行只有一个词的文稿，将近 80 万行，读到一半就会被判定太多：引擎在那里停下来，改以纯文本显示。</li>
+  <!-- src S17 -->
+  <li><strong>永远不闭合的标记。</strong>1 MB 只开不关的区块标记，或叠了几万层的区块，花的时间不能超过同样 1 MB 纯文本的两倍左右；超过八层的部分不再往下嵌套。</li>
+  <!-- src S18 -->
+  <li><strong>数学公式。</strong>写错的公式就在原处显示错误，不会让整页坏掉。超过一万个字符的公式保留原样；一份文稿一次最多渲染前 1,000 个；公式里的内容也不会变成链接、图像或网页标签。</li>
+  <!-- src S19 -->
+  <li><strong>藏在 Markdown 里的恶意 HTML。</strong>脚本会被移除，绝不执行；嵌入的框架在页面显示前就被拿掉。远程图像默认不加载，即使你允许，也只加载安全连接（HTTPS）的图像。另有一份去掉脚本过滤的对照版本，测试碰到它必须失败。</li>
+  <!-- src S20 -->
+  <li><strong>恶意的主题文件。</strong>会被拒绝，错误信息也不会重复文件里隐藏的控制字符或链接。超过 16 KB 的主题文件直接不读。</li>
+</ul>
+<!-- src S5 -->
+<p>这些都有代价。引擎单次运行的时间上限从 30 分钟拉到 45、50、70，现在已经拉到 90 分钟；macOS 15 曾在测试全部通过的情况下两次撞上 50 分钟上限，后来又在最后一步撞上 70 分钟，前面所有步骤都已经通过。</p>
+
+<h2>你也能照做的四个习惯</h2>
+<ol>
+  <li><strong>写的代理和验的代理分开。</strong>只给验证的那个改动本身和“怎样才算完成”，不要附上写代码那个代理的解释，请它自己跑测试，并列出没验到的地方。验 kit #242 时，验证的代理先在 MacBook Air 上跑旧测试、亲眼看它失败，才让新测试过关。代价是多一个会话的 token。</li>
+  <!-- src S14 -->
+  <li><strong>每个测试都要看它失败一次。</strong>只有见过同一个测试在它检查的东西真的出错时亮红灯，绿灯才有意义。所以相信绿灯之前，先把它守着的东西弄坏（或请代理弄坏），看它变红；再改回来，看它变绿。代理很会写出能通过的测试，正因为这样，你才需要看到它失败。</li>
+  <li><strong>测试至少在第二个环境跑一次。</strong>没有第二台 Mac 也没关系，CI 里跑两个系统版本，或 debug 和 release 各跑一次，就是不错的起点。要找的是那些靠运气才通过的测试。</li>
+  <!-- src S7, S8 -->
+  <li><strong>“一个测试都没跑”要算失败。</strong>Python 3.9 的 <code>unittest</code> 一个测试都没找到时，还是会报告成功，所以路径打错一个字，你照样拿到绿灯。我们的 CI 会读测试数量，是 0 就失败，也会检查摘要写的是“0 failed”，不只看退出码。这道检查，是一次独立验证在我们自己的 CI 里抓到这个漏洞之后才加上的。</li>
+</ol>
+
+<h2>一句话</h2>
+<!-- src S11 -->
+<p>一个 App 是不是 vibe coding 做的，没那么重要；重要的是有没有人持续在测试、在维护。选软件的时候值得看一眼：它有没有说明自己怎么测试？最近一次更新是什么时候？</p>
+<p>速度交给代理，把关留给真正量对东西的测试，以及读过结果的人。</p>
+
+<h2>接下来</h2>
+<ul>
+  <li>为什么代理写的东西还是要有人读过：<a href="/zh-hans/reviewing-ai-output/">为什么 AI 写的东西还是需要人读过</a>。</li>
+  <li>怎么读代理交回来的计划和报告：<a href="/zh-hans/reading-agent-output/">读懂代理交回来的 Markdown</a>。</li>
+</ul>
+
+<h2>资料来源</h2>
+<ul>
+  <li>失败的测试和原因：<a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>。</li>
+  <li>修复和独立验证：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>。</li>
+  <li>在 MacBook Air 试跑 CI（实验草稿），附运行时间：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>。</li>
+  <li>导出引擎的 CI，时间上限的调整历史写在注释里：<a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>。</li>
+  <li>App 的代码仓库不公开；上面关于 App 的内容，来自它的 CI 配置和测试脚本。</li>
 </ul>
 """,
     }

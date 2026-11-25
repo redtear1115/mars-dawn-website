@@ -2673,6 +2673,88 @@ It exports Markdown to PDF without the app: see [Markdown to PDF](/markdown-to-p
 
 ---
 
+## How we test
+
+Source: https://marsdawn.southern-light.dev/how-we-test/
+
+# A test that passes on one Mac may not be testing what you think.
+
+Vibe coding isn't a bad thing, and MarsDawn is built with agents too. But software you rely on is judged by what comes after the first version: years of maintenance and security, which start with checking that a change didn't break anything.
+
+**A test passed on a Mac mini and failed on a MacBook Air. The product was fine. The test had been reading colours through the screen's colour profile, and on the Mac mini it had been passing by luck. A second machine found a bug in the test, not in the code.**
+
+Only want to know which extreme or hostile files MarsDawn is tested against? Skip to [What we throw at it](#inputs).
+
+## The test that failed on a MacBook Air
+
+A full run of the export engine's tests on GitHub's macOS 15 runner takes close to an hour: about 32 minutes for the debug build and about 25 for the release build. To cut that down, we tried moving the macOS 26 half onto a MacBook Air of our own ([kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)).
+
+On its first run there, one test failed. It exports a PDF with callouts (Note, Tip, Warning) and checks that each one has a bar at its edge in the right colour, meaning a colour distance under 0.16. On the MacBook Air the distances were 0.1634, 0.1648 and 0.1796. On a Mac mini, with the same commit, macOS and Xcode, the test passed.
+
+Our first guess was that the export had broken. It hadn't. Nothing was wrong with the PDF; what differed between the machines was how the test read it.
+
+The test turned each PDF page into an image and read the pixels, and macOS draws that image in the colour space of the main display. The Mac mini was connected to an ordinary external monitor; the MacBook Air was using its built-in screen. We filled an image with one orange and read it back: (0.784, 0.278, 0.106) came back as (0.822, 0.335, 0.179) on the Mac mini and (0.782, 0.395, 0.221) on the MacBook Air.
+
+Here's the part that matters: on the Mac mini, the test hadn't been reading the right colours either. It was off by as much as 0.128, just inside the 0.16 limit. It passed because of the monitor, not because it measured the bar correctly.
+
+The fix ([kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242)) changes only the test: it draws the page into an image with a fixed sRGB colour space, so no screen is involved. Both machines now read the bar colours exactly, with a distance of 0.0, on the MacBook Air's built-in screen as well as on the Mac mini. The pull request's CI passed ([run 40285279080](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080)), and once the fix reached the MacBook Air runner branch, the full suite passed there too ([run 40315907904](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904)). Then we made it fail on purpose: with every expected colour set to blue, it went red for all five callouts.
+
+It still has a known gap. Note and Caution use two oranges about 0.119 apart, inside the 0.16 limit, so if those two were swapped, the test would probably not notice. We've written that down rather than pretend the test is complete.
+
+A test that can't fail protects nothing, and neither does one that fails for the wrong reason, like a screen's colour profile. Green on one machine tells you the test passed there, not that it measures what its name says.
+
+## Tests are layers of nets
+
+No single test catches everything. Each layer is a net with a different mesh, and a mistake that slips through one should land in the next:
+
+- **Reference PDFs:** the export engine (the open-source [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit), which also powers the `marsdawn` command) exports sample documents, and every page's text is compared with a recorded copy. This catches content that silently goes missing, or a page count that changes.
+- **Different systems and builds:** the engine runs on macOS 15, the oldest version it supports, and macOS 26, the one the app ships on, each as a debug and a release build. The app's full suite runs in four combinations: signed and unsigned, each with the paywall off and on. This catches what breaks only on an older system, or only in the build customers actually get.
+- **Real hardware:** the app's CI runs on Macs of our own (both the Mac mini and the MacBook Air), and trying the engine's suite on that MacBook Air ([kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240), still an open draft) is what caught the colour-profile bug above. A second machine catches tests that pass only because of the machine they run on.
+- **Red controls:** the app's CI keeps 22 deliberately broken copies of a cleanup script and 20 of its test runner script, each missing one safety check, and the tests must fail on every one. The cleanup script removes old builds and working copies from a Mac, so one missing check could remove the wrong thing. If a broken copy passes, the test is what's broken.
+- **A second pair of eyes:** our practice is to have a separate agent verify a change before it's merged, as with kit #242, and changes to how people use the app get a scenario review first. This catches "done" that isn't, and code that works but in the wrong situation.
+- **A person merges.** The developer behind MarsDawn reviews and merges every change; no agent or bot merges anything.
+
+## What we throw at it
+
+Those nets are only as good as what goes into them. A few of the inputs the engine's tests feed it, and what each test makes sure happens:
+
+- **Very large files.** On our test machine, in a release build, a 2 MB document renders in under a second and a half, and a 5 MB one too complex to lay out still opens as plain text within a second. Anything over 16 MB is shown as text without being parsed at all.
+- **Hundreds of thousands of lines.** About 3 MB of one-word lines, close to 800,000 of them, is spotted as too much partway through: the engine stops reading there and shows the file as plain text.
+- **Markers that never close.** A megabyte of section openers with no closers, or tens of thousands stacked inside each other, must take no more than about twice as long as a megabyte of plain text. Past eight levels, nothing nests any deeper.
+- **Formulas.** A broken formula shows an error where it sits instead of breaking the page. One over 10,000 characters stays as written, only the first 1,000 in a document are drawn at a time, and nothing in a formula can turn into a link, an image or page markup.
+- **Hostile HTML inside Markdown.** Scripts are removed and never run, and embedded frames are taken out before the page shows them. Remote images stay off unless you allow them, and even then only secure (HTTPS) ones load. One control copy has the script filter taken out, and the test must fail on it.
+- **A hostile theme file.** It's refused, and the error message never repeats hidden control characters or links from the file. Theme files over 16 KB aren't read at all.
+
+None of this is free. The time limit for one engine run has gone from 30 minutes to 45, then 50, then 70, and now 90; macOS 15 hit the 50-minute limit twice with every test passing, and later hit 70 minutes in its final step with every step before it passing.
+
+## Four habits you can copy
+
+1. **Keep the agent that writes apart from the agent that checks.** Give the checker the change and what "done" means, not the writing agent's explanation, and ask it to run the tests itself and say what it didn't check. For kit #242, the verifier ran the old test on the MacBook Air to watch it fail before passing the new one. It costs a second session's tokens.
+2. **See every test fail once.** Green only means something if you've seen the same test go red when the thing it checks was really wrong. So before you trust a green check, break what it guards (or ask the agent to), watch it go red, put it back, and watch it go green. Agents are good at writing tests that pass; that's exactly why you need to see them fail.
+3. **Run your tests in a second environment.** No second Mac? A CI matrix with two OS versions, or a debug build and a release build, is a fine start. You're looking for tests that pass only by accident.
+4. **Treat "no tests ran" as a failure.** Python 3.9's `unittest` exits successfully when it finds no tests at all, so a typo in a path gives you a green check. Our CI reads the count and fails on zero, and checks that the summary says "0 failed", not just the exit code. We added that check after an independent verification caught the gap in our own CI.
+
+## The short version
+
+Whether an app was vibe coded matters less than whether anyone keeps testing and maintaining it. That's worth checking when you choose software: does it say how it's tested, and when was it last updated?
+
+Let the agent be fast. Leave the checking to tests that measure the right thing, and to a person who reads the result.
+
+## Next
+
+- Why a person still has to read what an agent wrote: [Why AI output still needs a human reader](/reviewing-ai-output/).
+- How to read the plans and reports an agent hands back: [Reading what your agent hands back](/reading-agent-output/).
+
+## Sources
+
+- The failing test and its cause: [mars-dawn-kit #241](https://github.com/redtear1115/mars-dawn-kit/issues/241).
+- The fix and its independent verification: [mars-dawn-kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242).
+- Trying CI on a MacBook Air (open draft), with run times: [mars-dawn-kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240).
+- The export engine's CI, with the history of its time limit in the comments: [ci.yml](https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml).
+- The app's repository is private; the app details above come from its CI workflow and test scripts.
+
+---
+
 ## Changelog
 
 Source: https://marsdawn.southern-light.dev/changelog/
@@ -6142,6 +6224,88 @@ brew install redtear1115/tap/marsdawn
 - Chip Huyen，〈Agents〉，2025 年 1 月 7 日：[https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
 - Lilian Weng，〈LLM Powered Autonomous Agents〉，Lil’Log，2023 年 6 月 23 日：[https://lilianweng.github.io/posts/2023-06-23-agent/](https://lilianweng.github.io/posts/2023-06-23-agent/)
 - Erik S. 與 Barry Zhang，〈Building Effective Agents〉，Anthropic，2024 年 12 月 19 日：[https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) （引文依 2026-09-26 的線上版本）
+
+---
+
+## 我們怎麼測試
+
+Source: https://marsdawn.southern-light.dev/zh-hant/how-we-test/
+
+# 在一台 Mac 上通過的測試，不一定在測你以為的東西。
+
+vibe coding 不是壞事，MarsDawn 也是用 agent 開發的。但要讓人長期依賴的軟體，看的是第一版之後的事：多年的維護和安全，而這要從確認改動沒有改壞東西開始。
+
+**同一個測試，在 Mac mini 上通過，在 MacBook Air 上失敗。產品沒壞。是測試透過螢幕的色彩描述檔在讀顏色，它在 Mac mini 上通過只是運氣好。換一台機器，抓到的是測試的 bug，不是程式的 bug。**
+
+只想知道 MarsDawn 會拿哪些極端或惡意的檔案來測試？可以直接跳到〈[我們丟給它的東西](#inputs)〉。
+
+## 只在 MacBook Air 上失敗的測試
+
+輸出引擎的測試，在 GitHub 的 macOS 15 機器上完整跑一次將近一小時：debug 版約 32 分鐘，release 版約 25 分鐘。為了縮短時間，我們試著把 macOS 26 那一半移到自己的 MacBook Air 上跑（[kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)）。
+
+在那台機器上第一次跑，就有一個測試失敗。這個測試會輸出一份帶有提示框（Note、Tip、Warning）的 PDF，檢查每個提示框邊上的色條顏色對不對，也就是色差要小於 0.16。在 MacBook Air 上，色差是 0.1634、0.1648 和 0.1796。換到 Mac mini，同一個 commit、同樣的 macOS 和 Xcode，測試通過。
+
+我們第一個懷疑是輸出壞了。結果不是：PDF 本身沒問題，兩台機器不一樣的，是測試讀它的方式。
+
+這個測試會把 PDF 每一頁畫成圖片再讀像素，而 macOS 畫這張圖時，用的是主螢幕的色彩空間。Mac mini 接的是一般的外接螢幕，MacBook Air 用的是內建螢幕。我們拿一張填滿同一種橘色的圖片讀回來：(0.784, 0.278, 0.106) 在 Mac mini 上讀成 (0.822, 0.335, 0.179)，在 MacBook Air 上讀成 (0.782, 0.395, 0.221)。
+
+重點在這裡：在 Mac mini 上，測試讀到的顏色其實也不對，最多差了 0.128，只是剛好落在 0.16 的上限內。它會通過，靠的是那台螢幕，不是因為它真的量對了色條。
+
+修正（[kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242)）只改測試：把頁面畫進一張固定使用 sRGB 色彩空間的圖片，完全不經過螢幕。現在兩台機器都能準確讀出色條的顏色：不論是 MacBook Air 的內建螢幕還是 Mac mini，色差都是 0.0。這個 pull request 的 CI 全部通過（[run 40285279080](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080)），修正併入 MacBook Air 測試分支後，那台機器上的完整測試也全部通過（[run 40315907904](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904)）。接著我們故意讓它失敗：把每個預期顏色都改成藍色，五個提示框全部變紅。
+
+它還有一個已知的漏洞：Note 和 Caution 用的兩種橘色只差約 0.119，在 0.16 的上限內，所以這兩個顏色如果對調，測試多半不會發現。我們把這件事記了下來，沒有假裝這個測試已經完整。
+
+一個不會失敗的測試，什麼也保護不了；因為錯的理由而失敗的測試（例如螢幕的色彩描述檔）也一樣。一台機器上的綠燈，只代表測試在那台機器上通過，不代表它測的就是名字上寫的那件事。
+
+## 測試是一層一層的網子
+
+沒有一個測試能抓到所有問題。每一層都是一張網目不同的網，從這一層漏掉的錯，應該要被下一層接住：
+
+- **參考 PDF：**輸出引擎（開源的 [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)，`marsdawn` 指令也用它）把一組樣本文件輸出成 PDF，每一頁的文字都和事先記錄的版本比對。抓內容悄悄不見，或頁數突然改變。
+- **不同的系統和版本：**引擎在 macOS 15（支援的最舊版本）和 macOS 26（App 實際出貨的版本）上都要跑，各跑 debug 和 release 兩種版本。App 的完整測試則跑四種組合：簽章與不簽章，各自再分付費牆開與關。抓只在舊系統上壞掉，或只在使用者實際拿到的版本裡壞掉的問題。
+- **真的硬體：**App 的 CI 跑在我們自己的 Mac 上（Mac mini 和 MacBook Air 兩台都跑）；把引擎的測試搬到那台 MacBook Air 試跑（[kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)，目前仍是實驗草稿），就是抓到上面那個色彩描述檔問題的契機。換一台機器，能抓到只因為跑在某台機器上才通過的測試。
+- **紅燈對照組：**App 的 CI 固定放著 22 份故意弄壞的清理腳本和 20 份故意弄壞的測試執行腳本，每份都拿掉一道安全檢查，測試碰到每一份都必須失敗。清理腳本會刪掉 Mac 上舊的建置和工作副本，少一道檢查就可能刪錯東西。只要有一份弄壞的通過，壞掉的就是測試本身。
+- **另一雙眼睛：**我們的做法是合併前把改動交給另一個 agent 驗證，像 kit #242 那樣；牽涉到使用流程的改動，會先做情境審查。抓「說做完了其實沒做完」，以及程式能跑、卻用錯了場合。
+- **最後由人合併。**每個改動都由 MarsDawn 的開發者本人審過、親手合併；agent 和 bot 都不會合併。
+
+## 我們丟給它的東西
+
+網子好不好，要看丟進去的是什麼。下面是引擎測試會餵給它的幾種輸入，以及每個測試確保會發生的事：
+
+- **超大的檔案。**在我們的測試機上、以 release 版來量：2 MB 的文件在一秒半內顯示完；5 MB、複雜到排不了版的文件照樣打得開，一秒內以純文字顯示。超過 16 MB 的檔案完全不解析，直接以文字顯示。
+- **幾十萬行。**大約 3 MB、每行只有一個字的文件，將近 80 萬行，讀到一半就會被判定太多：引擎在那裡停下來，改以純文字顯示。
+- **永遠不關的標記。**1 MB 只開不關的區塊標記，或疊了幾萬層的區塊，花的時間不能超過同樣 1 MB 純文字的兩倍左右；超過八層的部分不再往下巢狀。
+- **數學公式。**寫錯的公式就在原處顯示錯誤，不會讓整頁壞掉。超過一萬個字元的公式保留原樣；一份文件一次最多畫前 1,000 個；公式裡的內容也不會變成連結、圖片或網頁標籤。
+- **藏在 Markdown 裡的惡意 HTML。**指令碼會被移除，絕不執行；內嵌的框架在頁面顯示前就被拿掉。遠端圖片預設不載入，就算你允許，也只載入安全連線（HTTPS）的圖片。另有一份拿掉指令碼過濾的對照版本，測試碰到它必須失敗。
+- **惡意的主題檔。**會被拒絕，錯誤訊息也不會重複檔案裡隱藏的控制字元或連結。超過 16 KB 的主題檔直接不讀。
+
+這些都有代價。引擎單次執行的時間上限從 30 分鐘拉到 45、50、70，現在已經拉到 90 分鐘；macOS 15 曾在測試全部通過的情況下兩次撞到 50 分鐘上限，後來又在最後一步撞到 70 分鐘，前面所有步驟都已經通過。
+
+## 你也能照做的四個習慣
+
+1. **寫的 agent 和驗的 agent 分開。**只給驗證的那個改動本身和「怎樣才算完成」，不要附上寫程式那個 agent 的解釋，請它自己跑測試，並列出沒驗到的地方。驗 kit #242 時，驗證的 agent 先在 MacBook Air 上跑舊測試、親眼看它失敗，才讓新測試過關。代價是多一個 session 的 token。
+2. **每個測試都要看它失敗一次。**只有看過同一個測試在它檢查的東西真的出錯時亮紅燈，綠燈才有意義。所以相信綠燈之前，先把它守著的東西弄壞（或請 agent 弄壞），看它變紅；再改回來，看它變綠。agent 很會寫出會通過的測試，正因為這樣，你才需要看到它失敗。
+3. **測試至少在第二個環境跑一次。**沒有第二台 Mac 也沒關係，CI 裡跑兩個 OS 版本，或 debug 和 release 各跑一次，就是不錯的起點。要找的是那些靠運氣才通過的測試。
+4. **「一個測試都沒跑」要算失敗。**Python 3.9 的 `unittest` 一個測試都沒找到時，還是會回報成功，所以路徑打錯一個字，你照樣拿到綠燈。我們的 CI 會讀測試數量，是 0 就失敗，也會檢查摘要寫的是「0 failed」，不只看結束代碼。這道檢查，是一次獨立驗證在我們自己的 CI 裡抓到這個漏洞之後才加上的。
+
+## 一句話
+
+一個 App 是不是 vibe coding 做的，沒那麼重要；重要的是有沒有人持續在測試、在維護。選軟體的時候值得看一眼：它有沒有說明自己怎麼測試？最近一次更新是什麼時候？
+
+速度交給 agent，把關留給真的量對東西的測試，以及讀過結果的人。
+
+## 接下來
+
+- 為什麼 agent 寫的東西還是要有人讀過：[為什麼 AI 寫的東西還是需要人讀過](/zh-hant/reviewing-ai-output/)。
+- 怎麼讀 agent 交回來的計畫和報告：[讀懂 agent 交回來的 Markdown](/zh-hant/reading-agent-output/)。
+
+## 資料來源
+
+- 失敗的測試和原因：[mars-dawn-kit #241](https://github.com/redtear1115/mars-dawn-kit/issues/241)。
+- 修正和獨立驗證：[mars-dawn-kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242)。
+- 在 MacBook Air 試跑 CI（實驗草稿），附執行時間：[mars-dawn-kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)。
+- 輸出引擎的 CI，時間上限的調整歷史寫在註解裡：[ci.yml](https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml)。
+- App 的程式碼庫不公開；上面關於 App 的內容，來自它的 CI 設定和測試腳本。
 
 ---
 
@@ -9645,6 +9809,88 @@ brew install redtear1115/tap/marsdawn
 
 ---
 
+## 我们怎么测试
+
+Source: https://marsdawn.southern-light.dev/zh-hans/how-we-test/
+
+# 在一台 Mac 上通过的测试，不一定在测你以为的东西。
+
+vibe coding 不是坏事，MarsDawn 也是用代理开发的。但让人长期依赖的软件，看的是第一版之后的事：多年的维护和安全，而这要从确认改动没有改坏东西开始。
+
+**同一个测试，在 Mac mini 上通过，在 MacBook Air 上失败。产品没坏。是测试通过屏幕的颜色描述文件在读颜色，它在 Mac mini 上通过只是运气好。换一台机器，抓到的是测试的 bug，不是代码的 bug。**
+
+只想知道 MarsDawn 会拿哪些极端或恶意的文件来测试？可以直接跳到“[我们丢给它的东西](#inputs)”。
+
+## 只在 MacBook Air 上失败的测试
+
+导出引擎的测试，在 GitHub 的 macOS 15 机器上完整跑一次将近一小时：debug 版约 32 分钟，release 版约 25 分钟。为了缩短时间，我们试着把 macOS 26 那一半移到自己的 MacBook Air 上跑（[kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)）。
+
+在那台机器上第一次跑，就有一个测试失败。这个测试会导出一份带提示框（Note、Tip、Warning）的 PDF，检查每个提示框边上的色条颜色对不对，也就是色差要小于 0.16。在 MacBook Air 上，色差是 0.1634、0.1648 和 0.1796。换到 Mac mini，同一个 commit、同样的 macOS 和 Xcode，测试通过。
+
+我们第一个怀疑是导出坏了。结果不是：PDF 本身没问题，两台机器不一样的，是测试读它的方式。
+
+这个测试会把 PDF 每一页画成图像再读像素，而 macOS 画这张图时，用的是主显示器的色彩空间。Mac mini 接的是普通的外接显示器，MacBook Air 用的是内建显示屏。我们拿一张填满同一种橙色的图像读回来：(0.784, 0.278, 0.106) 在 Mac mini 上读成 (0.822, 0.335, 0.179)，在 MacBook Air 上读成 (0.782, 0.395, 0.221)。
+
+关键在这里：在 Mac mini 上，测试读到的颜色其实也不对，最多差了 0.128，只是刚好落在 0.16 的上限内。它能通过，靠的是那台显示器，而不是真的量对了色条。
+
+修复（[kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242)）只改测试：把页面画进一张固定使用 sRGB 色彩空间的图像，完全不经过屏幕。现在两台机器都能准确读出色条的颜色：无论是 MacBook Air 的内建显示屏还是 Mac mini，色差都是 0.0。这个 pull request 的 CI 全部通过（[run 40285279080](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080)），修复并入 MacBook Air 测试分支后，那台机器上的完整测试也全部通过（[run 40315907904](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904)）。接着我们故意让它失败：把每个预期颜色都改成蓝色，五个提示框全部变红。
+
+它还有一个已知的漏洞：Note 和 Caution 用的两种橙色只差约 0.119，在 0.16 的上限内，所以这两个颜色如果对调，测试多半发现不了。我们把这件事记了下来，没有假装这个测试已经完整。
+
+一个不会失败的测试，什么也保护不了；因为错误的理由而失败的测试（比如屏幕的颜色描述文件）也一样。一台机器上的绿灯，只说明测试在那台机器上通过，不说明它测的就是名字上写的那件事。
+
+## 测试是一层一层的网
+
+没有哪个测试能抓到所有问题。每一层都是一张网眼不同的网，从这一层漏掉的错，应该被下一层接住：
+
+- **参考 PDF：**导出引擎（开源的 [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)，`marsdawn` 命令也用它）把一组样本文稿导出成 PDF，每一页的文字都和事先记录的版本比对。抓内容悄悄丢失，或页数突然改变。
+- **不同的系统和版本：**引擎在 macOS 15（支持的最低版本）和 macOS 26（App 实际发布的版本）上都要跑，各跑 debug 和 release 两种版本。App 的完整测试则跑四种组合：签名与不签名，各自再分付费墙开与关。抓只在旧系统上出错，或只在用户实际拿到的版本里出错的问题。
+- **真实硬件：**App 的 CI 跑在我们自己的 Mac 上（Mac mini 和 MacBook Air 两台都跑）；把引擎的测试搬到那台 MacBook Air 试跑（[kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)，目前仍是实验草稿），就是抓到上面那个颜色描述文件问题的契机。换一台机器，能抓到只因为跑在某台机器上才通过的测试。
+- **红灯对照组：**App 的 CI 固定放着 22 份故意弄坏的清理脚本和 20 份故意弄坏的测试执行脚本，每份都去掉一道安全检查，测试碰到每一份都必须失败。清理脚本会删除 Mac 上旧的构建和工作副本，少一道检查就可能删错东西。只要有一份弄坏的通过，坏掉的就是测试本身。
+- **另一双眼睛：**我们的做法是合并前把改动交给另一个代理验证，像 kit #242 那样；涉及使用流程的改动，会先做情境审查。抓“说做完了其实没做完”，以及代码能跑、却用错了场合。
+- **最后由人合并。**每个改动都由 MarsDawn 的开发者本人审过、亲手合并；代理和 bot 都不会合并。
+
+## 我们丢给它的东西
+
+网好不好，要看丢进去的是什么。下面是引擎测试会喂给它的几种输入，以及每个测试确保会发生的事：
+
+- **超大的文件。**在我们的测试机上、以 release 版来测：2 MB 的文稿在一秒半内显示完；5 MB、复杂到排不了版的文稿照样能打开，一秒内以纯文本显示。超过 16 MB 的文件完全不解析，直接以文本显示。
+- **几十万行。**大约 3 MB、每行只有一个词的文稿，将近 80 万行，读到一半就会被判定太多：引擎在那里停下来，改以纯文本显示。
+- **永远不闭合的标记。**1 MB 只开不关的区块标记，或叠了几万层的区块，花的时间不能超过同样 1 MB 纯文本的两倍左右；超过八层的部分不再往下嵌套。
+- **数学公式。**写错的公式就在原处显示错误，不会让整页坏掉。超过一万个字符的公式保留原样；一份文稿一次最多渲染前 1,000 个；公式里的内容也不会变成链接、图像或网页标签。
+- **藏在 Markdown 里的恶意 HTML。**脚本会被移除，绝不执行；嵌入的框架在页面显示前就被拿掉。远程图像默认不加载，即使你允许，也只加载安全连接（HTTPS）的图像。另有一份去掉脚本过滤的对照版本，测试碰到它必须失败。
+- **恶意的主题文件。**会被拒绝，错误信息也不会重复文件里隐藏的控制字符或链接。超过 16 KB 的主题文件直接不读。
+
+这些都有代价。引擎单次运行的时间上限从 30 分钟拉到 45、50、70，现在已经拉到 90 分钟；macOS 15 曾在测试全部通过的情况下两次撞上 50 分钟上限，后来又在最后一步撞上 70 分钟，前面所有步骤都已经通过。
+
+## 你也能照做的四个习惯
+
+1. **写的代理和验的代理分开。**只给验证的那个改动本身和“怎样才算完成”，不要附上写代码那个代理的解释，请它自己跑测试，并列出没验到的地方。验 kit #242 时，验证的代理先在 MacBook Air 上跑旧测试、亲眼看它失败，才让新测试过关。代价是多一个会话的 token。
+2. **每个测试都要看它失败一次。**只有见过同一个测试在它检查的东西真的出错时亮红灯，绿灯才有意义。所以相信绿灯之前，先把它守着的东西弄坏（或请代理弄坏），看它变红；再改回来，看它变绿。代理很会写出能通过的测试，正因为这样，你才需要看到它失败。
+3. **测试至少在第二个环境跑一次。**没有第二台 Mac 也没关系，CI 里跑两个系统版本，或 debug 和 release 各跑一次，就是不错的起点。要找的是那些靠运气才通过的测试。
+4. **“一个测试都没跑”要算失败。**Python 3.9 的 `unittest` 一个测试都没找到时，还是会报告成功，所以路径打错一个字，你照样拿到绿灯。我们的 CI 会读测试数量，是 0 就失败，也会检查摘要写的是“0 failed”，不只看退出码。这道检查，是一次独立验证在我们自己的 CI 里抓到这个漏洞之后才加上的。
+
+## 一句话
+
+一个 App 是不是 vibe coding 做的，没那么重要；重要的是有没有人持续在测试、在维护。选软件的时候值得看一眼：它有没有说明自己怎么测试？最近一次更新是什么时候？
+
+速度交给代理，把关留给真正量对东西的测试，以及读过结果的人。
+
+## 接下来
+
+- 为什么代理写的东西还是要有人读过：[为什么 AI 写的东西还是需要人读过](/zh-hans/reviewing-ai-output/)。
+- 怎么读代理交回来的计划和报告：[读懂代理交回来的 Markdown](/zh-hans/reading-agent-output/)。
+
+## 资料来源
+
+- 失败的测试和原因：[mars-dawn-kit #241](https://github.com/redtear1115/mars-dawn-kit/issues/241)。
+- 修复和独立验证：[mars-dawn-kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242)。
+- 在 MacBook Air 试跑 CI（实验草稿），附运行时间：[mars-dawn-kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)。
+- 导出引擎的 CI，时间上限的调整历史写在注释里：[ci.yml](https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml)。
+- App 的代码仓库不公开；上面关于 App 的内容，来自它的 CI 配置和测试脚本。
+
+---
+
 ## 更新记录
 
 Source: https://marsdawn.southern-light.dev/zh-hans/changelog/
@@ -13145,6 +13391,88 @@ brew install redtear1115/tap/marsdawn
 
 ---
 
+## テストのしかた
+
+Source: https://marsdawn.southern-light.dev/ja/how-we-test/
+
+# ある Mac で通るテストが、思っているものをテストしているとは限りません。
+
+バイブコーディング（vibe coding）は悪いことではなく、MarsDawn もエージェントと一緒に作っています。ただ、人が長く頼るソフトウェアを支えるのは、最初のバージョンのあとの何年にもわたるメンテナンスと安全であり、その出発点は、変更が何も壊していないと確かめることです。
+
+**あるテストが Mac mini では通り、MacBook Air では失敗しました。製品に問題はありませんでした。テストが画面のカラープロファイルを通して色を読んでいて、Mac mini で通っていたのはたまたまでした。2 台目のマシンが見つけたのは、コードではなくテストのバグです。**
+
+MarsDawn がどんな極端なファイルや悪意のあるファイルでテストされているかだけ知りたい方は、「[テストに投げ込むもの](#inputs)」へどうぞ。
+
+## MacBook Air でだけ失敗したテスト
+
+書き出しエンジンのテストを GitHub の macOS 15 ランナーで一通り実行すると、1 時間近くかかります。debug ビルドで約 32 分、release ビルドで約 25 分です。これを短くするため、macOS 26 の分を自前の MacBook Air に移してみました（[kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)）。
+
+そこでの最初の実行で、テストがひとつ失敗しました。コールアウト（Note、Tip、Warning）を含む PDF を書き出し、それぞれの端にある色の帯が正しい色か、つまり色差が 0.16 未満かを確かめるテストです。MacBook Air での色差は 0.1634、0.1648、0.1796 でした。Mac mini では、同じコミット、同じ macOS と Xcode で、テストは通りました。
+
+最初は書き出しが壊れたのだと思いました。違いました。PDF には何の問題もなく、2 台で違っていたのは、テストがそれを読む方法でした。
+
+このテストは PDF の各ページを画像にしてピクセルを読みます。macOS はその画像を、メインディスプレイのカラースペースで描きます。Mac mini はふつうの外部ディスプレイにつながっていて、MacBook Air は内蔵ディスプレイを使っていました。1 色のオレンジで塗りつぶした画像を読み戻すと、(0.784, 0.278, 0.106) が Mac mini では (0.822, 0.335, 0.179)、MacBook Air では (0.782, 0.395, 0.221) になりました。
+
+大事なのはここからです。Mac mini でも、テストは正しい色を読めていませんでした。ずれは最大 0.128 で、0.16 の上限にぎりぎり収まっていただけです。通っていたのはディスプレイのおかげで、帯の色を正しく測れていたからではありません。
+
+修正（[kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242)）で変えたのはテストだけです。ページを sRGB に固定したカラースペースの画像に描くので、画面はまったく関わりません。いまは 2 台とも帯の色を正確に読めます。色差は、MacBook Air の内蔵ディスプレイでも Mac mini でも 0.0 です。プルリクエストの CI は通り（[run 40285279080](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080)）、修正が MacBook Air のランナー用ブランチに入ったあと、そのマシンでも全テストが通りました（[run 40315907904](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904)）。そのあと、わざと失敗させました。期待する色をすべて青にすると、5 つのコールアウトすべてで赤になりました。
+
+既知の穴もまだあります。Note と Caution は色差が約 0.119 の 2 つのオレンジを使っていて、0.16 の上限より内側です。この 2 色が入れ替わっても、テストはおそらく気づきません。テストが完全なふりはせず、このことを記録に残しました。
+
+失敗しようのないテストは何も守りません。画面のカラープロファイルのような、間違った理由で失敗するテストも同じです。1 台のマシンでの緑は、そこでテストが通ったことを示すだけで、名前どおりのものを測っているという意味ではありません。
+
+## テストは何層にも重ねた網
+
+すべてを捕まえるテストはひとつもありません。層ごとに網目の違う網があり、ひとつをすり抜けた間違いは次の網にかかるはずです。
+
+- **参照 PDF：**書き出しエンジン（オープンソースの [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit)。`marsdawn` コマンドもこれで動いています）でサンプルの書類を書き出し、各ページのテキストを記録済みのものと比べます。内容が知らないうちに消えることや、ページ数が変わることを捕まえます。
+- **異なるシステムとビルド：**エンジンは、サポートする最も古い macOS 15 と、アプリを出荷している macOS 26 の両方で、それぞれ debug と release のビルドとして実行します。アプリの全テストは 4 通りの組み合わせで実行します。署名ありと署名なし、それぞれペイウォールのオフとオンです。古いシステムでだけ、あるいはお客さまが実際に受け取るビルドでだけ壊れるものを捕まえます。
+- **実機：**アプリの CI は自前の Mac（Mac mini と MacBook Air の両方）で動いています。エンジンのテスト一式をその MacBook Air で試したこと（[kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)、いまもオープンな実験ドラフト）が、上のカラープロファイルの不具合を捕まえました。2 台目のマシンは、そのマシンで動いているから通っているだけのテストを捕まえます。
+- **赤になるべき対照群：**アプリの CI には、わざと壊したクリーンアップスクリプトのコピーが 22 個、テスト実行スクリプトのコピーが 20 個あり、それぞれ安全チェックがひとつずつ抜いてあります。テストはそのすべてで失敗しなければなりません。クリーンアップスクリプトは Mac から古いビルドや作業コピーを削除するので、チェックがひとつ欠けるだけで、消してはいけないものを消しかねません。壊したコピーがひとつでも通れば、壊れているのはテストのほうです。
+- **もうひとつの目：**kit #242 のように、マージの前に別のエージェントに変更を検証させるのが私たちのやり方です。使い方の流れに関わる変更は、先にシナリオレビューを通します。「完了」と言いながら終わっていないことや、動くけれど使われる場面を間違えているコードを捕まえます。
+- **マージするのは人です。**どの変更も MarsDawn の開発者本人が確認し、自分でマージします。エージェントやボットがマージすることはありません。
+
+## テストに投げ込むもの
+
+網が役に立つかどうかは、何を投げ込むかで決まります。エンジンのテストが与える入力の一部と、それぞれのテストが保証することです。
+
+- **とても大きなファイル。**私たちのテストマシンで release ビルドを使って測ると、2 MB の書類は 1.5 秒以内に表示され、レイアウトしきれないほど複雑な 5 MB の書類も 1 秒以内にプレーンテキストとして開きます。16 MB を超えるものは、まったく解析せずにテキストとして表示します。
+- **何十万もの行。**1 行 1 語で約 3 MB、80 万行近い書類は、途中で多すぎると判断されます。エンジンはそこで読むのをやめ、プレーンテキストとして表示します。
+- **閉じない記号。**閉じのないブロックの開始記号が 1 MB 分あっても、何万層にも積み重なったブロックでも、同じ 1 MB のプレーンテキストのおよそ 2 倍より長くかかってはいけません。8 階層より深い部分は、それ以上入れ子になりません。
+- **数式。**間違った数式は、ページを壊さずにその場所にエラーを表示します。10,000 文字を超える数式は書かれたまま残し、一度に描くのは書類の最初の 1,000 個までです。数式の中身がリンクや画像、ページのマークアップになることはありません。
+- **Markdown に紛れ込んだ悪意のある HTML。**スクリプトは取り除かれ、実行されることはありません。埋め込みフレームも、ページに表示される前に取り除かれます。リモート画像は許可しないかぎり読み込まず、許可しても安全な（HTTPS の）ものだけを読み込みます。スクリプトのフィルタを外した対照用のコピーもあり、テストはそこで失敗しなければなりません。
+- **悪意のあるテーマファイル。**拒否され、エラーメッセージがファイル内の隠れた制御文字やリンクを繰り返すこともありません。16 KB を超えるテーマファイルは読み込みもしません。
+
+どれもただではありません。エンジン 1 回分の制限時間は 30 分から 45 分、50 分、70 分、いまは 90 分まで延びました。macOS 15 は全テストが通っていたのに 50 分の上限に 2 回達したことがあり、その後、それまでの手順はすべて通ったまま、最後の手順で 70 分に達したことがあります。
+
+## まねできる 4 つの習慣
+
+1. **書くエージェントと確かめるエージェントを分ける。**確かめる側には、書いたエージェントの説明は付けず、変更そのものと「完了」の条件を渡し、テストを自分で実行して、確かめなかったことを挙げてもらいます。kit #242 では、検証したエージェントが新しいテストを通す前に、MacBook Air で古いテストを実行して失敗するのを確かめました。かかるのは 2 つ目のセッションのトークン代です。
+2. **どのテストも一度は失敗するのを見る。**緑に意味があるのは、確かめている対象が本当に間違っているときに、同じテストが赤になるのを見たことがある場合だけです。緑を信じる前に、そのテストが守っているものを壊して（またはエージェントに壊してもらって）赤になるのを見て、元に戻して緑になるのを見ます。エージェントは通るテストを書くのが得意です。だからこそ、失敗するところを見る必要があります。
+3. **テストを 2 つ目の環境で実行する。**2 台目の Mac がなくてもかまいません。2 つの OS バージョン、あるいは debug ビルドと release ビルドの CI マトリクスで十分なスタートです。探すのは、偶然に通っているだけのテストです。
+4. **「テストが 1 つも実行されなかった」を失敗として扱う。**Python 3.9 の `unittest` は、テストが 1 つも見つからなくても成功として終了します。パスを 1 文字打ち間違えただけで緑になるわけです。私たちの CI はテストの数を読んで 0 なら失敗にし、終了コードだけでなく、まとめに「0 failed」と書かれていることも確かめます。このチェックは、独立した検証で私たち自身の CI のこの穴が見つかってから加えたものです。
+
+## まとめ
+
+アプリがバイブコーディングで作られたかどうかより、誰かがテストとメンテナンスを続けているかどうかのほうが大事です。ソフトウェアを選ぶときに確かめる価値があります。テストのしかたを説明しているか。最後に更新されたのはいつか。
+
+速さはエージェントに任せましょう。確認は、正しいものを測るテストと、結果を読む人に任せます。
+
+## 次に
+
+- エージェントが書いたものを、それでも人が読まなければならない理由：[AI の出力を人が確認する理由](/ja/reviewing-ai-output/)。
+- エージェントが返してくる計画やレポートの読み方：[エージェントが返してくるものを読む](/ja/reading-agent-output/)。
+
+## 出典
+
+- 失敗したテストとその原因：[mars-dawn-kit #241](https://github.com/redtear1115/mars-dawn-kit/issues/241)。
+- 修正と独立した検証：[mars-dawn-kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242)。
+- MacBook Air で CI を試した作業（オープンな実験ドラフト）と実行時間：[mars-dawn-kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)。
+- 書き出しエンジンの CI。制限時間の変遷はコメントにあります：[ci.yml](https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml)。
+- アプリのリポジトリは非公開です。上のアプリに関する内容は、その CI ワークフローとテストスクリプトにもとづいています。
+
+---
+
 ## 更新履歴
 
 Source: https://marsdawn.southern-light.dev/ja/changelog/
@@ -16640,6 +16968,88 @@ Es exportiert Markdown ohne die App als PDF: siehe [Markdown in PDF](/de/markdow
 
 ---
 
+## So testen wir
+
+Source: https://marsdawn.southern-light.dev/de/how-we-test/
+
+# Ein Test, der auf einem Mac besteht, testet vielleicht nicht, was du denkst.
+
+Vibe Coding ist nichts Schlechtes, und auch MarsDawn entsteht mit Agenten. Aber Software, auf die man sich verlässt, wird an dem gemessen, was nach der ersten Version kommt: jahrelange Wartung und Sicherheit, und die beginnen mit der Prüfung, dass eine Änderung nichts kaputt gemacht hat.
+
+**Ein Test bestand auf einem Mac mini und schlug auf einem MacBook Air fehl. Das Produkt war in Ordnung. Der Test hatte Farben durch das Farbprofil des Bildschirms gelesen, und auf dem Mac mini hatte er nur durch Glück bestanden. Ein zweites Gerät fand einen Fehler im Test, nicht im Code.**
+
+Du willst nur wissen, mit welchen extremen oder feindseligen Dateien MarsDawn getestet wird? Dann spring direkt zu [Was wir hineinwerfen](#inputs).
+
+## Der Test, der auf einem MacBook Air fehlschlug
+
+Ein kompletter Durchlauf der Tests der Export-Engine dauert auf dem macOS-15-Runner von GitHub fast eine Stunde: etwa 32 Minuten für den Debug-Build und etwa 25 für den Release-Build. Um das zu verkürzen, haben wir versucht, die macOS-26-Hälfte auf ein eigenes MacBook Air zu verlegen ([kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)).
+
+Beim ersten Lauf dort schlug ein Test fehl. Er exportiert ein PDF mit Hinweisboxen (Note, Tip, Warning) und prüft, ob jede am Rand einen Balken in der richtigen Farbe hat, also mit einem Farbabstand unter 0,16. Auf dem MacBook Air lagen die Abstände bei 0,1634, 0,1648 und 0,1796. Auf einem Mac mini, mit demselben Commit und denselben macOS- und Xcode-Versionen, bestand der Test.
+
+Unser erster Verdacht: Der Export ist kaputt. War er nicht. Mit dem PDF war alles in Ordnung; was sich zwischen den Geräten unterschied, war die Art, wie der Test es las.
+
+Der Test wandelte jede PDF-Seite in ein Bild um und las die Pixel, und macOS zeichnet dieses Bild im Farbraum des Hauptbildschirms. Der Mac mini hing an einem gewöhnlichen externen Monitor, das MacBook Air nutzte sein eingebautes Display. Wir füllten ein Bild mit einem einzigen Orange und lasen es zurück: Aus (0,784; 0,278; 0,106) wurde auf dem Mac mini (0,822; 0,335; 0,179) und auf dem MacBook Air (0,782; 0,395; 0,221).
+
+Jetzt kommt der entscheidende Teil: Auch auf dem Mac mini hatte der Test nicht die richtigen Farben gelesen. Er lag um bis zu 0,128 daneben, knapp innerhalb der Grenze von 0,16. Er bestand wegen des Monitors, nicht weil er den Balken richtig gemessen hätte.
+
+Der Fix ([kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242)) ändert nur den Test: Er zeichnet die Seite in ein Bild mit festem sRGB-Farbraum, sodass kein Bildschirm beteiligt ist. Beide Geräte lesen die Balkenfarben jetzt exakt, mit einem Farbabstand von 0,0, auf dem eingebauten Display des MacBook Air genauso wie auf dem Mac mini. Die CI des Pull Requests lief durch ([run 40285279080](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080)), und sobald der Fix den Runner-Zweig des MacBook Air erreichte, bestand dort auch die komplette Testsuite ([run 40315907904](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904)). Dann haben wir ihn absichtlich scheitern lassen: Mit Blau als erwarteter Farbe überall wurde er für alle fünf Hinweisboxen rot.
+
+Eine bekannte Lücke hat er noch. Note und Caution verwenden zwei Orangetöne, die etwa 0,119 auseinanderliegen, also innerhalb der Grenze von 0,16. Würden die beiden vertauscht, würde der Test es wahrscheinlich nicht merken. Das haben wir aufgeschrieben, statt so zu tun, als wäre der Test vollständig.
+
+Ein Test, der nicht fehlschlagen kann, schützt nichts, und einer, der aus dem falschen Grund fehlschlägt, etwa wegen des Farbprofils eines Bildschirms, ebenso wenig. Grün auf einem Gerät heißt nur, dass der Test dort bestanden hat, nicht, dass er misst, was sein Name sagt.
+
+## Tests sind Netze in Schichten
+
+Kein einzelner Test fängt alles. Jede Schicht ist ein Netz mit anderer Maschenweite, und ein Fehler, der durch eines rutscht, sollte im nächsten landen:
+
+- **Referenz-PDFs:** Die Export-Engine (das quelloffene [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit), auf dem auch der Befehl `marsdawn` läuft) exportiert Beispieldokumente, und der Text jeder Seite wird mit einer gespeicherten Fassung verglichen. Das fängt Inhalte, die still verschwinden, oder eine Seitenzahl, die sich ändert.
+- **Verschiedene Systeme und Builds:** Die Engine läuft auf macOS 15, der ältesten unterstützten Version, und auf macOS 26, mit dem die App ausgeliefert wird, jeweils als Debug- und als Release-Build. Die komplette Testsuite der App läuft in vier Kombinationen: signiert und unsigniert, jeweils mit ausgeschalteter und eingeschalteter Paywall. Das fängt, was nur auf einem älteren System kaputtgeht oder nur in dem Build, den die Kundschaft tatsächlich bekommt.
+- **Echte Hardware:** Die CI der App läuft auf eigenen Macs (sowohl dem Mac mini als auch dem MacBook Air), und der Versuch, die Testsuite der Engine auf diesem MacBook Air laufen zu lassen ([kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240), weiterhin ein offener Entwurf), hat den Farbprofil-Fehler oben gefunden. Ein zweites Gerät fängt Tests, die nur wegen des Geräts bestehen, auf dem sie laufen.
+- **Negativkontrollen:** Die CI der App hält 22 absichtlich kaputte Kopien eines Aufräumskripts und 20 eines Test-Runner-Skripts bereit, jeder fehlt eine Sicherheitsprüfung, und die Tests müssen bei jeder einzelnen fehlschlagen. Das Aufräumskript löscht alte Builds und Arbeitskopien auf einem Mac, eine fehlende Prüfung könnte also das Falsche löschen. Besteht eine kaputte Kopie, ist der Test das, was kaputt ist.
+- **Ein zweites Paar Augen:** Bei uns prüft in der Regel ein separater Agent eine Änderung, bevor sie zusammengeführt wird, wie bei kit #242, und Änderungen an Abläufen in der App bekommen vorher ein Szenario-Review. Das fängt „fertig“, das es nicht ist, und Code, der funktioniert, aber in der falschen Situation.
+- **Zusammenführen tut ein Mensch.** Jede Änderung wird von der Person, die MarsDawn entwickelt, selbst geprüft und zusammengeführt; kein Agent und kein Bot führt etwas zusammen.
+
+## Was wir hineinwerfen
+
+Die Netze sind nur so gut wie das, was hineinkommt. Ein paar der Eingaben, mit denen die Tests die Engine füttern, und was jeder Test sicherstellt:
+
+- **Sehr große Dateien.** Auf unserem Testgerät, im Release-Build gemessen, wird ein 2-MB-Dokument in weniger als anderthalb Sekunden dargestellt, und ein 5-MB-Dokument, das zu komplex für das Layout ist, öffnet sich trotzdem innerhalb einer Sekunde als reiner Text. Alles über 16 MB wird als Text angezeigt, ohne überhaupt geparst zu werden.
+- **Hunderttausende Zeilen.** Etwa 3 MB Zeilen mit je einem Wort, knapp 800.000 davon, werden unterwegs als zu viel erkannt: Die Engine hört dort auf zu lesen und zeigt die Datei als reinen Text.
+- **Markierungen, die nie schließen.** Ein Megabyte öffnender Abschnittsmarken ohne Gegenstück oder Zehntausende übereinandergestapelte dürfen höchstens etwa doppelt so lange brauchen wie ein Megabyte reiner Text. Ab der achten Ebene wird nichts mehr tiefer verschachtelt.
+- **Formeln.** Eine fehlerhafte Formel zeigt an ihrer Stelle einen Fehler, statt die Seite kaputt zu machen. Eine mit mehr als 10.000 Zeichen bleibt, wie sie geschrieben ist, es werden jeweils nur die ersten 1.000 eines Dokuments gezeichnet, und nichts in einer Formel kann zu einem Link, einem Bild oder Seiten-Markup werden.
+- **Feindseliges HTML in Markdown.** Skripte werden entfernt und nie ausgeführt, eingebettete Frames werden entfernt, bevor die Seite sie zeigt. Bilder aus dem Netz bleiben aus, solange du sie nicht erlaubst, und auch dann laden nur sichere (HTTPS). In einer Kontrollkopie ist der Skriptfilter entfernt, und der Test muss an ihr fehlschlagen.
+- **Eine feindselige Theme-Datei.** Sie wird abgelehnt, und die Fehlermeldung wiederholt nie versteckte Steuerzeichen oder Links aus der Datei. Theme-Dateien über 16 KB werden gar nicht erst gelesen.
+
+Nichts davon ist umsonst. Das Zeitlimit für einen Engine-Lauf ist von 30 Minuten auf 45, dann 50, dann 70 und jetzt auf 90 gestiegen. macOS 15 ist zweimal an das 50-Minuten-Limit gestoßen, obwohl jeder Test bestand, und später im letzten Schritt auf 70 Minuten gekommen, während jeder Schritt davor bestanden hatte.
+
+## Vier Gewohnheiten zum Nachmachen
+
+1. **Trenne den Agenten, der schreibt, von dem, der prüft.** Gib dem prüfenden die Änderung und was „fertig“ heißt, ohne die Erklärung des schreibenden Agenten, und lass ihn die Tests selbst ausführen und sagen, was er nicht geprüft hat. Bei kit #242 ließ der prüfende Agent den alten Test auf dem MacBook Air laufen, um ihn scheitern zu sehen, bevor er den neuen durchgehen ließ. Das kostet die Tokens einer zweiten Sitzung.
+2. **Sieh jeden Test einmal fehlschlagen.** Grün ist nur etwas wert, wenn du denselben Test schon rot gesehen hast, als das, was er prüft, wirklich falsch war. Bevor du einem grünen Haken traust, mach also kaputt, was er bewacht (oder lass den Agenten das tun), sieh ihn rot werden, setz es zurück und sieh ihn grün werden. Agenten sind gut darin, Tests zu schreiben, die bestehen; genau deshalb musst du sie scheitern sehen.
+3. **Lass deine Tests in einer zweiten Umgebung laufen.** Kein zweiter Mac? Eine CI-Matrix mit zwei OS-Versionen oder mit einem Debug- und einem Release-Build ist ein guter Anfang. Du suchst Tests, die nur zufällig bestehen.
+4. **Werte „keine Tests gelaufen“ als Fehlschlag.** `unittest` in Python 3.9 beendet sich erfolgreich, wenn es überhaupt keine Tests findet; ein Tippfehler im Pfad bringt dir also einen grünen Haken. Unsere CI liest die Anzahl, schlägt bei null fehl und prüft, dass die Zusammenfassung „0 failed“ sagt, statt nur auf den Exit-Code zu schauen. Diese Kontrolle kam dazu, nachdem eine unabhängige Verifikation genau diese Lücke in unserer eigenen CI gefunden hatte.
+
+## Kurz gesagt
+
+Ob eine App per Vibe Coding entstanden ist, zählt weniger als die Frage, ob jemand sie weiter testet und pflegt. Das lohnt sich bei der Wahl von Software zu prüfen: Steht irgendwo, wie sie getestet wird, und wann wurde sie zuletzt aktualisiert?
+
+Lass den Agenten schnell sein. Das Prüfen überlass Tests, die das Richtige messen, und einem Menschen, der das Ergebnis liest.
+
+## Weiter
+
+- Warum ein Mensch trotzdem lesen muss, was ein Agent geschrieben hat: [Warum KI-Ergebnisse weiterhin einen menschlichen Leser brauchen](/de/reviewing-ai-output/).
+- Wie du die Pläne und Berichte liest, die ein Agent zurückgibt: [Lesen, was dein Agent zurückgibt](/de/reading-agent-output/).
+
+## Quellen
+
+- Der fehlschlagende Test und seine Ursache: [mars-dawn-kit #241](https://github.com/redtear1115/mars-dawn-kit/issues/241).
+- Der Fix und seine unabhängige Prüfung: [mars-dawn-kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242).
+- Die CI auf einem MacBook Air ausprobieren (offener Entwurf), mit Laufzeiten: [mars-dawn-kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240).
+- Die CI der Export-Engine, mit der Geschichte ihres Zeitlimits in den Kommentaren: [ci.yml](https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml).
+- Das Repository der App ist privat; die Angaben zur App oben stammen aus ihrem CI-Workflow und ihren Testskripten.
+
+---
+
 ## Änderungsprotokoll
 
 Source: https://marsdawn.southern-light.dev/de/changelog/
@@ -20077,6 +20487,88 @@ Il exporte le Markdown en PDF sans l’app : voir [Markdown en PDF](/fr/markdown
 - Chip Huyen, « Agents », 7 janvier 2025 : [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
 - Lilian Weng, « LLM Powered Autonomous Agents », Lil’Log, 23 juin 2023 : [https://lilianweng.github.io/posts/2023-06-23-agent/](https://lilianweng.github.io/posts/2023-06-23-agent/)
 - Erik S. et Barry Zhang, « Building Effective Agents », Anthropic, 19 décembre 2024 : [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) (cité d’après la version en ligne le 26/09/2026).
+
+---
+
+## Comment nous testons
+
+Source: https://marsdawn.southern-light.dev/fr/how-we-test/
+
+# Un test qui passe sur un Mac ne teste peut-être pas ce que vous croyez.
+
+Le vibe coding n’a rien de mal, et MarsDawn est lui aussi développé avec des agents. Mais un logiciel sur lequel on compte se juge à ce qui vient après la première version : des années de maintenance et de sécurité, qui commencent par vérifier qu’un changement n’a rien cassé.
+
+**Un test passait sur un Mac mini et échouait sur un MacBook Air. Le produit allait bien. Le test lisait les couleurs à travers le profil colorimétrique de l’écran, et sur le Mac mini, il passait par chance. Une deuxième machine a trouvé un bug dans le test, pas dans le code.**
+
+Vous voulez seulement savoir avec quels fichiers extrêmes ou hostiles MarsDawn est testé ? Passez directement à [Ce que nous lui faisons subir](#inputs).
+
+## Le test qui échouait sur un MacBook Air
+
+Une exécution complète des tests du moteur d’export sur le runner macOS 15 de GitHub prend près d’une heure : environ 32 minutes pour le build debug et environ 25 pour le build release. Pour réduire ce temps, nous avons essayé de déplacer la moitié macOS 26 sur un MacBook Air à nous ([kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)).
+
+À la première exécution, un test a échoué. Il exporte un PDF avec des encadrés (Note, Tip, Warning) et vérifie que chacun porte sur son bord une barre de la bonne couleur, c’est-à-dire avec un écart de couleur inférieur à 0,16. Sur le MacBook Air, les écarts étaient de 0,1634, 0,1648 et 0,1796. Sur un Mac mini, avec le même commit, le même macOS et le même Xcode, le test passait.
+
+Notre première idée : l’export était cassé. Il ne l’était pas. Le PDF n’avait aucun problème ; ce qui différait d’une machine à l’autre, c’était la façon dont le test le lisait.
+
+Le test transformait chaque page du PDF en image et en lisait les pixels, et macOS dessine cette image dans l’espace colorimétrique de l’écran principal. Le Mac mini était branché sur un moniteur externe ordinaire ; le MacBook Air utilisait son écran intégré. Nous avons rempli une image d’un seul orange et l’avons relue : (0,784 ; 0,278 ; 0,106) revenait en (0,822 ; 0,335 ; 0,179) sur le Mac mini et en (0,782 ; 0,395 ; 0,221) sur le MacBook Air.
+
+Voici ce qui compte : sur le Mac mini non plus, le test ne lisait pas les bonnes couleurs. Il se trompait de 0,128 au plus, juste sous la limite de 0,16. Il passait grâce au moniteur, pas parce qu’il mesurait correctement la barre.
+
+Le correctif ([kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242)) ne modifie que le test : il dessine la page dans une image à l’espace colorimétrique sRGB fixe, sans aucun écran en jeu. Les deux machines lisent désormais exactement les couleurs des barres, avec un écart de 0,0, sur l’écran intégré du MacBook Air comme sur le Mac mini. La CI de la pull request est passée ([run 40285279080](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080)), et une fois le correctif arrivé sur la branche du runner du MacBook Air, la suite complète y est passée aussi ([run 40315907904](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904)). Puis nous l’avons fait échouer exprès : avec du bleu comme couleur attendue partout, il est passé au rouge pour les cinq encadrés.
+
+Il lui reste une faille connue. Note et Caution utilisent deux oranges séparés d’environ 0,119, sous la limite de 0,16 : si on les intervertissait, le test ne le remarquerait probablement pas. Nous l’avons noté plutôt que de faire comme si le test était complet.
+
+Un test qui ne peut pas échouer ne protège rien, pas plus qu’un test qui échoue pour une mauvaise raison, comme le profil colorimétrique d’un écran. Le vert sur une machine vous dit que le test y est passé, pas qu’il mesure ce que dit son nom.
+
+## Les tests sont des filets superposés
+
+Aucun test ne rattrape tout. Chaque couche est un filet aux mailles différentes, et une erreur qui passe à travers l’un devrait tomber dans le suivant :
+
+- **PDF de référence :** le moteur d’export (le projet open source [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit), qui fait aussi tourner la commande `marsdawn`) exporte des documents d’exemple, et le texte de chaque page est comparé à une copie enregistrée. Cela rattrape le contenu qui disparaît sans bruit, ou un nombre de pages qui change.
+- **Systèmes et builds différents :** le moteur tourne sous macOS 15, la plus ancienne version prise en charge, et sous macOS 26, celle avec laquelle l’app est livrée, chaque fois en build debug et en build release. La suite complète de l’app tourne en quatre combinaisons : signée et non signée, chacune avec le paywall désactivé puis activé. Cela rattrape ce qui ne casse que sur un système plus ancien, ou seulement dans le build que reçoivent réellement les clients.
+- **Vrai matériel :** la CI de l’app tourne sur nos propres Mac (le Mac mini et le MacBook Air), et c’est en essayant la suite du moteur sur ce MacBook Air ([kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240), toujours un brouillon ouvert) que le bug de profil colorimétrique ci-dessus a été attrapé. Une deuxième machine rattrape les tests qui ne passent qu’à cause de la machine sur laquelle ils tournent.
+- **Contrôles négatifs :** la CI de l’app garde 22 copies volontairement cassées d’un script de nettoyage et 20 d’un script d’exécution des tests, chacune privée d’une vérification de sécurité, et les tests doivent échouer sur chacune. Le script de nettoyage supprime d’anciens builds et copies de travail sur un Mac : une seule vérification manquante pourrait supprimer ce qu’il ne faut pas. Si une copie cassée passe, c’est le test qui est cassé.
+- **Un deuxième regard :** notre pratique est de faire vérifier un changement par un agent distinct avant de le fusionner, comme pour kit #242, et les changements qui touchent à la façon d’utiliser l’app passent d’abord par une revue de scénarios. Cela rattrape le « terminé » qui ne l’est pas, et le code qui marche, mais dans la mauvaise situation.
+- **Une personne fusionne.** Chaque changement est relu et fusionné par la personne qui développe MarsDawn ; aucun agent ni bot ne fusionne quoi que ce soit.
+
+## Ce que nous lui faisons subir
+
+Ces filets ne valent que ce qu’on y jette. Voici quelques-unes des entrées que les tests donnent au moteur, et ce que chaque test garantit :
+
+- **Des fichiers très volumineux.** Mesuré sur notre machine de test, en build release : un document de 2 Mo s’affiche en moins d’une seconde et demie, et un document de 5 Mo trop complexe à mettre en page s’ouvre quand même en texte brut en moins d’une seconde. Au-delà de 16 Mo, le fichier s’affiche en texte sans être analysé du tout.
+- **Des centaines de milliers de lignes.** Environ 3 Mo de lignes d’un seul mot, près de 800 000, sont repérés comme trop lourds en cours de route : le moteur arrête de lire à cet endroit et affiche le fichier en texte brut.
+- **Des balises jamais fermées.** Un mégaoctet de marques d’ouverture de section sans fermeture, ou des dizaines de milliers empilées les unes dans les autres, ne doit pas prendre plus d’environ deux fois le temps d’un mégaoctet de texte brut. Au-delà de huit niveaux, plus rien ne s’imbrique.
+- **Des formules.** Une formule erronée affiche une erreur à sa place au lieu de casser la page. Une formule de plus de 10 000 caractères reste telle qu’elle est écrite, seules les 1 000 premières d’un document sont dessinées à la fois, et rien dans une formule ne peut devenir un lien, une image ou du balisage de page.
+- **Du HTML hostile dans le Markdown.** Les scripts sont retirés et ne s’exécutent jamais, et les cadres intégrés sont enlevés avant que la page les affiche. Les images distantes restent désactivées tant que vous ne les autorisez pas, et même alors, seules les images sécurisées (HTTPS) se chargent. Dans une copie témoin, le filtre de scripts est retiré, et le test doit échouer sur elle.
+- **Un fichier de thème hostile.** Il est refusé, et le message d’erreur ne répète jamais les caractères de contrôle cachés ni les liens du fichier. Les fichiers de thème de plus de 16 Ko ne sont même pas lus.
+
+Rien de tout cela n’est gratuit. La limite de temps d’une exécution du moteur est passée de 30 minutes à 45, puis 50, puis 70, et maintenant à 90. macOS 15 a atteint deux fois la limite de 50 minutes alors que tous les tests passaient, puis a atteint 70 minutes à sa dernière étape, toutes les étapes précédentes ayant réussi.
+
+## Quatre habitudes à reprendre
+
+1. **Séparez l’agent qui écrit de l’agent qui vérifie.** Donnez au vérificateur le changement et ce que « terminé » veut dire, sans joindre l’explication de l’agent qui a écrit, et demandez-lui de lancer lui-même les tests et de dire ce qu’il n’a pas vérifié. Pour kit #242, l’agent vérificateur a lancé l’ancien test sur le MacBook Air pour le voir échouer avant de valider le nouveau. Cela coûte les tokens d’une deuxième session.
+2. **Voyez chaque test échouer une fois.** Le vert ne vaut quelque chose que si vous avez vu ce même test passer au rouge quand ce qu’il vérifie était vraiment faux. Avant de faire confiance à une coche verte, cassez donc ce qu’elle protège (ou demandez à l’agent de le faire), voyez-la passer au rouge, remettez en place et voyez-la repasser au vert. Les agents savent très bien écrire des tests qui passent ; c’est justement pour cela qu’il faut les voir échouer.
+3. **Lancez vos tests dans un deuxième environnement.** Pas de deuxième Mac ? Une matrice de CI avec deux versions de l’OS, ou avec un build debug et un build release, est un bon début. Vous cherchez les tests qui ne passent que par hasard.
+4. **Considérez « aucun test lancé » comme un échec.** L’outil `unittest` de Python 3.9 se termine avec succès quand il ne trouve aucun test, si bien qu’une faute de frappe dans un chemin vous donne une coche verte. Notre CI lit le nombre de tests et échoue à zéro, et vérifie que le résumé indique « 0 failed », sans se fier au seul code de sortie. Nous avons ajouté ce contrôle après qu’une vérification indépendante a trouvé cette faille dans notre propre CI.
+
+## En bref
+
+Qu’une app ait été faite en vibe coding compte moins que de savoir si quelqu’un continue de la tester et de la maintenir. Cela vaut la peine de le vérifier au moment de choisir un logiciel : dit-il comment il est testé, et quand a-t-il été mis à jour pour la dernière fois ?
+
+Laissez l’agent aller vite. Confiez la vérification à des tests qui mesurent la bonne chose, et à une personne qui lit le résultat.
+
+## Pour aller plus loin
+
+- Pourquoi une personne doit encore lire ce qu’un agent a écrit : [Pourquoi ce que produit l’IA a encore besoin d’un lecteur humain](/fr/reviewing-ai-output/).
+- Comment lire les plans et les rapports qu’un agent vous rend : [Lire ce que votre agent vous rend](/fr/reading-agent-output/).
+
+## Sources
+
+- Le test qui échouait et sa cause : [mars-dawn-kit #241](https://github.com/redtear1115/mars-dawn-kit/issues/241).
+- Le correctif et sa vérification indépendante : [mars-dawn-kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242).
+- L’essai de la CI sur un MacBook Air (brouillon ouvert), avec les temps d’exécution : [mars-dawn-kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240).
+- La CI du moteur d’export, avec l’historique de sa limite de temps dans les commentaires : [ci.yml](https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml).
+- Le dépôt de l’app est privé ; les détails sur l’app ci-dessus viennent de son workflow de CI et de ses scripts de test.
 
 ---
 
@@ -23520,6 +24012,88 @@ Exporta Markdown a PDF sin la app: consulta [Markdown a PDF](/es/markdown-to-pdf
 
 ---
 
+## Cómo probamos
+
+Source: https://marsdawn.southern-light.dev/es/how-we-test/
+
+# Una prueba que pasa en un Mac quizá no esté probando lo que crees.
+
+El vibe coding no es algo malo, y MarsDawn también se desarrolla con agentes. Pero el software del que dependes se juzga por lo que viene después de la primera versión: años de mantenimiento y seguridad, que empiezan por comprobar que un cambio no ha roto nada.
+
+**Una prueba pasaba en un Mac mini y fallaba en un MacBook Air. El producto estaba bien. La prueba leía los colores a través del perfil de color de la pantalla, y en el Mac mini pasaba por suerte. Una segunda máquina encontró un error en la prueba, no en el código.**
+
+¿Solo quieres saber con qué archivos extremos u hostiles se prueba MarsDawn? Salta directamente a [Lo que le echamos](#inputs).
+
+## La prueba que fallaba en un MacBook Air
+
+Una ejecución completa de las pruebas del motor de exportación en el runner de macOS 15 de GitHub tarda cerca de una hora: unos 32 minutos para la compilación debug y unos 25 para la release. Para acortarlo, probamos a pasar la mitad de macOS 26 a un MacBook Air propio ([kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)).
+
+En su primera ejecución allí, falló una prueba. Exporta un PDF con recuadros de aviso (Note, Tip, Warning) y comprueba que cada uno tenga en el borde una barra del color correcto, es decir, con una distancia de color menor que 0,16. En el MacBook Air, las distancias fueron 0,1634, 0,1648 y 0,1796. En un Mac mini, con el mismo commit, el mismo macOS y el mismo Xcode, la prueba pasaba.
+
+Lo primero que pensamos fue que la exportación se había roto. No era así. El PDF no tenía ningún problema; lo que cambiaba entre las dos máquinas era cómo lo leía la prueba.
+
+La prueba convertía cada página del PDF en una imagen y leía los píxeles, y macOS dibuja esa imagen en el espacio de color de la pantalla principal. El Mac mini estaba conectado a un monitor externo corriente; el MacBook Air usaba su pantalla integrada. Llenamos una imagen con un solo naranja y la volvimos a leer: (0,784; 0,278; 0,106) volvía como (0,822; 0,335; 0,179) en el Mac mini y como (0,782; 0,395; 0,221) en el MacBook Air.
+
+Esto es lo importante: en el Mac mini, la prueba tampoco leía los colores correctos. Se desviaba hasta 0,128, justo dentro del límite de 0,16. Pasaba gracias al monitor, no porque midiera bien la barra.
+
+La corrección ([kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242)) solo cambia la prueba: dibuja la página en una imagen con un espacio de color sRGB fijo, así que no interviene ninguna pantalla. Ahora las dos máquinas leen los colores de las barras con exactitud, con una distancia de 0,0, tanto en la pantalla integrada del MacBook Air como en el Mac mini. La CI del pull request pasó ([run 40285279080](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080)), y una vez que la corrección llegó a la rama del runner del MacBook Air, la batería completa pasó allí también ([run 40315907904](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904)). Después la hicimos fallar a propósito: con todos los colores esperados en azul, se puso en rojo en los cinco recuadros de aviso.
+
+Todavía tiene un hueco conocido. Note y Caution usan dos naranjas separados por unos 0,119, dentro del límite de 0,16, así que si se intercambiaran, la prueba probablemente no lo notaría. Lo dejamos por escrito en lugar de fingir que la prueba es completa.
+
+Una prueba que no puede fallar no protege nada, y tampoco una que falla por el motivo equivocado, como el perfil de color de una pantalla. El verde en una máquina te dice que la prueba pasó allí, no que mida lo que dice su nombre.
+
+## Las pruebas son capas de redes
+
+Ninguna prueba lo atrapa todo. Cada capa es una red con una malla distinta, y un error que se escapa por una debería caer en la siguiente:
+
+- **PDF de referencia:** el motor de exportación (el proyecto de código abierto [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit), que también hace funcionar el comando `marsdawn`) exporta documentos de ejemplo, y el texto de cada página se compara con una copia guardada. Esto atrapa contenido que desaparece sin avisar o un número de páginas que cambia.
+- **Sistemas y compilaciones distintos:** el motor se ejecuta en macOS 15, la versión más antigua que admite, y en macOS 26, con la que se distribuye la app, cada uno como compilación debug y release. La batería completa de la app se ejecuta en cuatro combinaciones: firmada y sin firmar, cada una con el paywall desactivado y activado. Esto atrapa lo que solo se rompe en un sistema más antiguo, o solo en la compilación que reciben de verdad los clientes.
+- **Hardware real:** la CI de la app corre en Mac propios (tanto el Mac mini como el MacBook Air), y probar la batería del motor en ese MacBook Air ([kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240), sigue siendo un borrador abierto) es lo que atrapó el fallo del perfil de color de arriba. Una segunda máquina atrapa las pruebas que solo pasan por la máquina en la que se ejecutan.
+- **Controles negativos:** la CI de la app guarda 22 copias rotas a propósito de un script de limpieza y 20 de un script de ejecución de pruebas, a cada una le falta una comprobación de seguridad, y las pruebas tienen que fallar con todas. El script de limpieza borra compilaciones antiguas y copias de trabajo de un Mac, así que una sola comprobación que falte podría borrar lo que no debe. Si una copia rota pasa, lo que está roto es la prueba.
+- **Otro par de ojos:** nuestra práctica es que un agente aparte verifique un cambio antes de fusionarlo, como en kit #242, y los cambios que afectan a cómo se usa la app pasan antes por una revisión de escenarios. Esto atrapa el «terminado» que no lo está, y el código que funciona, pero en la situación equivocada.
+- **Una persona fusiona.** La persona que desarrolla MarsDawn revisa y fusiona cada cambio; ningún agente ni bot fusiona nada.
+
+## Lo que le echamos
+
+Esas redes valen tanto como lo que se echa en ellas. Algunas de las entradas con las que las pruebas alimentan al motor, y lo que cada prueba garantiza:
+
+- **Archivos muy grandes.** Medido en nuestra máquina de pruebas, con una compilación release: un documento de 2 MB se muestra en menos de un segundo y medio, y uno de 5 MB demasiado complejo para maquetar se abre igualmente como texto sin formato en menos de un segundo. Lo que pase de 16 MB se muestra como texto sin analizarlo en absoluto.
+- **Cientos de miles de líneas.** Unos 3 MB de líneas de una sola palabra, cerca de 800 000, se detectan como demasiado a mitad de camino: el motor deja de leer ahí y muestra el archivo como texto sin formato.
+- **Marcas que nunca se cierran.** Un megabyte de marcas de apertura de sección sin cierre, o decenas de miles apiladas unas dentro de otras, no debe tardar más de unas dos veces lo que tarda un megabyte de texto sin formato. A partir del octavo nivel, nada se anida más.
+- **Fórmulas.** Una fórmula mal escrita muestra un error en su sitio en lugar de romper la página. Una de más de 10 000 caracteres se queda tal como está escrita, solo se dibujan a la vez las primeras 1000 de un documento, y nada dentro de una fórmula puede convertirse en un enlace, una imagen o marcado de la página.
+- **HTML hostil dentro de Markdown.** Los scripts se eliminan y nunca se ejecutan, y los marcos incrustados se quitan antes de que la página los muestre. Las imágenes remotas siguen desactivadas a menos que las permitas, e incluso entonces solo cargan las seguras (HTTPS). Una copia de control tiene quitado el filtro de scripts, y la prueba tiene que fallar con ella.
+- **Un archivo de tema hostil.** Se rechaza, y el mensaje de error nunca repite caracteres de control ocultos ni enlaces del archivo. Los archivos de tema de más de 16 KB ni siquiera se leen.
+
+Nada de esto es gratis. El límite de tiempo de una ejecución del motor ha pasado de 30 minutos a 45, luego a 50, luego a 70 y ahora a 90. macOS 15 llegó dos veces al límite de 50 minutos con todas las pruebas pasando, y más tarde llegó a 70 minutos en su último paso, con todos los pasos anteriores pasando.
+
+## Cuatro hábitos que puedes copiar
+
+1. **Separa el agente que escribe del agente que comprueba.** Dale al que comprueba el cambio y lo que significa «terminado», sin la explicación del agente que lo escribió, y pídele que ejecute él mismo las pruebas y diga qué no comprobó. En kit #242, el agente verificador ejecutó la prueba antigua en el MacBook Air para verla fallar antes de dar por buena la nueva. Cuesta los tokens de una segunda sesión.
+2. **Mira fallar cada prueba una vez.** El verde solo vale algo si has visto esa misma prueba ponerse en rojo cuando lo que comprueba estaba realmente mal. Así que, antes de fiarte de una marca verde, rompe lo que protege (o pídeselo al agente), mira cómo se pone en rojo, déjalo como estaba y mira cómo vuelve al verde. Los agentes escriben muy bien pruebas que pasan; justo por eso necesitas verlas fallar.
+3. **Ejecuta tus pruebas en un segundo entorno.** ¿No tienes un segundo Mac? Una matriz de CI con dos versiones del sistema, o con una compilación debug y otra release, es un buen comienzo. Buscas pruebas que solo pasan por casualidad.
+4. **Trata «no se ejecutó ninguna prueba» como un fallo.** El `unittest` de Python 3.9 termina con éxito cuando no encuentra ninguna prueba, así que una errata en una ruta te da una marca verde. Nuestra CI lee el número de pruebas y falla si es cero, y comprueba que el resumen diga «0 failed», no solo el código de salida. Añadimos esa comprobación después de que una verificación independiente encontrara ese hueco en nuestra propia CI.
+
+## En pocas palabras
+
+Que una app se haya hecho con vibe coding importa menos que si alguien sigue probándola y manteniéndola. Vale la pena comprobarlo al elegir software: ¿explica cómo se prueba?, ¿cuándo se actualizó por última vez?
+
+Deja que el agente sea rápido. La comprobación, déjasela a pruebas que miden lo correcto y a una persona que lee el resultado.
+
+## Siguiente
+
+- Por qué una persona todavía tiene que leer lo que escribió un agente: [Por qué lo que produce la IA todavía necesita un lector humano](/es/reviewing-ai-output/).
+- Cómo leer los planes e informes que te devuelve un agente: [Leer lo que te devuelve tu agente](/es/reading-agent-output/).
+
+## Fuentes
+
+- La prueba que fallaba y su causa: [mars-dawn-kit #241](https://github.com/redtear1115/mars-dawn-kit/issues/241).
+- La corrección y su verificación independiente: [mars-dawn-kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242).
+- Probar la CI en un MacBook Air (borrador abierto), con tiempos de ejecución: [mars-dawn-kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240).
+- La CI del motor de exportación, con el historial de su límite de tiempo en los comentarios: [ci.yml](https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml).
+- El repositorio de la app es privado; los detalles de la app que aparecen arriba salen de su flujo de CI y de sus scripts de prueba.
+
+---
+
 ## Historial de cambios
 
 Source: https://marsdawn.southern-light.dev/es/changelog/
@@ -26957,6 +27531,88 @@ brew install redtear1115/tap/marsdawn
 - Chip Huyen, “Agents”, 2025년 1월 7일: [https://huyenchip.com/2025/01/07/agents.html](https://huyenchip.com/2025/01/07/agents.html)
 - Lilian Weng, “LLM Powered Autonomous Agents”, Lil’Log, 2023년 6월 23일: [https://lilianweng.github.io/posts/2023-06-23-agent/](https://lilianweng.github.io/posts/2023-06-23-agent/)
 - Erik S., Barry Zhang, “Building Effective Agents”, Anthropic, 2024년 12월 19일: [https://www.anthropic.com/engineering/building-effective-agents](https://www.anthropic.com/engineering/building-effective-agents) (2026년 9월 26일 기준 온라인 버전에서 인용)
+
+---
+
+## 테스트하는 방법
+
+Source: https://marsdawn.southern-light.dev/ko/how-we-test/
+
+# 한 Mac에서 통과한 테스트가 생각하는 것을 테스트하고 있다는 보장은 없습니다.
+
+바이브 코딩(vibe coding)은 나쁜 것이 아니며, MarsDawn도 에이전트와 함께 만듭니다. 하지만 사람들이 오래 의지하는 소프트웨어는 첫 버전 이후 몇 년에 걸친 유지보수와 보안으로 평가받고, 그 출발점은 변경이 아무것도 망가뜨리지 않았는지 확인하는 일입니다.
+
+**한 테스트가 Mac mini에서는 통과하고 MacBook Air에서는 실패했습니다. 제품에는 문제가 없었습니다. 테스트가 화면의 색상 프로파일을 거쳐 색을 읽고 있었고, Mac mini에서 통과한 것은 운이 좋았을 뿐입니다. 두 번째 기기가 찾아낸 것은 코드가 아니라 테스트의 버그였습니다.**
+
+MarsDawn이 어떤 극단적이거나 악의적인 파일로 테스트되는지만 궁금하다면 '[테스트에 던져 넣는 것들](#inputs)'로 바로 가세요.
+
+## MacBook Air에서만 실패한 테스트
+
+내보내기 엔진의 테스트를 GitHub의 macOS 15 러너에서 전부 돌리면 거의 한 시간이 걸립니다. debug 빌드가 약 32분, release 빌드가 약 25분입니다. 이 시간을 줄이려고 macOS 26 쪽을 우리 MacBook Air로 옮겨 보았습니다([kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240)).
+
+그곳에서 처음 돌렸을 때 테스트 하나가 실패했습니다. 콜아웃(Note, Tip, Warning)이 들어간 PDF를 내보내고, 각 콜아웃 가장자리의 색 막대가 올바른 색인지, 즉 색 차이가 0.16 미만인지 확인하는 테스트입니다. MacBook Air에서 색 차이는 0.1634, 0.1648, 0.1796이었습니다. Mac mini에서는 같은 커밋, 같은 macOS와 Xcode로 테스트가 통과했습니다.
+
+처음에는 내보내기가 망가졌다고 생각했습니다. 아니었습니다. PDF에는 아무 문제가 없었고, 두 기기에서 달랐던 것은 테스트가 그것을 읽는 방식이었습니다.
+
+이 테스트는 PDF의 각 페이지를 이미지로 바꿔 픽셀을 읽는데, macOS는 그 이미지를 주 디스플레이의 색 공간으로 그립니다. Mac mini는 평범한 외장 모니터에 연결되어 있었고, MacBook Air는 내장 디스플레이를 쓰고 있었습니다. 주황색 한 가지로 채운 이미지를 다시 읽어 보니, (0.784, 0.278, 0.106)이 Mac mini에서는 (0.822, 0.335, 0.179), MacBook Air에서는 (0.782, 0.395, 0.221)로 돌아왔습니다.
+
+중요한 건 여기부터입니다. Mac mini에서도 테스트는 올바른 색을 읽지 못하고 있었습니다. 최대 0.128까지 어긋나 있었고, 0.16 한도 안에 겨우 들어왔을 뿐입니다. 통과한 건 모니터 덕분이지, 막대를 제대로 측정해서가 아니었습니다.
+
+수정([kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242))은 테스트만 바꿉니다. 페이지를 sRGB로 고정한 색 공간의 이미지에 그리기 때문에 화면이 전혀 끼어들지 않습니다. 이제 두 기기 모두 막대 색을 정확하게 읽습니다. 색 차이는 MacBook Air의 내장 디스플레이에서도, Mac mini에서도 0.0입니다. 풀 리퀘스트의 CI가 통과했고([run 40285279080](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080)), 수정이 MacBook Air 러너 브랜치에 들어간 뒤 그 러너에서도 전체 테스트가 통과했습니다([run 40315907904](https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904)). 그다음 일부러 실패시켰습니다. 기대하는 색을 모두 파란색으로 바꾸자 콜아웃 다섯 개 모두에서 빨간불이 들어왔습니다.
+
+알려진 빈틈도 아직 있습니다. Note와 Caution은 색 차이가 약 0.119인 두 주황색을 쓰는데, 0.16 한도 안쪽입니다. 그래서 두 색이 서로 바뀌어도 테스트는 아마 알아차리지 못할 것입니다. 테스트가 완벽한 척하지 않고 이 사실을 기록해 두었습니다.
+
+실패할 수 없는 테스트는 아무것도 지켜 주지 못합니다. 화면의 색상 프로파일처럼 엉뚱한 이유로 실패하는 테스트도 마찬가지입니다. 한 기기에서의 초록불은 테스트가 거기서 통과했다는 뜻일 뿐, 이름에 적힌 것을 측정한다는 뜻은 아닙니다.
+
+## 테스트는 여러 겹의 그물입니다
+
+모든 것을 잡아내는 테스트는 없습니다. 겹마다 그물코가 다른 그물이 있고, 한 그물을 빠져나간 실수는 다음 그물에 걸려야 합니다.
+
+- **기준 PDF:** 내보내기 엔진(오픈 소스인 [mars-dawn-kit](https://github.com/redtear1115/mars-dawn-kit), `marsdawn` 명령도 이것으로 돌아갑니다)으로 샘플 문서를 내보내고, 페이지마다 텍스트를 기록해 둔 사본과 비교합니다. 내용이 조용히 사라지거나 페이지 수가 바뀌는 것을 잡아냅니다.
+- **다른 시스템과 빌드:** 엔진은 지원하는 가장 오래된 버전인 macOS 15와, 앱이 출시되는 macOS 26에서 각각 debug와 release 빌드로 돌아갑니다. 앱의 전체 테스트는 네 가지 조합으로 돕니다. 서명한 것과 서명하지 않은 것, 각각 페이월을 끈 것과 켠 것입니다. 오래된 시스템에서만, 또는 고객이 실제로 받는 빌드에서만 망가지는 것을 잡아냅니다.
+- **실제 하드웨어:** 앱의 CI는 우리 Mac(Mac mini와 MacBook Air 둘 다)에서 돕니다. 엔진 테스트 일체를 그 MacBook Air에서 시험 실행한 것([kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240), 아직 열린 실험 초안)이 위의 색상 프로파일 버그를 잡아냈습니다. 두 번째 기기는 특정 기기에서 돌았기 때문에 통과했을 뿐인 테스트를 잡아냅니다.
+- **빨간불 대조군:** 앱의 CI에는 일부러 망가뜨린 정리 스크립트 사본 22개와 테스트 실행 스크립트 사본 20개가 있고, 사본마다 안전 검사가 하나씩 빠져 있습니다. 테스트는 그 모두에서 실패해야 합니다. 정리 스크립트는 Mac에서 오래된 빌드와 작업 사본을 지우기 때문에, 검사 하나만 빠져도 엉뚱한 것을 지울 수 있습니다. 망가뜨린 사본이 하나라도 통과하면 망가진 것은 테스트입니다.
+- **또 하나의 눈:** kit #242처럼, 병합 전에 다른 에이전트에게 변경을 검증하게 하는 것이 우리의 방식입니다. 사용 흐름에 관련된 변경은 먼저 시나리오 리뷰를 거칩니다. 끝났다고 했지만 끝나지 않은 것, 그리고 동작은 하지만 잘못된 상황에 쓰인 코드를 잡아냅니다.
+- **병합은 사람이 합니다.** 모든 변경은 MarsDawn 개발자가 직접 검토하고 병합합니다. 에이전트나 봇은 병합하지 않습니다.
+
+## 테스트에 던져 넣는 것들
+
+그물이 얼마나 쓸모 있는지는 무엇을 던져 넣느냐에 달려 있습니다. 엔진 테스트가 넣는 입력 몇 가지와, 각 테스트가 보장하는 것입니다.
+
+- **아주 큰 파일.** 우리 테스트 기기에서 release 빌드로 재면, 2MB 문서는 1.5초 안에 표시되고, 레이아웃하기에 너무 복잡한 5MB 문서도 1초 안에 일반 텍스트로 열립니다. 16MB가 넘는 것은 아예 파싱하지 않고 텍스트로 보여 줍니다.
+- **수십만 줄.** 한 줄에 한 단어씩, 약 3MB에 80만 줄 가까운 문서는 도중에 너무 많다고 판단됩니다. 엔진은 거기서 읽기를 멈추고 일반 텍스트로 표시합니다.
+- **닫히지 않는 표시.** 닫는 짝이 없는 블록 시작 표시 1MB, 또는 수만 겹으로 쌓인 블록도 같은 1MB 일반 텍스트의 약 두 배보다 오래 걸리면 안 됩니다. 8단계를 넘는 부분은 더 이상 중첩되지 않습니다.
+- **수식.** 잘못된 수식은 페이지를 망가뜨리지 않고 그 자리에 오류를 표시합니다. 10,000자가 넘는 수식은 쓴 그대로 두고, 한 번에 문서의 처음 1,000개까지만 그립니다. 수식 안의 내용이 링크나 이미지, 페이지 마크업이 되는 일은 없습니다.
+- **Markdown 속에 숨은 악의적인 HTML.** 스크립트는 제거되어 절대 실행되지 않고, 삽입된 프레임도 페이지에 보이기 전에 제거됩니다. 원격 이미지는 허용하지 않는 한 불러오지 않으며, 허용해도 안전한(HTTPS) 이미지만 불러옵니다. 스크립트 필터를 뺀 대조용 사본도 있어서, 테스트는 그 사본에서 실패해야 합니다.
+- **악의적인 테마 파일.** 거부되며, 오류 메시지가 파일 속 숨은 제어 문자나 링크를 그대로 되풀이하지도 않습니다. 16KB가 넘는 테마 파일은 아예 읽지 않습니다.
+
+이 모든 것에는 비용이 듭니다. 엔진 한 번 실행의 제한 시간은 30분에서 45분, 50분, 70분, 지금은 90분까지 늘었습니다. macOS 15는 모든 테스트가 통과했는데도 50분 한도에 두 번 걸린 적이 있고, 나중에는 앞선 단계는 모두 통과한 채 마지막 단계에서 70분에 걸린 적이 있습니다.
+
+## 따라 할 수 있는 네 가지 습관
+
+1. **작성하는 에이전트와 확인하는 에이전트를 나누세요.** 확인하는 쪽에는 작성한 에이전트의 설명은 붙이지 말고 변경 자체와 '완료'의 기준만 주고, 테스트를 직접 돌려 확인하지 않은 것을 말해 달라고 하세요. kit #242에서는 검증한 에이전트가 새 테스트를 통과시키기 전에 MacBook Air에서 예전 테스트를 돌려 실패하는 것을 확인했습니다. 드는 비용은 두 번째 세션의 토큰입니다.
+2. **모든 테스트가 한 번은 실패하는 것을 보세요.** 초록불은 확인하는 대상이 정말 잘못됐을 때 같은 테스트가 빨간불로 바뀌는 것을 본 적이 있어야 의미가 있습니다. 그러니 초록불을 믿기 전에, 그 테스트가 지키는 것을 망가뜨려 보고(또는 에이전트에게 맡기고) 빨간불을 확인한 뒤, 되돌려 초록불을 확인하세요. 에이전트는 통과하는 테스트를 잘 씁니다. 바로 그래서 실패하는 모습을 봐야 합니다.
+3. **테스트를 두 번째 환경에서 돌리세요.** 두 번째 Mac이 없어도 괜찮습니다. OS 버전 두 개, 또는 debug와 release 빌드로 된 CI 매트릭스면 충분한 출발점입니다. 찾는 것은 우연히 통과하는 테스트입니다.
+4. **'테스트가 하나도 돌지 않음'을 실패로 처리하세요.** Python 3.9의 `unittest`는 테스트를 하나도 찾지 못해도 성공으로 끝납니다. 그래서 경로에 오타 하나만 있어도 초록불을 받습니다. 우리 CI는 테스트 수를 읽어 0이면 실패시키고, 종료 코드만이 아니라 요약에 "0 failed"라고 적혀 있는지도 확인합니다. 이 검사는 독립 검증이 우리 CI의 이 빈틈을 찾아낸 뒤에 추가했습니다.
+
+## 짧게 말하면
+
+앱이 바이브 코딩으로 만들어졌는지보다, 누군가 계속 테스트하고 유지보수하는지가 더 중요합니다. 소프트웨어를 고를 때 확인해 볼 만합니다. 어떻게 테스트하는지 밝히고 있는지, 마지막 업데이트는 언제였는지.
+
+속도는 에이전트에게 맡기세요. 확인은 올바른 것을 측정하는 테스트와, 결과를 읽는 사람에게 맡기세요.
+
+## 다음
+
+- 에이전트가 쓴 것을 여전히 사람이 읽어야 하는 이유: [AI가 만든 결과물에 여전히 사람의 읽기가 필요한 이유](/ko/reviewing-ai-output/).
+- 에이전트가 돌려준 계획과 보고서를 읽는 방법: [에이전트가 돌려준 결과 읽기](/ko/reading-agent-output/).
+
+## 출처
+
+- 실패한 테스트와 원인: [mars-dawn-kit #241](https://github.com/redtear1115/mars-dawn-kit/issues/241).
+- 수정과 독립 검증: [mars-dawn-kit #242](https://github.com/redtear1115/mars-dawn-kit/pull/242).
+- MacBook Air에서 CI를 시험 실행한 작업(아직 열린 실험 초안)과 실행 시간: [mars-dawn-kit #240](https://github.com/redtear1115/mars-dawn-kit/pull/240).
+- 내보내기 엔진의 CI. 제한 시간이 바뀐 내력은 주석에 있습니다: [ci.yml](https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml).
+- 앱 저장소는 비공개입니다. 위의 앱 관련 내용은 앱의 CI 워크플로와 테스트 스크립트에서 가져왔습니다.
 
 ---
 

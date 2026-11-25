@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script>window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'wait_for_update': 500
+});
+try {
+  if (localStorage.getItem('md-consent') === 'accepted') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+} catch (e) {}</script>
+<script>(function(w,d,s,l,i){
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KCC7FDWZ');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo probamos MarsDawn: una prueba, dos Mac · MarsDawn</title>
+<meta name="description" content="Una prueba pasaba en un Mac y fallaba en otro. El producto estaba bien; la prueba leía los colores de la pantalla. Cómo apilamos nuestras pruebas, y cuatro hábitos que puedes copiar.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="https://marsdawn.southern-light.dev/how-we-test/">
+<link rel="alternate" hreflang="zh-Hant" href="https://marsdawn.southern-light.dev/zh-hant/how-we-test/">
+<link rel="alternate" hreflang="zh-Hans" href="https://marsdawn.southern-light.dev/zh-hans/how-we-test/">
+<link rel="alternate" hreflang="ja" href="https://marsdawn.southern-light.dev/ja/how-we-test/">
+<link rel="alternate" hreflang="de" href="https://marsdawn.southern-light.dev/de/how-we-test/">
+<link rel="alternate" hreflang="fr" href="https://marsdawn.southern-light.dev/fr/how-we-test/">
+<link rel="alternate" hreflang="es" href="https://marsdawn.southern-light.dev/es/how-we-test/">
+<link rel="alternate" hreflang="ko" href="https://marsdawn.southern-light.dev/ko/how-we-test/">
+<link rel="alternate" hreflang="x-default" href="https://marsdawn.southern-light.dev/how-we-test/">
+<link rel="canonical" href="https://marsdawn.southern-light.dev/es/how-we-test/">
+<link rel="alternate" type="text/markdown" href="/es/how-we-test/index.md">
+<meta property="og:title" content="Cómo probamos MarsDawn: una prueba, dos Mac · MarsDawn">
+<meta property="og:description" content="Una prueba pasaba en un Mac y fallaba en otro. El producto estaba bien; la prueba leía los colores de la pantalla. Cómo apilamos nuestras pruebas, y cuatro hábitos que puedes copiar.">
+<meta property="og:url" content="https://marsdawn.southern-light.dev/es/how-we-test/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marsdawn.southern-light.dev/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MarsDawn. Claim the map. Read the dawn. Markdown for humans who steer agentic work.">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MarsDawn", "item": "https://marsdawn.southern-light.dev/es/"}, {"@type": "ListItem", "position": 2, "name": "Cómo probamos", "item": "https://marsdawn.southern-light.dev/es/how-we-test/"}]}</script>
+<script src="/assets/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="page">
+<header class="masthead">
+  <a class="brand" href="/es/" aria-label="Inicio de MarsDawn">
+    <img src="/assets/icon-192.png" alt="" width="40" height="40">
+    <strong>MarsDawn</strong>
+  </a>
+  <nav class="site-nav" aria-label="Navegación principal">
+    <ul class="site-nav-wide">
+      <li><a href="/es/features/">Funciones</a></li>
+      <li><a href="/es/cli/">Agentes</a></li>
+      <li><a href="/es/themes/">Temas</a></li>
+      <li><a href="/es/vs/">Comparar</a></li>
+      <li><a href="/es/support/">Soporte</a></li>
+    </ul>
+    <details class="site-nav-narrow">
+      <summary>Menú</summary>
+      <ul>
+        <li><a href="/es/features/">Funciones</a></li>
+        <li><a href="/es/cli/">Agentes</a></li>
+        <li><a href="/es/themes/">Temas</a></li>
+        <li><a href="/es/vs/">Comparar</a></li>
+        <li><a href="/es/support/">Soporte</a></li>
+      </ul>
+    </details>
+  </nav>
+  <nav class="lang" aria-label="Idioma">
+  <div class="lang-wide">
+    <ul>
+      <li><a href="/how-we-test/" hreflang="en" lang="en">English</a></li>
+      <li><a href="/zh-hant/how-we-test/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+      <li><a href="/ja/how-we-test/" hreflang="ja" lang="ja">日本語</a></li>
+      <li><a href="/zh-hans/how-we-test/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+    </ul>
+    <details class="lang-more">
+      <summary lang="es">Español</summary>
+      <ul>
+        <li><a href="/de/how-we-test/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/how-we-test/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/how-we-test/" hreflang="es" aria-current="true" lang="es">Español</a></li>
+        <li><a href="/ko/how-we-test/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </details>
+  </div>
+  <details class="lang-narrow">
+    <summary>ES</summary>
+    <div class="lang-panel">
+      <ul>
+        <li><a href="/how-we-test/" hreflang="en" lang="en">English</a></li>
+        <li><a href="/zh-hant/how-we-test/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li>
+        <li><a href="/ja/how-we-test/" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="/zh-hans/how-we-test/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li>
+      </ul>
+      <hr class="lang-sep">
+      <ul>
+        <li><a href="/de/how-we-test/" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="/fr/how-we-test/" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="/es/how-we-test/" hreflang="es" aria-current="true" lang="es">Español</a></li>
+        <li><a href="/ko/how-we-test/" hreflang="ko" lang="ko">한국어</a></li>
+      </ul>
+    </div>
+  </details>
+  </nav>
+</header>
+<main id="main">
+<section class="intro">
+  <h1>Una prueba que pasa en un Mac quizá no esté probando lo que crees.</h1>
+  <!-- src S11 -->
+  <p>El vibe coding no es algo malo, y MarsDawn también se desarrolla con agentes. Pero el software del que dependes se juzga por lo que viene después de la primera versión: años de mantenimiento y seguridad, que empiezan por comprobar que un cambio no ha roto nada.</p>
+</section>
+
+<div class="summary"><p><strong>Una prueba pasaba en un Mac mini y fallaba en un MacBook Air. El producto estaba bien. La prueba leía los colores a través del perfil de color de la pantalla, y en el Mac mini pasaba por suerte. Una segunda máquina encontró un error en la prueba, no en el código.</strong></p></div>
+<p>¿Solo quieres saber con qué archivos extremos u hostiles se prueba MarsDawn? Salta directamente a <a href="#inputs">Lo que le echamos</a>.</p>
+
+<h2 id="the-test-that-failed-on-a-macbook-air">La prueba que fallaba en un MacBook Air</h2>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>Una ejecución completa de las pruebas del motor de exportación en el runner de macOS 15 de GitHub tarda cerca de una hora: unos 32 minutos para la compilación debug y unos 25 para la release. Para acortarlo, probamos a pasar la mitad de macOS 26 a un MacBook Air propio (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
+<!-- src S1: kit #241, run 40271990387 -->
+<p>En su primera ejecución allí, falló una prueba. Exporta un PDF con recuadros de aviso (Note, Tip, Warning) y comprueba que cada uno tenga en el borde una barra del color correcto, es decir, con una distancia de color menor que 0,16. En el MacBook Air, las distancias fueron 0,1634, 0,1648 y 0,1796. En un Mac mini, con el mismo commit, el mismo macOS y el mismo Xcode, la prueba pasaba.</p>
+<p>Lo primero que pensamos fue que la exportación se había roto. No era así. El PDF no tenía ningún problema; lo que cambiaba entre las dos máquinas era cómo lo leía la prueba.</p>
+<!-- src S1, S2: kit #241 -->
+<p>La prueba convertía cada página del PDF en una imagen y leía los píxeles, y macOS dibuja esa imagen en el espacio de color de la pantalla principal. El Mac mini estaba conectado a un monitor externo corriente; el MacBook Air usaba su pantalla integrada. Llenamos una imagen con un solo naranja y la volvimos a leer: (0,784; 0,278; 0,106) volvía como (0,822; 0,335; 0,179) en el Mac mini y como (0,782; 0,395; 0,221) en el MacBook Air.</p>
+<!-- src S3: kit #242 verification comment -->
+<p>Esto es lo importante: en el Mac mini, la prueba tampoco leía los colores correctos. Se desviaba hasta 0,128, justo dentro del límite de 0,16. Pasaba gracias al monitor, no porque midiera bien la barra.</p>
+<!-- src S3, S10 -->
+<p>La corrección (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) solo cambia la prueba: dibuja la página en una imagen con un espacio de color sRGB fijo, así que no interviene ninguna pantalla. Ahora las dos máquinas leen los colores de las barras con exactitud, con una distancia de 0,0, tanto en la pantalla integrada del MacBook Air como en el Mac mini. La CI del pull request pasó (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), y una vez que la corrección llegó a la rama del runner del MacBook Air, la batería completa pasó allí también (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>). Después la hicimos fallar a propósito: con todos los colores esperados en azul, se puso en rojo en los cinco recuadros de aviso.</p>
+<p>Todavía tiene un hueco conocido. Note y Caution usan dos naranjas separados por unos 0,119, dentro del límite de 0,16, así que si se intercambiaran, la prueba probablemente no lo notaría. Lo dejamos por escrito en lugar de fingir que la prueba es completa.</p>
+<p>Una prueba que no puede fallar no protege nada, y tampoco una que falla por el motivo equivocado, como el perfil de color de una pantalla. El verde en una máquina te dice que la prueba pasó allí, no que mida lo que dice su nombre.</p>
+
+<h2 id="tests-are-layers-of-nets">Las pruebas son capas de redes</h2>
+<p>Ninguna prueba lo atrapa todo. Cada capa es una red con una malla distinta, y un error que se escapa por una debería caer en la siguiente:</p>
+<ul>
+  <!-- src S13 -->
+  <li><strong>PDF de referencia:</strong> el motor de exportación (el proyecto de código abierto <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, que también hace funcionar el comando <code>marsdawn</code>) exporta documentos de ejemplo, y el texto de cada página se compara con una copia guardada. Esto atrapa contenido que desaparece sin avisar o un número de páginas que cambia.</li>
+  <!-- src S6, S9 -->
+  <li><strong>Sistemas y compilaciones distintos:</strong> el motor se ejecuta en macOS 15, la versión más antigua que admite, y en macOS 26, con la que se distribuye la app, cada uno como compilación debug y release. La batería completa de la app se ejecuta en cuatro combinaciones: firmada y sin firmar, cada una con el paywall desactivado y activado. Esto atrapa lo que solo se rompe en un sistema más antiguo, o solo en la compilación que reciben de verdad los clientes.</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>Hardware real:</strong> la CI de la app corre en Mac propios (tanto el Mac mini como el MacBook Air), y probar la batería del motor en ese MacBook Air (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>, sigue siendo un borrador abierto) es lo que atrapó el fallo del perfil de color de arriba. Una segunda máquina atrapa las pruebas que solo pasan por la máquina en la que se ejecutan.</li>
+  <!-- src S12 -->
+  <li><strong>Controles negativos:</strong> la CI de la app guarda 22 copias rotas a propósito de un script de limpieza y 20 de un script de ejecución de pruebas, a cada una le falta una comprobación de seguridad, y las pruebas tienen que fallar con todas. El script de limpieza borra compilaciones antiguas y copias de trabajo de un Mac, así que una sola comprobación que falte podría borrar lo que no debe. Si una copia rota pasa, lo que está roto es la prueba.</li>
+  <!-- src S3, S15 -->
+  <li><strong>Otro par de ojos:</strong> nuestra práctica es que un agente aparte verifique un cambio antes de fusionarlo, como en kit #242, y los cambios que afectan a cómo se usa la app pasan antes por una revisión de escenarios. Esto atrapa el «terminado» que no lo está, y el código que funciona, pero en la situación equivocada.</li>
+  <!-- src S21 -->
+  <li><strong>Una persona fusiona.</strong> La persona que desarrolla MarsDawn revisa y fusiona cada cambio; ningún agente ni bot fusiona nada.</li>
+</ul>
+
+<h2 id="inputs">Lo que le echamos</h2>
+<p>Esas redes valen tanto como lo que se echa en ellas. Algunas de las entradas con las que las pruebas alimentan al motor, y lo que cada prueba garantiza:</p>
+<ul>
+  <!-- src S16 -->
+  <li><strong>Archivos muy grandes.</strong> Medido en nuestra máquina de pruebas, con una compilación release: un documento de 2 MB se muestra en menos de un segundo y medio, y uno de 5 MB demasiado complejo para maquetar se abre igualmente como texto sin formato en menos de un segundo. Lo que pase de 16 MB se muestra como texto sin analizarlo en absoluto.</li>
+  <!-- src S16 -->
+  <li><strong>Cientos de miles de líneas.</strong> Unos 3 MB de líneas de una sola palabra, cerca de 800 000, se detectan como demasiado a mitad de camino: el motor deja de leer ahí y muestra el archivo como texto sin formato.</li>
+  <!-- src S17 -->
+  <li><strong>Marcas que nunca se cierran.</strong> Un megabyte de marcas de apertura de sección sin cierre, o decenas de miles apiladas unas dentro de otras, no debe tardar más de unas dos veces lo que tarda un megabyte de texto sin formato. A partir del octavo nivel, nada se anida más.</li>
+  <!-- src S18 -->
+  <li><strong>Fórmulas.</strong> Una fórmula mal escrita muestra un error en su sitio en lugar de romper la página. Una de más de 10 000 caracteres se queda tal como está escrita, solo se dibujan a la vez las primeras 1000 de un documento, y nada dentro de una fórmula puede convertirse en un enlace, una imagen o marcado de la página.</li>
+  <!-- src S19 -->
+  <li><strong>HTML hostil dentro de Markdown.</strong> Los scripts se eliminan y nunca se ejecutan, y los marcos incrustados se quitan antes de que la página los muestre. Las imágenes remotas siguen desactivadas a menos que las permitas, e incluso entonces solo cargan las seguras (HTTPS). Una copia de control tiene quitado el filtro de scripts, y la prueba tiene que fallar con ella.</li>
+  <!-- src S20 -->
+  <li><strong>Un archivo de tema hostil.</strong> Se rechaza, y el mensaje de error nunca repite caracteres de control ocultos ni enlaces del archivo. Los archivos de tema de más de 16 KB ni siquiera se leen.</li>
+</ul>
+<!-- src S5 -->
+<p>Nada de esto es gratis. El límite de tiempo de una ejecución del motor ha pasado de 30 minutos a 45, luego a 50, luego a 70 y ahora a 90. macOS 15 llegó dos veces al límite de 50 minutos con todas las pruebas pasando, y más tarde llegó a 70 minutos en su último paso, con todos los pasos anteriores pasando.</p>
+
+<h2 id="four-habits-you-can-copy">Cuatro hábitos que puedes copiar</h2>
+<ol>
+  <li><strong>Separa el agente que escribe del agente que comprueba.</strong> Dale al que comprueba el cambio y lo que significa «terminado», sin la explicación del agente que lo escribió, y pídele que ejecute él mismo las pruebas y diga qué no comprobó. En kit #242, el agente verificador ejecutó la prueba antigua en el MacBook Air para verla fallar antes de dar por buena la nueva. Cuesta los tokens de una segunda sesión.</li>
+  <!-- src S14 -->
+  <li><strong>Mira fallar cada prueba una vez.</strong> El verde solo vale algo si has visto esa misma prueba ponerse en rojo cuando lo que comprueba estaba realmente mal. Así que, antes de fiarte de una marca verde, rompe lo que protege (o pídeselo al agente), mira cómo se pone en rojo, déjalo como estaba y mira cómo vuelve al verde. Los agentes escriben muy bien pruebas que pasan; justo por eso necesitas verlas fallar.</li>
+  <li><strong>Ejecuta tus pruebas en un segundo entorno.</strong> ¿No tienes un segundo Mac? Una matriz de CI con dos versiones del sistema, o con una compilación debug y otra release, es un buen comienzo. Buscas pruebas que solo pasan por casualidad.</li>
+  <!-- src S7, S8 -->
+  <li><strong>Trata «no se ejecutó ninguna prueba» como un fallo.</strong> El <code>unittest</code> de Python 3.9 termina con éxito cuando no encuentra ninguna prueba, así que una errata en una ruta te da una marca verde. Nuestra CI lee el número de pruebas y falla si es cero, y comprueba que el resumen diga «0 failed», no solo el código de salida. Añadimos esa comprobación después de que una verificación independiente encontrara ese hueco en nuestra propia CI.</li>
+</ol>
+
+<h2 id="the-short-version">En pocas palabras</h2>
+<!-- src S11 -->
+<p>Que una app se haya hecho con vibe coding importa menos que si alguien sigue probándola y manteniéndola. Vale la pena comprobarlo al elegir software: ¿explica cómo se prueba?, ¿cuándo se actualizó por última vez?</p>
+<p>Deja que el agente sea rápido. La comprobación, déjasela a pruebas que miden lo correcto y a una persona que lee el resultado.</p>
+
+<h2 id="next">Siguiente</h2>
+<ul>
+  <li>Por qué una persona todavía tiene que leer lo que escribió un agente: <a href="/es/reviewing-ai-output/">Por qué lo que produce la IA todavía necesita un lector humano</a>.</li>
+  <li>Cómo leer los planes e informes que te devuelve un agente: <a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a>.</li>
+</ul>
+
+<h2 id="sources">Fuentes</h2>
+<ul>
+  <li>La prueba que fallaba y su causa: <a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>.</li>
+  <li>La corrección y su verificación independiente: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>.</li>
+  <li>Probar la CI en un MacBook Air (borrador abierto), con tiempos de ejecución: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
+  <li>La CI del motor de exportación, con el historial de su límite de tiempo en los comentarios: <a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>.</li>
+  <li>El repositorio de la app es privado; los detalles de la app que aparecen arriba salen de su flujo de CI y de sus scripts de prueba.</li>
+</ul>
+</main>
+<footer class="footer">
+  <nav class="footer-nav" aria-label="Navegación del sitio">
+    <h2 class="footer-nav-title">Navegación del sitio</h2>
+    <section aria-labelledby="footer-product">
+      <h3 id="footer-product">Producto</h3>
+      <ul>
+        <li><a href="/es/features/">Funciones</a></li>
+        <li><a href="/es/quicklook/">Vista rápida para Markdown</a></li>
+        <li><a href="/es/native/">Una app para Mac</a></li>
+        <li><a href="/es/pdf/">Exportación a PDF</a></li>
+        <li><a href="/es/limits/">Lo que MarsDawn no hace</a></li>
+        <li><a href="/es/pay-once/">Pruébalo gratis, paga una vez</a></li>
+        <li><a href="/es/yours/">Lo que escribes se queda en tu Mac</a></li>
+        <li><a href="/es/changelog/">Historial de cambios</a></li>
+        <li><a href="/es/roadmap/">Hoja de ruta</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-agents">
+      <h3 id="footer-agents">Para agentes y la CLI</h3>
+      <ul>
+        <li><a href="/es/cli/">Línea de comandos</a></li>
+        <li><a href="/es/cli/agents/">marsdawn para agentes</a></li>
+        <li><a href="/es/cli/mcp/">Servidor MCP</a></li>
+        <li><a href="/es/cli/skill/">Skill para agentes</a></li>
+        <li><a href="/es/agent-transparency/">Transparencia de los agentes</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-guides">
+      <h3 id="footer-guides">Guías</h3>
+      <ul>
+        <li><a href="/es/view-markdown-on-mac/">Cómo abrir archivos .md en Mac</a></li>
+        <li><a href="/es/markdown-to-pdf/">De Markdown a PDF</a></li>
+        <li><a href="/es/mermaid-preview-mac/">Vista previa de Mermaid en Mac</a></li>
+        <li><a href="/es/reading-agent-output/">Leer lo que te devuelve tu agente</a></li>
+        <li><a href="/es/reviewing-ai-output/">Por qué lo que produce la IA todavía necesita un lector humano</a></li>
+        <li><a href="/es/reviewing-agent-plans/">Revisar el plan de un agente</a></li>
+        <li><a href="/es/token-efficient-review/">Revisión que ahorra tokens</a></li>
+        <li><a href="/es/sharing-exported-pdfs/">Compartir los PDF exportados</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-compare">
+      <h3 id="footer-compare">Comparar</h3>
+      <ul>
+        <li><a href="/es/vs/">MarsDawn comparado: vista previa de VS Code, Obsidian, QLMarkdown, LynxOffice</a></li>
+        <li><a href="/es/vs/macmd-viewer/">MacMD Viewer frente a MarsDawn</a></li>
+        <li><a href="/es/vs/markdown-preview-tools/">Ver Markdown en otras herramientas frente a MarsDawn</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-themes">
+      <h3 id="footer-themes">Temas</h3>
+      <ul>
+        <li><a href="/es/themes/">Temas</a></li>
+        <li><a href="/es/themes/gallery/">Galería de temas</a></li>
+        <li><a href="/es/themes/new/">Crear un tema</a></li>
+        <li><a href="/es/themes/agents/">Crea un tema con tu agente</a></li>
+        <li><a href="/es/templates/">Plantillas</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="footer-support">
+      <h3 id="footer-support">Soporte e información legal</h3>
+      <ul>
+        <li><a href="/es/support/">Soporte</a></li>
+        <li><a href="/es/privacy/">Política de privacidad</a></li>
+        <li><button type="button" id="consent-settings-link" class="footer-link-btn">Ajustes de cookies</button></li>
+      </ul>
+    </section>
+  </nav>
+  <p class="footer-meta"><span>Un nuevo amanecer para Markdown.</span> <span>MarsDawn está en el <a href="https://apps.apple.com/app/apple-store/id6812925073?pt=128976951&amp;ct=web-how-we-test&amp;mt=8">Mac App Store</a>.</span> <span class="footer-origin">© 2026 · MADE IN TAIWAN</span></p>
+</footer>
+</div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Consentimiento de cookies" hidden>
+  <p>Usamos cookies de analítica, desactivadas hasta que las aceptes.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Rechazar</button>
+    <button type="button" id="consent-accept" class="consent-btn">Aceptar</button>
+  </div>
+</div>
+</body>
+</html>

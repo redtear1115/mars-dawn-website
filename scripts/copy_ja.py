@@ -487,7 +487,7 @@ SKILL_INSTALL = '<h2>Claude Code にインストールする</h2>\n<p>コマン�
 
 def build(k) -> dict:
     k.set_skill_install(SKILL_INSTALL)
-    ui = {'features': '機能一覧', 'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で .md ファイルを開く方法', 'mermaid-preview-mac': 'Mac で Mermaid をプレビューする', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'テーマ', 'themes-new': 'テーマを作る', 'themes-agents': 'エージェントとテーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'changelog': '更新履歴', 'roadmap': 'ロードマップ', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': '分析用クッキーを使います。「同意する」を選ぶまで無効です。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
+    ui = {'features': '機能一覧', 'home': 'MarsDawn', 'privacy': 'プライバシーポリシー', 'support': 'サポート', 'cli': 'コマンドライン', 'agents': 'AI エージェント向け marsdawn', 'using_cli': 'CLI の使い方', 'markdown-to-pdf': 'Markdown から PDF へ', 'skill': 'エージェント用スキル', 'view-markdown-on-mac': 'Mac で .md ファイルを開く方法', 'mermaid-preview-mac': 'Mac で Mermaid をプレビューする', 'vs-macmd-viewer': 'MacMD Viewer と MarsDawn', 'updated': f"最終更新日：{k.UPDATED}", 'tagline': 'エージェントが書いた Markdown を読む。', 'slogan': 'Markdown の新しい夜明け。', 'footer_store': f'MarsDawn は <a href="{k.LISTING_URL}">Mac App Store</a> で配信中です。', 'footer_nav': 'サイト', 'more': 'その他', 'yours': 'あなたの文章は Mac に残ります', 'pay-once': '無料で試して、一度だけ購入', 'pdf': 'PDF 書き出し', 'native': 'Mac アプリ', 'limits': 'MarsDawn ができないこと', 'mcp': 'MCP サーバー', 'token-efficient-review': 'トークンを抑えたレビュー', 'vs-markdown-preview-tools': '他のツールで Markdown を見る場合との比較', 'themes': 'テーマ', 'themes-new': 'テーマを作る', 'themes-agents': 'エージェントとテーマを作る', 'themes-gallery': 'テーマギャラリー', 'sharing-exported-pdfs': '書き出した PDF を共有する', 'reviewing-ai-output': 'AI の出力を人が確認する理由', 'reading-agent-output': 'エージェントが返してくるものを読む', 'agent-transparency': 'エージェントの透明性', 'reviewing-agent-plans': 'エージェントの計画をレビューする', 'agent-design-patterns': 'エージェント設計パターン', 'how-we-test': 'テストのしかた', 'changelog': '更新履歴', 'roadmap': 'ロードマップ', 'reading-notes': '編集者の読書ノート', 'reading-notes-anthropic': '読書ノート：Anthropic', 'reading-notes-chip-huyen': '読書ノート：Chip Huyen', 'reading-notes-lilian-weng': '読書ノート：Lilian Weng', 'reading-notes-harrison-chase': '読書ノート：Harrison Chase', 'reading-notes-langchain': '読書ノート：LangChain（Jess Ou）', 'reading-notes-andrew-ng': '読書ノート：Andrew Ng', 'consent_text': '分析用クッキーを使います。「同意する」を選ぶまで無効です。', 'consent_accept': '同意する', 'consent_decline': '同意しない', 'consent_aria': 'クッキーの同意設定', 'cookie_settings': 'Cookie 設定', 'view_markdown_source': 'Markdown のソースを見る'}
     store_chip = 'Mac App Store で配信中'
     schema_notes = {'export': 'export 成功時', 'open': 'open 成功時、marsdawn 0.5.1 以降、サイドバーに表示するフォルダを含む', 'open_v2': 'open 成功時、marsdawn 0.3.0〜0.5.0', 'error': '失敗時、両方のコマンド共通、marsdawn 0.5.2 以降', 'open_v1': 'open 成功時、marsdawn 0.2.x（<code>opened</code> がパスのリストだった頃）', 'error_v1': '失敗時、両方のコマンド共通、marsdawn 0.5.1 以前'}
     example_plan = '# 計画：書き出しを高速化\n\nこの計画はエージェントが書きました。内容を確認してから、PDF にします。\n\n## ステップ\n\n| ステップ | 担当 | 状況 |\n|------|-------|--------|\n| 遅いページを計測する | エージェント | 完了 |\n| レンダリング済み図をキャッシュする | エージェント | レビュー中 |\n\n50 ページの文書で目標とするのは $t < 2\\,\\text{s}$：\n\n$$\nt_{\\text{total}} = \\sum_{i=1}^{n} t_i\n$$\n\n```mermaid\ngraph LR\n  ドラフト --> レビュー --> 公開\n```\n\n```swift\nlet pdf = try export("plan.md")\n```\n'
@@ -1548,6 +1548,101 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
   <li>Chip Huyen, &#8220;Agents,&#8221; January 7, 2025: <a href="https://huyenchip.com/2025/01/07/agents.html">https://huyenchip.com/2025/01/07/agents.html</a></li>
   <li>Lilian Weng, &#8220;LLM Powered Autonomous Agents,&#8221; Lil&#8217;Log, June 23, 2023: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a></li>
   <li>Erik S. and Barry Zhang, &#8220;Building Effective Agents,&#8221; Anthropic, December 19, 2024: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a>（2026-09-26 時点のオンライン版から引用）</li>
+</ul>
+""",
+    }
+
+    pages['how-we-test'] = {
+        "title": "MarsDawn のテストのしかた：ひとつのテスト、2 台の Mac · MarsDawn",
+        "description": "あるテストが 1 台の Mac では通り、もう 1 台では失敗しました。製品は壊れておらず、テストが画面の色を読んでいたのです。テストを何層にも重ねるやり方と、まねできる 4 つの習慣。",
+        "body": r"""<section class="intro">
+  <h1>ある Mac で通るテストが、思っているものをテストしているとは限りません。</h1>
+  <!-- src S11 -->
+  <p>バイブコーディング（vibe coding）は悪いことではなく、MarsDawn もエージェントと一緒に作っています。ただ、人が長く頼るソフトウェアを支えるのは、最初のバージョンのあとの何年にもわたるメンテナンスと安全であり、その出発点は、変更が何も壊していないと確かめることです。</p>
+</section>
+
+<div class="summary"><p><strong>あるテストが Mac mini では通り、MacBook Air では失敗しました。製品に問題はありませんでした。テストが画面のカラープロファイルを通して色を読んでいて、Mac mini で通っていたのはたまたまでした。2 台目のマシンが見つけたのは、コードではなくテストのバグです。</strong></p></div>
+<p>MarsDawn がどんな極端なファイルや悪意のあるファイルでテストされているかだけ知りたい方は、「<a href="#inputs">テストに投げ込むもの</a>」へどうぞ。</p>
+
+<h2>MacBook Air でだけ失敗したテスト</h2>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>書き出しエンジンのテストを GitHub の macOS 15 ランナーで一通り実行すると、1 時間近くかかります。debug ビルドで約 32 分、release ビルドで約 25 分です。これを短くするため、macOS 26 の分を自前の MacBook Air に移してみました（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>）。</p>
+<!-- src S1: kit #241, run 40271990387 -->
+<p>そこでの最初の実行で、テストがひとつ失敗しました。コールアウト（Note、Tip、Warning）を含む PDF を書き出し、それぞれの端にある色の帯が正しい色か、つまり色差が 0.16 未満かを確かめるテストです。MacBook Air での色差は 0.1634、0.1648、0.1796 でした。Mac mini では、同じコミット、同じ macOS と Xcode で、テストは通りました。</p>
+<p>最初は書き出しが壊れたのだと思いました。違いました。PDF には何の問題もなく、2 台で違っていたのは、テストがそれを読む方法でした。</p>
+<!-- src S1, S2: kit #241 -->
+<p>このテストは PDF の各ページを画像にしてピクセルを読みます。macOS はその画像を、メインディスプレイのカラースペースで描きます。Mac mini はふつうの外部ディスプレイにつながっていて、MacBook Air は内蔵ディスプレイを使っていました。1 色のオレンジで塗りつぶした画像を読み戻すと、(0.784, 0.278, 0.106) が Mac mini では (0.822, 0.335, 0.179)、MacBook Air では (0.782, 0.395, 0.221) になりました。</p>
+<!-- src S3: kit #242 verification comment -->
+<p>大事なのはここからです。Mac mini でも、テストは正しい色を読めていませんでした。ずれは最大 0.128 で、0.16 の上限にぎりぎり収まっていただけです。通っていたのはディスプレイのおかげで、帯の色を正しく測れていたからではありません。</p>
+<!-- src S3, S10 -->
+<p>修正（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>）で変えたのはテストだけです。ページを sRGB に固定したカラースペースの画像に描くので、画面はまったく関わりません。いまは 2 台とも帯の色を正確に読めます。色差は、MacBook Air の内蔵ディスプレイでも Mac mini でも 0.0 です。プルリクエストの CI は通り（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>）、修正が MacBook Air のランナー用ブランチに入ったあと、そのマシンでも全テストが通りました（<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>）。そのあと、わざと失敗させました。期待する色をすべて青にすると、5 つのコールアウトすべてで赤になりました。</p>
+<p>既知の穴もまだあります。Note と Caution は色差が約 0.119 の 2 つのオレンジを使っていて、0.16 の上限より内側です。この 2 色が入れ替わっても、テストはおそらく気づきません。テストが完全なふりはせず、このことを記録に残しました。</p>
+<p>失敗しようのないテストは何も守りません。画面のカラープロファイルのような、間違った理由で失敗するテストも同じです。1 台のマシンでの緑は、そこでテストが通ったことを示すだけで、名前どおりのものを測っているという意味ではありません。</p>
+
+<h2>テストは何層にも重ねた網</h2>
+<p>すべてを捕まえるテストはひとつもありません。層ごとに網目の違う網があり、ひとつをすり抜けた間違いは次の網にかかるはずです。</p>
+<ul>
+  <!-- src S13 -->
+  <li><strong>参照 PDF：</strong>書き出しエンジン（オープンソースの <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>。<code>marsdawn</code> コマンドもこれで動いています）でサンプルの書類を書き出し、各ページのテキストを記録済みのものと比べます。内容が知らないうちに消えることや、ページ数が変わることを捕まえます。</li>
+  <!-- src S6, S9 -->
+  <li><strong>異なるシステムとビルド：</strong>エンジンは、サポートする最も古い macOS 15 と、アプリを出荷している macOS 26 の両方で、それぞれ debug と release のビルドとして実行します。アプリの全テストは 4 通りの組み合わせで実行します。署名ありと署名なし、それぞれペイウォールのオフとオンです。古いシステムでだけ、あるいはお客さまが実際に受け取るビルドでだけ壊れるものを捕まえます。</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>実機：</strong>アプリの CI は自前の Mac（Mac mini と MacBook Air の両方）で動いています。エンジンのテスト一式をその MacBook Air で試したこと（<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>、いまもオープンな実験ドラフト）が、上のカラープロファイルの不具合を捕まえました。2 台目のマシンは、そのマシンで動いているから通っているだけのテストを捕まえます。</li>
+  <!-- src S12 -->
+  <li><strong>赤になるべき対照群：</strong>アプリの CI には、わざと壊したクリーンアップスクリプトのコピーが 22 個、テスト実行スクリプトのコピーが 20 個あり、それぞれ安全チェックがひとつずつ抜いてあります。テストはそのすべてで失敗しなければなりません。クリーンアップスクリプトは Mac から古いビルドや作業コピーを削除するので、チェックがひとつ欠けるだけで、消してはいけないものを消しかねません。壊したコピーがひとつでも通れば、壊れているのはテストのほうです。</li>
+  <!-- src S3, S15 -->
+  <li><strong>もうひとつの目：</strong>kit #242 のように、マージの前に別のエージェントに変更を検証させるのが私たちのやり方です。使い方の流れに関わる変更は、先にシナリオレビューを通します。「完了」と言いながら終わっていないことや、動くけれど使われる場面を間違えているコードを捕まえます。</li>
+  <!-- src S21 -->
+  <li><strong>マージするのは人です。</strong>どの変更も MarsDawn の開発者本人が確認し、自分でマージします。エージェントやボットがマージすることはありません。</li>
+</ul>
+
+<h2 id="inputs">テストに投げ込むもの</h2>
+<p>網が役に立つかどうかは、何を投げ込むかで決まります。エンジンのテストが与える入力の一部と、それぞれのテストが保証することです。</p>
+<ul>
+  <!-- src S16 -->
+  <li><strong>とても大きなファイル。</strong>私たちのテストマシンで release ビルドを使って測ると、2 MB の書類は 1.5 秒以内に表示され、レイアウトしきれないほど複雑な 5 MB の書類も 1 秒以内にプレーンテキストとして開きます。16 MB を超えるものは、まったく解析せずにテキストとして表示します。</li>
+  <!-- src S16 -->
+  <li><strong>何十万もの行。</strong>1 行 1 語で約 3 MB、80 万行近い書類は、途中で多すぎると判断されます。エンジンはそこで読むのをやめ、プレーンテキストとして表示します。</li>
+  <!-- src S17 -->
+  <li><strong>閉じない記号。</strong>閉じのないブロックの開始記号が 1 MB 分あっても、何万層にも積み重なったブロックでも、同じ 1 MB のプレーンテキストのおよそ 2 倍より長くかかってはいけません。8 階層より深い部分は、それ以上入れ子になりません。</li>
+  <!-- src S18 -->
+  <li><strong>数式。</strong>間違った数式は、ページを壊さずにその場所にエラーを表示します。10,000 文字を超える数式は書かれたまま残し、一度に描くのは書類の最初の 1,000 個までです。数式の中身がリンクや画像、ページのマークアップになることはありません。</li>
+  <!-- src S19 -->
+  <li><strong>Markdown に紛れ込んだ悪意のある HTML。</strong>スクリプトは取り除かれ、実行されることはありません。埋め込みフレームも、ページに表示される前に取り除かれます。リモート画像は許可しないかぎり読み込まず、許可しても安全な（HTTPS の）ものだけを読み込みます。スクリプトのフィルタを外した対照用のコピーもあり、テストはそこで失敗しなければなりません。</li>
+  <!-- src S20 -->
+  <li><strong>悪意のあるテーマファイル。</strong>拒否され、エラーメッセージがファイル内の隠れた制御文字やリンクを繰り返すこともありません。16 KB を超えるテーマファイルは読み込みもしません。</li>
+</ul>
+<!-- src S5 -->
+<p>どれもただではありません。エンジン 1 回分の制限時間は 30 分から 45 分、50 分、70 分、いまは 90 分まで延びました。macOS 15 は全テストが通っていたのに 50 分の上限に 2 回達したことがあり、その後、それまでの手順はすべて通ったまま、最後の手順で 70 分に達したことがあります。</p>
+
+<h2>まねできる 4 つの習慣</h2>
+<ol>
+  <li><strong>書くエージェントと確かめるエージェントを分ける。</strong>確かめる側には、書いたエージェントの説明は付けず、変更そのものと「完了」の条件を渡し、テストを自分で実行して、確かめなかったことを挙げてもらいます。kit #242 では、検証したエージェントが新しいテストを通す前に、MacBook Air で古いテストを実行して失敗するのを確かめました。かかるのは 2 つ目のセッションのトークン代です。</li>
+  <!-- src S14 -->
+  <li><strong>どのテストも一度は失敗するのを見る。</strong>緑に意味があるのは、確かめている対象が本当に間違っているときに、同じテストが赤になるのを見たことがある場合だけです。緑を信じる前に、そのテストが守っているものを壊して（またはエージェントに壊してもらって）赤になるのを見て、元に戻して緑になるのを見ます。エージェントは通るテストを書くのが得意です。だからこそ、失敗するところを見る必要があります。</li>
+  <li><strong>テストを 2 つ目の環境で実行する。</strong>2 台目の Mac がなくてもかまいません。2 つの OS バージョン、あるいは debug ビルドと release ビルドの CI マトリクスで十分なスタートです。探すのは、偶然に通っているだけのテストです。</li>
+  <!-- src S7, S8 -->
+  <li><strong>「テストが 1 つも実行されなかった」を失敗として扱う。</strong>Python 3.9 の <code>unittest</code> は、テストが 1 つも見つからなくても成功として終了します。パスを 1 文字打ち間違えただけで緑になるわけです。私たちの CI はテストの数を読んで 0 なら失敗にし、終了コードだけでなく、まとめに「0 failed」と書かれていることも確かめます。このチェックは、独立した検証で私たち自身の CI のこの穴が見つかってから加えたものです。</li>
+</ol>
+
+<h2>まとめ</h2>
+<!-- src S11 -->
+<p>アプリがバイブコーディングで作られたかどうかより、誰かがテストとメンテナンスを続けているかどうかのほうが大事です。ソフトウェアを選ぶときに確かめる価値があります。テストのしかたを説明しているか。最後に更新されたのはいつか。</p>
+<p>速さはエージェントに任せましょう。確認は、正しいものを測るテストと、結果を読む人に任せます。</p>
+
+<h2>次に</h2>
+<ul>
+  <li>エージェントが書いたものを、それでも人が読まなければならない理由：<a href="/ja/reviewing-ai-output/">AI の出力を人が確認する理由</a>。</li>
+  <li>エージェントが返してくる計画やレポートの読み方：<a href="/ja/reading-agent-output/">エージェントが返してくるものを読む</a>。</li>
+</ul>
+
+<h2>出典</h2>
+<ul>
+  <li>失敗したテストとその原因：<a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>。</li>
+  <li>修正と独立した検証：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>。</li>
+  <li>MacBook Air で CI を試した作業（オープンな実験ドラフト）と実行時間：<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>。</li>
+  <li>書き出しエンジンの CI。制限時間の変遷はコメントにあります：<a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>。</li>
+  <li>アプリのリポジトリは非公開です。上のアプリに関する内容は、その CI ワークフローとテストスクリプトにもとづいています。</li>
 </ul>
 """,
     }

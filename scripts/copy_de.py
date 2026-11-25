@@ -1831,6 +1831,101 @@ plan.md:6: nothing about keeping old links working. Add a step for that, and a w
 """,
     }
 
+    pages['how-we-test'] = {
+        "title": "Wie wir MarsDawn testen: ein Test, zwei Macs · MarsDawn",
+        "description": "Ein Test bestand auf einem Mac und schlug auf einem anderen fehl. Das Produkt war in Ordnung; der Test las die Farben des Bildschirms. Wie wir Tests schichten, und vier Gewohnheiten zum Nachmachen.",
+        "body": r"""<section class="intro">
+  <h1>Ein Test, der auf einem Mac besteht, testet vielleicht nicht, was du denkst.</h1>
+  <!-- src S11 -->
+  <p>Vibe Coding ist nichts Schlechtes, und auch MarsDawn entsteht mit Agenten. Aber Software, auf die man sich verlässt, wird an dem gemessen, was nach der ersten Version kommt: jahrelange Wartung und Sicherheit, und die beginnen mit der Prüfung, dass eine Änderung nichts kaputt gemacht hat.</p>
+</section>
+
+<div class="summary"><p><strong>Ein Test bestand auf einem Mac mini und schlug auf einem MacBook Air fehl. Das Produkt war in Ordnung. Der Test hatte Farben durch das Farbprofil des Bildschirms gelesen, und auf dem Mac mini hatte er nur durch Glück bestanden. Ein zweites Gerät fand einen Fehler im Test, nicht im Code.</strong></p></div>
+<p>Du willst nur wissen, mit welchen extremen oder feindseligen Dateien MarsDawn getestet wird? Dann spring direkt zu <a href="#inputs">Was wir hineinwerfen</a>.</p>
+
+<h2>Der Test, der auf einem MacBook Air fehlschlug</h2>
+<!-- src S4: kit PR #240 (open draft), run 40196953693 -->
+<p>Ein kompletter Durchlauf der Tests der Export-Engine dauert auf dem macOS-15-Runner von GitHub fast eine Stunde: etwa 32 Minuten für den Debug-Build und etwa 25 für den Release-Build. Um das zu verkürzen, haben wir versucht, die macOS-26-Hälfte auf ein eigenes MacBook Air zu verlegen (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>).</p>
+<!-- src S1: kit #241, run 40271990387 -->
+<p>Beim ersten Lauf dort schlug ein Test fehl. Er exportiert ein PDF mit Hinweisboxen (Note, Tip, Warning) und prüft, ob jede am Rand einen Balken in der richtigen Farbe hat, also mit einem Farbabstand unter 0,16. Auf dem MacBook Air lagen die Abstände bei 0,1634, 0,1648 und 0,1796. Auf einem Mac mini, mit demselben Commit und denselben macOS- und Xcode-Versionen, bestand der Test.</p>
+<p>Unser erster Verdacht: Der Export ist kaputt. War er nicht. Mit dem PDF war alles in Ordnung; was sich zwischen den Geräten unterschied, war die Art, wie der Test es las.</p>
+<!-- src S1, S2: kit #241 -->
+<p>Der Test wandelte jede PDF-Seite in ein Bild um und las die Pixel, und macOS zeichnet dieses Bild im Farbraum des Hauptbildschirms. Der Mac mini hing an einem gewöhnlichen externen Monitor, das MacBook Air nutzte sein eingebautes Display. Wir füllten ein Bild mit einem einzigen Orange und lasen es zurück: Aus (0,784; 0,278; 0,106) wurde auf dem Mac mini (0,822; 0,335; 0,179) und auf dem MacBook Air (0,782; 0,395; 0,221).</p>
+<!-- src S3: kit #242 verification comment -->
+<p>Jetzt kommt der entscheidende Teil: Auch auf dem Mac mini hatte der Test nicht die richtigen Farben gelesen. Er lag um bis zu 0,128 daneben, knapp innerhalb der Grenze von 0,16. Er bestand wegen des Monitors, nicht weil er den Balken richtig gemessen hätte.</p>
+<!-- src S3, S10 -->
+<p>Der Fix (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">kit #242</a>) ändert nur den Test: Er zeichnet die Seite in ein Bild mit festem sRGB-Farbraum, sodass kein Bildschirm beteiligt ist. Beide Geräte lesen die Balkenfarben jetzt exakt, mit einem Farbabstand von 0,0, auf dem eingebauten Display des MacBook Air genauso wie auf dem Mac mini. Die CI des Pull Requests lief durch (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40285279080">run 40285279080</a>), und sobald der Fix den Runner-Zweig des MacBook Air erreichte, bestand dort auch die komplette Testsuite (<a href="https://github.com/redtear1115/mars-dawn-kit/actions/runs/40315907904">run 40315907904</a>). Dann haben wir ihn absichtlich scheitern lassen: Mit Blau als erwarteter Farbe überall wurde er für alle fünf Hinweisboxen rot.</p>
+<p>Eine bekannte Lücke hat er noch. Note und Caution verwenden zwei Orangetöne, die etwa 0,119 auseinanderliegen, also innerhalb der Grenze von 0,16. Würden die beiden vertauscht, würde der Test es wahrscheinlich nicht merken. Das haben wir aufgeschrieben, statt so zu tun, als wäre der Test vollständig.</p>
+<p>Ein Test, der nicht fehlschlagen kann, schützt nichts, und einer, der aus dem falschen Grund fehlschlägt, etwa wegen des Farbprofils eines Bildschirms, ebenso wenig. Grün auf einem Gerät heißt nur, dass der Test dort bestanden hat, nicht, dass er misst, was sein Name sagt.</p>
+
+<h2>Tests sind Netze in Schichten</h2>
+<p>Kein einzelner Test fängt alles. Jede Schicht ist ein Netz mit anderer Maschenweite, und ein Fehler, der durch eines rutscht, sollte im nächsten landen:</p>
+<ul>
+  <!-- src S13 -->
+  <li><strong>Referenz-PDFs:</strong> Die Export-Engine (das quelloffene <a href="https://github.com/redtear1115/mars-dawn-kit">mars-dawn-kit</a>, auf dem auch der Befehl <code>marsdawn</code> läuft) exportiert Beispieldokumente, und der Text jeder Seite wird mit einer gespeicherten Fassung verglichen. Das fängt Inhalte, die still verschwinden, oder eine Seitenzahl, die sich ändert.</li>
+  <!-- src S6, S9 -->
+  <li><strong>Verschiedene Systeme und Builds:</strong> Die Engine läuft auf macOS 15, der ältesten unterstützten Version, und auf macOS 26, mit dem die App ausgeliefert wird, jeweils als Debug- und als Release-Build. Die komplette Testsuite der App läuft in vier Kombinationen: signiert und unsigniert, jeweils mit ausgeschalteter und eingeschalteter Paywall. Das fängt, was nur auf einem älteren System kaputtgeht oder nur in dem Build, den die Kundschaft tatsächlich bekommt.</li>
+  <!-- src S1, S4, S7 -->
+  <li><strong>Echte Hardware:</strong> Die CI der App läuft auf eigenen Macs (sowohl dem Mac mini als auch dem MacBook Air), und der Versuch, die Testsuite der Engine auf diesem MacBook Air laufen zu lassen (<a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">kit #240</a>, weiterhin ein offener Entwurf), hat den Farbprofil-Fehler oben gefunden. Ein zweites Gerät fängt Tests, die nur wegen des Geräts bestehen, auf dem sie laufen.</li>
+  <!-- src S12 -->
+  <li><strong>Negativkontrollen:</strong> Die CI der App hält 22 absichtlich kaputte Kopien eines Aufräumskripts und 20 eines Test-Runner-Skripts bereit, jeder fehlt eine Sicherheitsprüfung, und die Tests müssen bei jeder einzelnen fehlschlagen. Das Aufräumskript löscht alte Builds und Arbeitskopien auf einem Mac, eine fehlende Prüfung könnte also das Falsche löschen. Besteht eine kaputte Kopie, ist der Test das, was kaputt ist.</li>
+  <!-- src S3, S15 -->
+  <li><strong>Ein zweites Paar Augen:</strong> Bei uns prüft in der Regel ein separater Agent eine Änderung, bevor sie zusammengeführt wird, wie bei kit #242, und Änderungen an Abläufen in der App bekommen vorher ein Szenario-Review. Das fängt „fertig“, das es nicht ist, und Code, der funktioniert, aber in der falschen Situation.</li>
+  <!-- src S21 -->
+  <li><strong>Zusammenführen tut ein Mensch.</strong> Jede Änderung wird von der Person, die MarsDawn entwickelt, selbst geprüft und zusammengeführt; kein Agent und kein Bot führt etwas zusammen.</li>
+</ul>
+
+<h2 id="inputs">Was wir hineinwerfen</h2>
+<p>Die Netze sind nur so gut wie das, was hineinkommt. Ein paar der Eingaben, mit denen die Tests die Engine füttern, und was jeder Test sicherstellt:</p>
+<ul>
+  <!-- src S16 -->
+  <li><strong>Sehr große Dateien.</strong> Auf unserem Testgerät, im Release-Build gemessen, wird ein 2-MB-Dokument in weniger als anderthalb Sekunden dargestellt, und ein 5-MB-Dokument, das zu komplex für das Layout ist, öffnet sich trotzdem innerhalb einer Sekunde als reiner Text. Alles über 16 MB wird als Text angezeigt, ohne überhaupt geparst zu werden.</li>
+  <!-- src S16 -->
+  <li><strong>Hunderttausende Zeilen.</strong> Etwa 3 MB Zeilen mit je einem Wort, knapp 800.000 davon, werden unterwegs als zu viel erkannt: Die Engine hört dort auf zu lesen und zeigt die Datei als reinen Text.</li>
+  <!-- src S17 -->
+  <li><strong>Markierungen, die nie schließen.</strong> Ein Megabyte öffnender Abschnittsmarken ohne Gegenstück oder Zehntausende übereinandergestapelte dürfen höchstens etwa doppelt so lange brauchen wie ein Megabyte reiner Text. Ab der achten Ebene wird nichts mehr tiefer verschachtelt.</li>
+  <!-- src S18 -->
+  <li><strong>Formeln.</strong> Eine fehlerhafte Formel zeigt an ihrer Stelle einen Fehler, statt die Seite kaputt zu machen. Eine mit mehr als 10.000 Zeichen bleibt, wie sie geschrieben ist, es werden jeweils nur die ersten 1.000 eines Dokuments gezeichnet, und nichts in einer Formel kann zu einem Link, einem Bild oder Seiten-Markup werden.</li>
+  <!-- src S19 -->
+  <li><strong>Feindseliges HTML in Markdown.</strong> Skripte werden entfernt und nie ausgeführt, eingebettete Frames werden entfernt, bevor die Seite sie zeigt. Bilder aus dem Netz bleiben aus, solange du sie nicht erlaubst, und auch dann laden nur sichere (HTTPS). In einer Kontrollkopie ist der Skriptfilter entfernt, und der Test muss an ihr fehlschlagen.</li>
+  <!-- src S20 -->
+  <li><strong>Eine feindselige Theme-Datei.</strong> Sie wird abgelehnt, und die Fehlermeldung wiederholt nie versteckte Steuerzeichen oder Links aus der Datei. Theme-Dateien über 16 KB werden gar nicht erst gelesen.</li>
+</ul>
+<!-- src S5 -->
+<p>Nichts davon ist umsonst. Das Zeitlimit für einen Engine-Lauf ist von 30 Minuten auf 45, dann 50, dann 70 und jetzt auf 90 gestiegen. macOS 15 ist zweimal an das 50-Minuten-Limit gestoßen, obwohl jeder Test bestand, und später im letzten Schritt auf 70 Minuten gekommen, während jeder Schritt davor bestanden hatte.</p>
+
+<h2>Vier Gewohnheiten zum Nachmachen</h2>
+<ol>
+  <li><strong>Trenne den Agenten, der schreibt, von dem, der prüft.</strong> Gib dem prüfenden die Änderung und was „fertig“ heißt, ohne die Erklärung des schreibenden Agenten, und lass ihn die Tests selbst ausführen und sagen, was er nicht geprüft hat. Bei kit #242 ließ der prüfende Agent den alten Test auf dem MacBook Air laufen, um ihn scheitern zu sehen, bevor er den neuen durchgehen ließ. Das kostet die Tokens einer zweiten Sitzung.</li>
+  <!-- src S14 -->
+  <li><strong>Sieh jeden Test einmal fehlschlagen.</strong> Grün ist nur etwas wert, wenn du denselben Test schon rot gesehen hast, als das, was er prüft, wirklich falsch war. Bevor du einem grünen Haken traust, mach also kaputt, was er bewacht (oder lass den Agenten das tun), sieh ihn rot werden, setz es zurück und sieh ihn grün werden. Agenten sind gut darin, Tests zu schreiben, die bestehen; genau deshalb musst du sie scheitern sehen.</li>
+  <li><strong>Lass deine Tests in einer zweiten Umgebung laufen.</strong> Kein zweiter Mac? Eine CI-Matrix mit zwei OS-Versionen oder mit einem Debug- und einem Release-Build ist ein guter Anfang. Du suchst Tests, die nur zufällig bestehen.</li>
+  <!-- src S7, S8 -->
+  <li><strong>Werte „keine Tests gelaufen“ als Fehlschlag.</strong> <code>unittest</code> in Python 3.9 beendet sich erfolgreich, wenn es überhaupt keine Tests findet; ein Tippfehler im Pfad bringt dir also einen grünen Haken. Unsere CI liest die Anzahl, schlägt bei null fehl und prüft, dass die Zusammenfassung „0 failed“ sagt, statt nur auf den Exit-Code zu schauen. Diese Kontrolle kam dazu, nachdem eine unabhängige Verifikation genau diese Lücke in unserer eigenen CI gefunden hatte.</li>
+</ol>
+
+<h2>Kurz gesagt</h2>
+<!-- src S11 -->
+<p>Ob eine App per Vibe Coding entstanden ist, zählt weniger als die Frage, ob jemand sie weiter testet und pflegt. Das lohnt sich bei der Wahl von Software zu prüfen: Steht irgendwo, wie sie getestet wird, und wann wurde sie zuletzt aktualisiert?</p>
+<p>Lass den Agenten schnell sein. Das Prüfen überlass Tests, die das Richtige messen, und einem Menschen, der das Ergebnis liest.</p>
+
+<h2>Weiter</h2>
+<ul>
+  <li>Warum ein Mensch trotzdem lesen muss, was ein Agent geschrieben hat: <a href="/de/reviewing-ai-output/">Warum KI-Ergebnisse weiterhin einen menschlichen Leser brauchen</a>.</li>
+  <li>Wie du die Pläne und Berichte liest, die ein Agent zurückgibt: <a href="/de/reading-agent-output/">Lesen, was dein Agent zurückgibt</a>.</li>
+</ul>
+
+<h2>Quellen</h2>
+<ul>
+  <li>Der fehlschlagende Test und seine Ursache: <a href="https://github.com/redtear1115/mars-dawn-kit/issues/241">mars-dawn-kit #241</a>.</li>
+  <li>Der Fix und seine unabhängige Prüfung: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/242">mars-dawn-kit #242</a>.</li>
+  <li>Die CI auf einem MacBook Air ausprobieren (offener Entwurf), mit Laufzeiten: <a href="https://github.com/redtear1115/mars-dawn-kit/pull/240">mars-dawn-kit #240</a>.</li>
+  <li>Die CI der Export-Engine, mit der Geschichte ihres Zeitlimits in den Kommentaren: <a href="https://github.com/redtear1115/mars-dawn-kit/blob/main/.github/workflows/ci.yml">ci.yml</a>.</li>
+  <li>Das Repository der App ist privat; die Angaben zur App oben stammen aus ihrem CI-Workflow und ihren Testskripten.</li>
+</ul>
+""",
+    }
+
     # /templates/ pages (scripts/templates_pages.py), one entry per table there, for #162 to merge.
     # The downloads are TEMPLATES byte for byte; Mermaid node labels are translated, as in ja.
     templates = {
@@ -2004,7 +2099,7 @@ Teilnehmende: _Namen_
     }
 
     app_ui_languages = 'Englisch, traditionelles Chinesisch, vereinfachtes Chinesisch, Japanisch, Deutsch, Französisch, Spanisch und Koreanisch'
-    ui = {'features': 'Funktionen', 'home': 'MarsDawn', 'privacy': 'Datenschutzrichtlinie', 'support': 'Support', 'cli': 'Befehlszeile', 'agents': 'marsdawn für Agenten', 'using_cli': 'Die CLI verwenden', 'markdown-to-pdf': 'Markdown zu PDF', 'skill': 'Agent-Skill', 'view-markdown-on-mac': 'So öffnest du .md-Dateien auf dem Mac', 'mermaid-preview-mac': 'Mermaid-Vorschau auf dem Mac', 'vs-macmd-viewer': 'MacMD Viewer vs. MarsDawn', 'updated': f'Zuletzt aktualisiert am {k.UPDATED}', 'tagline': 'Lies, was dein Agent geschrieben hat.', 'slogan': 'Ein neuer Morgen für Markdown.', 'footer_store': f'MarsDawn gibt es im <a href="{k.LISTING_URL}">Mac App Store</a>.', 'footer_nav': 'Website', 'more': 'Mehr', 'yours': 'Deine Texte bleiben auf deinem Mac', 'pay-once': 'Kostenlos testen, einmal bezahlen', 'pdf': 'PDF-Export', 'native': 'Eine Mac-App', 'limits': 'Was MarsDawn nicht kann', 'mcp': 'MCP-Server', 'token-efficient-review': 'Review mit wenigen Tokens', 'vs-markdown-preview-tools': 'Markdown anderswo ansehen vs. MarsDawn', 'themes': 'Themen', 'themes-new': 'Ein Thema erstellen', 'themes-agents': 'Mit deinem Agenten ein Thema erstellen', 'themes-gallery': 'Themen-Galerie', 'sharing-exported-pdfs': 'Exportierte PDFs teilen', 'reviewing-ai-output': 'Warum KI-Ergebnisse weiterhin einen menschlichen Leser brauchen', 'reading-agent-output': 'Lesen, was dein Agent zurückgibt', 'agent-transparency': 'Transparenz von Agenten', 'reviewing-agent-plans': 'Den Plan eines Agenten prüfen', 'agent-design-patterns': 'Entwurfsmuster für Agenten', 'changelog': 'Änderungsprotokoll', 'roadmap': 'Roadmap', 'reading-notes': 'Lektürenotizen der Redaktion', 'reading-notes-anthropic': 'Lektürenotizen: Anthropic', 'reading-notes-chip-huyen': 'Lektürenotizen: Chip Huyen', 'reading-notes-lilian-weng': 'Lektürenotizen: Lilian Weng', 'reading-notes-harrison-chase': 'Lektürenotizen: Harrison Chase', 'reading-notes-langchain': 'Lektürenotizen: LangChain (Jess Ou)', 'reading-notes-andrew-ng': 'Lektürenotizen: Andrew Ng', 'consent_text': 'Wir nutzen Analyse-Cookies. Sie bleiben aus, bis du zustimmst.', 'consent_accept': 'Akzeptieren', 'consent_decline': 'Ablehnen', 'consent_aria': 'Cookie-Einwilligung', 'cookie_settings': 'Cookie-Einstellungen', 'view_markdown_source': 'Markdown-Quelltext ansehen'}
+    ui = {'features': 'Funktionen', 'home': 'MarsDawn', 'privacy': 'Datenschutzrichtlinie', 'support': 'Support', 'cli': 'Befehlszeile', 'agents': 'marsdawn für Agenten', 'using_cli': 'Die CLI verwenden', 'markdown-to-pdf': 'Markdown zu PDF', 'skill': 'Agent-Skill', 'view-markdown-on-mac': 'So öffnest du .md-Dateien auf dem Mac', 'mermaid-preview-mac': 'Mermaid-Vorschau auf dem Mac', 'vs-macmd-viewer': 'MacMD Viewer vs. MarsDawn', 'updated': f'Zuletzt aktualisiert am {k.UPDATED}', 'tagline': 'Lies, was dein Agent geschrieben hat.', 'slogan': 'Ein neuer Morgen für Markdown.', 'footer_store': f'MarsDawn gibt es im <a href="{k.LISTING_URL}">Mac App Store</a>.', 'footer_nav': 'Website', 'more': 'Mehr', 'yours': 'Deine Texte bleiben auf deinem Mac', 'pay-once': 'Kostenlos testen, einmal bezahlen', 'pdf': 'PDF-Export', 'native': 'Eine Mac-App', 'limits': 'Was MarsDawn nicht kann', 'mcp': 'MCP-Server', 'token-efficient-review': 'Review mit wenigen Tokens', 'vs-markdown-preview-tools': 'Markdown anderswo ansehen vs. MarsDawn', 'themes': 'Themen', 'themes-new': 'Ein Thema erstellen', 'themes-agents': 'Mit deinem Agenten ein Thema erstellen', 'themes-gallery': 'Themen-Galerie', 'sharing-exported-pdfs': 'Exportierte PDFs teilen', 'reviewing-ai-output': 'Warum KI-Ergebnisse weiterhin einen menschlichen Leser brauchen', 'reading-agent-output': 'Lesen, was dein Agent zurückgibt', 'agent-transparency': 'Transparenz von Agenten', 'reviewing-agent-plans': 'Den Plan eines Agenten prüfen', 'agent-design-patterns': 'Entwurfsmuster für Agenten', 'how-we-test': 'So testen wir', 'changelog': 'Änderungsprotokoll', 'roadmap': 'Roadmap', 'reading-notes': 'Lektürenotizen der Redaktion', 'reading-notes-anthropic': 'Lektürenotizen: Anthropic', 'reading-notes-chip-huyen': 'Lektürenotizen: Chip Huyen', 'reading-notes-lilian-weng': 'Lektürenotizen: Lilian Weng', 'reading-notes-harrison-chase': 'Lektürenotizen: Harrison Chase', 'reading-notes-langchain': 'Lektürenotizen: LangChain (Jess Ou)', 'reading-notes-andrew-ng': 'Lektürenotizen: Andrew Ng', 'consent_text': 'Wir nutzen Analyse-Cookies. Sie bleiben aus, bis du zustimmst.', 'consent_accept': 'Akzeptieren', 'consent_decline': 'Ablehnen', 'consent_aria': 'Cookie-Einwilligung', 'cookie_settings': 'Cookie-Einstellungen', 'view_markdown_source': 'Markdown-Quelltext ansehen'}
     store_chip = 'Im Mac App Store'
     trait_link = {'features': ('Funktionen', 'Alles, was MarsDawn kann, auf einer Seite.'), 'yours': ('Deine Texte bleiben auf deinem Mac', 'Kein Konto, keine Synchronisierung, keine Cloud.'), 'pay-once': ('Kostenlos testen, einmal bezahlen', '14 Tage kostenlos, danach einmalig 4,99 USD. Kein Abo.'), 'pdf': ('PDF-Export', 'Diagramme, hervorgehobener Code, saubere Seitenumbrüche.'), 'native': ('Eine Mac-App', 'Native Fenster und Tabs, automatisches Sichern, Übersicht.'), 'limits': ('Was MarsDawn nicht kann', 'Gut zu wissen, bevor du kaufst.')}
     trait_nav_heading = 'Was du von MarsDawn erwarten kannst'
