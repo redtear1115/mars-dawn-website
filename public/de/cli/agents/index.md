@@ -1,5 +1,7 @@
 # marsdawn für Agenten
 
+Black-Friday-Angebot: Der einmalige Kauf zum Freischalten kostet bis 30. November die Hälfte, 2,49 USD statt 4,99 USD. Ab dem 1. Dezember kostet er wieder 4,99 USD. <!-- sale-line -->
+
 Eine Referenz für KI-Agenten und Skripte, die das Befehlszeilenwerkzeug `marsdawn` aufrufen. Jedes Beispiel auf dieser Seite wurde mit dem aus dem aktuellen Quellcode gebauten Werkzeug ausgeführt.
 
 **Um eine Markdown-Datei in ein PDF umzuwandeln, führe `marsdawn export notes.md --json` aus und lies ein JSON-Objekt von stdout.** Mermaid-Diagramme und hervorgehobener Code werden genauso gerendert wie in der MarsDawn-App. `export` braucht die App nicht, `open` schon.
@@ -82,8 +84,8 @@ Mit einem Ordner (marsdawn 0.5.1 und neuer), Exit-Code 0:
 {"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}
 ```
 
-- `folder`: nur vorhanden, wenn ein Ordner angegeben wurde. `path` ist sein absoluter Pfad. `requested` ist immer `true`: marsdawn hat MarsDawn gebeten, den Ordner anzuzeigen, und kann nicht wissen, ob die Seitenleiste ihn zeigt, denn die App fragt den Menschen womöglich erst nach Zugriff. Melde es als angefragt, nicht als erledigt.
-- Mit `--wait` über 0 und MarsDawn 1.0.2 oder neuer enthält `folder` nach dem Warten auch `status`: `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable` oder `unknown`. Nur zusammen mit `needsUser` enthält es `waitingFor`: `confirmation` oder `folderChoice`. Ohne `--wait` oder mit einer App ohne Rückmeldung bleibt `folder` bei `{"path": …, "requested": true}`. Ein `--wait` außerhalb von 0 bis 30 endet mit Code 64 und `error: "wait_out_of_range"`. (marsdawn 0.5.3 und neuer.)
+- `folder`: nur vorhanden, wenn ein Ordner angegeben wurde. `path` ist sein absoluter Pfad. `requested` ist immer `true`: marsdawn hat MarsDawn gebeten, den Ordner anzuzeigen. Ob die Seitenleiste ihn zeigt, entscheidet die App, und sie fragt den Menschen womöglich erst nach Zugriff. Mit MarsDawn 1.0.2 oder neuer sagt `status` im nächsten Punkt, was passiert ist, außer bei `--wait 0`. Ohne `status` kann marsdawn es nicht wissen, also melde es als angefragt, nicht als erledigt.
+- Mit MarsDawn 1.0.2 oder neuer enthält `folder` nach dem Warten (`--wait`, Standard 2 Sekunden) auch `status`: `attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable` oder `unknown`. Nur zusammen mit `needsUser` enthält es `waitingFor`: `confirmation` oder `folderChoice`. Mit `--wait 0` oder mit einer App ohne Rückmeldung bleibt `folder` bei `{"path": …, "requested": true}`. Ein `--wait` außerhalb von 0 bis 30 endet mit Code 64 und `error: "wait_out_of_range"`. (marsdawn 0.5.3 und neuer.)
 - `opened` ist leer, wenn nur ein Ordner angegeben wurde.
 
 marsdawn 0.2.x gab `opened` als Liste von Pfad-Strings aus. Prüfe `marsdawn --version`, wenn du beides verarbeiten musst.
@@ -159,8 +161,13 @@ Mit `--json` gibt ein Fehler ein JSON-Objekt auf stdout aus und endet mit seinem
 - `3`, `app_not_installed`: MarsDawn ist nicht installiert. Nur `open` liefert das.
 - `4`, `output_exists`: Die Ausgabedatei existiert. Übergib `--force`.
 - `5`, `export_failed`: Der Export selbst ist fehlgeschlagen.
+- `5`, `input_too_large`: Die Eingabe ist größer als 16 MiB, also wurde nichts geschrieben. Nur `export` liefert das.
 - `6`, `app_cannot_open_folders`: Dieses MarsDawn kann keinen Ordner anzeigen, also wurde nichts geöffnet. Nur `open` liefert das.
-- `64`: Bedienungsfehler, etwa eine unbekannte Option, ein ungültiger Wert, eine Zeile außerhalb des Bereichs, `--line` mit mehr als einer Datei oder mit einem Ordner, mehr als ein Ordner oder `-a`. Dieser wird als Text auf stderr ausgegeben, auch mit `--json`.
+- `7`, `skill_install_failed`: `skill --install` konnte den Ordner nicht anlegen oder die Datei nicht schreiben. Eine vorhandene SKILL.md bleibt unverändert.
+- `64`: Bedienungsfehler. Die meisten, etwa eine unbekannte Option, ein ungültiger Wert, eine Zeile außerhalb des Bereichs, `--line` mit mehr als einer Datei oder mit einem Ordner, mehr als ein Ordner oder `-a`, werden als Text auf stderr ausgegeben, auch mit `--json`. Diese haben ein eigenes `error` und geben wie jeder andere Fehler JSON auf stdout aus:
+  - `wait_out_of_range`: `open --wait` außerhalb von 0 bis 30.
+  - `skill_differs`, `skill_unsafe_symlink`, `skill_target_not_a_file`, `skill_unreadable`: `skill --install` hat das Schreiben verweigert.
+  - `output_folder_missing`, `output_symlink`, `output_not_a_file`: `theme preview` hat den Pfad von `-o` abgelehnt.
 
 ## JSON-Schemas
 
@@ -169,7 +176,8 @@ JSON Schema (Draft 2020-12) für jedes `--json`-Ergebnis:
 - [export.v1.json](/schemas/cli/export.v1.json): export erfolgreich
 - [open.v4.json](/schemas/cli/open.v4.json): open erfolgreich, marsdawn 0.5.3 und neuer, mit `status` und `waitingFor` des Ordners
 - [open.v3.json](/schemas/cli/open.v3.json): open erfolgreich, marsdawn 0.5.1 und 0.5.2, einschließlich eines in der Seitenleiste angezeigten Ordners
-- [error.v3.json](/schemas/cli/error.v3.json): Fehler, alle Befehle, marsdawn 0.7.1 und neuer, mit `input_too_large` (Code 5) und `skill_install_failed` (Code 7)
+- [error.v4.json](/schemas/cli/error.v4.json): Fehler, alle Befehle, marsdawn 0.7.1 und neuer, einschließlich der Bedienungsfehler, die mit Code 64 JSON ausgeben
+- [error.v3.json](/schemas/cli/error.v3.json): Fehler, alle Befehle, marsdawn 0.7.1 und neuer, ohne die Arten mit Code 64; ersetzt durch error.v4.json
 - [error.v2.json](/schemas/cli/error.v2.json): Fehler, beide Befehle, marsdawn 0.5.2 bis 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open erfolgreich, marsdawn 0.3.0 bis 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open erfolgreich, marsdawn 0.2.x, wo `opened` eine Liste von Pfaden war
@@ -213,10 +221,10 @@ swift build -c release --product marsdawn
 
 ## Mehr
 
-- [MarsDawn](https://marsdawn.southern-light.dev/de/index.md): Lies Markdown, JSON und YAML deines Agenten nativ auf dem Mac: Live-Vorschau, Mermaid, KaTeX, Übersicht, PDF-Export. Kostenlos testen, dann einmal 4,99 USD.
+- [MarsDawn](https://marsdawn.southern-light.dev/de/index.md): Lies Markdown, JSON und YAML deines Agenten nativ auf dem Mac: Live-Vorschau, Mermaid, KaTeX, Übersicht, PDF-Export. Kostenlos testen, dann einmal 2,49 USD.
 - [Funktionen](https://marsdawn.southern-light.dev/de/features/index.md): Nativer Mac-Editor für Markdown, JSON und YAML: Live-Vorschau, Mermaid, Formeln, Themes und saubere PDF- und Druckseiten für Besprechungen und Papierakten.
 - [Deine Texte bleiben auf deinem Mac](https://marsdawn.southern-light.dev/de/yours/index.md): MarsDawn hat kein Konto, keine Synchronisierung und keine Cloud. Deine Markdown-Dokumente bleiben auf deinem Mac, in den Dateien und Ordnern, die du wählst.
-- [Kostenlos testen, einmal bezahlen](https://marsdawn.southern-light.dev/de/pay-once/index.md): MarsDawn ist kostenlos zum Herunterladen. Teste alles 14 Tage lang und schalte es dann einmalig für 4,99 USD frei. Kein Abo, kein Konto.
+- [Kostenlos testen, einmal bezahlen](https://marsdawn.southern-light.dev/de/pay-once/index.md): MarsDawn ist kostenlos zum Herunterladen. Teste alles 14 Tage lang und schalte es dann einmalig für 2,49 USD frei. Kein Abo, kein Konto.
 - [Drucken und PDF](https://marsdawn.southern-light.dev/de/pdf/index.md): Sieh dir dein Markdown in der Vorschau an, drucke es dann oder sichere es als PDF, im Layout Dokument, Handbuch oder Handout, mit Diagrammen und farbigem Code.
 - [Eine Mac-App](https://marsdawn.southern-light.dev/de/native/index.md): Ein Markdown-Editor, der eine echte Mac-App ist: native Fenster und Tabs, automatisches Sichern, Versionsverlauf, Übersicht im Finder und ein Texteditor, der sich wie ein Mac verhält.
 - [Was MarsDawn nicht kann](https://marsdawn.southern-light.dev/de/limits/index.md): Keine Synchronisierung, kein Bearbeiten auf iPhone oder iPad, keine Plug-ins, keine Konten. Themen, aber kein eigenes CSS. Vor dem Kauf gut zu wissen.
@@ -229,7 +237,7 @@ swift build -c release --product marsdawn
 - [Von HackMD auf den Mac](https://marsdawn.southern-light.dev/de/from-hackmd/index.md): Lade deine HackMD-Notizen als .md herunter und lies sie in MarsDawn auf dem Mac. Alle Notizen herunterladen, ein GitHub-Repository nutzen und Bilder retten.
 - [Markdown zu PDF](https://marsdawn.southern-light.dev/de/markdown-to-pdf/index.md): Wandle Markdown auf dem Mac mit dem kostenlosen Befehlszeilenwerkzeug marsdawn in ein PDF um. Mit Homebrew installieren, einen Befehl ausführen: Tabellen, Mathematik, Mermaid und Code.
 - [MarsDawn im Vergleich: VS-Code-Vorschau, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/de/vs/index.md): Für alle, die entscheiden, wie sie Markdown auf dem Mac lesen und prüfen, oft das, was ein Agent geschrieben hat. Jede Zelle unten stammt von den Seiten des Herstellers oder aus unserer eigenen Prüfung, alles am 16. Oktober 2026, außer der PDF-Zelle von MarsDawn, aktualisiert am 7. November 2026; Produkte ändern sich, also kann eine Zelle veralten. Wenn du einen Fehler findest, schreib an die Adresse auf Support.
-- [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/de/vs/macmd-viewer/index.md): MacMD Viewer ist ein Markdown-Viewer nur zum Lesen für 19,99 USD. MarsDawn bearbeitet und zeigt die Vorschau daneben: 14 Tage kostenlos, dann einmalig 4,99 USD.
+- [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/de/vs/macmd-viewer/index.md): MacMD Viewer ist ein Markdown-Viewer nur zum Lesen für 19,99 USD. MarsDawn bearbeitet und zeigt die Vorschau daneben: 14 Tage kostenlos, dann einmalig 2,49 USD.
 - [Der beste Markdown-Viewer für den Mac (2026)](https://marsdawn.southern-light.dev/de/best-markdown-viewer-mac/index.md): Acht Markdown-Viewer für den Mac im Vergleich: Preis, Mermaid, Formeln, PDF, Live-Neuladen, Übersicht, nativ oder Electron, und für wen sich jeder eignet.
 - [Befehlszeile](https://marsdawn.southern-light.dev/de/cli/index.md): Das kostenlose Befehlszeilenprogramm marsdawn für den Mac: Markdown aus einer Shell, einem Skript oder einem LLM-Agenten als PDF exportieren, mit JSON-Ausgabe. Installation mit Homebrew.
 - [Agent-Skill](https://marsdawn.southern-light.dev/de/cli/skill/index.md): Eine Datei, die dein Coding-Agent lädt, um geschriebenes Markdown zur Prüfung in MarsDawn zu öffnen, marsdawn zu installieren, Markdown als PDF zu exportieren und das JSON-Ergebnis zu lesen.

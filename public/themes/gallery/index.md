@@ -1,6 +1,8 @@
 # Theme gallery
 
-Preview themes for MarsDawn, each reviewed and merged by the developer before it appears here. The eight so far are made by Southern Light, four of them adapted from well-known palettes. Filter by scenario, or [build your own](/themes/new/) in the browser: submitting opens a GitHub issue that asks for review, with no install and no git.
+Black Friday: the one-time unlock is half price, USD 2.49 instead of USD 4.99, through 30 November. It returns to USD 4.99 on 1 December. <!-- sale-line -->
+
+Preview themes for MarsDawn, each reviewed and merged by the developer before it appears here. So far they are all made by Southern Light, some of them adapted from well-known palettes. Filter by scenario, or [build your own](/themes/new/) in the browser: submitting opens a GitHub issue that asks for review, with no install and no git.
 
 All
 
@@ -12,6 +14,10 @@ Formal output
 
 Notes & sharing
 
+- [![Catppuccin Frappé — light preview](/themes/v1/catppuccin-frappe/1.0.0/preview-light.png)](/themes/v1/catppuccin-frappe/1.0.0/preview-light.png)[![Catppuccin Frappé — dark preview](/themes/v1/catppuccin-frappe/1.0.0/preview-dark.png)](/themes/v1/catppuccin-frappe/1.0.0/preview-dark.png) **Catppuccin Frappé** v1.0.0 Soothing pastels: Frappé by night, Latte by day — adapted from Catppuccin, adjusted for readability Technical docs Agent review by charliie Report Report by email
+- [![Catppuccin Macchiato — light preview](/themes/v1/catppuccin-macchiato/1.0.0/preview-light.png)](/themes/v1/catppuccin-macchiato/1.0.0/preview-light.png)[![Catppuccin Macchiato — dark preview](/themes/v1/catppuccin-macchiato/1.0.0/preview-dark.png)](/themes/v1/catppuccin-macchiato/1.0.0/preview-dark.png) **Catppuccin Macchiato** v1.0.0 Soothing pastels: Macchiato by night, Latte by day — adapted from Catppuccin, adjusted for readability Technical docs Agent review by charliie Report Report by email
+- [![Catppuccin Mocha — light preview](/themes/v1/catppuccin-mocha/1.0.0/preview-light.png)](/themes/v1/catppuccin-mocha/1.0.0/preview-light.png)[![Catppuccin Mocha — dark preview](/themes/v1/catppuccin-mocha/1.0.0/preview-dark.png)](/themes/v1/catppuccin-mocha/1.0.0/preview-dark.png) **Catppuccin Mocha** v1.0.0 Soothing pastels: Mocha by night, Latte by day — adapted from Catppuccin, adjusted for readability Technical docs Agent review by charliie Report Report by email
+- [![Christmas — light preview](/themes/v1/christmas/1.0.0/preview-light.png)](/themes/v1/christmas/1.0.0/preview-light.png)[![Christmas — dark preview](/themes/v1/christmas/1.0.0/preview-dark.png)](/themes/v1/christmas/1.0.0/preview-dark.png) **Christmas** v1.0.0 A Christmas reading palette: berry-red headings on a warm cream page, with a wine-black dark version Notes & sharing by Southern Light Report Report by email
 - [![Dracula — light preview](/themes/v1/dracula/1.0.1/preview-light.png)](/themes/v1/dracula/1.0.1/preview-light.png)[![Dracula — dark preview](/themes/v1/dracula/1.0.1/preview-dark.png)](/themes/v1/dracula/1.0.1/preview-dark.png) **Dracula** v1.0.1 The classic dark vampire palette, with Alucard by day — adapted from Dracula Theme, adjusted for readability Technical docs Agent review by Southern Light [Credits & licence](/themes/third-party-notices.html#dracula) Report Report by email
 - [![Gruvbox — light preview](/themes/v1/gruvbox/1.0.1/preview-light.png)](/themes/v1/gruvbox/1.0.1/preview-light.png)[![Gruvbox — dark preview](/themes/v1/gruvbox/1.0.1/preview-dark.png)](/themes/v1/gruvbox/1.0.1/preview-dark.png) **Gruvbox** v1.0.1 A warm retro palette of cream, brown and orange — adapted from Gruvbox, adjusted for readability Technical docs Notes & sharing by Southern Light [Credits & licence](/themes/third-party-notices.html#gruvbox) Report Report by email
 - [![Guide — light preview](/themes/v1/guide/1.0.1/preview-light.png)](/themes/v1/guide/1.0.1/preview-light.png)[![Guide — dark preview](/themes/v1/guide/1.0.1/preview-dark.png)](/themes/v1/guide/1.0.1/preview-dark.png) **Guide** v1.0.1 A cool white background with navy headings and clear blue links, larger type for user guides, tutorials and READMEs Technical docs by Southern Light Report Report by email
@@ -33,10 +39,10 @@ Use the "Report" button on its card (it needs JavaScript), or write directly to 
 
 ## More
 
-- [MarsDawn](https://marsdawn.southern-light.dev/index.md): Read and review your agent's Markdown, JSON and YAML natively on Mac: live preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 4.99 once.
+- [MarsDawn](https://marsdawn.southern-light.dev/index.md): Read and review your agent's Markdown, JSON and YAML natively on Mac: live preview, Mermaid, KaTeX, Quick Look, PDF export. Free to try, USD 2.49 once.
 - [Features](https://marsdawn.southern-light.dev/features/index.md): A native Mac editor for Markdown, JSON and YAML: live preview, Mermaid and math, themes, plus clean PDF and print pages for meetings and records.
 - [Your writing stays on your Mac](https://marsdawn.southern-light.dev/yours/index.md): MarsDawn has no account, no sync and no cloud. Your Markdown documents stay on your Mac, in the files and folders you choose.
-- [Try free, pay once](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 4.99. No subscription, no account.
+- [Try free, pay once](https://marsdawn.southern-light.dev/pay-once/index.md): MarsDawn is free to download. Try everything for 14 days, then unlock it once for USD 2.49. No subscription, no account.
 - [Print & PDF](https://marsdawn.southern-light.dev/pdf/index.md): Preview your Markdown, then print it or save it as a PDF on your Mac, in Document, Handbook or Handout layout, with diagrams and code colors intact.
 - [A Mac app](https://marsdawn.southern-light.dev/native/index.md): A Markdown editor that is a real Mac app: native windows and tabs, autosave, version history, Quick Look in Finder and a text editor that behaves like a Mac.
 - [What MarsDawn doesn't do](https://marsdawn.southern-light.dev/limits/index.md): No sync, no editing on iPhone or iPad, no plugins, no accounts. Themes, but no custom CSS. Know before you buy.
@@ -49,7 +55,7 @@ Use the "Report" button on its card (it needs JavaScript), or write directly to 
 - [Move from HackMD to your Mac](https://marsdawn.southern-light.dev/from-hackmd/index.md): Download your HackMD notes as .md files and read them in MarsDawn on your Mac. How to download every note, use a GitHub repo, and keep your images working.
 - [Markdown to PDF](https://marsdawn.southern-light.dev/markdown-to-pdf/index.md): Convert Markdown to PDF on a Mac with the free marsdawn command-line tool. Install it with Homebrew and run one command: tables, math, Mermaid and code.
 - [MarsDawn compared: VS Code preview, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/vs/index.md): For anyone choosing how to read and review Markdown on a Mac, often what an agent wrote. Every cell below comes from the vendor's own pages or our own check, all on 16 October 2026, except MarsDawn's PDF cell, updated on 7 November 2026; products change, so a cell can go stale. If you spot a mistake, write to the address on Support.
-- [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer is a read-only Markdown viewer for USD 19.99. MarsDawn edits and previews side by side: free for 14 days, then USD 4.99 once.
+- [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/vs/macmd-viewer/index.md): MacMD Viewer is a read-only Markdown viewer for USD 19.99. MarsDawn edits and previews side by side: free for 14 days, then USD 2.49 once.
 - [Best Markdown viewer for Mac (2026)](https://marsdawn.southern-light.dev/best-markdown-viewer-mac/index.md): Eight Markdown viewers for Mac compared by price, Mermaid, math, PDF, live reload, Quick Look and native vs Electron, with who each one suits.
 - [Command Line](https://marsdawn.southern-light.dev/cli/index.md): The free marsdawn command-line tool for Mac: export Markdown to PDF from a shell, a script or an LLM agent, with JSON output. Install it with Homebrew.
 - [marsdawn for agents](https://marsdawn.southern-light.dev/cli/agents/index.md): A reference for AI agents and scripts that call marsdawn to turn Markdown into PDF: commands, JSON output, schemas, exit codes and requirements.

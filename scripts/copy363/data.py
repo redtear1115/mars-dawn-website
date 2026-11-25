@@ -4,10 +4,10 @@ SOURCES = {'A': {'id': 6800152890,
        'issue': 363,
        'sha256': 'b3a6dd06c7a8555794d6ae2f16b642fd853a4904d8f2901e22631dbd1c3ad8c7',
        'updated_at': '2026-11-11T15:38:36Z'},
- 'date': {'id': 6908362373,
+ 'date': {'id': 7134613032,
           'issue': 363,
-          'sha256': '86208cf5dc9df572403e4a6d9d4c2bd511bb09c83e24044671551a3e58d1ffaa',
-          'updated_at': '2026-11-16T05:39:09Z'},
+          'sha256': '6e8c6e6eff86f2d13d0c83cbf95a845a669c29803cc401ea876b5214d93bc0ba',
+          'updated_at': '2026-11-24T14:35:01Z'},
  'decision': {'id': 6801523231,
               'issue': 363,
               'sha256': 'd54b239f7961f3900f360592bd6287a4e895771c683c62834df71b559fea837b',
@@ -31,7 +31,7 @@ DATA = {'de': {'features_other_last': 'Auf iPhone und iPad öffnen sich JSON und
                         'Dokumente mit Baumvorschau; auf iPhone und iPad öffnen sie sich schreibgeschützt, '
                         'ebenfalls mit Baumvorschau.',
         'payonce_ios': 'Auf iPhone und iPad ist MarsDawn zum Lesen da: Bearbeiten gibt es dort nicht.',
-        'roadmap_updated': 'Zuletzt aktualisiert: 16. November 2026',
+        'roadmap_updated': 'Zuletzt aktualisiert: 24. November 2026',
         'vs_lacks_ios': 'Auf iPhone und iPad liest es nur: Bearbeiten gibt es dort nicht, und Links in einem '
                         'dort gesicherten PDF funktionieren nicht.'},
  'en': {'features_other_last': 'On iPhone and iPad, JSON and YAML open read-only, with a tree preview.',
@@ -44,7 +44,7 @@ DATA = {'de': {'features_other_last': 'Auf iPhone und iPad öffnen sich JSON und
                         'than UTF-8. On the Mac, JSON and YAML open as editable documents with a tree '
                         'preview; on iPhone and iPad, they open read-only, also with a tree preview.',
         'payonce_ios': "On iPhone and iPad, MarsDawn is for reading: it doesn't edit files.",
-        'roadmap_updated': 'Last updated: 16 November 2026',
+        'roadmap_updated': 'Last updated: 24 November 2026',
         'vs_lacks_ios': "On iPhone and iPad it only reads: it can't edit there, and links in a PDF saved "
                         "there don't work."},
  'es': {'features_other_last': 'En el iPhone y el iPad, JSON y YAML se abren en modo de solo lectura, con '
@@ -60,7 +60,7 @@ DATA = {'de': {'features_other_last': 'Auf iPhone und iPad öffnen sich JSON und
                         'documentos editables con vista previa en árbol; en el iPhone y el iPad se abren en '
                         'modo de solo lectura, también con vista previa en árbol.',
         'payonce_ios': 'En iPhone y iPad, MarsDawn es para leer: no edita.',
-        'roadmap_updated': 'Última actualización: 16 de noviembre de 2026',
+        'roadmap_updated': 'Última actualización: 24 de noviembre de 2026',
         'vs_lacks_ios': 'En iPhone y iPad solo lee: ahí no edita, y los enlaces de un PDF guardado desde ahí '
                         'no funcionan.'},
  'fr': {'features_other_last': 'Sur iPhone et iPad, JSON et YAML s’ouvrent en lecture seule, avec un aperçu '
@@ -76,7 +76,7 @@ DATA = {'de': {'features_other_last': 'Auf iPhone und iPad öffnen sich JSON und
                         'documents modifiables avec un aperçu en arbre\xa0; sur iPhone et iPad, ils '
                         's’ouvrent en lecture seule, avec un aperçu en arbre aussi.',
         'payonce_ios': 'Sur iPhone et iPad, MarsDawn sert à lire\xa0: il ne permet pas de modifier.',
-        'roadmap_updated': 'Dernière mise à jour\xa0: 16 novembre 2026',
+        'roadmap_updated': 'Dernière mise à jour\xa0: 24 novembre 2026',
         'vs_lacks_ios': 'Sur iPhone et iPad, il ne fait que lire\xa0: il ne permet pas de modifier, et les '
                         'liens d’un PDF enregistré depuis l’app ne fonctionnent pas.'},
  'ja': {'features_other_last': 'iPhone と iPad では、JSON と YAML を読み出し専用で開き、ツリープレビューで表示できます。',
@@ -87,7 +87,7 @@ DATA = {'de': {'features_other_last': 'Auf iPhone und iPad öffnen sich JSON und
         'limits_other': '- **その他のファイル：**PDF と、UTF-8 以外のエンコーディングのテキストファイルは読み出し専用で開きます。Mac では JSON と YAML '
                         'を書類として開いて編集でき、ツリープレビューも表示されます。iPhone と iPad では読み出し専用で開き、ツリープレビューも表示されます。',
         'payonce_ios': 'iPhone と iPad では閲覧専用で、編集はできません。',
-        'roadmap_updated': '最終更新：2026年11月16日',
+        'roadmap_updated': '最終更新：2026年11月24日',
         'vs_lacks_ios': 'iPhone と iPad では閲覧専用で、編集はできません。そこで保存した PDF のリンクは機能しません。'},
  'ko': {'features_other_last': 'iPhone과 iPad에서는 JSON과 YAML을 읽기 전용으로 열 수 있으며, 트리 미리보기가 표시됩니다.',
         'limits_ios': '- **iPhone과 iPad:** MarsDawn은 읽기 전용입니다. Markdown, 텍스트, PDF, JSON, YAML 파일을 열 수 있지만 '
@@ -97,7 +97,7 @@ DATA = {'de': {'features_other_last': 'Auf iPhone und iPad öffnen sich JSON und
         'limits_other': '- **기타 파일:** PDF와 UTF-8이 아닌 인코딩의 텍스트 파일은 읽기 전용으로 열립니다. Mac에서는 JSON과 YAML을 편집 가능한 '
                         '문서로 열 수 있고 트리 미리보기도 표시됩니다. iPhone과 iPad에서는 읽기 전용으로 열리며 트리 미리보기도 표시됩니다.',
         'payonce_ios': 'iPhone과 iPad에서는 읽기 전용이라 편집할 수 없습니다.',
-        'roadmap_updated': '마지막 업데이트: 2026년 11월 16일',
+        'roadmap_updated': '마지막 업데이트: 2026년 11월 24일',
         'vs_lacks_ios': 'iPhone과 iPad에서는 읽기 전용이라 편집할 수 없고, 거기서 저장한 PDF의 링크는 작동하지 않습니다.'},
  'zh-hans': {'features_other_last': '在 iPhone 和 iPad 上，JSON 和 YAML 以只读方式打开，并有树状预览。',
              'limits_ios': '- **iPhone 和 iPad：**MarsDawn 只能阅读，可以打开 Markdown、纯文本、PDF、JSON 和 YAML '
@@ -106,7 +106,7 @@ DATA = {'de': {'features_other_last': 'Auf iPhone und iPad öffnen sich JSON und
              'limits_other': '- **其他文件：**PDF 以只读方式打开，不是 UTF-8 编码的文本文件也是。在 Mac 上，JSON 和 YAML '
                              '可以作为文稿打开并编辑，并有树状预览；在 iPhone 和 iPad 上则以只读方式打开，也有树状预览。',
              'payonce_ios': '在 iPhone 和 iPad 上只能阅读，不能编辑。',
-             'roadmap_updated': '最后更新：2026 年 11 月 16 日',
+             'roadmap_updated': '最后更新：2026 年 11 月 24 日',
              'vs_lacks_ios': '在 iPhone 和 iPad 上只能阅读，不能编辑；在那里存储的 PDF，里面的链接不能点按。'},
  'zh-hant': {'features_other_last': '在 iPhone 和 iPad 上，JSON 和 YAML 以唯讀方式打開，並有樹狀預覽。',
              'limits_ios': '- **iPhone 和 iPad：**MarsDawn 只能閱讀，能開 Markdown、純文字、PDF、JSON 和 YAML '
@@ -115,5 +115,5 @@ DATA = {'de': {'features_other_last': 'Auf iPhone und iPad öffnen sich JSON und
              'limits_other': '- **其他檔案：**PDF 以唯讀方式開啟，不是 UTF-8 編碼的文字檔也是。在 Mac 上，JSON 和 YAML '
                              '可以當成文件打開來編輯，並有樹狀預覽；在 iPhone 和 iPad 上則以唯讀方式打開，也有樹狀預覽。',
              'payonce_ios': '在 iPhone 和 iPad 上只能閱讀，不能編輯。',
-             'roadmap_updated': '最後更新：2026 年 11 月 16 日',
+             'roadmap_updated': '最後更新：2026 年 11 月 24 日',
              'vs_lacks_ios': '在 iPhone 和 iPad 上只能閱讀，不能編輯；在那裡存成的 PDF，裡面的連結不能點。'}}

@@ -13,14 +13,22 @@ where the next job checks the file against it. Outputs are closed-grammar tokens
 (common.write_outputs).
 
 submission -> action=skip (closed, not a submission, theme unchanged since the last validation) |
-reject (reason=too-large/no-theme/json/dco/site-rules/too-many; the comment job says why) | validate.
-The site's own rules (id grammar and not a built-in's, version, name/summary/author/scenarios) are
-checked here, on ubuntu, before any macOS job starts (review L2), and an opener with more than
-MAX_OPEN_SUBMISSIONS open submission issues gets a fixed-text rejection instead of a validation.
+reject (reason=blocked/too-large/no-theme/json/dco/site-rules/too-many; the comment job says why) |
+validate. The site's own rules (id grammar and not a built-in's, version, name/summary/author/
+scenarios) are checked here, on ubuntu, before any macOS job starts (review L2), and an opener with
+more than MAX_OPEN_SUBMISSIONS open submission issues gets a fixed-text rejection instead of a
+validation. An opener on the blocklist (#195) is rejected with reason=blocked right after the
+issue's state and label checks: no body parse, no open-submissions query, no unchanged-skip.
+
+The blocklist (.github/theme-submission-blocklist.json; format in common.load_blocklist) is read from
+this checkout, which in every workflow is the commit of the default branch the run started from,
+never from the issue or PR. Each mode loads it before reading the issue or PR, and a missing or
+malformed list fails closed: Refusal("blocklist"), an ::error:: and exit 1, nothing validated or built.
 
 approve -> action=skip (a label other than theme-approved, or a sender outside the maintainer id
 allowlist: nothing happens) | build. Anything else is refused: an ::error:: naming the rule and exit
-1, and no pull request. The rules: issue open and labelled theme-submission; body parses; DCO still
+1, and no pull request. The rules: the issue's opener isn't on the blocklist (refused as `blocked`,
+before the body is read); issue open and labelled theme-submission; body parses; DCO still
 ticked; the theme's sha256 equals the sha256 in the latest bot validation comment and that comment's
 verdict is valid; author.github equals the issue opener's login (ASCII case-insensitively) unless the
 issue has the theme-author-change label **applied by a maintainer** (the latest `labeled` event for
@@ -31,7 +39,8 @@ approve and from-pr also resolve the tip of THEME_BASE_BRANCH through the API an
 base_sha: the build job and the commit job both check out exactly that commit (review H1).
 
 from-pr -> build, or refused as above. The sender must be in the maintainer allowlist; PR_NUMBER a
-plain integer; the PR open, on this repository, changing exactly one path, themes/<id>/theme.json
+plain integer; the PR's author isn't on the blocklist (refused as `blocked`); the PR open, on this
+repository, changing exactly one path, themes/<id>/theme.json
 (added or modified), whose blob at the PR head is mode 100644, at most 16 KB, and has the blob id the
 files API reported; author.github equals the PR author's login unless the PR has theme-author-change;
 every commit on the PR carries a Signed-off-by whose email is the PR author's (their noreply
@@ -137,7 +146,9 @@ def write_theme(out: Path, data: bytes) -> None:
 
 # --- theme-submission.yml -------------------------------------------------------------------------
 
-def submission(api, event: dict, out: Path) -> dict:
+def submission(api, event: dict, out: Path, blocklist=None) -> dict:
+    if blocklist is None:
+        blocklist = common.load_blocklist()  # a broken list is a Refusal: main exits 1 before anything is read
     number = issue_number(event)
     issue = api.get(f"/repos/{{repo}}/issues/{number}")
     if not isinstance(issue, dict) or "pull_request" in issue:
@@ -146,7 +157,11 @@ def submission(api, event: dict, out: Path) -> dict:
         return {"action": "skip", "reason": "closed", "number": number}
     if common.SUBMISSION_LABEL not in common.label_names(issue):
         return {"action": "skip", "reason": "not-a-submission", "number": number}
-    login, _ = common.user_of(issue)
+    login, uid = common.user_of(issue)
+    # Before the open-submissions count, the parse and the unchanged-skip: a blocked opener's issue
+    # is never read, whatever it holds and whatever the bot said about it before.
+    if blocklist.blocks(login, uid):
+        return {"action": "reject", "reason": "blocked", "number": number}
     try:
         if open_submissions(api, login) > MAX_OPEN_SUBMISSIONS:
             raise Refusal("too-many", "The opener has too many open submissions.")
@@ -169,7 +184,7 @@ def submission(api, event: dict, out: Path) -> dict:
 
 # --- theme-approve.yml ----------------------------------------------------------------------------
 
-def approve(api, event: dict, maintainers: set, out: Path) -> dict:
+def approve(api, event: dict, maintainers: set, out: Path, blocklist=None) -> dict:
     number = issue_number(event)
     label = event.get("label")
     if not isinstance(label, dict) or label.get("name") != common.APPROVED_LABEL:
@@ -178,6 +193,8 @@ def approve(api, event: dict, maintainers: set, out: Path) -> dict:
     sender_id = sender.get("id") if isinstance(sender, dict) else None
     if not common.int_not_bool(sender_id) or sender_id not in maintainers:
         return {"action": "skip", "reason": "sender-not-maintainer", "number": number}
+    if blocklist is None:
+        blocklist = common.load_blocklist()
 
     issue = api.get(f"/repos/{{repo}}/issues/{number}")
     if not isinstance(issue, dict) or "pull_request" in issue:
@@ -188,6 +205,9 @@ def approve(api, event: dict, maintainers: set, out: Path) -> dict:
     if common.SUBMISSION_LABEL not in labels:
         raise Refusal("state", f"#{number} doesn't have the {common.SUBMISSION_LABEL} label")
     login, uid = common.user_of(issue)
+    if blocklist.blocks(login, uid):
+        raise Refusal("blocked", f"#{number}: theme submissions from the account that opened this issue aren't "
+                                 f"accepted; no pull request is opened")
     data, doc, ticked = common.parse_submission(issue.get("body"))
     if not ticked:
         raise Refusal("dco", f"#{number}: the Developer Certificate of Origin box isn't ticked any more")
@@ -249,7 +269,7 @@ def signoff_ok(item: dict, login: str, uid: int) -> bool:
     return False
 
 
-def from_pr(api, event: dict, pr_text: str, maintainers: set, out: Path) -> dict:
+def from_pr(api, event: dict, pr_text: str, maintainers: set, out: Path, blocklist=None) -> dict:
     sender = event.get("sender")
     sender_id = sender.get("id") if isinstance(sender, dict) else None
     if not common.int_not_bool(sender_id) or sender_id not in maintainers:
@@ -257,6 +277,8 @@ def from_pr(api, event: dict, pr_text: str, maintainers: set, out: Path) -> dict
     if not common.NUMBER_RE.fullmatch(pr_text or ""):
         raise Refusal("input", "the pr input must be a plain pull request number")
     number = int(pr_text)
+    if blocklist is None:
+        blocklist = common.load_blocklist()
 
     pr = api.get(f"/repos/{{repo}}/pulls/{number}")
     if not isinstance(pr, dict) or pr.get("state") != "open":
@@ -265,6 +287,9 @@ def from_pr(api, event: dict, pr_text: str, maintainers: set, out: Path) -> dict
     if base_repo != api.repo:
         raise Refusal("pr-state", f"PR #{number} isn't a pull request into this repository")
     login, uid = common.user_of(pr)
+    if blocklist.blocks(login, uid):
+        raise Refusal("blocked", f"PR #{number}: theme submissions from the PR author's account aren't accepted; "
+                                 f"no pull request is opened")
     head_sha = (pr.get("head") or {}).get("sha")
     if not common.COMMIT_RE.fullmatch(head_sha or ""):
         raise Refusal("pr-state", f"PR #{number}: the head isn't a commit id")

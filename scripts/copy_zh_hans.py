@@ -728,8 +728,16 @@ exit 0</code></pre>
   <li><code>3</code>，<code>app_not_installed</code>：没有安装 MarsDawn。只有 <code>open</code> 会返回这个代码。</li>
   <li><code>4</code>，<code>output_exists</code>：输出文件已存在，请加上 <code>--force</code>。</li>
   <li><code>5</code>，<code>export_failed</code>：导出本身失败。</li>
+  <li><code>5</code>，<code>input_too_large</code>：输入文件超过 16 MiB，所以没有写出任何文件。只有 <code>export</code> 会返回这个代码。</li>
   <li><code>6</code>，<code>app_cannot_open_folders</code>：这个版本的 MarsDawn 还不能显示文件夹，所以没有打开任何东西。只有 <code>open</code> 会返回这个代码。</li>
-  <li><code>64</code>：用法错误，例如未知的选项、无效的值、行号超出范围、<code>--line</code> 搭配了多个文件或文件夹、指定了多个文件夹，或使用了 <code>-a</code>。这种错误一律以文本输出到 stderr，即使加了 <code>--json</code> 也一样。</li>
+  <li><code>7</code>，<code>skill_install_failed</code>：<code>skill --install</code> 无法创建文件夹或写入文件。原有的 SKILL.md 保持不变。</li>
+  <li><code>64</code>：用法错误。大多数用法错误，例如未知的选项、无效的值、行号超出范围、<code>--line</code> 搭配了多个文件或文件夹、指定了多个文件夹，或使用了 <code>-a</code>，都以文本输出到 stderr，即使加了 <code>--json</code> 也一样。下面这几种有自己的 <code>error</code> 值，会和其他失败一样在 stdout 输出 JSON：
+    <ul>
+      <li><code>wait_out_of_range</code>：<code>open --wait</code> 超出 0 到 30。</li>
+      <li><code>skill_differs</code>、<code>skill_unsafe_symlink</code>、<code>skill_target_not_a_file</code>、<code>skill_unreadable</code>：<code>skill --install</code> 拒绝写入。</li>
+      <li><code>output_folder_missing</code>、<code>output_symlink</code>、<code>output_not_a_file</code>：<code>theme preview</code> 拒绝 <code>-o</code> 指定的路径。</li>
+    </ul>
+  </li>
 </ul>
 
 <h2>JSON Schema</h2>
@@ -1131,7 +1139,7 @@ marsdawn --version</code></pre>
 </ul>
 
 <h2>主题图库里有什么</h2>
-<p>目前有八个主题，都是我们制作并审核的：Dracula、Gruvbox、Nord 和 Solarized 改编自知名配色，并为可读性做了调整；Guide、Ledger、Spec 和 Story 则分别为用户指南、预算表、PRD 和冲刺笔记而做。</p>
+<p>目前的主题都是我们制作并审核的。例如 Dracula、Gruvbox、Nord 和 Solarized 改编自知名配色，并为可读性做了调整；Guide、Ledger、Spec 和 Story 则分别为用户指南、预算表、PRD 和冲刺笔记而做。</p>
 
 <h2>经过审核，而且只是数据</h2>
 <p>每个主题都要经过我们审核、合并，才会出现在主题图库。主题是一个小小的 JSON 文件，只有颜色和几个有范围限制的选项：没有脚本、没有 CSS，也没有作者自带的图像；MarsDawn 安装前会检查每一个值。被举报的主题会在 24 小时内从主题图库下架；如果它有害，下次在已安装的 Mac 上打开主题图库时，也会一并移除，正在使用的话，MarsDawn 会改回黎明。</p>

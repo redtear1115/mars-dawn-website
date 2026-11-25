@@ -68,7 +68,7 @@ Everything that has shipped is in the [changelog](/changelog/).
 
 ## Next
 
-### Mac 1.2.3
+### Mac 1.2.4
 - After an agent changes a file, see which blocks changed.
 - An image viewer for PNG, JPEG, GIF and WebP.
 
@@ -103,7 +103,7 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 
 ## 接下來
 
-### Mac 1.2.3
+### Mac 1.2.4
 - agent 改了檔案之後，看得出哪些區塊變了。
 - 圖片檢視器：開啟 PNG、JPEG、GIF、WebP。
 
@@ -138,7 +138,7 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 
 ## 接下来
 
-### Mac 1.2.3
+### Mac 1.2.4
 - 代理改了文件之后，看得出哪些区块变了。
 - 图片查看器：打开 PNG、JPEG、GIF、WebP。
 
@@ -173,7 +173,7 @@ Missing something you need? [Write to us](mailto:support@southern-light.dev?subj
 
 ## 今後の予定
 
-### Mac 1.2.3
+### Mac 1.2.4
 - エージェントがファイルを変更したあと、どのブロックが変わったかがわかります。
 - 画像ビューア：PNG、JPEG、GIF、WebP を開けます。
 
@@ -208,7 +208,7 @@ Alles, was bereits erschienen ist, steht im [Änderungsprotokoll](/de/changelog/
 
 ## Als Nächstes
 
-### Mac 1.2.3
+### Mac 1.2.4
 - Nachdem ein Agent eine Datei geändert hat, sehen, welche Blöcke sich geändert haben.
 - Ein Bildbetrachter für PNG, JPEG, GIF und WebP.
 
@@ -243,7 +243,7 @@ Tout ce qui est déjà sorti figure dans l’[historique des versions](/fr/chang
 
 ## Ensuite
 
-### Mac 1.2.3
+### Mac 1.2.4
 - Après qu’un agent a modifié un fichier, voir quels blocs ont changé.
 - Un visualiseur d’images pour PNG, JPEG, GIF et WebP.
 
@@ -278,7 +278,7 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
 ## A continuación
 
-### Mac 1.2.3
+### Mac 1.2.4
 - Después de que un agente cambie un archivo, ve qué bloques cambiaron.
 - Un visor de imágenes para PNG, JPEG, GIF y WebP.
 
@@ -313,7 +313,7 @@ Todo lo publicado está en el [historial de cambios](/es/changelog/).
 
 ## 다음 계획
 
-### Mac 1.2.3
+### Mac 1.2.4
 - 에이전트가 파일을 바꾼 뒤 어떤 블록이 바뀌었는지 보여 줍니다.
 - 이미지 뷰어: PNG, JPEG, GIF, WebP를 엽니다.
 

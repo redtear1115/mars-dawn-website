@@ -1230,8 +1230,16 @@ exit 0</code></pre>
   <li><code>3</code>, <code>app_not_installed</code> : MarsDawn n’est pas installé. Seul <code>open</code> renvoie ce code.</li>
   <li><code>4</code>, <code>output_exists</code> : le fichier de sortie existe. Passez <code>--force</code>.</li>
   <li><code>5</code>, <code>export_failed</code> : l’export lui-même a échoué.</li>
+  <li><code>5</code>, <code>input_too_large</code> : l’entrée dépasse 16 Mio, donc rien n’a été écrit. Seul <code>export</code> renvoie ce code.</li>
   <li><code>6</code>, <code>app_cannot_open_folders</code> : cette version de MarsDawn ne peut pas afficher de dossier, donc rien n’a été ouvert. Seul <code>open</code> renvoie ce code.</li>
-  <li><code>64</code> : erreur d’utilisation, comme une option inconnue, une valeur non valide, une ligne hors limites, <code>--line</code> avec plus d’un fichier ou avec un dossier, plus d’un dossier, ou <code>-a</code>. Celle-ci s’affiche en texte sur stderr, même avec <code>--json</code>.</li>
+  <li><code>7</code>, <code>skill_install_failed</code> : <code>skill --install</code> n’a pas pu créer le dossier ou écrire le fichier. Un SKILL.md existant reste tel quel.</li>
+  <li><code>64</code> : erreur d’utilisation. La plupart, comme une option inconnue, une valeur non valide, une ligne hors limites, <code>--line</code> avec plus d’un fichier ou avec un dossier, plus d’un dossier, ou <code>-a</code>, s’affichent en texte sur stderr, même avec <code>--json</code>. Celles-ci ont leur propre <code>error</code> et affichent du JSON sur stdout, comme tout autre échec :
+    <ul>
+      <li><code>wait_out_of_range</code> : <code>open --wait</code> hors de 0 à 30.</li>
+      <li><code>skill_differs</code>, <code>skill_unsafe_symlink</code>, <code>skill_target_not_a_file</code>, <code>skill_unreadable</code> : <code>skill --install</code> a refusé d’écrire.</li>
+      <li><code>output_folder_missing</code>, <code>output_symlink</code>, <code>output_not_a_file</code> : <code>theme preview</code> a refusé le chemin de <code>-o</code>.</li>
+    </ul>
+  </li>
 </ul>
 
 <h2>Schémas JSON</h2>
@@ -1407,7 +1415,7 @@ swift build -c release --product marsdawn
 </ul>
 
 <h2>Ce qu’il y a dans la galerie</h2>
-<p>Huit thèmes aujourd’hui, tous créés et relus par nos soins : Dracula, Gruvbox, Nord et Solarized, adaptés des palettes bien connues et ajustés pour la lisibilité, ainsi que Guide, Ledger, Spec et Story, conçus pour les guides utilisateur, les budgets, les PRD et les notes de sprint.</p>
+<p>Aujourd’hui, tous les thèmes sont créés et relus par nos soins. Par exemple, Dracula, Gruvbox, Nord et Solarized sont adaptés de palettes bien connues et ajustés pour la lisibilité, tandis que Guide, Ledger, Spec et Story sont conçus pour les guides utilisateur, les budgets, les PRD et les notes de sprint.</p>
 
 <h2>Relus, et uniquement des données</h2>
 <p>Chaque thème est relu et fusionné par nos soins avant d’apparaître dans la galerie. Un thème est un petit fichier JSON de couleurs et de quelques options bornées : aucun script, aucun CSS et aucune image provenant de son auteur, et MarsDawn vérifie chaque valeur avant de l’installer. Un thème signalé quitte la galerie dans les 24 heures. S’il est nuisible, il est aussi supprimé des Mac qui l’avaient installé à la prochaine ouverture de la galerie, et MarsDawn revient à Aube s’il était utilisé.</p>
@@ -1454,7 +1462,7 @@ swift build -c release --product marsdawn
         "body": f"""
 <section class="intro">
   <h1>Galerie de thèmes</h1>
-  <p>Thèmes d’aperçu pour MarsDawn, chacun relu et fusionné par le développeur avant d’apparaître ici. Les huit actuels sont réalisés par Southern Light, dont quatre adaptés de palettes bien connues. Filtrez par scénario, ou <a href="/fr/themes/new/">créez le vôtre</a> dans le navigateur : l’envoi ouvre une issue GitHub demandant une relecture, sans installation ni git.</p>
+  <p>Thèmes d’aperçu pour MarsDawn, chacun relu et fusionné par le développeur avant d’apparaître ici. Les thèmes actuels sont tous réalisés par Southern Light, dont certains adaptés de palettes bien connues. Filtrez par scénario, ou <a href="/fr/themes/new/">créez le vôtre</a> dans le navigateur : l’envoi ouvre une issue GitHub demandant une relecture, sans installation ni git.</p>
 </section>
 <!--community-theme-gallery-->
 <h2>Crédits et licence</h2>

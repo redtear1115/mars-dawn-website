@@ -1,5 +1,7 @@
 # AI エージェント向け marsdawn
 
+ブラックフライデーセール：一度きりのロック解除が半額の USD 2.49（通常 USD 4.99）。11月30日まで。12月1日から USD 4.99 に戻ります。 <!-- sale-line -->
+
 `marsdawn` コマンドラインツールを呼び出す AI エージェントとスクリプトのためのリファレンスです。このページのすべての例は、現在のソースからビルドしたツールに対して実際に実行したものです。
 
 **Markdown ファイルを PDF に変換するには、`marsdawn export notes.md --json` を実行し、stdout から1つの JSON オブジェクトを読み取ってください。**Mermaid 図とハイライトされたコードは、MarsDawn アプリと同じ方法でレンダリングされます。`export` にアプリは不要ですが、`open` には必要です。
@@ -82,8 +84,8 @@ marsdawn open notes.md --folder . --background --json
 {"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}
 ```
 
-- `folder`：フォルダを指定したときだけ現れます。`path` はその絶対パスです。`requested` は常に `true` です：marsdawn は MarsDawn にフォルダの表示を依頼しましたが、サイドバーに実際に表示されたかどうかは分かりません。アプリが先に人にアクセスの許可を求めることがあるためです。「完了した」ではなく「依頼した」と報告してください。
-- `--wait` が 0 より大きく、MarsDawn が 1.0.2 以降の場合、待ち時間が終わると `folder` に `status` も入ります：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable`、`unknown` のいずれかです。`needsUser` のときだけ `waitingFor`（`confirmation` または `folderChoice`）も入ります。`--wait` がない場合や、結果を返さないアプリでは、`folder` は `{"path": …, "requested": true}` のままです。`--wait` が 0〜30 の範囲外ならコード 64 で終了し、`error: "wait_out_of_range"` を返します。（marsdawn 0.5.3 以降）
+- `folder`：フォルダを指定したときだけ現れます。`path` はその絶対パスです。`requested` は常に `true` です：marsdawn は MarsDawn にフォルダの表示を依頼しました。サイドバーに表示するかどうかはアプリが決め、アプリが先に人にアクセスの許可を求めることもあります。MarsDawn が 1.0.2 以降なら、次の項目の `status` で結果が分かります（`--wait 0` の場合を除く）。`status` がない場合は marsdawn には分からないため、「完了した」ではなく「依頼した」と報告してください。
+- MarsDawn が 1.0.2 以降の場合、待ち時間（`--wait`、初期値 2 秒）が終わると `folder` に `status` も入ります：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable`、`unknown` のいずれかです。`needsUser` のときだけ `waitingFor`（`confirmation` または `folderChoice`）も入ります。`--wait 0` の場合や、結果を返さないアプリでは、`folder` は `{"path": …, "requested": true}` のままです。`--wait` が 0〜30 の範囲外ならコード 64 で終了し、`error: "wait_out_of_range"` を返します。（marsdawn 0.5.3 以降）
 - フォルダだけを指定したとき、`opened` は空です。
 
 marsdawn 0.2.x では `opened` はパス文字列のリストでした。両方を扱う必要がある場合は `marsdawn --version` を確認してください。
@@ -159,8 +161,13 @@ exit 0
 - `3`、`app_not_installed`：MarsDawn がインストールされていない。`open` のみがこれを返します。
 - `4`、`output_exists`：出力ファイルが存在する。`--force` を指定してください。
 - `5`、`export_failed`：書き出し自体が失敗した。
+- `5`、`input_too_large`：入力が 16 MiB を超えているため、何も書き出さなかった。`export` のみがこれを返します。
 - `6`、`app_cannot_open_folders`：この MarsDawn はまだフォルダを表示できないため、何も開かなかった。`open` のみがこれを返します。
-- `64`：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルやフォルダに対する `--line` の指定、複数のフォルダの指定、`-a` の指定など。この場合は、`--json` を指定していても stderr にテキストとして出力されます。
+- `7`、`skill_install_failed`：`skill --install` がフォルダを作成できなかった、またはファイルを書き込めなかった。既存の SKILL.md はそのままです。
+- `64`：使用方法のエラー。未知のオプション、無効な値、範囲外の行、複数ファイルやフォルダに対する `--line` の指定、複数のフォルダの指定、`-a` の指定など、ほとんどの場合は `--json` を指定していても stderr にテキストとして出力されます。次のものは独自の `error` を持ち、ほかの失敗と同じく stdout に JSON を出力します。
+  - `wait_out_of_range`：`open --wait` の値が 0〜30 の範囲外。
+  - `skill_differs`、`skill_unsafe_symlink`、`skill_target_not_a_file`、`skill_unreadable`：`skill --install` が書き込みを拒否した。
+  - `output_folder_missing`、`output_symlink`、`output_not_a_file`：`theme preview` が `-o` のパスを拒否した。
 
 ## JSON Schema
 
@@ -169,7 +176,8 @@ exit 0
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功時
 - [open.v4.json](/schemas/cli/open.v4.json): open 成功時、marsdawn 0.5.3 以降、フォルダの `status` と `waitingFor` を含む
 - [open.v3.json](/schemas/cli/open.v3.json): open 成功時、marsdawn 0.5.1〜0.5.2、サイドバーに表示するフォルダを含む
-- [error.v3.json](/schemas/cli/error.v3.json): 失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、`input_too_large`（コード 5）と `skill_install_failed`（コード 7）を追加
+- [error.v4.json](/schemas/cli/error.v4.json): 失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、コード 64 で JSON を返す使用方法のエラーを含む
+- [error.v3.json](/schemas/cli/error.v3.json): 失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、コード 64 の種類を含まない（error.v4.json に置き換え）
 - [error.v2.json](/schemas/cli/error.v2.json): 失敗時、両方のコマンド共通、marsdawn 0.5.2〜0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 成功時、marsdawn 0.3.0〜0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功時、marsdawn 0.2.x（`opened` がパスのリストだった頃）
@@ -210,10 +218,10 @@ swift build -c release --product marsdawn
 
 ## その他
 
-- [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): エージェントが書いた Markdown・JSON・YAML を確かめる Mac ネイティブアプリ。ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF。無料で試せて、一度だけ USD 4.99。
+- [MarsDawn](https://marsdawn.southern-light.dev/ja/index.md): エージェントが書いた Markdown・JSON・YAML を確かめる Mac ネイティブアプリ。ライブプレビュー、Mermaid、KaTeX、クイックルック、PDF。無料で試せて、一度だけ USD 2.49。
 - [機能一覧](https://marsdawn.southern-light.dev/ja/features/index.md): Mac ネイティブの Markdown・JSON・YAML エディタ：リアルタイムプレビュー、Mermaid と数式、テーマ、会議や保管に使える PDF とプリントのページ。
 - [あなたの文章は Mac に残ります](https://marsdawn.southern-light.dev/ja/yours/index.md): MarsDawn にはアカウントも同期もクラウドもありません。Markdown 文書はあなたの Mac 上に、選んだファイルとフォルダの中に残ります。
-- [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 4.99 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
+- [無料で試して、一度だけ購入](https://marsdawn.southern-light.dev/ja/pay-once/index.md): MarsDawn は無料でダウンロードできます。14日間すべての機能を試したあと、USD 2.49 の一度だけの購入でロックを解除できます。サブスクリプションもアカウントも不要です。
 - [プリントと PDF](https://marsdawn.southern-light.dev/ja/pdf/index.md): Mac でプレビューしてから、Markdown をプリントまたは PDF として保存。書類・ハンドブック・配布資料の3つのレイアウトで、図やコードの色も保たれます。
 - [Mac アプリ](https://marsdawn.southern-light.dev/ja/native/index.md): 本物の Mac アプリである Markdown エディタ。ネイティブなウインドウとタブ、自動保存、バージョン履歴、Finder のクイックルック、Mac らしく動くテキストエディタ。
 - [MarsDawn ができないこと](https://marsdawn.southern-light.dev/ja/limits/index.md): 同期なし、iPhone・iPad では編集不可、プラグインなし、アカウントなし。テーマは変更できますが、カスタム CSS は使えません。購入前に知っておいてください。
@@ -226,7 +234,7 @@ swift build -c release --product marsdawn
 - [HackMD から Mac へ](https://marsdawn.southern-light.dev/ja/from-hackmd/index.md): HackMD のノートを .md でダウンロードして、Mac の MarsDawn で読む方法。全ノートのダウンロード、GitHub リポジトリからの移行、画像の扱いをまとめました。
 - [Markdown から PDF へ](https://marsdawn.southern-light.dev/ja/markdown-to-pdf/index.md): 無料の marsdawn コマンドラインツールで、Mac 上の Markdown を PDF に変換します。Homebrew でインストールしてコマンド1つで実行：表、数式、Mermaid、コードに対応。
 - [MarsDawn と比較：VS Code プレビュー、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/ja/vs/index.md): Mac で Markdown を、多くはエージェントが書いたものを読んで確かめる方法を選ぶ人へ。表の各セルは、各社の公式ページか私たちの確認によるもので、いずれも 2026 年 10 月 16 日時点です（MarsDawn の PDF のセルは 2026 年 11 月 7 日に更新）。製品は変わるので、古くなることがあります。誤りに気づいたら、サポートのアドレスまでお知らせください。
-- [MacMD Viewer と MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用の Markdown ビューアで USD 19.99。MarsDawn は編集とプレビューを並べて表示し、14 日間無料、その後 USD 4.99 を一度だけ。項目ごとの比較、出典つき。
+- [MacMD Viewer と MarsDawn](https://marsdawn.southern-light.dev/ja/vs/macmd-viewer/index.md): MacMD Viewer は読み取り専用の Markdown ビューアで USD 19.99。MarsDawn は編集とプレビューを並べて表示し、14 日間無料、その後 USD 2.49 を一度だけ。項目ごとの比較、出典つき。
 - [Mac向けMarkdownビューアのおすすめ8選（2026年）](https://marsdawn.southern-light.dev/ja/best-markdown-viewer-mac/index.md): Mac向けMarkdownビューア8本を、価格、Mermaid、数式、PDF、自動再読み込み、クイックルック、ネイティブかElectronかで比較し、それぞれ誰に向くかをまとめました。
 - [コマンドライン](https://marsdawn.southern-light.dev/ja/cli/index.md): 無料の marsdawn コマンドラインツールで、Mac のシェル、スクリプト、LLM エージェントから Markdown を PDF に書き出せます。JSON 出力にも対応。Homebrew でインストール。
 - [エージェント用スキル](https://marsdawn.southern-light.dev/ja/cli/skill/index.md): コーディングエージェントが読み込む1つのファイルです。自分が書いた Markdown を MarsDawn で開いてあなたに確認してもらう方法と、marsdawn のインストール、Markdown の PDF への書き出し、JSON の結果の読み取りを教えます。

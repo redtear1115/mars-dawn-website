@@ -48,6 +48,13 @@ locale; every page the footer leaves out (the reading notes, the pattern hub, th
 linked from another page's `<main>` in every locale, so none is an orphan; and no page carries a store
 chip. The language switch's own rules are check_hreflang.py's.
 
+No-break spaces survive into the agent outputs (website #361): the fr and de copy uses U+00A0 (before
+`: ; ! ?` and `»`, after `«`, between a number and its unit), and the Markdown twin next to a page
+(`index.md`) and `llms-full.txt` are built from the same text, so they keep it. A twin with fewer
+U+00A0 than its page's visible text (`<main>`, scripts and tags dropped, entities decoded) fails, and
+so does a `llms-full.txt` with none at all while pages have them. A twin with more is fine; only
+fewer is a problem.
+
 Two things this deliberately does not catch, so nobody reads a green run as more than it is:
 
 - **A placeholder listing URL passes.** `https://apps.apple.com/app/idPLACEHOLDER` is a link to
@@ -357,6 +364,30 @@ def check_no_orphans(chromes, problems):
                 problems.append(f"{locale}: {target} is in no footer and no other page's main links to it")
 
 
+NBSP = "\u00a0"
+MAIN_ELEMENT = re.compile(r"<main[\s>].*?</main>", re.S)
+SCRIPT_BLOCK = re.compile(r"<script[\s>].*?</script>", re.S)
+
+
+def nbsp_in_page_text(text):
+    """U+00A0 in the page's visible text: its <main> (or the whole file), scripts dropped, tags stripped."""
+    main = MAIN_ELEMENT.search(text)
+    return plain(SCRIPT_BLOCK.sub("", main.group(0) if main else text)).count(NBSP)
+
+
+def check_nbsp_twin(relative, page, in_page, problems):
+    """The Markdown twin keeps every no-break space the page's text has (#361)."""
+    twin = page.with_name("index.md")
+    if not twin.is_file():
+        return  # no twin, as on the synthetic sites scripts/selftest_locales.py builds
+    kept = twin.read_text().count(NBSP)
+    if kept < in_page:
+        problems.append(
+            f"{relative}: the Markdown twin has {kept} U+00A0 but the page's text has {in_page}; "
+            f"the twin must keep no-break spaces (#361)"
+        )
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=str(ROOT / "public"))
@@ -389,9 +420,13 @@ def main():
         for extra in sorted(slugs - by_locale["en"]):
             problems.append(f"{locale} has {extra}, which en doesn't")
 
+    pages_with_nbsp = 0
     for relative, page in pages.items():
         locale = locale_of(relative)
         text = page.read_text()
+        in_page = nbsp_in_page_text(text)
+        pages_with_nbsp += bool(in_page)
+        check_nbsp_twin(relative, page, in_page, problems)
         check_structured_data(relative, text, articles, llms_full, problems)
         chrome = check_chrome(relative, text, problems)
         chromes[relative] = chrome
@@ -426,6 +461,9 @@ def main():
             problems.append(f"{relative}: links to {LISTING_HOST} before launch")
         if where == "launched" and not links_out:
             problems.append(f"{relative}: doesn't link to {LISTING_HOST} after launch")
+
+    if pages_with_nbsp and llms_full and NBSP not in llms_full:
+        problems.append("llms-full.txt has no U+00A0 although pages do; it must keep no-break spaces (#361)")
 
     check_footer_across_locales(chromes, problems)
     check_no_orphans(chromes, problems)

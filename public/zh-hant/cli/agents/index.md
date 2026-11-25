@@ -1,5 +1,7 @@
 # 給 AI agent 的 marsdawn 參考
 
+黑色星期五特價：一次解鎖只要半價 USD 2.49（原價 USD 4.99），優惠到 11 月 30 日，12 月 1 日起恢復 USD 4.99。 <!-- sale-line -->
+
 給呼叫 `marsdawn` 命令列工具的 AI agent 與腳本參考。本頁每個範例都用目前原始碼建置的工具實際執行過。
 
 **要把 Markdown 檔轉成 PDF，執行 `marsdawn export notes.md --json`，再從 stdout 讀取一個 JSON 物件。**Mermaid 圖表與程式碼上色的呈現方式和 MarsDawn app 相同。`export` 不需要 app，`open` 需要。
@@ -82,8 +84,8 @@ marsdawn open notes.md --folder . --background --json
 {"app":"/Applications/MarsDawn.app","folder":{"path":"/path/to/project","requested":true},"ok":true,"opened":[{"path":"/path/to/project/notes.md"}]}
 ```
 
-- `folder`：只有指定了資料夾時才有。`path` 是它的絕對路徑。`requested` 一律是 `true`：marsdawn 已請 MarsDawn 顯示這個資料夾，但無法得知側邊欄是否真的顯示了，因為 app 可能會先向使用者要求存取權限。請回報為「已要求」，而不是「已完成」。
-- `--wait` 大於 0、且 MarsDawn 為 1.0.2 以上時，等待結束後 `folder` 還會帶 `status`：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` 或 `unknown`。只有在 `needsUser` 時，才會再帶 `waitingFor`：`confirmation` 或 `folderChoice`。沒有 `--wait`，或 app 不會回報時，`folder` 維持 `{"path": …, "requested": true}`。`--wait` 超出 0 到 30 時以代碼 64 結束，並帶 `error: "wait_out_of_range"`。（marsdawn 0.5.3 以後。）
+- `folder`：只有指定了資料夾時才有。`path` 是它的絕對路徑。`requested` 一律是 `true`：marsdawn 已請 MarsDawn 顯示這個資料夾。側邊欄是否顯示由 app 決定，app 也可能先向使用者要求存取權限。MarsDawn 為 1.0.2 以上時，下一條的 `status` 會說明結果，除非加上 `--wait 0`。沒有 `status` 時 marsdawn 無法得知，請回報為「已要求」，而不是「已完成」。
+- MarsDawn 為 1.0.2 以上時，等待結束後 `folder` 還會帶 `status`（`--wait` 預設 2 秒）：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` 或 `unknown`。只有在 `needsUser` 時，才會再帶 `waitingFor`：`confirmation` 或 `folderChoice`。加上 `--wait 0`，或 app 不會回報時，`folder` 維持 `{"path": …, "requested": true}`。`--wait` 超出 0 到 30 時以代碼 64 結束，並帶 `error: "wait_out_of_range"`。（marsdawn 0.5.3 以後。）
 - 只指定資料夾時，`opened` 是空的。
 
 marsdawn 0.2.x 的 `opened` 是路徑字串的清單。如果需要同時處理兩種格式，請先查看 `marsdawn --version`。
@@ -159,8 +161,13 @@ exit 0
 - `3`，`app_not_installed`：沒有安裝 MarsDawn。只有 `open` 會回傳這個代碼。
 - `4`，`output_exists`：輸出檔已存在，請加上 `--force`。
 - `5`，`export_failed`：輸出本身失敗。
+- `5`，`input_too_large`：輸入檔超過 16 MiB，所以沒有寫出任何檔案。只有 `export` 會回傳這個代碼。
 - `6`，`app_cannot_open_folders`：這個版本的 MarsDawn 還不能顯示資料夾，所以沒有開啟任何東西。只有 `open` 會回傳這個代碼。
-- `64`：用法錯誤，例如未知的選項、無效的值、行號超出範圍、`--line` 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 `-a`。這種錯誤一律以文字輸出到 stderr，即使加了 `--json` 也一樣。
+- `7`，`skill_install_failed`：`skill --install` 無法建立資料夾或寫入檔案。原本的 SKILL.md 保持不變。
+- `64`：用法錯誤。大多數用法錯誤，例如未知的選項、無效的值、行號超出範圍、`--line` 搭配了多個檔案或資料夾、指定了多個資料夾，或使用了 `-a`，都以文字輸出到 stderr，即使加了 `--json` 也一樣。下面這幾種有自己的 `error` 值，會和其他失敗一樣在 stdout 輸出 JSON：
+  - `wait_out_of_range`：`open --wait` 超出 0 到 30。
+  - `skill_differs`、`skill_unsafe_symlink`、`skill_target_not_a_file`、`skill_unreadable`：`skill --install` 拒絕寫入。
+  - `output_folder_missing`、`output_symlink`、`output_not_a_file`：`theme preview` 拒絕 `-o` 指定的路徑。
 
 ## JSON Schema
 
@@ -169,7 +176,8 @@ exit 0
 - [export.v1.json](/schemas/cli/export.v1.json): export 成功
 - [open.v4.json](/schemas/cli/open.v4.json): open 成功，marsdawn 0.5.3 以後，資料夾多了 `status` 和 `waitingFor`
 - [open.v3.json](/schemas/cli/open.v3.json): open 成功，marsdawn 0.5.1 和 0.5.2，包括在側邊欄顯示的資料夾
-- [error.v3.json](/schemas/cli/error.v3.json): 所有指令的失敗結果，marsdawn 0.7.1 以後，新增 `input_too_large`（代碼 5）和 `skill_install_failed`（代碼 7）
+- [error.v4.json](/schemas/cli/error.v4.json): 所有指令的失敗結果，marsdawn 0.7.1 以後，包括以代碼 64 輸出 JSON 的用法錯誤
+- [error.v3.json](/schemas/cli/error.v3.json): 所有指令的失敗結果，marsdawn 0.7.1 以後，不含代碼 64 的種類；已由 error.v4.json 取代
 - [error.v2.json](/schemas/cli/error.v2.json): 兩個指令的失敗結果，marsdawn 0.5.2 到 0.7.0
 - [open.v2.json](/schemas/cli/open.v2.json): open 成功，marsdawn 0.3.0 到 0.5.0
 - [open.v1.json](/schemas/cli/open.v1.json): open 成功，marsdawn 0.2.x，當時 `opened` 是路徑清單
@@ -213,10 +221,10 @@ swift build -c release --product marsdawn
 
 ## 其他頁面
 
-- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 檢查 agent 寫的 Markdown、JSON、YAML：Mac 原生 app，即時預覽、Mermaid、KaTeX、快速查看、PDF。免費試用，之後一次 USD 4.99。
+- [MarsDawn](https://marsdawn.southern-light.dev/zh-hant/index.md): 檢查 agent 寫的 Markdown、JSON、YAML：Mac 原生 app，即時預覽、Mermaid、KaTeX、快速查看、PDF。免費試用，之後一次 USD 2.49。
 - [功能一覽](https://marsdawn.southern-light.dev/zh-hant/features/index.md): Mac 原生的 Markdown、JSON、YAML 編輯器：即時預覽、Mermaid 與數學式、主題，輸出和列印的頁面可拿去開會或存檔。
 - [你寫的內容留在你的 Mac 上](https://marsdawn.southern-light.dev/zh-hant/yours/index.md): MarsDawn 不需要帳號，沒有同步，也沒有雲端。你的 Markdown 文件留在你的 Mac 上，就在你選的檔案和資料夾裡。
-- [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 4.99 解鎖一次就好。沒有訂閱，也不需要帳號。
+- [免費試用，買一次就好](https://marsdawn.southern-light.dev/zh-hant/pay-once/index.md): MarsDawn 免費下載。先免費試用 14 天，之後花 USD 2.49 解鎖一次就好。沒有訂閱，也不需要帳號。
 - [列印與 PDF](https://marsdawn.southern-light.dev/zh-hant/pdf/index.md): 在 Mac 上先預覽，再把 Markdown 列印或儲存為 PDF；有文件、手冊、講義三種版面，Mermaid 圖表和程式碼上色都會保留。
 - [為 Mac 而做](https://marsdawn.southern-light.dev/zh-hant/native/index.md): 真正的 Mac app：原生視窗與分頁、自動儲存、版本記錄、在 Finder 用快速查看預覽 Markdown，文字編輯器的操作和 Mac 上其他 app 一致。
 - [MarsDawn 做不到的事](https://marsdawn.southern-light.dev/zh-hant/limits/index.md): 沒有同步、iPhone 和 iPad 上不能編輯、沒有外掛、不需要帳號；可以換主題，但不能自訂 CSS。購買前先知道。
@@ -229,7 +237,7 @@ swift build -c release --product marsdawn
 - [從 HackMD 搬到 Mac](https://marsdawn.southern-light.dev/zh-hant/from-hackmd/index.md): 把 HackMD 筆記下載成 .md，在 Mac 上用 MarsDawn 讀。下載所有筆記、從 GitHub repo 搬，以及圖片怎麼處理。
 - [Markdown 轉 PDF](https://marsdawn.southern-light.dev/zh-hant/markdown-to-pdf/index.md): 免費的 Markdown 轉 PDF 工具：在 Mac 上用 marsdawn 命令列，一個指令就把 Markdown 轉成 PDF，表格、數學式、Mermaid 圖表和程式碼上色都在。
 - [MarsDawn 比較：VS Code 預覽、Obsidian、QLMarkdown、LynxOffice](https://marsdawn.southern-light.dev/zh-hant/vs/index.md): 寫給正在挑選工具、要在 Mac 上讀 Markdown（常常是 agent 寫的）的人。下表每一格都出自廠商自己的頁面或我們實際的檢查，日期都是 2026 年 10 月 16 日（MarsDawn 的 PDF 格子更新於 2026 年 11 月 7 日）；產品會變，格子也可能過時。發現錯誤，請寫信到支援頁上的地址。
-- [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 4.99 解鎖一次。逐項比較，附來源。
+- [MacMD Viewer 對比 MarsDawn](https://marsdawn.southern-light.dev/zh-hant/vs/macmd-viewer/index.md): MacMD Viewer 是唯讀的 Markdown 檢視器，USD 19.99。MarsDawn 邊編輯邊預覽，免費試用 14 天，之後 USD 2.49 解鎖一次。逐項比較，附來源。
 - [2026 Markdown 閱讀器推薦：只想看、不想改，Mac 和 iPhone 怎麼選](https://marsdawn.southern-light.dev/zh-hant/best-markdown-viewer-mac/index.md): Markdown 閱讀器推薦：只想讀、不想改的話，Mac 和 iPhone 各用哪一款。比較 10 款的價格、iPhone／iPad、唯讀、Mermaid、數學式和 PDF，依情境分組。
 - [命令列工具](https://marsdawn.southern-light.dev/zh-hant/cli/index.md): 免費的 marsdawn 命令列工具：在 Mac 上從終端機、腳本或 LLM agent 把 Markdown 輸出成 PDF，並提供 JSON 輸出。用 Homebrew 安裝。
 - [給 agent 的 skill](https://marsdawn.southern-light.dev/zh-hant/cli/skill/index.md): 一個檔案，讓寫程式的 agent 把自己寫的 Markdown 在 MarsDawn 裡打開給你審閱，也學會安裝 marsdawn、把 Markdown 輸出成 PDF，並讀懂 JSON 結果。

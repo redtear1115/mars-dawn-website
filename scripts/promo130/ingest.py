@@ -18,11 +18,20 @@ names in <code>, and, for #189's zh-Hans strings only, the owner's zh-Hans word 
 (Übersicht, Coup d’œil, Vista rápida); one of those values is given as a Python literal and is read
 with ast.literal_eval.
 
+Later approved text (#362): merged PRs after these comments were read put newer approved text into
+data.py by hand. Those replacements are the last step of the run and live in sources.json under
+"later", grouped by merged PR. Each field names its path, the commit whose data.py holds the approved
+text, the sha256 of the pinned text it replaces (old_sha256) and of the approved text (new_sha256), and,
+when the text is verbatim in a pinned approval comment, that comment's id. The comments (id, updated_at,
+sha256) are pinned in the same group. A path that is not there, pinned text or approved text that does
+not hash to the recorded value, a comment that changed, or a field without a pin stops the run.
+
 Outputs: scripts/promo130/data.py (the strings the build reads) and scripts/promo130/slots.json (one
 row per shipped string: page x field x locale -> source, item label, version label).
 
     python3 -B scripts/promo130/ingest.py            # fetch, verify, write
-    python3 -B scripts/promo130/ingest.py --through 189   # only the issues up to this one
+    python3 -B scripts/promo130/ingest.py --check    # fetch, verify, compare with data.py and slots.json, write nothing
+    python3 -B scripts/promo130/ingest.py --through 189   # only the issues up to this one (no later layer)
 """
 import ast
 import hashlib
@@ -520,7 +529,7 @@ def ingest_242() -> None:
             lacks = lacks_a[loc]
             assert lacks.count(anchor[loc]) == 1, loc
             lacks_full = lacks.replace(anchor[loc], page_numbers[loc] + joiner[loc] + lacks_extra[loc])
-            lacks_src = [src1(f"### (d) version A, {loc}"), src2(f"lacks 加的句子, {loc}, spliced after {anchor[loc]!r}")]
+            lacks_src = [src1(f"### (d) version A, {loc}"), src2(f"lacks 加的句子, {loc}, spliced after {page_numbers[loc]!r}")]
             ver = "R1+R2"
             items = list(dont[loc])
             heading, bullets_ = items[0], [i[2:] if i.startswith("- ") else i for i in items[1:]]
@@ -1009,18 +1018,98 @@ def ingest_275() -> None:
                           "path": ["faq275", loc, key, 2]})
 
 
+# ---- later approved text (#362) ----------------------------------------------------------------
+
+def value_sha256(value) -> str:
+    return sha256(value if isinstance(value, str) else json.dumps(value, ensure_ascii=False, sort_keys=True))
+
+
+def data_at(commit: str) -> dict:
+    """DATA of scripts/promo130/data.py at a commit, read from the git object (a literal, never executed)."""
+    out = subprocess.run(["git", "-C", str(ROOT), "show", f"{commit}:scripts/promo130/data.py"], capture_output=True)
+    if out.returncode:
+        raise Stop(f"git show {commit}:scripts/promo130/data.py failed: {out.stderr.decode()[:200]}")
+    for node in ast.parse(out.stdout.decode("utf-8")).body:
+        if isinstance(node, ast.Assign) and [t.id for t in node.targets] == ["DATA"]:
+            return ast.literal_eval(node.value)
+    raise Stop(f"no DATA in scripts/promo130/data.py at {commit}")
+
+
+def at_path(node, path: list, where: str):
+    for part in path:
+        try:
+            node = node[part]
+        except (KeyError, IndexError, TypeError):
+            raise Stop(f"{where}: path {'/'.join(map(str, path))} not found at {part!r}")
+    return node
+
+
+def pinned_comment(pin: dict, pr: int) -> None:
+    """A later-layer approval comment, held to its pinned sha256 and updated_at."""
+    out = subprocess.run(["gh", "api", f"repos/{REPO}/issues/comments/{pin['id']}"], capture_output=True, text=True)
+    if out.returncode:
+        raise Stop(f"gh api failed for comment {pin['id']}: {out.stderr.strip()}")
+    got = json.loads(out.stdout)
+    digest = sha256(got["body"])
+    if digest != pin["sha256"] or got["updated_at"] != pin["updated_at"]:
+        raise Stop(f"comment {pin['id']} (later, PR #{pr}) differs from the pinned source: sha256 {digest} vs {pin['sha256']}, "
+                   f"updated_at {got['updated_at']} vs {pin['updated_at']}")
+
+
+def apply_later() -> None:
+    """Replace the pinned text with the approved text the merged PRs put into data.py (sources.json "later")."""
+    blobs, seen = {}, set()
+    kinds = {"comment": 0, "pr": 0}
+    for group in SOURCES["later"]["prs"]:
+        pr = group["pr"]
+        for pin in group["comments"]:
+            pinned_comment(pin, pr)
+        known = {pin["id"] for pin in group["comments"]}
+        for field in group["fields"]:
+            path, where = field["path"], f"later PR #{pr}"
+            if tuple(path) in seen:
+                raise Stop(f"{where}: path {'/'.join(map(str, path))} is listed twice")
+            seen.add(tuple(path))
+            if not set(field.get("comments", [])) <= known:
+                raise Stop(f"{where}: {'/'.join(map(str, path))} names a comment that the group does not pin")
+            old = at_path(DATA, path, where)
+            if value_sha256(old) != field["old_sha256"]:
+                raise Stop(f"{where}: {'/'.join(map(str, path))} is not the pinned text any more (sha256 {value_sha256(old)} vs {field['old_sha256']})")
+            commit = field["commit"]
+            if commit not in blobs:
+                blobs[commit] = data_at(commit)
+            new = at_path(blobs[commit], path, f"{where} at {commit[:9]}")
+            if value_sha256(new) != field["new_sha256"]:
+                raise Stop(f"{where}: approved text at {commit[:9]} for {'/'.join(map(str, path))} does not match the pinned sha256 "
+                           f"{field['new_sha256']} (got {value_sha256(new)})")
+            at_path(DATA, path[:-1], where)[path[-1]] = new
+            kind = "comment" if field.get("comments") else "pr"
+            kinds[kind] += 1
+            for slot in SLOTS:
+                sp = slot.get("path")
+                if sp and (path[:len(sp)] == sp or sp[:len(path)] == path):
+                    slot["later"] = {"pr": pr, "commit": commit, "kind": kind}
+    print(f"applied {sum(kinds.values())} later replacements: {kinds['comment']} pinned to an approval comment, {kinds['pr']} to a merged PR")
+
+
 # ---- main -------------------------------------------------------------------------------------
 
 INGESTERS = {189: ingest_189, 244: ingest_244, 246: ingest_246, 242: ingest_242, 240: ingest_240, 241: ingest_241, 245: ingest_245, 243: ingest_243, 2421: ingest_vsources, 275: ingest_275}
 
 
-def write() -> None:
+def render() -> tuple:
     body = pprint.pformat(DATA, width=150, sort_dicts=False)
-    (HERE / "data.py").write_text(
-        '"""The strings the promo-130 bundle puts on the site. Generated by scripts/promo130/ingest.py from the\n'
-        'pinned sources in sources.json; do not edit by hand (a hand edit is caught by the A2 comparison)."""\n\n'
-        f"DATA = {body}\n", encoding="utf-8")
-    (HERE / "slots.json").write_text(json.dumps({"sources": SOURCES, "slots": SLOTS}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    py = ('"""The strings the promo-130 bundle puts on the site. Generated by scripts/promo130/ingest.py from the\n'
+          'pinned sources in sources.json; do not edit by hand (a hand edit is caught by the A2 comparison)."""\n\n'
+          f"DATA = {body}\n")
+    js = json.dumps({"sources": SOURCES, "slots": SLOTS}, ensure_ascii=False, indent=1) + "\n"
+    return py, js
+
+
+def write() -> None:
+    py, js = render()
+    (HERE / "data.py").write_text(py, encoding="utf-8")
+    (HERE / "slots.json").write_text(js, encoding="utf-8")
 
 
 def main() -> None:
@@ -1029,6 +1118,13 @@ def main() -> None:
         through = int(sys.argv[sys.argv.index("--through") + 1])
     for issue in ORDER[:ORDER.index(through) + 1]:
         INGESTERS[issue]()
+    if through == ORDER[-1]:
+        apply_later()
+    if "--check" in sys.argv:
+        py, js = render()
+        ok = (HERE / "data.py").read_text(encoding="utf-8") == py and (HERE / "slots.json").read_text(encoding="utf-8") == js
+        print("promo130 --check:", "data.py and slots.json match the pinned sources" if ok else "DIFFER from the pinned sources")
+        sys.exit(0 if ok else 1)
     write()
     print(f"wrote {len(SLOTS)} slots")
 

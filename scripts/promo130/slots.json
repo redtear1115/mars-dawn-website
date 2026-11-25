@@ -201,6 +201,2035 @@
      "chars": 602
     }
    ]
+  },
+  "later": {
+   "note": "Approved copy that was put into data.py by hand in merged PRs after the pinned comments were read. ingest.py replaces the pinned text with the approved text at these paths: each path must exist, hold the pinned text (old_sha256) and the approved text (new_sha256, read from the commit) or the run stops.",
+   "recorded_at_utc": "2026-11-21T02:15:30Z",
+   "prs": [
+    {
+     "pr": 325,
+     "issue": 322,
+     "note": "iOS 1.0.0 wording: the 'no iPhone/iPad version' sentences replaced. Ray approved en and zh-Hant on 2026-10-29; the other six languages are in the same approved comment.",
+     "comments": [
+      {
+       "id": 6475575601,
+       "role": "proposal, en and zh-Hant",
+       "updated_at": "2026-10-28T17:10:56Z",
+       "sha256": "043688067c7109b0168ee4472c07ce7a2795eb4175a0cb5a5b0de68fc6a16960",
+       "chars": 7957
+      },
+      {
+       "id": 6475848807,
+       "role": "Ray approval of en and zh-Hant, plus the six-language table",
+       "updated_at": "2026-10-28T17:23:15Z",
+       "sha256": "ae0761842a4b1c4a94b4f1a33f4a0bc1bed469e0371b3e1bf007a88013e9090f",
+       "chars": 16867
+      }
+     ],
+     "fields": [
+      {
+       "path": [
+        "faq275",
+        "de",
+        "q10",
+        1
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "ccf52cec9a0e5b4ce308713a8d47a08791d1a7091f6b6816d0bb65dc5889ec86",
+       "new_sha256": "a02b51e6820404b5e04e30c5a1b616d6fa8aeef3bc27d014e603c5cae0c0d600"
+      },
+      {
+       "path": [
+        "faq275",
+        "en",
+        "q10",
+        1
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "e970e2af6f7434151a647038f7fea029777feea941cab45a04cd640a9ee87c68",
+       "new_sha256": "3ee5aa4796cee51724dd8c2d5f28a68d86f50f2413fdabd11432f9ae30ab038b"
+      },
+      {
+       "path": [
+        "faq275",
+        "es",
+        "q10",
+        1
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "8518ac3ae30fbfd7647c7ecb7f5fac2ac1e4d38e0a8716448b01794f46d72236",
+       "new_sha256": "b97fa59d03076d4a106f60507387392cfceb95f71d0115deca9b76e6126a7f24"
+      },
+      {
+       "path": [
+        "faq275",
+        "fr",
+        "q10",
+        1
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "cc575516684c6b5c26c2c13e67ff7dbbf507e8a10d432b4b6e2a3712b74520ee",
+       "new_sha256": "4002e58978dcf05ced36c46413e8fa1c86a5942163c1d170959bd12e23555320"
+      },
+      {
+       "path": [
+        "faq275",
+        "ja",
+        "q10",
+        1
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "28b57b90f30a3e4235e00544e483053c7a6069ab34d04820c63dcc240988022c",
+       "new_sha256": "37401b00fd2ee0a91c243354296e6e290b024500539bf300100121faca9dd1cc",
+       "comments": [
+        6475848807
+       ]
+      },
+      {
+       "path": [
+        "faq275",
+        "ko",
+        "q10",
+        1
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "0a6a8339170ddfd47fdc1770f64a551d8d85ba139e58a1a0d51ca43d45b45b31",
+       "new_sha256": "5b1ab55049ed538aa11bba0cf3e8f7427e6a25842d283c11abd7dcf3129a7c81"
+      },
+      {
+       "path": [
+        "faq275",
+        "zh-hans",
+        "q10",
+        1
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "e715b43745656e241d4c5e4abdb839857d085070ea7606cb027a4e7ac32f1f6e",
+       "new_sha256": "35ca599613146b44e38a1cf7a2d55d04443b76baf828c515869a83835a42aa52"
+      },
+      {
+       "path": [
+        "faq275",
+        "zh-hant",
+        "q10",
+        1
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "ed758a64fa4ad012e741950a80e8e77c3f35f8872d6c465fe22f6a07346b4de9",
+       "new_sha256": "6bad5944086eacc5e7b395ff517039267931a2e0d865fae845f493aef1507507"
+      },
+      {
+       "path": [
+        "vs",
+        "de",
+        "dont",
+        4
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "92ddf98b62fd8887cc89217cca3188c2a4bd93c794b1dc3aefae62a0db47c3c6",
+       "new_sha256": "4e19980190672137d47a8d5b35b0fa980264a58bb4498b6612b7a4a58b2bee7b",
+       "comments": [
+        6475848807
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "en",
+        "dont",
+        4
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "18b2879ee3f07f696e36a1a60280694a6ffbc33da56f4378e39faf31a3eb045f",
+       "new_sha256": "b79cce3bfc3a5ce6d73752c3431eee4fc11680660eccab8dc2126c00fbd72d26",
+       "comments": [
+        6475575601
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "es",
+        "dont",
+        4
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "711e5acf306154634b67b06bfd2a47ba4d8666b564ca6c68e39b6b864b54f55c",
+       "new_sha256": "f966e29ce86cb447d8b4e754f9c5155210b1245e9ded26ade5b6b8aee3bebd85",
+       "comments": [
+        6475848807
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "fr",
+        "dont",
+        4
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "808e84efd67669b33553275e0cc86e7e82ec64eca4feb0a911f303c683a02cd4",
+       "new_sha256": "8fc2c3bfd24091e0eaea4b992c125bf4bb12c46c72f3c02ffa5752d627cfb7a6",
+       "comments": [
+        6475848807
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "ja",
+        "dont",
+        4
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "00e25104b1932da3edd70a844ad88f45455f19c1037cc9edb7554a7b740ff579",
+       "new_sha256": "1d3b6b72ec9425a9916d6d7fd85eff08cb4e1628ac113dcbfd1a271dfc21a3c0",
+       "comments": [
+        6475848807
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "ko",
+        "dont",
+        4
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "57a262b566285a62b20e6692273c76012deb800f3a379e42ac91afa92593b190",
+       "new_sha256": "a5332ad4fc34e4b5393f51fe2b5b538feb4e73b54fa00d8951f946f59b8778f8",
+       "comments": [
+        6475848807
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "zh-hans",
+        "dont",
+        4
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "b99814206c93c34a7924eec127b3c421249fd71c45d5138be4b5a01071f61f46",
+       "new_sha256": "bd4e16da44e0b87756142cbb4505dc9de3cea51a20de48fb92c4dd71fac6fcab",
+       "comments": [
+        6475848807
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "zh-hant",
+        "dont",
+        4
+       ],
+       "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+       "old_sha256": "9433488716b28aa4894caf5a6a18959e2e80215965cf3b6ac249d574a545929d",
+       "new_sha256": "2ee8e6e443eebeafe7188e1a31e79e4abcebcee5c2810b045e0d4062b9502ac7",
+       "comments": [
+        6475575601
+       ]
+      }
+     ]
+    },
+    {
+     "pr": 371,
+     "issue": 363,
+     "note": "Stale iPhone/iPad claims, 8 languages. Ray approved en and zh-Hant on 2026-11-12; text reuses the #369 and #322 approved sentences.",
+     "comments": [
+      {
+       "id": 6800152890,
+       "role": "proposal, 8 languages (issue 363)",
+       "updated_at": "2026-11-11T15:38:36Z",
+       "sha256": "b3a6dd06c7a8555794d6ae2f16b642fd853a4904d8f2901e22631dbd1c3ad8c7",
+       "chars": 11189
+      },
+      {
+       "id": 6801523231,
+       "role": "Ray decision: text approved (issue 363)",
+       "updated_at": "2026-11-11T16:37:40Z",
+       "sha256": "d54b239f7961f3900f360592bd6287a4e895771c683c62834df71b559fea837b",
+       "chars": 165
+      },
+      {
+       "id": 6796812714,
+       "role": "8-language text of #369 reused here",
+       "updated_at": "2026-11-11T13:15:06Z",
+       "sha256": "d69ed26498e21d86a4dc96bc9faa2e00368470a069f836fa5cd0dda6346036fd",
+       "chars": 25649
+      },
+      {
+       "id": 6796859928,
+       "role": "Ray decision on #369 text",
+       "updated_at": "2026-11-11T13:17:14Z",
+       "sha256": "3780797beaeb63250ef6511b458c85ee9c986862aaf865ed1d5123370818f0e8",
+       "chars": 212
+      },
+      {
+       "id": 6475848807,
+       "role": "#322 approved table, reused",
+       "updated_at": "2026-10-28T17:23:15Z",
+       "sha256": "ae0761842a4b1c4a94b4f1a33f4a0bc1bed469e0371b3e1bf007a88013e9090f",
+       "chars": 16867
+      },
+      {
+       "id": 6475575601,
+       "role": "#322 proposal, reused",
+       "updated_at": "2026-10-28T17:10:56Z",
+       "sha256": "043688067c7109b0168ee4472c07ce7a2795eb4175a0cb5a5b0de68fc6a16960",
+       "chars": 7957
+      },
+      {
+       "id": 6546787730,
+       "role": "#345 home FAQ sentence, reused",
+       "updated_at": "2026-10-31T17:31:42Z",
+       "sha256": "fc472cbd082ce43ab4c6e4515fdb65dcf94768158a3111a05f8aa7b48a2adea3",
+       "chars": 2079
+      },
+      {
+       "id": 6546860803,
+       "role": "Ray decision on 6546787730",
+       "updated_at": "2026-10-31T17:38:09Z",
+       "sha256": "1c930f3c4600c902b61c0cb6a593c6f69f8a8c3364ea34191dac5fc6f645b47a",
+       "chars": 218
+      },
+      {
+       "id": 6684229028,
+       "role": "#357 page-number table, reused",
+       "updated_at": "2026-11-06T11:55:08Z",
+       "sha256": "588dd08b0bef60610499029506ac64c6b2ef99906d8df4b865604ba992fa9103",
+       "chars": 18447
+      },
+      {
+       "id": 6684273294,
+       "role": "Ray decision on #357",
+       "updated_at": "2026-11-06T11:57:40Z",
+       "sha256": "0d1df17f3ffb883830c5b15e8908048326c92363b0ae28141ec5865e9e7a8201",
+       "chars": 201
+      }
+     ],
+     "fields": [
+      {
+       "path": [
+        "faq275",
+        "de",
+        "q3"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "0e0d02b3b604b42e573d79f19623894a3219c6c0e40b15a90ca02f4f49276c7f",
+       "new_sha256": "44d09df04b57962a47467d44046b999b220ddd179db41c1743ecac2a76e5832a",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "faq275",
+        "en",
+        "q3"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "3b4bf63bc558fd626df8abc53a4b4aa60e91fd293651d5ac8f86e1201addd937",
+       "new_sha256": "1013003c1ee1fd7649b32a92811a289503bcbacc3494e6bcebb0be3e0aff80d6",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "faq275",
+        "es",
+        "q3"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "f31a7c8255c6e79428e04f273099f0dc695c31932c5fe8b54767fc393b28d375",
+       "new_sha256": "82d65447bd255c9f0440ca5b6ae558c339f99635469b40f4df3fef629d631b4e",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "faq275",
+        "fr",
+        "q3"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "9cfafa0b15c66d02f9773c36c259f2dfbbbfeedb0b847b7dcb78d62f5c162a78",
+       "new_sha256": "1f60a6ff28d13ee4c86768465f72c8fa1b0810d43365f17b949b7aac922878c4",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "faq275",
+        "ja",
+        "q3"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "732549241df7d702e71a25502d3631a362c80978f5dd6b39348f26dda6ee4cf7",
+       "new_sha256": "31c5ee6f700ce9c5cae47a651c413fd5f74da828409f21cb0c35bf21d5cf1aa2",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "faq275",
+        "ko",
+        "q3"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "0a13b34410951d33b6b97193eedd2d072b639b56afb52330a58800e30a5c40a1",
+       "new_sha256": "d5fd178b242657f4cddc5874cd6494aa8568042605b559684ff798e6e50c145f",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "faq275",
+        "zh-hans",
+        "q3"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "3255aa1e39b8a94cf79fe7f4b5b488be8299432fbd26e95775fa19e7b0c3d501",
+       "new_sha256": "504fc2c9ede1d5ced4aabfd1d06435f837a6af2d1c7ec096713b74f4dc9b5e97",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "faq275",
+        "zh-hant",
+        "q3"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "4f758bcef8442bbd564c881ad64f373cc6e958920a5481b602f85bc92dc4e1b3",
+       "new_sha256": "9f545223913e12a22717e30e88e3e573506c67b6a7a45e49ce7c5cca3fd0cc8e",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "seo",
+        "de",
+        "home_faq",
+        1,
+        1
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "d46e4c77fb75acf7d5997aa6e7210a89452be51539094e203479d2851ce0e1fa",
+       "new_sha256": "44d09df04b57962a47467d44046b999b220ddd179db41c1743ecac2a76e5832a",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "seo",
+        "en",
+        "home_faq",
+        1,
+        1
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "b4f7075c03e41fbe3ef788699e51c217371d8d7ea6bccfc2111374352e1eb273",
+       "new_sha256": "1013003c1ee1fd7649b32a92811a289503bcbacc3494e6bcebb0be3e0aff80d6",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "home_faq",
+        1,
+        1
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "584c79c5eb03b88f9a9d2f2d0583317aab2f4a9d29c33e669e0bbedaccfa81cb",
+       "new_sha256": "82d65447bd255c9f0440ca5b6ae558c339f99635469b40f4df3fef629d631b4e",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "seo",
+        "fr",
+        "home_faq",
+        1,
+        1
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "63b646e35796e1674af6ef834a072152c9b8acfee665c666c8b97c4a37f46ff0",
+       "new_sha256": "1f60a6ff28d13ee4c86768465f72c8fa1b0810d43365f17b949b7aac922878c4",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "seo",
+        "ja",
+        "home_faq",
+        1,
+        1
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "d52898a69b2ae006bd3f1cf736ea847310b88fc0a65f0ac071c1de9696f66fc5",
+       "new_sha256": "31c5ee6f700ce9c5cae47a651c413fd5f74da828409f21cb0c35bf21d5cf1aa2",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "seo",
+        "ko",
+        "home_faq",
+        1,
+        1
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "81d10fbbbc6cade8418a9736c099740149724fe978b084988acceff11644062d",
+       "new_sha256": "d5fd178b242657f4cddc5874cd6494aa8568042605b559684ff798e6e50c145f",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "seo",
+        "zh-hans",
+        "home_faq",
+        1,
+        1
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "59797f92d61196b096ffd83f2d2a34e157c92e0b4cba31bcd671e4608c5ebae5",
+       "new_sha256": "504fc2c9ede1d5ced4aabfd1d06435f837a6af2d1c7ec096713b74f4dc9b5e97",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "seo",
+        "zh-hant",
+        "home_faq",
+        1,
+        1
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "db1afba14db6aebbc397672c72a367884760ceb8ae3d6d2a3264d316f06043ab",
+       "new_sha256": "9f545223913e12a22717e30e88e3e573506c67b6a7a45e49ce7c5cca3fd0cc8e",
+       "comments": [
+        6796812714
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "de",
+        "lacks"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "f13991ef7bc4f9ced4ee9ed71d53b755a971f4cdab100f801c38cea13227e46f",
+       "new_sha256": "50c875aabe5f65e2ce1109db2904e090d606119c10d04effe0dfbecb7e9c786a",
+       "comments": [
+        6546787730,
+        6684229028,
+        6800152890
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "en",
+        "lacks"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "b36cd25c4b102a9c4ec8b430804d14e0405ccbfa5bfc29859456b24fa91e98d7",
+       "new_sha256": "5664579241cce12bb8eec754433e6b2bd4f46ee972f7393c6fa4155bcc18bd39",
+       "comments": [
+        6546787730,
+        6800152890
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "es",
+        "lacks"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "3b8c393b797e0a8741715c0dfc1d0ba4aced6419bd3da6059e5804c2318b9a10",
+       "new_sha256": "c70cd35fb04086521de924b935865e62b0905942dede9a85354fc1903e65d07e",
+       "comments": [
+        6546787730,
+        6684229028,
+        6800152890
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "fr",
+        "lacks"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "fd0c5809d45cc4ea3344b7b06b402e1fd76749ad528aa5b950248523b97206c0",
+       "new_sha256": "ecb41664726cbd29d51815770faac33a3419cad42dfafd5d689cc144142caa8e",
+       "comments": [
+        6546787730,
+        6684229028,
+        6800152890
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "ja",
+        "lacks"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "cb12f195613ccb9e515260fb034b0a82f5932a5b8008b77af89766b4688c3edf",
+       "new_sha256": "4de637c78f04793d5cc39b9b9c687914ba13530142ed8dcc4d36376f9491ef72",
+       "comments": [
+        6546787730,
+        6800152890
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "ko",
+        "lacks"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "e41e9b05f71a156f4c827d19839c70b4bc76bc681bf2cbdb341bd259c35b4de7",
+       "new_sha256": "a85e800be2b050387a3338dc8c05ef44e2439fb01788865d32dc9c8c1d85d5c5",
+       "comments": [
+        6546787730,
+        6684229028,
+        6800152890
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "zh-hans",
+        "lacks"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "2a5db894e74f43b0c9e324a535181644c12eaf9b30663d873f9832cee15687e9",
+       "new_sha256": "418a7c855f9a22ce89288424d1ee43d07c020e3dbb22716c1cf4109a9c048e61",
+       "comments": [
+        6546787730,
+        6684229028,
+        6800152890
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "zh-hant",
+        "lacks"
+       ],
+       "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+       "old_sha256": "2859cd3c793f1ee46a59299d1cd287b5861af6c22ec5ab99289a2d3f3c76138e",
+       "new_sha256": "2549eb22223df7561c38eb39652e714817d9ac1cb77919d2f3f2ccd6022e41ed",
+       "comments": [
+        6546787730,
+        6800152890
+       ]
+      }
+     ]
+    },
+    {
+     "pr": 360,
+     "issue": 357,
+     "note": "Page numbers, /vs/ exception and line 16, /cli/ 'every layout'. Ray approved 'ok' for #357 and #360 on 2026-11-06.",
+     "comments": [
+      {
+       "id": 6684229028,
+       "role": "#357 table of page-number sentences, 8 languages",
+       "updated_at": "2026-11-06T11:55:08Z",
+       "sha256": "588dd08b0bef60610499029506ac64c6b2ef99906d8df4b865604ba992fa9103",
+       "chars": 18447
+      },
+      {
+       "id": 6684261359,
+       "role": "#357 Roadmap and /cli/ handout",
+       "updated_at": "2026-11-06T11:56:58Z",
+       "sha256": "8213e89af72f0d5860792a0f3be00871de12d541c0f780eead8eedbae8a6b50c",
+       "chars": 5532
+      },
+      {
+       "id": 6684295872,
+       "role": "#357 /vs/ exception sentence, 6 languages",
+       "updated_at": "2026-11-06T11:59:00Z",
+       "sha256": "5bc8ad8dd834901721a9cfd23c7f0d91617e7b289ced129ccad4040a4ba9a869",
+       "chars": 1229
+      },
+      {
+       "id": 6684273294,
+       "role": "Ray decision: #357 copy ok, /vs/ date option A",
+       "updated_at": "2026-11-06T11:57:40Z",
+       "sha256": "0d1df17f3ffb883830c5b15e8908048326c92363b0ae28141ec5865e9e7a8201",
+       "chars": 201
+      },
+      {
+       "id": 6686709029,
+       "role": "#360 /vs/ line 16 proposal",
+       "updated_at": "2026-11-06T14:05:29Z",
+       "sha256": "aa6a6b93853a65e0612cbc7fbbf153b48b66a04d63a660000b33cca92c0405a4",
+       "chars": 2888
+      },
+      {
+       "id": 6687134780,
+       "role": "Ray decision: #360 /vs/ ok",
+       "updated_at": "2026-11-06T14:26:11Z",
+       "sha256": "07c52240c7b15cb107d2c64115107bba55643f72cf2bf056f0671b24fdc7a81f",
+       "chars": 286
+      },
+      {
+       "id": 6687498264,
+       "role": "#360 /cli/ line 72 proposal",
+       "updated_at": "2026-11-06T14:42:49Z",
+       "sha256": "599d98649e7ed56cb04972c47bfb911f54f5a1d976db6e0375a331db5fbc7be9",
+       "chars": 1333
+      },
+      {
+       "id": 6687760695,
+       "role": "Ray decision: /cli/ mechanical correction ok",
+       "updated_at": "2026-11-06T14:54:43Z",
+       "sha256": "6beec0633a271f6ed62edc894d6c91a74dd2b2d40999814d50deb045ab878f4c",
+       "chars": 201
+      }
+     ],
+     "fields": [
+      {
+       "path": [
+        "faq275",
+        "de",
+        "q9",
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "c6c6d215799326a30f511065a0b40e5892d5bc31532216a8d1cb24626b901671",
+       "new_sha256": "9cf04e7f295282b00da3286a65f9fb5b11764bb9f8b712089305e1539d1962a6"
+      },
+      {
+       "path": [
+        "faq275",
+        "en",
+        "q9",
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "43f91dc90e785d87c123bfdc97979d0ea89e9099bd63a0f7d66714ffbc8de071",
+       "new_sha256": "ab376bd700c457aa8f692febb30427c462ee5e480bcf8896219d4338f0fa6457"
+      },
+      {
+       "path": [
+        "faq275",
+        "es",
+        "q9",
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "e598c849d0814869974e36085969387e7bec6ba23cbb2bfab0c064f0c7171223",
+       "new_sha256": "e9d8a15e96b495e3bc547f787aa16b7e141c709a593df6101666bf2b3b00213c"
+      },
+      {
+       "path": [
+        "faq275",
+        "fr",
+        "q9",
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "3d425ac981aa22d8abcd661f7aff09da57860c7b683fe1906b4728eb608baadf",
+       "new_sha256": "c94bfcbbe396d8a9fc376ea4cd80eb10ee13357270213444c111044ece4e0a43"
+      },
+      {
+       "path": [
+        "faq275",
+        "ja",
+        "q9",
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "87f46d16d9c30d48c49c1e889fac909070df818f0735d77d1164094f50bab161",
+       "new_sha256": "fc8324f3908875060a2034c783d00269d42f5104af1efd95b4003ca4e34667b8"
+      },
+      {
+       "path": [
+        "faq275",
+        "ko",
+        "q9",
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "e96a4db064712ead572ca875944f9c015fceb900df28e3ebac6ac2d371f04b2c",
+       "new_sha256": "f0d0a9d72a949ea95a221696851c053aecdb674124d7b7ea6f424e87b61be08b"
+      },
+      {
+       "path": [
+        "faq275",
+        "zh-hans",
+        "q9",
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "a33689c28ba034071683b12247135f3709d0f044761e30454549e12b075f9b94",
+       "new_sha256": "30392e0d1631d98c302e18f5450249edfd956299ab205755f09c36d634259f04"
+      },
+      {
+       "path": [
+        "faq275",
+        "zh-hant",
+        "q9",
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "b5e0962201977cff569bb6e4fcf4e17ee769de378d34481f952eb7116ad40b00",
+       "new_sha256": "e7e10bb09406b77887ab44c8376e2e55c4ebfbeef184d3da3bebc7b625d8ed87"
+      },
+      {
+       "path": [
+        "vs",
+        "de",
+        "intro"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "6fa21a3128701f8213f3324ffe5cef839665e1663dce5e5c41d5eea173d2aef9",
+       "new_sha256": "6690ed028a2f6f922d013a713a1ccf5e37be3d87d7e31ed148837db2ec009640"
+      },
+      {
+       "path": [
+        "vs",
+        "de",
+        "note"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "d41aa918de6676ecfdcae31f5fa4cf1a65974c779edc103c107ef532674effcf",
+       "new_sha256": "44f1150276a1f075ecbe91994e7af35827d1d7eb8f3375b45467a1bd234138f0"
+      },
+      {
+       "path": [
+        "vs",
+        "de",
+        "rows",
+        4,
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "b91bf3a2941027234cc7812f53fbe39d2c2d968318263c5e2dfed3e08105c5cd",
+       "new_sha256": "bf7589446bbd7cf322f42ec1c1fe2abb99140969d64b2c756f3e58cdb8fb715d",
+       "comments": [
+        6684229028
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "en",
+        "intro"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "c51cd33c49ab459442d36cc77aafcd918cc0adcd0a7e5f72168ba4851ba8414c",
+       "new_sha256": "11cc007e2c2b7a74a5690817f5ef02f39133b0b1555e2d6a6f31cacd2795df0e"
+      },
+      {
+       "path": [
+        "vs",
+        "en",
+        "rows",
+        4,
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "7fc1b429680bd4abaae7a944ffd2470cdcdf534de2c258bc282cf6e38d91a82d",
+       "new_sha256": "d750ea72de0ef18787a855665783b62d097ded6bc81a075f43554545d1f8e998",
+       "comments": [
+        6684229028
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "es",
+        "intro"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "cd2c64a73353f37e95a09e7f10c7d48f42cdf6d1c70bf54c89e78d2a8bd2f1d1",
+       "new_sha256": "e75deaee60dd297cb61efc676a6492b423adbbf5a0a9d964508201e8f04c9939"
+      },
+      {
+       "path": [
+        "vs",
+        "es",
+        "note"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "ef44a964e6a1a7e9edc8cfa58694ebb44cbd5918750c93b754483b05c7ba6aec",
+       "new_sha256": "f5420fa114380b06e0f3a35840d14cf1cfa50825a44be65bbe3cff51655e173b"
+      },
+      {
+       "path": [
+        "vs",
+        "es",
+        "rows",
+        4,
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "0e30467c10a3ae27a9e3203fe5435bccdd18deb3ccbdc25c83500ce89b24c5dc",
+       "new_sha256": "87e04cfd560c725c0eeedb20c52d07d6019a04cbf7fc5d2c88845b869c3aa576",
+       "comments": [
+        6684229028
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "fr",
+        "intro"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "ce35fe5bb55065dd7d6950f266ef5a17424e33d0150c273da9eab5c63d9cf9e2",
+       "new_sha256": "ef4ff3fd55753ea08f96e2bc355e005ece5dc3edde4dbc1e675cd687b7e3ebd4"
+      },
+      {
+       "path": [
+        "vs",
+        "fr",
+        "note"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "e33da25d579896ab4eef957ea8abc2a43a3b111782c581a5c86c09873f393e00",
+       "new_sha256": "a59a89cda0dc927d5464fc954f27872eca8f085b4e274a3458f9efcc45d3e739"
+      },
+      {
+       "path": [
+        "vs",
+        "fr",
+        "rows",
+        4,
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "9614e72da688ba3dafc501427c2181c731188db855e414f4a59819e63e8d6cf0",
+       "new_sha256": "c6c38a838fff172bf2b12e76961fd642d628dfd54b802c3341ed2b9704ac430d",
+       "comments": [
+        6684229028
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "ja",
+        "intro"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "2b48607a2b84cd068c8a433a03ac08d6ad72e5e61ccabe3963de61f5a6d36f04",
+       "new_sha256": "777c9854dee30e47db60e92d6c752590a363a319c84634f1fb43aec67a77430f"
+      },
+      {
+       "path": [
+        "vs",
+        "ja",
+        "rows",
+        4,
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "14a23d3787a447f509317961e0a4327629e185d7fa87b1a99f63055157953bb6",
+       "new_sha256": "8dff39bb9540a127df12900ba409d30cc3a4492a0a65c14fdc1af5ca578a4fa1",
+       "comments": [
+        6684229028
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "ko",
+        "intro"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "afedf4494cd2695ae43b9f67b6f207bbb52becb622ee806fc2fceb14e639a8ba",
+       "new_sha256": "8fc925ee7d28162eaa38583932c42795b7d9828aba4d927fc34c3a7e9668c4e9"
+      },
+      {
+       "path": [
+        "vs",
+        "ko",
+        "note"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "a7c27a5106650e734313a7901a29d0051d8e32873dcb57ff492085cb79a4de80",
+       "new_sha256": "0dcc847958a899c56a2e5be92ee0d8d06f0eeccc51b3d07779b70ce7c281b61f"
+      },
+      {
+       "path": [
+        "vs",
+        "ko",
+        "rows",
+        4,
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "ab6d2a4506451f81c88289ad833b000dbdaa8392b73ede278ef9f607407b0510",
+       "new_sha256": "4e3907a9f1bab0e635048367d3bee81474785106086f7361e3a4f734bbafe5bc",
+       "comments": [
+        6684229028
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "zh-hans",
+        "intro"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "1bf55fa28f572b49028efde4feb7d13feafb28eab175cf98f6b504c2b84327a5",
+       "new_sha256": "430de5cd446e38f1289e3150aca2e3042c7f154d6fa6855f8e1d57e19f41eb1e"
+      },
+      {
+       "path": [
+        "vs",
+        "zh-hans",
+        "note"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "a60d132665f8b80364248f0daf788d2c7cea02bd9a747b7f5504f1c8a1d3d2f2",
+       "new_sha256": "2c53a5332f978bbd973c62c1f3837882a5875a2496eef75a74ce2fc83b517976"
+      },
+      {
+       "path": [
+        "vs",
+        "zh-hans",
+        "rows",
+        4,
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "1d1db154beba2e570868a43715a4bcd8fe09dcba32172b73f58a92de4a2a6ae3",
+       "new_sha256": "07399ac891b54c44288e404feefb08702a436c2edc5ccce9f3e084c7a12b9a21",
+       "comments": [
+        6684229028
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "zh-hant",
+        "intro"
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "50a0c64d19cc8cf349d32a641475e1f981c4e3cafb2641905269df98e115376b",
+       "new_sha256": "22106d4f904dd586554c4c70ce15f4ce1e2f7543cc5d911a326598c0edc26552"
+      },
+      {
+       "path": [
+        "vs",
+        "zh-hant",
+        "rows",
+        4,
+        1
+       ],
+       "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+       "old_sha256": "d5cc7c0897666d02452356c4f4bdb0bddb4ecff9ade00a59872dd4250fcb4a9f",
+       "new_sha256": "54f13d799bd730b49965980d1544145383fc07ae071cff2438e01991a34a7f8b",
+       "comments": [
+        6684229028
+       ]
+      }
+     ]
+    },
+    {
+     "pr": 389,
+     "issue": 336,
+     "note": "zh-Hant reader page: R1, R2, R4 sentences. Ray chose B, B, B on 2026-11-18.",
+     "comments": [
+      {
+       "id": 6560244450,
+       "role": "proposal, zh-Hant page copy",
+       "updated_at": "2026-11-01T15:51:52Z",
+       "sha256": "f7f3f7e2d62ae283b4903bfced3d8b818469c8c8215b0e806becfa174a499e60",
+       "chars": 4403
+      },
+      {
+       "id": 6965285341,
+       "role": "Ray decision: #336 copy ok",
+       "updated_at": "2026-11-18T00:35:17Z",
+       "sha256": "13bbb3b145ed1fb9cb5663fa0cf1d1621a69ff005403a5cbda240cedf007aeb3",
+       "chars": 307
+      },
+      {
+       "id": 6974263801,
+       "role": "proposal, R1 R2 R4 sentences",
+       "updated_at": "2026-11-18T09:18:45Z",
+       "sha256": "b0102db04d415536efc5be690a57d9448d388e0e327bbcaea437fc38b0285a13",
+       "chars": 5037
+      },
+      {
+       "id": 6974165411,
+       "role": "Ray decision: R1:B R2:B R4:B",
+       "updated_at": "2026-11-18T09:14:14Z",
+       "sha256": "64e7135ea36260fe0605f71ee1042d335639b07b1af4f10f316254f3ccd08d17",
+       "chars": 846
+      }
+     ],
+     "fields": [
+      {
+       "path": [
+        "faq275",
+        "zh-hant",
+        "q9",
+        2
+       ],
+       "commit": "c4c3824b7188a9045eae0f003262c33bf0cb1b54",
+       "old_sha256": "7e83061e7e1b652d437d544950c75378dbd5216104504a084e5ed319d373e17b",
+       "new_sha256": "ac9ac0c0fbe963a9c2dee642de222aef43c786e30a23b953dfcf70b6709d0b55"
+      },
+      {
+       "path": [
+        "vs",
+        "zh-hant",
+        "dont",
+        1
+       ],
+       "commit": "c4c3824b7188a9045eae0f003262c33bf0cb1b54",
+       "old_sha256": "ab688a2bf063a1f10e61b391312f0b5733ab019cbb18a64b355bde1915a24202",
+       "new_sha256": "82b33193ff904347e9c8c69e9dab78c433e36c203263cc42b386babfa53f6135"
+      }
+     ]
+    },
+    {
+     "pr": 345,
+     "issue": 344,
+     "note": "JSON and YAML in descriptions, /features/, home FAQ, /vs/ (no 'no sync'), /limits/ iPhone item, es 'Vista Rapida'. Ray approved on 2026-10-31 and 2026-11-01.",
+     "comments": [
+      {
+       "id": 6545419038,
+       "role": "proposal, JSON and YAML, 8 languages",
+       "updated_at": "2026-10-31T15:30:23Z",
+       "sha256": "45a7a115d6b2e4272e89b42f03ab42afc9acd8114d3d4740a1d2d3925eeb17b5",
+       "chars": 7048
+      },
+      {
+       "id": 6545447645,
+       "role": "Ray decision on 6545419038",
+       "updated_at": "2026-10-31T15:32:52Z",
+       "sha256": "87a63e5f314b04a4808c9e89cb6f62b7c8142ac7a170a7bcce929b02a5b8010d",
+       "chars": 152
+      },
+      {
+       "id": 6545693119,
+       "role": "proposal, 5 more places",
+       "updated_at": "2026-10-31T15:54:40Z",
+       "sha256": "014f4c53e9cf3cae114a5d20e9241b4713fff0c9dd78d784894b404dd576f371",
+       "chars": 5352
+      },
+      {
+       "id": 6546302931,
+       "role": "Ray decision on 6545693119",
+       "updated_at": "2026-10-31T16:49:02Z",
+       "sha256": "0b6d1455e28c184e3ff9f23a1700be312786347067a271aa72ef616e278d83df",
+       "chars": 289
+      },
+      {
+       "id": 6546555630,
+       "role": "duplicate 'iPhone and iPad' removed",
+       "updated_at": "2026-10-31T17:10:36Z",
+       "sha256": "4baa7ff17fbe4e0ea72164b947b7c26f155aa624a4774e851796a81f176d4e3b",
+       "chars": 1793
+      },
+      {
+       "id": 6546787730,
+       "role": "home FAQ and /vs/ proposal",
+       "updated_at": "2026-10-31T17:31:42Z",
+       "sha256": "fc472cbd082ce43ab4c6e4515fdb65dcf94768158a3111a05f8aa7b48a2adea3",
+       "chars": 2079
+      },
+      {
+       "id": 6546860803,
+       "role": "Ray decision on 6546787730",
+       "updated_at": "2026-10-31T17:38:09Z",
+       "sha256": "1c930f3c4600c902b61c0cb6a593c6f69f8a8c3364ea34191dac5fc6f645b47a",
+       "chars": 218
+      }
+     ],
+     "fields": [
+      {
+       "path": [
+        "home",
+        "de",
+        "definition"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "ee391d49bebe8a40f1f45769d2f4218e2c2a6574ebde705dc65521c01f8a77de",
+       "new_sha256": "374cb1bfe158bdef7accbf22ebc50d9abfd8e2c47ec0bcbab2dfbb3d372cadec",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "de",
+        "description"
+       ],
+       "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+       "old_sha256": "5a99700ec9a01d08fea68b3636f29099d18251b59a053c7a82437214de493233",
+       "new_sha256": "f178210720b1101eef62711a6d20849cd55bedfff882a3f9f894f9eb5aa6b695",
+       "comments": [
+        6545419038
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "en",
+        "definition"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "26f4b7cac3ae4153918dde6e7cbd8a2446007770640731de7cb32864a458b799",
+       "new_sha256": "8a0f4406a4855560c6b969444e0ccfe3f9b7715a1af89e3da17f0fd9eccd86c2",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "en",
+        "description"
+       ],
+       "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+       "old_sha256": "b2ef66d49d05fc1adf4f1d0e78f5f9e2cde17578b130ecff07d266c2c78d2f05",
+       "new_sha256": "976b1c1c48869788febeae3aa61e03098b296fb39046c4831d27322f22652dc9",
+       "comments": [
+        6545419038
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "es",
+        "definition"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "e8a3cc441dea1d08be8771be812b8a0f570da01557c826486516ff065905eb4d",
+       "new_sha256": "ec96bd2ab41a9c7fb721857541c26e6b41b040e63852f28d36c422cdb237c800"
+      },
+      {
+       "path": [
+        "home",
+        "es",
+        "description"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "19ee36eb37421dc54ee6bdb081fcb1f9f888325df30fcd06cbad721329d4b0e9",
+       "new_sha256": "44a3aba5ad757726e3c0a2e94e3bc709700869709782bf57fde622eb54d9a697"
+      },
+      {
+       "path": [
+        "home",
+        "fr",
+        "definition"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "0d6223ce5eb98df458fabcb1f5588dd5dfba24ff370e034e9d0a6a3a64372195",
+       "new_sha256": "a6ebf716775986891326e2ca0ba23ce0be6c62c515fa2c0ca9c761c72fc5ea32",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "fr",
+        "description"
+       ],
+       "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+       "old_sha256": "b3c17726e311d61ace1c0ff0ced6cfc99acf83dfe5aebefc2fe3ea791d6d3f45",
+       "new_sha256": "5c91636961791e5ced133347a4604e19740addbd27371d99c0c7d7374e0d8e98",
+       "comments": [
+        6545419038
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "ja",
+        "definition"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "0ac4b6f3c21a5a458deaf94d3a15bfeffa4dfee1cda7df18f542d98fbb55bb7b",
+       "new_sha256": "5a2a246b21a884df7b4b6fdb78d6d31a3b0f878a8862e20d7eb549d1a46c7353",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "ja",
+        "description"
+       ],
+       "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+       "old_sha256": "2808388503d3c7167e10919dd3dac836413e2d7605c9409777529a75457729f8",
+       "new_sha256": "8722ff481d1cf6e19ea45984874985b0a67433c3774f4024df40a00b847adcf5",
+       "comments": [
+        6545419038
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "ko",
+        "definition"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "89c42ad24fe6df1548b6764568edcd3ac1b9a7d06b32f0ac69924e1c4a4b3735",
+       "new_sha256": "39b874ae4109a0dc6843900a102991c8b02b8f5d631a226dfd261bf462022fbf",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "ko",
+        "description"
+       ],
+       "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+       "old_sha256": "c1d7285c9d277f2c0d50db0e07efa5fc8f570d01ad5e475892a4837a86df6948",
+       "new_sha256": "d219775adbc4afdd3f673750f84cdcaa4bafb282157fddf0576a3ea8a39ccde1",
+       "comments": [
+        6545419038
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "zh-hans",
+        "definition"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "6b83597f4d0d732fd83cfeb8475b93ad858ec70a99ed9b1f71282ae010e9dd45",
+       "new_sha256": "5ab7eae286828b8b4fa57d0f3138f409c9fd22fcd02549fbdb1f462bf481d51f",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "zh-hans",
+        "description"
+       ],
+       "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+       "old_sha256": "c428881babcdbb0b77a7e84ae4ddaf34f670cc947e604c382510474584c7bbd9",
+       "new_sha256": "46f313ab07f23346a640eabe2dc368181069b3fa8fff697bbb5ca673fa6f5198",
+       "comments": [
+        6545419038
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "zh-hant",
+        "definition"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "999367920adaa23d1da263788d6d0e786f672c4b3275fbde8e1dd6d7cef894b5",
+       "new_sha256": "36c6235b28073580d119061efabec92b49b57858231fcc9e1e3d32f7e8ccbb99",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "home",
+        "zh-hant",
+        "description"
+       ],
+       "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+       "old_sha256": "4686f49da422657fd11dc69c0e6b00c04ebdf7c7adb2a2bdb4669f484ff34854",
+       "new_sha256": "1e2a88a492ed6577a4d28b1424c233ddf1f06b474a314bfb808cadffc0b64466",
+       "comments": [
+        6545419038
+       ]
+      },
+      {
+       "path": [
+        "seo",
+        "de",
+        "ql_shows"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "9ddd63f280426235285ec07ad37c74d29f1ea27dea9163494e880187d3d8e83a",
+       "new_sha256": "c918d6042cb7b59b5d977e8fd200da216561df9cf2ba75ddd6afb276758d6231"
+      },
+      {
+       "path": [
+        "seo",
+        "en",
+        "ql_shows"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "699b4202588583bc2c66bcad5561d7e05549b168a0b790a8ddf0d036aefa9ef4",
+       "new_sha256": "f06385cd4e3b142bc3cb57dceb6f7441b9f4d81e292fe754f4d48d0fb82f2073"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "pay_faq",
+        3,
+        0
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "1d78d1ef32358edfae19e8e5858856afaab9486614a9820790e0acb6aaf41140",
+       "new_sha256": "934d799213caaf8f1e2cf2134b476f765e7641485f364d30fa8633af5cd18372"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "pay_faq",
+        3,
+        1
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "5eccdc9f9fee0590f256a63fc3da46c2994dc58204d32ea7678e897556dfb167",
+       "new_sha256": "f5256ea22d8c9e4b638882cfa0c7bcf83445ba4c21fb4c4008c868ef00c6d1a6"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_desc"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "1bb325571cf2ebe3f0954662cf6916beef17d7123527b8858564d8f28a49cc14",
+       "new_sha256": "9bcba437322eb26973330f845461702e325a3af4a96ef4c3ec6d3369c8d347e7"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_faq",
+        0,
+        1
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "cdad10385bbc27f6cf200ef4a13610162cb2049920fa0bf99efbba037851948b",
+       "new_sha256": "c52e0995580f1a0eaa7eef100ef48fc1e6abac01b20171cb7f76b08d591f22d6"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_faq",
+        1,
+        0
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "632ce489080cf57f8b94a61f9de93aec2121f8d877ad649b55c0a4e81d0e1600",
+       "new_sha256": "9aee8ad59d43d91f1b4c9e594cf9512612b406bb7061bf132a67cfb0f18f3f86"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_faq",
+        1,
+        1
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "893ff254be3d1e57f589e3bf168cce46cd25bb9a1a34516184255922e7076826",
+       "new_sha256": "3a94ebe248844c7721a9e23d2acfad2548096df3a7d61889554f35b1ee6b0e98"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_faq",
+        2,
+        0
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "4c1fc124b58a5bcc3d441ed5bf947627ae3dd3e606d03ed4872517fb686a2e49",
+       "new_sha256": "b7c6b1cff81f21f219e59b6e0e73cfbdf5c2cdf1093084f802afad8aa12e42ef"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_faq",
+        2,
+        1
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "1249a3fc6e7b34bff09ed6b71985ec2ab7d38533445222b5e70ed5ccd37722a7",
+       "new_sha256": "102e4bd108384caadeb0daa3e220ff0f6c00d952dc604b38d59b272b4033d221"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_faq",
+        3,
+        0
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "9435e57c218b4c06906b28b0706546c9f3657b3431bc490b30e0a81aee6a074f",
+       "new_sha256": "3c482d24d42581c0107119af958a9c1562a399d76e035956bfca7bbb489a10f0"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_faq",
+        3,
+        1
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "f121908a8dc8dce8027c8dfff5793fe099ff76664fe9d35c2ec266ee3d645db2",
+       "new_sha256": "617fbc5cc9c9ba27206bdb33bd42cf74a152b4a0806338c59a4ac273bae2b721"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_h1"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "eb23fa478e31f4887e95166c3b473998d325d34c3d0fc3255400ece189943749",
+       "new_sha256": "761e388394febdce4459f96651c7fcd7673ecce831e23c52220b9f2dd8b32886"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_how_name"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "faeb0a91c3d27cf1785fa4da41a4cd4dc20f54b71d8ab302c7ebaccb354c8b9b",
+       "new_sha256": "2e29b53f9cf273298cdb77735905a8199549bcac7cf312271e6ea275139659a6"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_lead"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "2dd91ddef768ad79794f068740bc93fb192993f95b46984a2d341d4a88c8924a",
+       "new_sha256": "86692f1aff8c0bf066492e2f59fe0e857a9652fe946a20adddfee025a4013e42"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_link"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "5efb21a1317a640df663cae9447f10fce7ba114856c3de45b11258bf0ca11db8",
+       "new_sha256": "4becba969b48a5063c24fc7db47eeae88825cf9028cff6c8f37105882efe95e8"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_shows"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "32a2188558a16da286ca8aa281356b24e74ca4e978f0116515bb645c54ade2e3",
+       "new_sha256": "bd7dbf1c1c72d88817021ded2de9cc9df7f15735fe4f7c1d4969ac15985b6964"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_steps",
+        0,
+        1
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "8b10d378b54e757f85176a20392f680fddc51bc3c005f308644e063d718a57db",
+       "new_sha256": "74f92d818e6773458d310ec0b70638fe068f507b201e83640ca399447da2d158"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_steps",
+        3,
+        1
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "2864aef05d05414a42df055f20b3ddd86b312621c9e5f9468ebbf141696aad35",
+       "new_sha256": "ccb8b7c363e8a5511cfed13ff05dbbc747618be95e19ca6b03be19009618470f"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_title"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "0f62150dcc84d56135aa1b0e4c9052071d1cf20c27105b1e63efde70f2ff0250",
+       "new_sha256": "b2fc0387f65198db03908f8c467e2d9159ae9f10540b3dd561f4e0bd9cd38765"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ql_trial_p"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "18435c53d2a912cc358e70ab99a4fef73b7c90766a17fa8619318e18c41375d3",
+       "new_sha256": "ab85fd64201d6f7c432fe1f6b954eead2781f32448a924d1350002524f94dafe"
+      },
+      {
+       "path": [
+        "seo",
+        "es",
+        "ui"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "3903afae6f4db77d0db00dc966aab9baa9b1c128498a4d67c2b203b64186c74f",
+       "new_sha256": "d074f46f2bb5e11279ec311fd96b3d05c504b5e37027bd677ce8c3434ffd8ecb"
+      },
+      {
+       "path": [
+        "seo",
+        "fr",
+        "ql_shows"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "2bc3d64fda2bf6273eb85b1d394b14be34cde00634296c3915610e8c34a99e59",
+       "new_sha256": "9195ef32df6ed1a4bc39d51de6304934e143556552f8f0ab57fe56096c8ce1f1"
+      },
+      {
+       "path": [
+        "seo",
+        "ja",
+        "ql_shows"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "c13f58acc60764b9ddd63f22ba84aa0e59c49516d0b3835dc085e37b1b4aafc8",
+       "new_sha256": "3b002dca0536030dd43d2645f3227ffc40ba02739bd29cadc481bc9af3b231aa"
+      },
+      {
+       "path": [
+        "seo",
+        "ko",
+        "ql_shows"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "a9641a513e546debd6d48db233a56ad739dcc08776ceea03b9cb0e8df449b630",
+       "new_sha256": "bbaf74ced41c3e666b92a852f26fd62781590c6f4b600131c52f9e1803ecdf4e"
+      },
+      {
+       "path": [
+        "seo",
+        "zh-hans",
+        "ql_shows"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "32eff9ea0ce443746ebfb8defc8dfde2b28df7e8223ea826426a8af802c3a4cf",
+       "new_sha256": "9e4d6a9120e8e294f98ddb1e893dbc057e5832552d862e7795d936c48f2c5742"
+      },
+      {
+       "path": [
+        "seo",
+        "zh-hant",
+        "ql_shows"
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "8843511b84b2b577f60ee0509a1003f618e40f6af8d1343288d4820bbdd7d73e",
+       "new_sha256": "397679b3cbd29aeba376b654065da26d2f3d606448bd50f3ed7ddc336021d676"
+      },
+      {
+       "path": [
+        "stays",
+        "de",
+        "faq",
+        "Q1",
+        1
+       ],
+       "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+       "old_sha256": "d55af2df15296416ae58b413446df3c4869fea7ced94a22f6accfe2eafb0e738",
+       "new_sha256": "8fd530677a9adbba9385b77751be3981703113c2aeacf1c18e387d954a9a9200",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "stays",
+        "en",
+        "faq",
+        "Q1",
+        1
+       ],
+       "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+       "old_sha256": "c3664c16820be548dd81fbb233805a2b18af0c4c011b94e0da286abd74d638d4",
+       "new_sha256": "ecafc17fc684fac67a1049322a73df8b85006c72d1b0157a9eb0e233f9bbdac3",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "stays",
+        "es",
+        "faq",
+        "Q1",
+        1
+       ],
+       "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+       "old_sha256": "a34e11f100ee7f09f23ab167ff3e734ddf1e9cadc2a94634170b312abddbe9b7",
+       "new_sha256": "d8abe10bf4f8ae2390b2f43737cf3a7a9fce8c982903aeb51dfe5d2e038acacd"
+      },
+      {
+       "path": [
+        "stays",
+        "fr",
+        "faq",
+        "Q1",
+        1
+       ],
+       "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+       "old_sha256": "49935e80ae3eae9f7886e24ae5846a36ccd1c6ec373c57c1275fb1f84f61fdbc",
+       "new_sha256": "109e6e8242baaa31b92ee28c6673823eead46a2ae2a41754222ab0779b10528f",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "stays",
+        "ja",
+        "faq",
+        "Q1",
+        1
+       ],
+       "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+       "old_sha256": "ababe1ed5b7e4baa7641ebdf0f7f84748889f4324feb2e35b85c1496e0774550",
+       "new_sha256": "5092dc6d238152dd545c47a64f2a1b9d3c460934b06c1f354ef524d44e2f2c52",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "stays",
+        "ko",
+        "faq",
+        "Q1",
+        1
+       ],
+       "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+       "old_sha256": "88a0319cfb2ca5cb5c8e43a1850ef16a1720fee03aed713d2504204b29ba27d0",
+       "new_sha256": "591a65398eafa0809d9b7e48203f82ab02b35686144d8dfbc66679e979fda914",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "stays",
+        "zh-hans",
+        "faq",
+        "Q1",
+        1
+       ],
+       "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+       "old_sha256": "7d0205626650cc3c68975c8b6217764b8da0ed7105fe2e57f5058205c46456b2",
+       "new_sha256": "016a5d7b17cf7d3e14e2824d358f3117ef739a32e0f3718b9c40e32583a6b58c",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "stays",
+        "zh-hant",
+        "faq",
+        "Q1",
+        1
+       ],
+       "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+       "old_sha256": "a3abaab07610b362366b190a62cb0457891a8c4dd85458b682d402e639286917",
+       "new_sha256": "ec2f2455290f814f091fb99ddbe970b68c168dd6a891074e732f18ced3b56e2e",
+       "comments": [
+        6545693119
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "es",
+        "dont",
+        1
+       ],
+       "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+       "old_sha256": "a3fc436453c56bb7dc7a6c0f7aa7f30cb6a1094ce210b8ed9f969385037f4be8",
+       "new_sha256": "34c2eec575b598983888bddfeed8ddfb4d5567abbd2c9e6f79163318c97e1e08"
+      }
+     ]
+    },
+    {
+     "pr": 387,
+     "issue": 383,
+     "note": "zh-Hant home comparison row 'Output PDF': the default layout is named 'Document', not 'Standard'. Ray approved the /pdf/ copy on 2026-11-18 and left this one-word choice to Paula (decision 6953647659).",
+     "comments": [
+      {
+       "id": 6952823397,
+       "role": "proposal, en and zh-Hant table",
+       "updated_at": "2026-11-17T15:39:34Z",
+       "sha256": "c3d572674fc8780633fb04ffade52af4989c02741fc119e184b754fb5f3cc3ed",
+       "chars": 32081
+      },
+      {
+       "id": 6953584073,
+       "role": "Ray decision: #383 copy ok",
+       "updated_at": "2026-11-17T16:08:20Z",
+       "sha256": "5ab5c1047247d2cc432e5a3ae8b13401eeb4a75e36efe6e020de74d023f12b85",
+       "chars": 652
+      },
+      {
+       "id": 6953647659,
+       "role": "decision: replace 'Standard' with 'Document' in the zh-Hant row",
+       "updated_at": "2026-11-17T16:10:45Z",
+       "sha256": "5f3b44d6dd6f81df6a42c9529f03d3969f95300920806fcc7b436c866995c834",
+       "chars": 499
+      }
+     ],
+     "fields": [
+      {
+       "path": [
+        "pieces",
+        "zh-hant",
+        "rows",
+        1,
+        1
+       ],
+       "commit": "e919d88f3971fca721e55ea0e29b3490dc5aa7d1",
+       "old_sha256": "64216f0b207d089309f1db090565a2ac4dbb1a5d956da21ba76d613ef705f0e8",
+       "new_sha256": "4a180fc3dc89f32376686a766738e937fbfd9fb039fbbf52a319e20ef1a63a72"
+      }
+     ]
+    },
+    {
+     "pr": 356,
+     "issue": 266,
+     "note": "Home 'as of' line: MarsDawn 1.1.1 to 1.2.1 in six languages. Version number only; no approval comment exists in this repo (the source is app issue 266, release notes 1.2.1).",
+     "comments": [],
+     "fields": [
+      {
+       "path": [
+        "pieces",
+        "de",
+        "intro"
+       ],
+       "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+       "old_sha256": "4a90961367d8ac9af1f23cbd562ab460713c75e8a3e6aa85b078bbe3cd10dd3e",
+       "new_sha256": "0bcd2cb0a37ae1d27167807271faafb8bb12299c6c522dc6758aae0bac785b94"
+      },
+      {
+       "path": [
+        "pieces",
+        "es",
+        "intro"
+       ],
+       "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+       "old_sha256": "1e83430a8827360f7bd48c54ee8c4c590dc2377e55a596c2cbb872ff8d706167",
+       "new_sha256": "c33d8439b093f8fd31134b47ce4e6b765342416445d361ef948ab780f56ce6f3"
+      },
+      {
+       "path": [
+        "pieces",
+        "fr",
+        "intro"
+       ],
+       "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+       "old_sha256": "28f79c04360ba4d78e5fc0908b8a055e615638ad0c3321654b47960bb3e5fa4d",
+       "new_sha256": "ea2ef5c1e09b2753e6715d8f3ad943bf300ccabe5065d8a71a8566a6a66de587"
+      },
+      {
+       "path": [
+        "pieces",
+        "ja",
+        "intro"
+       ],
+       "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+       "old_sha256": "efed9b039fd8e924f12a1bc9abfa6bc4495a094db852855e991e240997c7b72e",
+       "new_sha256": "163bf1d943b7f4ce4471205b5edfb2a36f27fc58a22409e76c7f600b898bce13"
+      },
+      {
+       "path": [
+        "pieces",
+        "ko",
+        "intro"
+       ],
+       "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+       "old_sha256": "ea69894fbe99ada89a05cb1524871eae579251fb5004c4d5ed64fb9a4c6536c0",
+       "new_sha256": "436db146b738d9cc597945bed659a650d857d2ef1e6ebcc9f46377ee8057fe84"
+      },
+      {
+       "path": [
+        "pieces",
+        "zh-hans",
+        "intro"
+       ],
+       "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+       "old_sha256": "9b66195fe2d68afd9c961bc96d764f74c9e09ef07482322b11cbbf9730b899ae",
+       "new_sha256": "43a42ae87827bb9a981a2d6d7feb19804b967c73b8a61d8f7e0815041a8dc59d"
+      }
+     ]
+    },
+    {
+     "pr": 367,
+     "issue": 286,
+     "note": "'as of' line and /cli/ home table (0.7.7 line), zh-Hant output wording. Ray approved on 2026-11-06.",
+     "comments": [
+      {
+       "id": 6666173964,
+       "role": "proposal, en and zh-Hant table",
+       "updated_at": "2026-11-05T18:40:06Z",
+       "sha256": "d3bb83250923183a4f0b03c4aacbacbc8968992c31fd5ca87c847ab5b5c0abad",
+       "chars": 5122
+      },
+      {
+       "id": 6666096752,
+       "role": "as-of line and home table rows",
+       "updated_at": "2026-11-05T18:36:57Z",
+       "sha256": "a773d8e88d479495532f3dcc078f2c3e9e7f6419359c23fea96bb5a081a74a5a",
+       "chars": 4571
+      },
+      {
+       "id": 6683376822,
+       "role": "Ray decision: table approved, item 4 voided",
+       "updated_at": "2026-11-06T11:05:42Z",
+       "sha256": "6ce672d10c593f100d26ac0cf52719d961a6e0718228e4dc86ba28e7edb16fa9",
+       "chars": 560
+      }
+     ],
+     "fields": [
+      {
+       "path": [
+        "pieces",
+        "en",
+        "intro"
+       ],
+       "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+       "old_sha256": "453cb48b116f2c837e001c5e84b869dab2f19380b12e8965ab127d5bef6e606b",
+       "new_sha256": "c737b4bc595066e44346f43980c3da8d3c8c34d776b7d72bc7dec6b1c9f34df3"
+      },
+      {
+       "path": [
+        "pieces",
+        "en",
+        "rows",
+        1,
+        1
+       ],
+       "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+       "old_sha256": "56f7f88cc5e2c6ab70f1ccef2611c1634b36a2c9f51893ee602c5d6bfc5863fa",
+       "new_sha256": "56afcee96f5cd9a16954b7a830f728c4af48670ed22df04dfbfe669a5d7ad8c7",
+       "comments": [
+        6666173964
+       ]
+      },
+      {
+       "path": [
+        "pieces",
+        "en",
+        "rows",
+        1,
+        2
+       ],
+       "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+       "old_sha256": "f3702171d7f0236a8c5688994af4d163d0164c7e36fae1f4d23c9bcd3ce7b529",
+       "new_sha256": "5e182135ebfa74214ba4568604b39d57fb6832d20ea2ff9e4809acca0a88b38f",
+       "comments": [
+        6666173964
+       ]
+      },
+      {
+       "path": [
+        "pieces",
+        "zh-hant",
+        "intro"
+       ],
+       "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+       "old_sha256": "70b253c47bb660169f6ec4d0c3d46e32e8e9d1288e41263130ea41dc888b11d3",
+       "new_sha256": "e687e15bcdc984df141baf458710399068d02298862b8b509cf32a5a846fd0f4"
+      },
+      {
+       "path": [
+        "pieces",
+        "zh-hant",
+        "rows",
+        1,
+        2
+       ],
+       "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+       "old_sha256": "7491de42a406f0986c274f6f3e139ee1a1b00f09c91d6e2aeab2bb007ef44c5e",
+       "new_sha256": "4007dbc1ac122e9ffd1b2cca2001ed309952e4f2bd2e4edf4904acd5671ddd8b",
+       "comments": [
+        6666173964
+       ]
+      },
+      {
+       "path": [
+        "vs",
+        "en",
+        "note"
+       ],
+       "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+       "old_sha256": "9d3a52cd1d575d9bc85023e75f7e5cc7f6b000031cc48acb36260188c7f5af5a",
+       "new_sha256": "f3bc25e846507016d6a8027a042e6ec7a411dc7e663944fa1025f5a75d83e92e"
+      },
+      {
+       "path": [
+        "vs",
+        "ja",
+        "note"
+       ],
+       "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+       "old_sha256": "b183044d85d84f393ab7ed133c840b2ec707f7e316dd43700686a3a09af50e85",
+       "new_sha256": "db7096917b2e8acbc83780c2f8486bb3c7aa1c5317a18a7fd0be0b026577f83b"
+      },
+      {
+       "path": [
+        "vs",
+        "zh-hant",
+        "note"
+       ],
+       "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+       "old_sha256": "5b19f4befbf48770f9b2ff74b0c3a4f68a46c63bf7666067a68d609da866fdd8",
+       "new_sha256": "985d4db7fe328aa17df5874eb2d9c2cb10f2650453ee87070b1339c65daa3918"
+      }
+     ]
+    }
+   ]
   }
  },
  "slots": [
@@ -299,7 +2328,12 @@
     "en",
     "ql_shows",
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "en",
@@ -316,7 +2350,12 @@
     "en",
     "ql_shows",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "en",
@@ -333,7 +2372,12 @@
     "en",
     "ql_shows",
     2
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "en",
@@ -350,7 +2394,12 @@
     "en",
     "ql_shows",
     3
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "en",
@@ -1054,7 +3103,12 @@
     "home_faq",
     1,
     1
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "en",
@@ -1187,7 +3241,12 @@
     "zh-hant",
     "ql_shows",
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -1204,7 +3263,12 @@
     "zh-hant",
     "ql_shows",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -1221,7 +3285,12 @@
     "zh-hant",
     "ql_shows",
     2
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -1238,7 +3307,12 @@
     "zh-hant",
     "ql_shows",
     3
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -1942,7 +4016,12 @@
     "home_faq",
     1,
     1
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hant",
@@ -2075,7 +4154,12 @@
     "zh-hans",
     "ql_shows",
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hans",
@@ -2092,7 +4176,12 @@
     "zh-hans",
     "ql_shows",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hans",
@@ -2109,7 +4198,12 @@
     "zh-hans",
     "ql_shows",
     2
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hans",
@@ -2126,7 +4220,12 @@
     "zh-hans",
     "ql_shows",
     3
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hans",
@@ -2830,7 +4929,12 @@
     "home_faq",
     1,
     1
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hans",
@@ -2968,7 +5072,12 @@
     "ja",
     "ql_shows",
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ja",
@@ -2985,7 +5094,12 @@
     "ja",
     "ql_shows",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ja",
@@ -3002,7 +5116,12 @@
     "ja",
     "ql_shows",
     2
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ja",
@@ -3019,7 +5138,12 @@
     "ja",
     "ql_shows",
     3
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ja",
@@ -3723,7 +5847,12 @@
     "home_faq",
     1,
     1
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ja",
@@ -3861,7 +5990,12 @@
     "de",
     "ql_shows",
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "de",
@@ -3878,7 +6012,12 @@
     "de",
     "ql_shows",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "de",
@@ -3895,7 +6034,12 @@
     "de",
     "ql_shows",
     2
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "de",
@@ -3912,7 +6056,12 @@
     "de",
     "ql_shows",
     3
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "de",
@@ -4621,7 +6770,12 @@
     "home_faq",
     1,
     1
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "de",
@@ -4759,7 +6913,12 @@
     "fr",
     "ql_shows",
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "fr",
@@ -4776,7 +6935,12 @@
     "fr",
     "ql_shows",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "fr",
@@ -4793,7 +6957,12 @@
     "fr",
     "ql_shows",
     2
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "fr",
@@ -4810,7 +6979,12 @@
     "fr",
     "ql_shows",
     3
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "fr",
@@ -5519,7 +7693,12 @@
     "home_faq",
     1,
     1
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "fr",
@@ -5576,7 +7755,12 @@
     "seo",
     "es",
     "ql_title"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5592,7 +7776,12 @@
     "seo",
     "es",
     "ql_desc"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5608,7 +7797,12 @@
     "seo",
     "es",
     "ql_h1"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5624,7 +7818,12 @@
     "seo",
     "es",
     "ql_lead"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5657,7 +7856,12 @@
     "es",
     "ql_shows",
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5674,7 +7878,12 @@
     "es",
     "ql_shows",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5691,7 +7900,12 @@
     "es",
     "ql_shows",
     2
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5708,7 +7922,12 @@
     "es",
     "ql_shows",
     3
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5724,7 +7943,12 @@
     "seo",
     "es",
     "ql_how_name"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5760,7 +7984,12 @@
     "ql_steps",
     0,
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5868,7 +8097,12 @@
     "ql_steps",
     3,
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5916,7 +8150,12 @@
     "seo",
     "es",
     "ql_trial_p"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5948,7 +8187,12 @@
     "seo",
     "es",
     "ql_link"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -5969,7 +8213,12 @@
     "seo",
     "es",
     "ui"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -6021,7 +8270,12 @@
     "ql_faq",
     0,
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -6039,7 +8293,12 @@
     "ql_faq",
     1,
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -6057,7 +8316,12 @@
     "ql_faq",
     1,
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -6075,7 +8339,12 @@
     "ql_faq",
     2,
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -6093,7 +8362,12 @@
     "ql_faq",
     2,
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -6111,7 +8385,12 @@
     "ql_faq",
     3,
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -6129,7 +8408,12 @@
     "ql_faq",
     3,
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -6291,7 +8575,12 @@
     "pay_faq",
     3,
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -6309,7 +8598,12 @@
     "pay_faq",
     3,
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -6417,7 +8711,12 @@
     "home_faq",
     1,
     1
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "es",
@@ -6550,7 +8849,12 @@
     "ko",
     "ql_shows",
     0
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ko",
@@ -6567,7 +8871,12 @@
     "ko",
     "ql_shows",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ko",
@@ -6584,7 +8893,12 @@
     "ko",
     "ql_shows",
     2
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ko",
@@ -6601,7 +8915,12 @@
     "ko",
     "ql_shows",
     3
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ko",
@@ -7305,7 +9624,12 @@
     "home_faq",
     1,
     1
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ko",
@@ -7902,7 +10226,12 @@
     "home",
     "en",
     "description"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+    "kind": "comment"
+   }
   },
   {
    "locale": "en",
@@ -7919,7 +10248,12 @@
     "home",
     "en",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hant",
@@ -7936,7 +10270,12 @@
     "home",
     "zh-hant",
     "description"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hant",
@@ -7953,7 +10292,12 @@
     "home",
     "zh-hant",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ja",
@@ -7970,7 +10314,12 @@
     "home",
     "ja",
     "description"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ja",
@@ -7987,7 +10336,12 @@
     "home",
     "ja",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hans",
@@ -8004,7 +10358,12 @@
     "home",
     "zh-hans",
     "description"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hans",
@@ -8021,7 +10380,12 @@
     "home",
     "zh-hans",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ko",
@@ -8038,7 +10402,12 @@
     "home",
     "ko",
     "description"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ko",
@@ -8055,7 +10424,12 @@
     "home",
     "ko",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "de",
@@ -8072,7 +10446,12 @@
     "home",
     "de",
     "description"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+    "kind": "comment"
+   }
   },
   {
    "locale": "de",
@@ -8089,7 +10468,12 @@
     "home",
     "de",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "fr",
@@ -8106,7 +10490,12 @@
     "home",
     "fr",
     "description"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "ea9ec8b570b875ce1c392de17f1d27a6302705d2",
+    "kind": "comment"
+   }
   },
   {
    "locale": "fr",
@@ -8123,7 +10512,12 @@
     "home",
     "fr",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "es",
@@ -8140,7 +10534,12 @@
     "home",
     "es",
     "description"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -8157,7 +10556,12 @@
     "home",
     "es",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "en",
@@ -8174,7 +10578,12 @@
     "home",
     "en",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hant",
@@ -8191,7 +10600,12 @@
     "home",
     "zh-hant",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hans",
@@ -8208,7 +10622,12 @@
     "home",
     "zh-hans",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ja",
@@ -8225,7 +10644,12 @@
     "home",
     "ja",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "de",
@@ -8242,7 +10666,12 @@
     "home",
     "de",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "fr",
@@ -8259,7 +10688,12 @@
     "home",
     "fr",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "es",
@@ -8276,7 +10710,12 @@
     "home",
     "es",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ko",
@@ -8293,7 +10732,12 @@
     "home",
     "ko",
     "definition"
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "en",
@@ -8616,7 +11060,12 @@
     "vs",
     "en",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "en",
@@ -8633,7 +11082,12 @@
     "vs",
     "en",
     "note"
-   ]
+   ],
+   "later": {
+    "pr": 367,
+    "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+    "kind": "pr"
+   }
   },
   {
    "locale": "en",
@@ -8657,7 +11111,12 @@
     "vs",
     "en",
     "lacks"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "en",
@@ -8764,7 +11223,12 @@
     "en",
     "dont",
     4
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "en",
@@ -9402,7 +11866,12 @@
     "rows",
     4,
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "comment"
+   }
   },
   {
    "locale": "en",
@@ -9888,7 +12357,12 @@
     "vs",
     "zh-hant",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -9905,7 +12379,12 @@
     "vs",
     "zh-hant",
     "note"
-   ]
+   ],
+   "later": {
+    "pr": 367,
+    "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -9929,7 +12408,12 @@
     "vs",
     "zh-hant",
     "lacks"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hant",
@@ -9982,7 +12466,12 @@
     "zh-hant",
     "dont",
     1
-   ]
+   ],
+   "later": {
+    "pr": 389,
+    "commit": "c4c3824b7188a9045eae0f003262c33bf0cb1b54",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -10036,7 +12525,12 @@
     "zh-hant",
     "dont",
     4
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hant",
@@ -10674,7 +13168,12 @@
     "rows",
     4,
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hant",
@@ -11160,7 +13659,12 @@
     "vs",
     "zh-hans",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hans",
@@ -11177,7 +13681,12 @@
     "vs",
     "zh-hans",
     "note"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hans",
@@ -11196,7 +13705,12 @@
     "vs",
     "zh-hans",
     "lacks"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hans",
@@ -11303,7 +13817,12 @@
     "zh-hans",
     "dont",
     4
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hans",
@@ -11941,7 +14460,12 @@
     "rows",
     4,
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hans",
@@ -12427,7 +14951,12 @@
     "vs",
     "ja",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ja",
@@ -12444,7 +14973,12 @@
     "vs",
     "ja",
     "note"
-   ]
+   ],
+   "later": {
+    "pr": 367,
+    "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ja",
@@ -12468,7 +15002,12 @@
     "vs",
     "ja",
     "lacks"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ja",
@@ -12575,7 +15114,12 @@
     "ja",
     "dont",
     4
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ja",
@@ -13213,7 +15757,12 @@
     "rows",
     4,
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ja",
@@ -13699,7 +16248,12 @@
     "vs",
     "de",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "de",
@@ -13716,7 +16270,12 @@
     "vs",
     "de",
     "note"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "de",
@@ -13735,7 +16294,12 @@
     "vs",
     "de",
     "lacks"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "de",
@@ -13842,7 +16406,12 @@
     "de",
     "dont",
     4
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "de",
@@ -14480,7 +17049,12 @@
     "rows",
     4,
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "comment"
+   }
   },
   {
    "locale": "de",
@@ -14966,7 +17540,12 @@
     "vs",
     "fr",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "fr",
@@ -14983,7 +17562,12 @@
     "vs",
     "fr",
     "note"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "fr",
@@ -15002,7 +17586,12 @@
     "vs",
     "fr",
     "lacks"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "fr",
@@ -15109,7 +17698,12 @@
     "fr",
     "dont",
     4
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "fr",
@@ -15747,7 +18341,12 @@
     "rows",
     4,
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "comment"
+   }
   },
   {
    "locale": "fr",
@@ -16233,7 +18832,12 @@
     "vs",
     "es",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -16250,7 +18854,12 @@
     "vs",
     "es",
     "note"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -16269,7 +18878,12 @@
     "vs",
     "es",
     "lacks"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "es",
@@ -16322,7 +18936,12 @@
     "es",
     "dont",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "8567fea40a449e03498a65c6b7ba12e43492a0e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -16376,7 +18995,12 @@
     "es",
     "dont",
     4
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "es",
@@ -17014,7 +19638,12 @@
     "rows",
     4,
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "comment"
+   }
   },
   {
    "locale": "es",
@@ -17500,7 +20129,12 @@
     "vs",
     "ko",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ko",
@@ -17517,7 +20151,12 @@
     "vs",
     "ko",
     "note"
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ko",
@@ -17536,7 +20175,12 @@
     "vs",
     "ko",
     "lacks"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ko",
@@ -17643,7 +20287,12 @@
     "ko",
     "dont",
     4
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ko",
@@ -18281,7 +20930,12 @@
     "rows",
     4,
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ko",
@@ -18909,7 +21563,12 @@
     "faq",
     "Q1",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+    "kind": "comment"
+   }
   },
   {
    "locale": "en",
@@ -19353,7 +22012,12 @@
     "faq",
     "Q1",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hant",
@@ -19837,7 +22501,12 @@
     "faq",
     "Q1",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hans",
@@ -20258,7 +22927,12 @@
     "faq",
     "Q1",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ja",
@@ -20742,7 +23416,12 @@
     "faq",
     "Q1",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+    "kind": "comment"
+   }
   },
   {
    "locale": "de",
@@ -21163,7 +23842,12 @@
     "faq",
     "Q1",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+    "kind": "comment"
+   }
   },
   {
    "locale": "fr",
@@ -21584,7 +24268,12 @@
     "faq",
     "Q1",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -22005,7 +24694,12 @@
     "faq",
     "Q1",
     1
-   ]
+   ],
+   "later": {
+    "pr": 345,
+    "commit": "9723e0b27186070f7c721342c3ec77b1a6e93f89",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ko",
@@ -22267,7 +24961,12 @@
     "pieces",
     "en",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 367,
+    "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+    "kind": "pr"
+   }
   },
   {
    "locale": "en",
@@ -22507,7 +25206,12 @@
     "rows",
     1,
     1
-   ]
+   ],
+   "later": {
+    "pr": 367,
+    "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+    "kind": "comment"
+   }
   },
   {
    "locale": "en",
@@ -22526,7 +25230,12 @@
     "rows",
     1,
     2
-   ]
+   ],
+   "later": {
+    "pr": 367,
+    "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+    "kind": "comment"
+   }
   },
   {
    "locale": "en",
@@ -23168,7 +25877,12 @@
     "pieces",
     "zh-hant",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 367,
+    "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -23408,7 +26122,12 @@
     "rows",
     1,
     1
-   ]
+   ],
+   "later": {
+    "pr": 387,
+    "commit": "e919d88f3971fca721e55ea0e29b3490dc5aa7d1",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -23427,7 +26146,12 @@
     "rows",
     1,
     2
-   ]
+   ],
+   "later": {
+    "pr": 367,
+    "commit": "4fdb9f92c3156dfbd4fcc5b7b98379e62ab6e0fe",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hant",
@@ -24069,7 +26793,12 @@
     "pieces",
     "zh-hans",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 356,
+    "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hans",
@@ -24970,7 +27699,12 @@
     "pieces",
     "ja",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 356,
+    "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ja",
@@ -25871,7 +28605,12 @@
     "pieces",
     "de",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 356,
+    "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+    "kind": "pr"
+   }
   },
   {
    "locale": "de",
@@ -26772,7 +29511,12 @@
     "pieces",
     "fr",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 356,
+    "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+    "kind": "pr"
+   }
   },
   {
    "locale": "fr",
@@ -27673,7 +30417,12 @@
     "pieces",
     "es",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 356,
+    "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -28574,7 +31323,12 @@
     "pieces",
     "ko",
     "intro"
-   ]
+   ],
+   "later": {
+    "pr": 356,
+    "commit": "42e1349c01ecd11120bdfa39e2be5c8af4dda030",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ko",
@@ -36806,7 +39560,12 @@
     "faq275",
     "en",
     "q3"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "en",
@@ -36842,7 +39601,12 @@
     "en",
     "q9",
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "en",
@@ -36896,7 +39660,12 @@
     "en",
     "q10",
     1
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "en",
@@ -36938,7 +39707,12 @@
     "faq275",
     "zh-hant",
     "q3"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hant",
@@ -36974,7 +39748,12 @@
     "zh-hant",
     "q9",
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -36992,7 +39771,12 @@
     "zh-hant",
     "q9",
     2
-   ]
+   ],
+   "later": {
+    "pr": 389,
+    "commit": "c4c3824b7188a9045eae0f003262c33bf0cb1b54",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -37028,7 +39812,12 @@
     "zh-hant",
     "q10",
     1
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hant",
@@ -37065,7 +39854,12 @@
     "faq275",
     "zh-hans",
     "q3"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "zh-hans",
@@ -37101,7 +39895,12 @@
     "zh-hans",
     "q9",
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hans",
@@ -37155,7 +39954,12 @@
     "zh-hans",
     "q10",
     1
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "zh-hans",
@@ -37197,7 +40001,12 @@
     "faq275",
     "ja",
     "q3"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ja",
@@ -37233,7 +40042,12 @@
     "ja",
     "q9",
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ja",
@@ -37287,7 +40101,12 @@
     "ja",
     "q10",
     1
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ja",
@@ -37324,7 +40143,12 @@
     "faq275",
     "de",
     "q3"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "de",
@@ -37360,7 +40184,12 @@
     "de",
     "q9",
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "de",
@@ -37414,7 +40243,12 @@
     "de",
     "q10",
     1
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "de",
@@ -37451,7 +40285,12 @@
     "faq275",
     "fr",
     "q3"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "fr",
@@ -37487,7 +40326,12 @@
     "fr",
     "q9",
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "fr",
@@ -37541,7 +40385,12 @@
     "fr",
     "q10",
     1
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "fr",
@@ -37578,7 +40427,12 @@
     "faq275",
     "es",
     "q3"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "es",
@@ -37614,7 +40468,12 @@
     "es",
     "q9",
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -37668,7 +40527,12 @@
     "es",
     "q10",
     1
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "es",
@@ -37705,7 +40569,12 @@
     "faq275",
     "ko",
     "q3"
-   ]
+   ],
+   "later": {
+    "pr": 371,
+    "commit": "5e5a601253b306692230d7a30efbcd9e377cd5e5",
+    "kind": "comment"
+   }
   },
   {
    "locale": "ko",
@@ -37741,7 +40610,12 @@
     "ko",
     "q9",
     1
-   ]
+   ],
+   "later": {
+    "pr": 360,
+    "commit": "113d2823811c3971c276f6f769ae8bfb1a5ac3be",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ko",
@@ -37795,7 +40669,12 @@
     "ko",
     "q10",
     1
-   ]
+   ],
+   "later": {
+    "pr": 325,
+    "commit": "b14b201291000897540bcda9fd1244a889d773e3",
+    "kind": "pr"
+   }
   },
   {
    "locale": "ko",

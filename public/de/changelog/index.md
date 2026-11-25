@@ -1,10 +1,22 @@
 # Änderungsprotokoll
 
+Black-Friday-Angebot: Der einmalige Kauf zum Freischalten kostet bis 30. November die Hälfte, 2,49 USD statt 4,99 USD. Ab dem 1. Dezember kostet er wieder 4,99 USD. <!-- sale-line -->
+
 Was sich in jeder Version der MarsDawn-App für Mac, iPhone und iPad und des kostenlosen Befehlszeilenprogramms marsdawn geändert hat. Bei der App ist das Datum der Tag, an dem die Version im App Store erschien.
 
 Was als Nächstes kommt, steht in der [Roadmap](/de/roadmap/).
 
 ## MarsDawn für den Mac
+
+### MarsDawn 1.2.3
+
+23. November 2026
+
+- Ziehe eine Datei aus der Seitenleiste „Dateien“ in den Finder, um sie zu kopieren. Auch das PDF aus der Vorschau von „Drucken und Exportieren“ lässt sich herausziehen.
+- Behoben: Wenn die Vorschau unerwartet neu startet, kehrt sie ungefähr an die Stelle zurück, an der du gelesen hast, statt nach oben zu springen.
+- Behoben: marsdawn open --background wechselt nicht mehr zum neuen Tab, auch wenn die Datei schon geöffnet ist. Ist MarsDawn ausgeblendet oder minimiert, bleibt es dabei.
+- Behoben: Solange MarsDawn nicht freigeschaltet ist, ist Ablage > „Drucken …“ in einem PDF-Fenster jetzt abgeblendet, statt verfügbar auszusehen und nichts zu tun.
+- Behoben: Im Blatt „Drucken und Exportieren“ wird nur noch das gewählte Layout mit einem Rahmen hervorgehoben.
 
 ### MarsDawn 1.2.2
 
@@ -53,6 +65,16 @@ Was als Nächstes kommt, steht in der [Roadmap](/de/roadmap/).
 Frühere Versionen sind nur auf Englisch beschrieben: [zum englischen Änderungsprotokoll](/changelog/).
 
 ## MarsDawn für iPhone und iPad
+
+### MarsDawn 1.0.3
+
+23. November 2026
+
+- Auf dem iPhone sitzen die Schaltflächen „Teilen“ und „Erscheinungsbild und Thema“ jetzt in einer unteren Symbolleiste, dazwischen stehen die verbleibenden Testtage. Ein langer Dateiname wird in der Mitte gekürzt, sodass die Dateinamenerweiterung sichtbar bleibt.
+- Behoben: Das Öffnen einer Datei, die MarsDawn nicht lesen kann, ersetzt nicht mehr das geöffnete Dokument.
+- Auf dem iPad öffnet sich das Bedienfeld „Erscheinungsbild und Thema“ jetzt an seiner Schaltfläche in der Symbolleiste, im Hoch- und im Querformat.
+- Behoben: Beim Drucken wechselt eine dunkle Vorschau nicht mehr zu hellen Farben.
+- Behoben: Nachdem du MarsDawn auf dem iPhone freigeschaltet hast, schließt sich das Blatt zum Freischalten, und die Schaltfläche „MarsDawn freischalten“ bleibt nicht mehr auf der Startseite der App stehen.
 
 ### MarsDawn 1.0.2
 
@@ -202,10 +224,10 @@ Versionen vor 0.5.1 sind nicht aufgeführt.
 
 ## Mehr
 
-- [MarsDawn](https://marsdawn.southern-light.dev/de/index.md): Lies Markdown, JSON und YAML deines Agenten nativ auf dem Mac: Live-Vorschau, Mermaid, KaTeX, Übersicht, PDF-Export. Kostenlos testen, dann einmal 4,99 USD.
+- [MarsDawn](https://marsdawn.southern-light.dev/de/index.md): Lies Markdown, JSON und YAML deines Agenten nativ auf dem Mac: Live-Vorschau, Mermaid, KaTeX, Übersicht, PDF-Export. Kostenlos testen, dann einmal 2,49 USD.
 - [Funktionen](https://marsdawn.southern-light.dev/de/features/index.md): Nativer Mac-Editor für Markdown, JSON und YAML: Live-Vorschau, Mermaid, Formeln, Themes und saubere PDF- und Druckseiten für Besprechungen und Papierakten.
 - [Deine Texte bleiben auf deinem Mac](https://marsdawn.southern-light.dev/de/yours/index.md): MarsDawn hat kein Konto, keine Synchronisierung und keine Cloud. Deine Markdown-Dokumente bleiben auf deinem Mac, in den Dateien und Ordnern, die du wählst.
-- [Kostenlos testen, einmal bezahlen](https://marsdawn.southern-light.dev/de/pay-once/index.md): MarsDawn ist kostenlos zum Herunterladen. Teste alles 14 Tage lang und schalte es dann einmalig für 4,99 USD frei. Kein Abo, kein Konto.
+- [Kostenlos testen, einmal bezahlen](https://marsdawn.southern-light.dev/de/pay-once/index.md): MarsDawn ist kostenlos zum Herunterladen. Teste alles 14 Tage lang und schalte es dann einmalig für 2,49 USD frei. Kein Abo, kein Konto.
 - [Drucken und PDF](https://marsdawn.southern-light.dev/de/pdf/index.md): Sieh dir dein Markdown in der Vorschau an, drucke es dann oder sichere es als PDF, im Layout Dokument, Handbuch oder Handout, mit Diagrammen und farbigem Code.
 - [Eine Mac-App](https://marsdawn.southern-light.dev/de/native/index.md): Ein Markdown-Editor, der eine echte Mac-App ist: native Fenster und Tabs, automatisches Sichern, Versionsverlauf, Übersicht im Finder und ein Texteditor, der sich wie ein Mac verhält.
 - [Was MarsDawn nicht kann](https://marsdawn.southern-light.dev/de/limits/index.md): Keine Synchronisierung, kein Bearbeiten auf iPhone oder iPad, keine Plug-ins, keine Konten. Themen, aber kein eigenes CSS. Vor dem Kauf gut zu wissen.
@@ -218,7 +240,7 @@ Versionen vor 0.5.1 sind nicht aufgeführt.
 - [Von HackMD auf den Mac](https://marsdawn.southern-light.dev/de/from-hackmd/index.md): Lade deine HackMD-Notizen als .md herunter und lies sie in MarsDawn auf dem Mac. Alle Notizen herunterladen, ein GitHub-Repository nutzen und Bilder retten.
 - [Markdown zu PDF](https://marsdawn.southern-light.dev/de/markdown-to-pdf/index.md): Wandle Markdown auf dem Mac mit dem kostenlosen Befehlszeilenwerkzeug marsdawn in ein PDF um. Mit Homebrew installieren, einen Befehl ausführen: Tabellen, Mathematik, Mermaid und Code.
 - [MarsDawn im Vergleich: VS-Code-Vorschau, Obsidian, QLMarkdown, LynxOffice](https://marsdawn.southern-light.dev/de/vs/index.md): Für alle, die entscheiden, wie sie Markdown auf dem Mac lesen und prüfen, oft das, was ein Agent geschrieben hat. Jede Zelle unten stammt von den Seiten des Herstellers oder aus unserer eigenen Prüfung, alles am 16. Oktober 2026, außer der PDF-Zelle von MarsDawn, aktualisiert am 7. November 2026; Produkte ändern sich, also kann eine Zelle veralten. Wenn du einen Fehler findest, schreib an die Adresse auf Support.
-- [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/de/vs/macmd-viewer/index.md): MacMD Viewer ist ein Markdown-Viewer nur zum Lesen für 19,99 USD. MarsDawn bearbeitet und zeigt die Vorschau daneben: 14 Tage kostenlos, dann einmalig 4,99 USD.
+- [MacMD Viewer vs. MarsDawn](https://marsdawn.southern-light.dev/de/vs/macmd-viewer/index.md): MacMD Viewer ist ein Markdown-Viewer nur zum Lesen für 19,99 USD. MarsDawn bearbeitet und zeigt die Vorschau daneben: 14 Tage kostenlos, dann einmalig 2,49 USD.
 - [Der beste Markdown-Viewer für den Mac (2026)](https://marsdawn.southern-light.dev/de/best-markdown-viewer-mac/index.md): Acht Markdown-Viewer für den Mac im Vergleich: Preis, Mermaid, Formeln, PDF, Live-Neuladen, Übersicht, nativ oder Electron, und für wen sich jeder eignet.
 - [Befehlszeile](https://marsdawn.southern-light.dev/de/cli/index.md): Das kostenlose Befehlszeilenprogramm marsdawn für den Mac: Markdown aus einer Shell, einem Skript oder einem LLM-Agenten als PDF exportieren, mit JSON-Ausgabe. Installation mit Homebrew.
 - [marsdawn für Agenten](https://marsdawn.southern-light.dev/de/cli/agents/index.md): Eine Referenz für KI-Agenten und Skripte, die marsdawn aufrufen, um Markdown in PDF umzuwandeln: Befehle, JSON-Ausgabe, Schemas, Exit-Codes und Voraussetzungen.

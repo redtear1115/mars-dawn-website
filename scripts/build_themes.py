@@ -3,6 +3,7 @@
 
     python3 scripts/build_themes.py                      # builds the pinned kit CLI first
     python3 scripts/build_themes.py --marsdawn-bin PATH  # reuse a CLI built at the pinned commit
+    python3 scripts/build_themes.py --remove-published ID  # remove a delisted theme's files
 
 For every themes/<id>/theme.json (see scripts/check_theme_index.py for the whole contract):
 
@@ -22,14 +23,14 @@ For every themes/<id>/theme.json (see scripts/check_theme_index.py for the whole
    `marsdawn theme preview --width 1200`, **only if that version isn't published yet**. A version
    already in HEAD's published.json is never re-rendered or rewritten; its source bytes must equal
    what was published (bump the version to change a theme).
-5. Write published.json (HEAD's entries plus this build's new ones: append-only), index.json
+5. Write published.json (HEAD's retained entries plus this build's new ones) and index.json
    (sorted by id; `revoked` from themes/revoked.json), then run build_pages.py, then
    check_theme_index.py on the result.
 
 "Published" means in the published.json **committed at HEAD**. Entries only the working tree has
 are this build's own pending output: a rerun drops and regenerates them (and deletes their files),
-so fixing a theme before committing needs no manual cleanup, while nothing HEAD has published can
-be touched. Every write target is resolved and must lie inside public/themes/v1/; files are
+so fixing a theme before committing needs no manual cleanup. Files published at HEAD are immutable.
+Every write target is resolved and must lie inside public/themes/v1/; files are
 created with O_EXCL|O_NOFOLLOW, never through an existing link.
 
 themes/ must be committed first (`git status` clean for themes/): `generatedAt` is the committer
@@ -39,6 +40,10 @@ on the committed result changes nothing.
 Delisting: remove themes/<id>/, commit, rerun. The entry leaves the index; published files and
 their published.json entries stay, and the id can never be listed again. Revocation: also add
 {id, reason, revokedAt} to themes/revoked.json.
+
+To remove a delisted id's published files, pass --remove-published ID (repeat for multiple ids).
+The build removes every published version for that id, drops its published.json entries and
+records the id in retired.json to enforce the same no-reuse rule after the files are gone.
 
 The kit CLI is WA's: scripts/sync_theme_kit.py's KIT_SHA, built by its own build_cli (a detached
 worktree of a local kit clone, `swift build --only-use-versions-from-resolved-file`) and
@@ -223,7 +228,7 @@ def scan_v1() -> dict:
     return found
 
 
-def collect(binary: Path, work: Path, published: dict, previous: dict, revoked_ids: set,
+def collect(binary: Path, work: Path, published: dict, previous: dict, revoked_ids: set, retired: set,
             author_changes: set, rollbacks: set) -> list:
     """Validates every theme and returns [(doc, data, private_copy)] sorted by id. Raises
     BuildError listing every problem found (all themes are checked before anything is written)."""
@@ -248,7 +253,7 @@ def collect(binary: Path, work: Path, published: dict, previous: dict, revoked_i
                 raise BuildError(f"themes/{folder}/theme.json: version {doc['version']!r} isn't MAJOR.MINOR.PATCH")
             if folder in revoked_ids:
                 raise BuildError(f"themes/{folder}/: id {folder!r} is revoked; it can't be published")
-            if folder in ever_published and folder not in previous:
+            if folder in retired or (folder in ever_published and folder not in previous):
                 raise BuildError(f"themes/{folder}/: id {folder!r} was published before and delisted or revoked; ids are never reused")
             old = previous.get(folder)
             if old is not None and folder not in author_changes:
@@ -273,7 +278,7 @@ def collect(binary: Path, work: Path, published: dict, previous: dict, revoked_i
     return out
 
 
-def build(binary: Path, author_changes: set, rollbacks: set) -> None:
+def build(binary: Path, author_changes: set, rollbacks: set, remove_published=frozenset()) -> None:
     for d in rules.DIRS:
         path = ROOT / d
         if path.is_symlink() or not path.is_dir():
@@ -289,23 +294,49 @@ def build(binary: Path, author_changes: set, rollbacks: set) -> None:
         published = {}
     if not isinstance(published, dict):
         raise BuildError(f"HEAD:{rules.PUBLISHED_REL} isn't an object")
+    for rel in published:
+        invalid = rules.published_key_problem(rel)
+        if invalid:
+            raise BuildError(f"HEAD:{rules.PUBLISHED_REL}: key {rel!r} {invalid}")
     previous = {t["id"]: t for t in head_index.get("themes", []) if isinstance(t, dict) and "id" in t}
+    try:
+        retired = rules.retired_ids(head_json(rules.RETIRED_REL, []))
+    except ValueError as error:
+        raise BuildError(f"HEAD:{rules.RETIRED_REL}: {error}") from error
+
+    published_ids = {rel.split("/", 1)[0] for rel in published}
+    for tid in sorted(remove_published):
+        if not rules.is_theme_id(tid):
+            raise BuildError(f"{tid!r}: --remove-published requires a theme id")
+        if (THEMES / tid).exists() or (THEMES / tid).is_symlink():
+            raise BuildError(f"themes/{tid}/: delist this id before removing its published files")
+        if tid not in published_ids and tid not in retired:
+            raise BuildError(f"{tid!r}: no published files or retirement record at HEAD")
+    removed = {rel for rel in published if rel.split("/", 1)[0] in remove_published}
+    all_retired = retired | remove_published
 
     problems = []
-    revoked = rules.check_revoked_source(problems, rules.Snapshot.from_dir(ROOT))
-    if revoked is None:
+    snap = rules.Snapshot.from_dir(ROOT)
+    revoked = rules.check_revoked_source(problems, snap)
+    working_retired = rules.check_retired_source(problems, snap)
+    if problems:
         raise BuildError("\n".join(problems))
+    if working_retired not in (retired, all_retired):
+        raise BuildError(f"{rules.RETIRED_REL}: differs from HEAD and the requested removals")
 
     on_disk = scan_v1()
-    # Everything HEAD published must be on disk, unchanged, before anything is written.
+    # Explicit removals may already be missing after an interrupted or uncommitted build.
     for rel, digest in sorted(published.items()):
         path = on_disk.get(rel)
+        if path is None and rel in removed:
+            continue
         if path is None or rules.sha256(path.read_bytes()) != digest:
             raise BuildError(f"{rules.V1_REL}/{rel}: missing or changed since it was published; restore it from HEAD")
 
     with tempfile.TemporaryDirectory(prefix="build-themes-") as tmp:
         work = Path(tmp)
-        themes = collect(binary, work, published, previous, {r["id"] for r in revoked}, author_changes, rollbacks)
+        themes = collect(binary, work, published, previous, {r["id"] for r in revoked}, all_retired,
+                         author_changes, rollbacks)
 
         new_files = {}
         for doc, data, copy in themes:
@@ -322,8 +353,17 @@ def build(binary: Path, author_changes: set, rollbacks: set) -> None:
                 new_files[f"{base}preview-{appearance}.png"] = png
             print(f"{doc['id']} {doc['version']}: validated and rendered")
 
-        # Pending output from an earlier, uncommitted run: never published, so drop it.
-        for rel in sorted(set(on_disk) - set(published) - {"index.json", "published.json"}):
+        metadata = ("index.json", "published.json", "retired.json")
+        for name in metadata:
+            tmp_name = f".{name}.tmp"
+            if tmp_name in on_disk:
+                v1_target(name).with_name(tmp_name).unlink()
+                del on_disk[tmp_name]
+        if working_retired != all_retired:
+            write_generated("retired.json", rules.dumps(sorted(all_retired)))
+        # Drop pending files from an earlier run and any explicitly selected published files.
+        stale = on_disk.keys() - published.keys() - set(metadata)
+        for rel in sorted(stale | (removed & on_disk.keys())):
             v1_target(rel).unlink()
         for dirpath, dirnames, filenames in os.walk(V1, topdown=False):
             if Path(dirpath) != V1 and not os.listdir(dirpath):
@@ -332,7 +372,7 @@ def build(binary: Path, author_changes: set, rollbacks: set) -> None:
         for rel, data in sorted(new_files.items()):
             write_new(rel, data)
 
-    all_published = dict(published)
+    all_published = {rel: digest for rel, digest in published.items() if rel not in removed}
     all_published.update({rel: rules.sha256(data) for rel, data in new_files.items()})
     index = {
         "schemaVersion": 1,
@@ -342,6 +382,9 @@ def build(binary: Path, author_changes: set, rollbacks: set) -> None:
     }
     write_generated("published.json", rules.dumps(dict(sorted(all_published.items()))))
     write_generated("index.json", rules.dumps(index))
+    if removed:
+        print(f"{rules.PUBLISHED_REL}: removed {len(removed)} published file(s) for "
+              f"{', '.join(sorted(remove_published & published_ids))}")
     print(f"{rules.INDEX_REL}: {len(index['themes'])} theme(s), {len(revoked)} revoked, "
           f"{len(new_files)} new file(s), generatedAt {index['generatedAt']}")
 
@@ -356,6 +399,8 @@ def main() -> int:
                         help=f"let this id's author.github change (only with the {rules.AUTHOR_CHANGE_LABEL} label)")
     parser.add_argument("--allow-version-rollback", action="append", default=[], metavar="ID",
                         help=f"let this id go to a lower version (only a maintainer PR with the {rules.ROLLBACK_LABEL} label)")
+    parser.add_argument("--remove-published", action="append", default=[], metavar="ID",
+                        help="remove every published version of a delisted id (repeat for multiple ids)")
     args = parser.parse_args()
     try:
         return run(args)
@@ -389,7 +434,7 @@ def run(args) -> int:
             built_worktree, binary = kit.build_cli(args.kit_repo, kit.KIT_SHA)
         check_cli_version(binary)
         kit.smoke_test(binary, ROOT / "vendor" / "kit-themes" / kit.KIT_SHA[:12] / "Themes" / "dawn" / "theme.json")
-        build(binary, set(args.allow_author_change), set(args.allow_version_rollback))
+        build(binary, set(args.allow_author_change), set(args.allow_version_rollback), set(args.remove_published))
     except (BuildError, kit.SyncError) as error:
         for line in str(error).splitlines():
             print(f"::error::{line}", file=sys.stderr)

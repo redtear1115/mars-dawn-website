@@ -8,6 +8,8 @@ name: Theme approval
 #            theme-submission issue whose theme's sha256 equals the latest validation comment's (by
 #            github-actions[bot], verdict valid), DCO still ticked, author.github equal to the issue
 #            opener's login unless the issue has theme-author-change. Hands on the exact bytes.
+#            The gate also refuses an opener on .github/theme-submission-blocklist.json (read from
+#            this checkout, the default branch's commit).
 #   publish  theme-pr.yml: build (macOS, no permissions, kit + build_themes.py) then commit (ubuntu,
 #            the only write scopes, no third-party code), which opens the pull request.
 # Anyone with triage access can add a label, which is why the sender's id is checked. No secrets.

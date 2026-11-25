@@ -18,14 +18,27 @@ The only transformations are the allowed ones: Markdown inline syntax to HTML ([
 as delivered. The Typora row of en, zh-Hant and ja is replaced by C2's row after asserting that the
 original exists once and differs from it only in the live-reload cell.
 
+Later approved text (#362): merged PRs after these comments were read put newer approved text into
+data.py by hand. Those replacements are the last step of the run (after build) and live in sources.json
+under "later", grouped by merged PR. Each field names its path (relative to the dict build() returns:
+locale, then the field), the commit whose data.py holds the approved text, the sha256 of the pinned text
+it replaces (old_sha256) and of the approved text (new_sha256), and, when the text is verbatim in a
+pinned approval comment, that comment's id. The comments (id, updated_at, sha256) are pinned in the same
+group. A path that is listed twice or not there, pinned text or approved text that does not hash to the
+recorded value, a comment that changed, or a field that names a comment its group does not pin stops the
+run with exit 1 (not 2: C1 to C4 are intact, the later layer is what failed). A replaced string shows
+its approved text in slots.json and its slot row gets "later": {pr, commit, kind}.
+
 Outputs: scripts/best228/data.py (what the build reads) and scripts/best228/slots.json (one row per
-shipped string: locale x field -> source).
+shipped string: locale x field -> source; "sources" holds the whole sources.json).
 
     python3 -I -B scripts/best228/ingest.py --record   # first time only: write sources.json from the live comments
     python3 -I -B scripts/best228/ingest.py            # fetch, verify, write data.py and slots.json
     python3 -I -B scripts/best228/ingest.py --check    # fetch, verify, fail if data.py or slots.json differ
-Exit codes: 0 ok, 1 --check differs or a parse assertion failed, 2 a pinned source differs.
+Exit codes: 0 ok, 1 --check differs, a parse assertion failed, gh api failed or the later layer stopped,
+2 a pinned source (C1 to C4) differs.
 """
+import ast
 import hashlib
 import html
 import json
@@ -36,6 +49,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent.parent
 REPO = "redtear1115/mars-dawn-website"
 PINNED = {"C1": 6235379596, "C2": 6235458623, "C3": 6235638140, "C4": 6237326931}
 LOCALES = ["en", "zh-hant", "zh-hans", "ja", "de", "fr", "es", "ko"]
@@ -76,7 +90,8 @@ def record() -> int:
 
 
 def load_sources() -> dict:
-    return json.loads((HERE / "sources.json").read_text(encoding="utf-8"))["comments"]
+    """The whole sources.json: "comments" (C1 to C4) and "later" (the later approved text)."""
+    return json.loads((HERE / "sources.json").read_text(encoding="utf-8"))
 
 
 def fetch(sources: dict) -> dict:
@@ -289,6 +304,119 @@ def build(bodies: dict) -> tuple:
     return out, slots
 
 
+# ---- later approved text (#362) ----------------------------------------------------------------
+
+def value_sha256(value) -> str:
+    return sha256(value if isinstance(value, str) else json.dumps(value, ensure_ascii=False, sort_keys=True))
+
+
+def data_at(commit: str) -> dict:
+    """DATA of scripts/best228/data.py at a commit, read from the git object (a literal, never executed)."""
+    out = subprocess.run(["git", "-C", str(ROOT), "show", f"{commit}:scripts/best228/data.py"], capture_output=True)
+    if out.returncode:
+        raise Stop(f"git show {commit}:scripts/best228/data.py failed: {out.stderr.decode()[:200]}", 1)
+    for node in ast.parse(out.stdout.decode("utf-8")).body:
+        if isinstance(node, ast.Assign) and [t.id for t in node.targets] == ["DATA"]:
+            return ast.literal_eval(node.value)
+    raise Stop(f"no DATA in scripts/best228/data.py at {commit}", 1)
+
+
+def at_path(node, path: list, where: str):
+    for part in path:
+        try:
+            node = node[part]
+        except (KeyError, IndexError, TypeError):
+            raise Stop(f"{where}: path {'/'.join(map(str, path))} not found at {part!r}", 1)
+    return node
+
+
+def pinned_comment(pin: dict, pr: int) -> None:
+    """A later-layer approval comment, held to its pinned sha256 and updated_at."""
+    got = fetch_one(pin["id"])
+    digest = sha256(got["body"])
+    if digest != pin["sha256"] or got["updated_at"] != pin["updated_at"]:
+        raise Stop(f"comment {pin['id']} (later, PR #{pr}) differs from the pinned source: sha256 {digest} vs {pin['sha256']}, "
+                   f"updated_at {got['updated_at']} vs {pin['updated_at']}", 1)
+
+
+def slot_fields(slugs: list, path: list, value) -> dict:
+    """{slot field: text} for the value at a path (a locale's field in `out`), named as build() names them."""
+    head, rest = (path[1] if len(path) > 1 else None), path[2:]
+    if head in ("description", "intro") and not rest:
+        return {head: value}
+    if head == "apps" and len(rest) == 2 and rest[1] in ("name", "para"):
+        return {f"app.{slugs[rest[0]]}.{rest[1]}": value}
+    if head == "apps" and len(rest) == 3 and rest[1] == "bullets":
+        return {f"app.{slugs[rest[0]]}.bullet{rest[2] + 1}": value}
+    if head == "head" and len(rest) == 1:
+        return {f"comparison.head{rest[0]}": value}
+    if head == "rows" and len(rest) == 2:
+        return {f"comparison.{slugs[rest[0]]}.c{rest[1]}": value}
+    if head == "notfor" and not rest:
+        return {f"notfor.{k + 1}": x for k, x in enumerate(value)}
+    if head == "faq" and len(rest) == 1:
+        return {f"faq.q{rest[0] + 1}": value[0], f"faq.a{rest[0] + 1}": value[1]}
+    raise Stop(f"later: path {'/'.join(map(str, path))} is not a path that maps to slots", 1)
+
+
+def update_slots(slots: list, loc: str, old: dict, new: dict, later: dict) -> None:
+    """Show the approved text in the slots of the fields that change. A list that changes length (notfor)
+    has its slots rebuilt in place (same position, same sources), all of them marked."""
+    def find(field: str) -> int:
+        hits = [i for i, s in enumerate(slots) if s["locale"] == loc and s["field"] == field]
+        if len(hits) != 1:
+            raise Stop(f"later: {len(hits)} slots for {loc} {field}, want 1", 1)
+        return hits[0]
+    at = [find(f) for f in old]
+    if list(old) == list(new):
+        for i, (field, text) in zip(at, new.items()):
+            if text != old[field]:
+                slots[i]["text"] = text
+                slots[i]["later"] = later
+    else:
+        slots[at[0]:at[-1] + 1] = [dict(slots[at[min(k, len(at) - 1)]], field=field, text=text, later=later)
+                                   for k, (field, text) in enumerate(new.items())]
+
+
+def apply_later(out: dict, slots: list) -> None:
+    """Replace the pinned text with the approved text the merged PRs put into data.py (sources.json "later").
+    Every failure here exits 1, not 2: the pinned comments C1 to C4 were already verified."""
+    blobs, seen = {}, set()
+    kinds = {"comment": 0, "pr": 0}
+    later = load_sources().get("later")
+    if not later or not later.get("prs"):
+        raise Stop('sources.json has no "later" layer: the approved text would be put back to the pinned text', 1)
+    for group in later["prs"]:
+        pr = group["pr"]
+        for pin in group["comments"]:
+            pinned_comment(pin, pr)
+        known = {pin["id"] for pin in group["comments"]}
+        for field in group["fields"]:
+            path, where = field["path"], f"later PR #{pr}"
+            name = "/".join(map(str, path))
+            if tuple(path) in seen:
+                raise Stop(f"{where}: path {name} is listed twice", 1)
+            seen.add(tuple(path))
+            if not set(field.get("comments", [])) <= known:
+                raise Stop(f"{where}: {name} names a comment that the group does not pin", 1)
+            old = at_path(out, path, where)
+            if value_sha256(old) != field["old_sha256"]:
+                raise Stop(f"{where}: {name} is not the pinned text any more (sha256 {value_sha256(old)} vs {field['old_sha256']})", 1)
+            commit = field["commit"]
+            if commit not in blobs:
+                blobs[commit] = data_at(commit)
+            new = at_path(blobs[commit], path, f"{where} at {commit[:9]}")
+            if value_sha256(new) != field["new_sha256"]:
+                raise Stop(f"{where}: approved text at {commit[:9]} for {name} does not match the pinned sha256 "
+                           f"{field['new_sha256']} (got {value_sha256(new)})", 1)
+            kind = "comment" if field.get("comments") else "pr"
+            update_slots(slots, path[0], slot_fields(out["slugs"], path, old), slot_fields(out["slugs"], path, new),
+                         {"pr": pr, "commit": commit, "kind": kind})
+            at_path(out, path[:-1], where)[path[-1]] = new
+            kinds[kind] += 1
+    print(f"applied {sum(kinds.values())} later replacements: {kinds['comment']} pinned to an approval comment, {kinds['pr']} to a merged PR")
+
+
 HEADER = '''"""The strings /best-markdown-viewer-mac/ puts on the site (website #228). Generated by
 scripts/best228/ingest.py from the pinned comments in sources.json; do not edit by hand (`ingest.py
 --check` fails on a hand edit). HTML-ready text except title and description, which the build escapes."""
@@ -305,8 +433,9 @@ def main() -> int:
     if "--record" in sys.argv:
         return record()
     sources = load_sources()
-    bodies = fetch(sources)
+    bodies = fetch(sources["comments"])
     data, slots = build(bodies)
+    apply_later(data, slots)
     py, js = render(data, slots, sources)
     if "--check" in sys.argv:
         ok = (HERE / "data.py").read_text(encoding="utf-8") == py and (HERE / "slots.json").read_text(encoding="utf-8") == js

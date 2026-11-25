@@ -15,6 +15,9 @@ SOURCES = {'A': {'id': 6233038202,
  'I': {'id': 6295975448,
        'issue': 254,
        'sha256': 'e41989fce4804f874ee0b876a03a4396267fe7e54637a3f184b12b94d047c997'},
+ 'J': {'id': 6666104435,
+       'issue': 296,
+       'sha256': '4800a5035ab5255b1d3cc8149af9e3532f08d906b1097d445be07c482b8164a9'},
  'K': {'id': 6666174606,
        'issue': 355,
        'sha256': 'a6f531ce0eae6da3a376137c9188d1e9aabc80ef90b5f39760ea6e4d4b9309e5'},
@@ -24,6 +27,9 @@ SOURCES = {'A': {'id': 6233038202,
  'approval': {'id': 6295102211,
               'issue': 254,
               'sha256': 'ca6fba829ee5f01ff18114aa2f15cd6bf12aec5332be06781e567f475f4b494e'},
+ 'approval_296': {'id': 6683377854,
+                  'issue': 296,
+                  'sha256': '9fba7f746d1d915d48086bc9455a2492f3323b4fb52eba9b7f0058a859e47114'},
  'approval_355': {'id': 6683315581,
                   'issue': 355,
                   'sha256': '7813a6f40daef2a37e0bd1a930881a2eba48a052eae2655a2a23167c556fee1c'},
@@ -38,14 +44,21 @@ SHARED = {'theme_example': 'marsdawn theme validate my-theme.json\n'
                   'marsdawn theme css my-theme.json\n'
                   'marsdawn theme preview my-theme.json --appearance dark -o preview.png'}
 
-DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 oder neuer enthält `folder` nach dem '
-                                'Warten auch `status`: `attached`, `needsUser`, `declined`, `failed`, '
-                                '`attachedDifferentFolder`, `full`, `unavailable` oder `unknown`. Nur '
-                                'zusammen mit `needsUser` enthält es `waitingFor`: `confirmation` oder '
-                                '`folderChoice`. Ohne `--wait` oder mit einer App ohne Rückmeldung bleibt '
+DATA = {'de': {'agents_folder_items': ['Mit MarsDawn 1.0.2 oder neuer enthält `folder` nach dem Warten (`--wait`, '
+                                'Standard 2 Sekunden) auch `status`: `attached`, `needsUser`, `declined`, '
+                                '`failed`, `attachedDifferentFolder`, `full`, `unavailable` oder `unknown`. '
+                                'Nur zusammen mit `needsUser` enthält es `waitingFor`: `confirmation` oder '
+                                '`folderChoice`. Mit `--wait 0` oder mit einer App ohne Rückmeldung bleibt '
                                 '`folder` bei `{"path": …, "requested": true}`. Ein `--wait` außerhalb von 0 '
                                 'bis 30 endet mit Code 64 und `error: "wait_out_of_range"`. (marsdawn 0.5.3 '
                                 'und neuer.)'],
+        'agents_folder_line': '`folder`: nur vorhanden, wenn ein Ordner angegeben wurde. `path` ist sein '
+                              'absoluter Pfad. `requested` ist immer `true`: marsdawn hat MarsDawn gebeten, '
+                              'den Ordner anzuzeigen. Ob die Seitenleiste ihn zeigt, entscheidet die App, '
+                              'und sie fragt den Menschen womöglich erst nach Zugriff. Mit MarsDawn 1.0.2 '
+                              'oder neuer sagt `status` im nächsten Punkt, was passiert ist, außer bei '
+                              '`--wait 0`. Ohne `status` kann marsdawn es nicht wissen, also melde es als '
+                              'angefragt, nicht als erledigt.',
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '29. September 2026. Themen prüfen.\n'
@@ -162,34 +175,59 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '\n'
                                '- Im Handout-Layout bleibt eine Überschrift bei der breiten Tabelle '
                                'darunter, statt allein am Seitenende zu stehen.',
-                      '0.7.7': '## marsdawn 0.7.7\n'
-                               '\n'
-                               '9. November 2026. PNG-Export, ausklappbare Blöcke und schnellere Exporte großer Dateien.\n'
-                               '\n'
-                               '- `marsdawn export --format png` exportiert ein Dokument als PNG, um die Darstellung zu prüfen: `--width` (600–2000, Standard 1200), `--appearance light|dark`, `--theme` sowie `--lines` oder `--heading` für einen Teil davon. Eine Seite, die höher als 8.000 Pixel ist, wird in nummerierte Bilder geteilt, nie mitten in einer Tabelle, einem Codeblock oder einem Diagramm.\n'
-                               '- `marsdawn export --details` legt fest, wie ausklappbare Blöcke gedruckt werden: `expand`, der Standard, druckt wie bisher alle geöffnet; `as-written` öffnet nur die Blöcke, die geöffnet geschrieben sind, und druckt von den anderen nur die Zusammenfassung. In beiden Fällen wird die Zusammenfassung als fette Zeile ohne Dreieck gedruckt.\n'
-                               '- Ausklappbare Blöcke unterstützen mehr Schreibweisen aus HackMD und Obsidian: `:::spoiler` ohne Titel oder mit `{state="open"}`, Markdown in Titeln, verschachtelte `::::spoiler` und Obsidians ausklappbare Hinweisboxen `> [!note]-` und `> [!tip]+`.\n'
-                               '- Große Dokumente werden deutlich schneller exportiert: In unserem Test brauchte eine 10-MB-Datei etwa 74 Sekunden statt etwa 4 Minuten.\n'
-                               '- Wenn mehrere `marsdawn export`-Befehle gleichzeitig laufen, konnte einer davon mit Exit-Code 5 enden. Jetzt wird es erneut versucht.'
-                               '\n- Läuft die MarsDawn-App nicht, öffnen mehrere gleichzeitige `marsdawn open`-Befehle jetzt jede Datei. Bisher blieben manche Dateien zu, obwohl der Befehl Erfolg meldete.',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2. November 2026. Handbuch-PDFs unter macOS 27.2.\n'
                                '\n'
                                '- Unter macOS 27.2 behält ein Handbuch-PDF die Seitenzahlen im '
                                'Inhaltsverzeichnis und die Lesezeichen von Kapiteln, die auf einer neuen '
-                               'Seite beginnen.'},
+                               'Seite beginnen.',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               '9. November 2026. PNG-Export, ausklappbare Blöcke und schnellere Exporte '
+                               'großer Dateien.\n'
+                               '\n'
+                               '- `marsdawn export --format png` exportiert ein Dokument als PNG, um die '
+                               'Darstellung zu prüfen: `--width` (600–2000, Standard 1200), `--appearance '
+                               'light|dark`, `--theme` sowie `--lines` oder `--heading` für einen Teil '
+                               'davon. Eine Seite, die höher als 8.000 Pixel ist, wird in nummerierte Bilder '
+                               'geteilt, nie mitten in einer Tabelle, einem Codeblock oder einem Diagramm.\n'
+                               '- `marsdawn export --details` legt fest, wie ausklappbare Blöcke gedruckt '
+                               'werden: `expand`, der Standard, druckt wie bisher alle geöffnet; '
+                               '`as-written` öffnet nur die Blöcke, die geöffnet geschrieben sind, und '
+                               'druckt von den anderen nur die Zusammenfassung. In beiden Fällen wird die '
+                               'Zusammenfassung als fette Zeile ohne Dreieck gedruckt.\n'
+                               '- Ausklappbare Blöcke unterstützen mehr Schreibweisen aus HackMD und '
+                               'Obsidian: `:::spoiler` ohne Titel oder mit `{state="open"}`, Markdown in '
+                               'Titeln, verschachtelte `::::spoiler` und Obsidians ausklappbare Hinweisboxen '
+                               '`> [!note]-` und `> [!tip]+`.\n'
+                               '- Große Dokumente werden deutlich schneller exportiert: In unserem Test '
+                               'brauchte eine 10-MB-Datei etwa 74 Sekunden statt etwa 4 Minuten.\n'
+                               '- Wenn mehrere `marsdawn export`-Befehle gleichzeitig laufen, konnte einer '
+                               'davon mit Exit-Code 5 enden. Jetzt wird es erneut versucht.\n'
+                               '- Läuft die MarsDawn-App nicht, öffnen mehrere gleichzeitige `marsdawn '
+                               'open`-Befehle jetzt jede Datei. Bisher blieben manche Dateien zu, obwohl der '
+                               'Befehl Erfolg meldete.'},
         'export_after_json': ['Eine Datei über 16 MiB wird nicht exportiert: `export` endet mit Code 5 und '
                               'schreibt nichts.'],
         'export_items': ['`--breaks`: jeden Zeilenumbruch innerhalb eines Absatzes als Zeilenumbruch '
                          'darstellen, wie HackMD. Ohne die Option fällt ein Zeilenumbruch zwischen zwei '
                          'chinesischen oder japanischen Zeichen weg, sodass sich die Zeilen wie ein Satz '
                          'lesen.',
-                         '`--layout <document|handbook|handout>`: das Seitenlayout. Standard ist `document`. `handbook` druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das Front Matter einen `title` hat. `handout` lässt rechts auf jeder Seite eine leere Notizspalte, setzt Titel und Datum oben auf Seite 1 und schließt jede Seite mit Dateiname, Datum und Seitenzahl ab. Eine sehr breite Tabelle kann in die Notizspalte hineinragen.',
+                         '`--layout <document|handbook|handout>`: das Seitenlayout. Standard ist `document`. '
+                         '`handbook` druckt ein Handbuch: breitere Ränder mit Bundsteg, jede Überschrift der '
+                         'obersten Ebene auf einer neuen Seite, ein Inhaltsverzeichnis mit Seitenzahlen, '
+                         'Seitenzahlen in der Fußzeile und PDF-Lesezeichen, dazu ein Deckblatt, wenn das '
+                         'Front Matter einen `title` hat. `handout` lässt rechts auf jeder Seite eine leere '
+                         'Notizspalte, setzt Titel und Datum oben auf Seite 1 und schließt jede Seite mit '
+                         'Dateiname, Datum und Seitenzahl ab. Eine sehr breite Tabelle kann in die '
+                         'Notizspalte hineinragen.',
                          '`--toc-title <text>`: die Überschrift des Inhaltsverzeichnisses im Handbuch. '
                          'Standard ist `Contents`.',
                          '`<!--BREAK-->` allein in einer Zeile beginnt eine neue Seite, in allen Layouts.'],
-        'export_since': '`--breaks` kam mit marsdawn 0.7.0 hinzu, `--layout` und `--toc-title` mit 0.7.1, der Wert `handbook` mit 0.7.2, der Wert `handout` mit 0.7.3. Der alte Wert aus 0.7.1, `manual`, funktioniert weiterhin.',
+        'export_since': '`--breaks` kam mit marsdawn 0.7.0 hinzu, `--layout` und `--toc-title` mit 0.7.1, '
+                        'der Wert `handbook` mit 0.7.2, der Wert `handout` mit 0.7.3. Der alte Wert aus '
+                        '0.7.1, `manual`, funktioniert weiterhin.',
         'open_items': ['`--wait <n>`: Mit MarsDawn 1.0.2 oder neuer, das eine Rückmeldung gibt, wartet '
                        '`--folder` bis zu n Sekunden (0 bis 30, Standard 2) auf die Antwort der App zum '
                        'Ordner. Mit `--wait 0` oder einer App ohne Rückmeldung wird nicht gewartet, und die '
@@ -197,14 +235,16 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                        'Ein Wert für `--wait` außerhalb von 0 bis 30 ist ein Bedienungsfehler (Code 64). '
                        'Einen negativen Wert schreibst du als `--wait=-1`.',
                        'Mit `--json` wird der Ordner als angefragt gemeldet, nicht als angezeigt, denn das '
-                       'entscheidet die App; mit `--wait` sagt das Ergebnis auch, was aus ihm wurde. Die '
-                       'vollständige Liste steht unter [marsdawn für Agenten](/de/cli/agents/).'],
+                       'entscheidet die App. Mit MarsDawn 1.0.2 oder neuer sagt das Ergebnis auch, was aus '
+                       'ihm wurde, außer bei `--wait 0`. Die vollständige Liste steht unter [marsdawn für '
+                       'Agenten](/de/cli/agents/).'],
         'open_since': 'Zeilen kamen mit marsdawn 0.3.0 hinzu, Ordner und `--background` mit 0.5.1, `--wait` '
                       'und der Ordnerstatus mit 0.5.3.',
         'schema_notes': {'error': 'Fehler, beide Befehle, marsdawn 0.5.2 bis 0.7.0',
-                         'error_v3': 'Fehler, alle Befehle, marsdawn 0.7.1 und neuer, mit '
-                                     '<code>input_too_large</code> (Code 5) und '
-                                     '<code>skill_install_failed</code> (Code 7)',
+                         'error_v3': 'Fehler, alle Befehle, marsdawn 0.7.1 und neuer, ohne die Arten mit '
+                                     'Code 64; ersetzt durch error.v4.json',
+                         'error_v4': 'Fehler, alle Befehle, marsdawn 0.7.1 und neuer, einschließlich der '
+                                     'Bedienungsfehler, die mit Code 64 JSON ausgeben',
                          'open': 'open erfolgreich, marsdawn 0.5.1 und 0.5.2, einschließlich eines in der '
                                  'Seitenleiste angezeigten Ordners',
                          'open_v4': 'open erfolgreich, marsdawn 0.5.3 und neuer, mit <code>status</code> und '
@@ -229,13 +269,19 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json`: ein JSON-Ergebnis statt Text ausgeben.\n'
                          '\n'
                          'Die `theme`-Befehle kamen mit marsdawn 0.6.1 hinzu.'},
- 'en': {'agents_folder_items': ['With `--wait` above 0 and MarsDawn 1.0.2 or later, `folder` also carries '
-                                '`status` once the wait ends: `attached`, `needsUser`, `declined`, `failed`, '
-                                '`attachedDifferentFolder`, `full`, `unavailable` or `unknown`. Only '
-                                'alongside `needsUser`, it carries `waitingFor`: `confirmation` or '
-                                "`folderChoice`. Without `--wait`, or with an app that doesn't report back, "
+ 'en': {'agents_folder_items': ['With MarsDawn 1.0.2 or later, `folder` also carries `status` once the wait '
+                                'ends (`--wait`, 2 seconds by default): `attached`, `needsUser`, `declined`, '
+                                '`failed`, `attachedDifferentFolder`, `full`, `unavailable` or `unknown`. '
+                                'Only alongside `needsUser`, it carries `waitingFor`: `confirmation` or '
+                                "`folderChoice`. With `--wait 0`, or with an app that doesn't report back, "
                                 '`folder` stays `{"path": …, "requested": true}`. A `--wait` outside 0 to 30 '
                                 'exits 64 with `error: "wait_out_of_range"`. (marsdawn 0.5.3 and later.)'],
+        'agents_folder_line': '`folder`: present only when a folder was given. `path` is its absolute path. '
+                              '`requested` is always `true`: marsdawn asked MarsDawn to show the folder. '
+                              "Whether the sidebar shows it is the app's call, and the app may first ask the "
+                              'person for access. With MarsDawn 1.0.2 or later, `status` in the next item '
+                              'says what happened, unless you pass `--wait 0`. Without `status`, marsdawn '
+                              "can't tell, so report it as asked, not as done.",
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '29 September 2026. Checking a theme.\n'
@@ -342,31 +388,53 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '\n'
                                '- In the Handout layout, a heading stays with the wide table under it, '
                                'instead of being left alone at the foot of the page.',
-                      '0.7.7': '## marsdawn 0.7.7\n'
-                               '\n'
-                               '9 November 2026. PNG export, collapsible blocks and faster large exports.\n'
-                               '\n'
-                               '- `marsdawn export --format png` renders a document to PNG, to check how it looks: `--width` (600–2000, default 1200), `--appearance light|dark`, `--theme`, and `--lines` or `--heading` for part of it. A page taller than 8,000 pixels is split into numbered images, never inside a table, code block or diagram.\n'
-                               '- `marsdawn export --details` decides how collapsible blocks print: `expand`, the default, prints every one open, as before; `as-written` prints only the blocks written open, and the others as their summary alone. Either way, a summary prints as a bold line without the triangle.\n'
-                               '- Collapsible blocks render more of what HackMD and Obsidian write: `:::spoiler` with no title or with `{state="open"}`, Markdown in titles, nested `::::spoiler`, and Obsidian\'s foldable callouts `> [!note]-` and `> [!tip]+`.\n'
-                               '- Large documents export much faster: in our test, a 10 MB file took about 74 seconds instead of about 4 minutes.\n'
-                               '- When several `marsdawn export` commands run at once, one of them could fail with exit code 5. It now tries again instead.'
-                               "\n- When the MarsDawn app isn't running, several `marsdawn open` commands run at once now open every file. Before, some files didn't open even when the command reported success.",
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2 November 2026. Handbook PDFs on macOS 27.2.\n'
                                '\n'
                                '- On macOS 27.2, a Handbook PDF keeps the contents page numbers and '
-                               'bookmarks of chapters that start on a new page.'},
+                               'bookmarks of chapters that start on a new page.',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               '9 November 2026. PNG export, collapsible blocks and faster large exports.\n'
+                               '\n'
+                               '- `marsdawn export --format png` renders a document to PNG, to check how it '
+                               'looks: `--width` (600–2000, default 1200), `--appearance light|dark`, '
+                               '`--theme`, and `--lines` or `--heading` for part of it. A page taller than '
+                               '8,000 pixels is split into numbered images, never inside a table, code block '
+                               'or diagram.\n'
+                               '- `marsdawn export --details` decides how collapsible blocks print: '
+                               '`expand`, the default, prints every one open, as before; `as-written` prints '
+                               'only the blocks written open, and the others as their summary alone. Either '
+                               'way, a summary prints as a bold line without the triangle.\n'
+                               '- Collapsible blocks render more of what HackMD and Obsidian write: '
+                               '`:::spoiler` with no title or with `{state="open"}`, Markdown in titles, '
+                               "nested `::::spoiler`, and Obsidian's foldable callouts `> [!note]-` and `> "
+                               '[!tip]+`.\n'
+                               '- Large documents export much faster: in our test, a 10 MB file took about '
+                               '74 seconds instead of about 4 minutes.\n'
+                               '- When several `marsdawn export` commands run at once, one of them could '
+                               'fail with exit code 5. It now tries again instead.\n'
+                               "- When the MarsDawn app isn't running, several `marsdawn open` commands run "
+                               "at once now open every file. Before, some files didn't open even when the "
+                               'command reported success.'},
         'export_after_json': ["A file over 16 MiB isn't exported: `export` exits 5 and writes nothing."],
         'export_items': ['`--breaks`: turn every newline inside a paragraph into a line break, as HackMD '
                          'does. Without it, a newline between two Chinese or Japanese characters is dropped, '
                          'so the lines read as one sentence.',
-                         '`--layout <document|handbook|handout>`: the page layout. Defaults to `document`. `handbook` prints a handbook: wider margins with a binding side, each top-level heading on a new page, a contents page with page numbers, page numbers in the footer and PDF bookmarks, plus a cover when the front matter has a `title`. `handout` leaves a blank notes column on the right of every page, puts the title and date at the top of page 1, and ends every page with the file name, the date and the page number. A very wide table may run into the notes column.',
+                         '`--layout <document|handbook|handout>`: the page layout. Defaults to `document`. '
+                         '`handbook` prints a handbook: wider margins with a binding side, each top-level '
+                         'heading on a new page, a contents page with page numbers, page numbers in the '
+                         'footer and PDF bookmarks, plus a cover when the front matter has a `title`. '
+                         '`handout` leaves a blank notes column on the right of every page, puts the title '
+                         'and date at the top of page 1, and ends every page with the file name, the date '
+                         'and the page number. A very wide table may run into the notes column.',
                          "`--toc-title <text>`: the heading of the handbook's contents page. Defaults to "
                          '`Contents`.',
                          '`<!--BREAK-->` on a line of its own starts a new page, in every layout.'],
-        'export_since': '`--breaks` was added in marsdawn 0.7.0, `--layout` and `--toc-title` in 0.7.1, the name `handbook` in 0.7.2, and `handout` in 0.7.3. The 0.7.1 name, `manual`, still works.',
+        'export_since': '`--breaks` was added in marsdawn 0.7.0, `--layout` and `--toc-title` in 0.7.1, the '
+                        'name `handbook` in 0.7.2, and `handout` in 0.7.3. The 0.7.1 name, `manual`, still '
+                        'works.',
         'open_items': ['`--wait <n>`: with MarsDawn 1.0.2 or later, which reports back, `--folder` waits up '
                        "to n seconds (0 to 30, default 2) for the app's answer about the folder. `--wait 0`, "
                        "or an app that doesn't report back, doesn't wait and sends the same request as "
@@ -374,14 +442,16 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                        'A `--wait` value outside 0 to 30 is a usage error (exit 64). Write a negative value '
                        'as `--wait=-1`.',
                        'With `--json`, the folder is reported as requested, not attached, because the app '
-                       'decides; with `--wait`, the result also says what happened to it. The full list is '
-                       'in [marsdawn for agents](/cli/agents/).'],
+                       'decides. With MarsDawn 1.0.2 or later, the result also says what happened to it, '
+                       'unless you pass `--wait 0`. The full list is in [marsdawn for '
+                       'agents](/cli/agents/).'],
         'open_since': 'Lines were added in marsdawn 0.3.0, folders and `--background` in 0.5.1, and `--wait` '
                       'with the folder status in 0.5.3.',
         'schema_notes': {'error': 'failure, both commands, marsdawn 0.5.2 to 0.7.0',
-                         'error_v3': 'failure, every command, marsdawn 0.7.1 and later, adding '
-                                     '<code>input_too_large</code> (exit 5) and '
-                                     '<code>skill_install_failed</code> (exit 7)',
+                         'error_v3': 'failure, every command, marsdawn 0.7.1 and later, without the exit-64 '
+                                     'kinds; error.v4.json replaces it',
+                         'error_v4': 'failure, every command, marsdawn 0.7.1 and later, including the usage '
+                                     'errors that print JSON at exit 64',
                          'open': 'open success, marsdawn 0.5.1 and 0.5.2, including a folder shown in the '
                                  'sidebar',
                          'open_v4': "open success, marsdawn 0.5.3 and later, with the folder's "
@@ -403,14 +473,20 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json`: print a JSON result instead of text.\n'
                          '\n'
                          'The `theme` commands were added in marsdawn 0.6.1.'},
- 'es': {'agents_folder_items': ['Con un `--wait` mayor que 0 y MarsDawn 1.0.2 o posterior, `folder` también '
-                                'incluye `status` cuando termina la espera: `attached`, `needsUser`, '
-                                '`declined`, `failed`, `attachedDifferentFolder`, `full`, `unavailable` o '
-                                '`unknown`. Solo junto con `needsUser` incluye `waitingFor`: `confirmation` '
-                                'o `folderChoice`. Sin `--wait`, o con una app que no informa del resultado, '
-                                '`folder` sigue siendo `{"path": …, "requested": true}`. Un `--wait` fuera '
-                                'de 0 a 30 termina con el código 64 y `error: "wait_out_of_range"`. '
-                                '(marsdawn 0.5.3 y posterior.)'],
+ 'es': {'agents_folder_items': ['Con MarsDawn 1.0.2 o posterior, `folder` también incluye `status` cuando '
+                                'termina la espera (`--wait`, 2 segundos de forma predeterminada): '
+                                '`attached`, `needsUser`, `declined`, `failed`, `attachedDifferentFolder`, '
+                                '`full`, `unavailable` o `unknown`. Solo junto con `needsUser` incluye '
+                                '`waitingFor`: `confirmation` o `folderChoice`. Con `--wait 0`, o con una '
+                                'app que no informa del resultado, `folder` sigue siendo `{"path": …, '
+                                '"requested": true}`. Un `--wait` fuera de 0 a 30 termina con el código 64 y '
+                                '`error: "wait_out_of_range"`. (marsdawn 0.5.3 y posterior.)'],
+        'agents_folder_line': '`folder`: solo aparece cuando se dio una carpeta. `path` es su ruta absoluta. '
+                              '`requested` siempre es `true`: marsdawn le pidió a MarsDawn que mostrara la '
+                              'carpeta. Si la barra lateral la muestra lo decide la app, que puede pedirle '
+                              'acceso a la persona primero. Con MarsDawn 1.0.2 o posterior, `status`, en el '
+                              'punto siguiente, indica qué pasó, salvo con `--wait 0`. Sin `status`, '
+                              'marsdawn no puede saberlo, así que infórmalo como solicitado, no como hecho.',
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '29 de septiembre de 2026. Comprobar un tema.\n'
@@ -528,33 +604,60 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '\n'
                                '- En la disposición Folleto, un encabezado se mantiene con la tabla ancha '
                                'que tiene debajo, en lugar de quedar solo al pie de la página.',
-                      '0.7.7': '## marsdawn 0.7.7\n'
-                               '\n'
-                               '9 de noviembre de 2026. Exportación a PNG, bloques plegables y exportaciones más rápidas de archivos grandes.\n'
-                               '\n'
-                               '- `marsdawn export --format png` exporta un documento a PNG para comprobar cómo se ve: `--width` (600–2000, 1200 por defecto), `--appearance light|dark`, `--theme`, y `--lines` o `--heading` para exportar solo una parte. Una página de más de 8000 píxeles de alto se divide en imágenes numeradas, nunca en medio de una tabla, un bloque de código o un diagrama.\n'
-                               '- `marsdawn export --details` decide cómo se imprimen los bloques plegables: `expand`, la opción predeterminada, los imprime todos abiertos, como antes; `as-written` solo abre los bloques escritos como abiertos e imprime de los demás solo el resumen. En ambos casos, el resumen se imprime como una línea en negrita, sin triángulo.\n'
-                               '- Los bloques plegables admiten más formas de escribir de HackMD y Obsidian: `:::spoiler` sin título o con `{state="open"}`, Markdown en los títulos, `::::spoiler` anidados y los avisos destacados plegables de Obsidian `> [!note]-` y `> [!tip]+`.\n'
-                               '- Los documentos grandes se exportan mucho más rápido: en nuestra prueba, un archivo de 10 MB tardó unos 74 segundos en vez de unos 4 minutos.\n'
-                               '- Cuando se ejecutaban varios comandos `marsdawn export` a la vez, uno podía terminar con el código 5. Ahora vuelve a intentarlo.'
-                               '\n- Cuando la app MarsDawn no está abierta, varios comandos `marsdawn open` a la vez ahora abren todos los archivos. Antes, algunos archivos no se abrían aunque el comando informara que todo había ido bien.',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2 de noviembre de 2026. Los PDF de Guía en macOS 27.2.\n'
                                '\n'
                                '- En macOS 27.2, un PDF con la disposición Guía conserva los números de '
                                'página de la tabla de contenido y los marcadores de los capítulos que '
-                               'empiezan en una página nueva.'},
+                               'empiezan en una página nueva.',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               '9 de noviembre de 2026. Exportación a PNG, bloques plegables y exportaciones '
+                               'más rápidas de archivos grandes.\n'
+                               '\n'
+                               '- `marsdawn export --format png` exporta un documento a PNG para comprobar '
+                               'cómo se ve: `--width` (600–2000, 1200 por defecto), `--appearance '
+                               'light|dark`, `--theme`, y `--lines` o `--heading` para exportar solo una '
+                               'parte. Una página de más de 8000 píxeles de alto se divide en imágenes '
+                               'numeradas, nunca en medio de una tabla, un bloque de código o un diagrama.\n'
+                               '- `marsdawn export --details` decide cómo se imprimen los bloques plegables: '
+                               '`expand`, la opción predeterminada, los imprime todos abiertos, como antes; '
+                               '`as-written` solo abre los bloques escritos como abiertos e imprime de los '
+                               'demás solo el resumen. En ambos casos, el resumen se imprime como una línea '
+                               'en negrita, sin triángulo.\n'
+                               '- Los bloques plegables admiten más formas de escribir de HackMD y Obsidian: '
+                               '`:::spoiler` sin título o con `{state="open"}`, Markdown en los títulos, '
+                               '`::::spoiler` anidados y los avisos destacados plegables de Obsidian `> '
+                               '[!note]-` y `> [!tip]+`.\n'
+                               '- Los documentos grandes se exportan mucho más rápido: en nuestra prueba, un '
+                               'archivo de 10 MB tardó unos 74 segundos en vez de unos 4 minutos.\n'
+                               '- Cuando se ejecutaban varios comandos `marsdawn export` a la vez, uno podía '
+                               'terminar con el código 5. Ahora vuelve a intentarlo.\n'
+                               '- Cuando la app MarsDawn no está abierta, varios comandos `marsdawn open` a '
+                               'la vez ahora abren todos los archivos. Antes, algunos archivos no se abrían '
+                               'aunque el comando informara que todo había ido bien.'},
         'export_after_json': ['Un archivo de más de 16 MiB no se exporta: `export` termina con el código 5 y '
                               'no escribe nada.'],
         'export_items': ['`--breaks`: mostrar cada salto de línea dentro de un párrafo como un salto de '
                          'línea, como HackMD. Sin esta opción, un salto de línea entre dos caracteres chinos '
                          'o japoneses desaparece, y las líneas se leen como una sola frase.',
-                         '`--layout <document|handbook|handout>`: la disposición de página. De forma predeterminada, `document`. `handbook` genera una guía: márgenes más anchos con un lado de encuadernación, cada encabezado de primer nivel en una página nueva, una tabla de contenido con números de página, números de página en el pie y marcadores PDF, además de una portada cuando el front matter tiene `title`. `handout` deja una columna de notas en blanco a la derecha de cada página, pone el título y la fecha en la parte superior de la página 1 y termina cada página con el nombre del archivo, la fecha y el número de página. Una tabla muy ancha puede invadir la columna de notas.',
+                         '`--layout <document|handbook|handout>`: la disposición de página. De forma '
+                         'predeterminada, `document`. `handbook` genera una guía: márgenes más anchos con un '
+                         'lado de encuadernación, cada encabezado de primer nivel en una página nueva, una '
+                         'tabla de contenido con números de página, números de página en el pie y marcadores '
+                         'PDF, además de una portada cuando el front matter tiene `title`. `handout` deja '
+                         'una columna de notas en blanco a la derecha de cada página, pone el título y la '
+                         'fecha en la parte superior de la página 1 y termina cada página con el nombre del '
+                         'archivo, la fecha y el número de página. Una tabla muy ancha puede invadir la '
+                         'columna de notas.',
                          '`--toc-title <text>`: el título de la página de contenido de la guía. De forma '
                          'predeterminada, `Contents`.',
-                         '`<!--BREAK-->` solo en una línea empieza una página nueva, en todas las disposiciones.'],
-        'export_since': '`--breaks` llegó con marsdawn 0.7.0, `--layout` y `--toc-title` con la 0.7.1, el valor `handbook` con la 0.7.2, y el valor `handout` con la 0.7.3. El valor anterior de la 0.7.1, `manual`, sigue funcionando.',
+                         '`<!--BREAK-->` solo en una línea empieza una página nueva, en todas las '
+                         'disposiciones.'],
+        'export_since': '`--breaks` llegó con marsdawn 0.7.0, `--layout` y `--toc-title` con la 0.7.1, el '
+                        'valor `handbook` con la 0.7.2, y el valor `handout` con la 0.7.3. El valor anterior '
+                        'de la 0.7.1, `manual`, sigue funcionando.',
         'open_items': ['`--wait <n>`: con MarsDawn 1.0.2 o posterior, que informa del resultado, `--folder` '
                        'espera hasta n segundos (de 0 a 30, 2 de forma predeterminada) la respuesta de la '
                        'app sobre la carpeta. Con `--wait 0`, o con una app que no informa del resultado, no '
@@ -562,14 +665,16 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                        'Un valor de `--wait` fuera de 0 a 30 es un error de uso (código 64). Escribe un '
                        'valor negativo como `--wait=-1`.',
                        'Con `--json`, la carpeta figura como solicitada, no como mostrada, porque decide la '
-                       'app; con `--wait`, el resultado también dice qué pasó con ella. La lista completa '
-                       'está en [marsdawn para agentes](/es/cli/agents/).'],
+                       'app. Con MarsDawn 1.0.2 o posterior, el resultado también dice qué pasó con ella, '
+                       'salvo con `--wait 0`. La lista completa está en [marsdawn para '
+                       'agentes](/es/cli/agents/).'],
         'open_since': 'Las líneas llegaron con marsdawn 0.3.0, las carpetas y `--background` con la 0.5.1, y '
                       '`--wait` y el estado de la carpeta con la 0.5.3.',
         'schema_notes': {'error': 'error, ambos comandos, marsdawn 0.5.2 a 0.7.0',
-                         'error_v3': 'error, todos los comandos, marsdawn 0.7.1 y posterior, con '
-                                     '<code>input_too_large</code> (código 5) y '
-                                     '<code>skill_install_failed</code> (código 7)',
+                         'error_v3': 'error, todos los comandos, marsdawn 0.7.1 y posterior, sin los tipos '
+                                     'del código 64; lo reemplaza error.v4.json',
+                         'error_v4': 'error, todos los comandos, marsdawn 0.7.1 y posterior, incluidos los '
+                                     'errores de uso que imprimen JSON con el código 64',
                          'open': 'éxito de open, marsdawn 0.5.1 y 0.5.2, incluida una carpeta mostrada en la '
                                  'barra lateral',
                          'open_v4': 'éxito de open, marsdawn 0.5.3 y posterior, con <code>status</code> y '
@@ -593,14 +698,21 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json`: mostrar un resultado JSON en lugar de texto.\n'
                          '\n'
                          'Los comandos `theme` llegaron con marsdawn 0.6.1.'},
- 'fr': {'agents_folder_items': ['Avec un `--wait` supérieur à 0 et MarsDawn 1.0.2 ou version ultérieure, '
-                                '`folder` contient aussi `status` une fois l’attente terminée : `attached`, '
+ 'fr': {'agents_folder_items': ['Avec MarsDawn 1.0.2 ou version ultérieure, `folder` contient aussi `status` '
+                                'une fois l’attente terminée (`--wait`, 2 secondes par défaut) : `attached`, '
                                 '`needsUser`, `declined`, `failed`, `attachedDifferentFolder`, `full`, '
                                 '`unavailable` ou `unknown`. Seulement avec `needsUser`, il contient '
-                                '`waitingFor` : `confirmation` ou `folderChoice`. Sans `--wait`, ou avec une '
-                                'app qui ne donne pas de réponse, `folder` reste `{"path": …, "requested": '
-                                'true}`. Un `--wait` hors de 0 à 30 se termine avec le code 64 et `error: '
-                                '"wait_out_of_range"`. (marsdawn 0.5.3 et versions ultérieures.)'],
+                                '`waitingFor` : `confirmation` ou `folderChoice`. Avec `--wait 0`, ou avec '
+                                'une app qui ne donne pas de réponse, `folder` reste `{"path": …, '
+                                '"requested": true}`. Un `--wait` hors de 0 à 30 se termine avec le code 64 '
+                                'et `error: "wait_out_of_range"`. (marsdawn 0.5.3 et versions ultérieures.)'],
+        'agents_folder_line': '`folder` : présent seulement si un dossier a été donné. `path` est son chemin '
+                              'absolu. `requested` vaut toujours `true` : marsdawn a demandé à MarsDawn '
+                              'd’afficher le dossier. C’est l’app qui décide si la barre latérale l’affiche, '
+                              'et elle peut d’abord demander l’accès à la personne. Avec MarsDawn 1.0.2 ou '
+                              'version ultérieure, `status`, décrit au point suivant, indique ce qui s’est '
+                              'passé, sauf avec `--wait 0`. Sans `status`, marsdawn ne peut pas le savoir : '
+                              'signalez-le comme demandé, pas comme fait.',
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '29 septembre 2026. Vérifier un thème.\n'
@@ -717,33 +829,61 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '\n'
                                '- Dans la mise en page Polycopié, un titre reste avec le tableau large placé '
                                'dessous, au lieu de se retrouver seul en bas de page.',
-                      '0.7.7': '## marsdawn 0.7.7\n'
-                               '\n'
-                               '9 novembre 2026. Export PNG, blocs repliables et exports plus rapides des gros fichiers.\n'
-                               '\n'
-                               '- `marsdawn export --format png` exporte un document en PNG pour vérifier son rendu\xa0: `--width` (600–2000, 1200 par défaut), `--appearance light|dark`, `--theme`, et `--lines` ou `--heading` pour n’en exporter qu’une partie. Une page de plus de 8 000 pixels de haut est découpée en images numérotées, jamais au milieu d’un tableau, d’un bloc de code ou d’un diagramme.\n'
-                               '- `marsdawn export --details` définit comment les blocs repliables s’impriment\xa0: `expand`, par défaut, les imprime tous ouverts, comme avant\xa0; `as-written` n’ouvre que les blocs écrits ouverts et n’imprime que le résumé des autres. Dans les deux cas, le résumé s’imprime sur une ligne en gras, sans triangle.\n'
-                               '- Les blocs repliables prennent en charge davantage de syntaxes de HackMD et d’Obsidian\xa0: `:::spoiler` sans titre ou avec `{state="open"}`, du Markdown dans les titres, des `::::spoiler` imbriqués, et les encadrés repliables d’Obsidian `> [!note]-` et `> [!tip]+`.\n'
-                               '- Les gros documents s’exportent beaucoup plus vite\xa0: dans notre test, un fichier de 10 Mo a pris environ 74 secondes au lieu d’environ 4 minutes.\n'
-                               '- Quand plusieurs commandes `marsdawn export` s’exécutaient en même temps, l’une d’elles pouvait se terminer avec le code 5. Elle réessaie désormais.'
-                               '\n- Quand l’app MarsDawn n’est pas ouverte, plusieurs commandes `marsdawn open` lancées en même temps ouvrent désormais chaque fichier. Avant, certains fichiers ne s’ouvraient pas alors que la commande indiquait un succès.',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2 novembre 2026. Les PDF Guide sous macOS 27.2.\n'
                                '\n'
                                '- Sous macOS 27.2, un PDF en mise en page Guide conserve les numéros de page '
                                'de la table des matières et les signets des chapitres qui commencent sur une '
-                               'nouvelle page.'},
+                               'nouvelle page.',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               '9 novembre 2026. Export PNG, blocs repliables et exports plus rapides des '
+                               'gros fichiers.\n'
+                               '\n'
+                               '- `marsdawn export --format png` exporte un document en PNG pour vérifier '
+                               'son rendu\xa0: `--width` (600–2000, 1200 par défaut), `--appearance '
+                               'light|dark`, `--theme`, et `--lines` ou `--heading` pour n’en exporter '
+                               'qu’une partie. Une page de plus de 8 000 pixels de haut est découpée en '
+                               'images numérotées, jamais au milieu d’un tableau, d’un bloc de code ou d’un '
+                               'diagramme.\n'
+                               '- `marsdawn export --details` définit comment les blocs repliables '
+                               's’impriment\xa0: `expand`, par défaut, les imprime tous ouverts, comme '
+                               'avant\xa0; `as-written` n’ouvre que les blocs écrits ouverts et n’imprime '
+                               'que le résumé des autres. Dans les deux cas, le résumé s’imprime sur une '
+                               'ligne en gras, sans triangle.\n'
+                               '- Les blocs repliables prennent en charge davantage de syntaxes de HackMD et '
+                               'd’Obsidian\xa0: `:::spoiler` sans titre ou avec `{state="open"}`, du '
+                               'Markdown dans les titres, des `::::spoiler` imbriqués, et les encadrés '
+                               'repliables d’Obsidian `> [!note]-` et `> [!tip]+`.\n'
+                               '- Les gros documents s’exportent beaucoup plus vite\xa0: dans notre test, un '
+                               'fichier de 10 Mo a pris environ 74 secondes au lieu d’environ 4 minutes.\n'
+                               '- Quand plusieurs commandes `marsdawn export` s’exécutaient en même temps, '
+                               'l’une d’elles pouvait se terminer avec le code 5. Elle réessaie désormais.\n'
+                               '- Quand l’app MarsDawn n’est pas ouverte, plusieurs commandes `marsdawn '
+                               'open` lancées en même temps ouvrent désormais chaque fichier. Avant, '
+                               'certains fichiers ne s’ouvraient pas alors que la commande indiquait un '
+                               'succès.'},
         'export_after_json': ['Un fichier de plus de 16 Mio n’est pas exporté : `export` se termine avec le '
                               'code 5 et n’écrit rien.'],
         'export_items': ['`--breaks` : rendre chaque retour à la ligne d’un paragraphe comme un saut de '
                          'ligne, comme HackMD. Sans cette option, un retour à la ligne entre deux caractères '
                          'chinois ou japonais disparaît, et les lignes se lisent comme une seule phrase.',
-                         '`--layout <document|handbook|handout>` : la mise en page. Par défaut, `document`. `handbook` produit un guide : marges plus larges avec un côté de reliure, chaque titre de premier niveau sur une nouvelle page, une table des matières avec numéros de page, des numéros de page en pied de page et des signets PDF, plus une couverture quand le front matter a un `title`. `handout` laisse une colonne de notes vide à droite de chaque page, place le titre et la date en haut de la page 1 et termine chaque page par le nom du fichier, la date et le numéro de page. Un tableau très large peut déborder sur la colonne de notes.',
+                         '`--layout <document|handbook|handout>` : la mise en page. Par défaut, `document`. '
+                         '`handbook` produit un guide : marges plus larges avec un côté de reliure, chaque '
+                         'titre de premier niveau sur une nouvelle page, une table des matières avec numéros '
+                         'de page, des numéros de page en pied de page et des signets PDF, plus une '
+                         'couverture quand le front matter a un `title`. `handout` laisse une colonne de '
+                         'notes vide à droite de chaque page, place le titre et la date en haut de la page 1 '
+                         'et termine chaque page par le nom du fichier, la date et le numéro de page. Un '
+                         'tableau très large peut déborder sur la colonne de notes.',
                          '`--toc-title <text>` : le titre de la page de table des matières du guide. Par '
                          'défaut, `Contents`.',
-                         '`<!--BREAK-->` seul sur une ligne commence une nouvelle page, dans toutes les mises en page.'],
-        'export_since': '`--breaks` est arrivé avec marsdawn 0.7.0, `--layout` et `--toc-title` avec la 0.7.1, la valeur `handbook` avec la 0.7.2, et la valeur `handout` avec la 0.7.3. L’ancienne valeur de la 0.7.1, `manual`, fonctionne toujours.',
+                         '`<!--BREAK-->` seul sur une ligne commence une nouvelle page, dans toutes les '
+                         'mises en page.'],
+        'export_since': '`--breaks` est arrivé avec marsdawn 0.7.0, `--layout` et `--toc-title` avec la '
+                        '0.7.1, la valeur `handbook` avec la 0.7.2, et la valeur `handout` avec la 0.7.3. '
+                        'L’ancienne valeur de la 0.7.1, `manual`, fonctionne toujours.',
         'open_items': ['`--wait <n>` : avec MarsDawn 1.0.2 ou version ultérieure, qui donne une réponse, '
                        '`--folder` attend jusqu’à n secondes (de 0 à 30, 2 par défaut) la réponse de l’app '
                        'au sujet du dossier. Avec `--wait 0`, ou une app qui ne donne pas de réponse, il '
@@ -751,14 +891,17 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                        'Une valeur de `--wait` hors de 0 à 30 est une erreur d’utilisation (code 64). '
                        'Écrivez une valeur négative sous la forme `--wait=-1`.',
                        'Avec `--json`, le dossier est indiqué comme demandé, et non comme affiché, car c’est '
-                       'l’app qui décide ; avec `--wait`, le résultat dit aussi ce qu’il est devenu. La '
-                       'liste complète se trouve dans [marsdawn pour les agents](/fr/cli/agents/).'],
+                       'l’app qui décide. Avec MarsDawn 1.0.2 ou version ultérieure, le résultat dit aussi '
+                       'ce qu’il est devenu, sauf avec `--wait 0`. La liste complète se trouve dans '
+                       '[marsdawn pour les agents](/fr/cli/agents/).'],
         'open_since': 'Les lignes sont arrivées avec marsdawn 0.3.0, les dossiers et `--background` avec la '
                       '0.5.1, et `--wait` et l’état du dossier avec la 0.5.3.',
         'schema_notes': {'error': 'échec, pour les deux commandes, marsdawn 0.5.2 à 0.7.0',
                          'error_v3': 'échec, pour toutes les commandes, marsdawn 0.7.1 et versions '
-                                     'ultérieures, avec <code>input_too_large</code> (code 5) et '
-                                     '<code>skill_install_failed</code> (code 7)',
+                                     'ultérieures, sans les types du code 64 ; remplacé par error.v4.json',
+                         'error_v4': 'échec, pour toutes les commandes, marsdawn 0.7.1 et versions '
+                                     'ultérieures, y compris les erreurs d’utilisation qui affichent du JSON '
+                                     'avec le code 64',
                          'open': 'succès de open, marsdawn 0.5.1 et 0.5.2, y compris un dossier affiché dans '
                                  'la barre latérale',
                          'open_v4': 'succès de open, marsdawn 0.5.3 et versions ultérieures, avec '
@@ -781,12 +924,17 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json` : afficher un résultat JSON au lieu de texte.\n'
                          '\n'
                          'Les commandes `theme` sont arrivées avec marsdawn 0.6.1.'},
- 'ja': {'agents_folder_items': ['`--wait` が 0 より大きく、MarsDawn が 1.0.2 以降の場合、待ち時間が終わると `folder` に `status` '
+ 'ja': {'agents_folder_items': ['MarsDawn が 1.0.2 以降の場合、待ち時間（`--wait`、初期値 2 秒）が終わると `folder` に `status` '
                                 'も入ります：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable`、`unknown` '
                                 'のいずれかです。`needsUser` のときだけ `waitingFor`（`confirmation` または '
-                                '`folderChoice`）も入ります。`--wait` がない場合や、結果を返さないアプリでは、`folder` は `{"path": …, '
+                                '`folderChoice`）も入ります。`--wait 0` の場合や、結果を返さないアプリでは、`folder` は `{"path": …, '
                                 '"requested": true}` のままです。`--wait` が 0〜30 の範囲外ならコード 64 で終了し、`error: '
                                 '"wait_out_of_range"` を返します。（marsdawn 0.5.3 以降）'],
+        'agents_folder_line': '`folder`：フォルダを指定したときだけ現れます。`path` はその絶対パスです。`requested` は常に `true` '
+                              'です：marsdawn は MarsDawn '
+                              'にフォルダの表示を依頼しました。サイドバーに表示するかどうかはアプリが決め、アプリが先に人にアクセスの許可を求めることもあります。MarsDawn が '
+                              '1.0.2 以降なら、次の項目の `status` で結果が分かります（`--wait 0` の場合を除く）。`status` がない場合は '
+                              'marsdawn には分からないため、「完了した」ではなく「依頼した」と報告してください。',
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '2026年9月29日。テーマのチェック。\n'
@@ -870,38 +1018,52 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '2026年10月30日。配布資料の見出しが表から離れなくなりました。\n'
                                '\n'
                                '- 配布資料レイアウトでは、見出しはその下の幅の広い表から離れず、ページの下端に見出しだけが残らなくなりました。',
-                      '0.7.7': '## marsdawn 0.7.7\n'
-                               '\n'
-                               '2026年11月9日。PNG の書き出し、折りたたみブロック、大きなファイルの高速な書き出し。\n'
-                               '\n'
-                               '- `marsdawn export --format png` は、書類を PNG に書き出して表示を確認できます。`--width`（600–2000、初期値 1200）、`--appearance light|dark`、`--theme`、一部だけを書き出す `--lines` か `--heading` を指定できます。高さが 8,000 ピクセルを超えるページは番号付きの複数の画像に分かれ、表、コードブロック、図の途中では分かれません。\n'
-                               '- `marsdawn export --details` は、折りたたみブロックのプリント方法を決めます。初期値の `expand` はこれまでどおりすべて開いてプリントし、`as-written` は開いた状態で書かれたブロックだけを開き、ほかは見出しだけをプリントします。どちらも見出しは三角形なしの太字 1 行になります。\n'
-                               '- 折りたたみブロックが、HackMD と Obsidian の書き方にさらに対応しました。見出しのない `:::spoiler` や `{state="open"}` 付きの `:::spoiler`、見出し内の Markdown、入れ子の `::::spoiler`、Obsidian の折りたためるコールアウト `> [!note]-`、`> [!tip]+` に対応します。\n'
-                               '- 大きなファイルの書き出しがかなり速くなりました。私たちのテストでは、10 MB のファイルが約 4 分から約 74 秒になりました。\n'
-                               '- 複数の `marsdawn export` を同時に実行すると、まれにひとつがコード 5 で終了することがありました。これからは自動的に再試行します。'
-                               '\n- MarsDawn アプリが起動していないときに複数の `marsdawn open` を同時に実行しても、すべてのファイルが開くようになりました。これまでは、成功と表示されても開かないファイルがありました。',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2026年11月2日。macOS 27.2 のハンドブック PDF。\n'
                                '\n'
-                               '- macOS 27.2 のハンドブック PDF で、新しいページから始まる章の、目次のページ番号とブックマークが保たれます。'},
+                               '- macOS 27.2 のハンドブック PDF で、新しいページから始まる章の、目次のページ番号とブックマークが保たれます。',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               '2026年11月9日。PNG の書き出し、折りたたみブロック、大きなファイルの高速な書き出し。\n'
+                               '\n'
+                               '- `marsdawn export --format png` は、書類を PNG '
+                               'に書き出して表示を確認できます。`--width`（600–2000、初期値 1200）、`--appearance '
+                               'light|dark`、`--theme`、一部だけを書き出す `--lines` か `--heading` を指定できます。高さが 8,000 '
+                               'ピクセルを超えるページは番号付きの複数の画像に分かれ、表、コードブロック、図の途中では分かれません。\n'
+                               '- `marsdawn export --details` は、折りたたみブロックのプリント方法を決めます。初期値の `expand` '
+                               'はこれまでどおりすべて開いてプリントし、`as-written` '
+                               'は開いた状態で書かれたブロックだけを開き、ほかは見出しだけをプリントします。どちらも見出しは三角形なしの太字 1 行になります。\n'
+                               '- 折りたたみブロックが、HackMD と Obsidian の書き方にさらに対応しました。見出しのない `:::spoiler` や '
+                               '`{state="open"}` 付きの `:::spoiler`、見出し内の Markdown、入れ子の `::::spoiler`、Obsidian '
+                               'の折りたためるコールアウト `> [!note]-`、`> [!tip]+` に対応します。\n'
+                               '- 大きなファイルの書き出しがかなり速くなりました。私たちのテストでは、10 MB のファイルが約 4 分から約 74 秒になりました。\n'
+                               '- 複数の `marsdawn export` を同時に実行すると、まれにひとつがコード 5 '
+                               'で終了することがありました。これからは自動的に再試行します。\n'
+                               '- MarsDawn アプリが起動していないときに複数の `marsdawn open` '
+                               'を同時に実行しても、すべてのファイルが開くようになりました。これまでは、成功と表示されても開かないファイルがありました。'},
         'export_after_json': ['16 MiB を超えるファイルは書き出しません。`export` はコード 5 で終了し、何も書き出しません。'],
         'export_items': ['`--breaks`：HackMD '
                          'と同じように、段落内の改行をすべて改行として表示します。付けないときは、中国語や日本語の文字どうしのあいだの改行を取り除き、前後の行を 1 つの文としてつなげます。',
-                         '`--layout <document|handbook|handout>`：ページのレイアウト。初期値は `document`。`handbook` はハンドブックとして書き出します。余白を広くして綴じ側を取り、レベル 1 の見出しごとに改ページし、ページ番号付きの目次ページ、フッターのページ番号、PDF のしおりを付けます。front matter に `title` があれば表紙も付けます。`handout` は、各ページの右側に空白のメモ欄を設け、1 ページ目の上部にタイトルと日付を入れ、各ページの末尾にファイル名、日付、ページ番号を入れます。とても幅の広い表は、メモ欄にはみ出すことがあります。',
+                         '`--layout <document|handbook|handout>`：ページのレイアウト。初期値は `document`。`handbook` '
+                         'はハンドブックとして書き出します。余白を広くして綴じ側を取り、レベル 1 の見出しごとに改ページし、ページ番号付きの目次ページ、フッターのページ番号、PDF '
+                         'のしおりを付けます。front matter に `title` があれば表紙も付けます。`handout` は、各ページの右側に空白のメモ欄を設け、1 '
+                         'ページ目の上部にタイトルと日付を入れ、各ページの末尾にファイル名、日付、ページ番号を入れます。とても幅の広い表は、メモ欄にはみ出すことがあります。',
                          '`--toc-title <text>`：ハンドブックの目次ページの見出し。初期値は `Contents`。',
                          '1 行だけの `<!--BREAK-->` で改ページします。どのレイアウトでも使えます。'],
-        'export_since': '`--breaks` は marsdawn 0.7.0 で、`--layout` と `--toc-title` は 0.7.1 で、`handbook` という名前は 0.7.2 で、`handout` は 0.7.3 で追加されました。0.7.1 の名前 `manual` も使えます。',
+        'export_since': '`--breaks` は marsdawn 0.7.0 で、`--layout` と `--toc-title` は 0.7.1 で、`handbook` '
+                        'という名前は 0.7.2 で、`handout` は 0.7.3 で追加されました。0.7.1 の名前 `manual` も使えます。',
         'open_items': ['`--wait <n>`：結果を返す MarsDawn 1.0.2 以降では、`--folder` はフォルダについてのアプリの回答を最大 n 秒（0〜30、初期値 '
                        '2）待ちます。`--wait 0` の場合や、結果を返さないアプリでは待たず、これまでとまったく同じリクエストを送ります。',
                        '`--wait` に 0〜30 以外の値を指定すると使用方法のエラー（コード 64）です。負の値は `--wait=-1` と書きます。',
-                       '`--json` では、フォルダは「表示済み」ではなく「依頼済み」として返ります。決めるのはアプリだからです。`--wait` '
-                       'を付けると、フォルダがどうなったかも返ります。一覧は [AI エージェント向け marsdawn](/ja/cli/agents/) にあります。'],
+                       '`--json` では、フォルダは「表示済み」ではなく「依頼済み」として返ります。決めるのはアプリだからです。MarsDawn が 1.0.2 '
+                       '以降なら、フォルダがどうなったかも返ります（`--wait 0` の場合を除く）。一覧は [AI エージェント向け marsdawn](/ja/cli/agents/) '
+                       'にあります。'],
         'open_since': '行の指定は marsdawn 0.3.0 で、フォルダと `--background` は 0.5.1 で、`--wait` とフォルダの状態は 0.5.3 '
                       'で追加されました。',
         'schema_notes': {'error': '失敗時、両方のコマンド共通、marsdawn 0.5.2〜0.7.0',
-                         'error_v3': '失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、<code>input_too_large</code>（コード 5）と '
-                                     '<code>skill_install_failed</code>（コード 7）を追加',
+                         'error_v3': '失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、コード 64 の種類を含まない（error.v4.json に置き換え）',
+                         'error_v4': '失敗時、すべてのコマンド共通、marsdawn 0.7.1 以降、コード 64 で JSON を返す使用方法のエラーを含む',
                          'open': 'open 成功時、marsdawn 0.5.1〜0.5.2、サイドバーに表示するフォルダを含む',
                          'open_v4': 'open 成功時、marsdawn 0.5.3 以降、フォルダの <code>status</code> と '
                                     '<code>waitingFor</code> を含む'},
@@ -920,13 +1082,18 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json`：テキストの代わりに JSON の結果を出力します。\n'
                          '\n'
                          '`theme` コマンドは marsdawn 0.6.1 で追加されました。'},
- 'ko': {'agents_folder_items': ['`--wait`가 0보다 크고 MarsDawn이 1.0.2 이상이면, 기다림이 끝난 뒤 `folder`에 `status`도 담깁니다. '
+ 'ko': {'agents_folder_items': ['MarsDawn이 1.0.2 이상이면, 기다림(`--wait`, 기본값 2초)이 끝난 뒤 `folder`에 `status`도 담깁니다. '
                                 '값은 `attached`, `needsUser`, `declined`, `failed`, '
                                 '`attachedDifferentFolder`, `full`, `unavailable`, `unknown` 중 하나입니다. '
                                 '`needsUser`일 때만 `waitingFor`(`confirmation` 또는 `folderChoice`)도 담깁니다. '
-                                '`--wait`가 없거나 결과를 알려 주지 않는 앱이면 `folder`는 `{"path": …, "requested": true}` '
+                                '`--wait 0`이거나 결과를 알려 주지 않는 앱이면 `folder`는 `{"path": …, "requested": true}` '
                                 '그대로입니다. `--wait`가 0~30을 벗어나면 코드 64로 종료하며 `error: "wait_out_of_range"`를 냅니다. '
                                 '(marsdawn 0.5.3 이상)'],
+        'agents_folder_line': '`folder`: 폴더를 줬을 때만 나타납니다. `path`는 폴더의 절대 경로입니다. `requested`는 항상 `true`입니다. '
+                              'marsdawn은 MarsDawn에 폴더를 보여 달라고 요청했을 뿐입니다. 사이드바에 표시할지는 앱이 정하며, 앱이 먼저 사람에게 접근 '
+                              '권한을 물을 수도 있습니다. MarsDawn이 1.0.2 이상이면 다음 항목의 `status`로 결과를 알 수 있습니다. 단, '
+                              '`--wait 0`이면 `status`가 없습니다. `status`가 없으면 marsdawn이 알 수 없으므로 완료가 아니라 요청됨으로 '
+                              '보고하세요.',
         'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                '\n'
                                '2026년 9월 29일. 테마 확인.\n'
@@ -1009,38 +1176,52 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                '2026년 10월 30일. 프린트물의 제목이 표와 떨어지지 않습니다.\n'
                                '\n'
                                '- 프린트물 레이아웃에서 제목은 아래에 있는 넓은 표와 함께 유지되며, 페이지 아래쪽에 혼자 남지 않습니다.',
-                      '0.7.7': '## marsdawn 0.7.7\n'
-                               '\n'
-                               '2026년 11월 9일. PNG 내보내기, 접을 수 있는 블록, 더 빨라진 큰 파일 내보내기.\n'
-                               '\n'
-                               '- `marsdawn export --format png`는 문서를 PNG로 내보내 렌더링을 확인할 수 있게 합니다. `--width`(600–2000, 기본값 1200), `--appearance light|dark`, `--theme`, 일부만 내보내는 `--lines`나 `--heading`을 지정할 수 있습니다. 높이가 8,000픽셀을 넘는 페이지는 번호가 붙은 여러 이미지로 나뉘며, 표, 코드 블록, 다이어그램 중간에서는 나뉘지 않습니다.\n'
-                               '- `marsdawn export --details`는 접을 수 있는 블록을 어떻게 인쇄할지 정합니다. 기본값인 `expand`는 이전처럼 모두 펼쳐 인쇄하고, `as-written`은 펼친 상태로 작성된 블록만 펼치고 나머지는 제목만 인쇄합니다. 두 방식 모두 제목은 삼각형 없이 굵은 한 줄로 인쇄됩니다.\n'
-                               '- 접을 수 있는 블록이 HackMD와 Obsidian의 작성법을 더 지원합니다. 제목이 없거나 `{state="open"}`이 붙은 `:::spoiler`, 제목 안의 Markdown, 중첩된 `::::spoiler`, Obsidian의 접을 수 있는 콜아웃 `> [!note]-`, `> [!tip]+`를 지원합니다.\n'
-                               '- 큰 파일을 훨씬 빨리 내보냅니다. 저희 테스트에서 10MB 파일이 약 4분에서 약 74초로 줄었습니다.\n'
-                               '- 여러 `marsdawn export`를 동시에 실행하면 가끔 하나가 코드 5로 종료되었습니다. 이제는 자동으로 다시 시도합니다.'
-                               '\n- MarsDawn 앱이 실행 중이 아닐 때 여러 `marsdawn open`을 동시에 실행해도 이제 모든 파일이 열립니다. 이전에는 성공했다고 알려도 열리지 않는 파일이 있었습니다.',
                       '0.7.6': '## marsdawn 0.7.6\n'
                                '\n'
                                '2026년 11월 2일. macOS 27.2의 설명서 PDF.\n'
                                '\n'
-                               '- macOS 27.2에서 설명서 PDF는 새 페이지에서 시작하는 장의 목차 페이지 번호와 책갈피를 유지합니다.'},
+                               '- macOS 27.2에서 설명서 PDF는 새 페이지에서 시작하는 장의 목차 페이지 번호와 책갈피를 유지합니다.',
+                      '0.7.7': '## marsdawn 0.7.7\n'
+                               '\n'
+                               '2026년 11월 9일. PNG 내보내기, 접을 수 있는 블록, 더 빨라진 큰 파일 내보내기.\n'
+                               '\n'
+                               '- `marsdawn export --format png`는 문서를 PNG로 내보내 렌더링을 확인할 수 있게 합니다. '
+                               '`--width`(600–2000, 기본값 1200), `--appearance light|dark`, `--theme`, 일부만 '
+                               '내보내는 `--lines`나 `--heading`을 지정할 수 있습니다. 높이가 8,000픽셀을 넘는 페이지는 번호가 붙은 여러 이미지로 '
+                               '나뉘며, 표, 코드 블록, 다이어그램 중간에서는 나뉘지 않습니다.\n'
+                               '- `marsdawn export --details`는 접을 수 있는 블록을 어떻게 인쇄할지 정합니다. 기본값인 `expand`는 '
+                               '이전처럼 모두 펼쳐 인쇄하고, `as-written`은 펼친 상태로 작성된 블록만 펼치고 나머지는 제목만 인쇄합니다. 두 방식 모두 '
+                               '제목은 삼각형 없이 굵은 한 줄로 인쇄됩니다.\n'
+                               '- 접을 수 있는 블록이 HackMD와 Obsidian의 작성법을 더 지원합니다. 제목이 없거나 `{state="open"}`이 붙은 '
+                               '`:::spoiler`, 제목 안의 Markdown, 중첩된 `::::spoiler`, Obsidian의 접을 수 있는 콜아웃 `> '
+                               '[!note]-`, `> [!tip]+`를 지원합니다.\n'
+                               '- 큰 파일을 훨씬 빨리 내보냅니다. 저희 테스트에서 10MB 파일이 약 4분에서 약 74초로 줄었습니다.\n'
+                               '- 여러 `marsdawn export`를 동시에 실행하면 가끔 하나가 코드 5로 종료되었습니다. 이제는 자동으로 다시 시도합니다.\n'
+                               '- MarsDawn 앱이 실행 중이 아닐 때 여러 `marsdawn open`을 동시에 실행해도 이제 모든 파일이 열립니다. 이전에는 '
+                               '성공했다고 알려도 열리지 않는 파일이 있었습니다.'},
         'export_after_json': ['16MiB를 넘는 파일은 내보내지 않습니다. `export`는 코드 5로 종료하며 아무것도 쓰지 않습니다.'],
         'export_items': ['`--breaks`: HackMD처럼 문단 안의 모든 줄바꿈을 줄바꿈으로 표시합니다. 주지 않으면 중국어나 일본어 글자 두 개 사이의 줄바꿈은 '
                          '없어져, 앞뒤 줄이 한 문장으로 이어집니다.',
-                         '`--layout <document|handbook|handout>`: 페이지 레이아웃입니다. 기본값은 `document`입니다. `handbook`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽을 남기며, 최상위 제목마다 새 페이지에서 시작하고, 페이지 번호가 붙은 목차 페이지, 바닥글의 페이지 번호, PDF 책갈피를 넣습니다. front matter에 `title`이 있으면 표지도 붙입니다. `handout`은 모든 페이지 오른쪽에 빈 메모 공간을 남기고, 1페이지 위쪽에 제목과 날짜를 넣으며, 모든 페이지 끝에 파일 이름, 날짜, 페이지 번호를 넣습니다. 아주 넓은 표는 메모 공간까지 넘어갈 수 있습니다.',
+                         '`--layout <document|handbook|handout>`: 페이지 레이아웃입니다. 기본값은 `document`입니다. '
+                         '`handbook`은 설명서로 내보냅니다. 여백을 넓히고 제본 쪽을 남기며, 최상위 제목마다 새 페이지에서 시작하고, 페이지 번호가 붙은 목차 '
+                         '페이지, 바닥글의 페이지 번호, PDF 책갈피를 넣습니다. front matter에 `title`이 있으면 표지도 붙입니다. `handout`은 '
+                         '모든 페이지 오른쪽에 빈 메모 공간을 남기고, 1페이지 위쪽에 제목과 날짜를 넣으며, 모든 페이지 끝에 파일 이름, 날짜, 페이지 번호를 넣습니다. '
+                         '아주 넓은 표는 메모 공간까지 넘어갈 수 있습니다.',
                          '`--toc-title <text>`: 설명서 목차 페이지의 제목입니다. 기본값은 `Contents`입니다.',
                          '한 줄에 단독으로 쓴 `<!--BREAK-->`는 새 페이지를 시작합니다. 모든 레이아웃에 해당합니다.'],
-        'export_since': '`--breaks`는 marsdawn 0.7.0에서, `--layout`과 `--toc-title`은 0.7.1에서, `handbook` 값은 0.7.2에서, `handout` 값은 0.7.3에서 추가되었습니다. 0.7.1의 이전 값 `manual`도 계속 쓸 수 있습니다.',
+        'export_since': '`--breaks`는 marsdawn 0.7.0에서, `--layout`과 `--toc-title`은 0.7.1에서, `handbook` 값은 '
+                        '0.7.2에서, `handout` 값은 0.7.3에서 추가되었습니다. 0.7.1의 이전 값 `manual`도 계속 쓸 수 있습니다.',
         'open_items': ['`--wait <n>`: 결과를 알려 주는 MarsDawn 1.0.2 이상에서는 `--folder`가 폴더에 대한 앱의 응답을 최대 n초(0~30, '
                        '기본값 2) 기다립니다. `--wait 0`이거나 결과를 알려 주지 않는 앱이면 기다리지 않으며, 이전과 똑같은 요청을 보냅니다.',
                        '`--wait` 값이 0~30을 벗어나면 사용법 오류(코드 64)입니다. 음수는 `--wait=-1`처럼 쓰세요.',
-                       '`--json`에서는 폴더를 “연결됨”이 아니라 “요청함”으로 알려 줍니다. 결정은 앱이 하기 때문입니다. `--wait`를 주면 폴더가 어떻게 '
-                       '되었는지도 결과에 담깁니다. 전체 목록은 [에이전트를 위한 marsdawn](/ko/cli/agents/)에 있습니다.'],
+                       '`--json`에서는 폴더를 “연결됨”이 아니라 “요청함”으로 알려 줍니다. 결정은 앱이 하기 때문입니다. MarsDawn이 1.0.2 이상이면 폴더가 '
+                       '어떻게 되었는지도 결과에 담깁니다. 단, `--wait 0`이면 담기지 않습니다. 전체 목록은 [에이전트를 위한 '
+                       'marsdawn](/ko/cli/agents/)에 있습니다.'],
         'open_since': '줄 지정은 marsdawn 0.3.0에서, 폴더와 `--background`는 0.5.1에서, `--wait`와 폴더 상태는 0.5.3에서 '
                       '추가되었습니다.',
         'schema_notes': {'error': '실패, 두 명령 공통, marsdawn 0.5.2~0.7.0',
-                         'error_v3': '실패, 모든 명령 공통, marsdawn 0.7.1 이상, <code>input_too_large</code>(코드 5)와 '
-                                     '<code>skill_install_failed</code>(코드 7) 추가',
+                         'error_v3': '실패, 모든 명령 공통, marsdawn 0.7.1 이상, 코드 64 종류 제외, error.v4.json으로 대체됨',
+                         'error_v4': '실패, 모든 명령 공통, marsdawn 0.7.1 이상, 코드 64로 JSON을 출력하는 사용법 오류 포함',
                          'open': 'open 성공, marsdawn 0.5.1~0.5.2, 사이드바에 표시되는 폴더 포함',
                          'open_v4': 'open 성공, marsdawn 0.5.3 이상, 폴더의 <code>status</code>와 '
                                     '<code>waitingFor</code> 포함'},
@@ -1059,12 +1240,16 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                          '- `--json`: 텍스트 대신 JSON 결과를 출력합니다.\n'
                          '\n'
                          '`theme` 명령은 marsdawn 0.6.1에서 추가되었습니다.'},
- 'zh-hans': {'agents_folder_items': ['`--wait` 大于 0，且 MarsDawn 为 1.0.2 或更高版本时，等待结束后 `folder` 还会带有 '
-                                     '`status`：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` '
+ 'zh-hans': {'agents_folder_items': ['MarsDawn 为 1.0.2 或更高版本时，等待结束后 `folder` 还会带有 `status`（`--wait` 默认 2 '
+                                     '秒）：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` '
                                      '或 `unknown`。只有在 `needsUser` 时，才会再带有 `waitingFor`：`confirmation` 或 '
-                                     '`folderChoice`。没有 `--wait`，或 app 不会回报时，`folder` 保持 `{"path": …, '
+                                     '`folderChoice`。加上 `--wait 0`，或 app 不会回报时，`folder` 保持 `{"path": …, '
                                      '"requested": true}`。`--wait` 超出 0 到 30 时以代码 64 结束，并带有 `error: '
                                      '"wait_out_of_range"`。（marsdawn 0.5.3 及更高版本。）'],
+             'agents_folder_line': '`folder`：只有指定了文件夹时才有。`path` 是它的绝对路径。`requested` 一律是 `true`：marsdawn 已请 '
+                                   'MarsDawn 显示这个文件夹。侧边栏是否显示由 app 决定，app 也可能先向用户请求访问权限。MarsDawn 为 1.0.2 '
+                                   '或更高版本时，下一条的 `status` 会说明结果，除非加上 `--wait 0`。没有 `status` 时 marsdawn '
+                                   '无法得知，请报告为“已请求”，而不是“已完成”。',
              'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                     '\n'
                                     '2026 年 9 月 29 日。检查主题。\n'
@@ -1140,37 +1325,49 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                     '2026 年 10 月 30 日。讲义的标题不再和表格分开。\n'
                                     '\n'
                                     '- 在讲义布局中，标题会和下方的宽表格留在一起，不再单独留在页尾。',
-                           '0.7.7': '## marsdawn 0.7.7\n'
-                                    '\n'
-                                    '2026 年 11 月 9 日。导出 PNG、可折叠区块，以及大文件导出更快。\n'
-                                    '\n'
-                                    '- `marsdawn export --format png` 会把文稿导出为 PNG，用来确认排版：`--width`（600–2000，默认 1200）、`--appearance light|dark`、`--theme`，以及只导出一部分的 `--lines` 或 `--heading`。高度超过 8,000 像素的页面会分成编号的多张图，切点不会落在表格、代码块或图表中间。\n'
-                                    '- `marsdawn export --details` 决定可折叠区块怎么打印：默认的 `expand` 和以前一样全部展开；`as-written` 只展开原本写成展开的区块，其他只打印标题。两种方式的标题都打印成粗体一行，不画三角形。\n'
-                                    '- 可折叠区块支持更多 HackMD 和 Obsidian 的写法：没有标题或加上 `{state="open"}` 的 `:::spoiler`、标题里的 Markdown、嵌套的 `::::spoiler`，以及 Obsidian 可折叠的提示块 `> [!note]-`、`> [!tip]+`。\n'
-                                    '- 大文件导出快很多：在我们的测试中，10 MB 的文件从约 4 分钟缩短到约 74 秒。\n'
-                                    '- 同时运行多个 `marsdawn export` 时，偶尔会有一个以代码 5 结束。现在会自动重试。'
-                                    '\n- MarsDawn App 没有运行时，同时运行多个 `marsdawn open` 现在每个文件都会打开。以前有些文件没打开，命令却报告成功。',
                            '0.7.6': '## marsdawn 0.7.6\n'
                                     '\n'
                                     '2026 年 11 月 2 日。macOS 27.2 上的手册 PDF。\n'
                                     '\n'
-                                    '- 在 macOS 27.2 上，手册 PDF 中从新的一页开始的章节，会保留目录页码和书签。'},
+                                    '- 在 macOS 27.2 上，手册 PDF 中从新的一页开始的章节，会保留目录页码和书签。',
+                           '0.7.7': '## marsdawn 0.7.7\n'
+                                    '\n'
+                                    '2026 年 11 月 9 日。导出 PNG、可折叠区块，以及大文件导出更快。\n'
+                                    '\n'
+                                    '- `marsdawn export --format png` 会把文稿导出为 '
+                                    'PNG，用来确认排版：`--width`（600–2000，默认 1200）、`--appearance '
+                                    'light|dark`、`--theme`，以及只导出一部分的 `--lines` 或 `--heading`。高度超过 8,000 '
+                                    '像素的页面会分成编号的多张图，切点不会落在表格、代码块或图表中间。\n'
+                                    '- `marsdawn export --details` 决定可折叠区块怎么打印：默认的 `expand` '
+                                    '和以前一样全部展开；`as-written` 只展开原本写成展开的区块，其他只打印标题。两种方式的标题都打印成粗体一行，不画三角形。\n'
+                                    '- 可折叠区块支持更多 HackMD 和 Obsidian 的写法：没有标题或加上 `{state="open"}` 的 '
+                                    '`:::spoiler`、标题里的 Markdown、嵌套的 `::::spoiler`，以及 Obsidian 可折叠的提示块 `> '
+                                    '[!note]-`、`> [!tip]+`。\n'
+                                    '- 大文件导出快很多：在我们的测试中，10 MB 的文件从约 4 分钟缩短到约 74 秒。\n'
+                                    '- 同时运行多个 `marsdawn export` 时，偶尔会有一个以代码 5 结束。现在会自动重试。\n'
+                                    '- MarsDawn App 没有运行时，同时运行多个 `marsdawn open` '
+                                    '现在每个文件都会打开。以前有些文件没打开，命令却报告成功。'},
              'export_after_json': ['超过 16 MiB 的文件不会导出：`export` 以代码 5 结束，不写出任何文件。'],
              'export_items': ['`--breaks`：段落内的每个换行都当作换行，和 HackMD 一样。不加时，两个中文或日文字符之间的换行会去掉，让前后两行连成一句。',
-                              '`--layout <document|handbook|handout>`：页面布局，默认 `document`。`handbook` 会导出成手册：页边距更宽并留出装订边，每个一级标题从新的一页开始，附带有页码的目录页、页脚页码和 PDF 书签；front matter 有 `title` 时，还会加上封面。`handout` 会在每页右侧留一栏空白笔记栏，第 1 页顶部放标题和日期，每页末尾放文件名、日期和页码。很宽的表格可能会占用笔记栏。',
+                              '`--layout <document|handbook|handout>`：页面布局，默认 `document`。`handbook` '
+                              '会导出成手册：页边距更宽并留出装订边，每个一级标题从新的一页开始，附带有页码的目录页、页脚页码和 PDF 书签；front matter 有 '
+                              '`title` 时，还会加上封面。`handout` 会在每页右侧留一栏空白笔记栏，第 1 '
+                              '页顶部放标题和日期，每页末尾放文件名、日期和页码。很宽的表格可能会占用笔记栏。',
                               '`--toc-title <text>`：手册目录页的标题，默认 `Contents`。',
                               '单独一行的 `<!--BREAK-->` 会从新的一页开始，所有布局都适用。'],
-             'export_since': '`--breaks` 从 marsdawn 0.7.0 开始提供，`--layout` 和 `--toc-title` 从 0.7.1 开始，`handbook` 这个值从 0.7.2 开始，`handout` 从 0.7.3 开始。0.7.1 的旧值 `manual` 仍可使用。',
+             'export_since': '`--breaks` 从 marsdawn 0.7.0 开始提供，`--layout` 和 `--toc-title` 从 0.7.1 '
+                             '开始，`handbook` 这个值从 0.7.2 开始，`handout` 从 0.7.3 开始。0.7.1 的旧值 `manual` 仍可使用。',
              'open_items': ['`--wait <n>`：搭配会回报结果的 MarsDawn 1.0.2 或更高版本，`--folder` 最多等待 n 秒（0 到 30，默认 2），等 '
                             'app 回报文件夹的结果。`--wait 0`，或 app 不会回报时，不会等待，发出的请求和以前完全相同。',
                             '`--wait` 的值超出 0 到 30 是使用方式错误（代码 64）。负数要写成 `--wait=-1`。',
-                            '加上 `--json` 时，文件夹报告的是「已请求」，而不是「已附加」，因为由 app 决定；加上 `--wait` '
-                            '时，结果还会说明文件夹后来怎么样了。完整列表见[给 AI 代理的 marsdawn 参考](/zh-hans/cli/agents/)。'],
+                            '加上 `--json` 时，文件夹报告的是「已请求」，而不是「已附加」，因为由 app 决定；MarsDawn 为 1.0.2 '
+                            '或更高版本时，结果还会说明文件夹后来怎么样了，除非加上 `--wait 0`。完整列表见[给 AI 代理的 marsdawn '
+                            '参考](/zh-hans/cli/agents/)。'],
              'open_since': '行号功能从 marsdawn 0.3.0 开始提供，文件夹与 `--background` 从 0.5.1 开始，`--wait` 与文件夹状态从 0.5.3 '
                            '开始。',
              'schema_notes': {'error': '两个命令的失败结果，marsdawn 0.5.2 到 0.7.0',
-                              'error_v3': '所有命令的失败结果，marsdawn 0.7.1 以后，新增 <code>input_too_large</code>（代码 '
-                                          '5）和 <code>skill_install_failed</code>（代码 7）',
+                              'error_v3': '所有命令的失败结果，marsdawn 0.7.1 以后，不含代码 64 的种类；已由 error.v4.json 取代',
+                              'error_v4': '所有命令的失败结果，marsdawn 0.7.1 以后，包括以代码 64 输出 JSON 的用法错误',
                               'open': 'open 成功，marsdawn 0.5.1 和 0.5.2，包括在侧边栏显示的文件夹',
                               'open_v4': 'open 成功，marsdawn 0.5.3 以后，文件夹多了 <code>status</code> 和 '
                                          '<code>waitingFor</code>'},
@@ -1188,12 +1385,16 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                               '- `--json`：输出 JSON 结果，而不是文本。\n'
                               '\n'
                               '`theme` 命令从 marsdawn 0.6.1 开始提供。'},
- 'zh-hant': {'agents_folder_items': ['`--wait` 大於 0、且 MarsDawn 為 1.0.2 以上時，等待結束後 `folder` 還會帶 '
-                                     '`status`：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` '
+ 'zh-hant': {'agents_folder_items': ['MarsDawn 為 1.0.2 以上時，等待結束後 `folder` 還會帶 `status`（`--wait` 預設 2 '
+                                     '秒）：`attached`、`needsUser`、`declined`、`failed`、`attachedDifferentFolder`、`full`、`unavailable` '
                                      '或 `unknown`。只有在 `needsUser` 時，才會再帶 `waitingFor`：`confirmation` 或 '
-                                     '`folderChoice`。沒有 `--wait`，或 app 不會回報時，`folder` 維持 `{"path": …, '
+                                     '`folderChoice`。加上 `--wait 0`，或 app 不會回報時，`folder` 維持 `{"path": …, '
                                      '"requested": true}`。`--wait` 超出 0 到 30 時以代碼 64 結束，並帶 `error: '
                                      '"wait_out_of_range"`。（marsdawn 0.5.3 以後。）'],
+             'agents_folder_line': '`folder`：只有指定了資料夾時才有。`path` 是它的絕對路徑。`requested` 一律是 `true`：marsdawn 已請 '
+                                   'MarsDawn 顯示這個資料夾。側邊欄是否顯示由 app 決定，app 也可能先向使用者要求存取權限。MarsDawn 為 1.0.2 '
+                                   '以上時，下一條的 `status` 會說明結果，除非加上 `--wait 0`。沒有 `status` 時 marsdawn '
+                                   '無法得知，請回報為「已要求」，而不是「已完成」。',
              'changelog': {'0.6.1': '## marsdawn 0.6.1\n'
                                     '\n'
                                     '2026 年 9 月 29 日。檢查主題。\n'
@@ -1270,37 +1471,49 @@ DATA = {'de': {'agents_folder_items': ['Mit `--wait` über 0 und MarsDawn 1.0.2 
                                     '2026 年 10 月 30 日。講義的標題不再和表格分開。\n'
                                     '\n'
                                     '- 在講義版面，標題會和底下的寬表格留在一起，不再單獨留在頁尾。',
-                           '0.7.7': '## marsdawn 0.7.7\n'
-                                    '\n'
-                                    '2026 年 11 月 9 日。輸出 PNG、可收合區塊，以及大檔案輸出更快。\n'
-                                    '\n'
-                                    '- `marsdawn export --format png` 會把文件輸出成 PNG，用來確認排版：`--width`（600–2000，預設 1200）、`--appearance light|dark`、`--theme`，以及只輸出一部分的 `--lines` 或 `--heading`。高度超過 8,000 像素的頁面會分成編號的多張圖，切點不會落在表格、程式碼區塊或圖表中間。\n'
-                                    '- `marsdawn export --details` 決定可收合區塊怎麼印：預設的 `expand` 和以前一樣全部展開；`as-written` 只展開原本寫成展開的區塊，其他只印標題。兩種方式的標題都印成粗體一行，不畫三角形。\n'
-                                    '- 可收合區塊支援更多 HackMD 和 Obsidian 的寫法：沒有標題或加上 `{state="open"}` 的 `:::spoiler`、標題裡的 Markdown、巢狀的 `::::spoiler`，以及 Obsidian 可收合的 callout `> [!note]-`、`> [!tip]+`。\n'
-                                    '- 大檔案輸出快很多：在我們的測試中，10 MB 的檔案從約 4 分鐘縮短到約 74 秒。\n'
-                                    '- 同時執行多個 `marsdawn export` 時，偶爾會有一個以代碼 5 結束。現在會自動重試。'
-                                    '\n- MarsDawn App 沒在執行時，同時執行多個 `marsdawn open` 現在每個檔案都會打開。以前有些檔案沒打開，指令卻回報成功。',
                            '0.7.6': '## marsdawn 0.7.6\n'
                                     '\n'
                                     '2026 年 11 月 2 日。macOS 27.2 上的手冊 PDF。\n'
                                     '\n'
-                                    '- 在 macOS 27.2 上，手冊 PDF 裡從新的一頁開始的章節，會保留目錄頁碼和書籤。'},
+                                    '- 在 macOS 27.2 上，手冊 PDF 裡從新的一頁開始的章節，會保留目錄頁碼和書籤。',
+                           '0.7.7': '## marsdawn 0.7.7\n'
+                                    '\n'
+                                    '2026 年 11 月 9 日。輸出 PNG、可收合區塊，以及大檔案輸出更快。\n'
+                                    '\n'
+                                    '- `marsdawn export --format png` 會把文件輸出成 '
+                                    'PNG，用來確認排版：`--width`（600–2000，預設 1200）、`--appearance '
+                                    'light|dark`、`--theme`，以及只輸出一部分的 `--lines` 或 `--heading`。高度超過 8,000 '
+                                    '像素的頁面會分成編號的多張圖，切點不會落在表格、程式碼區塊或圖表中間。\n'
+                                    '- `marsdawn export --details` 決定可收合區塊怎麼印：預設的 `expand` '
+                                    '和以前一樣全部展開；`as-written` 只展開原本寫成展開的區塊，其他只印標題。兩種方式的標題都印成粗體一行，不畫三角形。\n'
+                                    '- 可收合區塊支援更多 HackMD 和 Obsidian 的寫法：沒有標題或加上 `{state="open"}` 的 '
+                                    '`:::spoiler`、標題裡的 Markdown、巢狀的 `::::spoiler`，以及 Obsidian 可收合的 callout '
+                                    '`> [!note]-`、`> [!tip]+`。\n'
+                                    '- 大檔案輸出快很多：在我們的測試中，10 MB 的檔案從約 4 分鐘縮短到約 74 秒。\n'
+                                    '- 同時執行多個 `marsdawn export` 時，偶爾會有一個以代碼 5 結束。現在會自動重試。\n'
+                                    '- MarsDawn App 沒在執行時，同時執行多個 `marsdawn open` '
+                                    '現在每個檔案都會打開。以前有些檔案沒打開，指令卻回報成功。'},
              'export_after_json': ['超過 16 MiB 的檔案不會輸出：`export` 以代碼 5 結束，不寫出任何檔案。'],
              'export_items': ['`--breaks`：段落內的每個換行都當成換行，和 HackMD 一樣。不加時，兩個中文或日文字之間的換行會拿掉，讓前後兩行連成一句。',
-                              '`--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` 會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` 時，另外加上封面。`handout` 會輸出成講義：每頁右側留一欄空白筆記欄，第 1 頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。',
+                              '`--layout <document|handbook|handout>`：頁面版面，預設是 `document`。`handbook` '
+                              '會輸出成手冊：邊界較寬並留出裝訂側，每個一級標題從新的一頁開始，附有頁碼的目錄頁、頁尾頁碼和 PDF 書籤；front matter 有 `title` '
+                              '時，另外加上封面。`handout` 會輸出成講義：每頁右側留一欄空白筆記欄，第 1 '
+                              '頁上方放標題和日期，每頁結尾放檔名、日期和頁碼。很寬的表格可能會佔到筆記欄。',
                               '`--toc-title <text>`：手冊目錄頁的標題，預設是 `Contents`。',
                               '單獨一行的 `<!--BREAK-->` 會從新的一頁開始，每種版面都適用。'],
-             'export_since': '`--breaks` 從 marsdawn 0.7.0 開始提供，`--layout` 和 `--toc-title` 從 0.7.1 開始，`handbook` 這個名稱從 0.7.2 開始，`handout` 從 0.7.3 開始。0.7.1 的舊名稱 `manual` 仍可使用。',
+             'export_since': '`--breaks` 從 marsdawn 0.7.0 開始提供，`--layout` 和 `--toc-title` 從 0.7.1 '
+                             '開始，`handbook` 這個名稱從 0.7.2 開始，`handout` 從 0.7.3 開始。0.7.1 的舊名稱 `manual` 仍可使用。',
              'open_items': ['`--wait <n>`：搭配會回報結果的 MarsDawn 1.0.2 以上，`--folder` 最多等 n 秒（0 到 30，預設 2），等 app '
                             '回報資料夾的結果。`--wait 0`，或 app 不會回報時，不會等待，送出的請求和以前完全相同。',
                             '`--wait` 的值超出 0 到 30 是使用方式錯誤（代碼 64）。負數要寫成 `--wait=-1`。',
-                            '加上 `--json` 時，資料夾回報的是「已請求」，不是「已附加」，因為由 app 決定；加上 `--wait` '
-                            '時，結果也會說明資料夾後來怎麼了。完整列表見[給 AI agent 的 marsdawn 參考](/zh-hant/cli/agents/)。'],
+                            '加上 `--json` 時，資料夾回報的是「已要求」，不是「已附加」，因為由 app 決定；MarsDawn 為 1.0.2 '
+                            '以上時，結果也會說明資料夾後來怎麼了，除非加上 `--wait 0`。完整列表見[給 AI agent 的 marsdawn '
+                            '參考](/zh-hant/cli/agents/)。'],
              'open_since': '行號功能從 marsdawn 0.3.0 開始提供，資料夾與 `--background` 從 0.5.1 開始，`--wait` 與資料夾狀態從 0.5.3 '
                            '開始。',
              'schema_notes': {'error': '兩個指令的失敗結果，marsdawn 0.5.2 到 0.7.0',
-                              'error_v3': '所有指令的失敗結果，marsdawn 0.7.1 以後，新增 <code>input_too_large</code>（代碼 '
-                                          '5）和 <code>skill_install_failed</code>（代碼 7）',
+                              'error_v3': '所有指令的失敗結果，marsdawn 0.7.1 以後，不含代碼 64 的種類；已由 error.v4.json 取代',
+                              'error_v4': '所有指令的失敗結果，marsdawn 0.7.1 以後，包括以代碼 64 輸出 JSON 的用法錯誤',
                               'open': 'open 成功，marsdawn 0.5.1 和 0.5.2，包括在側邊欄顯示的資料夾',
                               'open_v4': 'open 成功，marsdawn 0.5.3 以後，資料夾多了 <code>status</code> 和 '
                                          '<code>waitingFor</code>'},

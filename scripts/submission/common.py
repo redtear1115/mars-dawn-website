@@ -12,9 +12,11 @@ import json
 import os
 import re
 import secrets
+import stat
 import sys
 import urllib.error
 import urllib.request
+from dataclasses import dataclass
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -32,8 +34,10 @@ BOT_EMAIL = f"{BOT_ID}+github-actions[bot]@users.noreply.github.com"
 SUBMISSION_LABEL = "theme-submission"
 APPROVED_LABEL = "theme-approved"
 AUTHOR_CHANGE_LABEL = rules.AUTHOR_CHANGE_LABEL
+BLOCKED_LABEL = "theme-blocked"
 
 TEMPLATE_REL = ".github/ISSUE_TEMPLATE/theme-submission.yml"
+BLOCKLIST_REL = ".github/theme-submission-blocklist.json"
 SIMULATOR_URL = "https://marsdawn.southern-light.dev/themes/new/"
 
 # The issue form's two headings and the DCO checkbox's exact label, as GitHub renders a submitted
@@ -391,6 +395,87 @@ def author_github(doc: dict):
 def author_matches(doc: dict, login: str) -> bool:
     github = author_github(doc)
     return github is not None and fullmatch(LOGIN_RE, github) and ascii_lower(github) == ascii_lower(login)
+
+
+# --- the account blocklist (#195) -----------------------------------------------------------------
+
+BLOCKLIST_MAX_BYTES = 64 * 1024
+
+
+@dataclass(frozen=True)
+class Blocklist:
+    """GitHub accounts whose theme submissions are refused: numeric user ids (which survive a rename)
+    and logins (matched ASCII case-insensitively, as GitHub treats them; stored lowercased)."""
+    ids: frozenset = frozenset()
+    logins: frozenset = frozenset()
+
+    def __post_init__(self):
+        object.__setattr__(self, "ids", frozenset(self.ids))
+        object.__setattr__(self, "logins", frozenset(ascii_lower(login) for login in self.logins))
+
+    def blocks(self, login, uid) -> bool:
+        """True when `uid` is a listed id (a bool never is) or `login` is a listed login."""
+        return bool((int_not_bool(uid) and uid in self.ids)
+                    or (isinstance(login, str) and ascii_lower(login) in self.logins))
+
+
+def _blocklist_refusal(what: str) -> Refusal:
+    # `what` is always one of the fixed phrases below, never any of the file's content.
+    return Refusal("blocklist", f"{BLOCKLIST_REL} {what}; failing closed, so no submission is handled until it is fixed")
+
+
+def load_blocklist(path=None) -> Blocklist:
+    """The blocklist from `path`, by default BLOCKLIST_REL in this checkout (ROOT): in the workflows
+    that is the default branch's commit the run started from, never anything an issue or PR supplied.
+
+    The file is one JSON object, read with rules.strict_json (a repeated key is refused), with
+    exactly the keys "schema" (the integer 1), "ids" (a list of positive integers in USER_ID_RE's
+    form) and "logins" (a list of strings in LOGIN_RE's form). There is no key for a reason, note or
+    name, and JSON has no comments: the file holds identifiers and nothing else. It must be a regular
+    file (not a symlink) of at most 64 KiB. Logins match ASCII case-insensitively (never Unicode-folded),
+    and an id match holds after the account is renamed.
+
+    Fails closed: a missing, unreadable, oversized, non-UTF-8, non-strict-JSON or wrongly shaped file
+    raises Refusal("blocklist", ...), so the gate stops (exit 1) rather than letting anyone through.
+    The message is fixed text and never quotes the file."""
+    path = Path(path) if path is not None else ROOT / BLOCKLIST_REL
+    unreadable = "can't be read as a regular file of at most 64 KiB"
+    if path.is_symlink():
+        raise _blocklist_refusal(unreadable)
+    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
+    fd = None
+    try:
+        fd = os.open(path, flags)
+        info = os.fstat(fd)
+        if not stat.S_ISREG(info.st_mode) or info.st_size > BLOCKLIST_MAX_BYTES:
+            raise _blocklist_refusal(unreadable)
+        with os.fdopen(fd, "rb") as handle:
+            fd = None  # the file object owns the descriptor now
+            data = handle.read(BLOCKLIST_MAX_BYTES + 1)
+    except OSError:
+        raise _blocklist_refusal(unreadable) from None
+    finally:
+        if fd is not None:
+            os.close(fd)
+    if len(data) > BLOCKLIST_MAX_BYTES:
+        raise _blocklist_refusal(unreadable)
+    try:
+        doc = rules.strict_json(data)
+    except (ValueError, RecursionError):
+        raise _blocklist_refusal("isn't one strict JSON object in UTF-8") from None
+    malformed = "doesn't match its format (exactly schema 1, ids, logins)"
+    if not isinstance(doc, dict) or set(doc) != {"schema", "ids", "logins"}:
+        raise _blocklist_refusal(malformed)
+    if not int_not_bool(doc["schema"]) or doc["schema"] != 1:
+        raise _blocklist_refusal(malformed)
+    ids, logins = doc["ids"], doc["logins"]
+    if not isinstance(ids, list) or not isinstance(logins, list):
+        raise _blocklist_refusal(malformed)
+    if not all(int_not_bool(uid) and uid > 0 and USER_ID_RE.fullmatch(str(uid)) for uid in ids):
+        raise _blocklist_refusal(malformed)
+    if not all(fullmatch(LOGIN_RE, login) for login in logins):
+        raise _blocklist_refusal(malformed)
+    return Blocklist(frozenset(ids), frozenset(logins))
 
 
 # --- what a bot theme PR may contain --------------------------------------------------------------
