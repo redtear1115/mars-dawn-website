@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-24T23:43:05Z",
+  "generatedAt": "2026-11-25T02:28:46Z",
   "themes": [
     {
       "id": "catppuccin-frappe",
@@ -36,6 +36,42 @@
       "previews": {
         "light": "catppuccin-frappe/1.0.0/preview-light.png",
         "dark": "catppuccin-frappe/1.0.0/preview-dark.png"
+      }
+    },
+    {
+      "id": "catppuccin-macchiato",
+      "version": "1.0.0",
+      "name": {
+        "en": "Catppuccin Macchiato"
+      },
+      "summary": {
+        "de": "Sanfte Pastelltöne: nachts Macchiato, tagsüber Latte – nach Catppuccin, für bessere Lesbarkeit angepasst",
+        "en": "Soothing pastels: Macchiato by night, Latte by day — adapted from Catppuccin, adjusted for readability",
+        "es": "Pasteles relajantes: Macchiato de noche, Latte de día —adaptada de Catppuccin y ajustada para leer mejor",
+        "fr": "Des pastels apaisants : Macchiato la nuit, Latte le jour – adaptée de Catppuccin, ajustée pour la lisibilité",
+        "ja": "やさしいパステル調。夜は Macchiato、昼は Latte — Catppuccin を基に、読みやすさのために調整",
+        "ko": "차분한 파스텔 톤: 밤에는 Macchiato, 낮에는 Latte — Catppuccin을 바탕으로 가독성에 맞게 조정",
+        "zh-Hans": "柔和粉彩色调：夜晚用 Macchiato，白天用 Latte — 改编自 Catppuccin，为可读性调整",
+        "zh-Hant": "柔和粉彩色調：夜晚用 Macchiato，白天用 Latte — 改編自 Catppuccin，為可讀性調整"
+      },
+      "scenarios": [
+        "technical-docs",
+        "agent-review"
+      ],
+      "author": {
+        "name": "charliie",
+        "github": "charliie-dev"
+      },
+      "minAppVersion": "1.1.0",
+      "files": {
+        "theme.json": {
+          "path": "catppuccin-macchiato/1.0.0/theme.json",
+          "sha256": "7134472e4669813109ed90d67981d8684069b0b3416d0b492aa730d9fd228dca"
+        }
+      },
+      "previews": {
+        "light": "catppuccin-macchiato/1.0.0/preview-light.png",
+        "dark": "catppuccin-macchiato/1.0.0/preview-dark.png"
       }
     },
     {
