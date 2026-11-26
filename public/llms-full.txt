@@ -734,11 +734,11 @@ How MarsDawn, the Markdown app for Mac, iPhone and iPad, handles your informatio
 
 Last updated 2026-10-29
 
-> **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your devices.
+> **The MarsDawn app does not currently collect any data about you.** There is no account and no advertising. Your documents and settings stay on your devices. If we add anonymous usage statistics in the future, we will ask for your consent first and explain here what is collected, before that version is released.
 
 ## The website
 
-The app and this website are two different things. The app collects nothing. A visit can be recorded only here, on marsdawn.southern-light.dev.
+The app and this website are two different things. The app does not currently collect any data. If we add anonymous usage statistics in the future, we will ask for your consent first and explain them on this page. A visit can be recorded only here, on marsdawn.southern-light.dev.
 
 This site uses **Google Analytics 4**, loaded through **Google Tag Manager**. Every visitor starts with analytics denied: Google's Consent Mode sends only a cookieless ping with no analytics cookie and no persistent identifier, until you choose *Accept* in the banner. Choosing *Decline*, or making no choice at all, keeps it that way, and choosing *Decline* after a prior *Accept* turns analytics back off immediately and removes the cookies below. Change your choice at any time with the "Cookie settings" link in the footer of every page. The choice itself is stored only in your browser's local storage, never in a cookie of ours.
 
@@ -799,7 +799,7 @@ The optional `marsdawn` command-line tool, distributed separately, also runs ent
 
 ## Children
 
-The MarsDawn app does not collect data from anyone, including children. A visit recorded on the website is not an account, and it is not used to identify anyone.
+The MarsDawn app does not currently collect data from anyone, including children. If we add anonymous usage statistics in the future, we will ask for consent first and explain on this page what is collected, before that version is released. A visit recorded on the website is not an account, and it is not used to identify anyone.
 
 ## Purchases
 
@@ -4539,11 +4539,11 @@ Mac、iPhone 和 iPad 上的 Markdown App MarsDawn 如何處理你的資訊。
 
 最後更新：2026-10-29
 
-> **MarsDawn app 不收集任何關於你的資料**。沒有帳號、沒有廣告，也不追蹤。你的文件與設定都留在你的裝置上。
+> **MarsDawn app 目前不收集任何關於你的資料**。沒有帳號，也沒有廣告。你的文件與設定都留在你的裝置上。未來若加入匿名使用統計，會先徵求你的同意，並在該版本推出前於本頁說明會收集什麼。
 
 ## 這個網站
 
-App 和這個網站是兩件事。App 不收集資料。會記下造訪的，只有 marsdawn.southern-light.dev。
+App 和這個網站是兩件事。App 目前不收集資料。未來若加入匿名使用統計，會先徵求同意，並在本頁說明會收集什麼。會記下造訪的，只有 marsdawn.southern-light.dev。
 
 這個網站使用透過**Google Tag Manager**載入的**Google Analytics 4**。每位訪客一開始的分析狀態都是拒絕：Google 的同意模式只會送出一個沒有 cookie、不含任何持續性識別碼的連線，直到你在橫幅中選擇「接受」為止。選擇「拒絕」，或是不做選擇，都會維持這個狀態；如果先前選過「接受」再改選「拒絕」，分析會立即關閉，下面提到的 cookie 也會被移除。你可以隨時用每一頁頁尾的「Cookie 設定」連結改變選擇；這個選擇只存在你瀏覽器的本機儲存空間裡，不是我們設下的 cookie。
 
@@ -4604,7 +4604,7 @@ MarsDawn 提供 Siri、捷徑 App 和 Spotlight 可用的動作，例如新增�
 
 ## 兒童
 
-MarsDawn app 不向任何人收集資料，包括兒童。網站上記下的造訪不是帳號，也不用來辨認任何人。
+MarsDawn app 目前不向任何人收集資料，包括兒童。未來若加入匿名使用統計，會先徵求同意，並在該版本推出前於本頁說明會收集什麼。網站上記下的造訪不是帳號，也不用來辨認任何人。
 
 ## 購買
 
@@ -8436,11 +8436,11 @@ Mac、iPhone 和 iPad 上的 Markdown App MarsDawn 如何处理你的信息。
 
 最后更新：2026-10-29
 
-> **MarsDawn app 不收集任何关于你的数据**。没有账户、没有广告，也不追踪。你的文稿与设置都留在你的设备上。
+> **MarsDawn app 目前不收集任何关于你的数据**。没有账户，也没有广告。你的文稿与设置都留在你的设备上。未来若加入匿名使用统计，会先征求你的同意，并在该版本推出前于本页说明会收集什么。
 
 ## 这个网站
 
-App 和这个网站是两件事。App 不收集数据。会记下访问的，只有 marsdawn.southern-light.dev。
+App 和这个网站是两件事。App 目前不收集数据。未来若加入匿名使用统计，会先征求同意，并在本页说明会收集什么。会记下访问的，只有 marsdawn.southern-light.dev。
 
 这个网站使用通过**Google Tag Manager**载入的**Google Analytics 4**。每位访客一开始的分析状态都是拒绝：Google 的同意模式只会发送一个没有 cookie、不含任何持续性标识符的连接，直到你在横幅中选择“接受”为止。选择“拒绝”，或是不做选择，都会维持这个状态；如果先前选过“接受”后又改选“拒绝”，分析会立即关闭，下面提到的 cookie 也会被移除。你可以随时用每一页页脚的“Cookie 设置”链接改变选择；这个选择只存在你浏览器的本地存储里，不是我们设下的 cookie。
 
@@ -8501,7 +8501,7 @@ MarsDawn 提供 Siri、快捷指令 App 和 Spotlight 可用的动作，例如�
 
 ## 儿童
 
-MarsDawn app 不向任何人收集数据，包括儿童。网站上记下的访问不是账户，也不用来辨认任何人。
+MarsDawn app 目前不向任何人收集数据，包括儿童。未来若加入匿名使用统计，会先征求同意，并在该版本推出前于本页说明会收集什么。网站上记下的访问不是账户，也不用来辨认任何人。
 
 ## 购买
 
@@ -12272,11 +12272,11 @@ Mac、iPhone、iPad 向け Markdown アプリ、MarsDawn がどのようにあ�
 
 最終更新日：2026-10-29
 
-> **MarsDawn アプリは、あなたに関するデータを一切収集しません**。アカウントも、広告も、トラッキングもありません。文書と設定はあなたのデバイス上に残ります。
+> **MarsDawn アプリは、現時点ではあなたに関するデータを収集していません**。アカウントも、広告もありません。文書と設定はあなたのデバイス上に残ります。将来、匿名の利用統計を追加する場合は、先にあなたの同意を求め、そのバージョンを公開する前に、何を収集するかをこのページで説明します。
 
 ## このウェブサイト
 
-アプリとこのウェブサイトは別のものです。アプリはデータを収集しません。訪問が記録され得るのは、marsdawn.southern-light.dev だけです。
+アプリとこのウェブサイトは別のものです。アプリは現時点ではデータを収集していません。将来、匿名の利用統計を追加する場合は、先にあなたの同意を求め、何を収集するかをこのページで説明します。訪問が記録され得るのは、marsdawn.southern-light.dev だけです。
 
 このサイトは**Google タグマネージャー**経由で読み込まれる**Google アナリティクス 4**を使用しています。訪問者は最初、分析が拒否された状態で始まります。Google の同意モードは、バナーで「同意する」を選ぶまで、クッキーを使わず持続的な識別子も含まない通信だけを送ります。「同意しない」を選んだ場合、または何も選ばなかった場合も、この状態が続きます。以前に「同意する」を選んでいた場合でも、あとから「同意しない」に変更すると、分析はすぐに無効になり、下記のクッキーも削除されます。いつでもフッターの「Cookie 設定」リンクから選択を変更できます。この選択はブラウザのローカルストレージにのみ保存され、当サイト独自のクッキーではありません。
 
@@ -12337,7 +12337,7 @@ PDF の書き出しとプリントは、あなたの Mac 上で行われます�
 
 ## 子ども
 
-MarsDawn アプリは、子どもを含め、誰からもデータを収集しません。ウェブサイトに記録される訪問はアカウントではなく、誰かを識別するためにも使いません。
+MarsDawn アプリは現時点では、子どもを含め、誰からもデータを収集していません。将来、匿名の利用統計を追加する場合は、先に同意を求め、そのバージョンを公開する前に、何を収集するかをこのページで説明します。ウェブサイトに記録される訪問はアカウントではなく、誰かを識別するためにも使いません。
 
 ## 購入
 
@@ -16107,11 +16107,11 @@ Wie MarsDawn, die Markdown-App für Mac, iPhone und iPad, mit deinen Daten umgeh
 
 Zuletzt aktualisiert am 2026-10-29
 
-> **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinen Geräten.
+> **Die App MarsDawn erhebt derzeit keine Daten über dich.** Es gibt kein Konto und keine Werbung. Deine Dokumente und Einstellungen bleiben auf deinen Geräten. Wenn wir künftig anonyme Nutzungsstatistiken hinzufügen, holen wir zuerst deine Einwilligung ein und erklären auf dieser Seite, was erhoben wird, bevor diese Version veröffentlicht wird.
 
 ## Die Website
 
-Die App und diese Website sind zwei verschiedene Dinge. Die App erhebt nichts. Ein Besuch kann nur hier erfasst werden, auf marsdawn.southern-light.dev.
+Die App und diese Website sind zwei verschiedene Dinge. Die App erhebt derzeit keine Daten. Wenn wir künftig anonyme Nutzungsstatistiken hinzufügen, holen wir zuerst deine Einwilligung ein und erklären auf dieser Seite, was erhoben wird. Ein Besuch kann nur hier erfasst werden, auf marsdawn.southern-light.dev.
 
 Diese Website verwendet **Google Analytics 4**, geladen über den **Google Tag Manager**. Für alle Besucher ist die Analyse zunächst abgelehnt: Der Einwilligungsmodus (Consent Mode) von Google sendet nur einen cookielosen Ping, ohne Analyse-Cookie und ohne dauerhafte Kennung, bis du im Banner *Akzeptieren* wählst. Wählst du *Ablehnen* oder triffst du gar keine Wahl, bleibt es dabei. Wählst du *Ablehnen*, nachdem du zuvor *Akzeptieren* gewählt hast, wird die Analyse sofort wieder abgeschaltet, und die unten genannten Cookies werden entfernt. Du kannst deine Wahl jederzeit über den Link „Cookie-Einstellungen“ in der Fußzeile jeder Seite ändern. Die Wahl selbst wird nur im lokalen Speicher deines Browsers abgelegt, nie in einem Cookie von uns.
 
@@ -16172,7 +16172,7 @@ Das optionale Befehlszeilenprogramm `marsdawn`, das separat vertrieben wird, lä
 
 ## Kinder
 
-Die App MarsDawn erhebt von niemandem Daten, auch nicht von Kindern. Ein auf der Website erfasster Besuch ist kein Konto und wird nicht verwendet, um jemanden zu identifizieren.
+Die App MarsDawn erhebt derzeit von niemandem Daten, auch nicht von Kindern. Wenn wir künftig anonyme Nutzungsstatistiken hinzufügen, holen wir zuerst die Einwilligung ein und erklären auf dieser Seite, was erhoben wird, bevor diese Version veröffentlicht wird. Ein auf der Website erfasster Besuch ist kein Konto und wird nicht verwendet, um jemanden zu identifizieren.
 
 ## Käufe
 
@@ -19883,11 +19883,11 @@ Comment MarsDawn, l’app Markdown pour Mac, iPhone et iPad, traite vos informat
 
 Dernière mise à jour : 2026-10-29
 
-> **L’app MarsDawn ne collecte aucune donnée vous concernant.** Il n’y a ni compte, ni publicité, ni suivi. Vos documents et vos réglages restent sur vos appareils.
+> **L’app MarsDawn ne collecte actuellement aucune donnée vous concernant.** Il n’y a ni compte, ni publicité. Vos documents et vos réglages restent sur vos appareils. Si nous ajoutons à l’avenir des statistiques anonymes d’utilisation, nous demanderons d’abord votre consentement et expliquerons sur cette page ce qui sera collecté, avant la sortie de cette version.
 
 ## Le site web
 
-L’app et ce site web sont deux choses distinctes. L’app ne collecte rien. Une visite ne peut être enregistrée qu’ici, sur marsdawn.southern-light.dev.
+L’app et ce site web sont deux choses distinctes. L’app ne collecte actuellement aucune donnée. Si nous ajoutons à l’avenir des statistiques anonymes d’utilisation, nous demanderons d’abord votre consentement et expliquerons sur cette page ce qui sera collecté. Une visite ne peut être enregistrée qu’ici, sur marsdawn.southern-light.dev.
 
 Ce site utilise **Google Analytics 4**, chargé via **Google Tag Manager**. Pour chaque visiteur, la mesure d’audience est d’abord refusée : le mode Consentement (Consent Mode) de Google n’envoie qu’un ping sans cookie, sans cookie de mesure et sans identifiant persistant, jusqu’à ce que vous choisissiez *Accepter* dans le bandeau. Si vous choisissez *Refuser*, ou si vous ne faites aucun choix, rien ne change. Choisir *Refuser* après avoir accepté désactive immédiatement la mesure d’audience et supprime les cookies ci-dessous. Vous pouvez modifier votre choix à tout moment avec le lien « Réglages des cookies » en pied de chaque page. Ce choix est enregistré uniquement dans le stockage local de votre navigateur, jamais dans un cookie de notre part.
 
@@ -19948,7 +19948,7 @@ L’outil en ligne de commande facultatif `marsdawn`, distribué séparément, s
 
 ## Enfants
 
-L’app MarsDawn ne collecte de données auprès de personne, y compris les enfants. Une visite enregistrée sur le site web n’est pas un compte, et elle ne sert pas à identifier qui que ce soit.
+L’app MarsDawn ne collecte actuellement aucune donnée auprès de personne, y compris les enfants. Si nous ajoutons à l’avenir des statistiques anonymes d’utilisation, nous demanderons d’abord le consentement et expliquerons sur cette page ce qui sera collecté, avant la sortie de cette version. Une visite enregistrée sur le site web n’est pas un compte, et elle ne sert pas à identifier qui que ce soit.
 
 ## Achats
 
@@ -23659,11 +23659,11 @@ Cómo trata tu información MarsDawn, la app de Markdown para Mac, iPhone y iPad
 
 Última actualización: 2026-10-29
 
-> **La app MarsDawn no recopila ningún dato sobre ti.** No hay cuenta, ni publicidad, ni seguimiento. Tus documentos y tus ajustes se quedan en tus dispositivos.
+> **La app MarsDawn no recopila actualmente ningún dato sobre ti.** No hay cuenta ni publicidad. Tus documentos y tus ajustes se quedan en tus dispositivos. Si en el futuro añadimos estadísticas anónimas de uso, pediremos primero tu consentimiento y explicaremos en esta página qué se recopilará, antes de publicar esa versión.
 
 ## El sitio web
 
-La app y este sitio web son dos cosas distintas. La app no recopila nada. Una visita solo puede registrarse aquí, en marsdawn.southern-light.dev.
+La app y este sitio web son dos cosas distintas. La app no recopila actualmente ningún dato. Si en el futuro añadimos estadísticas anónimas de uso, pediremos primero tu consentimiento y explicaremos en esta página qué se recopilará. Una visita solo puede registrarse aquí, en marsdawn.southern-light.dev.
 
 Este sitio usa **Google Analytics 4**, cargado mediante **Google Tag Manager**. Todos los visitantes empiezan con la analítica denegada: el modo de consentimiento (Consent Mode) de Google solo envía un ping sin cookies, sin cookie de analítica y sin identificador persistente, hasta que eliges *Aceptar* en el aviso. Si eliges *Rechazar*, o no eliges nada, todo sigue así; y si eliges *Rechazar* después de haber aceptado, la analítica se desactiva de inmediato y se eliminan las cookies que se indican abajo. Puedes cambiar tu elección en cualquier momento con el enlace «Ajustes de cookies» del pie de cada página. La elección en sí se guarda solo en el almacenamiento local de tu navegador, nunca en una cookie nuestra.
 
@@ -23724,7 +23724,7 @@ La herramienta de línea de comandos opcional `marsdawn`, que se distribuye por 
 
 ## Menores
 
-La app MarsDawn no recopila datos de nadie, menores incluidos. Una visita registrada en el sitio web no es una cuenta y no se usa para identificar a nadie.
+La app MarsDawn no recopila actualmente datos de nadie, menores incluidos. Si en el futuro añadimos estadísticas anónimas de uso, pediremos primero el consentimiento y explicaremos en esta página qué se recopilará, antes de publicar esa versión. Una visita registrada en el sitio web no es una cuenta y no se usa para identificar a nadie.
 
 ## Compras
 
@@ -27435,11 +27435,11 @@ Mac, iPhone, iPad용 Markdown 앱 MarsDawn이 사용자의 정보를 어떻게 �
 
 최종 업데이트: 2026-10-29
 
-> **MarsDawn 앱은 사용자에 관한 데이터를 일절 수집하지 않습니다.** 계정도, 광고도, 추적도 없습니다. 문서와 설정은 사용자의 기기에 남습니다.
+> **MarsDawn 앱은 현재 사용자에 관한 데이터를 수집하지 않습니다.** 계정도 없고, 광고도 없습니다. 문서와 설정은 사용자의 기기에 남습니다. 향후 익명 사용 통계를 추가하는 경우, 먼저 사용자의 동의를 구하고, 해당 버전을 출시하기 전에 이 페이지에서 무엇을 수집할 것인지 설명합니다.
 
 ## 웹사이트
 
-앱과 이 웹사이트는 서로 다릅니다. 앱은 아무것도 수집하지 않습니다. 방문 기록이 남을 수 있는 곳은 이곳 marsdawn.southern-light.dev뿐입니다.
+앱과 이 웹사이트는 서로 다릅니다. 앱은 현재 데이터를 수집하지 않습니다. 향후 익명 사용 통계를 추가하는 경우, 먼저 사용자의 동의를 구하고, 이 페이지에서 무엇을 수집할 것인지 설명합니다. 방문 기록이 남을 수 있는 곳은 이곳 marsdawn.southern-light.dev뿐입니다.
 
 이 사이트는 **Google Tag Manager**를 통해 불러오는 **Google Analytics 4**를 사용합니다. 모든 방문자는 분석이 거부된 상태로 시작합니다. 배너에서 *수락*을 선택하기 전까지 Google의 동의 모드(Consent Mode)는 분석 쿠키나 영구 식별자 없이 쿠키 없는 핑만 보냅니다. *거부*를 선택하거나 아무것도 선택하지 않으면 이 상태가 유지되며, 이전에 *수락*한 뒤 *거부*를 선택하면 분석이 즉시 다시 꺼지고 아래의 쿠키가 삭제됩니다. 선택은 모든 페이지 하단의 ‘쿠키 설정’ 링크에서 언제든지 바꿀 수 있습니다. 선택 자체는 브라우저의 로컬 저장소에만 저장되며, 저희 쿠키에는 절대 저장되지 않습니다.
 
@@ -27500,7 +27500,7 @@ PDF 내보내기와 프린트는 Mac에서 이루어집니다. PDF는 사용자�
 
 ## 아동
 
-MarsDawn 앱은 아동을 포함해 누구의 데이터도 수집하지 않습니다. 웹사이트에 기록된 방문은 계정이 아니며, 누군가를 식별하는 데 사용되지 않습니다.
+MarsDawn 앱은 현재 아동을 포함해 누구의 데이터도 수집하지 않습니다. 향후 익명 사용 통계를 추가하는 경우, 먼저 동의를 구하고, 해당 버전을 출시하기 전에 이 페이지에서 무엇을 수집할 것인지 설명합니다. 웹사이트에 기록된 방문은 계정이 아니며, 누군가를 식별하는 데 사용되지 않습니다.
 
 ## 구입
 

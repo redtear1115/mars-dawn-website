@@ -4,11 +4,11 @@ Wie MarsDawn, die Markdown-App für Mac, iPhone und iPad, mit deinen Daten umgeh
 
 Zuletzt aktualisiert am 2026-10-29
 
-> **Die App MarsDawn erhebt keinerlei Daten über dich.** Es gibt kein Konto, keine Werbung und kein Tracking. Deine Dokumente und Einstellungen bleiben auf deinen Geräten.
+> **Die App MarsDawn erhebt derzeit keine Daten über dich.** Es gibt kein Konto und keine Werbung. Deine Dokumente und Einstellungen bleiben auf deinen Geräten. Wenn wir künftig anonyme Nutzungsstatistiken hinzufügen, holen wir zuerst deine Einwilligung ein und erklären auf dieser Seite, was erhoben wird, bevor diese Version veröffentlicht wird.
 
 ## Die Website
 
-Die App und diese Website sind zwei verschiedene Dinge. Die App erhebt nichts. Ein Besuch kann nur hier erfasst werden, auf marsdawn.southern-light.dev.
+Die App und diese Website sind zwei verschiedene Dinge. Die App erhebt derzeit keine Daten. Wenn wir künftig anonyme Nutzungsstatistiken hinzufügen, holen wir zuerst deine Einwilligung ein und erklären auf dieser Seite, was erhoben wird. Ein Besuch kann nur hier erfasst werden, auf marsdawn.southern-light.dev.
 
 Diese Website verwendet **Google Analytics 4**, geladen über den **Google Tag Manager**. Für alle Besucher ist die Analyse zunächst abgelehnt: Der Einwilligungsmodus (Consent Mode) von Google sendet nur einen cookielosen Ping, ohne Analyse-Cookie und ohne dauerhafte Kennung, bis du im Banner *Akzeptieren* wählst. Wählst du *Ablehnen* oder triffst du gar keine Wahl, bleibt es dabei. Wählst du *Ablehnen*, nachdem du zuvor *Akzeptieren* gewählt hast, wird die Analyse sofort wieder abgeschaltet, und die unten genannten Cookies werden entfernt. Du kannst deine Wahl jederzeit über den Link „Cookie-Einstellungen“ in der Fußzeile jeder Seite ändern. Die Wahl selbst wird nur im lokalen Speicher deines Browsers abgelegt, nie in einem Cookie von uns.
 
@@ -70,7 +70,7 @@ Das optionale Befehlszeilenprogramm `marsdawn`, das separat vertrieben wird, lä
 
 ## Kinder
 
-Die App MarsDawn erhebt von niemandem Daten, auch nicht von Kindern. Ein auf der Website erfasster Besuch ist kein Konto und wird nicht verwendet, um jemanden zu identifizieren.
+Die App MarsDawn erhebt derzeit von niemandem Daten, auch nicht von Kindern. Wenn wir künftig anonyme Nutzungsstatistiken hinzufügen, holen wir zuerst die Einwilligung ein und erklären auf dieser Seite, was erhoben wird, bevor diese Version veröffentlicht wird. Ein auf der Website erfasster Besuch ist kein Konto und wird nicht verwendet, um jemanden zu identifizieren.
 
 ## Käufe
 

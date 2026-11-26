@@ -4,11 +4,11 @@ Comment MarsDawn, l’app Markdown pour Mac, iPhone et iPad, traite vos informat
 
 Dernière mise à jour : 2026-10-29
 
-> **L’app MarsDawn ne collecte aucune donnée vous concernant.** Il n’y a ni compte, ni publicité, ni suivi. Vos documents et vos réglages restent sur vos appareils.
+> **L’app MarsDawn ne collecte actuellement aucune donnée vous concernant.** Il n’y a ni compte, ni publicité. Vos documents et vos réglages restent sur vos appareils. Si nous ajoutons à l’avenir des statistiques anonymes d’utilisation, nous demanderons d’abord votre consentement et expliquerons sur cette page ce qui sera collecté, avant la sortie de cette version.
 
 ## Le site web
 
-L’app et ce site web sont deux choses distinctes. L’app ne collecte rien. Une visite ne peut être enregistrée qu’ici, sur marsdawn.southern-light.dev.
+L’app et ce site web sont deux choses distinctes. L’app ne collecte actuellement aucune donnée. Si nous ajoutons à l’avenir des statistiques anonymes d’utilisation, nous demanderons d’abord votre consentement et expliquerons sur cette page ce qui sera collecté. Une visite ne peut être enregistrée qu’ici, sur marsdawn.southern-light.dev.
 
 Ce site utilise **Google Analytics 4**, chargé via **Google Tag Manager**. Pour chaque visiteur, la mesure d’audience est d’abord refusée : le mode Consentement (Consent Mode) de Google n’envoie qu’un ping sans cookie, sans cookie de mesure et sans identifiant persistant, jusqu’à ce que vous choisissiez *Accepter* dans le bandeau. Si vous choisissez *Refuser*, ou si vous ne faites aucun choix, rien ne change. Choisir *Refuser* après avoir accepté désactive immédiatement la mesure d’audience et supprime les cookies ci-dessous. Vous pouvez modifier votre choix à tout moment avec le lien « Réglages des cookies » en pied de chaque page. Ce choix est enregistré uniquement dans le stockage local de votre navigateur, jamais dans un cookie de notre part.
 
@@ -70,7 +70,7 @@ L’outil en ligne de commande facultatif `marsdawn`, distribué séparément, s
 
 ## Enfants
 
-L’app MarsDawn ne collecte de données auprès de personne, y compris les enfants. Une visite enregistrée sur le site web n’est pas un compte, et elle ne sert pas à identifier qui que ce soit.
+L’app MarsDawn ne collecte actuellement aucune donnée auprès de personne, y compris les enfants. Si nous ajoutons à l’avenir des statistiques anonymes d’utilisation, nous demanderons d’abord le consentement et expliquerons sur cette page ce qui sera collecté, avant la sortie de cette version. Une visite enregistrée sur le site web n’est pas un compte, et elle ne sert pas à identifier qui que ce soit.
 
 ## Achats
 
