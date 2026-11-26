@@ -4,11 +4,11 @@ How MarsDawn, the Markdown app for Mac, iPhone and iPad, handles your informatio
 
 Last updated 2026-10-29
 
-> **The MarsDawn app does not collect any data about you.** There is no account, no advertising and no tracking. Your documents and settings stay on your devices.
+> **The MarsDawn app does not currently collect any data about you.** There is no account and no advertising. Your documents and settings stay on your devices. If we add anonymous usage statistics in the future, we will ask for your consent first and explain here what is collected, before that version is released.
 
 ## The website
 
-The app and this website are two different things. The app collects nothing. A visit can be recorded only here, on marsdawn.southern-light.dev.
+The app and this website are two different things. The app does not currently collect any data. If we add anonymous usage statistics in the future, we will ask for your consent first and explain them on this page. A visit can be recorded only here, on marsdawn.southern-light.dev.
 
 This site uses **Google Analytics 4**, loaded through **Google Tag Manager**. Every visitor starts with analytics denied: Google's Consent Mode sends only a cookieless ping with no analytics cookie and no persistent identifier, until you choose *Accept* in the banner. Choosing *Decline*, or making no choice at all, keeps it that way, and choosing *Decline* after a prior *Accept* turns analytics back off immediately and removes the cookies below. Change your choice at any time with the "Cookie settings" link in the footer of every page. The choice itself is stored only in your browser's local storage, never in a cookie of ours.
 
@@ -69,7 +69,7 @@ The optional `marsdawn` command-line tool, distributed separately, also runs ent
 
 ## Children
 
-The MarsDawn app does not collect data from anyone, including children. A visit recorded on the website is not an account, and it is not used to identify anyone.
+The MarsDawn app does not currently collect data from anyone, including children. If we add anonymous usage statistics in the future, we will ask for consent first and explain on this page what is collected, before that version is released. A visit recorded on the website is not an account, and it is not used to identify anyone.
 
 ## Purchases
 
