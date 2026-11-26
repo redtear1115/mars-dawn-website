@@ -174,7 +174,7 @@ More: [Privacy Policy](/privacy/#when-marsdawn-uses-the-internet)
 
 ### Is the site's analytics cookie related to the app?
 
-No. The app and this website are separate: the app collects nothing, and a visit can be recorded only on marsdawn.southern-light.dev. The site's Google Analytics starts denied and sets cookies only after you choose Accept; Cookie settings in the footer changes that. The app's requests for theme files under /themes/ are skipped.
+No. The app and this website are separate: the app does not currently collect any data. If we add anonymous usage statistics in the future, we will ask for your consent first and explain them on the privacy policy page. A visit can be recorded only on marsdawn.southern-light.dev. The site's Google Analytics starts denied and sets cookies only after you choose Accept; Cookie settings in the footer changes that. The app's requests for theme files under /themes/ are skipped.
 
 More: [Privacy Policy](/privacy/#the-website)
 

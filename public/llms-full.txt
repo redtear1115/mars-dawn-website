@@ -180,7 +180,7 @@ More: [Privacy Policy](/privacy/#when-marsdawn-uses-the-internet)
 
 ### Is the site's analytics cookie related to the app?
 
-No. The app and this website are separate: the app collects nothing, and a visit can be recorded only on marsdawn.southern-light.dev. The site's Google Analytics starts denied and sets cookies only after you choose Accept; Cookie settings in the footer changes that. The app's requests for theme files under /themes/ are skipped.
+No. The app and this website are separate: the app does not currently collect any data. If we add anonymous usage statistics in the future, we will ask for your consent first and explain them on the privacy policy page. A visit can be recorded only on marsdawn.southern-light.dev. The site's Google Analytics starts denied and sets cookies only after you choose Accept; Cookie settings in the footer changes that. The app's requests for theme files under /themes/ are skipped.
 
 More: [Privacy Policy](/privacy/#the-website)
 
@@ -451,7 +451,7 @@ In this screenshot:
 
 - There is no account to sign up for or sign in to.
 - Nothing syncs to a cloud. Your documents stay where you save them.
-- Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".
+- The MarsDawn app does not currently collect any data about you. If we add anonymous usage statistics in the future, we will ask for your consent first and explain on the privacy policy page what is collected, before that version is released. Its App Store privacy label is "Data Not Collected".
 - Web images stay blocked until you choose to load them, so opening a document never tells a server you read it. When you do load them, they load over https only.
 - Local images show in the preview once you grant access to their folder.
 

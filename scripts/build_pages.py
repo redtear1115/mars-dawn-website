@@ -4175,7 +4175,7 @@ TRAIT_PAGES = {
 <ul>
   <li>There is no account to sign up for or sign in to.</li>
   <li>Nothing syncs to a cloud. Your documents stay where you save them.</li>
-  <li>Nothing is tracked. MarsDawn does not collect any data about you, and its App Store privacy label is "Data Not Collected".</li>
+  <li>The MarsDawn app does not currently collect any data about you. If we add anonymous usage statistics in the future, we will ask for your consent first and explain on the privacy policy page what is collected, before that version is released. Its App Store privacy label is "Data Not Collected".</li>
   <li>Web images stay blocked until you choose to load them, so opening a document never tells a server you read it. When you do load them, they load over https only.</li>
   <li>Local images show in the preview once you grant access to their folder.</li>
 </ul>
