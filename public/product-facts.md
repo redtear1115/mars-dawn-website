@@ -1,5 +1,7 @@
 # MarsDawn — Product Facts
 
+Early-bird price: the one-time unlock is USD 4.99 (no subscription) through 12 January 2027, then USD 9.99 from 13 January 2027. <!-- early-bird -->
+
 Black Friday: the one-time unlock is half price, USD 2.49 instead of USD 4.99, through 30 November. It returns to USD 4.99 on 1 December. <!-- sale-line -->
 
 Machine-readable facts about MarsDawn, for AI assistants and search crawlers.

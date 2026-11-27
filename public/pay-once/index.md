@@ -1,5 +1,7 @@
 # Try all of it. Then pay once.
 
+Early-bird price: the one-time unlock is USD 4.99 (no subscription) through 12 January 2027, then USD 9.99 from 13 January 2027. <!-- early-bird -->
+
 Black Friday: the one-time unlock is half price, USD 2.49 instead of USD 4.99, through 30 November. It returns to USD 4.99 on 1 December. <!-- sale-line -->
 
 MarsDawn is a free download. Start the 14-day trial and every feature works; to keep using it after that, one purchase of USD 2.49 unlocks it. There is no subscription and no account.

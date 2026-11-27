@@ -11,17 +11,22 @@ The Markdown twins and the llms and product-facts files carry the line as a line
 `<!-- sale-line -->` (price.sale_note_md()), skipped the same way. In the sale phase every .md or
 .txt file that states the sale price must carry one, so no agent quotes 2.49 with no end date.
 
+The early-bird notice is protected in both phases. The built notice must match the approved copy,
+and the JSON-LD Offer prices must match the current price and free download.
+
 It also fails if a private-use KEEP sentinel from price.py reached a built file, which would mean
 some text was written without going through price.localize().
 
 --self-test runs price.localize() and this check's own rules against plants, and expects each
 plant to fail with its own rule's message.
 """
+import json
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import price  # noqa: E402
+from check_offers import HOMES, SCRIPT, offers  # noqa: E402
 
 SITE = Path(__file__).resolve().parent.parent / "public"
 SUFFIXES = {".html", ".md", ".txt"}
@@ -32,6 +37,18 @@ RULE_NOTE = "states the sale price with no sale line"
 TEXT_SUFFIXES = {".md", ".txt"}
 
 
+EXPECTED_EARLY_BIRD_LINES = {
+    "en": "Early-bird price: the one-time unlock is USD 4.99 (no subscription) through 12 January 2027, then USD 9.99 from 13 January 2027.",
+    "zh-hant": "早鳥價：一次解鎖為 USD 4.99（非訂閱），至 2027 年 1 月 12 日；2027 年 1 月 13 日起調整為 USD 9.99。",
+    "zh-hans": "早鸟价：一次解锁为 USD 4.99（非订阅），至 2027 年 1 月 12 日；2027 年 1 月 13 日起调整为 USD 9.99。",
+    "ja": "早期価格：一度きりのロック解除は USD 4.99（サブスクなし）、2027年1月12日まで。2027年1月13日から USD 9.99 になります。",
+    "ko": "얼리버드 가격: 한 번만 구입하는 잠금 해제(구독 없음)는 2027년 1월 12일까지 USD 4.99이며, 2027년 1월 13일부터 USD 9.99로 조정됩니다.",
+    "de": "Einführungspreis: Die einmalige Freischaltung kostet 4,99 USD (kein Abo) bis zum 12. Januar 2027, ab dem 13. Januar 2027 dann 9,99 USD.",
+    "fr": "Tarif de lancement : le déverrouillage unique coûte 4,99 USD (sans abonnement) jusqu’au 12 janvier 2027, puis 9,99 USD à partir du 13 janvier 2027.",
+    "es": "Precio de lanzamiento: el desbloqueo único cuesta 4,99 USD (sin suscripción) hasta el 12 de enero de 2027; 9,99 USD a partir del 13 de enero de 2027.",
+}
+
+
 def problems_in(where: str, text: str, phase: str, text_file: bool = False) -> list:
     """This check's rules, applied to one file's text (`text_file`: a .md or .txt file)."""
     found = []
@@ -40,6 +57,7 @@ def problems_in(where: str, text: str, phase: str, text_file: bool = False) -> l
     if phase != "sale" and (price.SALE_LINE_RE.search(text) or price.SALE_NOTE_MARK in text):
         found.append(f"{where}: {RULE_LINE}")
     outside = price.SALE_NOTE_RE.sub("", price.SALE_LINE_RE.sub("", text))
+    outside = price.EARLY_BIRD_NOTE_RE.sub("", price.EARLY_BIRD_LINE_RE.sub("", outside))
     if (phase == "sale" and text_file and price.SALE_NOTE_MARK not in text
             and price.pattern(price.SALE).search(outside)):
         found.append(f"{where}: {RULE_NOTE}")
@@ -50,15 +68,67 @@ def problems_in(where: str, text: str, phase: str, text_file: bool = False) -> l
     return found
 
 
-def main() -> int:
+def early_bird_problems() -> list:
     problems = []
+    if price.EARLY_BIRD_LINES != EXPECTED_EARLY_BIRD_LINES:
+        problems.append("price.EARLY_BIRD_LINES differs from the approved early-bird copy")
+
+    def built_text(path: Path) -> str:
+        if not path.is_file():
+            problems.append(f"{path.relative_to(SITE)}: missing built file")
+            return ""
+        return path.read_text(encoding="utf-8")
+
+    def check_note(path: Path, sentence: str) -> None:
+        notes = price.EARLY_BIRD_NOTE_RE.findall(built_text(path))
+        if notes != [f"{sentence} {price.EARLY_BIRD_NOTE_MARK}"]:
+            problems.append(f"{path.relative_to(SITE)}: expected one approved early-bird note")
+
+    for locale, sentence in EXPECTED_EARLY_BIRD_LINES.items():
+        root = SITE if locale == "en" else SITE / locale
+        for folder in (root, root / "pay-once"):
+            page = folder / "index.html"
+            if price.EARLY_BIRD_LINE_RE.findall(built_text(page)) != [sentence]:
+                problems.append(f"{page.relative_to(SITE)}: expected one approved early-bird paragraph")
+            check_note(folder / "index.md", sentence)
+    for name in ("llms.txt", "llms-full.txt", "product-facts.md"):
+        check_note(SITE / name, EXPECTED_EARLY_BIRD_LINES["en"])
+    return problems
+
+
+def offer_price_problems(where: str, text: str) -> list:
+    problems = []
+    current = price.current()
+    prices = []
+    for block in SCRIPT.findall(text):
+        try:
+            data = json.loads(block)
+        except json.JSONDecodeError as exc:
+            problems.append(f"{where}: JSON-LD doesn't parse: {exc}")
+            continue
+        for offer in offers(data):
+            amount = str(offer.get("price"))
+            prices.append(amount)
+            expected = "0" if offer.get("name") == "Free download with a 14-day trial" else current
+            if amount == "9.99" or amount != expected:
+                problems.append(f"{where}: Offer price {amount!r}, expected {expected!r}")
+    if where in HOMES and sorted(prices) != ["0", current]:
+        problems.append(f"{where}: expected Offer prices '0' and {current!r}")
+    return problems
+
+
+def main() -> int:
+    problems = early_bird_problems()
     checked = 0
     for path in sorted(SITE.rglob("*")):
         if path.suffix not in SUFFIXES or not path.is_file():
             continue
         checked += 1
-        problems += problems_in(str(path.relative_to(SITE)), path.read_text(encoding="utf-8"), price.PHASE,
-                                path.suffix in TEXT_SUFFIXES)
+        where = str(path.relative_to(SITE))
+        text = path.read_text(encoding="utf-8")
+        problems += problems_in(where, text, price.PHASE, path.suffix in TEXT_SUFFIXES)
+        if path.suffix == ".html":
+            problems += offer_price_problems(where, text)
     for problem in problems:
         print(f"check_price_phase: {problem}")
     print(f"{checked} files checked in the {price.PHASE} phase (unlock USD {price.current()}): {len(problems)} problems")
@@ -124,6 +194,14 @@ def self_test() -> int:
         expect(name, not found, str(found))
 
     green("a localized sale page passes, sale line and all", sale_page, "sale")
+    early_bird = price.localize(price.early_bird_html("en"), "sale")
+    expect("the early-bird paragraph keeps the approved price", "USD 4.99" in early_bird)
+    green("sale phase, regular price inside the early-bird paragraph", early_bird, "sale")
+    red("sale phase, regular price outside the early-bird paragraph",
+        early_bird + "<p>for USD 4.99.</p>", "sale", RULE_OTHER)
+    green("regular phase, early-bird paragraph", price.localize(price.early_bird_html("en"), "regular"), "regular")
+    green("sale phase, regular price inside the early-bird note",
+          price.localize(price.early_bird_note_md(), "sale"), "sale", True)
     green("a regular page passes", "<p>unlock it once for USD 4.99.</p>", "regular")
     red("sale phase, regular price outside the sale line", sale_page + "<p>for USD 4.99.</p>", "sale", RULE_OTHER)
     red("sale phase, 4,99 USD left in a de/fr/es page", "<p>für 4,99 USD frei.</p>", "sale", RULE_OTHER)

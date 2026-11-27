@@ -7836,12 +7836,14 @@ def render(locale: str, slug: str, page: dict) -> str:
     if slug == "index":
         anchor = '<section class="faq">'
         assert main_html.count(anchor) == 1, f"{locale}: home FAQ insertion point changed"
-        main_html = main_html.replace(anchor, price_card.html(locale, campaign_url("web-home")) + "\n" + anchor, 1)
+        card = price_card.html(locale, campaign_url("web-home"))
+        main_html = main_html.replace(anchor, card + "\n" + price.early_bird_html(locale) + anchor, 1)
     elif slug == "pay-once":
         anchor = intro_html.strip()
         assert main_html.startswith(anchor + "\n"), f"{locale}: pay-once intro insertion point changed"
         assert anchor.startswith('<section') and '</section>' in anchor, locale
-        main_html = anchor + "\n" + price_card.html(locale, campaign_url("web-pay-once")) + main_html[len(anchor):]
+        card = price_card.html(locale, campaign_url("web-pay-once"))
+        main_html = anchor + "\n" + card + "\n" + price.early_bird_html(locale) + main_html[len(anchor):]
     main_html = label_scroll_boxes(slug, main_html)
     main_html = label_code_boxes(main_html)
     main_html = soft_hyphenate(locale, main_html)
@@ -8404,12 +8406,18 @@ def main() -> None:
         (folder / "index.html").write_text(
             price.localize(with_campaign_links(render(locale, slug, page), slug_campaign_token(slug))), encoding="utf-8")
         print(folder / "index.html")
-        (folder / "index.md").write_text(price.localize(price.sale_note_md(build_twin(pages, locale, slug), locale)), encoding="utf-8")
+        twin = price.sale_note_md(build_twin(pages, locale, slug), locale)
+        if slug in {"index", "pay-once"}:
+            twin = price.insert_price_note(twin, price.early_bird_note_md(locale))
+        (folder / "index.md").write_text(price.localize(twin), encoding="utf-8")
         print(folder / "index.md")
 
-    (SITE / "llms.txt").write_text(price.localize(price.sale_note_md(build_llms_txt(pages))), encoding="utf-8")
+    early_bird_note = price.early_bird_note_md()
+    llms_txt = price.insert_price_note(price.sale_note_md(build_llms_txt(pages)), early_bird_note)
+    (SITE / "llms.txt").write_text(price.localize(llms_txt), encoding="utf-8")
     print(SITE / "llms.txt")
-    (SITE / "llms-full.txt").write_text(price.localize(price.sale_note_md(build_llms_full(pages))), encoding="utf-8")
+    llms_full = price.insert_price_note(price.sale_note_md(build_llms_full(pages)), early_bird_note)
+    (SITE / "llms-full.txt").write_text(price.localize(llms_full), encoding="utf-8")
     print(SITE / "llms-full.txt")
     notices_path = SITE / "themes" / "third-party-notices.html"
     notices_path.parent.mkdir(parents=True, exist_ok=True)
@@ -8430,7 +8438,8 @@ def main() -> None:
     (SITE / "_redirects").write_text(build_redirects(), encoding="utf-8")
     print(SITE / "_redirects")
     product_facts_path = SITE / PRODUCT_FACTS_PATH.lstrip("/")
-    product_facts_path.write_text(price.localize(price.sale_note_md(build_product_facts(pages))), encoding="utf-8")
+    product_facts = price.insert_price_note(price.sale_note_md(build_product_facts(pages)), early_bird_note)
+    product_facts_path.write_text(price.localize(product_facts), encoding="utf-8")
     print(product_facts_path)
     (SITE / "sitemap.xml").write_text(
         build_sitemap(pages, extra_urls=[BASE_URL + PRODUCT_FACTS_PATH]), encoding="utf-8"

@@ -1,5 +1,7 @@
 # Essayez tout. Puis payez une fois.
 
+Tarif de lancement : le déverrouillage unique coûte 4,99 USD (sans abonnement) jusqu’au 12 janvier 2027, puis 9,99 USD à partir du 13 janvier 2027. <!-- early-bird -->
+
 Offre Black Friday : l’achat unique qui déverrouille l’app est à moitié prix, 2,49 USD au lieu de 4,99 USD, jusqu’au 30 novembre. Il repasse à 4,99 USD le 1er décembre. <!-- sale-line -->
 
 MarsDawn se télécharge gratuitement. Lancez l’essai de 14 jours et toutes les fonctionnalités sont disponibles ; pour continuer ensuite, un achat unique de 2,49 USD le déverrouille. Il n’y a ni abonnement ni compte.

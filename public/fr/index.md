@@ -2,6 +2,8 @@ Des outils de pionnier pour ceux qui construisent
 
 # Prenez la carte. Lisez l’aube.
 
+Tarif de lancement : le déverrouillage unique coûte 4,99 USD (sans abonnement) jusqu’au 12 janvier 2027, puis 9,99 USD à partir du 13 janvier 2027. <!-- early-bird -->
+
 Offre Black Friday : l’achat unique qui déverrouille l’app est à moitié prix, 2,49 USD au lieu de 4,99 USD, jusqu’au 30 novembre. Il repasse à 4,99 USD le 1er décembre. <!-- sale-line -->
 
 Du Markdown pour les humains qui pilotent le travail des agents.

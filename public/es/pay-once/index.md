@@ -1,5 +1,7 @@
 # Pruébalo todo. Después, paga una vez.
 
+Precio de lanzamiento: el desbloqueo único cuesta 4,99 USD (sin suscripción) hasta el 12 de enero de 2027; 9,99 USD a partir del 13 de enero de 2027. <!-- early-bird -->
+
 Oferta de Black Friday: la compra única que desbloquea la app está a mitad de precio, 2,49 USD en lugar de 4,99 USD, hasta el 30 de noviembre. Vuelve a 4,99 USD el 1 de diciembre. <!-- sale-line -->
 
 MarsDawn se descarga gratis. Comienza la prueba de 14 días y todas las funciones están disponibles; para seguir usándolo después, una sola compra de 2,49 USD lo desbloquea. No hay suscripción ni cuenta.
