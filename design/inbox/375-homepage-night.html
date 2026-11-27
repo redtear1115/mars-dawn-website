@@ -7,12 +7,15 @@
 :root {
   --night: #04021a;
   --night-2: #0a0626;
+  --stage-top: #100a2a;
+  --stage-bot: #09051f;
   --ivory: #fff8ee;
   --gold: #ffd9a3;
   --ember: #ff8a3a;
   --ridge: #c33909;
   --mute: #d2c0ae;
   --hair: rgba(255, 217, 163, .18);
+  --hair-soft: rgba(255, 217, 163, .12);
   --paper: #fffdfb;
   --sand: #f6f0ec;
   --ink: #26211f;
@@ -30,7 +33,7 @@ a { color: inherit; text-underline-offset: 5px; }
 button { font: inherit; cursor: pointer; color: inherit; }
 a:focus-visible, button:focus-visible, summary:focus-visible {
   outline: 3px solid #ffb24a;
-  outline-offset: 5px;
+  outline-offset: 4px;
 }
 ::selection { background: #c33909; color: #fff8ee; }
 .col { max-width: 704px; margin: auto; padding: 0 20px; }
@@ -119,7 +122,7 @@ nav a:hover { color: var(--ivory); }
 .secondary { font-size: 14px; color: var(--gold); }
 .platform { font-size: 13px !important; margin-top: 16px !important; color: var(--mute) !important; }
 
-.main-intro { padding-top: 72px; padding-bottom: 28px; }
+.main-intro { padding-top: 72px; padding-bottom: 24px; }
 .main-intro h2, section h2 {
   font-size: clamp(27px, 4vw, 36px);
   line-height: 1.35;
@@ -129,79 +132,316 @@ nav a:hover { color: var(--ivory); }
 }
 .muted { color: var(--mute); }
 
-.demo { max-width: 960px; margin: 0 auto; padding: 12px 20px 8px; }
+/* ===== Short Video Showcase Block (v2) ===== */
+.demo {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 8px 20px 8px;
+}
 .demo-head {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-bottom: 14px;
 }
-.demo-label { font-size: 12px; color: var(--mute); }
-.rounds { display: flex; gap: 6px; }
-.rounds button {
-  min-height: 40px;
-  padding: 8px 14px;
-  background: transparent;
-  border: 1px solid var(--hair);
-  border-radius: 6px;
-  font-size: 13px;
+.demo-label {
+  font-size: 12px;
   color: var(--mute);
+  line-height: 1.5;
 }
-.rounds button[aria-pressed="true"] {
-  border-color: var(--ivory);
-  color: var(--night);
-  background: var(--ivory);
+.demo-spec {
+  font-size: 12px;
+  color: rgba(210, 192, 174, .78);
+  font-variant-numeric: tabular-nums;
 }
 
-.paper-stage {
+.reel-shell {
   position: relative;
-  background: var(--paper);
-  color: var(--ink);
-  padding: 30px 38px 34px;
-  border-radius: 2px;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, .45);
+  background: linear-gradient(180deg, var(--stage-top), var(--stage-bot));
+  border: 1px solid rgba(255, 217, 163, .22);
+  border-radius: 14px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 217, 163, .05) inset;
   overflow: hidden;
 }
 .dawn-bar {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 2px;
+  z-index: 3;
   background: linear-gradient(90deg, #7a1a08, #ff7a2a 35%, #ffe08a 58%, #c33909);
   transform: scaleX(1);
   transform-origin: left;
+  pointer-events: none;
 }
-.filename { font: 12px ui-monospace, monospace; color: var(--dust); overflow-wrap: anywhere; }
-.doc h3 { font-size: 26px; line-height: 1.35; margin: 16px 0 10px; color: var(--ink); }
-.doc .stamp { font-size: 12px; color: var(--dust); }
-.doc p { font-size: 15px; color: var(--ink); }
-.reading { margin-top: 22px; border-top: 1px solid var(--line); }
-.reading button {
+
+/* 1. Video Player Stage (fixed 16:10 aspect ratio, zero CLS) */
+.reel-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #0d0824;
+  overflow: hidden;
+}
+.reel-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #0d0824;
+}
+.reel-storyboard {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.reel-storyboard .shot {
+  opacity: 0;
+  pointer-events: none;
+}
+.reel-storyboard .shot.is-active {
+  opacity: 1;
+}
+
+/* 2. HTML External Subtitle Dock (carries story on mobile + 8-language safe) */
+.reel-subdock {
+  border-top: 1px solid var(--hair-soft);
+  padding: 18px 26px 10px;
+  background: linear-gradient(180deg, rgba(14, 9, 38, .92), rgba(9, 5, 31, .98));
+}
+.sub-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.sub-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: .02em;
+  min-width: 0;
+}
+.sub-step-num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  color: var(--ember);
+}
+.sub-meta-right {
+  display: inline-flex;
+  align-items: center;
   gap: 12px;
-  text-align: left;
+  flex-shrink: 0;
+}
+.sub-status {
+  font-size: 12px;
+  color: var(--mute);
+  font-variant-numeric: tabular-nums;
+}
+.play-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 40px;
+  min-width: 78px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--hair);
+  background: rgba(255, 248, 238, .04);
+  color: var(--ivory);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+}
+.play-toggle:hover {
+  border-color: rgba(255, 217, 163, .45);
+  background: rgba(255, 217, 163, .1);
+}
+.play-toggle[aria-pressed="true"] {
+  border-color: rgba(255, 217, 163, .36);
+}
+.play-toggle svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.sub-line-wrap {
+  /* Fixed floor prevents vertical jump across short/long segments & 8 locales */
+  min-height: 62px;
+  display: flex;
+  align-items: flex-start;
+}
+.sub-text {
+  margin: 0;
+  color: var(--ivory);
+  font-size: clamp(17px, 2.05vw, 21px);
+  font-weight: 600;
+  line-height: 1.46;
+  letter-spacing: -.01em;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+  text-wrap: pretty;
+}
+
+/* 3. 6-Segment Clickable Progress Bar (3 steps × 2 segments) */
+.reel-chapters {
+  padding: 6px 26px 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.chapter-group {
+  min-width: 0;
+}
+.chapter-step-label {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 2px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: rgba(210, 192, 174, .72);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chapter-step-label .step-num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.chapter-group.is-current .chapter-step-label {
+  color: var(--gold);
+  font-weight: 600;
+}
+.chapter-group.is-done .chapter-step-label {
+  color: var(--mute);
+}
+.chapter-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.seg-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
-  min-height: 52px;
+  min-height: 44px;
   padding: 16px 0;
-  background: none;
+  background: transparent;
   border: 0;
-  border-bottom: 1px solid var(--line);
-  color: var(--ink);
-  font-size: 15px;
+  border-radius: 6px;
+  text-align: left;
 }
-.reading small { font-size: 11px; color: var(--dust); font-family: ui-monospace, monospace; }
-.reading button[aria-expanded="true"] { color: var(--rust); }
-.excerpt {
-  margin: 20px 0 0;
-  padding: 20px;
-  border-left: 2px solid #c8471b;
-  background: var(--sand);
+.seg-btn:focus-visible {
+  outline: none;
 }
-.excerpt h4 { margin: 0 0 8px; font-size: 17px; }
-.excerpt p { margin: 0; }
+.seg-btn:focus-visible .seg-track {
+  outline: 3px solid #ffb24a;
+  outline-offset: 5px;
+}
+.seg-track {
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 217, 163, .18);
+  overflow: hidden;
+}
+.seg-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: rgba(255, 217, 163, .62);
+}
+.seg-btn:hover .seg-track,
+.seg-btn:focus-visible .seg-track {
+  height: 6px;
+  background: rgba(255, 217, 163, .3);
+}
+.seg-btn.is-done .seg-fill {
+  transform: scaleX(1);
+  background: rgba(255, 217, 163, .66);
+}
+.seg-btn.is-current .seg-track {
+  height: 6px;
+  background: rgba(255, 217, 163, .28);
+  box-shadow: 0 0 12px rgba(255, 138, 58, .32);
+}
+.seg-btn.is-current .seg-fill {
+  transform: scaleX(var(--seg-progress, 0));
+  background: linear-gradient(90deg, var(--ember), var(--gold));
+}
+.reel-shell.is-static .seg-btn.is-current .seg-fill {
+  transform: scaleX(1);
+}
+.reduced-hint {
+  display: none;
+  margin: 0;
+  padding: 0 26px 16px;
+  font-size: 12px;
+  color: var(--mute);
+  line-height: 1.5;
+}
+.reel-shell.is-static .reduced-hint {
+  display: block;
+}
+
 .caption { font-size: 12px; color: var(--mute); margin: 14px 0 0; }
+
+/* Review-only preview toolbar (clearly separated, removed in production) */
+.review-tools {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border: 1px dashed rgba(255, 217, 163, .22);
+  border-radius: 8px;
+  background: rgba(18, 8, 31, .72);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  font-size: 12px;
+  color: var(--mute);
+}
+.review-tools-group {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.review-chip {
+  min-height: 32px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--hair);
+  background: transparent;
+  color: var(--mute);
+  font-size: 12px;
+}
+.review-chip[aria-pressed="true"] {
+  background: var(--ivory);
+  border-color: var(--ivory);
+  color: var(--night);
+  font-weight: 600;
+}
 
 .story { padding-top: 72px; padding-bottom: 28px; }
 .story-row {
@@ -296,11 +536,20 @@ nav a:hover { color: var(--ivory); }
   .hero .scene { width: 180%; left: -40%; object-position: 50% 48%; }
   .hero-shade { background: linear-gradient(180deg, rgba(4, 2, 26, .9), rgba(4, 2, 26, .78) 48%, rgba(4, 2, 26, .18)); }
   .sun-glow { background: radial-gradient(ellipse 70% 42% at 50% 42%, rgba(255, 196, 70, .5), transparent 70%); }
-  .main-intro { padding-top: 48px; }
+  .main-intro { padding-top: 48px; padding-bottom: 20px; }
   .demo { padding: 0 12px; }
-  .paper-stage { padding: 22px 18px 26px; }
-  .demo-head { align-items: flex-start; flex-direction: column; }
-  .doc h3 { font-size: 23px; }
+  .reel-shell { border-radius: 10px; }
+  .reel-subdock { padding: 14px 14px 8px; }
+  .sub-meta { gap: 8px; margin-bottom: 8px; }
+  .sub-step { font-size: 12px; }
+  .sub-status { display: none; }
+  .play-toggle { min-width: 68px; padding: 6px 11px; font-size: 12px; }
+  .sub-line-wrap { min-height: 78px; }
+  .sub-text { font-size: 17px; line-height: 1.48; }
+  .reel-chapters { padding: 2px 14px 12px; gap: 10px; }
+  .reduced-hint { padding: 0 14px 14px; }
+  .chapter-step-label .step-name { display: none; }
+  .chapter-pair { gap: 4px; }
   .story { padding-top: 48px; }
   .story-row { grid-template-columns: 36px 1fr; }
   .closing { margin-top: 24px; }
@@ -309,8 +558,16 @@ nav a:hover { color: var(--ivory); }
   .format-list > div { grid-template-columns: 70px 1fr; }
 }
 
+@media (max-width: 360px) {
+  /* Extra breathing room on 320px for 8-language long strings (DE/FR/ES) */
+  .sub-line-wrap { min-height: 102px; }
+  .sub-text { font-size: 16px; line-height: 1.5; }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   a, button { transition: color .18s, background .18s, border-color .18s; }
+  .seg-track { transition: height .16s ease, background .16s ease; }
+  .reel-storyboard .shot { transition: opacity .26s ease; }
   .hero.is-live .scene {
     animation: valley-drift 28s ease-in-out infinite alternate;
     will-change: transform;
@@ -324,20 +581,27 @@ nav a:hover { color: var(--ivory); }
   .closing.is-live .closing-glow {
     animation: glow-breathe 8s ease-in-out infinite;
   }
-  .paper-stage.is-updating .dawn-bar {
-    animation: dawn-sweep .8s cubic-bezier(.16, 1, .3, 1);
+  .reel-shell.is-sweeping .dawn-bar {
+    animation: dawn-sweep .75s cubic-bezier(.16, 1, .3, 1);
   }
-  .paper-stage.is-updating .doc-copy {
-    animation: copy-in .45s ease;
-  }
-  .excerpt {
-    animation: copy-in .35s ease;
+  .reel-shell.is-sweeping .sub-text {
+    animation: copy-in .32s ease;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; }
   .sun-glow, .hero-wash, .closing-glow { opacity: .75; }
+  .reel-storyboard .shot { transition: none; }
 }
+body.sim-reduced .hero .scene,
+body.sim-reduced .hero .sun-glow,
+body.sim-reduced .hero .hero-wash,
+body.sim-reduced .closing .closing-glow,
+body.sim-reduced .reel-shell .dawn-bar,
+body.sim-reduced .reel-shell .sub-text {
+  animation: none !important;
+}
+body.sim-reduced .reel-storyboard .shot { transition: none !important; }
 
 @keyframes valley-drift {
   from { transform: scale(1) translate3d(0, 0, 0); }
@@ -356,12 +620,12 @@ nav a:hover { color: var(--ivory); }
   to { transform: scaleX(1); }
 }
 @keyframes copy-in {
-  from { opacity: .35; }
+  from { opacity: .4; }
   to { opacity: 1; }
 }
 </style>
 
-<div class="review">#375 · 2.0 官網意象 · 夜色舞台與動感 · 文案與示範為提案，未上線</div>
+<div class="review">#375 · 2.0 官網意象 v2 · 夜色舞台併入真實 App 錄影短片區塊（佔位畫面，未上線）</div>
 
 <header>
   <div class="col">
@@ -401,34 +665,315 @@ nav a:hover { color: var(--ivory); }
     <p class="muted">一輪又一輪產出，讓專案持續往前。先讀總覽建立脈絡，再打開值得深入的文件；下一輪，再更新你的理解。</p>
   </section>
 
-  <div class="demo">
+  <section class="demo" aria-label="MarsDawn 實機操作短片示範">
     <div class="demo-head">
-      <div class="demo-label">網站敘事示意 · 非 App 介面</div>
-      <div class="rounds" aria-label="示範進展">
-        <button id="r1" aria-pressed="true">第一輪</button>
-        <button id="r2" aria-pressed="false">下一輪</button>
+      <div class="demo-label">App 錄影短片區塊 · 佔位海報（待 2.0 介面與新圖示定案後換入實機錄影）</div>
+      <div class="demo-spec" id="reel-clock">0:00 / 0:30 · 靜音循環</div>
+    </div>
+
+    <div class="reel-shell" id="reel-shell">
+      <div class="dawn-bar" aria-hidden="true"></div>
+
+      <!-- 1. 影片播放器容器：16:10 鎖定寬高比，正式實作換入 <=4 MB MP4/WebM + HTTP 206 Range -->
+      <div class="reel-stage" id="reel-stage">
+        <video class="reel-video" id="reel-video" muted loop playsinline preload="metadata" aria-hidden="true" poster="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20960%20600%22%3E%3Crect%20width%3D%22960%22%20height%3D%22600%22%20fill%3D%22%230d0824%22%2F%3E%3Crect%20x%3D%2256%22%20y%3D%2236%22%20width%3D%22848%22%20height%3D%22528%22%20rx%3D%2214%22%20fill%3D%22%23fffdfb%22%2F%3E%3Crect%20x%3D%2256%22%20y%3D%2236%22%20width%3D%22848%22%20height%3D%2238%22%20rx%3D%2214%22%20fill%3D%22%23f1eae4%22%2F%3E%3Crect%20x%3D%2256%22%20y%3D%2274%22%20width%3D%22218%22%20height%3D%22490%22%20fill%3D%22%23f6f0ec%22%2F%3E%3C%2Fsvg%3E"></video>
+
+        <!-- 佔位分鏡海報層：等比縮放模擬 16:10 Mac 實機錄影，2.0 介面定案後由真實 <video> 取代 -->
+        <svg class="reel-storyboard" id="reel-storyboard" viewBox="0 0 960 600" role="img" aria-label="MarsDawn 2.0 實機操作短片佔位畫面">
+          <defs>
+            <linearGradient id="deskBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#110b2e"/>
+              <stop offset="65%" stop-color="#0b0722"/>
+              <stop offset="100%" stop-color="#1a0d26"/>
+            </linearGradient>
+            <radialGradient id="deskWarm" cx="82%" cy="88%" r="55%">
+              <stop offset="0%" stop-color="#ff8a3a" stop-opacity=".22"/>
+              <stop offset="55%" stop-color="#c33909" stop-opacity=".08"/>
+              <stop offset="100%" stop-color="#0b0722" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="winShadow" x="-8%" y="-8%" width="116%" height="120%">
+              <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000000" flood-opacity=".52"/>
+            </filter>
+            <clipPath id="winClip">
+              <rect x="56" y="36" width="848" height="528" rx="14"/>
+            </clipPath>
+          </defs>
+
+          <!-- Mac 夜色桌面背景 -->
+          <rect width="960" height="600" fill="url(#deskBg)"/>
+          <rect width="960" height="600" fill="url(#deskWarm)"/>
+
+          <!-- MarsDawn Mac 視窗骨架（暖紙閱讀區，無內建 AI 聊天欄） -->
+          <g filter="url(#winShadow)">
+            <rect x="56" y="36" width="848" height="528" rx="14" fill="#fffdfb" stroke="#ffd9a3" stroke-opacity=".24" stroke-width="1"/>
+          </g>
+          <g clip-path="url(#winClip)">
+            <!-- Titlebar -->
+            <rect x="56" y="36" width="848" height="38" fill="#f1eae4"/>
+            <line x1="56" y1="74" x2="904" y2="74" stroke="#e4d8cf"/>
+            <circle cx="80" cy="55" r="6" fill="#ff5f56"/>
+            <circle cx="100" cy="55" r="6" fill="#ffbd2e"/>
+            <circle cx="120" cy="55" r="6" fill="#27c93f"/>
+            <text x="480" y="59" text-anchor="middle" font-size="13" font-weight="600" fill="#5d534d" font-family="-apple-system, BlinkMacSystemFont, sans-serif">sync-plan.md — MarsDawn</text>
+            <!-- Subtle right titlebar affordances: Outline, Copy for AI, Print/PDF -->
+            <rect x="782" y="45" width="30" height="20" rx="5" fill="#e7ddd5"/>
+            <rect x="820" y="45" width="30" height="20" rx="5" fill="#e7ddd5"/>
+            <rect x="858" y="45" width="30" height="20" rx="5" fill="#e7ddd5"/>
+
+            <!-- Left Sidebar -->
+            <rect x="56" y="74" width="218" height="490" fill="#f6f0ec"/>
+            <line x1="274" y1="74" x2="274" y2="564" stroke="#e4d8cf"/>
+            <text x="76" y="104" font-size="11" font-weight="700" letter-spacing="0.06em" fill="#8c7d74" font-family="-apple-system, sans-serif">CLAUDE CODE 計畫</text>
+            <rect x="68" y="114" width="194" height="34" rx="7" fill="#ebe1d9"/>
+            <text x="82" y="135" font-size="13" font-weight="600" fill="#26211f" font-family="-apple-system, sans-serif">sync-plan.md</text>
+            <text x="82" y="168" font-size="13" fill="#6f6660" font-family="-apple-system, sans-serif">test-report.pdf</text>
+            <text x="82" y="198" font-size="13" fill="#6f6660" font-family="-apple-system, sans-serif">release-flow.html</text>
+            <text x="82" y="228" font-size="13" fill="#6f6660" font-family="-apple-system, sans-serif">migration-notes.md</text>
+
+            <line x1="76" y1="254" x2="254" y2="254" stroke="#e4d8cf"/>
+            <text x="76" y="282" font-size="11" font-weight="700" letter-spacing="0.06em" fill="#8c7d74" font-family="-apple-system, sans-serif">大綱</text>
+            <text x="82" y="312" font-size="13" fill="#5d534d" font-family="-apple-system, sans-serif">1. 同步總覽與目標</text>
+            <text x="82" y="342" font-size="13" fill="#5d534d" font-family="-apple-system, sans-serif">2. 離線重試與例外</text>
+            <text x="82" y="372" font-size="13" fill="#5d534d" font-family="-apple-system, sans-serif">3. 資料流程圖</text>
+            <text x="82" y="402" font-size="13" fill="#5d534d" font-family="-apple-system, sans-serif">4. 驗證清單</text>
+
+            <!-- Warm Paper Document Canvas -->
+            <rect x="274" y="74" width="630" height="490" fill="#fffdfb"/>
+
+            <!-- ===== SHOT 0 (1-1): 新計畫出現在側邊欄「Claude Code 計畫」 ===== -->
+            <g class="shot is-active" data-shot="0">
+              <rect x="68" y="114" width="194" height="34" rx="7" fill="#fff3e6" stroke="#c33909" stroke-width="1.5"/>
+              <circle cx="79" cy="131" r="4" fill="#c33909"/>
+              <text x="90" y="135" font-size="13" font-weight="700" fill="#26211f" font-family="-apple-system, sans-serif">sync-plan.md</text>
+              <rect x="218" y="122" width="36" height="18" rx="9" fill="#c33909"/>
+              <text x="236" y="135" text-anchor="middle" font-size="10" font-weight="700" fill="#fff8ee" font-family="-apple-system, sans-serif">NEW</text>
+
+              <text x="322" y="128" font-size="12" fill="#8c7d74" font-family="ui-monospace, monospace">~/.claude/plans / sync-plan.md</text>
+              <text x="322" y="168" font-size="28" font-weight="700" fill="#26211f" font-family="-apple-system, sans-serif">離線同步重試計畫</text>
+              <text x="322" y="202" font-size="15" fill="#5d534d" font-family="-apple-system, sans-serif">整理本輪實作範圍、重試上限與離線衝突處理，方便直接審閱。</text>
+              <rect x="322" y="226" width="532" height="1" fill="#eadfd8"/>
+              <rect x="322" y="250" width="210" height="14" rx="4" fill="#e8ded6"/>
+              <rect x="322" y="278" width="510" height="10" rx="4" fill="#f1e9e2"/>
+              <rect x="322" y="300" width="468" height="10" rx="4" fill="#f1e9e2"/>
+              <rect x="322" y="322" width="380" height="10" rx="4" fill="#f1e9e2"/>
+              <rect x="322" y="362" width="532" height="136" rx="10" fill="#faf5f0" stroke="#eadfd8"/>
+              <text x="346" y="394" font-size="13" font-weight="600" fill="#6f6660" font-family="-apple-system, sans-serif">佔位分鏡 1／6 · 側邊欄「Claude Code 計畫」即時出現新計畫</text>
+              <text x="346" y="422" font-size="13" fill="#8c7d74" font-family="-apple-system, sans-serif">待 2.0 介面與新圖示定案後，以實機 Mac 螢幕錄影替換</text>
+            </g>
+
+            <!-- ===== SHOT 1 (1-2): 打開就是排好版的文件（表格、Mermaid） ===== -->
+            <g class="shot" data-shot="1">
+              <text x="322" y="120" font-size="24" font-weight="700" fill="#26211f" font-family="-apple-system, sans-serif">離線同步重試計畫</text>
+              <!-- Rendered Table -->
+              <rect x="322" y="140" width="532" height="132" rx="8" fill="#ffffff" stroke="#e4d8cf"/>
+              <rect x="322" y="140" width="532" height="34" rx="8" fill="#f6f0ec"/>
+              <line x1="322" y1="174" x2="854" y2="174" stroke="#e4d8cf"/>
+              <line x1="322" y1="208" x2="854" y2="208" stroke="#efe6df"/>
+              <line x1="322" y1="242" x2="854" y2="242" stroke="#efe6df"/>
+              <text x="340" y="162" font-size="12" font-weight="700" fill="#5d534d" font-family="-apple-system, sans-serif">情境</text>
+              <text x="524" y="162" font-size="12" font-weight="700" fill="#5d534d" font-family="-apple-system, sans-serif">預期行為</text>
+              <text x="760" y="162" font-size="12" font-weight="700" fill="#5d534d" font-family="-apple-system, sans-serif">狀態</text>
+              <text x="340" y="196" font-size="13" fill="#26211f" font-family="-apple-system, sans-serif">暫時斷線</text>
+              <text x="524" y="196" font-size="13" fill="#5d534d" font-family="-apple-system, sans-serif">保留佇列，恢復後重試 3 次</text>
+              <text x="760" y="196" font-size="12" font-weight="600" fill="#257942" font-family="-apple-system, sans-serif">已完成</text>
+              <text x="340" y="230" font-size="13" fill="#26211f" font-family="-apple-system, sans-serif">離線重啟</text>
+              <text x="524" y="230" font-size="13" fill="#5d534d" font-family="-apple-system, sans-serif">啟動後載入本機待傳項目</text>
+              <text x="760" y="230" font-size="12" font-weight="600" fill="#257942" font-family="-apple-system, sans-serif">已驗證</text>
+              <text x="340" y="262" font-size="13" fill="#26211f" font-family="-apple-system, sans-serif">同名檔案衝突</text>
+              <text x="524" y="262" font-size="13" fill="#5d534d" font-family="-apple-system, sans-serif">保留兩份或詢問使用者</text>
+              <text x="760" y="262" font-size="12" font-weight="600" fill="#b03c0c" font-family="-apple-system, sans-serif">待確認</text>
+
+              <!-- Rendered Mermaid Flowchart -->
+              <rect x="322" y="294" width="532" height="222" rx="10" fill="#faf5f0" stroke="#e4d8cf"/>
+              <text x="344" y="320" font-size="11" font-weight="700" letter-spacing="0.06em" fill="#8c7d74" font-family="ui-monospace, monospace">MERMAID 流程圖</text>
+              <rect x="346" y="376" width="108" height="46" rx="8" fill="#fffdfb" stroke="#c33909" stroke-width="1.5"/>
+              <text x="400" y="404" text-anchor="middle" font-size="13" font-weight="600" fill="#26211f" font-family="-apple-system, sans-serif">本機草稿</text>
+              <line x1="454" y1="399" x2="486" y2="399" stroke="#b03c0c" stroke-width="2"/>
+              <polygon points="486,394 496,399 486,404" fill="#b03c0c"/>
+              <rect x="498" y="376" width="124" height="46" rx="8" fill="#fffdfb" stroke="#d5c7bc" stroke-width="1.5"/>
+              <text x="560" y="404" text-anchor="middle" font-size="13" font-weight="600" fill="#26211f" font-family="-apple-system, sans-serif">離線重試 ×3</text>
+              <line x1="622" y1="399" x2="654" y2="399" stroke="#b03c0c" stroke-width="2"/>
+              <polygon points="654,394 664,399 654,404" fill="#b03c0c"/>
+              <rect x="666" y="376" width="156" height="46" rx="8" fill="#fff3e6" stroke="#c33909" stroke-width="1.5"/>
+              <text x="744" y="404" text-anchor="middle" font-size="13" font-weight="600" fill="#26211f" font-family="-apple-system, sans-serif">恢復連線並同步</text>
+              <text x="346" y="492" font-size="12" fill="#8c7d74" font-family="-apple-system, sans-serif">佔位分鏡 2／6 · 直接看排好版的表格與 Mermaid 圖</text>
+            </g>
+
+            <!-- ===== SHOT 2 (2-1): 用大綱跳到關心的那段 ===== -->
+            <g class="shot" data-shot="2">
+              <rect x="68" y="322" width="194" height="32" rx="7" fill="#fff3e6" stroke="#c33909" stroke-width="1.5"/>
+              <rect x="68" y="328" width="4" height="20" rx="2" fill="#c33909"/>
+              <text x="82" y="342" font-size="13" font-weight="700" fill="#b03c0c" font-family="-apple-system, sans-serif">2. 離線重試與例外</text>
+
+              <text x="322" y="122" font-size="12" fill="#b03c0c" font-weight="600" font-family="ui-monospace, monospace">跳轉至章節 · #offline-retry</text>
+              <text x="322" y="160" font-size="25" font-weight="700" fill="#26211f" font-family="-apple-system, sans-serif">2. 離線重試與例外</text>
+              <rect x="322" y="178" width="532" height="1" fill="#eadfd8"/>
+              <text x="322" y="214" font-size="15" fill="#26211f" font-family="-apple-system, sans-serif">當網路中斷時，未送出的變更會寫入本機佇列並保留最後狀態。</text>
+              <text x="322" y="244" font-size="15" fill="#26211f" font-family="-apple-system, sans-serif">恢復連線後依序重試三次；若連續失敗，停止重試並保留原檔。</text>
+              <rect x="322" y="274" width="532" height="114" rx="10" fill="#faf5f0" stroke="#e4d8cf"/>
+              <text x="344" y="306" font-size="14" font-weight="700" fill="#26211f" font-family="-apple-system, sans-serif">需確認例外：同名檔案衝突</text>
+              <text x="344" y="334" font-size="14" fill="#5d534d" font-family="-apple-system, sans-serif">離線期間兩端都修改了同一份文件時，先保留兩份副本，避免覆寫。</text>
+              <text x="344" y="362" font-size="13" fill="#8c7d74" font-family="ui-monospace, monospace">L42–L48 · sync-plan.md</text>
+              <text x="322" y="492" font-size="12" fill="#8c7d74" font-family="-apple-system, sans-serif">佔位分鏡 3／6 · 從側邊欄大綱直接跳到想確認的段落</text>
+            </g>
+
+            <!-- ===== SHOT 3 (2-2): 選一段看不懂的，連行號「傳給⋯」AI 追問 ===== -->
+            <g class="shot" data-shot="3">
+              <text x="322" y="142" font-size="23" font-weight="700" fill="#26211f" font-family="-apple-system, sans-serif">2. 離線重試與例外</text>
+              <text x="322" y="182" font-size="15" fill="#6f6660" font-family="-apple-system, sans-serif">當網路中斷時，未送出的變更會寫入本機佇列並保留最後狀態。</text>
+              <!-- Selected passage -->
+              <rect x="316" y="204" width="538" height="62" rx="6" fill="#ff8a3a" fill-opacity=".22" stroke="#c33909" stroke-opacity=".45"/>
+              <text x="326" y="230" font-size="15" font-weight="600" fill="#26211f" font-family="-apple-system, sans-serif">若恢復連線時遠端檔案已變更，系統以「建立衝突副本」為預設，</text>
+              <text x="326" y="254" font-size="15" font-weight="600" fill="#26211f" font-family="-apple-system, sans-serif">不自動合併行內差異，也不覆蓋本機版本。</text>
+
+              <!-- Native macOS contextual popover: Send to... with line numbers (external AI, NOT built-in) -->
+              <rect x="524" y="280" width="320" height="170" rx="12" fill="#181230" stroke="#ffd9a3" stroke-opacity=".35" stroke-width="1.2"/>
+              <text x="544" y="308" font-size="11" fill="#ffd9a3" font-family="ui-monospace, monospace">sync-plan.md · L42–L48</text>
+              <line x1="540" y1="320" x2="828" y2="320" stroke="#ffd9a3" stroke-opacity=".16"/>
+              <rect x="536" y="330" width="296" height="36" rx="7" fill="#c33909"/>
+              <text x="550" y="353" font-size="13" font-weight="600" fill="#fff8ee" font-family="-apple-system, sans-serif">傳給⋯（附檔名與行號）</text>
+              <text x="814" y="353" text-anchor="end" font-size="13" fill="#ffd9a3" font-family="-apple-system, sans-serif">▸</text>
+              <text x="550" y="392" font-size="13" fill="#d2c0ae" font-family="-apple-system, sans-serif">複製給外部 AI（Claude Code／Codex）</text>
+              <text x="550" y="424" font-size="12" fill="#9c8ea8" font-family="-apple-system, sans-serif">MarsDawn 不內建 AI，直接交回你的 agent</text>
+
+              <text x="322" y="514" font-size="12" fill="#8c7d74" font-family="-apple-system, sans-serif">佔位分鏡 4／6 · 選取段落連同行號「傳給⋯」外部 AI 追問</text>
+            </g>
+
+            <!-- ===== SHOT 4 (3-1): agent 改檔後自動重新載入，顯示外部變更提示列（含還原、瀏覽所有版本⋯；不標 diff） ===== -->
+            <g class="shot" data-shot="4">
+              <!-- ExternalChangeNoticeView bar (claim-checked by Una: Undo + Browse All Versions..., no diff highlight) -->
+              <rect x="274" y="74" width="630" height="58" fill="#f8ede3"/>
+              <line x1="274" y1="132" x2="904" y2="132" stroke="#e2cbb8"/>
+              <circle cx="300" cy="103" r="6" fill="#c33909"/>
+              <text x="316" y="100" font-size="13" font-weight="600" fill="#26211f" font-family="-apple-system, sans-serif">另一個 App 或 agent 已修改這份檔案。</text>
+              <text x="316" y="118" font-size="11" fill="#6f6660" font-family="-apple-system, sans-serif">已自動重新載入最新內容；可隨時還原上一版。</text>
+              <rect x="678" y="88" width="66" height="30" rx="7" fill="#fffdfb" stroke="#d5c2b2"/>
+              <text x="711" y="108" text-anchor="middle" font-size="12" font-weight="600" fill="#26211f" font-family="-apple-system, sans-serif">還原</text>
+              <rect x="752" y="88" width="132" height="30" rx="7" fill="#fffdfb" stroke="#d5c2b2"/>
+              <text x="818" y="108" text-anchor="middle" font-size="12" font-weight="600" fill="#26211f" font-family="-apple-system, sans-serif">瀏覽所有版本⋯</text>
+
+              <!-- Reloaded clean warm-paper document (NO diff markers) -->
+              <text x="322" y="176" font-size="23" font-weight="700" fill="#26211f" font-family="-apple-system, sans-serif">2. 離線重試與例外</text>
+              <text x="322" y="216" font-size="15" fill="#26211f" font-family="-apple-system, sans-serif">恢復連線後採用指數退避重試（2s / 6s / 18s），</text>
+              <text x="322" y="244" font-size="15" fill="#26211f" font-family="-apple-system, sans-serif">遇同名衝突時建立帶時間戳記的副本，並在通知列提示使用者確認。</text>
+              <rect x="322" y="278" width="532" height="1" fill="#eadfd8"/>
+              <rect x="322" y="302" width="470" height="10" rx="4" fill="#efe6df"/>
+              <rect x="322" y="324" width="510" height="10" rx="4" fill="#efe6df"/>
+              <rect x="322" y="346" width="420" height="10" rx="4" fill="#efe6df"/>
+              <text x="322" y="514" font-size="12" fill="#8c7d74" font-family="-apple-system, sans-serif">佔位分鏡 5／6 · 自動重載並顯示提示列（「還原」「瀏覽所有版本⋯」，不標差異）</text>
+            </g>
+
+            <!-- ===== SHOT 5 (3-2): 匯出 PDF 交給人審 ===== -->
+            <g class="shot" data-shot="5">
+              <!-- Dimmed background doc -->
+              <rect x="274" y="74" width="630" height="490" fill="#26211f" fill-opacity=".16"/>
+              <!-- Export PDF Sheet -->
+              <rect x="330" y="102" width="518" height="418" rx="12" fill="#f7f2ee" stroke="#d8cbc0" stroke-width="1.2"/>
+              <text x="358" y="138" font-size="16" font-weight="700" fill="#26211f" font-family="-apple-system, sans-serif">列印與輸出 PDF</text>
+              <text x="820" y="138" text-anchor="end" font-size="12" fill="#6f6660" font-family="ui-monospace, monospace">sync-plan.pdf · 1 / 3</text>
+              <line x1="330" y1="154" x2="848" y2="154" stroke="#e4d8cf"/>
+
+              <!-- Crisp A4 preview page -->
+              <rect x="444" y="172" width="290" height="270" rx="4" fill="#ffffff" stroke="#dfd4ca"/>
+              <text x="468" y="206" font-size="15" font-weight="700" fill="#26211f" font-family="-apple-system, sans-serif">離線同步重試計畫</text>
+              <rect x="468" y="220" width="242" height="58" rx="4" fill="#f7f2ee" stroke="#e8ded6"/>
+              <line x1="468" y1="242" x2="710" y2="242" stroke="#e8ded6"/>
+              <rect x="468" y="294" width="242" height="72" rx="6" fill="#faf5f0" stroke="#e8ded6"/>
+              <rect x="486" y="318" width="56" height="22" rx="4" fill="#fffdfb" stroke="#c33909"/>
+              <rect x="562" y="318" width="56" height="22" rx="4" fill="#fffdfb" stroke="#d5c7bc"/>
+              <rect x="638" y="318" width="56" height="22" rx="4" fill="#fff3e6" stroke="#c33909"/>
+              <rect x="468" y="382" width="210" height="8" rx="3" fill="#ece3dc"/>
+              <rect x="468" y="400" width="232" height="8" rx="3" fill="#ece3dc"/>
+              <text x="589" y="430" text-anchor="middle" font-size="10" fill="#8c7d74" font-family="ui-monospace, monospace">第 1 頁</text>
+
+              <!-- Export CTA -->
+              <rect x="706" y="464" width="118" height="36" rx="8" fill="#c33909"/>
+              <text x="765" y="487" text-anchor="middle" font-size="13" font-weight="600" fill="#fff8ee" font-family="-apple-system, sans-serif">輸出 PDF</text>
+              <rect x="618" y="464" width="76" height="36" rx="8" fill="#ffffff" stroke="#d5c7bc"/>
+              <text x="656" y="487" text-anchor="middle" font-size="13" fill="#5d534d" font-family="-apple-system, sans-serif">取消</text>
+
+              <text x="358" y="487" font-size="12" fill="#8c7d74" font-family="-apple-system, sans-serif">佔位分鏡 6／6 · 匯出乾淨 PDF 交給人審</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- 2. HTML 外掛字幕區（不燒進影片、支援 8 語長字串、手機清楚撐起故事） -->
+      <div class="reel-subdock">
+        <div class="sub-meta">
+          <div class="sub-step" id="sub-step">
+            <span class="sub-step-num" id="sub-step-num">01</span>
+            <span id="sub-step-label">全貌</span>
+          </div>
+          <div class="sub-meta-right">
+            <span class="sub-status" id="sub-status">第 1／6 段 · 自動播放</span>
+            <button type="button" class="play-toggle" id="play-toggle" aria-pressed="false" aria-label="暫停示範短片">
+              <svg id="play-icon" viewBox="0 0 12 12" aria-hidden="true"><rect x="1.5" y="1" width="3" height="10" rx="1"/><rect x="7.5" y="1" width="3" height="10" rx="1"/></svg>
+              <span id="play-label">暫停</span>
+            </button>
+          </div>
+        </div>
+        <div class="sub-line-wrap" id="reel-subtitle" aria-live="polite" aria-atomic="true">
+          <p class="sub-text" id="sub-text">agent 跑完，新計畫直接出現在側邊欄。</p>
+        </div>
+      </div>
+
+      <!-- 3. 6 格可點擊分段進度條（3 步 × 2 段，支援鍵盤左右鍵與點擊跳段） -->
+      <div class="reel-chapters" id="reel-chapters" role="group" aria-label="短片章節進度（共 3 步、6 段）">
+        <div class="chapter-group is-current" data-step="0">
+          <div class="chapter-step-label"><span class="step-num">01</span><span class="step-name" data-step-name="0">全貌</span></div>
+          <div class="chapter-pair">
+            <button type="button" class="seg-btn is-current" data-seg="0" aria-current="step" aria-label="第 1 段（共 6 段），步驟 1 全貌：agent 跑完，新計畫直接出現在側邊欄。">
+              <span class="seg-track"><span class="seg-fill"></span></span>
+            </button>
+            <button type="button" class="seg-btn" data-seg="1" aria-label="第 2 段（共 6 段），步驟 1 全貌：點開就是排好版的文件，表格與流程圖一眼看懂。">
+              <span class="seg-track"><span class="seg-fill"></span></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="chapter-group" data-step="1">
+          <div class="chapter-step-label"><span class="step-num">02</span><span class="step-name" data-step-name="1">關心的一處</span></div>
+          <div class="chapter-pair">
+            <button type="button" class="seg-btn" data-seg="2" aria-label="第 3 段（共 6 段），步驟 2 關心的一處：從大綱直接跳到你現在關心的段落。">
+              <span class="seg-track"><span class="seg-fill"></span></span>
+            </button>
+            <button type="button" class="seg-btn" data-seg="3" aria-label="第 4 段（共 6 段），步驟 2 關心的一處：選一段想確認的文字，連同行號交回 AI 追問。">
+              <span class="seg-track"><span class="seg-fill"></span></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="chapter-group" data-step="2">
+          <div class="chapter-step-label"><span class="step-num">03</span><span class="step-name" data-step-name="2">再看一次</span></div>
+          <div class="chapter-pair">
+            <button type="button" class="seg-btn" data-seg="4" aria-label="第 5 段（共 6 段），步驟 3 再看一次：agent 改檔時自動重新載入，提示列可一鍵還原。">
+              <span class="seg-track"><span class="seg-fill"></span></span>
+            </button>
+            <button type="button" class="seg-btn" data-seg="5" aria-label="第 6 段（共 6 段），步驟 3 再看一次：確認無誤後匯出 PDF，直接交給團隊審閱。">
+              <span class="seg-track"><span class="seg-fill"></span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <p class="reduced-hint" id="reduced-hint">已依系統設定停用自動播放，點上方任一段落即可手動查看。</p>
+    </div>
+
+    <p class="caption">捲到畫面開始靜音循環；點下方 6 格（或用鍵盤左右鍵）可跳轉章節。字幕為 HTML 外掛，8 語直接換字不重錄；正式 6 句字幕交 Aria 定稿。</p>
+
+    <!-- 僅供本輪設計審閱驗證 8 語長字串與 prefers-reduced-motion，正式實作不含此列 -->
+    <div class="review-tools" aria-label="設計審閱預覽工具">
+      <div class="review-tools-group">
+        <span>審閱試看字幕：</span>
+        <button type="button" class="review-chip" data-locale="zh-Hant" aria-pressed="true">繁中</button>
+        <button type="button" class="review-chip" data-locale="en" aria-pressed="false">EN</button>
+        <button type="button" class="review-chip" data-locale="de" aria-pressed="false">DE（長字串測試）</button>
+      </div>
+      <div class="review-tools-group">
+        <button type="button" class="review-chip" id="sim-reduced-btn" aria-pressed="false">模擬降動態（prefers-reduced-motion）</button>
       </div>
     </div>
-    <article class="doc paper-stage" id="paper" aria-live="polite">
-      <div class="dawn-bar" aria-hidden="true"></div>
-      <div class="doc-copy">
-        <div class="filename">release / overview.md</div>
-        <h3 id="doc-title">離線同步，走到哪裡了？</h3>
-        <div class="stamp" id="stamp">第一輪總覽 · 範例內容由 agent 事先撰寫</div>
-        <p id="doc-intro">上傳重試已完成，離線測試仍有兩種情境待確認。這次整理了實作進度、測試報告，以及操作流程。</p>
-        <div class="reading">
-          <button data-doc="progress" aria-expanded="false"><span>這次完成的工作</span><small>progress.md ↗</small></button>
-          <button data-doc="test" aria-expanded="false"><span id="test-link">還沒走完的兩種情境</span><small>test-report.pdf ↗</small></button>
-          <button data-doc="flow" aria-expanded="false"><span>從離線到重新連線</span><small>flow.html ↗</small></button>
-        </div>
-        <div id="excerpt" class="excerpt" hidden>
-          <h4 id="excerpt-title"></h4>
-          <p id="excerpt-body"></p>
-        </div>
-      </div>
-    </article>
-    <p class="caption">點一份文件深入，再切到「下一輪」看總覽如何更新。日出在呼吸；切輪時，光線會掃過這份總覽。</p>
-  </div>
+  </section>
 
   <section class="col story">
     <div class="story-row">
@@ -506,83 +1051,325 @@ nav a:hover { color: var(--ivory); }
 <aside class="notes" id="notes">
   <div class="col">
     <details>
-      <summary>給 Ray 的設計說明與待核對範圍</summary>
+      <summary>給 Ray／Dev 的設計說明與待核對範圍（v2：併入短片區塊）</summary>
       <ul>
-        <li>首頁舞台改深靛夜色，對齊 Valley M icon；暖紙只留給示範文件。內容頁之後仍走暖紙長文，不把整站長讀改成深靛。</li>
-        <li>動感兩處：hero 日出呼吸＋極慢推近；切「下一輪」時金光掃過總覽頂線。尊重 prefers-reduced-motion，離屏即停。</li>
-        <li>中央是網站敘事互動，不冒充 App 截圖。正式文案交 Aria；PDF／HTML 等平台能力下一版核對。</li>
-        <li>導覽與 footer 為本稿縮排示意。Valley M 為已選候選；網站正式換 icon 需與版本切換同步。新價格不預先宣傳。</li>
-        <li>這是獨立 HTML 設計稿；不是產品程式、正式翻譯、已核准部署稿或完整八語驗收。</li>
+        <li>依 Ray 2026-11-27 決定（#375 選項 A）：保留 #376 已鎖定的 Valley M 深靛夜色舞台、日出呼吸與資訊順序，僅將中央示範區改為真實 App 錄影短片（約 30 秒，3 步×2 段）。</li>
+        <li>畫面目前為 16:10 佔位分鏡海報；2.0 介面與 Valley M 新圖示定案後再換入實機錄影（≤35 秒、目標 ≤4 MB、<code>preload="metadata"</code>、靜音循環、<code>playsinline</code>、伺服器 Range 請求需回 <code>206</code> 以確保跨瀏覽器章節跳轉）。</li>
+        <li>第 3 步第 1 段已對齊 Una 2026-11-27 claim-check（#375 留言 7214965462）：改檔後自動重新載入並顯示提示列（「還原」「瀏覽所有版本⋯」），不畫改動差異標示；全片不暗示 MarsDawn 內建 AI。</li>
+        <li>HTML 外掛字幕固定置於影片正下方，保留固定最低高度（桌機 2 行／390px 3 行／320px 4 行）避免 8 語長字串造成版面跳動；<code>aria-live="polite"</code> 僅在使用者主動互動或焦點位於播放器內時朗讀，背景自動循環不打斷螢幕閱讀器。</li>
+        <li><code>prefers-reduced-motion: reduce</code> 時停用日出動畫與影片自動播放，維持靜態畫面＋字幕，6 格章節仍可手動點擊與鍵盤切換。</li>
+        <li>此稿 6 句字幕為佔位提案，正式 8 語交 Aria 定稿；不列新價格，不合併、不部署。</li>
       </ul>
     </details>
   </div>
 </aside>
 
 <script>
-const contents = {
-  progress: ["這次完成的工作", "上傳失敗會重試三次；仍無法連線時，保留最後一次儲存的內容。"],
-  test: ["還沒走完的兩種情境", "仍需確認：離線時重新啟動，以及恢復連線後遇到同名檔案。下一步先看這份測試報告。"],
-  flow: ["從離線到重新連線", "離線 → 保留本機內容 → 恢復連線 → 確認同步結果。流程文件說明每個階段要讓使用者知道什麼。"]
+const SEG_DURATION_MS = 5000;
+const TOTAL_SEGS = 6;
+const LOCALES = {
+  "zh-Hant": {
+    steps: ["全貌", "關心的一處", "再看一次"],
+    play: "播放",
+    pause: "暫停",
+    playAria: "播放示範短片",
+    pauseAria: "暫停示範短片",
+    statusPlaying: (i) => `第 ${i + 1}／${TOTAL_SEGS} 段 · 自動播放`,
+    statusPaused: (i) => `第 ${i + 1}／${TOTAL_SEGS} 段 · 已暫停`,
+    statusReduced: (i) => `第 ${i + 1}／${TOTAL_SEGS} 段 · 降動態靜止模式`,
+    reducedHint: "已依系統設定停用自動播放，點上方任一段落即可手動查看。",
+    segAria: (i, stepName, line) => `第 ${i + 1} 段（共 ${TOTAL_SEGS} 段），步驟 ${Math.floor(i / 2) + 1} ${stepName}：${line}`,
+    lines: [
+      "agent 跑完，新計畫直接出現在側邊欄。",
+      "點開就是排好版的文件，表格與流程圖一眼看懂。",
+      "從大綱直接跳到你現在關心的段落。",
+      "選一段想確認的文字，連同行號交回 AI 追問。",
+      "agent 改檔時自動重新載入，提示列可一鍵還原。",
+      "確認無誤後匯出 PDF，直接交給團隊審閱。"
+    ]
+  },
+  "en": {
+    steps: ["Overview", "What matters", "Look again"],
+    play: "Play",
+    pause: "Pause",
+    playAria: "Play demo video",
+    pauseAria: "Pause demo video",
+    statusPlaying: (i) => `Clip ${i + 1} / ${TOTAL_SEGS} · Playing`,
+    statusPaused: (i) => `Clip ${i + 1} / ${TOTAL_SEGS} · Paused`,
+    statusReduced: (i) => `Clip ${i + 1} / ${TOTAL_SEGS} · Reduced motion`,
+    reducedHint: "Autoplay is off to respect Reduce Motion. Select any of the 6 clips above to step through.",
+    segAria: (i, stepName, line) => `Clip ${i + 1} of ${TOTAL_SEGS}, Step ${Math.floor(i / 2) + 1} ${stepName}: ${line}`,
+    lines: [
+      "Your agent finished.",
+      "Read it, not raw Markdown.",
+      "Jump to what matters.",
+      "Ask about the line you don't get.",
+      "It reloads when your agent edits. Undo is one click away.",
+      "Hand it to a human."
+    ]
+  },
+  "de": {
+    steps: ["Überblick", "Fokus", "Nachsehen"],
+    play: "Start",
+    pause: "Pause",
+    playAria: "Demo-Video abspielen",
+    pauseAria: "Demo-Video pausieren",
+    statusPlaying: (i) => `Abschnitt ${i + 1} / ${TOTAL_SEGS} · Läuft`,
+    statusPaused: (i) => `Abschnitt ${i + 1} / ${TOTAL_SEGS} · Pausiert`,
+    statusReduced: (i) => `Abschnitt ${i + 1} / ${TOTAL_SEGS} · Reduzierte Bewegung`,
+    reducedHint: "Automatische Wiedergabe ist bei reduzierter Bewegung deaktiviert. Wähle oben einen der 6 Abschnitte.",
+    segAria: (i, stepName, line) => `Abschnitt ${i + 1} von ${TOTAL_SEGS}, Schritt ${Math.floor(i / 2) + 1} ${stepName}: ${line}`,
+    lines: [
+      "Dein Agent ist fertig – der neue Plan erscheint direkt in der Seitenleiste.",
+      "Lies das fertig gesetzte Dokument mit Tabellen und Diagrammen statt rohem Markdown.",
+      "Springe über die Gliederung direkt zu dem Abschnitt, der dich gerade interessiert.",
+      "Markiere eine unklare Stelle und übergib sie samt Zeilennummern an deine KI.",
+      "Ändert dein Agent die Datei, lädt die Ansicht automatisch neu – mit Rückgängig-Hinweis.",
+      "Exportiere das fertige Dokument als PDF und gib es direkt zur Prüfung weiter."
+    ]
+  }
 };
-let round = 1;
-const paper = document.getElementById("paper");
-const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function flashDawn() {
-  if (reduce) return;
-  paper.classList.remove("is-updating");
-  void paper.offsetWidth;
-  paper.classList.add("is-updating");
+const shell = document.getElementById("reel-shell");
+const subRegion = document.getElementById("reel-subtitle");
+const subText = document.getElementById("sub-text");
+const subStepNum = document.getElementById("sub-step-num");
+const subStepLabel = document.getElementById("sub-step-label");
+const subStatus = document.getElementById("sub-status");
+const reducedHint = document.getElementById("reduced-hint");
+const reelClock = document.getElementById("reel-clock");
+const playToggle = document.getElementById("play-toggle");
+const playLabel = document.getElementById("play-label");
+const playIcon = document.getElementById("play-icon");
+const segButtons = [...document.querySelectorAll(".seg-btn")];
+const stepGroups = [...document.querySelectorAll(".chapter-group")];
+const shots = [...document.querySelectorAll(".reel-storyboard .shot")];
+const stepNameNodes = [...document.querySelectorAll("[data-step-name]")];
+const localeChips = [...document.querySelectorAll("[data-locale]")];
+const simReducedBtn = document.getElementById("sim-reduced-btn");
+
+const systemReduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+let simReduced = false;
+let currentLocale = "zh-Hant";
+let currentSeg = 0;
+let segElapsed = 0;
+let inView = false;
+let userPaused = false;
+let userForcePlayInReduced = false;
+let lastFrameTime = 0;
+let rafId = 0;
+
+function isReduced() {
+  return systemReduceMQ.matches || simReduced;
 }
 
-function closeDocs() {
-  document.querySelectorAll("[data-doc]").forEach(b => b.setAttribute("aria-expanded", "false"));
-  document.getElementById("excerpt").hidden = true;
+function shouldRun() {
+  if (document.hidden || !inView) return false;
+  if (isReduced()) return userForcePlayInReduced && !userPaused;
+  return !userPaused;
 }
 
-function setRound(n) {
-  round = n;
-  closeDocs();
-  document.getElementById("r1").setAttribute("aria-pressed", n === 1);
-  document.getElementById("r2").setAttribute("aria-pressed", n === 2);
-  document.getElementById("stamp").textContent = (n === 1 ? "第一輪" : "下一輪") + "總覽 · 範例內容由 agent 事先撰寫";
-  document.getElementById("doc-intro").textContent = n === 1
-    ? "上傳重試已完成，離線測試仍有兩種情境待確認。這次整理了實作進度、測試報告，以及操作流程。"
-    : "離線重新啟動已通過測試。同名檔案的處理仍需你確認：要保留兩份，還是讓使用者選擇？測試報告已更新。";
-  document.getElementById("test-link").textContent = n === 1 ? "還沒走完的兩種情境" : "更新後，還需要確認什麼";
-  flashDawn();
+function formatTime(totalSeconds) {
+  const s = Math.max(0, Math.min(30, Math.floor(totalSeconds)));
+  return `0:${String(s).padStart(2, "0")}`;
 }
 
-document.getElementById("r1").onclick = () => setRound(1);
-document.getElementById("r2").onclick = () => setRound(2);
-document.querySelectorAll("[data-doc]").forEach(b => {
-  b.onclick = () => {
-    const was = b.getAttribute("aria-expanded") === "true";
-    closeDocs();
-    if (was) return;
-    b.setAttribute("aria-expanded", "true");
-    let [title, body] = contents[b.dataset.doc];
-    if (round === 2 && b.dataset.doc === "test") {
-      title = "更新後，還需要確認什麼";
-      body = "離線重新啟動測試已通過。尚待決定的是同名檔案的處理方式；請回到報告中的兩個案例，確認哪一種符合你的使用情境。";
+function sweepDawn() {
+  if (isReduced()) return;
+  shell.classList.remove("is-sweeping");
+  void shell.offsetWidth;
+  shell.classList.add("is-sweeping");
+}
+
+function syncPlayButton() {
+  const running = shouldRun();
+  const loc = LOCALES[currentLocale];
+  playToggle.setAttribute("aria-pressed", String(!running));
+  playToggle.setAttribute("aria-label", running ? loc.pauseAria : loc.playAria);
+  playLabel.textContent = running ? loc.pause : loc.play;
+  playIcon.innerHTML = running
+    ? '<rect x="1.5" y="1" width="3" height="10" rx="1"/><rect x="7.5" y="1" width="3" height="10" rx="1"/>'
+    : '<polygon points="2.5,1 10.5,6 2.5,11"/>';
+
+  if (isReduced() && !running) {
+    subStatus.textContent = loc.statusReduced(currentSeg);
+  } else if (running) {
+    subStatus.textContent = loc.statusPlaying(currentSeg);
+  } else {
+    subStatus.textContent = loc.statusPaused(currentSeg);
+  }
+  shell.classList.toggle("is-static", isReduced() && !running);
+}
+
+function renderSegment(segIdx, { announce = false, sweep = false } = {}) {
+  currentSeg = ((segIdx % TOTAL_SEGS) + TOTAL_SEGS) % TOTAL_SEGS;
+  const loc = LOCALES[currentLocale];
+  const stepIdx = Math.floor(currentSeg / 2);
+
+  // Smart aria-live: announce on explicit interaction or focus inside player; avoid spamming screen readers during passive auto-loop
+  const focusInside = shell.contains(document.activeElement);
+  subRegion.setAttribute("aria-live", (announce || focusInside) ? "polite" : "off");
+
+  subStepNum.textContent = `0${stepIdx + 1}`;
+  subStepLabel.textContent = loc.steps[stepIdx];
+  subText.textContent = loc.lines[currentSeg];
+
+  shots.forEach((g, idx) => g.classList.toggle("is-active", idx === currentSeg));
+
+  stepGroups.forEach((grp, idx) => {
+    grp.classList.toggle("is-current", idx === stepIdx);
+    grp.classList.toggle("is-done", idx < stepIdx);
+  });
+
+  segButtons.forEach((btn, idx) => {
+    const isCur = idx === currentSeg;
+    const isDone = idx < currentSeg;
+    btn.classList.toggle("is-current", isCur);
+    btn.classList.toggle("is-done", isDone);
+    if (isCur) {
+      btn.setAttribute("aria-current", "step");
+    } else {
+      btn.removeAttribute("aria-current");
     }
-    document.getElementById("excerpt-title").textContent = title;
-    document.getElementById("excerpt-body").textContent = body;
-    document.getElementById("excerpt").hidden = false;
-  };
+    btn.style.setProperty("--seg-progress", isCur ? String(segElapsed / SEG_DURATION_MS) : (isDone ? "1" : "0"));
+  });
+
+  const elapsedSec = currentSeg * 5 + (segElapsed / 1000);
+  reelClock.textContent = `${formatTime(elapsedSec)} / 0:30 · ${isReduced() ? "手動切段" : "靜音循環"}`;
+  syncPlayButton();
+  if (sweep) sweepDawn();
+}
+
+function applyLocale(locale) {
+  currentLocale = locale;
+  const loc = LOCALES[locale];
+  subRegion.setAttribute("lang", locale);
+  reducedHint.textContent = loc.reducedHint;
+  stepNameNodes.forEach((el) => {
+    const idx = Number(el.dataset.stepName);
+    el.textContent = loc.steps[idx];
+  });
+  segButtons.forEach((btn, idx) => {
+    const stepName = loc.steps[Math.floor(idx / 2)];
+    btn.setAttribute("aria-label", loc.segAria(idx, stepName, loc.lines[idx]));
+  });
+  localeChips.forEach((chip) => {
+    chip.setAttribute("aria-pressed", String(chip.dataset.locale === locale));
+  });
+  renderSegment(currentSeg, { announce: true, sweep: false });
+}
+
+function tick(now) {
+  if (!shouldRun()) {
+    lastFrameTime = 0;
+    rafId = 0;
+    syncPlayButton();
+    return;
+  }
+  if (!lastFrameTime) lastFrameTime = now;
+  const dt = Math.min(200, now - lastFrameTime);
+  lastFrameTime = now;
+  segElapsed += dt;
+
+  if (segElapsed >= SEG_DURATION_MS) {
+    segElapsed = 0;
+    renderSegment((currentSeg + 1) % TOTAL_SEGS, { announce: false, sweep: true });
+  } else {
+    const curBtn = segButtons[currentSeg];
+    if (curBtn) curBtn.style.setProperty("--seg-progress", String(segElapsed / SEG_DURATION_MS));
+    const elapsedSec = currentSeg * 5 + (segElapsed / 1000);
+    reelClock.textContent = `${formatTime(elapsedSec)} / 0:30 · 靜音循環`;
+  }
+  rafId = requestAnimationFrame(tick);
+}
+
+function ensurePlaybackLoop() {
+  syncPlayButton();
+  if (shouldRun()) {
+    if (!rafId) {
+      lastFrameTime = 0;
+      rafId = requestAnimationFrame(tick);
+    }
+  } else if (rafId) {
+    cancelAnimationFrame(rafId);
+    rafId = 0;
+  }
+}
+
+segButtons.forEach((btn, idx) => {
+  btn.addEventListener("click", () => {
+    segElapsed = 0;
+    renderSegment(idx, { announce: true, sweep: true });
+    ensurePlaybackLoop();
+  });
+  btn.addEventListener("keydown", (e) => {
+    let next = -1;
+    if (e.key === "ArrowRight") next = (idx + 1) % TOTAL_SEGS;
+    else if (e.key === "ArrowLeft") next = (idx - 1 + TOTAL_SEGS) % TOTAL_SEGS;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = TOTAL_SEGS - 1;
+    if (next >= 0) {
+      e.preventDefault();
+      segButtons[next].focus();
+      segElapsed = 0;
+      renderSegment(next, { announce: true, sweep: true });
+      ensurePlaybackLoop();
+    }
+  });
+});
+
+playToggle.addEventListener("click", () => {
+  if (isReduced()) {
+    userForcePlayInReduced = !shouldRun();
+    userPaused = !userForcePlayInReduced;
+  } else {
+    userPaused = !userPaused;
+  }
+  ensurePlaybackLoop();
+});
+
+localeChips.forEach((chip) => {
+  chip.addEventListener("click", () => applyLocale(chip.dataset.locale));
+});
+
+simReducedBtn.addEventListener("click", () => {
+  simReduced = !simReduced;
+  simReducedBtn.setAttribute("aria-pressed", String(simReduced));
+  document.body.classList.toggle("sim-reduced", simReduced);
+  userForcePlayInReduced = false;
+  syncMotion();
+  renderSegment(currentSeg, { announce: false, sweep: false });
+  ensurePlaybackLoop();
 });
 
 const live = [...document.querySelectorAll(".is-live")];
 function syncMotion() {
-  const off = document.hidden || reduce;
-  live.forEach(el => el.classList.toggle("is-live", !off && el.getBoundingClientRect().bottom > 0 && el.getBoundingClientRect().top < innerHeight));
+  const off = document.hidden || isReduced();
+  live.forEach((el) => {
+    const r = el.getBoundingClientRect();
+    el.classList.toggle("is-live", !off && r.bottom > 0 && r.top < innerHeight);
+  });
+  const sr = shell.getBoundingClientRect();
+  inView = sr.bottom > 80 && sr.top < innerHeight - 80;
+  ensurePlaybackLoop();
 }
+
 document.addEventListener("visibilitychange", syncMotion);
 addEventListener("scroll", syncMotion, { passive: true });
 if ("IntersectionObserver" in window) {
-  const io = new IntersectionObserver(() => syncMotion(), { threshold: 0.05 });
-  live.forEach(el => io.observe(el));
+  const io = new IntersectionObserver(() => syncMotion(), { threshold: [0.05, 0.35] });
+  live.forEach((el) => io.observe(el));
+  io.observe(shell);
 }
+if (systemReduceMQ.addEventListener) {
+  systemReduceMQ.addEventListener("change", () => {
+    userForcePlayInReduced = false;
+    syncMotion();
+    renderSegment(currentSeg, { announce: false, sweep: false });
+  });
+}
+
+applyLocale("zh-Hant");
 syncMotion();
 </script>
 </html>
