@@ -8408,15 +8408,21 @@ def main() -> None:
         print(folder / "index.html")
         twin = price.sale_note_md(build_twin(pages, locale, slug), locale)
         if slug in {"index", "pay-once"}:
-            twin = price.insert_price_note(twin, price.early_bird_note_md(locale))
+            early_bird_note = price.early_bird_note_md(locale)
+            if early_bird_note:
+                twin = price.insert_price_note(twin, early_bird_note)
         (folder / "index.md").write_text(price.localize(twin), encoding="utf-8")
         print(folder / "index.md")
 
     early_bird_note = price.early_bird_note_md()
-    llms_txt = price.insert_price_note(price.sale_note_md(build_llms_txt(pages)), early_bird_note)
+    llms_txt = price.sale_note_md(build_llms_txt(pages))
+    if early_bird_note:
+        llms_txt = price.insert_price_note(llms_txt, early_bird_note)
     (SITE / "llms.txt").write_text(price.localize(llms_txt), encoding="utf-8")
     print(SITE / "llms.txt")
-    llms_full = price.insert_price_note(price.sale_note_md(build_llms_full(pages)), early_bird_note)
+    llms_full = price.sale_note_md(build_llms_full(pages))
+    if early_bird_note:
+        llms_full = price.insert_price_note(llms_full, early_bird_note)
     (SITE / "llms-full.txt").write_text(price.localize(llms_full), encoding="utf-8")
     print(SITE / "llms-full.txt")
     notices_path = SITE / "themes" / "third-party-notices.html"
@@ -8438,7 +8444,9 @@ def main() -> None:
     (SITE / "_redirects").write_text(build_redirects(), encoding="utf-8")
     print(SITE / "_redirects")
     product_facts_path = SITE / PRODUCT_FACTS_PATH.lstrip("/")
-    product_facts = price.insert_price_note(price.sale_note_md(build_product_facts(pages)), early_bird_note)
+    product_facts = price.sale_note_md(build_product_facts(pages))
+    if early_bird_note:
+        product_facts = price.insert_price_note(product_facts, early_bird_note)
     product_facts_path.write_text(price.localize(product_facts), encoding="utf-8")
     print(product_facts_path)
     (SITE / "sitemap.xml").write_text(

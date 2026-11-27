@@ -1,7 +1,5 @@
 # Teste alles. Dann bezahl einmal.
 
-Einführungspreis: Die einmalige Freischaltung kostet 4,99 USD (kein Abo) bis zum 12. Januar 2027, ab dem 13. Januar 2027 dann 9,99 USD. <!-- early-bird -->
-
 Black-Friday-Angebot: Der einmalige Kauf zum Freischalten kostet bis 30. November die Hälfte, 2,49 USD statt 4,99 USD. Ab dem 1. Dezember kostet er wieder 4,99 USD. <!-- sale-line -->
 
 MarsDawn ist ein kostenloser Download. Starte den 14-tägigen Test, und alle Funktionen sind verfügbar. Wenn du es danach weiter nutzen möchtest, schaltet ein einmaliger Kauf für 2,49 USD es frei. Es gibt kein Abo und kein Konto.

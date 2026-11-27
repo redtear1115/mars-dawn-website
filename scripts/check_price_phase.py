@@ -11,8 +11,10 @@ The Markdown twins and the llms and product-facts files carry the line as a line
 `<!-- sale-line -->` (price.sale_note_md()), skipped the same way. In the sale phase every .md or
 .txt file that states the sale price must carry one, so no agent quotes 2.49 with no end date.
 
-The early-bird notice is protected in both phases. The built notice must match the approved copy,
-and the JSON-LD Offer prices must match the current price and free download.
+In the regular phase the early-bird notice must match the approved copy on the home and pay-once
+pages, their Markdown twins, and the llms and product-facts files. Outside the regular phase
+those files must omit the approved sentences, and all built HTML, Markdown, and text files must
+omit the notice markers. JSON-LD Offer prices must match the current price and free download.
 
 It also fails if a private-use KEEP sentinel from price.py reached a built file, which would mean
 some text was written without going through price.localize().
@@ -34,6 +36,7 @@ RULE_OTHER = "states the other phase's price"
 RULE_SENTINEL = "has a KEEP sentinel"
 RULE_LINE = "has a sale line outside the sale phase"
 RULE_NOTE = "states the sale price with no sale line"
+RULE_EARLY = "has an early-bird notice outside the regular phase"
 TEXT_SUFFIXES = {".md", ".txt"}
 
 
@@ -56,6 +59,8 @@ def problems_in(where: str, text: str, phase: str, text_file: bool = False) -> l
         found.append(f"{where}: {RULE_SENTINEL} (written without price.localize())")
     if phase != "sale" and (price.SALE_LINE_RE.search(text) or price.SALE_NOTE_MARK in text):
         found.append(f"{where}: {RULE_LINE}")
+    if phase != "regular" and (price.EARLY_BIRD_LINE_RE.search(text) or price.EARLY_BIRD_NOTE_MARK in text):
+        found.append(f"{where}: {RULE_EARLY}")
     outside = price.SALE_NOTE_RE.sub("", price.SALE_LINE_RE.sub("", text))
     outside = price.EARLY_BIRD_NOTE_RE.sub("", price.EARLY_BIRD_LINE_RE.sub("", outside))
     if (phase == "sale" and text_file and price.SALE_NOTE_MARK not in text
@@ -77,22 +82,33 @@ def early_bird_problems() -> list:
         if not path.is_file():
             problems.append(f"{path.relative_to(SITE)}: missing built file")
             return ""
-        return path.read_text(encoding="utf-8")
+        text = path.read_text(encoding="utf-8")
+        if price.PHASE != "regular" and any(line in text for line in EXPECTED_EARLY_BIRD_LINES.values()):
+            problems.append(f"{path.relative_to(SITE)}: {RULE_EARLY} (approved copy)")
+        return text
 
     def check_note(path: Path, sentence: str) -> None:
         notes = price.EARLY_BIRD_NOTE_RE.findall(built_text(path))
-        if notes != [f"{sentence} {price.EARLY_BIRD_NOTE_MARK}"]:
+        if price.PHASE == "regular" and notes != [f"{sentence} {price.EARLY_BIRD_NOTE_MARK}"]:
             problems.append(f"{path.relative_to(SITE)}: expected one approved early-bird note")
 
     for locale, sentence in EXPECTED_EARLY_BIRD_LINES.items():
         root = SITE if locale == "en" else SITE / locale
         for folder in (root, root / "pay-once"):
             page = folder / "index.html"
-            if price.EARLY_BIRD_LINE_RE.findall(built_text(page)) != [sentence]:
+            paragraphs = price.EARLY_BIRD_LINE_RE.findall(built_text(page))
+            if price.PHASE == "regular" and paragraphs != [sentence]:
                 problems.append(f"{page.relative_to(SITE)}: expected one approved early-bird paragraph")
             check_note(folder / "index.md", sentence)
     for name in ("llms.txt", "llms-full.txt", "product-facts.md"):
         check_note(SITE / name, EXPECTED_EARLY_BIRD_LINES["en"])
+    if price.PHASE != "regular":
+        markers = ("data-early-bird", "early-bird-line", price.EARLY_BIRD_NOTE_MARK)
+        for path in sorted(SITE.rglob("*")):
+            if path.suffix in SUFFIXES and path.is_file():
+                text = path.read_text(encoding="utf-8")
+                if any(marker in text for marker in markers):
+                    problems.append(f"{path.relative_to(SITE)}: {RULE_EARLY} (notice marker)")
     return problems
 
 
@@ -194,14 +210,20 @@ def self_test() -> int:
         expect(name, not found, str(found))
 
     green("a localized sale page passes, sale line and all", sale_page, "sale")
-    early_bird = price.localize(price.early_bird_html("en"), "sale")
-    expect("the early-bird paragraph keeps the approved price", "USD 4.99" in early_bird)
-    green("sale phase, regular price inside the early-bird paragraph", early_bird, "sale")
-    red("sale phase, regular price outside the early-bird paragraph",
-        early_bird + "<p>for USD 4.99.</p>", "sale", RULE_OTHER)
-    green("regular phase, early-bird paragraph", price.localize(price.early_bird_html("en"), "regular"), "regular")
-    green("sale phase, regular price inside the early-bird note",
-          price.localize(price.early_bird_note_md(), "sale"), "sale", True)
+    if price.PHASE == "sale":
+        expect("the default sale phase omits the early-bird paragraph", price.early_bird_html("en") == "")
+        expect("the default sale phase omits the early-bird note", price.early_bird_note_md() == "")
+    early_bird = price.early_bird_html("en", "regular")
+    approved = EXPECTED_EARLY_BIRD_LINES["en"]
+    expect("the early-bird paragraph contains the approved copy and price",
+           approved in early_bird and "USD 4.99" in early_bird)
+    regular_early_bird = price.localize(early_bird, "regular")
+    expect("regular localization keeps the approved early-bird copy", approved in regular_early_bird)
+    expect("sale localization keeps the approved early-bird copy", approved in price.localize(early_bird, "sale"))
+    green("regular phase, early-bird paragraph", regular_early_bird, "regular")
+    red("sale phase, early-bird paragraph", regular_early_bird, "sale", RULE_EARLY)
+    red("sale phase, early-bird note",
+        price.localize(price.early_bird_note_md(phase="regular"), "regular"), "sale", RULE_EARLY, text_file=True)
     green("a regular page passes", "<p>unlock it once for USD 4.99.</p>", "regular")
     red("sale phase, regular price outside the sale line", sale_page + "<p>for USD 4.99.</p>", "sale", RULE_OTHER)
     red("sale phase, 4,99 USD left in a de/fr/es page", "<p>für 4,99 USD frei.</p>", "sale", RULE_OTHER)

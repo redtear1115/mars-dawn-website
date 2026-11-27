@@ -23,6 +23,9 @@ The Markdown twins, llms.txt, llms-full.txt and product-facts.md state the price
 quote them, so a sale price there carries the same line (`sale_note_md()`): one line after the
 file's H1, ending in `<!-- sale-line -->`, which check_price_phase.py skips and, in the sale phase,
 requires in every such file that states the sale price.
+
+The early-bird notice follows the committed PHASE switch and never reads the clock.
+It appears only in the regular phase. Sale phase output omits it.
 """
 import re
 
@@ -122,14 +125,20 @@ def sale_line_html(locale: str, phase: str = None, lines: dict = None) -> str:
     return f'{KEEP_OPEN}<p class="sale-line" data-sale-line>{lines[locale]}</p>{KEEP_CLOSE}\n'
 
 
-def early_bird_html(locale: str) -> str:
-    """The early-bird notice for this locale, protected from phase localization."""
+def early_bird_html(locale: str, phase: str = None) -> str:
+    """The KEEP-wrapped early-bird notice for this locale in the regular phase."""
+    phase = PHASE if phase is None else phase
+    if phase != "regular":
+        return ""
     assert locale in EARLY_BIRD_LINES, f"EARLY_BIRD_LINES has no {locale!r} line"
     return f'{KEEP_OPEN}<p class="early-bird-line" data-early-bird>{EARLY_BIRD_LINES[locale]}</p>{KEEP_CLOSE}\n'
 
 
-def early_bird_note_md(locale: str = "en") -> str:
-    """The Markdown notice line, protected from phase localization."""
+def early_bird_note_md(locale: str = "en", phase: str = None) -> str:
+    """The KEEP-wrapped Markdown notice line in the regular phase."""
+    phase = PHASE if phase is None else phase
+    if phase != "regular":
+        return ""
     assert locale in EARLY_BIRD_LINES, f"EARLY_BIRD_LINES has no {locale!r} line"
     return f"{KEEP_OPEN}{EARLY_BIRD_LINES[locale]} {EARLY_BIRD_NOTE_MARK}{KEEP_CLOSE}\n"
 
