@@ -45,6 +45,15 @@ body [lang] { font-family: var(--font); }
   }
 }
 
+p.early-bird-line {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  white-space: normal;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+  max-width: 40rem;
+}
+
 /* pricing.md (#274): one shared document card, with silent Markdown punctuation. */
 .price-card {
   margin: 36px 0;

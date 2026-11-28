@@ -23,6 +23,9 @@ The Markdown twins, llms.txt, llms-full.txt and product-facts.md state the price
 quote them, so a sale price there carries the same line (`sale_note_md()`): one line after the
 file's H1, ending in `<!-- sale-line -->`, which check_price_phase.py skips and, in the sale phase,
 requires in every such file that states the sale price.
+
+The early-bird notice follows the committed PHASE switch and never reads the clock.
+It appears only in the regular phase. Sale phase output omits it.
 """
 import re
 
@@ -46,12 +49,27 @@ SALE_LINES: dict = {
     'ko': '블랙 프라이데이 할인: 한 번만 구입하는 잠금 해제가 11월 30일까지 반값인 USD 2.49입니다(정가 USD 4.99). 12월 1일부터는 다시 USD 4.99입니다.',
 }
 
+EARLY_BIRD_LINES = {
+    "en": "Early-bird price: the one-time unlock is USD 4.99 (no subscription) through 12 January 2027, then USD 9.99 from 13 January 2027.",
+    "zh-hant": "早鳥價：一次解鎖為 USD 4.99（非訂閱），至 2027 年 1 月 12 日；2027 年 1 月 13 日起調整為 USD 9.99。",
+    "zh-hans": "早鸟价：一次解锁为 USD 4.99（非订阅），至 2027 年 1 月 12 日；2027 年 1 月 13 日起调整为 USD 9.99。",
+    "ja": "早期価格：一度きりのロック解除は USD 4.99（サブスクなし）、2027年1月12日まで。2027年1月13日から USD 9.99 になります。",
+    "ko": "얼리버드 가격: 한 번만 구입하는 잠금 해제(구독 없음)는 2027년 1월 12일까지 USD 4.99이며, 2027년 1월 13일부터 USD 9.99로 조정됩니다.",
+    "de": "Einführungspreis: Die einmalige Freischaltung kostet 4,99 USD (kein Abo) bis zum 12. Januar 2027, ab dem 13. Januar 2027 dann 9,99 USD.",
+    "fr": "Tarif de lancement : le déverrouillage unique coûte 4,99 USD (sans abonnement) jusqu’au 12 janvier 2027, puis 9,99 USD à partir du 13 janvier 2027.",
+    "es": "Precio de lanzamiento: el desbloqueo único cuesta 4,99 USD (sin suscripción) hasta el 12 de enero de 2027; 9,99 USD a partir del 13 de enero de 2027.",
+}
+
 # Private-use code points: never in copy, so they can't collide with real text.
 KEEP_OPEN = ""
 KEEP_CLOSE = ""
 SALE_LINE_RE = re.compile(r'<p class="sale-line" data-sale-line>.*?</p>', re.DOTALL)
 SALE_NOTE_MARK = "<!-- sale-line -->"
 SALE_NOTE_RE = re.compile(r"^.*<!-- sale-line -->$", re.MULTILINE)
+
+EARLY_BIRD_LINE_RE = re.compile(r'<p class="early-bird-line" data-early-bird>(.*?)</p>', re.DOTALL)
+EARLY_BIRD_NOTE_MARK = "<!-- early-bird -->"
+EARLY_BIRD_NOTE_RE = re.compile(r"^.*<!-- early-bird -->$", re.MULTILINE)
 
 assert PHASE in PHASES, f"price.PHASE is {PHASE!r}, want one of {PHASES}"
 
@@ -107,6 +125,24 @@ def sale_line_html(locale: str, phase: str = None, lines: dict = None) -> str:
     return f'{KEEP_OPEN}<p class="sale-line" data-sale-line>{lines[locale]}</p>{KEEP_CLOSE}\n'
 
 
+def early_bird_html(locale: str, phase: str = None) -> str:
+    """The KEEP-wrapped early-bird notice for this locale in the regular phase."""
+    phase = PHASE if phase is None else phase
+    if phase != "regular":
+        return ""
+    assert locale in EARLY_BIRD_LINES, f"EARLY_BIRD_LINES has no {locale!r} line"
+    return f'{KEEP_OPEN}<p class="early-bird-line" data-early-bird>{EARLY_BIRD_LINES[locale]}</p>{KEEP_CLOSE}\n'
+
+
+def early_bird_note_md(locale: str = "en", phase: str = None) -> str:
+    """The KEEP-wrapped Markdown notice line in the regular phase."""
+    phase = PHASE if phase is None else phase
+    if phase != "regular":
+        return ""
+    assert locale in EARLY_BIRD_LINES, f"EARLY_BIRD_LINES has no {locale!r} line"
+    return f"{KEEP_OPEN}{EARLY_BIRD_LINES[locale]} {EARLY_BIRD_NOTE_MARK}{KEEP_CLOSE}\n"
+
+
 def sale_note_md(text: str, locale: str = "en", phase: str = None, lines: dict = None) -> str:
     """Markdown or plain `text` with `locale`'s sale line after its H1, in the sale phase.
 
@@ -119,6 +155,11 @@ def sale_note_md(text: str, locale: str = "en", phase: str = None, lines: dict =
         return text
     assert locale in lines, f"price.PHASE is 'sale' but SALE_LINES has no {locale!r} line"
     note = f"{KEEP_OPEN}{lines[locale]} {SALE_NOTE_MARK}{KEEP_CLOSE}\n"
+    return insert_price_note(text, note)
+
+
+def insert_price_note(text: str, note: str) -> str:
+    """Place a price note after the H1 and its optional blockquote summary."""
     h1 = re.search(r"^# .*\n", text, re.MULTILINE)
     if h1 is None:
         return note + "\n" + text
